@@ -14,20 +14,19 @@ struct MainView: View {
     
     var body: some View {
         ZStack {
-            mainModel.activeScreen.isScreen(.goals()) ?
+            mainModel.screen.active.isScreen(.goals) ?
             GoalsScreen()
-                .opacity(mainModel.activeScreen.opacity)
             : nil
             
-            mainModel.activeScreen.isScreen(.goalAdd()) ?
+            mainModel.screen.active.isScreen(.goalAdd) ?
             GoalAddScreen()
-                .opacity(mainModel.activeScreen.opacity)
             : nil
             
-            mainModel.activeScreen.isScreen(.profile()) ?
+            mainModel.screen.active.isScreen(.profile) ?
             ProfileScreen()
-                .opacity(mainModel.activeScreen.opacity)
             : nil
         }
+        .opacity(mainModel.screen.opacity)
+        .animation(.easeInOut(duration: 0.3))
     }
 }

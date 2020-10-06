@@ -14,7 +14,7 @@ struct GoalsHeaderView: View {
     
     var body: some View {
         VStack {
-            OneSHeaderView("Goals", trailingButton: (.profile, .grayToBackground, { mainModel.toScreen(.profile(), withDismiss: true) }))
+            OneSHeaderView("Goals", trailingButton: (.profile, .grayToBackground, { mainModel.toScreen(.profile) }))
             TabBarView()
         }
     }
@@ -29,6 +29,7 @@ struct GoalsHeaderView: View {
             }
             .frame(height: 36)
             .cornerRadius(20)
+            .animation(nil)
         }
         
         
