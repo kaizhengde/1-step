@@ -13,7 +13,7 @@ struct GoalAddItem: View {
     
     
     var body: some View {
-        Button(action: { mainModel.toScreen(.goalsAdd) }) {
+        Button(action: { mainModel.toScreen(.goalAdd(), withDismiss: true) }) {
             ZStack {
                 SFSymbol.plus
                     .font(OneSFont.custom(weight: Raleway.light, size: 40).get())

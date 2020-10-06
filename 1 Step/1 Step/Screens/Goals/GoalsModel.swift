@@ -7,14 +7,17 @@
 
 import SwiftUI
 
-enum TabBarActive {
+enum TabActive {
     case left, right
     
-    func toggle() -> Self { return self == .left ? .right : .left }
+    mutating func toggle() {
+        if self == .left { self = .right }
+        else { self = .left }
+    }
 }
 
 
 class GoalsModel: ObservableObject {
     
-    @Published var tabBarCurrent: TabBarActive = .left
+    @Published var currentTab: TabActive = .left
 }

@@ -14,7 +14,7 @@ struct GoalsHeaderView: View {
     
     var body: some View {
         VStack {
-            OneSHeaderView("Goals", trailingButton: (.profile, .grayToBackground, { mainModel.toScreen(.profile) }))
+            OneSHeaderView("Goals", trailingButton: (.profile, .grayToBackground, { mainModel.toScreen(.profile(), withDismiss: true) }))
             TabBarView()
         }
     }
@@ -24,8 +24,8 @@ struct GoalsHeaderView: View {
         
         var body: some View {
             HStack(spacing: 4) {
-                TabBarButtonView(tabBarActive: .left, text: "Active")
-                TabBarButtonView(tabBarActive: .right, text: "Reached")
+                TabBarButtonView(tabActive: .left, text: "Active")
+                TabBarButtonView(tabActive: .right, text: "Reached")
             }
             .frame(height: 36)
             .cornerRadius(20)
@@ -36,8 +36,8 @@ struct GoalsHeaderView: View {
             
             @EnvironmentObject var goalsModel: GoalsModel
             
-            let tabBarActive: TabBarActive
-            var isActive: Bool { goalsModel.tabBarCurrent == tabBarActive }
+            let tabActive: TabActive
+            var isActive: Bool { goalsModel.currentTab == tabActive }
             
             let text: String
             var font: OneSFont { isActive ? .subtitle : .custom(weight: Raleway.extraLight, size: 15) }
@@ -57,7 +57,7 @@ struct GoalsHeaderView: View {
             
             
             func switchIfNeeded() {
-                if !isActive { goalsModel.tabBarCurrent = goalsModel.tabBarCurrent.toggle() }
+                if !isActive { goalsModel.currentTab.toggle() }
             }
         }
     }

@@ -9,7 +9,25 @@ import SwiftUI
 
 struct MainView: View {
     
+    @StateObject private var mainModel = MainModel.shared
+    
+    
     var body: some View {
-        GoalsScreen()
+        ZStack {
+            mainModel.activeScreen.isScreen(.goals()) ?
+            GoalsScreen()
+                .opacity(mainModel.activeScreen.opacity)
+            : nil
+            
+            mainModel.activeScreen.isScreen(.goalAdd()) ?
+            GoalAddScreen()
+                .opacity(mainModel.activeScreen.opacity)
+            : nil
+            
+            mainModel.activeScreen.isScreen(.profile()) ?
+            ProfileScreen()
+                .opacity(mainModel.activeScreen.opacity)
+            : nil
+        }
     }
 }
