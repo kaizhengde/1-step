@@ -7,12 +7,21 @@
 
 import SwiftUI
 
-enum SFSymbols {
+enum SFSymbol {
     
     static let arrow    = Image(systemName: "arrow.right")
     static let delete   = Image(systemName: "trash.fill")
     static let check    = Image(systemName: "checkmark")
     static let rosette  = Image(systemName: "rosette")
+}
+
+
+enum HeaderButton {
+    
+    static let profile  = Image("ProfileButton")
+    static let close    = Image("CloseButton")
+    static let back     = Image("BackButton")
+    static let settings = Image("SettingsButton")
 }
 
 

@@ -21,6 +21,8 @@
 		3D47CCA5252C73D300A8CA1B /* Raleway-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D47CC9A252C73D300A8CA1B /* Raleway-SemiBold.ttf */; };
 		3D47CCA7252C73D300A8CA1B /* Raleway-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D47CC9C252C73D300A8CA1B /* Raleway-ExtraLight.ttf */; };
 		3D47CCA9252C73D300A8CA1B /* Raleway-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D47CC9E252C73D300A8CA1B /* Raleway-Light.ttf */; };
+		3D47CCAE252C749500A8CA1B /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D47CCAD252C749500A8CA1B /* Fonts.swift */; };
+		3D47CCBD252C7EF900A8CA1B /* GoalsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D47CCBC252C7EF900A8CA1B /* GoalsScreen.swift */; };
 		3DE11C35252C681200F13719 /* __StepApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE11C34252C681200F13719 /* __StepApp.swift */; };
 		3DE11C39252C681600F13719 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DE11C38252C681600F13719 /* Assets.xcassets */; };
 		3DE11C3C252C681600F13719 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DE11C3B252C681600F13719 /* Preview Assets.xcassets */; };
@@ -43,6 +45,8 @@
 		3D47CC9A252C73D300A8CA1B /* Raleway-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-SemiBold.ttf"; sourceTree = "<group>"; };
 		3D47CC9C252C73D300A8CA1B /* Raleway-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-ExtraLight.ttf"; sourceTree = "<group>"; };
 		3D47CC9E252C73D300A8CA1B /* Raleway-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Light.ttf"; sourceTree = "<group>"; };
+		3D47CCAD252C749500A8CA1B /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		3D47CCBC252C7EF900A8CA1B /* GoalsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsScreen.swift; sourceTree = "<group>"; };
 		3DE11C31252C681200F13719 /* 1 Step.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "1 Step.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DE11C34252C681200F13719 /* __StepApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = __StepApp.swift; sourceTree = "<group>"; };
 		3DE11C38252C681600F13719 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -66,6 +70,7 @@
 		3D47CC77252C6BEC00A8CA1B /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				3D47CCBB252C7EE300A8CA1B /* Goals */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -82,6 +87,7 @@
 		3D47CC7D252C6C3D00A8CA1B /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				3D47CCB2252C77A300A8CA1B /* Buttons */,
 				3D47CC85252C6F9900A8CA1B /* Header */,
 			);
 			path = CustomViews;
@@ -129,8 +135,9 @@
 		3D47CC8B252C71B500A8CA1B /* Constants */ = {
 			isa = PBXGroup;
 			children = (
-				3D47CC88252C70B700A8CA1B /* Images.swift */,
 				3D47CC8C252C71C100A8CA1B /* Layout.swift */,
+				3D47CC88252C70B700A8CA1B /* Images.swift */,
+				3D47CCAD252C749500A8CA1B /* Fonts.swift */,
 				3D47CC90252C71EA00A8CA1B /* Rest.swift */,
 			);
 			path = Constants;
@@ -150,6 +157,21 @@
 				3D47CC96252C73D300A8CA1B /* Raleway-Thin.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		3D47CCB2252C77A300A8CA1B /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		3D47CCBB252C7EE300A8CA1B /* Goals */ = {
+			isa = PBXGroup;
+			children = (
+				3D47CCBC252C7EF900A8CA1B /* GoalsScreen.swift */,
+			);
+			path = Goals;
 			sourceTree = "<group>";
 		};
 		3DE11C28252C681200F13719 = {
@@ -280,6 +302,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D47CCBD252C7EF900A8CA1B /* GoalsScreen.swift in Sources */,
 				3DE11C3E252C681600F13719 /* Persistence.swift in Sources */,
 				3D47CC7B252C6C1C00A8CA1B /* MainView.swift in Sources */,
 				3DE11C41252C681600F13719 /* __Step.xcdatamodeld in Sources */,
@@ -287,6 +310,7 @@
 				3D47CC83252C6F9300A8CA1B /* OneSHeaderView.swift in Sources */,
 				3D47CC8D252C71C100A8CA1B /* Layout.swift in Sources */,
 				3DE11C35252C681200F13719 /* __StepApp.swift in Sources */,
+				3D47CCAE252C749500A8CA1B /* Fonts.swift in Sources */,
 				3D47CC89252C70B700A8CA1B /* Images.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
