@@ -65,7 +65,7 @@ struct OneSHeaderViewCustom<Content: View>: View {
                     .renderingMode(.template)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 26, height: 26)
+                    .frame(width: 25, height: 25)
                     .foregroundColor(.white)
                     .colorMultiply(button.color)
                     .onTapGesture { button.action() }

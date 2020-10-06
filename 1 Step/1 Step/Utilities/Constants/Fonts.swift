@@ -16,7 +16,7 @@ enum OneSFont {
         case .header:       return Font.custom(Raleway.extraBold, size: 40)
         case .title:        return Font.custom(Raleway.bold, size: 32)
         case .title2:       return Font.custom(Raleway.extraBold, size: 22)
-        case .subtitle:     return Font.custom(Raleway.semiBold, size: 15)
+        case .subtitle:     return Font.custom(Raleway.bold, size: 15)
         case .body:         return Font.custom(Raleway.medium, size: 17)
         case .body2:        return Font.custom(Raleway.regular, size: 17)
         case .footnote:     return Font.custom(Raleway.regular, size: 15)

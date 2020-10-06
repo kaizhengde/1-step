@@ -32,6 +32,7 @@
 		3DE9C503252C8A2D0023C212 /* GoalsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE9C502252C8A2D0023C212 /* GoalsHeaderView.swift */; };
 		3DE9C507252C8B8C0023C212 /* OneSHeaderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE9C506252C8B8C0023C212 /* OneSHeaderTextView.swift */; };
 		3DE9C50B252C8F500023C212 /* OneSTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE9C50A252C8F500023C212 /* OneSTextView.swift */; };
+		3DE9C50E252CAACC0023C212 /* GoalsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE9C50D252CAACC0023C212 /* GoalsModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		3DE9C502252C8A2D0023C212 /* GoalsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsHeaderView.swift; sourceTree = "<group>"; };
 		3DE9C506252C8B8C0023C212 /* OneSHeaderTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSHeaderTextView.swift; sourceTree = "<group>"; };
 		3DE9C50A252C8F500023C212 /* OneSTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSTextView.swift; sourceTree = "<group>"; };
+		3DE9C50D252CAACC0023C212 /* GoalsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +181,7 @@
 		3D47CCBB252C7EE300A8CA1B /* Goals */ = {
 			isa = PBXGroup;
 			children = (
+				3DE9C50D252CAACC0023C212 /* GoalsModel.swift */,
 				3D47CCBC252C7EF900A8CA1B /* GoalsScreen.swift */,
 				3DE9C502252C8A2D0023C212 /* GoalsHeaderView.swift */,
 			);
@@ -335,6 +338,7 @@
 				3DE11C35252C681200F13719 /* __StepApp.swift in Sources */,
 				3D47CCAE252C749500A8CA1B /* Fonts.swift in Sources */,
 				3DE9C503252C8A2D0023C212 /* GoalsHeaderView.swift in Sources */,
+				3DE9C50E252CAACC0023C212 /* GoalsModel.swift in Sources */,
 				3D47CC89252C70B700A8CA1B /* Images.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,12 +11,14 @@ import SwiftUI
 struct __StepApp: App {
     
     let persistenceController = PersistenceController.shared
+    let goalsModel = GoalsModel()
 
     
     var body: some Scene {
         WindowGroup {
             MainView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environmentObject(goalsModel)
         }
     }
 }

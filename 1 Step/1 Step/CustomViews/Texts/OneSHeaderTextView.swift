@@ -14,7 +14,7 @@ struct OneSHeaderTextView: View {
     
     var body: some View {
         Text(text)
-            .font(OneSFont.header2.get())
+            .font(OneSFont.header.get())
             .foregroundColor(.grayToBackground)
     }
 }
