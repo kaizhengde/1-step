@@ -9,10 +9,10 @@ import SwiftUI
 
 enum Layout {
     
-    static let firstLayerPadding: CGFloat   = 24
-    static let secondLayerPadding: CGFloat  = 40
-    static let firstLayerWidth              = ScreenSize.width - (2 * firstLayerPadding)
-    static let secondLayerWidth             = ScreenSize.width - (2 * secondLayerPadding)
+    static let firstLayerPadding: CGFloat   = 24.0
+    static let secondLayerPadding: CGFloat  = 40.0
+    static let firstLayerWidth              = ScreenSize.width - (2.0 * firstLayerPadding)
+    static let secondLayerWidth             = ScreenSize.width - (2.0 * secondLayerPadding)
 }
 
 
@@ -20,8 +20,11 @@ enum ScreenSize {
     
     static let width                        = UIScreen.main.bounds.size.width
     static let height                       = UIScreen.main.bounds.size.height
-    static let maxLength                    = max(ScreenSize.width, ScreenSize.height)
-    static let minLength                    = min(ScreenSize.width, ScreenSize.height)
+    static let maxLength                    = max(width, height)
+    static let minLength                    = min(width, height)
+    
+    static let multiplierWidth: CGFloat = width/375.0
+    static let multiplierHeight: CGFloat = height/812.0
 }
     
     
@@ -51,10 +54,10 @@ enum SafeAreaSize {
     
     //Note: Only for Portrait-Mode
     
-    static let safeAreaTopX: CGFloat        = 44
-    static let safeAreaBottomX: CGFloat     = 34
-    static let safeAreaTopRest: CGFloat     = 20
-    static let safeAreaBottomRest: CGFloat  = 0
+    static let safeAreaTopX: CGFloat        = 44.0
+    static let safeAreaBottomX: CGFloat     = 34.0
+    static let safeAreaTopRest: CGFloat     = 20.0
+    static let safeAreaBottomRest: CGFloat  = 0.0
     
     static let safeAreaTop                  = DeviceTypes.isiPhoneXAspectRatio ? safeAreaTopX : safeAreaTopRest
     static let safeAreaBottom               = DeviceTypes.isiPhoneXAspectRatio ? safeAreaBottomX : safeAreaBottomRest

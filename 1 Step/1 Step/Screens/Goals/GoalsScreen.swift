@@ -16,6 +16,7 @@ struct GoalsScreen: View {
             ScrollView {
                 VStack {
                     GoalsHeaderView()
+                    GoalsContentView()
                 }
                 .padding(.horizontal, Layout.firstLayerPadding)
             }

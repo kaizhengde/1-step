@@ -8,9 +8,7 @@
 import SwiftUI
 
 enum TabBarActive {
-    
     case left, right
-    
     
     func toggle() -> Self { return self == .left ? .right : .left }
 }

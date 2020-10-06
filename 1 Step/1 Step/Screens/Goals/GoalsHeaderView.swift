@@ -9,9 +9,12 @@ import SwiftUI
 
 struct GoalsHeaderView: View {
     
+    @StateObject private var mainModel = MainModel.shared
+    
+    
     var body: some View {
         VStack {
-            OneSHeaderView("Goals", trailingButton: (.profile, .grayToBackground, { print("toProfile") }))
+            OneSHeaderView("Goals", trailingButton: (.profile, .grayToBackground, { mainModel.toScreen(.profile) }))
             TabBarView()
         }
     }
@@ -37,7 +40,7 @@ struct GoalsHeaderView: View {
             var isActive: Bool { goalsModel.tabBarCurrent == tabBarActive }
             
             let text: String
-            var font: OneSFont { isActive ? .subtitle : .custom(font: Raleway.extraLight, size: 15) }
+            var font: OneSFont { isActive ? .subtitle : .custom(weight: Raleway.extraLight, size: 15) }
             var color: Color { isActive ? .grayToBackground : .neutralToDarkNeutral }
             
             

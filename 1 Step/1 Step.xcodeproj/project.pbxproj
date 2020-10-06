@@ -33,6 +33,9 @@
 		3DE9C507252C8B8C0023C212 /* OneSHeaderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE9C506252C8B8C0023C212 /* OneSHeaderTextView.swift */; };
 		3DE9C50B252C8F500023C212 /* OneSTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE9C50A252C8F500023C212 /* OneSTextView.swift */; };
 		3DE9C50E252CAACC0023C212 /* GoalsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE9C50D252CAACC0023C212 /* GoalsModel.swift */; };
+		3DE9C516252CB00A0023C212 /* GoalsContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE9C515252CB00A0023C212 /* GoalsContentView.swift */; };
+		3DE9C519252CB0520023C212 /* GoalAddItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE9C518252CB0520023C212 /* GoalAddItem.swift */; };
+		3DE9C51D252CB28D0023C212 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE9C51C252CB28D0023C212 /* MainModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +67,9 @@
 		3DE9C506252C8B8C0023C212 /* OneSHeaderTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSHeaderTextView.swift; sourceTree = "<group>"; };
 		3DE9C50A252C8F500023C212 /* OneSTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSTextView.swift; sourceTree = "<group>"; };
 		3DE9C50D252CAACC0023C212 /* GoalsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsModel.swift; sourceTree = "<group>"; };
+		3DE9C515252CB00A0023C212 /* GoalsContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsContentView.swift; sourceTree = "<group>"; };
+		3DE9C518252CB0520023C212 /* GoalAddItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalAddItem.swift; sourceTree = "<group>"; };
+		3DE9C51C252CB28D0023C212 /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +87,9 @@
 			isa = PBXGroup;
 			children = (
 				3D47CCBB252C7EE300A8CA1B /* Goals */,
+				3DE9C513252CAF710023C212 /* GoalItem */,
+				3DE9C514252CAF7C0023C212 /* Goal */,
+				3DE9C51B252CB2670023C212 /* GoalsAdd */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -88,6 +97,7 @@
 		3D47CC79252C6C0D00A8CA1B /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				3DE9C51C252CB28D0023C212 /* MainModel.swift */,
 				3DE11C34252C681200F13719 /* __StepApp.swift */,
 				3D47CC7A252C6C1C00A8CA1B /* MainView.swift */,
 			);
@@ -184,6 +194,7 @@
 				3DE9C50D252CAACC0023C212 /* GoalsModel.swift */,
 				3D47CCBC252C7EF900A8CA1B /* GoalsScreen.swift */,
 				3DE9C502252C8A2D0023C212 /* GoalsHeaderView.swift */,
+				3DE9C515252CB00A0023C212 /* GoalsContentView.swift */,
 			);
 			path = Goals;
 			sourceTree = "<group>";
@@ -245,6 +256,28 @@
 				3DE9C50A252C8F500023C212 /* OneSTextView.swift */,
 			);
 			path = Texts;
+			sourceTree = "<group>";
+		};
+		3DE9C513252CAF710023C212 /* GoalItem */ = {
+			isa = PBXGroup;
+			children = (
+				3DE9C518252CB0520023C212 /* GoalAddItem.swift */,
+			);
+			path = GoalItem;
+			sourceTree = "<group>";
+		};
+		3DE9C514252CAF7C0023C212 /* Goal */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Goal;
+			sourceTree = "<group>";
+		};
+		3DE9C51B252CB2670023C212 /* GoalsAdd */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = GoalsAdd;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -328,6 +361,7 @@
 				3D47CCBD252C7EF900A8CA1B /* GoalsScreen.swift in Sources */,
 				3D47CCC2252C807000A8CA1B /* Colors.swift in Sources */,
 				3DE11C3E252C681600F13719 /* Persistence.swift in Sources */,
+				3DE9C519252CB0520023C212 /* GoalAddItem.swift in Sources */,
 				3D47CC7B252C6C1C00A8CA1B /* MainView.swift in Sources */,
 				3DE11C41252C681600F13719 /* __Step.xcdatamodeld in Sources */,
 				3D47CC91252C71EA00A8CA1B /* Rest.swift in Sources */,
@@ -338,6 +372,8 @@
 				3DE11C35252C681200F13719 /* __StepApp.swift in Sources */,
 				3D47CCAE252C749500A8CA1B /* Fonts.swift in Sources */,
 				3DE9C503252C8A2D0023C212 /* GoalsHeaderView.swift in Sources */,
+				3DE9C51D252CB28D0023C212 /* MainModel.swift in Sources */,
+				3DE9C516252CB00A0023C212 /* GoalsContentView.swift in Sources */,
 				3DE9C50E252CAACC0023C212 /* GoalsModel.swift in Sources */,
 				3D47CC89252C70B700A8CA1B /* Images.swift in Sources */,
 			);

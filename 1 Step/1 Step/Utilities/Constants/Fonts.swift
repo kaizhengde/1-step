@@ -9,7 +9,7 @@ import SwiftUI
 
 enum OneSFont {
     
-    case header, title, title2, subtitle, body, body2, footnote, footnote2, custom(font: String, size: CGFloat)
+    case header, title, title2, subtitle, body, body2, footnote, footnote2, custom(weight: String, size: CGFloat)
     
     func get() -> Font {
         switch self {
@@ -21,8 +21,8 @@ enum OneSFont {
         case .body2:        return Font.custom(Raleway.regular, size: 17)
         case .footnote:     return Font.custom(Raleway.regular, size: 15)
         case .footnote2:    return Font.custom(Raleway.regular, size: 12)
-        case let .custom(font: font, size: size):
-            return Font.custom(font, size: size)
+        case let .custom(weight: weight, size: size):
+            return Font.custom(weight, size: size)
         }
     }
 }

@@ -11,6 +11,8 @@ import SwiftUI
 struct __StepApp: App {
     
     let persistenceController = PersistenceController.shared
+    
+    let mainModel = MainModel.shared
     let goalsModel = GoalsModel()
 
     
