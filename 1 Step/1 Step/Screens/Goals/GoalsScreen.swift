@@ -10,16 +10,12 @@ import SwiftUI
 struct GoalsScreen: View {
     
     var body: some View {
-        ZStack {
-            Color.whiteToDarkGray
-            
-            ScrollView {
-                VStack {
-                    GoalsHeaderView()
-                    GoalsContentView()
-                }
-                .padding(.horizontal, Layout.firstLayerPadding)
+        ScrollView {
+            VStack {
+                GoalsHeaderView()
+                GoalsContentView()
             }
+            .padding(.horizontal, Layout.firstLayerPadding)
         }
     }
 }

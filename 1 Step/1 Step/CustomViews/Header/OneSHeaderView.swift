@@ -11,7 +11,7 @@ typealias OneSHeaderView = OneSHeaderViewCustom<EmptyView>
 
 struct OneSHeaderViewCustom<Content: View>: View {
     
-    typealias HeaderButton = (image: HeaderButtonImage, color: Color, action: () -> ())
+    typealias HeaderButton = (image: HeaderButtonSymbol, color: Color, action: () -> ())
     
     let titleText: String?
     let leadingButton: HeaderButton?

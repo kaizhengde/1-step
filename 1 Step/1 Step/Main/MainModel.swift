@@ -36,7 +36,7 @@ class MainModel: ObservableObject {
     func toScreen(_ nextScreen: Screen.Active, withDelay: Bool = true) {
         currentScreen.dismiss()
         
-        let delay: DispatchTime = .now() + (withDelay ? 0.3 : 0)
+        let delay: DispatchTime = .now() + (withDelay ? Duration.screenOpacity : .zero)
         
         DispatchQueue.main.asyncAfter(deadline: delay) {
             self.currentScreen.active = nextScreen

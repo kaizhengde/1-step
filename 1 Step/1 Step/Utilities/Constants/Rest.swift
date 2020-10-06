@@ -7,4 +7,12 @@
 
 import SwiftUI
 
-enum CoordinateSpaces {}
+enum CoordinateSpace {}
+
+
+enum Duration {
+    
+    static let screenOpacity: Double = 0.3
+}
+
+

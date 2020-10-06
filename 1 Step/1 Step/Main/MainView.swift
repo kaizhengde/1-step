@@ -14,10 +14,14 @@ struct MainView: View {
     
     var body: some View {
         ZStack {
+            //Background
+            Color.whiteToDarkGray
+            
+            //Screens (one active only at a time)
             mainModel.screen(.goals) { GoalsScreen() }
             mainModel.screen(.goalAdd) { GoalAddScreen() }
             mainModel.screen(.profile) { ProfileScreen() }
         }
-        .animation(.easeInOut(duration: 0.3))
+        .animation(.easeInOut(duration: Duration.screenOpacity))
     }
 }

@@ -5,12 +5,12 @@
       "scale" : "1x"
     },
     {
-      "filename" : "BackButton@2x.png",
+      "filename" : "BackSymbol@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "BackButton@3x.png",
+      "filename" : "BackSymbol@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

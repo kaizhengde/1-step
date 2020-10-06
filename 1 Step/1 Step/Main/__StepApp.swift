@@ -14,6 +14,7 @@ struct __StepApp: App {
     
     let mainModel = MainModel.shared
     let goalsModel = GoalsModel()
+    let goalAddModel = GoalAddModel()
 
     
     var body: some Scene {
@@ -21,6 +22,7 @@ struct __StepApp: App {
             MainView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .environmentObject(goalsModel)
+                .environmentObject(goalAddModel)
         }
     }
 }
