@@ -21,14 +21,4 @@ struct GoalsScreen: View {
             }
         }
     }
-    
-    
-    private struct GoalsHeaderView: View {
-        
-        var body: some View {
-            VStack {
-                OneSHeaderView("Goals", trailingButton: (.profile, .grayToBackground, { print("toProfile") }))
-            }
-        }
-    }
 }

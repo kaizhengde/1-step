@@ -45,9 +45,7 @@ struct OneSHeaderViewCustom<Content: View>: View {
             //Title
             if let titleText = titleText {
                 HStack {
-                    Text(titleText)
-                        .font(.custom(Raleway.extraBold, size: 40))
-                        .foregroundColor(.grayToBackground)
+                    OneSHeaderTextView(text: titleText)
                     Spacer()
                 }
                 .padding(.top, 16)

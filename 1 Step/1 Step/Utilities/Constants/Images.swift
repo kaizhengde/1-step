@@ -23,9 +23,9 @@ enum HeaderButtonImage {
     
     func get() -> Image {
         switch self {
-        case .profile: return Image("ProfileButton")
-        case .close: return Image("CloseButton")
-        case .back: return Image("BackButton")
+        case .profile:  return Image("ProfileButton")
+        case .close:    return Image("CloseButton")
+        case .back:     return Image("BackButton")
         case .settings: return Image("SettingsButton")
         }
     }
