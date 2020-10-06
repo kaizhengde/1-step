@@ -62,3 +62,11 @@ enum SafeAreaSize {
     static let safeAreaTop                  = DeviceTypes.isiPhoneXAspectRatio ? safeAreaTopX : safeAreaTopRest
     static let safeAreaBottom               = DeviceTypes.isiPhoneXAspectRatio ? safeAreaBottomX : safeAreaBottomRest
 }
+
+
+enum MountainLayout {
+    
+    static let offsetY: CGFloat             = ScreenSize.height/3.2
+    static let height: CGFloat              = 626.0 * ScreenSize.multiplierWidth
+    static let withFlagHeight: CGFloat      = 670.0 * ScreenSize.multiplierWidth
+}

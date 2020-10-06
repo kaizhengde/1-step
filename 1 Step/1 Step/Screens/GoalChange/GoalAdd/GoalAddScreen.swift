@@ -19,6 +19,8 @@ struct GoalAddScreen: View {
                 Spacer()
             }
             .padding(.horizontal, Layout.firstLayerPadding)
+            
+            GoalSelectMountainView()
         }
     }
 }

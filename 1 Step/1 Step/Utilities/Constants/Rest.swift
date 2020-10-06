@@ -7,7 +7,10 @@
 
 import SwiftUI
 
-enum CoordinateSpace {}
+extension CoordinateSpace {
+    
+    static let selectMountain: Self = .named("SelectMountain")
+}
 
 
 enum Duration {
