@@ -7,12 +7,24 @@
 
 import SwiftUI
 
-struct OneSHeaderView<Content: View>: View {
+typealias OneSHeaderView = OneSHeaderViewCustom<EmptyView>
+
+struct OneSHeaderViewCustom<Content: View>: View {
     
-    let leadingButton: (image: Image, color: Color, action: () -> ())? = nil
-    let trailingButton: (image: Image, color: Color, action: () -> ())? = nil
-    let customView: (() -> Content)? = nil
-    let titleText: String? = nil
+    typealias HeaderButton = (image: HeaderButtonImage, color: Color, action: () -> ())
+    
+    let titleText: String?
+    let leadingButton: HeaderButton?
+    let trailingButton: HeaderButton?
+    let customView: (() -> Content)?
+    
+    
+    init(_ titleText: String? = nil, leadingButton: HeaderButton? = nil, trailingButton: HeaderButton? = nil, customView: (() -> Content)? = nil) {
+        self.titleText = titleText
+        self.leadingButton = leadingButton
+        self.trailingButton = trailingButton
+        self.customView = customView
+    }
     
     
     var body: some View {
@@ -23,6 +35,7 @@ struct OneSHeaderView<Content: View>: View {
                 Spacer()
                 Button(button: trailingButton)
             }
+            .padding(.vertical, 16)
             
             //Custom View
             if let customView = customView {
@@ -34,27 +47,27 @@ struct OneSHeaderView<Content: View>: View {
                 HStack {
                     Text(titleText)
                         .font(.custom(Raleway.extraBold, size: 40))
+                        .foregroundColor(.grayToBackground)
                     Spacer()
                 }
+                .padding(.top, 16)
             }
         }
-        .padding(.horizontal, Layout.firstLayerPadding)
     }
     
     
     private struct Button: View {
         
-        let button: (image: Image, color: Color, action: () -> ())?
+        let button: HeaderButton?
         
         
         var body: some View {
-            
             if let button = button {
-                button.image
+                button.image.get()
                     .renderingMode(.template)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 28, height: 28)
+                    .frame(width: 26, height: 26)
                     .foregroundColor(.white)
                     .colorMultiply(button.color)
                     .onTapGesture { button.action() }

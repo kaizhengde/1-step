@@ -9,7 +9,7 @@ import SwiftUI
 
 enum Layout {
     
-    static let firstLayerPadding: CGFloat   = 20
+    static let firstLayerPadding: CGFloat   = 24
     static let secondLayerPadding: CGFloat  = 40
     static let firstLayerWidth              = ScreenSize.width - (2 * firstLayerPadding)
     static let secondLayerWidth             = ScreenSize.width - (2 * secondLayerPadding)

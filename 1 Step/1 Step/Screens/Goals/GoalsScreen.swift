@@ -10,6 +10,25 @@ import SwiftUI
 struct GoalsScreen: View {
     
     var body: some View {
-        <#content#>
+        ZStack {
+            Color.whiteToDarkGray
+            
+            ScrollView {
+                VStack {
+                    GoalsHeaderView()
+                }
+                .padding(.horizontal, Layout.firstLayerPadding)
+            }
+        }
+    }
+    
+    
+    private struct GoalsHeaderView: View {
+        
+        var body: some View {
+            VStack {
+                OneSHeaderView("Goals", trailingButton: (.profile, .grayToBackground, { print("toProfile") }))
+            }
+        }
     }
 }

@@ -16,12 +16,19 @@ enum SFSymbol {
 }
 
 
-enum HeaderButton {
+enum HeaderButtonImage {
     
-    static let profile  = Image("ProfileButton")
-    static let close    = Image("CloseButton")
-    static let back     = Image("BackButton")
-    static let settings = Image("SettingsButton")
+    case profile, close, back, settings
+            
+    
+    func get() -> Image {
+        switch self {
+        case .profile: return Image("ProfileButton")
+        case .close: return Image("CloseButton")
+        case .back: return Image("BackButton")
+        case .settings: return Image("SettingsButton")
+        }
+    }
 }
 
 
