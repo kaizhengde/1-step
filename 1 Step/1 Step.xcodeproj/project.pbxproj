@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D160D55252E2067008588D5 /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D160D54252E2067008588D5 /* TransitionManager.swift */; };
 		3D47CC7B252C6C1C00A8CA1B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D47CC7A252C6C1C00A8CA1B /* MainView.swift */; };
 		3D47CC83252C6F9300A8CA1B /* OneSHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D47CC82252C6F9300A8CA1B /* OneSHeaderView.swift */; };
 		3D47CC89252C70B700A8CA1B /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D47CC88252C70B700A8CA1B /* Images.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3D160D54252E2067008588D5 /* TransitionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
 		3D47CC7A252C6C1C00A8CA1B /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		3D47CC82252C6F9300A8CA1B /* OneSHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSHeaderView.swift; sourceTree = "<group>"; };
 		3D47CC88252C70B700A8CA1B /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
@@ -99,6 +101,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D160D53252E2053008588D5 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				3D160D54252E2067008588D5 /* TransitionManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		3D47CC77252C6BEC00A8CA1B /* Screens */ = {
 			isa = PBXGroup;
 			children = (
@@ -274,6 +284,7 @@
 				3D47CC7E252C6C4700A8CA1B /* Utilities */,
 				3D47CC7F252C6C5100A8CA1B /* Extensions */,
 				3D47CC80252C6C5700A8CA1B /* Data */,
+				3D160D53252E2053008588D5 /* Managers */,
 				3D47CC81252C6C6900A8CA1B /* Models */,
 				3D47CC79252C6C0D00A8CA1B /* Main */,
 				3D47CC77252C6BEC00A8CA1B /* Screens */,
@@ -446,6 +457,7 @@
 				3DE9C516252CB00A0023C212 /* GoalsContentView.swift in Sources */,
 				3DE9C50E252CAACC0023C212 /* GoalsModel.swift in Sources */,
 				3D47CC89252C70B700A8CA1B /* Images.swift in Sources */,
+				3D160D55252E2067008588D5 /* TransitionManager.swift in Sources */,
 				3D4B78E5252CDE9E00A45755 /* GoalSelectMountainModel.swift in Sources */,
 				3DE9C527252CB6FF0023C212 /* ProfileScreen.swift in Sources */,
 			);

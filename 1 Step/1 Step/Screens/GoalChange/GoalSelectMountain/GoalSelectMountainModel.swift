@@ -9,9 +9,9 @@ import SwiftUI
 
 typealias GoalSelectMountainData = (mountain: MountainImage, color: UserColor)
 
-class GoalSelectMountainModel: ObservableObject {
+class GoalSelectMountainModel: TransitionObservableObject {
     
-    @Published private var transition = ViewTransition<GoalSelectMountainModel>(finishDelay: .now() + AnimationDuration.mountainAppear)
+    @Published private var transition = TransistionManager<GoalSelectMountainModel>(finishDelay: .mountain)
 
     @Published private var currentMountain: CGFloat = .zero
     @Published private var dragOffset: CGSize = .zero

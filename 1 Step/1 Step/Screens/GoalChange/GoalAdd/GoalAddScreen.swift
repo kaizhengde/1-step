@@ -10,12 +10,13 @@ import SwiftUI
 struct GoalAddScreen: View {
     
     @StateObject private var mainModel = MainModel.shared
+    @StateObject private var viewModel = GoalAddModel()
     
     
     var body: some View {
         ZStack {
             VStack {
-                OneSHeaderView(trailingButton: (.close, .grayToBackground, { mainModel.toScreen(.goals) })) 
+                OneSHeaderView(trailingButton: (.close, .grayToBackground, { mainModel.toScreen(.goals) }))
                 Spacer()
             }
             .padding(.horizontal, Layout.firstLayerPadding)

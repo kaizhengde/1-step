@@ -9,5 +9,4 @@ import SwiftUI
 
 class GoalAddModel: ObservableObject {
     
-    
 }
