@@ -22,7 +22,7 @@ struct GoalAddItem: View {
             .frame(width: 145 * ScreenSize.multiplierWidth, height: 200)
             .overlay(
                 RoundedRectangle(cornerRadius: 12)
-                    .stroke(Color.darkBackgroundToDarkGray, lineWidth: 1)
+                    .stroke(Color.darkBackgroundToGray, lineWidth: 1)
             )
         }
     }

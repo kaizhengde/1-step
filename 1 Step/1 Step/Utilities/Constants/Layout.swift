@@ -28,7 +28,7 @@ enum ScreenSize {
 }
     
     
-enum DeviceTypes {
+enum Device {
         
     static let idiom                        = UIDevice.current.userInterfaceIdiom
     static let nativeScale                  = UIScreen.main.nativeScale
@@ -44,7 +44,7 @@ enum DeviceTypes {
     static let isiPad                       = idiom == .pad && ScreenSize.maxLength >= 1024.0
 
     
-    static let isiPhoneXAspectRatio = {
+    static let isiPhoneXType = {
         return isiPhoneX || isiPhoneXsMaxAndXr
     }()
 }
@@ -59,8 +59,8 @@ enum SafeAreaSize {
     static let safeAreaTopRest: CGFloat     = 20.0
     static let safeAreaBottomRest: CGFloat  = 0.0
     
-    static let safeAreaTop                  = DeviceTypes.isiPhoneXAspectRatio ? safeAreaTopX : safeAreaTopRest
-    static let safeAreaBottom               = DeviceTypes.isiPhoneXAspectRatio ? safeAreaBottomX : safeAreaBottomRest
+    static let safeAreaTop                  = Device.isiPhoneXType ? safeAreaTopX : safeAreaTopRest
+    static let safeAreaBottom               = Device.isiPhoneXType ? safeAreaBottomX : safeAreaBottomRest
 }
 
 

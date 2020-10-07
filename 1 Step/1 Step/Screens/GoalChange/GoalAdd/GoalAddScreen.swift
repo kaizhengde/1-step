@@ -13,7 +13,7 @@ struct GoalAddScreen: View {
     
     
     var body: some View {
-        ZStack(alignment: .top) {
+        ZStack {
             VStack {
                 OneSHeaderView(trailingButton: (.close, .grayToBackground, { mainModel.toScreen(.goals) })) 
                 Spacer()

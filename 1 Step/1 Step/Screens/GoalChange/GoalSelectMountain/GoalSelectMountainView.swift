@@ -14,7 +14,6 @@ struct GoalSelectMountainView: View {
     
     var body: some View {
         ZStack {
-            
             //Mountains
             HStack(spacing: 0) {
                 ForEach(MountainImage.allCases, id: \.self) { mountain in
@@ -30,7 +29,7 @@ struct GoalSelectMountainView: View {
         }
         .frame(width: ScreenSize.width, alignment: .leading)
         .coordinateSpace(name: CoordinateSpace.selectMountain.hashValue)
-        .oneSAnimation()
-        .onAppear { viewModel.initMountainTransition() }
+        .oneSAnimation(delay: viewModel.transitionDelay())
+        .onAppear { viewModel.initTransition() }
     }
 }

@@ -15,7 +15,7 @@ struct MainView: View {
     var body: some View {
         ZStack {
             //Background
-            Color.whiteToDarkGray
+            Color.whiteToDarkGray.edgesIgnoringSafeArea(.all)
             
             //Screens (one active only at a time)
             mainModel.screen(.goals) { GoalsScreen() }

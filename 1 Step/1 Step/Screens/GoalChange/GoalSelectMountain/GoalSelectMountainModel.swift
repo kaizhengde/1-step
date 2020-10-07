@@ -7,16 +7,27 @@
 
 import SwiftUI
 
+typealias GoalSelectMountainData = (mountain: MountainImage, color: UserColor)
+
 class GoalSelectMountainModel: ObservableObject {
     
-    @Published private var transition: Bool = true
-    
+    @Published private var transition = ViewTransition<GoalSelectMountainModel>(finishDelay: .now() + AnimationDuration.mountainAppear)
+
     @Published private var currentMountain: CGFloat = .zero
     @Published private var dragOffset: CGSize = .zero
     @Published private var rects: [CGRect] = Array<CGRect>(repeating: .zero, count: MountainImage.allCases.count)
 
+    @Published private var selectedData: GoalSelectMountainData = (.mountain0, .user0)
     
-    func initMountainTransition() { transition = false }
+    
+    func initTransition() {
+        transition.delegate = self
+        transition.state = .appear
+    }
+    
+    func transitionDelay() -> Double {
+        return transition.didFinish ? 0.0 : AnimationDuration.mountainAppear
+    }
     
     
     //MARK: - MountainItem
@@ -36,13 +47,30 @@ class GoalSelectMountainModel: ObservableObject {
     }
     
     
+    //Text
+    
+    func textOpacity(_ mountain: MountainImage) -> Double {
+        return (transition.didFinish && currentMountain == CGFloat(mountain.rawValue) && dragOffset.width == 0) ? 1.0 : 0.0
+    }
+    
+    
+    //Mountain
+    
     func transistionOffset() -> CGFloat {
-        return transition ? ScreenSize.height/1.3 : 0
+        return transition.didAppear ? 0 : ScreenSize.height/1.3
     }
     
     
     func mountainColor(_ mountain: MountainImage) -> Color {
-        return CGFloat(mountain.rawValue) == currentMountain ? MountainColor.mountain0 : .darkBackgroundToBlack
+        return CGFloat(mountain.rawValue) == currentMountain ? selectedData.color.get() : .darkBackgroundToBlack
+    }
+    
+    
+    func newMountainColor() {
+        let colorID = selectedData.color.rawValue
+        
+        //Next color if there is one, else go back to the first one
+        self.selectedData.color = UserColor(rawValue: colorID+1) ?? UserColor(rawValue: 0)!
     }
     
     

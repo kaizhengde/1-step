@@ -6,6 +6,39 @@
 //
 
 import SwiftUI
+import Combine
+
+class ViewTransition<TransitionDelegate> where TransitionDelegate: ObservableObject, TransitionDelegate.ObjectWillChangePublisher == ObservableObjectPublisher {
+    
+    enum TransitionState {
+        case hidden, appear, finish
+    }
+    
+    weak var delegate: TransitionDelegate?
+    
+    var state: TransitionState = .hidden {
+        didSet {
+            if didAppear && !didFinish {
+                DispatchQueue.main.asyncAfter(deadline: finishDelay) {
+                    self.state = .finish
+                    self.delegate?.objectWillChange.send()
+                }
+            }
+        }
+    }
+    var finishDelay: DispatchTime
+    
+    
+    init(finishDelay: DispatchTime = .now() + .zero) {
+        self.finishDelay = finishDelay
+    }
+    
+    
+    var isHidden: Bool { state == .hidden }
+    var didAppear: Bool { state == .appear || state == .finish }
+    var didFinish: Bool { state == .finish }
+}
+
 
 struct Screen {
 
@@ -15,10 +48,9 @@ struct Screen {
         func isScreen(_ screen: Self) -> Bool { return self == screen }
     }
 
-
-    var active: Active
-    var opacity: Double = 1.0
     
+    var active: Active = .goals
+    var opacity: Double = 1.0
 
     mutating func dismiss() { opacity = 0.0 }
     mutating func show() { opacity = 1.0 }
@@ -30,7 +62,7 @@ class MainModel: ObservableObject {
     static let shared = MainModel()
     private init() {} 
     
-    @Published private(set) var currentScreen: Screen = Screen(active: .goals)
+    @Published private(set) var currentScreen: Screen = Screen()
     
     
     func toScreen(_ nextScreen: Screen.Active, delay: DispatchTime = .now() + AnimationDuration.screenOpacity) {
