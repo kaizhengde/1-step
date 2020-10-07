@@ -28,6 +28,7 @@
 		3D4B78DE252CDD8600A45755 /* GoalSelectMountainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4B78DD252CDD8600A45755 /* GoalSelectMountainView.swift */; };
 		3D4B78E1252CDD9200A45755 /* GoalSelectMountainItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4B78E0252CDD9200A45755 /* GoalSelectMountainItem.swift */; };
 		3D4B78E5252CDE9E00A45755 /* GoalSelectMountainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4B78E4252CDE9E00A45755 /* GoalSelectMountainModel.swift */; };
+		3D72B8C3252DB5B8006E660D /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D72B8C2252DB5B8006E660D /* Animations.swift */; };
 		3DBB6B24252CC08D002C0D03 /* EnumTypeEquatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBB6B23252CC08D002C0D03 /* EnumTypeEquatable.swift */; };
 		3DE11C35252C681200F13719 /* __StepApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE11C34252C681200F13719 /* __StepApp.swift */; };
 		3DE11C39252C681600F13719 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DE11C38252C681600F13719 /* Assets.xcassets */; };
@@ -67,6 +68,7 @@
 		3D4B78DD252CDD8600A45755 /* GoalSelectMountainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSelectMountainView.swift; sourceTree = "<group>"; };
 		3D4B78E0252CDD9200A45755 /* GoalSelectMountainItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSelectMountainItem.swift; sourceTree = "<group>"; };
 		3D4B78E4252CDE9E00A45755 /* GoalSelectMountainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSelectMountainModel.swift; sourceTree = "<group>"; };
+		3D72B8C2252DB5B8006E660D /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
 		3DBB6B23252CC08D002C0D03 /* EnumTypeEquatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumTypeEquatable.swift; sourceTree = "<group>"; };
 		3DE11C31252C681200F13719 /* 1 Step.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "1 Step.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DE11C34252C681200F13719 /* __StepApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = __StepApp.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				3DE9C505252C8B6F0023C212 /* Texts */,
 				3D47CCB2252C77A300A8CA1B /* Buttons */,
 				3D47CC85252C6F9900A8CA1B /* Header */,
+				3D72B8C1252DB5A9006E660D /* Rest */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -239,6 +242,14 @@
 				3D4B78E0252CDD9200A45755 /* GoalSelectMountainItem.swift */,
 			);
 			path = GoalSelectMountain;
+			sourceTree = "<group>";
+		};
+		3D72B8C1252DB5A9006E660D /* Rest */ = {
+			isa = PBXGroup;
+			children = (
+				3D72B8C2252DB5B8006E660D /* Animations.swift */,
+			);
+			path = Rest;
 			sourceTree = "<group>";
 		};
 		3DE11C28252C681200F13719 = {
@@ -423,6 +434,7 @@
 				3D47CC91252C71EA00A8CA1B /* Rest.swift in Sources */,
 				3DE9C50B252C8F500023C212 /* OneSTextView.swift in Sources */,
 				3DBB6B24252CC08D002C0D03 /* EnumTypeEquatable.swift in Sources */,
+				3D72B8C3252DB5B8006E660D /* Animations.swift in Sources */,
 				3D4B78E1252CDD9200A45755 /* GoalSelectMountainItem.swift in Sources */,
 				3D47CC83252C6F9300A8CA1B /* OneSHeaderView.swift in Sources */,
 				3D47CC8D252C71C100A8CA1B /* Layout.swift in Sources */,

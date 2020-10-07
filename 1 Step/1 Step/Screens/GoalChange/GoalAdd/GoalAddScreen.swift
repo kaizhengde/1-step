@@ -13,9 +13,9 @@ struct GoalAddScreen: View {
     
     
     var body: some View {
-        ZStack {
+        ZStack(alignment: .top) {
             VStack {
-                OneSHeaderView(trailingButton: (.close, .grayToBackground, { mainModel.toScreen(.goals) }))
+                OneSHeaderView(trailingButton: (.close, .grayToBackground, { mainModel.toScreen(.goals) })) 
                 Spacer()
             }
             .padding(.horizontal, Layout.firstLayerPadding)

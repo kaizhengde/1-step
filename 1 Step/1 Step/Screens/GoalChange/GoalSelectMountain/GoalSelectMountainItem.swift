@@ -22,18 +22,12 @@ struct GoalSelectMountainItem: View {
             .aspectRatio(contentMode: .fit)
             .edgesIgnoringSafeArea(.all)
             .foregroundColor(.white)
-            .colorMultiply(mountainColor())
-            .offset(y: transistionOffset())
+            .colorMultiply(viewModel.mountainColor(mountain))
+            .offset(y: viewModel.transistionOffset())
+            .oneSMountainAnimation()
             .background(GoalSelectMountainModel.MountainVS(mountainID: mountain.rawValue))
-    }
-    
-    
-    func transistionOffset() -> CGFloat {
-        return ScreenSize.height/1.3
-    }
-    
-    
-    func mountainColor() -> Color {
-        return CGFloat(mountain.rawValue) == viewModel.currentMountain ? MountainColor.mountain0 : .darkBackgroundToBlack
+            .padding(.top, MountainLayout.offsetY*1.5)
+            .scaleEffect(viewModel.mountainItemScale(mountain))
+            .offset(x: viewModel.mountainItemOffsetX())
     }
 }

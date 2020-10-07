@@ -33,7 +33,7 @@ class MainModel: ObservableObject {
     @Published private(set) var currentScreen: Screen = Screen(active: .goals)
     
     
-    func toScreen(_ nextScreen: Screen.Active, delay: DispatchTime = .now() + Duration.screenOpacity) {
+    func toScreen(_ nextScreen: Screen.Active, delay: DispatchTime = .now() + AnimationDuration.screenOpacity) {
         currentScreen.dismiss()
         
         DispatchQueue.main.asyncAfter(deadline: delay) {

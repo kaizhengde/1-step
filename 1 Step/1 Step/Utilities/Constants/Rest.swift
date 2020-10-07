@@ -13,9 +13,10 @@ extension CoordinateSpace {
 }
 
 
-enum Duration {
+enum AnimationDuration {
     
-    static let screenOpacity: Double = 0.3
+    static let screenOpacity: Double = 0.4
+    static let mountainAppear: Double = 0.8
 }
 
 

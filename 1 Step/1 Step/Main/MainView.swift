@@ -22,6 +22,6 @@ struct MainView: View {
             mainModel.screen(.goalAdd) { GoalAddScreen() }
             mainModel.screen(.profile) { ProfileScreen() }
         }
-        .animation(.easeInOut(duration: Duration.screenOpacity))
+        .animation(.easeInOut(duration: AnimationDuration.screenOpacity))
     }
 }
