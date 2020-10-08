@@ -48,9 +48,6 @@ final class GoalSelectMountainModel: TransitionObservableObject {
     
     weak var delegate: GoalSelectMountainDelegate?
     
-    deinit {
-        print("!!!!!!")
-    }
     
     //MARK: - Transition
         
@@ -138,8 +135,8 @@ final class GoalSelectMountainModel: TransitionObservableObject {
     //MARK: - DragGesture
     
     lazy private(set) var dragMountains = DragGesture()
-        .onChanged { value in self.onChanged(value) }
-        .onEnded { value in self.onEnded(value) }
+        .onChanged { [weak self] value in self?.onChanged(value) }
+        .onEnded { [weak self] value in self?.onEnded(value) }
     
     
     private func onChanged(_ value: DragGesture.Value) {
