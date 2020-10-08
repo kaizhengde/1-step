@@ -24,9 +24,19 @@ fileprivate extension MountainImage {
 }
 
 
-class GoalSelectMountainModel: TransitionObservableObject {
+typealias GoalSelectMountainData = (mountain: MountainImage?, color: UserColor)
+
+protocol GoalSelectMountainDelegate: AnyObject {
     
-    typealias GoalSelectMountainData = (mountain: MountainImage?, color: UserColor)
+    //Somewhere to put the selectedMountainData
+    var selectedMountainData: GoalSelectMountainData { get set }
+    
+    //Code to really dismiss goalSelectMountainView + additionals
+    func dismissGoalSelectMountainView()
+}
+
+
+final class GoalSelectMountainModel: TransitionObservableObject {
     
     @Published private var transition = TransistionManager<GoalSelectMountainModel>(finishDelay: .mountain)
 
@@ -36,14 +46,27 @@ class GoalSelectMountainModel: TransitionObservableObject {
 
     @Published private var selectedData: GoalSelectMountainData = (nil, .user0)
     
+    weak var delegate: GoalSelectMountainDelegate?
     
+    deinit {
+        print("!!!!!!")
+    }
+    
+    //MARK: - Transition
+        
     func initTransition() {
         transition.delegate = self
         transition.state = .appear
     }
     
-    func transitionFinishDelay() -> Double {
-        return transition.didFinish ? 0.0 : AnimationDuration.mountainAppear
+    
+    func transitionDelay() -> Double {
+        return (transition.didFinish || transition.onDismiss) ? 0.0 : AnimationDuration.mountain
+    }
+    
+    
+    func mountainTransitionDelay() -> Double {
+        return transition.onDismiss ? 0.6 : 0.0
     }
     
     
@@ -91,18 +114,24 @@ class GoalSelectMountainModel: TransitionObservableObject {
     }
     
     
-    //MARK: - SelectButton
+    //SelectButton
     
-    func selectMountain() { selectedData.mountain = currentMountain }
-    
-    
-    func selectButtonText() -> String {
-        return selectedData.mountain == currentMountain ? "CURRENT" : "SELECT"
+    func selectMountainAndDismiss() {
+        selectedData.mountain = currentMountain
+        
+        transition.state = .dismiss
+        delegate?.selectedMountainData = selectedData
+        delegate?.dismissGoalSelectMountainView()
     }
     
     
-    func selectButtonColor() -> Color {
-        return selectedData.mountain == currentMountain ? .grayToBackground : .backgroundToGray
+    func selectButtonText(_ mountain: MountainImage) -> String {
+        return selectedData.mountain == mountain ? "CURRENT" : "SELECT"
+    }
+    
+    
+    func selectButtonColor(_ mountain: MountainImage) -> Color {
+        return selectedData.mountain == mountain ? .grayToBackground : .backgroundToGray
     }
     
     

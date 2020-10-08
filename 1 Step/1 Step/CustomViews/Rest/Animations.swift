@@ -21,7 +21,7 @@ struct OneSAnimation: ViewModifier {
 
 struct OneSOpacityAnimation: ViewModifier {
     
-    var delay: Double = 0
+    var delay: Double
     
     
     func body(content: Content) -> some View {
@@ -35,11 +35,12 @@ struct OneSMountainAnimation: ViewModifier {
     
     var response: Double
     var dampingFraction: Double
+    var delay: Double
     
     
     func body(content: Content) -> some View {
         content
-            .animation(.spring(response: response, dampingFraction: dampingFraction, blendDuration: 0))
+            .animation(Animation.spring(response: response, dampingFraction: dampingFraction, blendDuration: 0).delay(delay))
     }
 }
 
@@ -56,7 +57,7 @@ extension View {
     }
     
     
-    func oneSMountainAnimation(response: Double = 0.8, dampingFraction: Double = 0.7) -> some View {
-        return modifier(OneSMountainAnimation(response: response, dampingFraction: dampingFraction))
+    func oneSMountainAnimation(response: Double = 0.8, dampingFraction: Double = 0.7, delay: Double = 0.0) -> some View {
+        return modifier(OneSMountainAnimation(response: response, dampingFraction: dampingFraction, delay: delay))
     }
 }

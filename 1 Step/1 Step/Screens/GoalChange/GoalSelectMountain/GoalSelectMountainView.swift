@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GoalSelectMountainView: View {
     
-    @StateObject private var viewModel = GoalSelectMountainModel()
+    @ObservedObject var viewModel: GoalSelectMountainModel
     
     
     var body: some View {
@@ -23,7 +23,7 @@ struct GoalSelectMountainView: View {
         .frame(width: ScreenSize.width, alignment: .leading)
         .onPreferenceChange(GoalSelectMountainModel.MountainPK.self) { p in viewModel.updatePreferences(p) }
         .coordinateSpace(name: CoordinateSpace.selectMountain.hashValue)
-        .oneSAnimation(delay: viewModel.transitionFinishDelay())
+        .oneSAnimation(delay: viewModel.transitionDelay())
         .onAppear { viewModel.initTransition() }
     }
 }

@@ -24,7 +24,7 @@ struct Screen {
 }
 
 
-class MainModel: ObservableObject {
+final class MainModel: ObservableObject {
     
     static let shared = MainModel()
     private init() {} 

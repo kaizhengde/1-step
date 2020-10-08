@@ -67,7 +67,7 @@ struct GoalSelectMountainItem: View {
                 .foregroundColor(.white)
                 .colorMultiply(viewModel.mountainColor(mountain))
                 .offset(y: viewModel.transistionOffset())
-                .oneSMountainAnimation()
+                .oneSMountainAnimation(delay: viewModel.mountainTransitionDelay())
                 .background(GoalSelectMountainModel.MountainVS(mountainID: mountain.rawValue))
                 .onTapGesture { viewModel.newMountainColor() }
         }
@@ -83,7 +83,7 @@ struct GoalSelectMountainItem: View {
         var body: some View {
             VStack {
                 Spacer()
-                OneSBorderButton(text: viewModel.selectButtonText(), color: viewModel.selectButtonColor()) { viewModel.selectMountain() }
+                OneSBorderButton(text: viewModel.selectButtonText(mountain), color: viewModel.selectButtonColor(mountain)) { viewModel.selectMountainAndDismiss() }
             }
             .padding(.bottom, 200)
             .opacity(viewModel.textAndButtonOpacity(mountain))

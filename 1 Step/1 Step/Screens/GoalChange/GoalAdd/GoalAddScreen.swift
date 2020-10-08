@@ -11,6 +11,7 @@ struct GoalAddScreen: View {
     
     @StateObject private var mainModel = MainModel.shared
     @StateObject private var viewModel = GoalAddModel()
+    @StateObject private var goalSelectMountainModel = GoalSelectMountainModel()
     
     
     var body: some View {
@@ -21,7 +22,19 @@ struct GoalAddScreen: View {
             }
             .padding(.horizontal, Layout.firstLayerPadding)
             
-            GoalSelectMountainView()
+            viewModel.goalAddStage == .selectMountain ?
+            GoalSelectMountainView(viewModel: goalSelectMountainModel)
+            : nil
+            
+            viewModel.goalAddStage == .enterInput ?
+            GoalEnterInputView()
+            : nil
+        }
+        .onAppear {
+            goalSelectMountainModel.delegate = viewModel
         }
     }
 }
+
+
+

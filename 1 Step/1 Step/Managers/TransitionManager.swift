@@ -11,7 +11,7 @@ import Combine
 protocol TransitionObservableObject: ObservableObject {
     
     func initTransition()
-    func transitionFinishDelay() -> Double
+    func transitionDelay() -> Double
 }
 
 
@@ -24,13 +24,13 @@ class TransistionManager<TransitionDelegate> where TransitionDelegate: Transitio
         func get() -> DispatchTime {
             switch self {
             case .none: return .now() + .zero
-            case .mountain: return .now() + AnimationDuration.mountainAppear
+            case .mountain: return .now() + AnimationDuration.mountain
             }
         }
     }
     
     enum TransitionState {
-        case hidden, appear, finish
+        case hidden, appear, finish, dismiss
     }
     
     weak var delegate: TransitionDelegate?
@@ -56,4 +56,5 @@ class TransistionManager<TransitionDelegate> where TransitionDelegate: Transitio
     var isHidden: Bool { state == .hidden }
     var didAppear: Bool { state == .appear || state == .finish }
     var didFinish: Bool { state == .finish }
+    var onDismiss: Bool { state == .dismiss }
 }

@@ -6,7 +6,23 @@
 //
 
 import SwiftUI
+import Combine
 
-class GoalAddModel: ObservableObject {
-    
+enum GoalAddStage {
+    case selectMountain, enterInput
 }
+
+
+final class GoalAddModel: ObservableObject, GoalSelectMountainDelegate {
+    
+    @Published var goalAddStage: GoalAddStage = .selectMountain
+    
+    @Published var selectedMountainData: GoalSelectMountainData = (nil, .user0)
+    
+    
+    func dismissGoalSelectMountainView() {
+        goalAddStage = .enterInput
+    }
+}
+
+

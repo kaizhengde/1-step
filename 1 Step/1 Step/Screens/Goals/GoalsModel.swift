@@ -17,7 +17,7 @@ enum TabActive {
 }
 
 
-class GoalsModel: ObservableObject {
+final class GoalsModel: ObservableObject {
     
     @Published var currentTab: TabActive = .left
 }

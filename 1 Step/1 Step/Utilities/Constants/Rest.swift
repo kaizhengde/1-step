@@ -16,7 +16,8 @@ extension CoordinateSpace {
 enum AnimationDuration {
     
     static let screenOpacity: Double = 0.4
-    static let mountainAppear: Double = 0.8
+    static let mountain: Double = 0.8
+    
 }
 
 
