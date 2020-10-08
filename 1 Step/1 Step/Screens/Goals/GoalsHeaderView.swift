@@ -47,7 +47,7 @@ struct GoalsHeaderView: View {
             
             var body: some View {
                 HStack {
-                    OneSTextView(text: text, font: font, color: color)
+                    OneSText(text: text, font: font, color: color)
                         .padding(20)
                     Spacer()
                 }

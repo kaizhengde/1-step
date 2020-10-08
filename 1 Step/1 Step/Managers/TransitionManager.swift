@@ -17,18 +17,6 @@ protocol TransitionObservableObject: ObservableObject {
 
 class TransistionManager<TransitionDelegate> where TransitionDelegate: TransitionObservableObject, TransitionDelegate.ObjectWillChangePublisher == ObservableObjectPublisher {
     
-    enum TransitionDelay {
-        case none
-        case mountain
-        
-        func get() -> DispatchTime {
-            switch self {
-            case .none: return .now() + .zero
-            case .mountain: return .now() + AnimationDuration.mountain
-            }
-        }
-    }
-    
     enum TransitionState {
         case hidden, appear, finish, dismiss
     }
@@ -38,17 +26,17 @@ class TransistionManager<TransitionDelegate> where TransitionDelegate: Transitio
     var state: TransitionState = .hidden {
         didSet {
             if didAppear && !didFinish {
-                DispatchQueue.main.asyncAfter(deadline: finishDelay.get()) {
+                DispatchQueue.main.asyncAfter(deadline: finishDelay) {
                     self.state = .finish
                     self.delegate?.objectWillChange.send()
                 }
             }
         }
     }
-    var finishDelay: TransitionDelay
+    var finishDelay: DispatchTime
     
     
-    init(finishDelay: TransitionDelay = .none) {
+    init(finishDelay: DispatchTime = DelayAfter.none) {
         self.finishDelay = finishDelay
     }
     

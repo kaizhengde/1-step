@@ -14,7 +14,7 @@ struct __StepApp: App {
     
     let mainModel = MainModel.shared
     let goalsModel = GoalsModel()
-    let goalAddModel = GoalAddModel()
+    let goalAddModel = GoalCreateModel()
 
     
     var body: some Scene {

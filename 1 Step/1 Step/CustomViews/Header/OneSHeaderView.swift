@@ -45,7 +45,7 @@ struct OneSHeaderViewCustom<Content: View>: View {
             //Title
             if let titleText = titleText {
                 HStack {
-                    OneSHeaderTextView(text: titleText)
+                    OneSHeaderText(text: titleText)
                     Spacer()
                 }
                 .padding(.top, 16*ScreenSize.multiplierHeight)

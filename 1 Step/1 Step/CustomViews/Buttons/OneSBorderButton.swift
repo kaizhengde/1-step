@@ -16,7 +16,7 @@ struct OneSBorderButton: View {
     
     var body: some View {
         Button(action: { action() }) {
-            OneSTextView(text: text, font: .custom(weight: Raleway.bold, size: 19), color: color)
+            OneSText(text: text, font: .custom(weight: Raleway.bold, size: 19), color: color)
                 .frame(width: 145 * ScreenSize.multiplierWidth, height: 55)
                 .contentShape(Rectangle())
                 .overlay(
@@ -24,5 +24,6 @@ struct OneSBorderButton: View {
                         .stroke(color.opacity(0.5), lineWidth: 1)
                 )
         }
+        .oneSScaleStyle()
     }
 }

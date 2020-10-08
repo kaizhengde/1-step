@@ -38,7 +38,7 @@ protocol GoalSelectMountainDelegate: AnyObject {
 
 final class GoalSelectMountainModel: TransitionObservableObject {
     
-    @Published private var transition = TransistionManager<GoalSelectMountainModel>(finishDelay: .mountain)
+    @Published private var transition: TransistionManager<GoalSelectMountainModel> = TransistionManager(finishDelay: DelayAfter.mountainAppear)
 
     @Published private var currentMountain: MountainImage = .mountain0
     @Published private var dragOffset: CGSize = .zero
@@ -48,22 +48,22 @@ final class GoalSelectMountainModel: TransitionObservableObject {
     
     weak var delegate: GoalSelectMountainDelegate?
     
-    
     //MARK: - Transition
         
     func initTransition() {
+        transition = TransistionManager(finishDelay: DelayAfter.mountainAppear)
         transition.delegate = self
         transition.state = .appear
     }
     
     
     func transitionDelay() -> Double {
-        return (transition.didFinish || transition.onDismiss) ? 0.0 : AnimationDuration.mountain
+        return (transition.didFinish || transition.onDismiss) ? 0.0 : AnimationDuration.mountainAppear
     }
     
     
     func mountainTransitionDelay() -> Double {
-        return transition.onDismiss ? 0.6 : 0.0
+        return transition.onDismiss ? AnimationDuration.mountainDismiss : 0.0
     }
     
     
@@ -118,7 +118,7 @@ final class GoalSelectMountainModel: TransitionObservableObject {
         
         transition.state = .dismiss
         delegate?.selectedMountainData = selectedData
-        delegate?.dismissGoalSelectMountainView()
+        DispatchQueue.main.asyncAfter(deadline: DelayAfter.mountainDismiss) { self.delegate?.dismissGoalSelectMountainView() }
     }
     
     

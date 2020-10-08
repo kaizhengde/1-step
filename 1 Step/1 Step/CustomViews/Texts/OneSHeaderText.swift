@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct OneSHeaderTextView: View {
+struct OneSHeaderText: View {
     
     let text: String
     

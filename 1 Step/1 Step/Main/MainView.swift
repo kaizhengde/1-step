@@ -19,9 +19,9 @@ struct MainView: View {
             
             //Screens (one active only at a time)
             mainModel.screen(.goals) { GoalsScreen() }
-            mainModel.screen(.goalAdd) { GoalAddScreen() }
+            mainModel.screen(.goalAdd) { GoalCreateScreen() }
             mainModel.screen(.profile) { ProfileScreen() }
         }
-        .animation(.easeInOut(duration: AnimationDuration.screenOpacity))
+        .oneSOpacityAnimation()
     }
 }
