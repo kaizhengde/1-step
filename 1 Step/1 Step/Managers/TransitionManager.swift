@@ -9,8 +9,11 @@ import SwiftUI
 import Combine
 
 protocol TransitionObservableObject: ObservableObject {
+    
     func initTransition()
+    func transitionFinishDelay() -> Double
 }
+
 
 class TransistionManager<TransitionDelegate> where TransitionDelegate: TransitionObservableObject, TransitionDelegate.ObjectWillChangePublisher == ObservableObjectPublisher {
     

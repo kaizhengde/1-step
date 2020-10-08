@@ -13,23 +13,17 @@ struct GoalSelectMountainView: View {
     
     
     var body: some View {
-        ZStack {
-            //Mountains
-            HStack(spacing: 0) {
-                ForEach(MountainImage.allCases, id: \.self) { mountain in
-                    GoalSelectMountainItem(viewModel: viewModel, mountain: mountain)
-                        .highPriorityGesture(viewModel.dragMountains)
-                }
-                .frame(width: ScreenSize.width, height: MountainLayout.height)
+        HStack(spacing: 0) {
+            ForEach(MountainImage.allCases, id: \.self) { mountain in
+                GoalSelectMountainItem(viewModel: viewModel, mountain: mountain)
+                    .highPriorityGesture(viewModel.dragMountains)
             }
-            .onPreferenceChange(GoalSelectMountainModel.MountainPK.self) { p in viewModel.updatePreferences(p) }
-            
-            //Select Button
-            
+            .frame(width: ScreenSize.width, height: MountainLayout.height)
         }
         .frame(width: ScreenSize.width, alignment: .leading)
+        .onPreferenceChange(GoalSelectMountainModel.MountainPK.self) { p in viewModel.updatePreferences(p) }
         .coordinateSpace(name: CoordinateSpace.selectMountain.hashValue)
-        .oneSAnimation(delay: viewModel.transitionDelay())
+        .oneSAnimation(delay: viewModel.transitionFinishDelay())
         .onAppear { viewModel.initTransition() }
     }
 }

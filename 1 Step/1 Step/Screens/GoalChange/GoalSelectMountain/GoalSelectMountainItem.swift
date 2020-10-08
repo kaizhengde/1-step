@@ -14,12 +14,19 @@ struct GoalSelectMountainItem: View {
     
     
     var body: some View {
-        ZStack(alignment: .top) {
-            GoalSelectMountainText(viewModel: viewModel, mountain: mountain)
+        ZStack {
+            ZStack(alignment: .top) {
+                //Mountain Text
+                GoalSelectMountainText(viewModel: viewModel, mountain: mountain)
+                
+                //Mountain
+                GoalSelectMountainImage(viewModel: viewModel, mountain: mountain)
+            }
+            .padding(.top, MountainLayout.offsetY*1.5)
             
-            GoalSelectMountainImage(viewModel: viewModel, mountain: mountain)
+            //Select Button
+            GoalSelectMountainButton(viewModel: viewModel, mountain: mountain)
         }
-        .padding(.top, MountainLayout.offsetY*1.5)
         .scaleEffect(viewModel.mountainItemScale(mountain))
         .offset(x: viewModel.mountainItemOffsetX())
     }
@@ -38,7 +45,7 @@ struct GoalSelectMountainItem: View {
                 OneSTextView(text: mountain.getName().bottom, font: .custom(weight: Raleway.bold, size: 40), color: .grayToBackground)
             }
             .frame(width: Layout.firstLayerWidth, height: 80)
-            .opacity(viewModel.textOpacity(mountain))
+            .opacity(viewModel.textAndButtonOpacity(mountain))
             .padding(.top, -85)
         }
     }
@@ -63,6 +70,23 @@ struct GoalSelectMountainItem: View {
                 .oneSMountainAnimation()
                 .background(GoalSelectMountainModel.MountainVS(mountainID: mountain.rawValue))
                 .onTapGesture { viewModel.newMountainColor() }
+        }
+    }
+    
+    
+    private struct GoalSelectMountainButton: View {
+        
+        @ObservedObject var viewModel: GoalSelectMountainModel
+        let mountain: MountainImage
+        
+        
+        var body: some View {
+            VStack {
+                Spacer()
+                OneSBorderButton(text: viewModel.selectButtonText(), color: viewModel.selectButtonColor()) { viewModel.selectMountain() }
+            }
+            .padding(.bottom, 200)
+            .opacity(viewModel.textAndButtonOpacity(mountain))
         }
     }
 }

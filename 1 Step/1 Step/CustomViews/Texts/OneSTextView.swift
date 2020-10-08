@@ -17,7 +17,7 @@ struct OneSTextView: View {
     var body: some View {
         Text(text)
             .font(font.get())
-            .foregroundColor(.grayToBackground)
+            .foregroundColor(color)
     }
 }
 

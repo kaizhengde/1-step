@@ -33,7 +33,8 @@ enum HeaderButtonSymbol {
 }
 
 
-@objc enum MountainImage: Int16, CaseIterable {
+@objc
+enum MountainImage: Int16, CaseIterable {
     
     case mountain0 = 0
     case mountain1 = 1
