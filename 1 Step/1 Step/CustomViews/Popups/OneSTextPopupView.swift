@@ -9,9 +9,13 @@ import SwiftUI
 
 struct OneSTextPopupView: View {
     
+    @StateObject private var popupManager = PopupManager.shared
+    
+    
     let titleText: String
     let titleImage : Image?
     let bodyText: String
+    let backgroundColor: Color
     
     
     var body: some View {
@@ -34,9 +38,8 @@ struct OneSTextPopupView: View {
         .padding(Layout.firstLayerPadding)
         .padding(.vertical, 10)
         .padding(.top, titleImage == nil ? 20 : 0)
-        .frame(width: 260*ScreenSize.multiplierWidth, height: 340*ScreenSize.multiplierHeight)
+        .frame(width: Layout.popoverWidth, height: 340*ScreenSize.multiplierHeight)
+        .background(backgroundColor)
         .cornerRadius(20)
-        .onAppear { print("Appear") }
-        .onDisappear { print("Disappear") }
     }
 }

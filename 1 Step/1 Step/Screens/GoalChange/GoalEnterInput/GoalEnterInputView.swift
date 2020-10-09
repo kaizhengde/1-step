@@ -10,14 +10,11 @@ import SwiftUI
 struct GoalEnterInputView: View {
     
     @StateObject private var popupManager = PopupManager.shared
+    @StateObject private var floaterManager = FloaterManager.shared 
     let mountainColor: UserColor
     
     
     var body: some View {
-        Button(action: {
-            popupManager.showTextPopup(titleText: "Oh deer", titleImage: Emoji.deer, bodyText: "You have a too high number.\n\nNotice: The limit are 2000 Steps.", backgroundColor: mountainColor.get())
-        }) {
-            Text("Hi")
-        }
+        Text("Hi")
     }
 }

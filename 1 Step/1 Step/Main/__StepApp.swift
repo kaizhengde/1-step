@@ -15,6 +15,9 @@ struct __StepApp: App {
     let mainModel = MainModel.shared
     let goalsModel = GoalsModel()
     let goalAddModel = GoalCreateModel()
+    
+    let popupManager = PopupManager.shared
+    let floaterManager = FloaterManager.shared
 
     
     var body: some Scene {

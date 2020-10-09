@@ -8,14 +8,13 @@
 import SwiftUI
 
 final class PopupManager: TransitionObservableObject {
-
+    
     static let shared = PopupManager()
     private init() {}
     
     @Published var transition: TransistionManager<PopupManager> = TransistionManager(finishDelay: DelayAfter.mountainAppear)
 
-    @Published var view: () -> AnyView = { AnyView(EmptyView()) }
-    @Published var viewBackgroundColor: Color = .backgroundToGray
+    @Published var popupContent: () -> AnyView = { AnyView(EmptyView()) }
     
     
     //MARK: - Transition
@@ -29,27 +28,24 @@ final class PopupManager: TransitionObservableObject {
     func transitionDelay() -> Double { return AnimationDuration.screenOpacity }
     
     
-    //MARK: - Popups
+    //MARK: - Show Popup
     
     func showTextPopup(titleText: String, titleImage: Image? = nil, bodyText: String, backgroundColor: Color) {
         initTransition()
-        view = {
-            AnyView(OneSTextPopupView(titleText: titleText, titleImage: titleImage, bodyText: bodyText))
+        popupContent = {
+            AnyView(OneSTextPopupView(titleText: titleText, titleImage: titleImage, bodyText: bodyText, backgroundColor: backgroundColor))
         }
-        viewBackgroundColor = backgroundColor
     }
     
     
-    func showTextFieldPopup() {
-        
-    }
-    
+    //MARK: - Dismiss Popup
     
     func dismissPopup() {        
         transition.state = .dismiss
-        view = { AnyView(EmptyView()) }
-        
+        objectWillChange.send()
         UIApplication.shared.endEditing()
+        
+        DispatchQueue.main.asyncAfter(deadline: DelayAfter.halfScreenOpacity) { self.popupContent = { AnyView(EmptyView()) } }
     }
 }
 
