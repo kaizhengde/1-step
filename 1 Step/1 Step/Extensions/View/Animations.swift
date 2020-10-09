@@ -9,12 +9,13 @@ import SwiftUI
 
 struct OneSAnimation: ViewModifier {
     
+    var duration: Double
     var delay: Double
     
     
     func body(content: Content) -> some View {
         content
-            .animation(Animation.timingCurve(0.3, 0.6, 0.2, 1, duration: 0.6).delay(delay))
+            .animation(Animation.timingCurve(0.3, 0.6, 0.2, 1, duration: duration).delay(delay))
     }
 }
 
@@ -47,8 +48,8 @@ struct OneSMountainAnimation: ViewModifier {
 
 extension View {
     
-    func oneSAnimation(delay: Double = 0.0) -> some View {
-        return modifier(OneSAnimation(delay: delay))
+    func oneSAnimation(duration: Double = 0.6, delay: Double = 0.0) -> some View {
+        return modifier(OneSAnimation(duration: duration, delay: delay))
     }
     
     

@@ -10,11 +10,12 @@ import SwiftUI
 struct OneSSecondaryHeaderText: View {
     
     let text: String
+    let color: Color
     
     
     var body: some View {
         Text(text)
             .font(OneSFont.header2.get())
-            .foregroundColor(.grayToBackground)
+            .foregroundColor(color)
     }
 }

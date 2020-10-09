@@ -26,7 +26,7 @@ struct GoalCreateScreen: View {
             
             //2. Rest
             viewModel.goalCreateStage == .enterInput ?
-            GoalEnterInputView()
+            GoalEnterInputView(mountainColor: viewModel.selectedMountainData.color)
             : nil
         }
         .onAppear { goalSelectMountainModel.delegate = viewModel }

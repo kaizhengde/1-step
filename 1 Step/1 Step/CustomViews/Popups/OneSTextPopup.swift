@@ -10,17 +10,22 @@ import SwiftUI
 struct OneSTextPopup: View {
     
     let titleText: String
-    let text: String
+    let bodyText: String
+    let backgroundColor: Color
     
     var body: some View {
-        ZStack {
-            VStack(alignment: .leading) {
-                OneSSecondaryHeaderText(text: titleText)
-                
-                
+        HStack {
+            VStack(alignment: .leading, spacing: 30) {
+                OneSSecondaryHeaderText(text: titleText, color: .backgroundToGray)
+                OneSText(text: bodyText, font: .body2, color: .backgroundToGray)
+                Spacer()
             }
-            .padding(Layout.firstLayerPadding)
-            .frame(width: 260*ScreenSize.multiplierWidth, height: 400*ScreenSize.multiplierHeight)
+            Spacer()
         }
+        .padding(Layout.firstLayerPadding)
+        .padding(.vertical, 30)
+        .frame(width: 240*ScreenSize.multiplierWidth, height: 320*ScreenSize.multiplierHeight)
+        .background(backgroundColor)
+        .cornerRadius(20)
     }
 }

@@ -18,6 +18,7 @@ struct OneSText: View {
         Text(text)
             .font(font.get())
             .foregroundColor(color)
+            .multilineTextAlignment(.leading)
     }
 }
 

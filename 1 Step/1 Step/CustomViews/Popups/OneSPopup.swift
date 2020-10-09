@@ -13,16 +13,6 @@ extension View {
     func oneSPopup() -> some View {
         self.modifier(OneSPopup<AnyView>())
     }
-
-    
-    @ViewBuilder
-    func applyIf<T: View>(_ condition: Bool, apply: (Self) -> T) -> some View {
-        if condition {
-            apply(self)
-        } else {
-            self
-        }
-    }
 }
 
 
@@ -95,16 +85,20 @@ struct OneSPopup<PopupContent>: ViewModifier where PopupContent: View {
     var currentOffset: CGFloat {
         return popupManager.isPresented ? displayedOffset : hiddenOffset
     }
+    
+    
+    private var displayBackgroundBlur: Bool {
+        switch popupManager.type {
+        case .`default`:
+            return popupManager.isPresented
+        default:
+            return false
+        }
+    }
 
     // MARK: - Content Builders
     func body(content: Content) -> some View {
         content
-            .applyIf(popupManager.closeOnTapOutside) {
-                $0.simultaneousGesture(
-                    TapGesture().onEnded {
-                        popupManager.isPresented = false
-                    })
-            }
             .background(
                 GeometryReader { proxy -> AnyView in
                     let rect = proxy.frame(in: .global)
@@ -134,35 +128,38 @@ struct OneSPopup<PopupContent>: ViewModifier where PopupContent: View {
         }
 
         return ZStack {
-            Group {
-                VStack {
-                    VStack {
-                        popupManager.view()
-                            .simultaneousGesture(TapGesture().onEnded {
-                                if popupManager.closeOnTap {
-                                    self.dispatchWorkHolder.work?.cancel()
-                                    popupManager.isPresented = false
-                                }
-                            })
-                            .background(
-                                GeometryReader { proxy -> AnyView in
-                                    let rect = proxy.frame(in: .global)
-                                    // This avoids an infinite layout loop
-                                    if rect.integral != self.sheetContentRect.integral {
-                                        DispatchQueue.main.async {
-                                            self.sheetContentRect = rect
-                                        }
-                                    }
-                                    return AnyView(EmptyView())
-                                }
-                            )
-                    }
-                }
-                .frame(width: ScreenSize.width)
-                .offset(x: 0, y: currentOffset)
-                .oneSAnimation()
+            if displayBackgroundBlur {
+                Color.opacityBlur.edgesIgnoringSafeArea(.all)
+                    .onTapGesture { dismissPopup() }
             }
+            
+            VStack {
+                popupManager.view()
+                    .onTapGesture { if popupManager.closeOnTap { dismissPopup() } }
+                    .background(
+                        GeometryReader { proxy -> AnyView in
+                            let rect = proxy.frame(in: .global)
+                            // This avoids an infinite layout loop
+                            if rect.integral != self.sheetContentRect.integral {
+                                DispatchQueue.main.async {
+                                    self.sheetContentRect = rect
+                                }
+                            }
+                            return AnyView(EmptyView())
+                        }
+                    )
+            }
+            .frame(width: ScreenSize.width)
+            .offset(x: 0, y: currentOffset)
         }
+        .oneSAnimation(duration: 0.4)
+    }
+    
+    
+    func dismissPopup() {
+        self.dispatchWorkHolder.work?.cancel()
+        popupManager.isPresented = false
+        UIApplication.shared.endEditing()
     }
 }
 

@@ -25,7 +25,7 @@ class PopupManager: ObservableObject {
     @Published var view: () -> AnyView = { AnyView(EmptyView()) }
     
     
-    func showTextPopup(popupText: String) {
+    func showTextPopup(titleText: String, bodyText: String, backgroundColor: Color) {
         isPresented = true
         type = .default
         position = .bottom
@@ -33,7 +33,7 @@ class PopupManager: ObservableObject {
         closeOnTap = true
         closeOnTapOutside = true
         view = {
-            AnyView(OneSText(text: popupText, font: OneSFont.body2, color: .grayToBackground).onAppear { print("Hey")} )
+            AnyView(OneSTextPopup(titleText: titleText, bodyText: bodyText, backgroundColor: backgroundColor))
         }
     }
     
