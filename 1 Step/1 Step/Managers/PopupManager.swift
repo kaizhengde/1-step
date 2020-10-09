@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class PopupManager: TransitionObservableObject {
+final class PopupManager: TransitionObservableObject {
 
     static let shared = PopupManager()
     private init() {}

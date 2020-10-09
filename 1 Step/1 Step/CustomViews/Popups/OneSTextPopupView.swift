@@ -34,7 +34,7 @@ struct OneSTextPopupView: View {
         .padding(Layout.firstLayerPadding)
         .padding(.vertical, 10)
         .padding(.top, titleImage == nil ? 20 : 0)
-        .frame(width: 260*ScreenSize.multiplierWidth, height: 380*ScreenSize.multiplierHeight)
+        .frame(width: 260*ScreenSize.multiplierWidth, height: 340*ScreenSize.multiplierHeight)
         .cornerRadius(20)
         .onAppear { print("Appear") }
         .onDisappear { print("Disappear") }

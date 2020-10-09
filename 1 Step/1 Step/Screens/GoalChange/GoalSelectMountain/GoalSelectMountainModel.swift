@@ -38,7 +38,7 @@ protocol GoalSelectMountainDelegate: AnyObject {
 
 final class GoalSelectMountainModel: TransitionObservableObject {
     
-    @Published private var transition: TransistionManager<GoalSelectMountainModel> = TransistionManager(finishDelay: DelayAfter.mountainAppear)
+    @Published var transition: TransistionManager<GoalSelectMountainModel> = TransistionManager(finishDelay: DelayAfter.mountainAppear)
 
     @Published private var currentMountain: MountainImage = .mountain0
     @Published private var dragOffset: CGSize = .zero

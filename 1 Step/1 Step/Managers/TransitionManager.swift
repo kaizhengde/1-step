@@ -8,14 +8,16 @@
 import SwiftUI
 import Combine
 
-protocol TransitionObservableObject: ObservableObject {
+protocol TransitionObservableObject: ObservableObject where Self.ObjectWillChangePublisher == ObservableObjectPublisher {
         
+    var transition: TransistionManager<Self> { get set }
+    
     func initTransition()
     func transitionDelay() -> Double
 }
 
 
-class TransistionManager<TransitionDelegate> where TransitionDelegate: TransitionObservableObject, TransitionDelegate.ObjectWillChangePublisher == ObservableObjectPublisher {
+class TransistionManager<TransitionDelegate> where TransitionDelegate: TransitionObservableObject {
     
     enum TransitionState {
         case hidden, appear, finish, dismiss

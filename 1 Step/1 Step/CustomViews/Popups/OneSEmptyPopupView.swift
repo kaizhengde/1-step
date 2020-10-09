@@ -14,7 +14,7 @@ struct OneSEmptyPopupView: View {
     
     var body: some View {
         RoundedRectangle(cornerRadius: 20)
-        .frame(width: 260*ScreenSize.multiplierWidth, height: 380*ScreenSize.multiplierHeight)
+        .frame(width: 260*ScreenSize.multiplierWidth, height: 340*ScreenSize.multiplierHeight)
         .foregroundColor(popupManager.viewBackgroundColor)
         .onAppear { print("Empty Appear") }
         .onDisappear { print("Empty Disappear") }
