@@ -7,38 +7,51 @@
 
 import SwiftUI
 
-class PopupManager: ObservableObject {
-    
+class PopupManager: TransitionObservableObject {
+
     static let shared = PopupManager()
     private init() {}
     
-    
-    @Published var isPresented: Bool = false
-
-    @Published var type: OneSPopup<AnyView>.PopupType = .default
-    @Published var position: OneSPopup<AnyView>.Position = .bottom
-
-    @Published var autohideIn: Double? = nil
-    @Published var closeOnTap: Bool = true
-    @Published var closeOnTapOutside: Bool = true
+    @Published var transition: TransistionManager<PopupManager> = TransistionManager(finishDelay: DelayAfter.mountainAppear)
 
     @Published var view: () -> AnyView = { AnyView(EmptyView()) }
+    @Published var viewBackgroundColor: Color = .backgroundToGray
     
     
-    func showTextPopup(titleText: String, bodyText: String, backgroundColor: Color) {
-        isPresented = true
-        type = .default
-        position = .bottom
-        autohideIn = nil
-        closeOnTap = true
-        closeOnTapOutside = true
+    //MARK: - Transition
+    
+    func initTransition() {
+        transition = TransistionManager(finishDelay: DelayAfter.halfScreenOpacity)
+        transition.delegate = self
+        transition.state = .appear
+    }
+    
+    func transitionDelay() -> Double { return AnimationDuration.screenOpacity }
+    
+    
+    //MARK: - Popups
+    
+    func showTextPopup(titleText: String, titleImage: Image? = nil, bodyText: String, backgroundColor: Color) {
+        initTransition()
         view = {
-            AnyView(OneSTextPopup(titleText: titleText, bodyText: bodyText, backgroundColor: backgroundColor))
+            AnyView(OneSTextPopupView(titleText: titleText, titleImage: titleImage, bodyText: bodyText))
         }
+        viewBackgroundColor = backgroundColor
     }
     
     
     func showTextFieldPopup() {
         
     }
+    
+    
+    func dismissPopup() {        
+        transition.state = .dismiss
+        view = { AnyView(EmptyView()) }
+        
+        UIApplication.shared.endEditing()
+    }
 }
+
+
+

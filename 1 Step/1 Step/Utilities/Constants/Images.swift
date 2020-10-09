@@ -17,6 +17,12 @@ enum SFSymbol {
 }
 
 
+enum Emoji {
+    
+    static let deer     = Image("DeerEmoji")
+}
+
+
 enum HeaderButtonSymbol {
     
     case profile, close, back, settings

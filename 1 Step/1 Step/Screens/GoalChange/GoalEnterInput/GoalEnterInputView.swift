@@ -15,8 +15,7 @@ struct GoalEnterInputView: View {
     
     var body: some View {
         Button(action: {
-            print("Hi")
-            popupManager.showTextPopup(titleText: "Oh deer!", bodyText: "You have a too high number.\n\nNotice: The limit are 2000 Steps.", backgroundColor: mountainColor.get())
+            popupManager.showTextPopup(titleText: "Oh deer", titleImage: Emoji.deer, bodyText: "You have a too high number.\n\nNotice: The limit are 2000 Steps.", backgroundColor: mountainColor.get())
         }) {
             Text("Hi")
         }

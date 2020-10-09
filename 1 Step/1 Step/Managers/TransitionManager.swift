@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 
 protocol TransitionObservableObject: ObservableObject {
-    
+        
     func initTransition()
     func transitionDelay() -> Double
 }
