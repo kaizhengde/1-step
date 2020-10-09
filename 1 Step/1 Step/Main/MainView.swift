@@ -10,6 +10,7 @@ import SwiftUI
 struct MainView: View {
     
     @StateObject private var mainModel = MainModel.shared
+    @StateObject private var popupManager = PopupManager.shared
     
     
     var body: some View {
@@ -23,5 +24,6 @@ struct MainView: View {
             mainModel.screen(.profile) { ProfileScreen() }
         }
         .oneSOpacityAnimation()
+        .oneSPopup()
     }
 }

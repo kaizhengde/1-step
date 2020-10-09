@@ -9,7 +9,15 @@ import SwiftUI
 
 struct GoalEnterInputView: View {
     
+    @StateObject private var popupManager = PopupManager.shared
+    
+    
     var body: some View {
-        Text("GoalEnterInput")
+        Button(action: {
+            print("Hi")
+            popupManager.showTextPopup(popupText: "It's working!!")
+        }) {
+            Text("Hi")
+        }
     }
 }
