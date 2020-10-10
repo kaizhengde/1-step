@@ -35,7 +35,7 @@ struct OneSHeaderViewCustom<Content: View>: View {
                 Spacer()
                 Button(button: trailingButton)
             }
-            .padding(.vertical, 16*ScreenSize.multiplierHeight)
+            .padding(.vertical, 16*Layout.multiplierHeight)
             
             //Custom View
             if let customView = customView {
@@ -48,7 +48,7 @@ struct OneSHeaderViewCustom<Content: View>: View {
                     OneSHeaderText(text: titleText)
                     Spacer()
                 }
-                .padding(.top, 16*ScreenSize.multiplierHeight)
+                .padding(.top, 16*Layout.multiplierHeight)
             }
         }
     }

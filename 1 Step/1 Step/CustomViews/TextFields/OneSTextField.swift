@@ -28,15 +28,14 @@ struct OneSTextField: View {
                     OneSText(text: placeholder, font: textFont, color: .lightNeutralToLightGray)
                 }
                 
-                TextField("", text: lowercased ? Binding(get: { input }, set: { input = $0.lowercased() }) : $input, onCommit: {
-                    UIApplication.shared.endEditing()
-                })
+                TextField("", text: lowercased ? Binding(get: { input }, set: { input = $0.lowercased() }) : $input, onCommit: {})
                 .onReceive(Just(input)) { _ in limitText(textLimit) }
                 .font(textFont.get())
                 .foregroundColor(textColor)
                 .accentColor(textColor)
                 .multilineTextAlignment(.leading)
                 .keyboardType(keyboard)
+                .disableAutocorrection(true)
             }
             .frame(height: 40)
             

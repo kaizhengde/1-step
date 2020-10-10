@@ -20,7 +20,7 @@ struct GoalEnterInputData {
 
 protocol GoalEnterInputDelegate: AnyObject {
     
-    //Somewhere to put the selectedMountainData
+    //Somewhere to put the selectedEnterInputData
     var selectedEnterInputData: GoalEnterInputData { get set }
 }
 

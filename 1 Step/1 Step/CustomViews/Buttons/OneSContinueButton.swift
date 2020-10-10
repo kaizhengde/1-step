@@ -17,7 +17,7 @@ struct OneSContinueButton: View {
         Button(action: { action() }) {
             SFSymbol.arrow
                 .font(OneSFont.custom(weight: Raleway.bold, size: 19).get())
-                .frame(width: 68 * ScreenSize.multiplierWidth, height: 38)
+                .frame(width: 68 * Layout.multiplierWidth, height: 38)
                 .foregroundColor(color)
                 .contentShape(Rectangle())
                 .overlay(

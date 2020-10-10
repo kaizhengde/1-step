@@ -16,6 +16,7 @@ struct __StepApp: App {
     let goalsModel = GoalsModel()
     let goalAddModel = GoalCreateModel()
     
+    let miniSheetManager = MiniSheetManager.shared
     let popupManager = PopupManager.shared
     let floaterManager = FloaterManager.shared
 
@@ -23,6 +24,7 @@ struct __StepApp: App {
     var body: some Scene {
         WindowGroup {
             MainView()
+                .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .environmentObject(goalsModel)
                 .environmentObject(goalAddModel)

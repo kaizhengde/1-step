@@ -13,4 +13,13 @@ enum StepCategory: Int16 {
     case duration   = 0
     case distance   = 1
     case reps       = 2
+    
+    
+    var describtion: String {
+        switch self {
+        case .duration: return "duration"
+        case .distance: return "distance"
+        case .reps:     return "reps"
+        }
+    }
 }

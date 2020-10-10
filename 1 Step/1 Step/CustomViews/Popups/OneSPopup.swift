@@ -28,15 +28,49 @@ struct OneSPopup<PopupContent>: ViewModifier where PopupContent: View {
     func sheet() -> some View {
         ZStack {
             if popupManager.transition.didAppear {
-                Color.opacityBlur.edgesIgnoringSafeArea(.all)
-                    .onTapGesture { popupManager.dismissPopup() }
+            Color.opacityBlur.edgesIgnoringSafeArea(.all)
+                .onTapGesture { popupManager.dismiss() }
             }
             
-            popupManager.popupContent() 
-                .onTapGesture { popupManager.dismissPopup() }
+            if !popupManager.transition.isFullHidden {
+            OneSPopupView()
+                .onTapGesture { popupManager.dismiss() }
                 .opacity(popupManager.transition.isFullAppeared ? 1.0 : 0.0)
                 .scaleEffect(popupManager.transition.isFullAppeared ? 1.0 : 0.0)
+            }
         }
         .oneSAnimation(duration: AnimationDuration.opacity)
+    }
+    
+    
+    private struct OneSPopupView: View {
+        
+        @StateObject private var popupManager = PopupManager.shared
+        
+        
+        var body: some View {
+            HStack {
+                VStack(alignment: .leading, spacing: 30) {
+                    HStack(alignment: .bottom) {
+                        OneSSecondaryHeaderText(text: popupManager.titleText, color: .backgroundToGray)
+                        if let titleImage = popupManager.titleImage {
+                            titleImage
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 60, height: 60)
+                        }
+                    }
+                    popupManager.content()
+                    Spacer()
+                }
+                Spacer()
+            }
+            .padding(Layout.firstLayerPadding)
+            .padding(.vertical, 10)
+            .padding(.top, popupManager.titleImage == nil ? 20 : 0)
+            .frame(width: Layout.popoverWidth, height: popupManager.height)
+            .background(popupManager.backgroundColor)
+            .cornerRadius(20)
+        }
     }
 }

@@ -23,6 +23,7 @@ struct MainView: View {
             mainModel.screen(.profile) { ProfileScreen() }
         }
         .oneSOpacityAnimation()
+        .oneSMiniSheet()
         .oneSPopup()
         .oneSFloater()
     }

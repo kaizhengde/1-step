@@ -18,9 +18,9 @@ struct GoalSelectMountainView: View {
                 GoalSelectMountainItem(viewModel: viewModel, mountain: mountain)
                     .highPriorityGesture(viewModel.dragMountains)
             }
-            .frame(width: ScreenSize.width, height: MountainLayout.height)
+            .frame(width: Layout.screenWidth, height: MountainLayout.height)
         }
-        .frame(width: ScreenSize.width, alignment: .leading)
+        .frame(width: Layout.screenWidth, alignment: .leading)
         .onPreferenceChange(GoalSelectMountainModel.MountainPK.self) { p in viewModel.updatePreferences(p) }
         .coordinateSpace(name: CoordinateSpace.selectMountain.hashValue)
         .oneSAnimation()

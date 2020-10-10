@@ -24,7 +24,7 @@ enum MountainImage: Int16, CaseIterable {
     }
     
     
-    func getName() -> (top: String, bottom: String) {
+    var name: (top: String, bottom: String) {
         switch self {
         case .mountain0: return ("Mount", "Everest")
         case .mountain1: return ("Mount", "Tyll")

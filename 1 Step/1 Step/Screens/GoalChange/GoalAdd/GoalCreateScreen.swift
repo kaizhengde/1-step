@@ -17,23 +17,26 @@ struct GoalCreateScreen: View {
     
     var body: some View {
         ZStack {
-            //2. Rest
-            VStack {
-                //Header
+            VStack(spacing: 16*Layout.multiplierHeight) {
                 GoalCreateHeaderView(viewModel: viewModel)
                 
-                viewModel.goalCreateStage == .enterInput ?
-                GoalEnterInputView(viewModel: goalEnterInputModel, selectedColor: viewModel.selectedMountainData.color)
-                : nil
+                if viewModel.goalCreateStage == .enterInput {
+                    GoalEnterInputView(viewModel: goalEnterInputModel, selectedColor: viewModel.selectedMountainData.color)
+                    
+                    HStack {
+                        Spacer()
+                        OneSContinueButton(color: .grayToBackground) {}
+                    }
+                    .offset(y: 20*Layout.multiplierHeight)
+                }
                 
                 Spacer()
             }
             .padding(.horizontal, Layout.firstLayerPadding)
             
-            //1. Select Mountain + Color
-            viewModel.goalCreateStage == .selectMountain ?
-            GoalSelectMountainView(viewModel: goalSelectMountainModel)
-            : nil
+            if viewModel.goalCreateStage == .selectMountain {
+                GoalSelectMountainView(viewModel: goalSelectMountainModel)
+            }
         }
         .onAppear { goalSelectMountainModel.delegate = viewModel }
     }
@@ -49,7 +52,7 @@ struct GoalCreateScreen: View {
             ZStack(alignment: .top) {
                 OneSHeaderView(trailingButton: (.close, .grayToBackground, { mainModel.toScreen(.goals) }))
                 
-                VStack(spacing: 12*ScreenSize.multiplierHeight) {
+                VStack(spacing: 12*Layout.multiplierHeight) {
                     OneSHeaderView("Create", leadingButton: (.back, viewModel.selectedMountainData.color.get(), { viewModel.goalCreateStage = .selectMountain }))
                     HStack {
                         OneSHintButton(text: "How it works", color: viewModel.selectedMountainData.color.get()) {}

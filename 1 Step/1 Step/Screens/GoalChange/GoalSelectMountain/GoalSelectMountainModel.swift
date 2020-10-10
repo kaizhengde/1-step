@@ -79,7 +79,7 @@ final class GoalSelectMountainModel: TransitionObservableObject {
     
     
     func mountainItemOffsetX() -> CGFloat {
-        return dragOffset.width - ScreenSize.width*CGFloat(currentMountain.rawValue)
+        return dragOffset.width - Layout.screenWidth*CGFloat(currentMountain.rawValue)
     }
     
     
@@ -93,7 +93,7 @@ final class GoalSelectMountainModel: TransitionObservableObject {
     //Mountain
     
     func mountainTransistionOffset() -> CGFloat {
-        return transition.isFullHidden ? ScreenSize.height/1.3 : 0
+        return transition.isFullHidden ? Layout.screenHeight/1.3 : 0
     }
     
     
