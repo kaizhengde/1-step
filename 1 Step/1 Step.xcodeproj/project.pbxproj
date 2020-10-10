@@ -50,6 +50,16 @@
 		3DAE7AE725309DBB00B162B1 /* OneSFloater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE7AE625309DBB00B162B1 /* OneSFloater.swift */; };
 		3DAE7AEB2530A3E600B162B1 /* OneSTextFloater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE7AEA2530A3E600B162B1 /* OneSTextFloater.swift */; };
 		3DBB6B24252CC08D002C0D03 /* EnumTypeEquatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBB6B23252CC08D002C0D03 /* EnumTypeEquatable.swift */; };
+		3DDF70252531A57700FD3011 /* StepUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDF70242531A57700FD3011 /* StepUnit.swift */; };
+		3DDF70292531A5BB00FD3011 /* UserColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDF70282531A5BB00FD3011 /* UserColor.swift */; };
+		3DDF702C2531A5D800FD3011 /* MountainImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDF702B2531A5D800FD3011 /* MountainImage.swift */; };
+		3DDF70312531BAA100FD3011 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDF70302531BAA100FD3011 /* Goal.swift */; };
+		3DDF70342531BAA900FD3011 /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDF70332531BAA900FD3011 /* Step.swift */; };
+		3DDF70372531BAB100FD3011 /* Milestone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDF70362531BAB100FD3011 /* Milestone.swift */; };
+		3DDF703A2531BB5200FD3011 /* GoalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDF70392531BB5200FD3011 /* GoalState.swift */; };
+		3DDF703E2531BB5E00FD3011 /* StepCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDF703D2531BB5E00FD3011 /* StepCategory.swift */; };
+		3DDF70422531BBBB00FD3011 /* MilestoneState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDF70412531BBBB00FD3011 /* MilestoneState.swift */; };
+		3DDF70452531BC1200FD3011 /* MilestoneImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDF70442531BC1200FD3011 /* MilestoneImage.swift */; };
 		3DE11C35252C681200F13719 /* __StepApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE11C34252C681200F13719 /* __StepApp.swift */; };
 		3DE11C39252C681600F13719 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DE11C38252C681600F13719 /* Assets.xcassets */; };
 		3DE11C3C252C681600F13719 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DE11C3B252C681600F13719 /* Preview Assets.xcassets */; };
@@ -111,6 +121,16 @@
 		3DAE7AE625309DBB00B162B1 /* OneSFloater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSFloater.swift; sourceTree = "<group>"; };
 		3DAE7AEA2530A3E600B162B1 /* OneSTextFloater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSTextFloater.swift; sourceTree = "<group>"; };
 		3DBB6B23252CC08D002C0D03 /* EnumTypeEquatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumTypeEquatable.swift; sourceTree = "<group>"; };
+		3DDF70242531A57700FD3011 /* StepUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepUnit.swift; sourceTree = "<group>"; };
+		3DDF70282531A5BB00FD3011 /* UserColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserColor.swift; sourceTree = "<group>"; };
+		3DDF702B2531A5D800FD3011 /* MountainImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountainImage.swift; sourceTree = "<group>"; };
+		3DDF70302531BAA100FD3011 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
+		3DDF70332531BAA900FD3011 /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
+		3DDF70362531BAB100FD3011 /* Milestone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Milestone.swift; sourceTree = "<group>"; };
+		3DDF70392531BB5200FD3011 /* GoalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalState.swift; sourceTree = "<group>"; };
+		3DDF703D2531BB5E00FD3011 /* StepCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCategory.swift; sourceTree = "<group>"; };
+		3DDF70412531BBBB00FD3011 /* MilestoneState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneState.swift; sourceTree = "<group>"; };
+		3DDF70442531BC1200FD3011 /* MilestoneImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneImage.swift; sourceTree = "<group>"; };
 		3DE11C31252C681200F13719 /* 1 Step.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "1 Step.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DE11C34252C681200F13719 /* __StepApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = __StepApp.swift; sourceTree = "<group>"; };
 		3DE11C38252C681600F13719 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -252,6 +272,7 @@
 		3D47CC80252C6C5700A8CA1B /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				3DDF70272531A5AE00FD3011 /* Models */,
 				3DE11C3D252C681600F13719 /* Persistence.swift */,
 			);
 			path = Data;
@@ -358,6 +379,31 @@
 				3DAE7AEA2530A3E600B162B1 /* OneSTextFloater.swift */,
 			);
 			path = Floaters;
+			sourceTree = "<group>";
+		};
+		3DDF70272531A5AE00FD3011 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3DDF702F2531B90F00FD3011 /* Types */,
+				3DDF70302531BAA100FD3011 /* Goal.swift */,
+				3DDF70362531BAB100FD3011 /* Milestone.swift */,
+				3DDF70332531BAA900FD3011 /* Step.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3DDF702F2531B90F00FD3011 /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				3DDF70392531BB5200FD3011 /* GoalState.swift */,
+				3DDF70412531BBBB00FD3011 /* MilestoneState.swift */,
+				3DDF703D2531BB5E00FD3011 /* StepCategory.swift */,
+				3DDF70242531A57700FD3011 /* StepUnit.swift */,
+				3DDF702B2531A5D800FD3011 /* MountainImage.swift */,
+				3DDF70282531A5BB00FD3011 /* UserColor.swift */,
+				3DDF70442531BC1200FD3011 /* MilestoneImage.swift */,
+			);
+			path = Types;
 			sourceTree = "<group>";
 		};
 		3DE11C28252C681200F13719 = {
@@ -547,9 +593,11 @@
 				3DE11C3E252C681600F13719 /* Persistence.swift in Sources */,
 				3D4B78D8252CD4F000A45755 /* GoalCreateModel.swift in Sources */,
 				3DE9C519252CB0520023C212 /* GoalAddItem.swift in Sources */,
+				3DDF702C2531A5D800FD3011 /* MountainImage.swift in Sources */,
 				3D2E7968253021A900788AA2 /* PopupManager.swift in Sources */,
 				3D4B78DE252CDD8600A45755 /* GoalSelectMountainView.swift in Sources */,
 				3D2E792F252F721A00788AA2 /* DismissableObservableObject.swift in Sources */,
+				3DDF70312531BAA100FD3011 /* Goal.swift in Sources */,
 				3DAE7AE425309D0F00B162B1 /* FloaterManager.swift in Sources */,
 				3D47CC7B252C6C1C00A8CA1B /* MainView.swift in Sources */,
 				3D2E794A253019A200788AA2 /* UIApplication.swift in Sources */,
@@ -562,6 +610,7 @@
 				3D2E7939252F9D7A00788AA2 /* OneSScaleButtonStyle.swift in Sources */,
 				3DBB6B24252CC08D002C0D03 /* EnumTypeEquatable.swift in Sources */,
 				3D72B8C3252DB5B8006E660D /* Animations.swift in Sources */,
+				3DDF70452531BC1200FD3011 /* MilestoneImage.swift in Sources */,
 				3D2E7928252F6C2C00788AA2 /* GoalEnterInputModel.swift in Sources */,
 				3D2E79752530344D00788AA2 /* OneSSecondaryHeaderText.swift in Sources */,
 				3D4B78E1252CDD9200A45755 /* GoalSelectMountainItem.swift in Sources */,
@@ -570,11 +619,16 @@
 				3D2E7941253017B600788AA2 /* OneSContinueButton.swift in Sources */,
 				3DF7916D25307EBF00F00174 /* ChildSizeReader.swift in Sources */,
 				3DE9C507252C8B8C0023C212 /* OneSHeaderText.swift in Sources */,
+				3DDF70372531BAB100FD3011 /* Milestone.swift in Sources */,
 				3DE11C35252C681200F13719 /* __StepApp.swift in Sources */,
 				3D2E792C252F6CAB00788AA2 /* GoalEnterInputView.swift in Sources */,
+				3DDF703E2531BB5E00FD3011 /* StepCategory.swift in Sources */,
+				3DDF703A2531BB5200FD3011 /* GoalState.swift in Sources */,
 				3D2E7972253033B400788AA2 /* OneSTextPopupView.swift in Sources */,
+				3DDF70252531A57700FD3011 /* StepUnit.swift in Sources */,
 				3D47CCAE252C749500A8CA1B /* Fonts.swift in Sources */,
 				3DAE7AEB2530A3E600B162B1 /* OneSTextFloater.swift in Sources */,
+				3DDF70342531BAA900FD3011 /* Step.swift in Sources */,
 				3DE9C503252C8A2D0023C212 /* GoalsHeaderView.swift in Sources */,
 				3DE9C51D252CB28D0023C212 /* MainModel.swift in Sources */,
 				3D2E795425301ADD00788AA2 /* HapticFeedback.swift in Sources */,
@@ -582,8 +636,10 @@
 				3DE9C516252CB00A0023C212 /* GoalsContentView.swift in Sources */,
 				3D2E79452530187800788AA2 /* OneSTextField.swift in Sources */,
 				3D2E7936252F9D3E00788AA2 /* OneSHintButton.swift in Sources */,
+				3DDF70422531BBBB00FD3011 /* MilestoneState.swift in Sources */,
 				3DE9C50E252CAACC0023C212 /* GoalsModel.swift in Sources */,
 				3D47CC89252C70B700A8CA1B /* Images.swift in Sources */,
+				3DDF70292531A5BB00FD3011 /* UserColor.swift in Sources */,
 				3D160D55252E2067008588D5 /* TransitionManager.swift in Sources */,
 				3D4B78E5252CDE9E00A45755 /* GoalSelectMountainModel.swift in Sources */,
 				3D4CC511252F558C00133CD6 /* OneSBorderButton.swift in Sources */,

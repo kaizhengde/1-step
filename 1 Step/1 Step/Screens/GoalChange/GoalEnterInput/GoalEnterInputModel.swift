@@ -6,7 +6,27 @@
 //
 
 import SwiftUI
+import Combine
+
+struct GoalEnterInputData {
+    
+    var goalName: String            = ""
+    var stepsNeeded: String         = ""
+    var stepCategory: StepCategory? = nil
+    var stepUnit: StepUnit?         = nil
+    var stepCustomUnit: String      = ""
+}
+
+
+protocol GoalEnterInputDelegate: AnyObject {
+    
+    //Somewhere to put the selectedMountainData
+    var selectedEnterInputData: GoalEnterInputData { get set }
+}
 
 final class GoalEnterInputModel: ObservableObject {
     
+    @Published var selectedData = GoalEnterInputData()
+    
+    weak var delegate: GoalEnterInputDelegate?
 }

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct OneSTextField: View {
     
@@ -14,11 +15,10 @@ struct OneSTextField: View {
     var placeholder: String
     var textFont: OneSFont
     var textColor: Color
+    var textLimit: Int
     
     var keyboard: UIKeyboardType = .default
     var lowercased: Bool = false
-    
-    var width: CGFloat
     
     
     var body: some View {
@@ -28,9 +28,10 @@ struct OneSTextField: View {
                     OneSText(text: placeholder, font: textFont, color: .lightNeutralToLightGray)
                 }
                 
-                TextField("", text: lowercased ? Binding(get: { self.input }, set: { self.input = $0.lowercased() }) : $input, onCommit: {
+                TextField("", text: lowercased ? Binding(get: { input }, set: { input = $0.lowercased() }) : $input, onCommit: {
                     UIApplication.shared.endEditing()
                 })
+                .onReceive(Just(input)) { _ in limitText(textLimit) }
                 .font(textFont.get())
                 .foregroundColor(textColor)
                 .accentColor(textColor)
@@ -43,6 +44,14 @@ struct OneSTextField: View {
                 .frame(height: 2)
                 .foregroundColor(.lightNeutralToLightGray)
         }
-        .frame(width: width*ScreenSize.width)
+        .frame(maxWidth: .infinity)
+        .animation(nil)
+    }
+    
+    
+    func limitText(_ upper: Int) {
+        if input.count > upper {
+            input = String(input.prefix(upper))
+        }
     }
 }

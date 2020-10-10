@@ -22,7 +22,7 @@ struct OneSFillButton: View {
     var body: some View {
         Button(action: action) {
             OneSText(text: text, font: .custom(weight: Raleway.bold, size: 20), color: textColor)
-            .frame(width: width*ScreenSize.width, height: height)
+            .frame(width: width, height: height)
             .background(buttonColor)
             .cornerRadius(12)
             .animation(nil)

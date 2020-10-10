@@ -9,16 +9,22 @@ import SwiftUI
 
 struct GoalEnterInputView: View {
     
+    @ObservedObject var viewModel: GoalEnterInputModel
     @StateObject private var popupManager = PopupManager.shared
-    @StateObject private var floaterManager = FloaterManager.shared 
-    let mountainColor: UserColor
+    let selectedColor: UserColor
     
     
     var body: some View {
-        Text("Hi").onTapGesture {
-            popupManager.showTextPopup(titleText: "Oh deer", titleImage: Emoji.deer, bodyText: "You should enter a goal.\n\nThis is what this app is all about.", backgroundColor: mountainColor.get())
+        VStack {
+            OneSTextField(input: $viewModel.selectedData.goalName, placeholder: "Meditate", textFont: .header2, textColor: selectedColor.get(), textLimit: Goal.nameDigitsLimit)
             
-            //floaterManager.showTextFloater(titleText: "Hurray 🎉", bodyText: "You have climed 3 mountains", backgroundColor: mountainColor.get())
+            HStack {
+                OneSTextField(input: $viewModel.selectedData.stepsNeeded, placeholder: "100", textFont: .header2, textColor: selectedColor.get(), textLimit: Goal.stepsNeededDigitsLimit, keyboard: .numberPad)
+                    
+                OneSFillButton(text: "times", textColor: .whiteToDarkGray, buttonColor: selectedColor.get(), width: 140*ScreenSize.multiplierWidth, height: 70) { print("Select Unit!") }
+            }
         }
+        .frame(height: 200*ScreenSize.multiplierHeight)
+        .ignoresSafeArea(.keyboard, edges: .bottom)
     }
 }

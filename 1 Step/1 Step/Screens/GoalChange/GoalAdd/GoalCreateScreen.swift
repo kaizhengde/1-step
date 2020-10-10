@@ -12,21 +12,27 @@ struct GoalCreateScreen: View {
     @StateObject private var mainModel = MainModel.shared
     @StateObject private var viewModel = GoalCreateModel()
     @StateObject private var goalSelectMountainModel = GoalSelectMountainModel()
+    @StateObject private var goalEnterInputModel = GoalEnterInputModel()
     
     
     var body: some View {
         ZStack {
-            //Header
-            GoalCreateHeaderView(viewModel: viewModel)
+            //2. Rest
+            VStack {
+                //Header
+                GoalCreateHeaderView(viewModel: viewModel)
+                
+                viewModel.goalCreateStage == .enterInput ?
+                GoalEnterInputView(viewModel: goalEnterInputModel, selectedColor: viewModel.selectedMountainData.color)
+                : nil
+                
+                Spacer()
+            }
+            .padding(.horizontal, Layout.firstLayerPadding)
             
             //1. Select Mountain + Color
             viewModel.goalCreateStage == .selectMountain ?
             GoalSelectMountainView(viewModel: goalSelectMountainModel)
-            : nil
-            
-            //2. Rest
-            viewModel.goalCreateStage == .enterInput ?
-            GoalEnterInputView(mountainColor: viewModel.selectedMountainData.color)
             : nil
         }
         .onAppear { goalSelectMountainModel.delegate = viewModel }
@@ -40,23 +46,19 @@ struct GoalCreateScreen: View {
         
         
         var body: some View {
-            VStack {
-                ZStack(alignment: .top) {
-                    OneSHeaderView(trailingButton: (.close, .grayToBackground, { mainModel.toScreen(.goals) }))
-                    
-                    VStack(spacing: 12*ScreenSize.multiplierHeight) {
-                        OneSHeaderView("Create", leadingButton: (.back, viewModel.selectedMountainData.color.get(), { viewModel.goalCreateStage = .selectMountain }))
-                        HStack {
-                            OneSHintButton(text: "How it works", color: viewModel.selectedMountainData.color.get()) {}
-                            Spacer()
-                        }
-                        .offset(x: 3)
+            ZStack(alignment: .top) {
+                OneSHeaderView(trailingButton: (.close, .grayToBackground, { mainModel.toScreen(.goals) }))
+                
+                VStack(spacing: 12*ScreenSize.multiplierHeight) {
+                    OneSHeaderView("Create", leadingButton: (.back, viewModel.selectedMountainData.color.get(), { viewModel.goalCreateStage = .selectMountain }))
+                    HStack {
+                        OneSHintButton(text: "How it works", color: viewModel.selectedMountainData.color.get()) {}
+                        Spacer()
                     }
-                    .opacity(viewModel.backButtonOpacity)
+                    .offset(x: 3)
                 }
-                Spacer()
+                .opacity(viewModel.backButtonOpacity)
             }
-            .padding(.horizontal, Layout.firstLayerPadding)
         }
     }
 }
