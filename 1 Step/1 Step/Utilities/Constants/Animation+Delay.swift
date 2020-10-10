@@ -9,18 +9,16 @@ import Foundation
 
 enum AnimationDuration {
     
-    static let screenOpacity: Double = 0.4
-    static let halfScreenOpacity: Double = screenOpacity/2.0
+    static let opacity: Double = 0.4
+    static let halfOpacity: Double = opacity/2.0
     static let mountainAppear: Double = 0.8
     static let mountainDismiss: Double = 0.6
 }
 
-
 enum DelayAfter {
     
-    static var none: DispatchTime { .now() + .zero }
-    static var halfScreenOpacity: DispatchTime { .now() + AnimationDuration.halfScreenOpacity }
-    static var screenOpacity: DispatchTime { .now() + AnimationDuration.screenOpacity }
-    static var mountainAppear: DispatchTime { .now() + AnimationDuration.mountainAppear }
-    static var mountainDismiss: DispatchTime { .now() + AnimationDuration.mountainDismiss }
+    static let opacity: DispatchTimeInterval = .milliseconds(Int(AnimationDuration.opacity*1000))
+    static let halfOpacity: DispatchTimeInterval = .milliseconds(Int(AnimationDuration.halfOpacity*1000))
+    static let mountainAppear: DispatchTimeInterval = .milliseconds(Int(AnimationDuration.mountainAppear*1000))
+    static let mountainDismiss: DispatchTimeInterval = .milliseconds(Int(AnimationDuration.mountainDismiss*1000))
 }

@@ -66,8 +66,8 @@ struct GoalSelectMountainItem: View {
                 .edgesIgnoringSafeArea(.all)
                 .foregroundColor(.white)
                 .colorMultiply(viewModel.mountainColor(mountain))
-                .offset(y: viewModel.transistionOffset())
-                .oneSMountainAnimation(delay: viewModel.mountainTransitionDelay())
+                .offset(y: viewModel.mountainTransistionOffset())
+                .oneSMountainAnimation()
                 .background(GoalSelectMountainModel.MountainVS(mountainID: mountain.rawValue))
                 .onTapGesture { viewModel.newMountainColor() }
         }

@@ -12,20 +12,28 @@ final class PopupManager: TransitionObservableObject {
     static let shared = PopupManager()
     private init() {}
     
-    @Published var transition: TransistionManager<PopupManager> = TransistionManager(finishDelay: DelayAfter.mountainAppear)
+    @Published var transition: TransitionManager<PopupManager> = TransitionManager(fullAppearAfter: DelayAfter.halfOpacity)
 
     @Published var popupContent: () -> AnyView = { AnyView(EmptyView()) }
     
     
     //MARK: - Transition
+    ///fullHide:    popupContent deinit (-> EmptyView())
+    ///firstAppear: popupContent init + OpacityBlur appear
+    ///fullAppear:  popupContent appear
+    ///firstHide:   popupContent dismiss + OpacityBlur dismiss
+    
     
     func initTransition() {
-        transition = TransistionManager(finishDelay: DelayAfter.halfScreenOpacity)
+        transition = TransitionManager(fullAppearAfter: DelayAfter.halfOpacity, fullHideAfter: DelayAfter.halfOpacity)
         transition.delegate = self
-        transition.state = .appear
+        transition.state = .firstAppear
     }
     
-    func transitionDelay() -> Double { return AnimationDuration.screenOpacity }
+    
+    func transitionDidFullHide() {
+        popupContent = { AnyView(EmptyView()) }
+    }
     
     
     //MARK: - Show Popup
@@ -41,11 +49,9 @@ final class PopupManager: TransitionObservableObject {
     //MARK: - Dismiss Popup
     
     func dismissPopup() {        
-        transition.state = .dismiss
+        transition.state = .firstHide
         objectWillChange.send()
         UIApplication.shared.endEditing()
-        
-        DispatchQueue.main.asyncAfter(deadline: DelayAfter.halfScreenOpacity) { self.popupContent = { AnyView(EmptyView()) } }
     }
 }
 

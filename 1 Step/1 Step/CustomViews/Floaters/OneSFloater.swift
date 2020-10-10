@@ -26,15 +26,20 @@ struct OneSFloater<FloaterContent>: ViewModifier where FloaterContent: View {
 
     
     func sheet() -> some View {
-        VStack {
-            ChildSizeReader(size: $floaterSize) {
-                floaterManager.floaterContent()
-                    .opacity(floaterManager.show ? 1.0 : 0.0)
-                    .offset(y: floaterManager.show ? 0 : -floaterSize.height-Layout.firstLayerWidth)
+        ZStack {
+            if floaterManager.transition.didAppear {
+                Color.opacityBlur.edgesIgnoringSafeArea(.all)
             }
-            Spacer()
+            
+            VStack {
+                floaterManager.floaterContent()
+                    .opacity(floaterManager.transition.isFullAppeared ? 1.0 : 0.0)
+                    .offset(y: floaterManager.transition.isFullAppeared ? 0 : -Layout.floaterHeight-SafeAreaSize.safeAreaTop-8)
+                Spacer()
+            }
+            .padding(8)
         }
+        .oneSAnimation(duration: AnimationDuration.opacity)
         .frame(maxHeight: .infinity)
-        .padding(8)
     }
 }

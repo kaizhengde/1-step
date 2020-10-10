@@ -15,6 +15,10 @@ struct GoalEnterInputView: View {
     
     
     var body: some View {
-        Text("Hi")
+        Text("Hi").onTapGesture {
+            popupManager.showTextPopup(titleText: "Oh deer", titleImage: Emoji.deer, bodyText: "You should enter a goal.\n\nThis is what this app is all about.", backgroundColor: mountainColor.get())
+            
+            //floaterManager.showTextFloater(titleText: "Hurray 🎉", bodyText: "You have climed 3 mountains", backgroundColor: mountainColor.get())
+        }
     }
 }

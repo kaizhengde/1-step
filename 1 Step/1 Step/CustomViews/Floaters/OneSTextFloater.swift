@@ -17,14 +17,14 @@ struct OneSTextFloater: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading, spacing: 5) {
-                OneSText(text: titleText, font: .subtitle, color: .backgroundToGray)
+                OneSText(text: titleText, font: .title2, color: .backgroundToGray)
                 OneSText(text: bodyText, font: .footnote, color: .backgroundToGray)
             }
             Spacer()
         }
         .padding(Layout.firstLayerPadding)
-        .frame(width: Layout.floaterWidth, height: 100*ScreenSize.multiplierHeight)
+        .frame(width: Layout.floaterWidth, height: Layout.floaterHeight)
         .background(backgroundColor)
-        .cornerRadius(12)
+        .cornerRadius(16)
     }
 }

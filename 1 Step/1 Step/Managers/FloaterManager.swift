@@ -7,27 +7,40 @@
 
 import SwiftUI
 
-final class FloaterManager: ObservableObject {
+final class FloaterManager: TransitionObservableObject {
     
     static let shared = FloaterManager()
     private init() {}
     
-    @Published var show: Bool = false
+    @Published var transition: TransitionManager<FloaterManager> = TransitionManager(fullAppearAfter: DelayAfter.halfOpacity)
     
     @Published var floaterContent: () -> AnyView = { AnyView(EmptyView()) }
     
     
     //MARK: - Transition
+    ///fullHide:    floaterContent deinit (-> EmptyView())
+    ///firstAppear: floaterContent init + OpacityBlur appear
+    ///fullAppear:  floaterContent appear
+    ///firstHide:   floaterContent dismiss + OpacityBlur dismiss
     
-    func showFloater() {
-        show = true
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { self.dismissFloater() }
+
+    func initTransition() {
+        transition = TransitionManager(fullAppearAfter: DelayAfter.halfOpacity, fullHideAfter: DelayAfter.opacity)
+        transition.delegate = self
+        transition.state = .firstAppear
+        
+        DispatchQueue.main.asyncAfter(deadline: .now()+2.5) { self.dismissFloater() }
+    }
+    
+    
+    func transitionDidFullHide() {
+        floaterContent = { AnyView(EmptyView()) }
     }
     
     //MARK: - Show Floater
     
     func showTextFloater(titleText: String, bodyText: String, backgroundColor: Color) {
-        showFloater()
+        initTransition()
         floaterContent = { AnyView(OneSTextFloater(titleText: titleText, bodyText: bodyText, backgroundColor: backgroundColor)) }
     }
     
@@ -35,7 +48,7 @@ final class FloaterManager: ObservableObject {
     //MARK: - Dismiss Floater
     
     func dismissFloater() {
-        show = false
+        transition.state = .firstHide
         objectWillChange.send()
     }
 }

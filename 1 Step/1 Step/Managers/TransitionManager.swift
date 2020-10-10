@@ -10,41 +10,67 @@ import Combine
 
 protocol TransitionObservableObject: ObservableObject where Self.ObjectWillChangePublisher == ObservableObjectPublisher {
         
-    var transition: TransistionManager<Self> { get set }
+    var transition: TransitionManager<Self> { get set }
     
     func initTransition()
-    func transitionDelay() -> Double
+    
+    func transitionDidFullAppear()
+    func transitionDidFullHide()
+}
+
+extension TransitionObservableObject {
+    
+    func transitionDidFullAppear() {}
+    func transitionDidFullHide() {}
 }
 
 
-class TransistionManager<TransitionDelegate> where TransitionDelegate: TransitionObservableObject {
+class TransitionManager<TransitionDelegate> where TransitionDelegate: TransitionObservableObject {
     
     enum TransitionState {
-        case hidden, appear, finish, dismiss
+        case fullHide, firstAppear, fullAppear, firstHide
     }
     
     weak var delegate: TransitionDelegate?
     
-    var state: TransitionState = .hidden {
+    var state: TransitionState = .fullHide {
         didSet {
-            if didAppear && !didFinish {
-                DispatchQueue.main.asyncAfter(deadline: finishDelay) {
-                    self.state = .finish
+            if didAppear && !isFullAppeared {
+                DispatchQueue.main.asyncAfter(deadline: .now() + fullAppearAfter) {
+                    self.state = .fullAppear
+                    self.delegate?.transitionDidFullAppear()
+                    self.delegate?.objectWillChange.send()
+                }
+            }
+            
+            if didHide && !isFullHidden {
+                DispatchQueue.main.asyncAfter(deadline: .now() + fullHideAfter) {
+                    self.state = .fullHide
+                    self.delegate?.transitionDidFullHide() 
                     self.delegate?.objectWillChange.send()
                 }
             }
         }
     }
-    var finishDelay: DispatchTime
+    
+    var fullAppearAfter: DispatchTimeInterval
+    var fullHideAfter: DispatchTimeInterval
     
     
-    init(finishDelay: DispatchTime = DelayAfter.none) {
-        self.finishDelay = finishDelay
+    init(fullAppearAfter: DispatchTimeInterval = .seconds(0), fullHideAfter: DispatchTimeInterval = .seconds(0)) {
+        self.fullAppearAfter = fullAppearAfter
+        self.fullHideAfter = fullHideAfter
     }
     
+    //Only dissappear if == fullHide
+    var isFullHidden: Bool { state == .fullHide }
     
-    var isHidden: Bool { state == .hidden }
-    var didAppear: Bool { state == .appear || state == .finish }
-    var didFinish: Bool { state == .finish }
-    var onDismiss: Bool { state == .dismiss }
+    //Appear on both
+    var didAppear: Bool { state == .firstAppear || state == .fullAppear }
+    
+    //Only appear if == fullAppear
+    var isFullAppeared: Bool { state == .fullAppear }
+    
+    //Disappear on both
+    var didHide: Bool { state == .firstHide || state == .fullHide }
 }

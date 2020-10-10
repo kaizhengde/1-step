@@ -38,7 +38,7 @@ protocol GoalSelectMountainDelegate: AnyObject {
 
 final class GoalSelectMountainModel: TransitionObservableObject {
     
-    @Published var transition: TransistionManager<GoalSelectMountainModel> = TransistionManager(finishDelay: DelayAfter.mountainAppear)
+    @Published var transition: TransitionManager<GoalSelectMountainModel> = TransitionManager()
 
     @Published private var currentMountain: MountainImage = .mountain0
     @Published private var dragOffset: CGSize = .zero
@@ -49,21 +49,20 @@ final class GoalSelectMountainModel: TransitionObservableObject {
     weak var delegate: GoalSelectMountainDelegate?
     
     //MARK: - Transition
+    ///fullHide:    Mountain hide
+    ///firstAppear: Mountain appear
+    ///fullAppear:  Text and selectButton appear
+    ///firstHide:   Text and selectButton hide
         
     func initTransition() {
-        transition = TransistionManager(finishDelay: DelayAfter.mountainAppear)
+        transition = TransitionManager(fullAppearAfter: DelayAfter.mountainAppear, fullHideAfter: DelayAfter.opacity)
         transition.delegate = self
-        transition.state = .appear
+        transition.state = .firstAppear
     }
     
     
-    func transitionDelay() -> Double {
-        return (transition.didFinish || transition.onDismiss) ? 0.0 : AnimationDuration.mountainAppear
-    }
-    
-    
-    func mountainTransitionDelay() -> Double {
-        return transition.onDismiss ? AnimationDuration.mountainDismiss : 0.0
+    func transitionDidFullHide() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + DelayAfter.mountainDismiss) { self.delegate?.dismissGoalSelectMountainView() }
     }
     
     
@@ -87,14 +86,14 @@ final class GoalSelectMountainModel: TransitionObservableObject {
     //Text
     
     func textAndButtonOpacity(_ mountain: MountainImage) -> Double {
-        return (transition.didFinish && currentMountain == mountain && dragOffset.width == 0) ? 1.0 : 0.0
+        return (transition.isFullAppeared && currentMountain == mountain && dragOffset.width == 0) ? 1.0 : 0.0
     }
     
     
     //Mountain
     
-    func transistionOffset() -> CGFloat {
-        return transition.didAppear ? 0 : ScreenSize.height/1.3
+    func mountainTransistionOffset() -> CGFloat {
+        return transition.isFullHidden ? ScreenSize.height/1.3 : 0
     }
     
     
@@ -116,9 +115,8 @@ final class GoalSelectMountainModel: TransitionObservableObject {
     func selectMountainAndDismiss() {
         selectedData.mountain = currentMountain
         
-        transition.state = .dismiss
+        transition.state = .firstHide
         delegate?.selectedMountainData = selectedData
-        DispatchQueue.main.asyncAfter(deadline: DelayAfter.mountainDismiss) { self.delegate?.dismissGoalSelectMountainView() }
     }
     
     

@@ -34,9 +34,9 @@ struct OneSPopup<PopupContent>: ViewModifier where PopupContent: View {
             
             popupManager.popupContent() 
                 .onTapGesture { popupManager.dismissPopup() }
-                .opacity(popupManager.transition.didFinish ? 1.0 : 0.0)
-                .scaleEffect(popupManager.transition.didFinish ? 1.0 : 0.0)
+                .opacity(popupManager.transition.isFullAppeared ? 1.0 : 0.0)
+                .scaleEffect(popupManager.transition.isFullAppeared ? 1.0 : 0.0)
         }
-        .oneSAnimation(duration: AnimationDuration.screenOpacity)
+        .oneSAnimation(duration: AnimationDuration.opacity)
     }
 }

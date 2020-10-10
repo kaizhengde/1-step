@@ -23,7 +23,7 @@ struct GoalSelectMountainView: View {
         .frame(width: ScreenSize.width, alignment: .leading)
         .onPreferenceChange(GoalSelectMountainModel.MountainPK.self) { p in viewModel.updatePreferences(p) }
         .coordinateSpace(name: CoordinateSpace.selectMountain.hashValue)
-        .oneSAnimation(delay: viewModel.transitionDelay())
+        .oneSAnimation()
         .onAppear { viewModel.initTransition() }
     }
 }

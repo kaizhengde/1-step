@@ -27,7 +27,7 @@ struct OneSOpacityAnimation: ViewModifier {
     
     func body(content: Content) -> some View {
         content
-            .animation(Animation.easeInOut(duration: AnimationDuration.screenOpacity).delay(delay))
+            .animation(Animation.easeInOut(duration: AnimationDuration.opacity).delay(delay))
     }
 }
 

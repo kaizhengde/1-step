@@ -15,7 +15,8 @@ enum Layout {
     static let secondLayerWidth             = ScreenSize.width - (2.0 * secondLayerPadding)
     
     static let popoverWidth: CGFloat = 260*ScreenSize.multiplierWidth
-    static let floaterWidth: CGFloat = secondLayerWidth
+    static let floaterWidth: CGFloat = firstLayerWidth
+    static let floaterHeight: CGFloat = 100*ScreenSize.multiplierWidth
 }
 
 
