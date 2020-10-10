@@ -16,9 +16,9 @@ struct OneSScaleButtonStyle: ButtonStyle {
 }
 
 
-extension Button {
+extension View {
     
-    func oneSScaleStyle() -> some View {
+    func oneSButtonScaleStyle() -> some View {
         self
             .buttonStyle(OneSScaleButtonStyle())
             .animation(.easeInOut(duration: 0.1))

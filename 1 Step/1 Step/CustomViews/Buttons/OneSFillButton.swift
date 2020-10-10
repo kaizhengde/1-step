@@ -10,23 +10,51 @@ import SwiftUI
 struct OneSFillButton: View {
     
     var text: String
+    var textFont: OneSFont
     var textColor: Color
     var buttonColor: Color
     
-    var width: CGFloat
+    var width: CGFloat = .infinity
     var height: CGFloat
     
-    var action: () -> Void
+    var withScale: Bool = true
+    
+    let action: () -> ()
     
     
     var body: some View {
-        Button(action: action) {
-            OneSText(text: text, font: .custom(weight: Raleway.bold, size: 20), color: textColor)
-            .frame(width: width, height: height)
-            .background(buttonColor)
-            .cornerRadius(12)
-            .animation(nil)
+        Group {
+            if withScale {
+                ButtonContent(text: text, textFont: textFont, textColor: textColor, buttonColor: buttonColor, width: width, height: height, action: action)
+                    .oneSButtonScaleStyle()
+            } else {
+                ButtonContent(text: text, textFont: textFont, textColor: textColor, buttonColor: buttonColor, width: width, height: height, action: action)
+            }
         }
-        .oneSScaleStyle()
+    }
+    
+    
+    private struct ButtonContent: View {
+        
+        var text: String
+        var textFont: OneSFont
+        var textColor: Color
+        var buttonColor: Color
+        
+        var width: CGFloat
+        var height: CGFloat
+        
+        let action: () -> ()
+        
+        
+        var body: some View {
+            Button(action: action) {
+                OneSText(text: text, font: textFont, color: textColor)
+                    .frame(height: height)
+                    .frame(maxWidth: width)
+                    .background(buttonColor)
+                    .cornerRadius(12)
+            }
+        }
     }
 }

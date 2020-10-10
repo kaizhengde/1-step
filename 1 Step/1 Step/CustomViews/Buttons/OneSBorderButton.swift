@@ -24,6 +24,6 @@ struct OneSBorderButton: View {
                         .stroke(color.opacity(0.5), lineWidth: 1)
                 )
         }
-        .oneSScaleStyle()
+        .oneSButtonScaleStyle()
     }
 }

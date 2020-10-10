@@ -13,6 +13,7 @@ struct GoalCreateScreen: View {
     @StateObject private var viewModel = GoalCreateModel()
     @StateObject private var goalSelectMountainModel = GoalSelectMountainModel()
     @StateObject private var goalEnterInputModel = GoalEnterInputModel()
+    @StateObject private var popupManager = PopupManager.shared
     
     
     var body: some View {
@@ -25,7 +26,9 @@ struct GoalCreateScreen: View {
                     
                     HStack {
                         Spacer()
-                        OneSContinueButton(color: .grayToBackground) {}
+                        OneSContinueButton(color: .grayToBackground) {
+                            #warning("Save to core Data or show Popup with error message")
+                        }
                     }
                     .offset(y: 20*Layout.multiplierHeight)
                 }

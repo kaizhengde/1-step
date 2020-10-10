@@ -26,6 +26,6 @@ struct OneSHintButton: View {
             .foregroundColor(color)
             .contentShape(Rectangle())
         }
-        .oneSScaleStyle()
+        .oneSButtonScaleStyle()
     }
 }

@@ -19,12 +19,12 @@ final class MiniSheetManager: ViewOverlayManagerProtocol {
     @Published var height: CGFloat!
     @Published var content: () -> AnyView = { AnyView(EmptyView()) }
     
-    let cornerRadius: CGFloat = 12
+    let extraHeight: CGFloat = 60
 
     
     //MARK: - MiniSheets
     
-    func showCustomMiniSheet<T: View>(titleText: String, backgroundColor: Color, height: CGFloat, content: @escaping () -> T) {
+    func showCustomMiniSheet<T: View>(titleText: String, backgroundColor: Color, height: CGFloat, @ViewBuilder content: @escaping () -> T) {
         initTransition()
         
         self.titleText = titleText

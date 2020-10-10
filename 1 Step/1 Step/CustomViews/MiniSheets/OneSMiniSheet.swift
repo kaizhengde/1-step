@@ -18,6 +18,7 @@ extension View {
 struct OneSMiniSheet<MiniSheetContent>: ViewModifier where MiniSheetContent: View {
     
     @StateObject private var miniSheetManager = MiniSheetManager.shared
+    @State private var dragOffset: CGFloat = .zero
     
     
     func body(content: Content) -> some View {
@@ -35,7 +36,22 @@ struct OneSMiniSheet<MiniSheetContent>: ViewModifier where MiniSheetContent: Vie
             if !miniSheetManager.transition.isFullHidden {
                 OneSMiniSheetView()
                     .opacity(miniSheetManager.transition.isFullAppeared ? 1.0 : 0.0)
-                    .offset(y: miniSheetManager.transition.isFullAppeared ? miniSheetManager.cornerRadius : miniSheetManager.height+miniSheetManager.cornerRadius)
+                    .offset(y: miniSheetManager.transition.isFullAppeared ? miniSheetManager.extraHeight : miniSheetManager.height+miniSheetManager.extraHeight)
+                    .offset(y: dragOffset)
+                    .gesture(
+                        DragGesture()
+                        .onChanged { value in
+                            if value.translation.height > -miniSheetManager.extraHeight+12 {
+                                dragOffset = value.translation.height
+                            }
+                        }
+                        .onEnded { value in
+                            if value.translation.height > 100 {
+                                miniSheetManager.dismiss()
+                            }
+                            dragOffset = .zero
+                        }
+                    )
             }
         }
         .oneSAnimation(duration: AnimationDuration.opacity)
@@ -52,21 +68,27 @@ struct OneSMiniSheet<MiniSheetContent>: ViewModifier where MiniSheetContent: Vie
                 Spacer()
                 
                 VStack {
-                    HStack {
-                        OneSSecondaryHeaderText(text: miniSheetManager.titleText, color: .backgroundToGray)
+                    RoundedRectangle(cornerRadius: 2.5)
+                        .frame(width: 40, height: 5)
+                        .foregroundColor(.backgroundToGray)
+                    
+                    VStack {
+                        HStack {
+                            OneSSecondaryHeaderText(text: miniSheetManager.titleText, color: .backgroundToGray)
+                            Spacer()
+                            OneSContinueButton(color: .backgroundToGray, withScale: false) { miniSheetManager.dismiss() }
+                        }
+                        .padding(.bottom, 20)
+                        
+                        miniSheetManager.content()
                         Spacer()
                     }
-                    .padding(.bottom, 20)
-                    
-                    miniSheetManager.content()
-                    
-                    Spacer()
+                    .padding(Layout.firstLayerPadding)
                 }
-                .padding(Layout.firstLayerPadding)
                 .padding(.vertical, 10)
-                .frame(width: Layout.screenWidth, height: miniSheetManager.height+miniSheetManager.cornerRadius)
+                .frame(width: Layout.screenWidth, height: miniSheetManager.height+miniSheetManager.extraHeight)
                 .background(miniSheetManager.backgroundColor)
-                .cornerRadius(miniSheetManager.cornerRadius)
+                .cornerRadius(12)
             }
             .edgesIgnoringSafeArea(.all)
         }
