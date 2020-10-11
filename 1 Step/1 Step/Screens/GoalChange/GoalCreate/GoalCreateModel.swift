@@ -33,8 +33,6 @@ final class GoalCreateModel: ObservableObject, GoalSelectMountainDelegate, GoalE
     //MARK: - Self
     
     func tryCreateGoal() {
-        print(selectedEnterInputData)
-        
         let changeData: Goal.ChangeData = (
             name:           selectedEnterInputData.goalName.trimmingCharacters(in: .whitespaces),
             stepCategory:   selectedEnterInputData.stepCategory,

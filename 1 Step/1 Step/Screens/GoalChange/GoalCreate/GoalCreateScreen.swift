@@ -13,7 +13,6 @@ struct GoalCreateScreen: View {
     @StateObject private var viewModel = GoalCreateModel()
     @StateObject private var goalSelectMountainModel = GoalSelectMountainModel()
     @StateObject private var goalEnterInputModel = GoalEnterInputModel()
-    @StateObject private var popupManager = PopupManager.shared
     
     
     var body: some View {

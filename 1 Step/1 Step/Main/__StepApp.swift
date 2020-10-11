@@ -27,7 +27,7 @@ struct __StepApp: App {
         WindowGroup {
             MainView()
                 .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
-                .environment(\.managedObjectContext, persistenceManager.container.viewContext)
+                .environment(\.managedObjectContext, persistenceManager.context)
                 .environmentObject(goalsModel)
                 .environmentObject(goalAddModel)
         }

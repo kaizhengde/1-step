@@ -19,7 +19,7 @@ final class DataManager {
     //Insert
     
     func insertGoal(with changeData: Goal.ChangeData) {
-        let goalsCount = fetchGoalCount()
+        //let goalsCount = fetchGoalCount()
         
         let newGoal = Goal(context: persistenceManager.context)
         let newStep = Step(context: persistenceManager.context)
@@ -28,8 +28,8 @@ final class DataManager {
         newStep.unit            = changeData.stepUnit!
         newStep.customUnit      = changeData.stepCustomUnit
         newStep.goal            = newGoal
-        
-        newGoal.sortOrder       = goalsCount
+
+        newGoal.sortOrder       = 0
         newGoal.name            = changeData.name
         newGoal.step            = newStep
         newGoal.stepsNeeded     = changeData.stepsNeeded!

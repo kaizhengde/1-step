@@ -10,19 +10,18 @@ import CoreData
 struct PersistenceManager {
     
     static let defaults = PersistenceManager()
-    private init() {}
-
-    var container: NSPersistentCloudKitContainer {
-        let container = NSPersistentCloudKitContainer(name: "__Step")
+    
+    let container: NSPersistentCloudKitContainer
+    var context: NSManagedObjectContext { container.viewContext }
+    
+    
+    init() {
+        container = NSPersistentCloudKitContainer(name: "__Step")
         
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? { fatalError("Unresolved error \(error), \(error.userInfo)") }
         })
-        
-        return container
     }
-    
-    var context: NSManagedObjectContext { container.viewContext }
     
     
     func saveContext() {
@@ -34,6 +33,5 @@ struct PersistenceManager {
                 print("Error while saving managedObjectContext \(error)")
             }
         }
-        try? context.setQueryGenerationFrom(.current)
     }
 }
