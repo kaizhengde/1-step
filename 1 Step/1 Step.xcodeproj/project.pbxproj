@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D0B59452533123600079856 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0B59442533123600079856 /* DataModel.swift */; };
+		3D0B5948253319AC00079856 /* GoalErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0B5947253319AC00079856 /* GoalErrorHandler.swift */; };
 		3D160D55252E2067008588D5 /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D160D54252E2067008588D5 /* TransitionManager.swift */; };
 		3D2E7928252F6C2C00788AA2 /* GoalEnterInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2E7927252F6C2C00788AA2 /* GoalEnterInputModel.swift */; };
 		3D2E792C252F6CAB00788AA2 /* GoalEnterInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2E792B252F6CAB00788AA2 /* GoalEnterInputView.swift */; };
@@ -84,6 +86,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3D0B59442533123600079856 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		3D0B5947253319AC00079856 /* GoalErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalErrorHandler.swift; sourceTree = "<group>"; };
 		3D160D54252E2067008588D5 /* TransitionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
 		3D2E7927252F6C2C00788AA2 /* GoalEnterInputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEnterInputModel.swift; sourceTree = "<group>"; };
 		3D2E792B252F6CAB00788AA2 /* GoalEnterInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEnterInputView.swift; sourceTree = "<group>"; };
@@ -173,6 +177,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D0B594A253319B000079856 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				3D0B5947253319AC00079856 /* GoalErrorHandler.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
 		3D160D53252E2053008588D5 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -288,6 +300,7 @@
 			children = (
 				3DA7BD3C2532F72B00171360 /* Managers */,
 				3DDF70272531A5AE00FD3011 /* Models */,
+				3D0B594A253319B000079856 /* Errors */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -360,13 +373,13 @@
 			path = Goals;
 			sourceTree = "<group>";
 		};
-		3D4B78DA252CD6E400A45755 /* GoalAdd */ = {
+		3D4B78DA252CD6E400A45755 /* GoalCreate */ = {
 			isa = PBXGroup;
 			children = (
 				3D4B78D7252CD4F000A45755 /* GoalCreateModel.swift */,
 				3DE9C521252CB5820023C212 /* GoalCreateScreen.swift */,
 			);
-			path = GoalAdd;
+			path = GoalCreate;
 			sourceTree = "<group>";
 		};
 		3D4B78DB252CD70100A45755 /* GoalEdit */ = {
@@ -417,8 +430,9 @@
 		3DA7BD3C2532F72B00171360 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				3DA7BD392532F6A600171360 /* DataManager.swift */,
 				3DE11C3D252C681600F13719 /* PersistenceManger.swift */,
+				3DA7BD392532F6A600171360 /* DataManager.swift */,
+				3D0B59442533123600079856 /* DataModel.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -527,7 +541,7 @@
 		3DE9C51B252CB2670023C212 /* GoalChange */ = {
 			isa = PBXGroup;
 			children = (
-				3D4B78DA252CD6E400A45755 /* GoalAdd */,
+				3D4B78DA252CD6E400A45755 /* GoalCreate */,
 				3D4B78DB252CD70100A45755 /* GoalEdit */,
 				3D4B78E3252CDE7200A45755 /* GoalSelectMountain */,
 				3D2E7926252F6BBC00788AA2 /* GoalEnterInput */,
@@ -631,6 +645,7 @@
 			files = (
 				3D47CCBD252C7EF900A8CA1B /* GoalsScreen.swift in Sources */,
 				3DE9C522252CB5820023C212 /* GoalCreateScreen.swift in Sources */,
+				3D0B5948253319AC00079856 /* GoalErrorHandler.swift in Sources */,
 				3D47CCC2252C807000A8CA1B /* Colors.swift in Sources */,
 				3DE11C3E252C681600F13719 /* PersistenceManger.swift in Sources */,
 				3D4B78D8252CD4F000A45755 /* GoalCreateModel.swift in Sources */,
@@ -650,6 +665,7 @@
 				3D2E7933252F9CFA00788AA2 /* Animation+Delay.swift in Sources */,
 				3D47CC91252C71EA00A8CA1B /* CoordinateSpace.swift in Sources */,
 				3DE9C50B252C8F500023C212 /* OneSText.swift in Sources */,
+				3D0B59452533123600079856 /* DataModel.swift in Sources */,
 				3D2E7939252F9D7A00788AA2 /* OneSScaleButtonStyle.swift in Sources */,
 				3DBB6B24252CC08D002C0D03 /* EnumTypeEquatable.swift in Sources */,
 				3D72B8C3252DB5B8006E660D /* Animations.swift in Sources */,

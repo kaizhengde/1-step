@@ -12,6 +12,7 @@ struct __StepApp: App {
     
     let persistenceManager = PersistenceManager.defaults
     let dataManager = DataManager.defaults
+    let dataModel = DataModel.shared
     
     let mainModel = MainModel.shared
     let goalsModel = GoalsModel()

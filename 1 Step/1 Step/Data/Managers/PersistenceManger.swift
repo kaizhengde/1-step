@@ -21,4 +21,19 @@ struct PersistenceManager {
         
         return container
     }
+    
+    var context: NSManagedObjectContext { container.viewContext }
+    
+    
+    func saveContext() {
+        if context.hasChanges {
+            do {
+                print("Sucess!!")
+                try context.save()
+            } catch {
+                print("Error while saving managedObjectContext \(error)")
+            }
+        }
+        try? context.setQueryGenerationFrom(.current)
+    }
 }

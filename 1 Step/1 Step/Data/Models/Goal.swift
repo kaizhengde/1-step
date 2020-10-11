@@ -31,9 +31,21 @@ class Goal: NSManagedObject, Identifiable {
 
 extension Goal {
     
+    //Data to be changed via create/edit
+    typealias ChangeData = (
+        name:           String,
+        stepCategory:   StepCategory?,
+        stepUnit:       StepUnit?,
+        stepCustomUnit: String,
+        stepsNeeded:    Int16?,
+        mountain:       MountainImage?,
+        color:          UserColor?
+    )
+    
+    
     static let nameDigitsLimit = 20
     static let stepsNeededDigitsLimit = 4
     
-    static let stepsNeededMinimum = 10
-    static let stepsNeededMaximum = 10000
+    static let stepsNeededMinimum: Int16 = 10
+    static let stepsNeededMaximum: Int16 = 10000
 }

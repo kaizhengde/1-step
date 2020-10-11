@@ -26,11 +26,7 @@ struct GoalCreateScreen: View {
                     
                     HStack {
                         Spacer()
-                        OneSContinueButton(color: .grayToBackground) {
-                            #warning("Error handling + CoreData")
-                            print(viewModel.selectedEnterInputData)
-                            //.trimmingCharacters(in: .whitespaces)
-                        }
+                        OneSContinueButton(color: .grayToBackground) { viewModel.tryCreateGoal() }
                     }
                     .offset(y: 20*Layout.multiplierHeight)
                 }

@@ -18,6 +18,7 @@ final class PopupManager: ViewOverlayManagerProtocol {
     @Published var continueButton: Bool!
     
     @Published var titleText: String!
+    @Published var titleImage: Image?
     @Published var bodyText: String!
     @Published var backgroundColor: Color!
     @Published var height: CGFloat!
@@ -27,8 +28,6 @@ final class PopupManager: ViewOverlayManagerProtocol {
     //MARK: - Popups
     
     //TextPopup
-    
-    @Published var titleImage: Image?
     
     func showTextPopup(titleText: String, titleImage: Image? = nil, bodyText: String, backgroundColor: Color, height: CGFloat = 340*Layout.multiplierHeight) {
         initTransition()
@@ -56,12 +55,13 @@ final class PopupManager: ViewOverlayManagerProtocol {
     @Published var keyboard: UIKeyboardType!
     @Published var lowercased: Bool!
     
-    func showTextFieldPopup(titleText: String, bodyText: String, input: String, placerholder: String, inputColor: Color, placerholderColor: Color, textLimit: Int, keyboard: UIKeyboardType = .default, lowercased: Bool = false, backgroundColor: Color, height: CGFloat = 340*Layout.multiplierHeight) {
+    func showTextFieldPopup(titleText: String, titleImage: Image? = nil, bodyText: String, input: String, placerholder: String, inputColor: Color, placerholderColor: Color, textLimit: Int, keyboard: UIKeyboardType = .default, lowercased: Bool = false, backgroundColor: Color, height: CGFloat = 340*Layout.multiplierHeight) {
         initTransition()
         
         self.dismissOnTap = false
         self.continueButton = true
         self.titleText = titleText
+        self.titleImage = titleImage
         self.bodyText = bodyText
         self.input = input
         self.placerholder = placerholder
