@@ -29,6 +29,7 @@ struct GoalCreateScreen: View {
                         OneSContinueButton(color: .grayToBackground) {
                             #warning("Error handling + CoreData")
                             print(viewModel.selectedEnterInputData)
+                            //.trimmingCharacters(in: .whitespaces)
                         }
                     }
                     .offset(y: 20*Layout.multiplierHeight)

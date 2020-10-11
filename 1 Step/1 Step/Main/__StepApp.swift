@@ -10,7 +10,8 @@ import SwiftUI
 @main
 struct __StepApp: App {
     
-    let persistenceController = PersistenceController.shared
+    let persistenceManager = PersistenceManager.defaults
+    let dataManager = DataManager.defaults
     
     let mainModel = MainModel.shared
     let goalsModel = GoalsModel()
@@ -25,7 +26,7 @@ struct __StepApp: App {
         WindowGroup {
             MainView()
                 .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environment(\.managedObjectContext, persistenceManager.container.viewContext)
                 .environmentObject(goalsModel)
                 .environmentObject(goalAddModel)
         }

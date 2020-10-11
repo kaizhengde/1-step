@@ -7,16 +7,18 @@
 
 import CoreData
 
-struct PersistenceController {
-    static let shared = PersistenceController()
+struct PersistenceManager {
+    
+    static let defaults = PersistenceManager()
+    private init() {}
 
-    let container: NSPersistentCloudKitContainer
-
-    init() {
-        container = NSPersistentCloudKitContainer(name: "__Step")
+    var container: NSPersistentCloudKitContainer {
+        let container = NSPersistentCloudKitContainer(name: "__Step")
         
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? { fatalError("Unresolved error \(error), \(error.userInfo)") }
         })
+        
+        return container
     }
 }
