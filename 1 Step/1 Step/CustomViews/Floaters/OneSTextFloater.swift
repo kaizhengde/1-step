@@ -9,10 +9,10 @@ import SwiftUI
 
 struct OneSTextFloater: View {
     
-    let bodyText: String
+    @StateObject private var manager = FloaterManager.shared
     
     
     var body: some View {
-        OneSText(text: bodyText, font: .footnote, color: .backgroundToGray)
+        OneSText(text: manager.bodyText, font: .footnote, color: .backgroundToGray)
     }
 }

@@ -9,7 +9,7 @@ import Foundation
 
 @objc
 enum StepUnit: Int16 {
-    
+        
     //Duration
     case hours      = 0
     case min        = 1
@@ -18,16 +18,43 @@ enum StepUnit: Int16 {
     case km         = 2
     case m          = 3
     case miles      = 4
-    case yards      = 5
-    case feets      = 6
+    case feets      = 5
     
     //Reps
-    case times      = 7
-    case pages      = 8
-    case steps      = 9
-    case decisions  = 10
-    case mountains  = 11
-    case books      = 12
+    case times      = 6
+    case pages      = 7
+    case steps      = 8
+    case decisions  = 9
+    case mountains  = 10
+    case books      = 11
     
-    case custom     = 13
+    case custom     = 12
+    
+    
+    var description: String {
+        switch self {
+        case .hours:        return "hours"
+        case .min:          return "min"
+        case .km:           return "km"
+        case .m:            return "m"
+        case .miles:        return "miles"
+        case .feets:        return "feets"
+        case .times:        return "times"
+        case .pages:        return "pages"
+        case .steps:        return "steps"
+        case .decisions:    return "decisions"
+        case .mountains:    return "mountains"
+        case .books:        return "books"
+        case .custom:       return "custom"
+        }
+    }
+    
+    
+    static func unitsOfCategory(_ category: StepCategory) -> [StepUnit] {
+        switch category {
+        case .duration: return [.hours, .min]
+        case .distance: return [.km, .m, .miles, .feets]
+        case .reps: return [.times, .pages, .steps, .decisions, .mountains, .books, .custom]
+        }
+    }
 }

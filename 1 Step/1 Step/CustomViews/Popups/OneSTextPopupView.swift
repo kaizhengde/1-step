@@ -9,10 +9,10 @@ import SwiftUI
 
 struct OneSTextPopupView: View {
 
-    let bodyText: String
+    @StateObject private var manager = PopupManager.shared
     
     
     var body: some View {
-        OneSText(text: bodyText, font: .body2, color: .backgroundToGray)
+        OneSText(text: manager.bodyText, font: .body2, color: .backgroundToGray)
     }
 }

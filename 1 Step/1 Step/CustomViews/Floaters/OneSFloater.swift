@@ -15,9 +15,9 @@ extension View {
 }
 
 
-struct OneSFloater<FloaterContent>: ViewModifier where FloaterContent: View {
+fileprivate struct OneSFloater<FloaterContent>: ViewModifier where FloaterContent: View {
     
-    @StateObject private var floaterManager = FloaterManager.shared
+    @StateObject private var manager = FloaterManager.shared
     
     
     func body(content: Content) -> some View {
@@ -27,14 +27,14 @@ struct OneSFloater<FloaterContent>: ViewModifier where FloaterContent: View {
     
     func sheet() -> some View {
         ZStack {
-            if floaterManager.transition.didAppear {
+            if manager.transition.didAppear {
                 Color.opacityBlur.edgesIgnoringSafeArea(.all)
             }
             
-            if !floaterManager.transition.isFullHidden {
+            if !manager.transition.isFullHidden {
                 OneSFloaterView()
-                    .opacity(floaterManager.transition.isFullAppeared ? 1.0 : 0.0)
-                    .offset(y: floaterManager.transition.isFullAppeared ? 0 : -floaterManager.height-SafeAreaSize.top-8)
+                    .opacity(manager.transition.isFullAppeared ? 1.0 : 0.0)
+                    .offset(y: manager.transition.isFullAppeared ? 0 : -manager.height-SafeAreaSize.top-8)
             }
         }
         .oneSAnimation(duration: AnimationDuration.opacity)
@@ -44,21 +44,21 @@ struct OneSFloater<FloaterContent>: ViewModifier where FloaterContent: View {
     
     private struct OneSFloaterView: View {
         
-        @StateObject private var floaterManager = FloaterManager.shared
+        @StateObject private var manager = FloaterManager.shared
         
         
         var body: some View {
             VStack {
                 HStack {
                     VStack(alignment: .leading, spacing: 5) {
-                        OneSText(text: floaterManager.titleText, font: .title2, color: .backgroundToGray)
-                        floaterManager.content()
+                        OneSText(text: manager.titleText, font: .title2, color: .backgroundToGray)
+                        manager.content()
                     }
                     Spacer()
                 }
                 .padding(Layout.firstLayerPadding)
-                .frame(width: Layout.floaterWidth, height: floaterManager.height)
-                .background(floaterManager.backgroundColor)
+                .frame(width: Layout.floaterWidth, height: manager.height)
+                .background(manager.backgroundColor)
                 .cornerRadius(16)
 
                 Spacer()

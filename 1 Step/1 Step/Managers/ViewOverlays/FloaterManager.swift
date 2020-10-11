@@ -38,6 +38,6 @@ final class FloaterManager: ViewOverlayManagerProtocol {
         self.bodyText = bodyText
         self.backgroundColor = backgroundColor
         self.height = height
-        self.content = { AnyView(OneSTextFloater(bodyText: bodyText)) }
+        self.content = { AnyView(OneSTextFloater()) }
     }
 }

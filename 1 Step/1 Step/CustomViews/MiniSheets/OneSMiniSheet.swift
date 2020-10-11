@@ -15,9 +15,9 @@ extension View {
 }
 
 
-struct OneSMiniSheet<MiniSheetContent>: ViewModifier where MiniSheetContent: View {
+fileprivate struct OneSMiniSheet<MiniSheetContent>: ViewModifier where MiniSheetContent: View {
     
-    @StateObject private var miniSheetManager = MiniSheetManager.shared
+    @StateObject private var manager = MiniSheetManager.shared
     @State private var dragOffset: CGFloat = .zero
     
     
@@ -28,26 +28,26 @@ struct OneSMiniSheet<MiniSheetContent>: ViewModifier where MiniSheetContent: Vie
     
     func sheet() -> some View {
         ZStack {
-            if miniSheetManager.transition.didAppear {
+            if manager.transition.didAppear {
                 Color.opacityBlur.edgesIgnoringSafeArea(.all)
-                    .onTapGesture { miniSheetManager.dismiss() }
+                    .onTapGesture { manager.dismiss() }
             }
             
-            if !miniSheetManager.transition.isFullHidden {
+            if !manager.transition.isFullHidden {
                 OneSMiniSheetView()
-                    .opacity(miniSheetManager.transition.isFullAppeared ? 1.0 : 0.0)
-                    .offset(y: miniSheetManager.transition.isFullAppeared ? miniSheetManager.extraHeight : miniSheetManager.height+miniSheetManager.extraHeight)
+                    .opacity(manager.transition.isFullAppeared ? 1.0 : 0.0)
+                    .offset(y: manager.transition.isFullAppeared ? manager.extraHeight : manager.height+manager.extraHeight)
                     .offset(y: dragOffset)
                     .gesture(
                         DragGesture()
                         .onChanged { value in
-                            if value.translation.height > -miniSheetManager.extraHeight+12 {
+                            if value.translation.height > -manager.extraHeight+12 {
                                 dragOffset = value.translation.height
                             }
                         }
                         .onEnded { value in
                             if value.translation.height > 100 {
-                                miniSheetManager.dismiss()
+                                manager.dismiss()
                             }
                             dragOffset = .zero
                         }
@@ -60,7 +60,7 @@ struct OneSMiniSheet<MiniSheetContent>: ViewModifier where MiniSheetContent: Vie
     
     private struct OneSMiniSheetView: View {
         
-        @StateObject private var miniSheetManager = MiniSheetManager.shared
+        @StateObject private var manager = MiniSheetManager.shared
         
         
         var body: some View {
@@ -74,20 +74,20 @@ struct OneSMiniSheet<MiniSheetContent>: ViewModifier where MiniSheetContent: Vie
                     
                     VStack {
                         HStack {
-                            OneSSecondaryHeaderText(text: miniSheetManager.titleText, color: .backgroundToGray)
+                            OneSSecondaryHeaderText(text: manager.titleText, color: .backgroundToGray)
                             Spacer()
-                            OneSContinueButton(color: .backgroundToGray, withScale: false) { miniSheetManager.dismiss() }
+                            OneSContinueButton(color: .backgroundToGray, withScale: false) { manager.dismiss() }
                         }
                         .padding(.bottom, 20)
                         
-                        miniSheetManager.content()
+                        manager.content()
                         Spacer()
                     }
                     .padding(Layout.firstLayerPadding)
                 }
                 .padding(.vertical, 10)
-                .frame(width: Layout.screenWidth, height: miniSheetManager.height+miniSheetManager.extraHeight)
-                .background(miniSheetManager.backgroundColor)
+                .frame(width: Layout.screenWidth, height: manager.height+manager.extraHeight)
+                .background(manager.backgroundColor)
                 .cornerRadius(12)
             }
             .edgesIgnoringSafeArea(.all)

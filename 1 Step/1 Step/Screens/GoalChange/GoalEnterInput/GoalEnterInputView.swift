@@ -17,19 +17,21 @@ struct GoalEnterInputView: View {
     
     var body: some View {
         VStack {
-            OneSTextField(input: $viewModel.selectedData.goalName, placeholder: "Meditate", textFont: .header2, textColor: selectedColor.get(), textLimit: Goal.nameDigitsLimit)
+            OneSTextField(input: $viewModel.selectedData.goalName, placeholder: "Meditate", inputColor: selectedColor.get(), inputLimit: Goal.nameDigitsLimit)
             
             HStack {
-                OneSTextField(input: $viewModel.selectedData.stepsNeeded, placeholder: "100", textFont: .header2, textColor: selectedColor.get(), textLimit: Goal.stepsNeededDigitsLimit, keyboard: .numberPad)
+                OneSTextField(input: $viewModel.selectedData.stepsNeeded, placeholder: "100", inputColor: selectedColor.get(), inputLimit: Goal.stepsNeededDigitsLimit, keyboard: .numberPad)
                     
-                OneSFillButton(text:        "times",
+                OneSFillButton(text:        viewModel.stepEnterUnitButtonText(),
                                textFont:    .custom(weight: Raleway.bold, size: 20),
                                textColor:   .whiteToDarkGray,
-                               buttonColor: selectedColor.get(),
+                               buttonColor: viewModel.stepEnterUnitButtonColor(selectedColor),
                                width:       140*Layout.multiplierWidth,
                                height:      70
                 ) {
-                    miniSheetManager.showCustomMiniSheet(titleText: "Select Unit", backgroundColor: selectedColor.get(), height: 500*Layout.multiplierHeight) { GoalEnterInputSelectStepUnitView(selectedColor: selectedColor) }
+                    miniSheetManager.showCustomMiniSheet(titleText: "Select Unit", backgroundColor: selectedColor.get(), height: 500*Layout.multiplierHeight) {
+                        GoalEnterInputSelectStepUnitView(viewModel: viewModel, selectedColor: selectedColor)
+                    }
                 }
             }
         }
