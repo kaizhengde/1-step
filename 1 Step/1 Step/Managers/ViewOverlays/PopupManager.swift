@@ -29,7 +29,7 @@ final class PopupManager: ViewOverlayManagerProtocol {
     
     //TextPopup
     
-    func showTextPopup(titleText: String, titleImage: Image? = nil, bodyText: String, backgroundColor: Color, height: CGFloat = 340*Layout.multiplierHeight) {
+    func showTextPopup(titleText: String, titleImage: Image? = nil, bodyText: String, backgroundColor: Color, height: CGFloat = 300+Layout.onlyOniPhoneXType(40)) {
         initTransition()
         
         self.dismissOnTap = true
@@ -55,7 +55,7 @@ final class PopupManager: ViewOverlayManagerProtocol {
     @Published var keyboard: UIKeyboardType!
     @Published var lowercased: Bool!
     
-    func showTextFieldPopup(titleText: String, titleImage: Image? = nil, bodyText: String, input: String, placerholder: String, inputColor: Color, placerholderColor: Color, textLimit: Int, keyboard: UIKeyboardType = .default, lowercased: Bool = false, backgroundColor: Color, height: CGFloat = 340*Layout.multiplierHeight) {
+    func showTextFieldPopup(titleText: String, titleImage: Image? = nil, bodyText: String, input: String, placerholder: String, inputColor: Color, placerholderColor: Color, textLimit: Int, keyboard: UIKeyboardType = .default, lowercased: Bool = false, backgroundColor: Color, height: CGFloat = 300+Layout.onlyOniPhoneXType(40)) {
         initTransition()
         
         self.dismissOnTap = false

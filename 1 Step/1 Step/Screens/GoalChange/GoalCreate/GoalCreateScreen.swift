@@ -25,7 +25,7 @@ struct GoalCreateScreen: View {
                     
                     HStack {
                         Spacer()
-                        OneSContinueButton(color: .grayToBackground) { viewModel.tryCreateGoal() }
+                        OneSContinueButton(color: .grayToBackground) { viewModel.tryCreateGoalAndDismiss() }
                     }
                     .offset(y: 20*Layout.multiplierHeight)
                 }

@@ -22,6 +22,10 @@ enum Layout {
     
     static let popoverWidth: CGFloat = 260*multiplierWidth
     static let floaterWidth: CGFloat = firstLayerWidth
+    
+    static func onlyOniPhoneXType(_ value: CGFloat) -> CGFloat {
+        return Device.isiPhoneXType ? value : 0
+    }
 }
     
     
@@ -39,7 +43,7 @@ enum Device {
     static let isiPhoneX                    = idiom == .phone && Layout.screenHeight == 812.0
     static let isiPhoneXsMaxAndXr           = idiom == .phone && Layout.screenHeight == 896.0
 
-    static let isiPhoneXType = { return isiPhoneX || isiPhoneXsMaxAndXr }()
+    static let isiPhoneXType: Bool = { return isiPhoneX || isiPhoneXsMaxAndXr }()
 }
 
 

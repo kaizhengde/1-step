@@ -32,7 +32,7 @@ final class GoalCreateModel: ObservableObject, GoalSelectMountainDelegate, GoalE
     
     //MARK: - Self
     
-    func tryCreateGoal() {
+    func tryCreateGoalAndDismiss() {
         let changeData: Goal.ChangeData = (
             name:           selectedEnterInputData.goalName.trimmingCharacters(in: .whitespaces),
             stepCategory:   selectedEnterInputData.stepCategory,
@@ -43,7 +43,9 @@ final class GoalCreateModel: ObservableObject, GoalSelectMountainDelegate, GoalE
             color:          selectedMountainData.color
         )
         
-        DataModel.shared.createGoal(with: changeData)
+        if DataModel.shared.createGoal(with: changeData) {
+            MainModel.shared.toScreen(.goals)
+        }
     }
 }
 

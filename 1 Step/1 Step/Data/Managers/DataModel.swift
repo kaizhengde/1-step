@@ -17,9 +17,10 @@ final class DataModel: ObservableObject {
     
     //Insert
     
-    func createGoal(with changeData: Goal.ChangeData) {
-        guard !GoalErrorHandler.hasErrors(with: changeData) else { return }
+    func createGoal(with changeData: Goal.ChangeData) -> Bool {
+        guard !GoalErrorHandler.hasErrors(with: changeData) else { return false }
         
         dataManager.insertGoal(with: changeData)
+        return true
     }
 }
