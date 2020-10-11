@@ -106,10 +106,13 @@ struct GoalEnterInputSelectStepUnitView: View {
                     withScale:      false
                 ) {
                     if stepUnit == .custom {
-                        popupManager.showTextFieldPopup(titleText: "Custom", bodyText: "Enter your unit.", input: $viewModel.selectedData.stepCustomUnit, placerholder: "unit", inputColor: .backgroundToGray, placerholderColor: .opacityBackgroundDarker, textLimit: Step.customUnitDigitsLimit, lowercased: true, backgroundColor: selectedColor.get())
+                        popupManager.showTextFieldPopup(titleText: "Custom", bodyText: "Enter your unit.", input: viewModel.selectedData.stepCustomUnit, placerholder: "unit", inputColor: .backgroundToGray, placerholderColor: .opacityBackgroundDarker, textLimit: Step.customUnitDigitsLimit, lowercased: true, backgroundColor: selectedColor.get())
                     }
                     viewModel.selectedData.stepUnit = stepUnit
                 }
+                .onReceive(popupManager.textFieldSave, perform: {
+                    DispatchQueue.main.async { viewModel.selectedData.stepCustomUnit = popupManager.input }
+                })
             }
         }
     }

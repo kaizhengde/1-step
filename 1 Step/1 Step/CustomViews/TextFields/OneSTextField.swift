@@ -21,6 +21,8 @@ struct OneSTextField: View {
     var keyboard: UIKeyboardType = .default
     var lowercased: Bool = false
     
+    var action: () -> () = {}
+    
     
     var body: some View {
         VStack(alignment: .leading, spacing: 3) {
@@ -29,7 +31,7 @@ struct OneSTextField: View {
                     OneSText(text: placeholder, font: .header2, color: placerholderColor)
                 }
                 
-                TextField("", text: lowercased ? Binding(get: { input }, set: { input = $0.lowercased() }) : $input, onCommit: {})
+                TextField("", text: lowercased ? Binding(get: { input }, set: { input = $0.lowercased() }) : $input, onCommit: { action() })
                 .onReceive(Just(input)) { _ in limitInput(inputLimit) }
                 .font(OneSFont.header2.get())
                 .foregroundColor(inputColor)

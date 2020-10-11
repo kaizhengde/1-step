@@ -36,7 +36,12 @@ final class GoalEnterInputModel: ObservableObject {
     //Button
     
     func stepEnterUnitButtonText() -> String {
-        return selectedData.stepUnit?.description ?? "times"
+        guard let stepUnit = selectedData.stepUnit else { return "times" }
+        
+        if stepUnit == .custom {
+            return selectedData.stepCustomUnit.isEmpty ? "custom" : selectedData.stepCustomUnit
+        }
+        return stepUnit.description
     }
     
     

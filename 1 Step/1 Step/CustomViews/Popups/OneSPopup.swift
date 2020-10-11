@@ -59,6 +59,10 @@ fileprivate struct OneSPopup<PopupContent>: ViewModifier where PopupContent: Vie
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 60, height: 60)
                         }
+                        if manager.continueButton {
+                            Spacer()
+                            OneSContinueButton(color: .backgroundToGray, withScale: false) { manager.saveAndDismiss() }
+                        }
                     }
                     manager.content()
                     Spacer()
