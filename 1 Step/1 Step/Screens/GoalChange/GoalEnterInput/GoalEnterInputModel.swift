@@ -26,7 +26,9 @@ protocol GoalEnterInputDelegate: AnyObject {
 
 final class GoalEnterInputModel: ObservableObject {
     
-    @Published var selectedData = GoalEnterInputData()
+    @Published var selectedData = GoalEnterInputData() {
+        didSet { delegate?.selectedEnterInputData = selectedData }
+    }
     
     weak var delegate: GoalEnterInputDelegate?
     

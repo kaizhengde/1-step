@@ -27,7 +27,8 @@ struct GoalCreateScreen: View {
                     HStack {
                         Spacer()
                         OneSContinueButton(color: .grayToBackground) {
-                            #warning("Save to core Data or show Popup with error message")
+                            #warning("Error handling + CoreData")
+                            print(viewModel.selectedEnterInputData)
                         }
                     }
                     .offset(y: 20*Layout.multiplierHeight)
@@ -41,7 +42,10 @@ struct GoalCreateScreen: View {
                 GoalSelectMountainView(viewModel: goalSelectMountainModel)
             }
         }
-        .onAppear { goalSelectMountainModel.delegate = viewModel }
+        .onAppear {
+            goalSelectMountainModel.delegate = viewModel
+            goalEnterInputModel.delegate = viewModel
+        }
     }
     
     

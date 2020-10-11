@@ -13,11 +13,12 @@ enum GoalCreateStage {
 }
 
 
-final class GoalCreateModel: ObservableObject, GoalSelectMountainDelegate {
+final class GoalCreateModel: ObservableObject, GoalSelectMountainDelegate, GoalEnterInputDelegate {
     
     @Published var goalCreateStage: GoalCreateStage = .selectMountain
     
     @Published var selectedMountainData: GoalSelectMountainData = (nil, .user0)
+    @Published var selectedEnterInputData = GoalEnterInputData()
     
     
     func dismissGoalSelectMountainView() {
