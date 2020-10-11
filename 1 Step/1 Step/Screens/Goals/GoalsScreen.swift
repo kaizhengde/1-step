@@ -9,13 +9,21 @@ import SwiftUI
 
 struct GoalsScreen: View {
     
+    @EnvironmentObject var goalsModel: GoalsModel
+    
     var body: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             VStack {
                 GoalsHeaderView()
-                GoalsContentView()
+                
+                if goalsModel.currentTab == .left {
+                    GoalsActiveView()
+                } else {
+                    GoalsReachedView()
+                }
             }
             .padding(.horizontal, Layout.firstLayerPadding)
+            .padding(.bottom, 320*Layout.multiplierHeight)
         }
     }
 }

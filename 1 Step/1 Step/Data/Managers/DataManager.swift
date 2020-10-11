@@ -16,6 +16,30 @@ final class DataManager {
     private let persistenceManager = PersistenceManager.defaults
     
     
+    //Fetch
+    
+    private func fetchGoalCount() -> Int16 {
+        let request = Goal.fetchRequest()
+        
+        do {
+            let goals = try persistenceManager.context.fetch(request)
+            return Int16(goals.count)
+        } catch { return .zero }
+    }
+    
+    
+    func fetchGoals(for state: GoalState) -> [Goal] {
+        let request = Goal.fetchRequest()
+        request.predicate = NSPredicate(format: "currentState == \(state.rawValue)")
+        request.sortDescriptors = [NSSortDescriptor(key: "sortOrder", ascending: true)]
+        
+        do {
+            let goals = try persistenceManager.context.fetch(request)
+            return goals as! [Goal]
+        } catch { return [] }
+    }
+    
+    
     //Insert
     
     func insertGoal(with changeData: Goal.ChangeData) {
@@ -43,17 +67,5 @@ final class DataManager {
         newGoal.milestones      = []
         
         persistenceManager.saveContext()
-    }
-    
-    
-    //Fetch
-    
-    private func fetchGoalCount() -> Int16 {
-        let request = Goal.fetchRequest()
-        
-        do {
-            let goals = try persistenceManager.context.fetch(request)
-            return Int16(goals.count)
-        } catch { return .zero }
     }
 }

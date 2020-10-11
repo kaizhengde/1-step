@@ -10,9 +10,30 @@ import SwiftUI
 final class DataModel: ObservableObject {
     
     static let shared = DataModel()
-    private init() {}
-    
     private let dataManager = DataManager.defaults
+    
+    private init() {
+        fetchAllActiveGoals()
+        fetchAllReachedGoals()
+    }
+    
+    
+    //Data
+    
+    @Published var activeGoals: [Goal]!
+    @Published var reachedGoals: [Goal]!
+    
+    
+    //Fetch
+    
+    private func fetchAllActiveGoals() {
+        activeGoals = dataManager.fetchGoals(for: .active)
+    }
+    
+    
+    private func fetchAllReachedGoals() {
+        reachedGoals = dataManager.fetchGoals(for: .done)
+    }
     
     
     //Insert
@@ -21,6 +42,7 @@ final class DataModel: ObservableObject {
         guard !GoalErrorHandler.hasErrors(with: changeData) else { return false }
         
         dataManager.insertGoal(with: changeData)
+        fetchAllActiveGoals()
         return true
     }
 }

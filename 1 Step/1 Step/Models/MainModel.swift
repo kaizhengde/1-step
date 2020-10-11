@@ -29,7 +29,7 @@ final class MainModel: ObservableObject {
     static let shared = MainModel()
     private init() {} 
     
-    @Published private(set) var currentScreen: Screen = Screen()
+    @Published private(set) var currentScreen: Screen = Screen() 
     
     
     func toScreen(_ nextScreen: Screen.Active, delay: DispatchTime = .now() + DelayAfter.opacity) {

@@ -1,5 +1,5 @@
 //
-//  GoalAddItem.swift
+//  GoalCreateItem.swift
 //  1 Step
 //
 //  Created by Kai Zheng on 06.10.20.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct GoalAddItem: View {
+struct GoalCreateItem: View {
     
     @StateObject private var mainModel = MainModel.shared 
     
@@ -17,7 +17,7 @@ struct GoalAddItem: View {
             SFSymbol.plus
                 .font(OneSFont.custom(weight: Raleway.light, size: 40).get())
                 .foregroundColor(.lightNeutralToLightGray)
-                .frame(width: 145 * Layout.multiplierWidth, height: 200)
+                .frame(width: 145*Layout.multiplierWidth, height: 200)
                 .contentShape(Rectangle())
                 .overlay(
                     RoundedRectangle(cornerRadius: 12)
