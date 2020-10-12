@@ -17,6 +17,7 @@ struct GoalsHeaderView: View {
             OneSHeaderView("Goals", trailingButton: (.profile, .grayToBackground, { mainModel.toScreen(.profile) }))
             TabBarView()
         }
+        .padding(.bottom, 24)
     }
     
     
@@ -24,8 +25,8 @@ struct GoalsHeaderView: View {
         
         var body: some View {
             HStack(spacing: 4) {
-                TabBarButtonView(tabActive: .left, text: "Active")
-                TabBarButtonView(tabActive: .right, text: "Reached")
+                TabBarButtonView(tabActive: .active, text: GoalsTab.active.description)
+                TabBarButtonView(tabActive: .reached, text: GoalsTab.reached.description)
             }
             .frame(height: 36)
             .cornerRadius(20)
@@ -37,7 +38,7 @@ struct GoalsHeaderView: View {
             
             @EnvironmentObject private var goalsModel: GoalsModel
             
-            let tabActive: TabActive
+            let tabActive: GoalsTab
             var isActive: Bool { goalsModel.currentTab == tabActive }
             
             let text: String

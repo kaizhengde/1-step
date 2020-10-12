@@ -7,17 +7,30 @@
 
 import SwiftUI
 
-enum TabActive {
-    case left, right
+enum GoalsTab: String {
+    
+    case active = "Active"
+    case reached = "Reached"
+    
+    var description: String { return self.rawValue }
+    
     
     mutating func toggle() {
-        if self == .left { self = .right }
-        else { self = .left }
+        if self == .active { self = .reached }
+        else { self = .active }
     }
 }
 
 
 final class GoalsModel: ObservableObject {
     
-    @Published var currentTab: TabActive = .left
+    @Published var currentTab: GoalsTab = .active
+    
+    
+    //ScrollView
+    
+    var scrollViewBottomPadding: CGFloat {
+        let count = currentTab == .active ? DataModel.shared.activeGoals.count : DataModel.shared.reachedGoals.count
+        return count < 3 ? 0 : 320*Layout.multiplierHeight
+    }
 }

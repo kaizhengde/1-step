@@ -22,12 +22,13 @@ struct OneSAnimation: ViewModifier {
 
 struct OneSOpacityAnimation: ViewModifier {
     
+    var duration: Double
     var delay: Double
     
     
     func body(content: Content) -> some View {
         content
-            .animation(Animation.easeInOut(duration: AnimationDuration.opacity).delay(delay))
+            .animation(Animation.easeInOut(duration: duration).delay(delay))
     }
 }
 
@@ -53,8 +54,8 @@ extension View {
     }
     
     
-    func oneSOpacityAnimation(delay: Double = 0.0) -> some View {
-        return modifier(OneSOpacityAnimation(delay: delay))
+    func oneSOpacityAnimation(duration: Double = AnimationDuration.opacity, delay: Double = 0.0) -> some View {
+        return modifier(OneSOpacityAnimation(duration: duration, delay: delay))
     }
     
     

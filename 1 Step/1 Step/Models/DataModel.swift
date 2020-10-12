@@ -32,7 +32,7 @@ final class DataModel: ObservableObject {
     
     
     private func fetchAllReachedGoals() {
-        reachedGoals = dataManager.fetchGoals(for: .done)
+        reachedGoals = dataManager.fetchGoals(for: .reached)
     }
     
     

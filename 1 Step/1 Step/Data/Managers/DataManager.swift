@@ -58,7 +58,7 @@ final class DataManager {
         newGoal.step            = newStep
         newGoal.stepsNeeded     = changeData.stepsNeeded!
         newGoal.currentSteps    = .zero
-        newGoal.currentPercent  = .zero
+        newGoal.currentPercent  = Int16(Int.random(in: 0...100))
         newGoal.currentState    = .active
         newGoal.startDate       = Date()
         newGoal.endDate         = nil

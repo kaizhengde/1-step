@@ -14,11 +14,14 @@ struct GoalsActiveView: View {
     
     
     var body: some View {
-        LazyVGrid(columns: viewModel.goalItemColumns, spacing: 32) {
+        LazyVGrid(columns: viewModel.goalItemColumns, spacing: 24) {
             ForEach(dataModel.activeGoals, id: \.self) { goal in
-                OneSText(text: goal.name, font: .subtitle, color: .grayToBackground)
+                GoalItem(goal: goal) { print(goal.name) }
             }
-            GoalCreateItem()
+            VStack {
+                GoalCreateItem()
+                Spacer()
+            }
         }
     }
 }

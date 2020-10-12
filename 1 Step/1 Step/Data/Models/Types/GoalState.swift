@@ -11,5 +11,5 @@ import Foundation
 enum GoalState: Int16 {
     
     case active = 0
-    case done   = 1
+    case reached   = 1
 }

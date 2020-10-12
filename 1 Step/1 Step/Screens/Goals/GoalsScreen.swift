@@ -16,14 +16,14 @@ struct GoalsScreen: View {
             VStack {
                 GoalsHeaderView()
                 
-                if goalsModel.currentTab == .left {
+                if goalsModel.currentTab == .active {
                     GoalsActiveView()
                 } else {
                     GoalsReachedView()
                 }
             }
             .padding(.horizontal, Layout.firstLayerPadding)
-            .padding(.bottom, 320*Layout.multiplierHeight)
+            .padding(.bottom, goalsModel.scrollViewBottomPadding)
         }
     }
 }
