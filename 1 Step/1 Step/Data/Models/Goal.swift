@@ -31,7 +31,6 @@ class Goal: NSManagedObject, Identifiable {
 
 extension Goal {
     
-    //Data to be changed via create/edit
     typealias ChangeData = (
         name:           String,
         stepCategory:   StepCategory?,

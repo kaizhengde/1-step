@@ -20,8 +20,8 @@ final class DataModel: ObservableObject {
     
     //Data
     
-    @Published var activeGoals: [Goal]!
-    @Published var reachedGoals: [Goal]!
+    @Published var activeGoals: [Goal] = []
+    @Published var reachedGoals: [Goal] = []
     
     
     //Fetch
@@ -44,5 +44,14 @@ final class DataModel: ObservableObject {
         dataManager.insertGoal(with: changeData)
         fetchAllActiveGoals()
         return true
+    }
+    
+    
+    //Change
+    
+    func moveGoals() {
+        for goal in activeGoals {
+            dataManager.changeGoalOrder(goal, with: goal.sortOrder)
+        }
     }
 }

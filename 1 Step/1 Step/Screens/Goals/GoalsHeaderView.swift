@@ -28,7 +28,7 @@ struct GoalsHeaderView: View {
                 TabBarButtonView(tabActive: .active, text: GoalsTab.active.description)
                 TabBarButtonView(tabActive: .reached, text: GoalsTab.reached.description)
             }
-            .frame(height: 36)
+            .frame(height: 38)
             .cornerRadius(20)
             .animation(nil)
         }

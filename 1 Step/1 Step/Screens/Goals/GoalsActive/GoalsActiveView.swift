@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UniformTypeIdentifiers
 
 struct GoalsActiveView: View {
     
@@ -17,6 +18,8 @@ struct GoalsActiveView: View {
         LazyVGrid(columns: viewModel.goalItemColumns, spacing: 24) {
             ForEach(dataModel.activeGoals, id: \.self) { goal in
                 GoalItem(goal: goal) { print(goal.name) }
+                    .onDrag { viewModel.onGoalDrag(goal) }
+                    .onDrop(of: [UTType.text], delegate: GoalsActiveModel.DragRelocateDelegate(gridItems: $dataModel.activeGoals, current: $viewModel.currentDragItem, item: goal))
             }
             VStack {
                 GoalCreateItem()

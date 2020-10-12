@@ -68,4 +68,27 @@ final class DataManager {
         
         persistenceManager.saveContext()
     }
+    
+    
+    //Change
+    
+    func editGoal(_ goal: Goal, with changeData: Goal.ChangeData) {
+
+        goal.name            = changeData.name
+        goal.step.category   = changeData.stepCategory!
+        goal.step.unit       = changeData.stepUnit!
+        goal.step.customUnit = changeData.stepCustomUnit
+        goal.stepsNeeded     = changeData.stepsNeeded!
+        goal.mountain        = changeData.mountain!
+        goal.color           = changeData.color!
+        
+        persistenceManager.saveContext()
+    }
+    
+    
+    func changeGoalOrder(_ goal: Goal, with newOrder: Int16) {
+        
+        goal.sortOrder      = newOrder
+        persistenceManager.saveContext()
+    }
 }

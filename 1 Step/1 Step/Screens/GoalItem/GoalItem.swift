@@ -26,7 +26,8 @@ struct GoalItem: View {
             .contentShape(Rectangle())
             .oneSShadow(opacity: 0.15, y: 3, blur: 10)
         }
-        .oneSButtonScaleStyle()
+        .buttonStyle(OneSScaleButtonStyle())
+        .oneSOpacityAnimation(duration: 0.3)
     }
     
     
