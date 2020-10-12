@@ -18,8 +18,9 @@ final class DataManager {
     
     //Fetch
     
-    private func fetchGoalCount() -> Int16 {
+    private func fetchActiveGoalCount() -> Int16 {
         let request = Goal.fetchRequest()
+        request.predicate = NSPredicate(format: "currentState == 0")
         
         do {
             let goals = try persistenceManager.context.fetch(request)
@@ -43,7 +44,7 @@ final class DataManager {
     //Insert
     
     func insertGoal(with changeData: Goal.ChangeData) {
-        let goalsCount = fetchGoalCount()
+        let activeGoalsCount = fetchActiveGoalCount()
         
         let newGoal = Goal(context: persistenceManager.context)
         let newStep = Step(context: persistenceManager.context)
@@ -53,7 +54,7 @@ final class DataManager {
         newStep.customUnit      = changeData.stepCustomUnit
         newStep.goal            = newGoal
 
-        newGoal.sortOrder       = goalsCount
+        newGoal.sortOrder       = activeGoalsCount
         newGoal.name            = changeData.name
         newGoal.step            = newStep
         newGoal.stepsNeeded     = changeData.stepsNeeded!

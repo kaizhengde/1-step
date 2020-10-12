@@ -20,11 +20,17 @@ struct GoalsActiveView: View {
                 GoalItem(goal: goal) { print(goal.name) }
                     .onDrag { viewModel.onGoalDrag(goal) }
                     .onDrop(of: [UTType.text], delegate: GoalsActiveModel.DragRelocateDelegate(gridItems: $dataModel.activeGoals, current: $viewModel.currentDragItem, item: goal))
+                    .onAppear { viewModel.initItemTransition(of: Int(goal.sortOrder)) }
+                    .opacity(viewModel.itemsOpacityTransition(of: goal))
+                    .scaleEffect(viewModel.itemsScaleTransition(of: goal))
             }
             VStack {
                 GoalCreateItem()
+                    .onAppear { viewModel.initItemTransition(of: dataModel.activeGoals.count) }
+                    .opacity(viewModel.createItemOpacityTransition())
                 Spacer()
             }
         }
+        .animation(viewModel.itemsAnimation())
     }
 }
