@@ -25,7 +25,7 @@ enum StepUnit: Int16 {
     case pages      = 7
     case steps      = 8
     case decisions  = 9
-    case mountains  = 10
+    case trees  = 10
     case books      = 11
     
     case custom     = 12
@@ -43,7 +43,7 @@ enum StepUnit: Int16 {
         case .pages:        return "pages"
         case .steps:        return "steps"
         case .decisions:    return "decisions"
-        case .mountains:    return "mountains"
+        case .trees:        return "trees"
         case .books:        return "books"
         case .custom:       return "custom"
         }
@@ -54,7 +54,7 @@ enum StepUnit: Int16 {
         switch category {
         case .duration: return [.hours, .min]
         case .distance: return [.km, .m, .miles, .feets]
-        case .reps: return [.times, .pages, .steps, .decisions, .mountains, .books, .custom]
+        case .reps: return [.times, .pages, .steps, .decisions, .trees, .books, .custom]
         }
     }
 }
