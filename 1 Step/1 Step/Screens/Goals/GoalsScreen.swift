@@ -22,6 +22,7 @@ struct GoalsScreen: View {
                     GoalsReachedView()
                 }
             }
+            .frame(width: Layout.firstLayerWidth)
             .padding(.horizontal, Layout.firstLayerPadding)
             .padding(.bottom, goalsModel.scrollViewBottomPadding)
         }
