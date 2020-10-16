@@ -9,29 +9,40 @@ import SwiftUI
 
 struct GoalItem: View {
     
+    let goalActiveModel: GoalsActiveModel?
+    @State private var isCurrentDrag: Bool = false
+    @State private var tapAnimation: Bool = false
+    
     let goal: Goal
     let onTap: () -> ()
     
         
     var body: some View {
-        Button(action: onTap) {
-            ZStack {
-                MountainView(goal: goal)
-                PercentView(goal: goal)
-                TextView(goal: goal)
-            }
-            .frame(width: GoalItemArt.width, height: GoalItemArt.height)
-            .background(goal.color.get())
-            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-            .contentShape(Rectangle())
-            .oneSShadow(opacity: 0.15, y: 3, blur: 10)
+        ZStack {
+            MountainView(goal: goal)
+            PercentView(goalActiveModel: goalActiveModel, goal: goal)
+            TextView(goal: goal)
         }
-        .oneSButtonScaleStyle()
+        .frame(width: GoalItemArt.width, height: GoalItemArt.height)
+        .background(GoalItemArt.color(isCurrentDrag, of: goal))
+        .clipShape(GoalItemArt.shape)
+        .contentShape(GoalItemArt.shape)
+        .oneSShadow(opacity: 0.15, y: 3, blur: 10)
+        .scaleEffect(tapAnimation ? 1.05 : 1.0)
+        .onReceive(goalActiveModel!.$currentDragItem) { isCurrentDrag = $0 == goal }
+        .onTapGesture {
+            onTap()
+            tapAnimation = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { tapAnimation = false }
+        }
     }
     
     
     private struct PercentView: View {
         
+        let goalActiveModel: GoalsActiveModel? 
+        @State private var isCurrentDrag: Bool = false
+
         let goal: Goal
         
         
@@ -42,7 +53,7 @@ struct GoalItem: View {
                     Spacer()
                     
                     VStack {
-                        OneSText(text: "\(goal.currentPercent)%", font: .subtitle, color: goal.color.get())
+                        OneSText(text: "\(goal.currentPercent)%", font: .subtitle, color: GoalItemArt.color(isCurrentDrag, of: goal))
                     }
                     .frame(width: 55, height: 30)
                     .background(Color.backgroundToGray)
@@ -51,6 +62,7 @@ struct GoalItem: View {
                 Spacer()
             }
             .padding([.horizontal, .top], 12)
+            .onReceive(goalActiveModel!.$currentDragItem) { isCurrentDrag = $0 == goal }
             : nil
         }
     }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 enum GoalItemArt {
-    
+
     case grid, menu
     
     static var current: GoalItemArt {
@@ -31,6 +31,14 @@ enum GoalItemArt {
         case .grid: return 250*Layout.multiplierWidth
         case .menu: return 160
         }
+    }
+    
+    
+    static var shape = RoundedRectangle(cornerRadius: 12, style: .continuous)
+    
+    
+    static func color(_ isCurrentDrag: Bool, of goal: Goal) -> Color {
+        return isCurrentDrag ? Color.lightNeutralToLightGray : goal.color.get()
     }
     
     //Text

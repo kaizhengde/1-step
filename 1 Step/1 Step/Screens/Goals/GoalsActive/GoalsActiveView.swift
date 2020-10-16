@@ -17,7 +17,7 @@ struct GoalsActiveView: View {
     var body: some View {
         LazyVGrid(columns: viewModel.goalItemColumns, spacing: 24) {
             ForEach(dataModel.activeGoals, id: \.self) { goal in
-                GoalItem(goal: goal) { print(goal.name) }
+                GoalItem(goalActiveModel: viewModel, goal: goal) { print(goal.name) }
                     .onDrag { viewModel.onGoalDrag(goal) }
                     .onDrop(of: [UTType.text], delegate: GoalsActiveModel.DragRelocateDelegate(gridItems: $dataModel.activeGoals, current: $viewModel.currentDragItem, item: goal))
                     .onAppear { viewModel.initItemTransition(of: Int(goal.sortOrder)) }

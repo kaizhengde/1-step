@@ -55,6 +55,7 @@ class GoalsActiveModel: ObservableObject {
     //MARK: - Drag and Drop
     
     func onGoalDrag(_ goal: Goal) -> NSItemProvider {
+        Feedback.impact(style: .medium)
         currentDragItem = goal
         return NSItemProvider(object: String(goal.sortOrder) as NSString)
     }
