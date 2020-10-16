@@ -27,7 +27,7 @@ final class GoalsModel: ObservableObject {
     @Published var currentTab: GoalsTab = .active
     
     
-    //ScrollView
+    //MARK: - Scroll
     
     var scrollViewBottomPadding: CGFloat {
         let count = currentTab == .active ? DataModel.shared.activeGoals.count : DataModel.shared.reachedGoals.count

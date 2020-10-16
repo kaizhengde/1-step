@@ -43,7 +43,6 @@ extension Goal {
         color:          UserColor?
     )
     
-    
     static let nameDigitsLimit = 20
     static let stepsNeededDigitsLimit = 4
     

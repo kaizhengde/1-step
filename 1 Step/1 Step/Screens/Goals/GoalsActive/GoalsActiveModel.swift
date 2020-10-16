@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UniformTypeIdentifiers
 
 class GoalsActiveModel: ObservableObject {
     
@@ -13,7 +14,6 @@ class GoalsActiveModel: ObservableObject {
     @Published var currentDragItem: Goal? = nil
     
     var itemsAppeared: Int { itemsAppear.reduce(0) { $0 + ($1 ? 1 : 0) } }
-        
     
     //MARK: - Transition
     
@@ -61,7 +61,10 @@ class GoalsActiveModel: ObservableObject {
     }
     
     
-    struct DragRelocateDelegate: DropDelegate {
+    var dropType = [UTType.text]
+    
+    
+    struct DragAndDropDelegate: DropDelegate {
         
         @Binding var gridItems: [Goal]
         @Binding var current: Goal?
@@ -99,6 +102,18 @@ class GoalsActiveModel: ObservableObject {
         func performDrop(info: DropInfo) -> Bool {
             current = nil
             DataModel.shared.moveGoals()
+            return true
+        }
+    }
+    
+    
+    struct DropOutsideDelegate: DropDelegate {
+        
+        @Binding var current: Goal?
+        
+        
+        func performDrop(info: DropInfo) -> Bool {
+            current = nil
             return true
         }
     }

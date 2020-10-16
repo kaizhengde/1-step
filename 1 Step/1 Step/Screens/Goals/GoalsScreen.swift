@@ -9,7 +9,10 @@ import SwiftUI
 
 struct GoalsScreen: View {
     
+    @StateObject private var mainModel = MainModel.shared
     @EnvironmentObject var goalsModel: GoalsModel
+    @StateObject private var goalsActiveModel = GoalsActiveModel()
+    
     
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -17,7 +20,7 @@ struct GoalsScreen: View {
                 GoalsHeaderView()
                 
                 if goalsModel.currentTab == .active {
-                    GoalsActiveView()
+                    GoalsActiveView(viewModel: goalsActiveModel)
                 } else {
                     GoalsReachedView()
                 }
@@ -26,5 +29,7 @@ struct GoalsScreen: View {
             .padding(.horizontal, Layout.firstLayerPadding)
             .padding(.bottom, goalsModel.scrollViewBottomPadding)
         }
+        .offset(x: mainModel.currentScreen.active.isScreen(.goal(appear: false)) ? -80 : 0)
+        .onDrop(of: goalsActiveModel.dropType, delegate: GoalsActiveModel.DropOutsideDelegate(current: $goalsActiveModel.currentDragItem))
     }
 }

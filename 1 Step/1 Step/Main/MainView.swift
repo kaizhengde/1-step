@@ -14,11 +14,11 @@ struct MainView: View {
     
     var body: some View {
         ZStack {
-            //Background
             Color.whiteToDarkGray.edgesIgnoringSafeArea(.all)
             
-            //Screens (one active only at a time)
             mainModel.screen(.goals) { GoalsScreen() }
+            mainModel.screen(.goal(appear: false)) { GoalTransitionScreen() }
+            mainModel.screen(.goal(appear: true)) { GoalScreen() }
             mainModel.screen(.goalAdd) { GoalCreateScreen() }
             mainModel.screen(.profile) { ProfileScreen() }
         }

@@ -36,7 +36,7 @@ struct GoalsHeaderView: View {
         
         private struct TabBarButtonView: View {
             
-            @EnvironmentObject private var goalsModel: GoalsModel
+            @EnvironmentObject var goalsModel: GoalsModel
             
             let tabActive: GoalsTab
             var isActive: Bool { goalsModel.currentTab == tabActive }

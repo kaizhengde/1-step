@@ -12,8 +12,8 @@ enum GoalItemArt {
     case grid, menu
     
     static var current: GoalItemArt {
-        if MainModel.shared.currentScreen.active == .goals { return .grid }
-        if MainModel.shared.currentScreen.active == .goal { return .menu }
+        if MainModel.shared.currentScreen.active.isScreen(.goals) { return .grid }
+        if MainModel.shared.currentScreen.active.isScreen(.goal(appear: true)) { return .menu }
         return .grid
     }
     
