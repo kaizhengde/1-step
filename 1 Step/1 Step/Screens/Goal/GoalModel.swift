@@ -9,12 +9,15 @@ import SwiftUI
 
 final class GoalModel: TransitionObservableObject {
     
-    @Published var transition: TransitionManager<GoalModel> = TransitionManager<GoalModel>()
+    @Published var transition: TransitionManager<GoalModel> = TransitionManager()
+    @Published var selectedGoal: Goal!
     
     
     //MARK: - Transition
     
     func initTransition() {
+        transition = TransitionManager(fullAppearAfter: DelayAfter.mountainAppear, fullHideAfter: .never)
+        transition.state = .firstAppear
         print("Transition Start")
     }
     

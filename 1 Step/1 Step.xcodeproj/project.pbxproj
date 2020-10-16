@@ -572,8 +572,8 @@
 			isa = PBXGroup;
 			children = (
 				3DD5C9CF2539CF7B00861784 /* GoalModel.swift */,
-				3DD5C9D32539D27100861784 /* GoalTransitionScreen.swift */,
 				3DD5C9CC2539CF6600861784 /* GoalScreen.swift */,
+				3DD5C9D32539D27100861784 /* GoalTransitionScreen.swift */,
 			);
 			path = Goal;
 			sourceTree = "<group>";

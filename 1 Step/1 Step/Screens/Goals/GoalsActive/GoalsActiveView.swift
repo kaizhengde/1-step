@@ -11,18 +11,22 @@ struct GoalsActiveView: View {
     
     @StateObject private var mainModel = MainModel.shared
     @StateObject private var dataModel = DataModel.shared
+    @EnvironmentObject var goalModel: GoalModel
     @ObservedObject var viewModel: GoalsActiveModel
     
     
     var body: some View {
         LazyVGrid(columns: viewModel.goalItemColumns, spacing: 24) {
             ForEach(dataModel.activeGoals, id: \.self) { goal in
-                GoalItem(goalActiveModel: viewModel, goal: goal) { mainModel.toGoalScreen() }
-                    .onDrag { viewModel.onGoalDrag(goal) }
-                    .onDrop(of: viewModel.dropType, delegate: GoalsActiveModel.DragAndDropDelegate(gridItems: $dataModel.activeGoals, current: $viewModel.currentDragItem, item: goal))
-                    .onAppear { viewModel.initItemTransition(of: Int(goal.sortOrder)) }
-                    .opacity(viewModel.itemsOpacityTransition(of: goal))
-                    .scaleEffect(viewModel.itemsScaleTransition(of: goal))
+                GoalItem(goalActiveModel: viewModel, goal: goal) {
+                    goalModel.selectedGoal = goal
+                    mainModel.toGoalScreen()
+                }
+                .onDrag { viewModel.onGoalDrag(goal) }
+                .onDrop(of: viewModel.dropType, delegate: GoalsActiveModel.DragAndDropDelegate(gridItems: $dataModel.activeGoals, current: $viewModel.currentDragItem, item: goal))
+                .onAppear { viewModel.initItemTransition(of: Int(goal.sortOrder)) }
+                .opacity(viewModel.itemsOpacityTransition(of: goal))
+                .scaleEffect(viewModel.itemsScaleTransition(of: goal))
             }
             VStack {
                 GoalCreateItem()

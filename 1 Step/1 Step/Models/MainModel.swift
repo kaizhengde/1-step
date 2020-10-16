@@ -11,13 +11,17 @@ struct Screen {
     
     enum Active: Equatable {
         
-        case goals, goal(appear: Bool), goalAdd, profile
+        enum GoalScreenShowState {
+            case transition, appear
+        }
+        
+        case goals, goal(GoalScreenShowState), goalAdd, profile
 
         func isScreen(_ screen: Self) -> Bool {
             switch screen {
-            case .goals: return self == .goals || self == .goal(appear: false)
-            case .goal(appear: true): return self == .goal(appear: true)
-            case .goal(appear: false): return self == .goal(appear: false)
+            case .goals: return self == .goals || self == .goal(.transition)
+            case .goal(.transition): return self == .goal(.transition)
+            case .goal(.appear): return self == .goal(.appear)
             case .goalAdd: return self == .goalAdd
             case .profile: return self == .profile
             }
@@ -53,7 +57,7 @@ final class MainModel: ObservableObject {
     
     func screen<Content: View>(_ screen: Screen.Active, content: () -> Content) -> AnyView {
         if currentScreen.active.isScreen(screen) {
-            if screen == .goal(appear: false) {
+            if screen == .goal(.transition) {
                 return AnyView(content())
             } else {
                 return AnyView(content().opacity(currentScreen.opacity))
@@ -64,12 +68,12 @@ final class MainModel: ObservableObject {
     
     
     func toGoalScreen() {
-        currentScreen.active = .goal(appear: false)
+        currentScreen.active = .goal(.transition)
         currentScreen.show()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + DelayAfter.mountainAppear) {
             self.currentScreen.dismiss()
-            self.currentScreen.active = .goal(appear: true)
+            self.currentScreen.active = .goal(.appear)
             self.currentScreen.show()
         }
     }

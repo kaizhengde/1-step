@@ -17,8 +17,8 @@ struct MainView: View {
             Color.whiteToDarkGray.edgesIgnoringSafeArea(.all)
             
             mainModel.screen(.goals) { GoalsScreen() }
-            mainModel.screen(.goal(appear: false)) { GoalTransitionScreen() }
-            mainModel.screen(.goal(appear: true)) { GoalScreen() }
+            mainModel.screen(.goal(.transition)) { GoalTransitionScreen() }
+            mainModel.screen(.goal(.appear)) { GoalScreen() }
             mainModel.screen(.goalAdd) { GoalCreateScreen() }
             mainModel.screen(.profile) { ProfileScreen() }
         }

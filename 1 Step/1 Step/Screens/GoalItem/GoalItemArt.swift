@@ -13,7 +13,7 @@ enum GoalItemArt {
     
     static var current: GoalItemArt {
         if MainModel.shared.currentScreen.active.isScreen(.goals) { return .grid }
-        if MainModel.shared.currentScreen.active.isScreen(.goal(appear: true)) { return .menu }
+        if MainModel.shared.currentScreen.active.isScreen(.goal(.appear)) { return .menu }
         return .grid
     }
     

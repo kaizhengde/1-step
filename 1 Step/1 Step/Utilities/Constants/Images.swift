@@ -25,7 +25,7 @@ enum Emoji {
 
 enum HeaderButtonSymbol {
     
-    case profile, close, back, settings
+    case profile, close, back, settings, custom(AnyView)
             
     
     func get() -> Image {
@@ -34,6 +34,23 @@ enum HeaderButtonSymbol {
         case .close:    return Image("CloseSymbol")
         case .back:     return Image("BackSymbol")
         case .settings: return Image("SettingsSymbol")
+        case .custom(_): return Image("")
+        }
+    }
+    
+    
+    func isCustom() -> Bool {
+        switch self {
+        case .custom(_): return true
+        default: return false 
+        }
+    }
+    
+    
+    func getCustom() -> AnyView {
+        switch self {
+        case let .custom(view): return view
+        default: return AnyView(EmptyView())
         }
     }
 }

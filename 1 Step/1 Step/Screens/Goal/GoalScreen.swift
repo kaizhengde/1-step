@@ -15,9 +15,23 @@ struct GoalScreen: View {
     var body: some View {
         ZStack {
             Color.backgroundToGray.edgesIgnoringSafeArea(.all)
-            
-            Text("Goal")
+            GoalHeaderView()
         }
         .onAppear { goalModel.initTransition() }
+    }
+    
+    
+    private struct GoalHeaderView: View {
+        
+        @EnvironmentObject var goalModel: GoalModel
+        
+        
+        var body: some View {
+            VStack {
+                OneSHeaderView(leadingButton: (.custom(AnyView(Text("Test"))), goalModel.selectedGoal.color.get(), {}), trailingButton: (.settings, goalModel.selectedGoal.color.get(), {}))
+                Spacer()
+            }
+            .padding(.horizontal, Layout.firstLayerPadding)
+        }
     }
 }

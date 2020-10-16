@@ -31,9 +31,9 @@ struct OneSHeaderViewCustom<Content: View>: View {
         VStack {
             //Buttons
             HStack {
-                Button(button: leadingButton)
+                CustomButton(button: leadingButton)
                 Spacer()
-                Button(button: trailingButton)
+                CustomButton(button: trailingButton)
             }
             .padding(.vertical, 16*Layout.multiplierHeight)
             
@@ -54,21 +54,28 @@ struct OneSHeaderViewCustom<Content: View>: View {
     }
     
     
-    private struct Button: View {
+    private struct CustomButton: View {
         
         let button: HeaderButton?
         
         
         var body: some View {
             if let button = button {
-                button.image.get()
-                    .renderingMode(.template)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 25, height: 25)
-                    .foregroundColor(.white)
-                    .colorMultiply(button.color)
-                    .onTapGesture { button.action() }
+                if button.image.isCustom() {
+                    button.image.getCustom()
+                        .frame(width: 30, height: 30)
+                        .foregroundColor(button.color)
+                        .onTapGesture { button.action() }
+                } else {
+                    button.image.get()
+                        .renderingMode(.template)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 30, height: 30)
+                        .foregroundColor(.white)
+                        .colorMultiply(button.color)
+                        .onTapGesture { button.action() }
+                }
             }
         }
     }
