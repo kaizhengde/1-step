@@ -66,6 +66,15 @@ final class GoalModel: TransitionObservableObject {
     }
     
     
+    func menuButtonRotationDegree(_ degrees: Double) -> Angle {
+        return changeThenStatic(standard: .zero, menu: .degrees(degrees))
+    }
+    
+    func menuButtonRotationOffset(standard: CGFloat, menu: CGFloat) -> CGFloat {
+        return changeThenStatic(standard: standard, menu: menu)
+    }
+    
+    
     //MARK: - Summary
     
     var mountainTransitionOffset: CGFloat {
@@ -87,7 +96,6 @@ final class GoalModel: TransitionObservableObject {
     var stepUnitText: String {
         return selectedGoal.step.unit == .custom ? selectedGoal.step.customUnit : selectedGoal.step.unit.description
     }
-    
     
     
     //MARK: - Menu

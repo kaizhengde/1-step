@@ -32,16 +32,16 @@ struct GoalHeaderView: View {
         var body: some View {
             VStack {
                 Rectangle()
-                    .frame(width: 24, height: 5.5)
-                    .rotationEffect(.zero)
-                    .offset(y: 5)
+                    .frame(width: 25, height: 5.5)
+                    .rotationEffect(goalModel.menuButtonRotationDegree(45))
+                    .offset(y: goalModel.menuButtonRotationOffset(standard: 5, menu: 9.5))
                 
                 Rectangle()
-                    .frame(width: 24, height: 5.5)
-                    .rotationEffect(.zero)
-                    .offset(y: 2)
+                    .frame(width: 25, height: 5.5)
+                    .rotationEffect(goalModel.menuButtonRotationDegree(-45))
+                    .offset(y: goalModel.menuButtonRotationOffset(standard: 2, menu: -4))
             }
-            .frame(width: 24, height: 24)
+            .frame(width: 25, height: 25)
             .contentShape(Rectangle())
             .onTapGesture { goalModel.toggleMenuButton() }
         }
