@@ -38,12 +38,12 @@ struct GoalSummaryView: View {
             
             var body: some View {
                 VStack(spacing: -5) {
-                    OneSText(text: goalModel.selectedGoal.name, font: .custom(weight: Raleway.light, size: 28), color: .grayToBackground)
+                    OneSText(text: goalModel.selectedGoal.name, font: .custom(weight: Raleway.light, size: 28), color: goalModel.topTextColor)
                     
                     HStack(spacing: 3) {
-                        OneSText(text: "\(goalModel.selectedGoal.stepsNeeded)", font: .custom(weight: Raleway.bold, size: 45), color: .grayToBackground)
+                        OneSText(text: "\(goalModel.selectedGoal.stepsNeeded)", font: .custom(weight: Raleway.bold, size: 45), color: goalModel.topTextColor)
                         
-                        OneSText(text: goalModel.selectedGoal.step.unit.description, font: .custom(weight: Raleway.bold, size: 36), color: .grayToBackground)
+                        OneSText(text: goalModel.stepUnitText, font: .custom(weight: Raleway.bold, size: 36), color: goalModel.topTextColor)
                     }
                 }
                 .frame(height: 80)
@@ -86,10 +86,10 @@ struct GoalSummaryView: View {
                 .frame(width: Layout.screenWidth, height: MountainLayout.height)
                 .aspectRatio(contentMode: .fit)
                 .edgesIgnoringSafeArea(.all)
-                .padding(.top, goalModel.mountainTransitionOffset())
-                .oneSMountainAnimation()
-            .foregroundColor(.white)
-            .colorMultiply(goalModel.selectedGoal.color.get())
+                .padding(.top, goalModel.mountainTransitionOffset)
+                .animation(goalModel.mountainAnimation)
+                .foregroundColor(.white)
+                .colorMultiply(goalModel.mountainColor)
         }
     }
 }

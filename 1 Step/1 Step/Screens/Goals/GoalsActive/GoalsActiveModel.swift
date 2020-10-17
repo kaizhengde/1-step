@@ -48,7 +48,7 @@ class GoalsActiveModel: ObservableObject {
     
     
     func itemsAnimation() -> Animation {
-        return currentDragItem == nil ? .spring(response: 0.4, dampingFraction: 0.5, blendDuration: 0) : .easeInOut(duration: 0.3)
+        return currentDragItem == nil ? .oneSMountainAnimation(response: 0.4, dampingFraction: 0.5) : .oneSAnimation()
     }
     
     

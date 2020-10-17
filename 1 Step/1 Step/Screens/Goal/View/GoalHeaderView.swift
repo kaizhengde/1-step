@@ -14,12 +14,12 @@ struct GoalHeaderView: View {
     
     var body: some View {
         VStack {
-            OneSHeaderView(leadingButton: (.custom(AnyView(MenuButton())), goalModel.selectedGoal.color.get(), {}), trailingButton: (.settings, goalModel.selectedGoal.color.get(), {}))
+            OneSHeaderView(leadingButton: (.custom(AnyView(MenuButton())), goalModel.headerButtonColor, {}), trailingButton: (.settings, goalModel.headerButtonColor, {}))
             Spacer()
         }
         .padding(.horizontal, Layout.firstLayerPadding)
-        .opacity(goalModel.transition.didAppear ? 1.0 : 0.0)
-        .offset(y: goalModel.transition.didAppear ? 0 : -30)
+        .opacity(!goalModel.transition.isFullHidden ? 1.0 : 0.0)
+        .offset(y: !goalModel.transition.isFullHidden ? 0 : -30)
         .oneSAnimation()
     }
     
@@ -42,9 +42,8 @@ struct GoalHeaderView: View {
                     .offset(y: 2)
             }
             .frame(width: 24, height: 24)
-            .foregroundColor(goalModel.selectedGoal.color.get())
             .contentShape(Rectangle())
-            .onTapGesture {}
+            .onTapGesture { goalModel.toggleMenuButton() }
         }
     }
 }

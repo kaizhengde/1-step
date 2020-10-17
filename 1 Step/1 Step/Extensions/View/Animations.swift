@@ -63,3 +63,21 @@ extension View {
         return modifier(OneSMountainAnimation(response: response, dampingFraction: dampingFraction, delay: delay))
     }
 }
+
+
+extension Animation {
+    
+    static func oneSAnimation(duration: Double = 0.6, delay: Double = 0.0) -> Animation {
+        return Animation.timingCurve(0.3, 0.6, 0.2, 1, duration: duration).delay(delay)
+    }
+    
+    
+    static func oneSOpacityAnimation(duration: Double = AnimationDuration.opacity, delay: Double = 0.0) -> Animation {
+        return Animation.easeInOut(duration: duration).delay(delay)
+    }
+    
+    
+    static func oneSMountainAnimation(response: Double = 0.8, dampingFraction: Double = 0.7, delay: Double = 0.0) -> Animation {
+        return Animation.spring(response: response, dampingFraction: dampingFraction, blendDuration: 0).delay(delay)
+    }
+}

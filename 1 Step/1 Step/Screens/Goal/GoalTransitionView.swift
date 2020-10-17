@@ -9,10 +9,14 @@ import SwiftUI
 
 struct GoalTransitionView: View {
     
+    @EnvironmentObject var goalModel: GoalModel
+    
+    
     var body: some View {
         Color.backgroundToGray.edgesIgnoringSafeArea(.all)
             .oneSShadow(opacity: 0.2, y: 0, blur: 13)
             .transition(AnyTransition.move(edge: .trailing))
             .oneSAnimation()
+            .onAppear { goalModel.initAppear() }
     }
 }

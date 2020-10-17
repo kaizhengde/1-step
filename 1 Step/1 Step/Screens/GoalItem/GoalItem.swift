@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GoalItem: View {
     
-    let goalActiveModel: GoalsActiveModel?
+    let goalActiveModel: GoalsActiveModel
     @State private var isCurrentDrag: Bool = false
     @State private var tapAnimation: Bool = false
     
@@ -29,7 +29,7 @@ struct GoalItem: View {
         .contentShape(GoalItemArt.shape)
         .oneSShadow(opacity: 0.15, y: 3, blur: 10)
         .scaleEffect(tapAnimation ? 1.05 : 1.0)
-        .onReceive(goalActiveModel!.$currentDragItem) { isCurrentDrag = $0 == goal }
+        .onReceive(goalActiveModel.$currentDragItem) { isCurrentDrag = $0 == goal }
         .onTapGesture {
             onTap()
             tapAnimation = true

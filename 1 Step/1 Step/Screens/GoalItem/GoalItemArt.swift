@@ -67,7 +67,7 @@ enum GoalItemArt {
     static var textOffset: CGFloat {
         switch current {
         case .grid: return 36
-        case .menu: return 0
+        case .menu: return 16
         }
     }
     

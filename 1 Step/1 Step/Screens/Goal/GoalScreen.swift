@@ -13,18 +13,15 @@ struct GoalScreen: View {
     
     
     var body: some View {
-        ZStack {
-            Color.backgroundToGray.edgesIgnoringSafeArea(.all)
-            
-            ScrollView(showsIndicators: false) {
-                ZStack {
-                    GoalHeaderView()
-                    goalModel.selectedGoal.color.get().offset(y: Layout.screenHeight + 20)
-                    GoalSummaryView() 
-                }
-            }
+        ZStack(alignment: .leading) {
+            GoalMenuView()
+            GoalView()
         }
         .transition(.identity)
         .onAppear { goalModel.initTransition() }
+        .highPriorityGesture(goalModel.dragMenu)
+        .oneSAnimation()
     }
 }
+
+
