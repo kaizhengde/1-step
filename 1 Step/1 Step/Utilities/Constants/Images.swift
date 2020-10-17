@@ -9,11 +9,12 @@ import SwiftUI
 
 enum SFSymbol {
     
-    static let arrow    = Image(systemName: "arrow.right")
-    static let delete   = Image(systemName: "trash.fill")
-    static let check    = Image(systemName: "checkmark")
-    static let rosette  = Image(systemName: "rosette")
-    static let plus     = Image(systemName: "plus")
+    static let arrow        = Image(systemName: "arrow.right")
+    static let delete       = Image(systemName: "trash.fill")
+    static let check        = Image(systemName: "checkmark")
+    static let rosette      = Image(systemName: "rosette")
+    static let plus         = Image(systemName: "plus")
+    static let downArrow    = Image(systemName: "chevron.compact.down")
 }
 
 

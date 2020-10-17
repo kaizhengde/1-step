@@ -17,8 +17,15 @@ final class GoalModel: TransitionObservableObject {
     
     func initTransition() {
         transition = TransitionManager(fullAppearAfter: DelayAfter.mountainAppear, fullHideAfter: .never)
+        transition.delegate = self
         transition.state = .firstAppear
-        print("Transition Start")
+    }
+    
+    
+    //MARK: - Summary
+    
+    func mountainTransitionOffset() -> CGFloat {
+        return MountainLayout.offsetY + (transition.didAppear ? 0 : MountainLayout.height)
     }
     
     

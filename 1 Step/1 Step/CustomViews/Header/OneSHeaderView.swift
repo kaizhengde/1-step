@@ -61,21 +61,22 @@ struct OneSHeaderViewCustom<Content: View>: View {
         
         var body: some View {
             if let button = button {
-                if button.image.isCustom() {
-                    button.image.getCustom()
-                        .frame(width: 30, height: 30)
-                        .foregroundColor(button.color)
-                        .onTapGesture { button.action() }
-                } else {
-                    button.image.get()
-                        .renderingMode(.template)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 30, height: 30)
-                        .foregroundColor(.white)
-                        .colorMultiply(button.color)
-                        .onTapGesture { button.action() }
+                Group {
+                    if button.image.isCustom() {
+                        button.image.getCustom()
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(button.color)
+                    } else {
+                        button.image.get()
+                            .renderingMode(.template)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(.white)
+                            .colorMultiply(button.color)
+                    }
                 }
+                .onTapGesture { button.action() }
             }
         }
     }

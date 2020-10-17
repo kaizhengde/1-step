@@ -55,15 +55,16 @@ final class MainModel: ObservableObject {
     }
     
     
-    func screen<Content: View>(_ screen: Screen.Active, content: () -> Content) -> AnyView {
-        if currentScreen.active.isScreen(screen) {
-            if screen == .goal(.transition) {
-                return AnyView(content())
-            } else {
-                return AnyView(content().opacity(currentScreen.opacity))
+    func screen<Content: View>(_ screen: Screen.Active, content: () -> Content) -> some View {
+        Group {
+            if currentScreen.active.isScreen(screen) {
+                if screen == .goal(.transition) {
+                    content()
+                } else {
+                    content().opacity(currentScreen.opacity)
+                }
             }
         }
-        return AnyView(EmptyView())
     }
     
     
@@ -71,7 +72,7 @@ final class MainModel: ObservableObject {
         currentScreen.active = .goal(.transition)
         currentScreen.show()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + DelayAfter.mountainAppear) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
             self.currentScreen.dismiss()
             self.currentScreen.active = .goal(.appear)
             self.currentScreen.show()

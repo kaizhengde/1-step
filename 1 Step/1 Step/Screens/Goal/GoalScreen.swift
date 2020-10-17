@@ -15,23 +15,16 @@ struct GoalScreen: View {
     var body: some View {
         ZStack {
             Color.backgroundToGray.edgesIgnoringSafeArea(.all)
-            GoalHeaderView()
-        }
-        .onAppear { goalModel.initTransition() }
-    }
-    
-    
-    private struct GoalHeaderView: View {
-        
-        @EnvironmentObject var goalModel: GoalModel
-        
-        
-        var body: some View {
-            VStack {
-                OneSHeaderView(leadingButton: (.custom(AnyView(Text("Test"))), goalModel.selectedGoal.color.get(), {}), trailingButton: (.settings, goalModel.selectedGoal.color.get(), {}))
-                Spacer()
+            
+            ScrollView(showsIndicators: false) {
+                ZStack {
+                    GoalHeaderView()
+                    goalModel.selectedGoal.color.get().offset(y: Layout.screenHeight + 20)
+                    GoalSummaryView() 
+                }
             }
-            .padding(.horizontal, Layout.firstLayerPadding)
         }
+        .transition(.identity)
+        .onAppear { goalModel.initTransition() }
     }
 }
