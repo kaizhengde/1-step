@@ -17,10 +17,11 @@ struct GoalScreen: View {
             GoalMenuView()
             GoalView()
         }
-        .transition(.identity)
         .onAppear { goalModel.initTransition() }
         .highPriorityGesture(goalModel.dragMenu)
         .oneSAnimation()
+        .sheet(isPresented: $goalModel.onEdit) { Text("Edit") }
+        .transition(.identity)
     }
 }
 

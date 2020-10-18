@@ -68,7 +68,7 @@ struct GoalSummaryView: View {
                 }
                 .frame(height: 80)
                 .padding(.horizontal, Layout.secondLayerPadding)
-                .padding(.top, Layout.screenHeight - 140)
+                .padding(.top, Layout.screenHeight - 140 - SafeAreaSize.bottom)
             }
         }
     }

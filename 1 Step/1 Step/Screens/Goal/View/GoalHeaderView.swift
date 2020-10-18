@@ -14,7 +14,8 @@ struct GoalHeaderView: View {
     
     var body: some View {
         VStack {
-            OneSHeaderView(leadingButton: (.custom(AnyView(MenuButton())), goalModel.headerButtonColor, {}), trailingButton: (.settings, goalModel.headerButtonColor, {}))
+            OneSHeaderView(leadingButton: (.custom(AnyView(MenuButton())), goalModel.headerButtonColor, { goalModel.toggleMenuButton() }),
+                           trailingButton: (.settings, goalModel.headerButtonColor, { goalModel.onEdit = true }))
             Spacer()
         }
         .padding(.horizontal, Layout.firstLayerPadding)
@@ -43,7 +44,6 @@ struct GoalHeaderView: View {
             }
             .frame(width: 25, height: 25)
             .contentShape(Rectangle())
-            .onTapGesture { goalModel.toggleMenuButton() }
         }
     }
 }
