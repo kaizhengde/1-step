@@ -76,7 +76,7 @@ fileprivate struct OneSMiniSheet<MiniSheetContent>: ViewModifier where MiniSheet
                         HStack {
                             OneSSecondaryHeaderText(text: manager.titleText, color: .backgroundToGray)
                             Spacer()
-                            OneSContinueButton(color: .backgroundToGray, withScale: false) { manager.dismiss() }
+                            OneSSmallBorderButton(symbol: SFSymbol.arrow, color: .backgroundToGray, withScale: false) { manager.dismiss() }
                         }
                         .padding(.bottom, 20)
                         

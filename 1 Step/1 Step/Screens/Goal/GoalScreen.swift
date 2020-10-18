@@ -20,7 +20,7 @@ struct GoalScreen: View {
         .onAppear { goalModel.initTransition() }
         .highPriorityGesture(goalModel.dragMenu)
         .oneSAnimation()
-        .sheet(isPresented: $goalModel.onEdit) { Text("Edit") }
+        .sheet(isPresented: $goalModel.onEdit) { GoalEditScreen().environmentObject(goalModel) }
         .transition(.identity)
     }
 }

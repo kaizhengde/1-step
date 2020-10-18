@@ -56,3 +56,17 @@ enum HeaderButtonSymbol {
     }
 }
 
+
+enum SecondaryHeaderButtonSymbol {
+    
+    case `continue`, save, delete
+    
+    
+    func get() -> Image {
+        switch self {
+        case .continue: return SFSymbol.arrow
+        case .save:     return SFSymbol.check
+        case .delete:   return SFSymbol.delete
+        }
+    }
+}

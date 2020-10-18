@@ -17,7 +17,7 @@
 		3D2E7933252F9CFA00788AA2 /* Animation+Delay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2E7932252F9CFA00788AA2 /* Animation+Delay.swift */; };
 		3D2E7936252F9D3E00788AA2 /* OneSHintButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2E7935252F9D3E00788AA2 /* OneSHintButton.swift */; };
 		3D2E7939252F9D7A00788AA2 /* OneSScaleButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2E7938252F9D7A00788AA2 /* OneSScaleButtonStyle.swift */; };
-		3D2E7941253017B600788AA2 /* OneSContinueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2E7940253017B600788AA2 /* OneSContinueButton.swift */; };
+		3D2E7941253017B600788AA2 /* OneSSmallBorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2E7940253017B600788AA2 /* OneSSmallBorderButton.swift */; };
 		3D2E79452530187800788AA2 /* OneSTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2E79442530187800788AA2 /* OneSTextField.swift */; };
 		3D2E794A253019A200788AA2 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2E7949253019A200788AA2 /* UIApplication.swift */; };
 		3D2E795425301ADD00788AA2 /* HapticFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2E795325301ADD00788AA2 /* HapticFeedback.swift */; };
@@ -97,6 +97,8 @@
 		3DE9C522252CB5820023C212 /* GoalCreateScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE9C521252CB5820023C212 /* GoalCreateScreen.swift */; };
 		3DE9C527252CB6FF0023C212 /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE9C526252CB6FF0023C212 /* ProfileScreen.swift */; };
 		3DF7916D25307EBF00F00174 /* ChildSizeReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF7916C25307EBF00F00174 /* ChildSizeReader.swift */; };
+		3DFDE052253C4663006B1A7E /* GoalEditScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFDE051253C4663006B1A7E /* GoalEditScreen.swift */; };
+		3DFDE055253C4678006B1A7E /* GoalEditModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFDE054253C4678006B1A7E /* GoalEditModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,7 +112,7 @@
 		3D2E7932252F9CFA00788AA2 /* Animation+Delay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Animation+Delay.swift"; sourceTree = "<group>"; };
 		3D2E7935252F9D3E00788AA2 /* OneSHintButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSHintButton.swift; sourceTree = "<group>"; };
 		3D2E7938252F9D7A00788AA2 /* OneSScaleButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSScaleButtonStyle.swift; sourceTree = "<group>"; };
-		3D2E7940253017B600788AA2 /* OneSContinueButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSContinueButton.swift; sourceTree = "<group>"; };
+		3D2E7940253017B600788AA2 /* OneSSmallBorderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSSmallBorderButton.swift; sourceTree = "<group>"; };
 		3D2E79442530187800788AA2 /* OneSTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSTextField.swift; sourceTree = "<group>"; };
 		3D2E7949253019A200788AA2 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		3D2E795325301ADD00788AA2 /* HapticFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedback.swift; sourceTree = "<group>"; };
@@ -192,6 +194,8 @@
 		3DE9C521252CB5820023C212 /* GoalCreateScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCreateScreen.swift; sourceTree = "<group>"; };
 		3DE9C526252CB6FF0023C212 /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
 		3DF7916C25307EBF00F00174 /* ChildSizeReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildSizeReader.swift; sourceTree = "<group>"; };
+		3DFDE051253C4663006B1A7E /* GoalEditScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEditScreen.swift; sourceTree = "<group>"; };
+		3DFDE054253C4678006B1A7E /* GoalEditModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEditModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -387,7 +391,7 @@
 				3D2E7938252F9D7A00788AA2 /* OneSScaleButtonStyle.swift */,
 				3D4CC510252F558C00133CD6 /* OneSBorderButton.swift */,
 				3D2E7935252F9D3E00788AA2 /* OneSHintButton.swift */,
-				3D2E7940253017B600788AA2 /* OneSContinueButton.swift */,
+				3D2E7940253017B600788AA2 /* OneSSmallBorderButton.swift */,
 				3D2E795725301DA400788AA2 /* OneSFillButton.swift */,
 			);
 			path = Buttons;
@@ -417,6 +421,8 @@
 		3D4B78DB252CD70100A45755 /* GoalEdit */ = {
 			isa = PBXGroup;
 			children = (
+				3DFDE054253C4678006B1A7E /* GoalEditModel.swift */,
+				3DFDE051253C4663006B1A7E /* GoalEditScreen.swift */,
 			);
 			path = GoalEdit;
 			sourceTree = "<group>";
@@ -719,6 +725,7 @@
 			files = (
 				3D47CCBD252C7EF900A8CA1B /* GoalsScreen.swift in Sources */,
 				3DE9C522252CB5820023C212 /* GoalCreateScreen.swift in Sources */,
+				3DFDE055253C4678006B1A7E /* GoalEditModel.swift in Sources */,
 				3D0B5948253319AC00079856 /* GoalErrorHandler.swift in Sources */,
 				3D47CCC2252C807000A8CA1B /* Colors.swift in Sources */,
 				3DE11C3E252C681600F13719 /* PersistenceManger.swift in Sources */,
@@ -758,7 +765,7 @@
 				3D47CC8D252C71C100A8CA1B /* Layout.swift in Sources */,
 				3D5156BC2531FB7E00A44450 /* MiniSheetManager.swift in Sources */,
 				3DA7BD3A2532F6A600171360 /* DataManager.swift in Sources */,
-				3D2E7941253017B600788AA2 /* OneSContinueButton.swift in Sources */,
+				3D2E7941253017B600788AA2 /* OneSSmallBorderButton.swift in Sources */,
 				3DE0796925340F080024E17D /* GoalItem.swift in Sources */,
 				3DF7916D25307EBF00F00174 /* ChildSizeReader.swift in Sources */,
 				3DE9C507252C8B8C0023C212 /* OneSHeaderText.swift in Sources */,
@@ -789,6 +796,7 @@
 				3DDF70292531A5BB00FD3011 /* UserColor.swift in Sources */,
 				3D160D55252E2067008588D5 /* TransitionManager.swift in Sources */,
 				3DE0796C25340F550024E17D /* GoalItemArt.swift in Sources */,
+				3DFDE052253C4663006B1A7E /* GoalEditScreen.swift in Sources */,
 				3D6F4399253AE19C00785586 /* GoalHeaderView.swift in Sources */,
 				3D4B78E5252CDE9E00A45755 /* GoalSelectMountainModel.swift in Sources */,
 				3D4CC511252F558C00133CD6 /* OneSBorderButton.swift in Sources */,

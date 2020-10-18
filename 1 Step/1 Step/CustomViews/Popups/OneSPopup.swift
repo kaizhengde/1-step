@@ -61,7 +61,7 @@ fileprivate struct OneSPopup<PopupContent>: ViewModifier where PopupContent: Vie
                         }
                         if manager.continueButton {
                             Spacer()
-                            OneSContinueButton(color: .backgroundToGray, withScale: false) { manager.saveAndDismiss() }
+                            OneSSmallBorderButton(symbol: SFSymbol.arrow, color: .backgroundToGray, withScale: false) { manager.saveAndDismiss() }
                         }
                     }
                     manager.content()

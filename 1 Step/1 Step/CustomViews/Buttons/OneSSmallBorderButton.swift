@@ -7,8 +7,9 @@
 
 import SwiftUI
 
-struct OneSContinueButton: View {
+struct OneSSmallBorderButton: View {
     
+    let symbol: Image
     let color: Color
     var withScale: Bool = true
     let action: () -> ()
@@ -17,10 +18,10 @@ struct OneSContinueButton: View {
     var body: some View {
         Group {
             if withScale {
-                ButtonContent(color: color, action: action)
+                ButtonContent(color: color, symbol: symbol, action: action)
                     .oneSButtonScaleStyle()
             } else {
-                ButtonContent(color: color, action: action)
+                ButtonContent(color: color, symbol: symbol, action: action)
             }
         }
     }
@@ -29,12 +30,13 @@ struct OneSContinueButton: View {
     private struct ButtonContent: View {
         
         let color: Color
+        let symbol: Image
         let action: () -> ()
         
         
         var body: some View {
             Button(action: { action() }) {
-                SFSymbol.arrow
+                symbol
                     .font(OneSFont.custom(weight: Raleway.bold, size: 19).get())
                     .frame(width: 68 * Layout.multiplierWidth, height: 38)
                     .foregroundColor(color)
