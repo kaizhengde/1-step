@@ -1,0 +1,42 @@
+//
+//  Color.swift
+//  1 Step
+//
+//  Created by Kai Zheng on 18.10.20.
+//
+
+import SwiftUI
+import UIKit
+
+extension Color {
+    
+    var components: (r: Double, g: Double, b: Double, o: Double)? {
+
+        typealias NativeColor = UIColor
+
+        var r: CGFloat = 0
+        var g: CGFloat = 0
+        var b: CGFloat = 0
+        var o: CGFloat = 0
+
+        guard NativeColor(self).getRed(&r, green: &g, blue: &b, alpha: &o) else {
+            return nil
+        }
+
+        return (Double(r), Double(g), Double(b), Double(o))
+    }
+    
+    
+    func interpolateTo(color: Color, fraction: Double) -> Color {
+        
+        let s = self.components!
+        let t = color.components!
+        
+        let r: Double = s.r + (t.r - s.r) * fraction
+        let g: Double = s.g + (t.g - s.g) * fraction
+        let b: Double = s.b + (t.b - s.b) * fraction
+        let o: Double = s.o + (t.o - s.o) * fraction
+        
+        return Color(red: r, green: g, blue: b, opacity: o)
+    }
+}

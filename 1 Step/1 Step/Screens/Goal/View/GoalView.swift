@@ -23,13 +23,14 @@ struct GoalView: View {
                     GoalHeaderView()
                     
                     Group {
-                        goalModel.selectedGoal.color.get().offset(y: Layout.screenHeight + 20)
+                        goalModel.backgroundColor.offset(y: Layout.screenHeight + 20)
                         GoalSummaryView()
                     }
                     .offset(x: goalModel.goalContentDragOffset)
                 }
             }
             .opacity(goalModel.viewDragOpacity)
+            //.disabled(goalModel.changeThenStatic(standard: false, menu: true))
         }
         .offset(x: goalModel.goalDragOffset)
     }

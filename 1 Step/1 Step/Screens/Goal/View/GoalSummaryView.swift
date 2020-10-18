@@ -89,7 +89,7 @@ struct GoalSummaryView: View {
                 .padding(.top, goalModel.mountainTransitionOffset)
                 .animation(goalModel.mountainAnimation)
                 .foregroundColor(.white)
-                .colorMultiply(goalModel.mountainColor)
+                .colorMultiply(goalModel.backgroundColor)
         }
     }
 }

@@ -10,6 +10,7 @@
 		3D0B59452533123600079856 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0B59442533123600079856 /* DataModel.swift */; };
 		3D0B5948253319AC00079856 /* GoalErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0B5947253319AC00079856 /* GoalErrorHandler.swift */; };
 		3D160D55252E2067008588D5 /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D160D54252E2067008588D5 /* TransitionManager.swift */; };
+		3D258282253C0A9300DC19E7 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D258281253C0A9300DC19E7 /* Color.swift */; };
 		3D2E7928252F6C2C00788AA2 /* GoalEnterInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2E7927252F6C2C00788AA2 /* GoalEnterInputModel.swift */; };
 		3D2E792C252F6CAB00788AA2 /* GoalEnterInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2E792B252F6CAB00788AA2 /* GoalEnterInputView.swift */; };
 		3D2E792F252F721A00788AA2 /* DismissableObservableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2E792E252F721A00788AA2 /* DismissableObservableObject.swift */; };
@@ -101,6 +102,7 @@
 		3D0B59442533123600079856 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		3D0B5947253319AC00079856 /* GoalErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalErrorHandler.swift; sourceTree = "<group>"; };
 		3D160D54252E2067008588D5 /* TransitionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
+		3D258281253C0A9300DC19E7 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		3D2E7927252F6C2C00788AA2 /* GoalEnterInputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEnterInputModel.swift; sourceTree = "<group>"; };
 		3D2E792B252F6CAB00788AA2 /* GoalEnterInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEnterInputView.swift; sourceTree = "<group>"; };
 		3D2E792E252F721A00788AA2 /* DismissableObservableObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissableObservableObject.swift; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 			children = (
 				3D2E795B25301EA900788AA2 /* View */,
 				3D2E7949253019A200788AA2 /* UIApplication.swift */,
+				3D258281253C0A9300DC19E7 /* Color.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -728,6 +731,7 @@
 				3DD5C9D02539CF7B00861784 /* GoalModel.swift in Sources */,
 				3D47CC7B252C6C1C00A8CA1B /* MainView.swift in Sources */,
 				3D2E794A253019A200788AA2 /* UIApplication.swift in Sources */,
+				3D258282253C0A9300DC19E7 /* Color.swift in Sources */,
 				3D2E795825301DA400788AA2 /* OneSFillButton.swift in Sources */,
 				3D2E795D25301ED600788AA2 /* OneSPopup.swift in Sources */,
 				3DE11C41252C681600F13719 /* __Step.xcdatamodeld in Sources */,

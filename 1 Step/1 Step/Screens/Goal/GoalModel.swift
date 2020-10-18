@@ -56,8 +56,16 @@ final class GoalModel: TransitionObservableObject {
         }
     }
     
+    var viewDragOpacity: Double { dragProgressToHide }
+    
+  
+    func viewDragColor(standard: Color, menu: Color) -> Color {
+        return standard.interpolateTo(color: menu, fraction: dragProgressToMenu)
+    }
+    
+    
     var headerButtonColor: Color {
-        return changeThenStatic(standard: selectedGoal.color.get(), menu: .neutralToDarkNeutral)
+        return viewDragColor(standard: selectedGoal.color.get(), menu: .neutralToDarkNeutral)
     }
     
     
@@ -67,11 +75,13 @@ final class GoalModel: TransitionObservableObject {
     
     
     func menuButtonRotationDegree(_ degrees: Double) -> Angle {
-        return changeThenStatic(standard: .zero, menu: .degrees(degrees))
+        let angle = 0 + (degrees - 0) * dragProgressToMenu
+        return .degrees(angle)
     }
     
+    
     func menuButtonRotationOffset(standard: CGFloat, menu: CGFloat) -> CGFloat {
-        return changeThenStatic(standard: standard, menu: menu)
+        return standard + (menu - standard) * CGFloat(dragProgressToMenu)
     }
     
     
@@ -85,12 +95,12 @@ final class GoalModel: TransitionObservableObject {
         return transition.isFullAppeared ? .oneSAnimation() : .oneSMountainAnimation()
     }
     
-    var mountainColor: Color {
-        return changeThenStatic(standard: selectedGoal.color.get(), menu: .darkBackgroundToDarkGray)
+    var backgroundColor: Color {
+        return viewDragColor(standard: selectedGoal.color.get(), menu: .darkBackgroundToDarkGray)
     }
     
     var topTextColor: Color {
-        return changeThenStatic(standard: .grayToBackground, menu: .neutralToDarkNeutral)
+        return viewDragColor(standard: .grayToBackground, menu: .neutralToDarkNeutral)
     }
     
     var stepUnitText: String {
@@ -113,41 +123,26 @@ final class GoalModel: TransitionObservableObject {
     
     //MARK: - Drag
     
-    var viewDragOpacity: Double {
-        if dragState == .complete { return 0.0 }
-        
-        //When reached - fully hidden
-        let hidePoint = (Layout.screenWidth-menuWidth)/2
-        
-        //Fadeout: After MenuView to GoalsView
-        let dragOpacity = 1 - Double(dragOffset / hidePoint)
-        
-        //Fadeout: Directly to GoalsView
-        let dragDirectOpacity = 1 - Double((dragOffset-160) / hidePoint)
-        
-        return dragState == .menu ? dragOpacity : (dragOffset >= 160 ? dragDirectOpacity : 1.0)
-    }
+    private let hidePoint: CGFloat = (Layout.screenWidth-160)/2
     
-    
-    private func changeThenStatic<T>(standard: T, menu: T) -> T {
-        if onDrag(from: .menu) {
-            return standard
-        } else if dragState == .menu || onDrag(from: .none) {
-            return menu
+    private var dragProgressToHide: Double {
+        if dragState == .menu {
+            return 1 - Double(dragOffset / hidePoint)
+        } else if dragOffset >= menuWidth {
+            return 1 - Double((dragOffset-menuWidth) / hidePoint)
         }
-        return standard
+        return dragState == .complete ? 0.0 : 1.0
+    }
+    
+    private var dragProgressToMenu: Double {
+        if dragOffset <= menuWidth {
+            return dragState == .menu ? min(1+Double(dragOffset/menuWidth), 1) : Double(dragOffset/menuWidth)
+        }
+        return 1
     }
     
     
-    private func onDrag(from: DragState) -> Bool {
-        return dragState == from && dragDirection(from)(dragOffset, 0)
-    }
-    
-    
-    private func dragDirection(_ from: DragState) -> (CGFloat, CGFloat) -> Bool {
-        return from == .menu ? { $0 < $1 } : { $0 > $1 }
-    }
-    
+    //Gesture
     
     lazy private(set) var dragMenu = DragGesture()
         .onChanged { [weak self] value in self?.onChanged(value) }
