@@ -10,12 +10,13 @@ import SwiftUI
 struct GoalHeaderView: View {
     
     @EnvironmentObject var goalModel: GoalModel
+    @StateObject private var sheetManager = SheetManager.shared
     
     
     var body: some View {
         VStack {
             OneSHeaderView(leadingButton: (.custom(AnyView(MenuButton())), goalModel.headerButtonColor, { goalModel.toggleMenuButton() }),
-                           trailingButton: (.settings, goalModel.headerButtonColor, { goalModel.onEdit = true }))
+                           trailingButton: (.settings, goalModel.headerButtonColor, { sheetManager.showSheet { GoalEditScreen().environmentObject(goalModel) } } ))
             Spacer()
         }
         .padding(.horizontal, Layout.firstLayerPadding)

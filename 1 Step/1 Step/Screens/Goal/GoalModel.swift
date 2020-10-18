@@ -18,8 +18,6 @@ final class GoalModel: TransitionObservableObject {
     @Published var transition: TransitionManager<GoalModel> = TransitionManager()
     @Published var selectedGoal: Goal!
     
-    @Published var onEdit: Bool = false 
-    
     @Published var dragState: DragState = .none
     @Published private var dragOffset: CGFloat = .zero
     

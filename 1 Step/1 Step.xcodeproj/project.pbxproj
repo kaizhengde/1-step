@@ -99,6 +99,7 @@
 		3DF7916D25307EBF00F00174 /* ChildSizeReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF7916C25307EBF00F00174 /* ChildSizeReader.swift */; };
 		3DFDE052253C4663006B1A7E /* GoalEditScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFDE051253C4663006B1A7E /* GoalEditScreen.swift */; };
 		3DFDE055253C4678006B1A7E /* GoalEditModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFDE054253C4678006B1A7E /* GoalEditModel.swift */; };
+		3DFDE07A253C8800006B1A7E /* SheetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFDE079253C8800006B1A7E /* SheetManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -196,6 +197,7 @@
 		3DF7916C25307EBF00F00174 /* ChildSizeReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildSizeReader.swift; sourceTree = "<group>"; };
 		3DFDE051253C4663006B1A7E /* GoalEditScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEditScreen.swift; sourceTree = "<group>"; };
 		3DFDE054253C4678006B1A7E /* GoalEditModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEditModel.swift; sourceTree = "<group>"; };
+		3DFDE079253C8800006B1A7E /* SheetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -448,6 +450,7 @@
 		3D5156B62531FB2600A44450 /* ViewOverlays */ = {
 			isa = PBXGroup;
 			children = (
+				3DFDE079253C8800006B1A7E /* SheetManager.swift */,
 				3D5156B72531FB3F00A44450 /* ViewOverlayManagerProtocol.swift */,
 				3D5156BB2531FB7E00A44450 /* MiniSheetManager.swift */,
 				3D2E7967253021A900788AA2 /* PopupManager.swift */,
@@ -764,6 +767,7 @@
 				3DE0796625340E410024E17D /* Shadow.swift in Sources */,
 				3D47CC8D252C71C100A8CA1B /* Layout.swift in Sources */,
 				3D5156BC2531FB7E00A44450 /* MiniSheetManager.swift in Sources */,
+				3DFDE07A253C8800006B1A7E /* SheetManager.swift in Sources */,
 				3DA7BD3A2532F6A600171360 /* DataManager.swift in Sources */,
 				3D2E7941253017B600788AA2 /* OneSSmallBorderButton.swift in Sources */,
 				3DE0796925340F080024E17D /* GoalItem.swift in Sources */,

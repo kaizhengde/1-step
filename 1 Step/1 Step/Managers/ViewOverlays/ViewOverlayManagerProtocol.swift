@@ -5,7 +5,11 @@
 //  Created by Kai Zheng on 10.10.20.
 //
 
-import SwiftUI 
+import SwiftUI
+
+enum ViewOverlayPlace {
+    case view, sheet
+}
 
 protocol ViewOverlayManagerProtocol: TransitionObservableObject {
     

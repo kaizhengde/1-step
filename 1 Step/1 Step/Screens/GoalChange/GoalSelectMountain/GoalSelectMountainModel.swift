@@ -57,6 +57,7 @@ final class GoalSelectMountainModel: TransitionObservableObject {
     func initTransition() {
         transition = TransitionManager(fullAppearAfter: DelayAfter.mountainAppear, fullHideAfter: DelayAfter.opacity)
         transition.delegate = self
+        
         transition.state = .firstAppear
     }
     
@@ -115,7 +116,10 @@ final class GoalSelectMountainModel: TransitionObservableObject {
     func selectMountainAndDismiss() {
         selectedData.mountain = currentMountain
         
-        transition.state = .firstHide
+        if delegate is GoalCreateModel {
+            transition.state = .firstHide
+        }
+
         delegate?.selectedMountainData = selectedData
     }
     

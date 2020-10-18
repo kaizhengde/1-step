@@ -13,6 +13,7 @@ struct GoalEditScreen: View {
     @StateObject private var viewModel = GoalEditModel()
     @StateObject private var goalSelectMountainModel = GoalSelectMountainModel()
     @StateObject private var goalEnterInputModel = GoalEnterInputModel()
+    @StateObject private var sheetManager = SheetManager.shared
     
     
     var body: some View {
@@ -22,18 +23,34 @@ struct GoalEditScreen: View {
             ScrollView(showsIndicators: false) {
                 VStack {
                     Group {
-                        OneSHeaderView("Edit", trailingButton: (.close, .grayToBackground, { goalModel.onEdit = false }), secondaryButtonOuter: (.save, {}), secondaryButtonInner: (.delete, {}))
+                        OneSHeaderView("Edit", trailingButton: (.close, .grayToBackground, { sheetManager.dismiss() }), secondaryButtonOuter: (.save, {}), secondaryButtonInner: (.delete, {}))
                         
                         GoalEnterInputView(viewModel: goalEnterInputModel, selectedColor: goalModel.selectedGoal.color)
+                        
+                        //Notification
                     }
                     .padding(.horizontal, Layout.firstLayerPadding)
+                    
+                    Spacer()
+                    GoalSelectMountainView(viewModel: goalSelectMountainModel)
                 }
                 .padding(.top, 12)
             }
         }
-        .onAppear {
-            goalSelectMountainModel.delegate = viewModel
-            goalEnterInputModel.delegate = viewModel
-        }
+        .onAppear { setUpChangeViews() }
+    }
+    
+    
+    private func setUpChangeViews() {
+        goalSelectMountainModel.delegate = viewModel
+        goalEnterInputModel.delegate = viewModel
+        
+        let goal = goalModel.selectedGoal!
+        
+        goalEnterInputModel.selectedData.goalName = goal.name
+        goalEnterInputModel.selectedData.stepsNeeded = String(goal.stepsNeeded)
+        goalEnterInputModel.selectedData.stepCategory = goal.step.category
+        goalEnterInputModel.selectedData.stepUnit = goal.step.unit
+        goalEnterInputModel.selectedData.stepCustomUnit = goal.step.customUnit
     }
 }

@@ -10,6 +10,7 @@ import SwiftUI
 struct MainView: View {
     
     @StateObject private var mainModel = MainModel.shared
+    @StateObject private var sheetManager = SheetManager.shared
     
     
     var body: some View {
@@ -23,6 +24,7 @@ struct MainView: View {
             mainModel.screen(.profile) { ProfileScreen() }
         }
         .oneSOpacityAnimation()
+        .sheet(isPresented: $sheetManager.appear, content: sheetManager.content)
         .oneSMiniSheet()
         .oneSPopup()
         .oneSFloater()
