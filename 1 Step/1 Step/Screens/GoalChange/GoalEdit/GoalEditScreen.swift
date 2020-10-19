@@ -23,9 +23,9 @@ struct GoalEditScreen: View {
             ScrollView(showsIndicators: false) {
                 VStack {
                     Group {
-                        OneSHeaderView("Edit", trailingButton: (.close, .grayToBackground, { sheetManager.dismiss() }), secondaryButtonOuter: (.save, {}), secondaryButtonInner: (.delete, {}))
+                        OneSHeaderView("Edit", trailingButton: (.close, .grayToBackground, { sheetManager.dismiss() }), secondaryButtonOuter: (.save, { viewModel.trySaveEditAndDismiss(goalModel.selectedGoal) }), secondaryButtonInner: (.delete, { viewModel.deleteGoalAndDismiss(goalModel.selectedGoal) }))
                         
-                        GoalEnterInputView(viewModel: goalEnterInputModel, selectedColor: goalModel.selectedGoal.color)
+                        GoalEnterInputView(viewModel: goalEnterInputModel, selectedColor: $viewModel.selectedMountainData.color)
                         
                         //Notification
                     }
@@ -52,5 +52,10 @@ struct GoalEditScreen: View {
         goalEnterInputModel.selectedData.stepCategory = goal.step.category
         goalEnterInputModel.selectedData.stepUnit = goal.step.unit
         goalEnterInputModel.selectedData.stepCustomUnit = goal.step.customUnit
+        
+        goalSelectMountainModel.currentMountain = goal.mountain
+        
+        goalSelectMountainModel.selectedData.mountain = goal.mountain
+        goalSelectMountainModel.selectedData.color = goal.color
     }
 }

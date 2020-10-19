@@ -10,7 +10,7 @@ import SwiftUI
 struct GoalEnterInputSelectStepUnitView: View {
     
     @ObservedObject var viewModel: GoalEnterInputModel
-    let selectedColor: UserColor
+    @Binding var selectedColor: UserColor
     
     
     var body: some View {
@@ -28,11 +28,11 @@ struct GoalEnterInputSelectStepUnitView: View {
             HStack {
                 switch viewModel.selectedData.stepCategory {
                 case .duration:
-                    StepUnitButtons(viewModel: viewModel, selectedColor: selectedColor, stepCategory: .duration)
+                    StepUnitButtons(viewModel: viewModel, selectedColor: $selectedColor, stepCategory: .duration)
                 case .distance:
-                    StepUnitButtons(viewModel: viewModel, selectedColor: selectedColor, stepCategory: .distance)
+                    StepUnitButtons(viewModel: viewModel, selectedColor: $selectedColor, stepCategory: .distance)
                 case .reps:
-                    StepUnitButtons(viewModel: viewModel, selectedColor: selectedColor, stepCategory: .reps)
+                    StepUnitButtons(viewModel: viewModel, selectedColor: $selectedColor, stepCategory: .reps)
                 default:
                     EmptyView()
                 }
@@ -66,7 +66,7 @@ struct GoalEnterInputSelectStepUnitView: View {
         
         @ObservedObject var viewModel: GoalEnterInputModel
         
-        let selectedColor: UserColor
+        @Binding var selectedColor: UserColor
         let stepCategory: StepCategory
         
         var stepUnits: [StepUnit] { StepUnit.unitsOfCategory(stepCategory) }
@@ -77,11 +77,11 @@ struct GoalEnterInputSelectStepUnitView: View {
             VStack(spacing: 10) {
                 LazyVGrid(columns: [GridItem(), GridItem(), GridItem()], spacing: 10) {
                     ForEach(0..<stepUnitsWithOutCustom.count) { i in
-                        StepUnitButton(viewModel: viewModel, selectedColor: selectedColor, stepUnit: stepUnitsWithOutCustom[i])
+                        StepUnitButton(viewModel: viewModel, selectedColor: $selectedColor, stepUnit: stepUnitsWithOutCustom[i])
                     }
                 }
                 if stepCategory == .reps {
-                    StepUnitButton(viewModel: viewModel, selectedColor: selectedColor, stepUnit: .custom)
+                    StepUnitButton(viewModel: viewModel, selectedColor: $selectedColor, stepUnit: .custom)
                 }
             }
         }
@@ -92,7 +92,7 @@ struct GoalEnterInputSelectStepUnitView: View {
             @StateObject private var popupManager = PopupManager.shared
             @ObservedObject var viewModel: GoalEnterInputModel
             
-            let selectedColor: UserColor
+            @Binding var selectedColor: UserColor
             let stepUnit: StepUnit
             
             

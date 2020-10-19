@@ -16,7 +16,7 @@ final class DataManager {
     private let persistenceManager = PersistenceManager.defaults
     
     
-    //Fetch
+    //MARK: - Fetch
     
     private func fetchActiveGoalCount() -> Int16 {
         let request = Goal.fetchRequest()
@@ -41,7 +41,7 @@ final class DataManager {
     }
     
     
-    //Insert
+    //MARK: - Insert
     
     func insertGoal(with changeData: Goal.ChangeData) {
         let activeGoalsCount = fetchActiveGoalCount()
@@ -71,10 +71,9 @@ final class DataManager {
     }
     
     
-    //Change
+    //MARK: - Change
     
     func editGoal(_ goal: Goal, with changeData: Goal.ChangeData) {
-
         goal.name            = changeData.name
         goal.step.category   = changeData.stepCategory!
         goal.step.unit       = changeData.stepUnit!
@@ -88,8 +87,23 @@ final class DataManager {
     
     
     func changeGoalOrder(_ goal: Goal, with newOrder: Int16) {
-        
         goal.sortOrder      = newOrder
+        persistenceManager.saveContext()
+    }
+    
+    
+    //MARK: - Delete
+    
+    func deleteGoal(_ goal: Goal) {
+        if goal.currentState == .active {
+            for activeGoal in DataModel.shared.activeGoals {
+                if activeGoal.sortOrder > goal.sortOrder {
+                    changeGoalOrder(activeGoal, with: activeGoal.sortOrder-1)
+                }
+            }
+        }
+        
+        persistenceManager.context.delete(goal)
         persistenceManager.saveContext()
     }
 }

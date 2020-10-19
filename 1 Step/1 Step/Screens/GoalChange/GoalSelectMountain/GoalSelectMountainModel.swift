@@ -40,11 +40,13 @@ final class GoalSelectMountainModel: TransitionObservableObject {
     
     @Published var transition: TransitionManager<GoalSelectMountainModel> = TransitionManager()
 
-    @Published private var currentMountain: MountainImage = .mountain0
+    @Published var currentMountain: MountainImage = .mountain0
     @Published private var dragOffset: CGSize = .zero
     @Published private var rects: [CGRect] = Array<CGRect>(repeating: .zero, count: MountainImage.allCases.count)
 
-    @Published private var selectedData: GoalSelectMountainData = (nil, .user0)
+    @Published var selectedData: GoalSelectMountainData = (nil, .user0) {
+        didSet { delegate?.selectedMountainData = selectedData }
+    }
     
     weak var delegate: GoalSelectMountainDelegate?
     

@@ -21,7 +21,7 @@ struct GoalCreateScreen: View {
                 GoalCreateHeaderView(viewModel: viewModel)
                 
                 if viewModel.goalCreateStage == .enterInput {
-                    GoalEnterInputView(viewModel: goalEnterInputModel, selectedColor: viewModel.selectedMountainData.color)
+                    GoalEnterInputView(viewModel: goalEnterInputModel, selectedColor: .constant(viewModel.selectedMountainData.color))
                     
                     HStack {
                         Spacer()

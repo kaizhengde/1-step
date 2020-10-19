@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Introspect
 
 final class SheetManager: ObservableObject {
     
@@ -24,6 +25,7 @@ final class SheetManager: ObservableObject {
                 .oneSMiniSheet()
                 .oneSPopup()
                 .oneSFloater()
+                .introspectViewController { $0.isModalInPresentation = true }
         ) }
     }
     
