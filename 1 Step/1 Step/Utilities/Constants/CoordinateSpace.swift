@@ -10,6 +10,7 @@ import SwiftUI
 extension CoordinateSpace {
     
     static let selectMountain: Self = .named("SelectMountain")
+    static let goalScroll: Self = .named("GoalScroll")
 }
 
 

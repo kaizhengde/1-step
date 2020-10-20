@@ -21,7 +21,7 @@ struct GoalSelectMountainView: View {
             .frame(width: Layout.screenWidth, height: MountainLayout.height)
         }
         .frame(width: Layout.screenWidth, alignment: .leading)
-        .onPreferenceChange(GoalSelectMountainModel.MountainPK.self) { p in viewModel.updatePreferences(p) }
+        .onPreferenceChange(GoalSelectMountainModel.MountainPK.self) { viewModel.updatePreferences($0) }
         .coordinateSpace(name: CoordinateSpace.selectMountain.hashValue)
         .oneSAnimation()
         .onAppear { viewModel.initTransition() }

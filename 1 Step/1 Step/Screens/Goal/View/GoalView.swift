@@ -19,18 +19,25 @@ struct GoalView: View {
                 .oneSShadow(opacity: 0.2, y: 0, blur: 13)
             
             ScrollView(showsIndicators: false) {
-                ZStack {
-                    GoalHeaderView()
-                    
-                    Group {
-                        goalModel.backgroundColor.offset(y: Layout.screenHeight + 20)
-                        GoalSummaryView()
-                        GoalJourneyView()
+                ScrollViewReader { value in
+                    ZStack {
+                        GoalHeaderView()
+                        
+                        Group {
+                            goalModel.backgroundColor.offset(y: Layout.screenHeight + 20)
+                            VStack {
+                                GoalSummaryView()
+                                GoalJourneyView()
+                            }
+                        }
+                        .offset(x: goalModel.goalContentDragOffset)
                     }
-                    .offset(x: goalModel.goalContentDragOffset)
                 }
+                .background(GoalModel.ScrollVS())
+                .onPreferenceChange(GoalModel.ScrollPK.self) { goalModel.updatePreferences($0) }
             }
             .opacity(goalModel.viewDragOpacity)
+            .coordinateSpace(name: CoordinateSpace.goalScroll)
         }
         .offset(x: goalModel.goalDragOffset)
     }

@@ -10,6 +10,6 @@ import SwiftUI
 struct GoalJourneyView: View {
     
     var body: some View {
-        Text("")
+        Color.clear.frame(height: 1000)
     }
 }

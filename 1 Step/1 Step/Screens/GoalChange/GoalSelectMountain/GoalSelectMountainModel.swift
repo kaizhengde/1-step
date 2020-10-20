@@ -192,7 +192,7 @@ final class GoalSelectMountainModel: TransitionObservableObject {
     
     //MARK: - Mountain Preference Key
     
-    func updatePreferences(_ preferences: GoalSelectMountainModel.MountainPK.Value) {
+    func updatePreferences(_ preferences: MountainPK.Value) {
         for p in preferences {
             rects[Int(p.mountainID)] = p.rect
         }

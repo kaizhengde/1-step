@@ -239,4 +239,34 @@ final class GoalModel: TransitionObservableObject {
         
         MainModel.shared.toScreen(.goals)
     }
+    
+    
+    //MARK: - Scroll Offset Preference
+    
+    func updatePreferences(_ value: ScrollPK.Value) {
+        if value >= 30 { showJourneyView = true }
+        else { showJourneyView = false }
+    }
+    
+    
+    struct ScrollVS: View {
+        
+        var body: some View {
+            GeometryReader {
+                Color.clear.preference(key: ScrollPK.self, value: -$0.frame(in: .goalScroll).origin.y+20)
+            }
+        }
+    }
+    
+    
+    struct ScrollPK: PreferenceKey {
+        
+        typealias Value = CGFloat
+        static var defaultValue = CGFloat.zero
+        
+        
+        static func reduce(value: inout Value, nextValue: () -> Value) {
+            value += nextValue()
+        }
+    }
 }
