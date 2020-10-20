@@ -61,9 +61,10 @@ struct GoalSummaryView: View {
             var body: some View {
                 VStack(spacing: 16) {
                     OneSText(text: "\(goalModel.selectedGoal.currentPercent)%", font: .custom(weight: Raleway.extraBold, size: 60), color: .backgroundToGray)
+                        .opacity(goalModel.showJourneyView ? 0.0 : 1.0)
                     
                     if goalModel.showDownArrow {
-                        DownArrow()
+                        DownArrowView()
                     }
                 }
                 .frame(height: 120)
@@ -72,26 +73,57 @@ struct GoalSummaryView: View {
             }
             
             
-            private struct DownArrow: View {
+            private struct DownArrowView: View {
                 
                 @EnvironmentObject var goalModel: GoalModel
+                @State private var timerHigh: Bool = true
                 
-                let timer = Timer.publish(every: 3.6, on: .main, in: .common).autoconnect()
-                @State var timerHigh: Bool = true
+                private let timer = Timer.publish(every: 3.6, on: .main, in: .common).autoconnect()
+                private let arrowWidth: CGFloat = 80
+                
+                private var timerHighSummary: Bool { return timerHigh && !goalModel.showJourneyView }
                 
                 
                 var body: some View {
-                    SFSymbol.downArrow
-                        .font(.system(size: 100, weight: .medium))
+                    DownArrow(width: arrowWidth, offset: goalModel.showJourneyView ? -20 : 20)
+                        .stroke(style: StrokeStyle(lineWidth: 12, lineCap: .round))
+                        .frame(width: arrowWidth)
                         .foregroundColor(.backgroundToGray)
-                        .scaleEffect(timerHigh ? 1.0 : 0.7)
-                        .offset(y: timerHigh ? 0 : 24)
-                        .animation(.easeInOut(duration: 1.2))
+                        .offset(y: goalModel.showJourneyView ? -120 : 0)
+                        .oneSAnimation()
+                        .scaleEffect(x: timerHighSummary ? 1.0 : 0.6, y: timerHighSummary ? 1.0 : 0.7)
+                        .offset(y: timerHighSummary ? 0 : 24)
+                        .animation(goalModel.showJourneyView ? .oneSAnimation() : .easeInOut(duration: 1.2))
                         .onAppear { timerHigh.toggle() }
                         .onReceive(timer) { _ in
                             timerHigh.toggle()
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) { timerHigh.toggle() }
                         }
+                        .onTapGesture { goalModel.showJourneyView.toggle() }
+                }
+                
+                
+                private struct DownArrow: Shape {
+                    
+                    let width: CGFloat
+                    var offset: CGFloat
+                    
+                    var animatableData: CGFloat {
+                        get { offset }
+                        set { offset = newValue }
+                    }
+                    
+                    
+                    func path(in rect: CGRect) -> Path {
+                        var path = Path()
+                        
+                        path.move(to: .zero)
+                        path.addLine(to: CGPoint(x: width/2, y: offset))
+                        path.move(to: CGPoint(x: width/2, y: offset))
+                        path.addLine(to: CGPoint(x: width, y: 0))
+                        
+                        return path
+                    }
                 }
             }
         }

@@ -55,7 +55,7 @@ class GoalsActiveModel: ObservableObject {
     //MARK: - Drag and Drop
     
     func onGoalDrag(_ goal: Goal) -> NSItemProvider {
-        Feedback.impact(style: .medium)
+        Feedback.impact(style: .heavy)
         currentDragItem = goal
         return NSItemProvider(object: String(goal.sortOrder) as NSString)
     }
@@ -84,6 +84,8 @@ class GoalsActiveModel: ObservableObject {
         
         
         private func updateSortOrder(_ from: Int, _ to: Int) {
+            Feedback.impact(style: .soft)
+            
             let sortOrders = gridItems.map { $0.sortOrder }
             
             gridItems.move(fromOffsets: IndexSet(integer: from),
@@ -101,6 +103,7 @@ class GoalsActiveModel: ObservableObject {
         
         func performDrop(info: DropInfo) -> Bool {
             current = nil
+            
             if DataModel.shared.moveGoals() {
                 return true
             }

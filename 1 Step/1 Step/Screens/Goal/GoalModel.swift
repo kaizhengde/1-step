@@ -21,6 +21,8 @@ final class GoalModel: TransitionObservableObject {
     @Published var dragState: DragState = .none
     @Published private var dragOffset: CGFloat = .zero
     
+    @Published var showJourneyView: Bool = false 
+    
     
     //MARK: - Transition
     
