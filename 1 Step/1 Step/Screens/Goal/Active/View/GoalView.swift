@@ -35,8 +35,8 @@ struct GoalView: View {
                         }
                         .offset(x: goalModel.goalContentDragOffset)
                     }
-                    .onReceive(goalModel.didSetScrollPosition) {
-                        withAnimation { scrollProxy.scrollTo(goalModel.scrollPosition) }
+                    .onReceive(goalModel.didSetScrollPosition) { position in
+                        withAnimation { scrollProxy.scrollTo(position) }
                     }
                 }
                 .background(GoalModel.ScrollVS())

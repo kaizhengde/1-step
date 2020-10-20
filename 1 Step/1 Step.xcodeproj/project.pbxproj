@@ -490,7 +490,6 @@
 				3D6F43A4253B268B00785586 /* GoalView.swift */,
 				3D6F4398253AE19C00785586 /* GoalHeaderView.swift */,
 				3D6F439C253AE20500785586 /* GoalSummaryView.swift */,
-				3D6F439F253AE21600785586 /* Journey */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -510,6 +509,24 @@
 				3D7396C02533732600BD4169 /* GoalsReachedView.swift */,
 			);
 			path = GoalsReached;
+			sourceTree = "<group>";
+		};
+		3D996774253F4246000CE151 /* Active */ = {
+			isa = PBXGroup;
+			children = (
+				3DD5C9CF2539CF7B00861784 /* GoalModel.swift */,
+				3DD5C9CC2539CF6600861784 /* GoalScreen.swift */,
+				3D6F43A1253B266F00785586 /* GoalMenuView.swift */,
+				3D6F43A8253B269500785586 /* View */,
+			);
+			path = Active;
+			sourceTree = "<group>";
+		};
+		3D996775253F424D000CE151 /* Reached */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Reached;
 			sourceTree = "<group>";
 		};
 		3DA7BD3C2532F72B00171360 /* Managers */ = {
@@ -620,10 +637,9 @@
 		3DE9C514252CAF7C0023C212 /* Goal */ = {
 			isa = PBXGroup;
 			children = (
-				3DD5C9CF2539CF7B00861784 /* GoalModel.swift */,
-				3DD5C9CC2539CF6600861784 /* GoalScreen.swift */,
-				3D6F43A1253B266F00785586 /* GoalMenuView.swift */,
-				3D6F43A8253B269500785586 /* View */,
+				3D996774253F4246000CE151 /* Active */,
+				3D996775253F424D000CE151 /* Reached */,
+				3D6F439F253AE21600785586 /* Journey */,
 				3DD5C9D32539D27100861784 /* GoalTransitionView.swift */,
 			);
 			path = Goal;

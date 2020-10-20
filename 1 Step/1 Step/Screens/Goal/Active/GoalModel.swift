@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 final class GoalModel: TransitionObservableObject {
     
@@ -27,8 +28,7 @@ final class GoalModel: TransitionObservableObject {
     @Published var dragState: DragState = .none
     @Published private var dragOffset: CGFloat = .zero
     
-    @Published var scrollPosition: ScrollPosition = .none
-    let didSetScrollPosition = ObjectWillChangePublisher()
+    let didSetScrollPosition = PassthroughSubject<ScrollPosition, Never>()
     
     @Published var showJourneyView: Bool = false 
     
@@ -218,8 +218,7 @@ final class GoalModel: TransitionObservableObject {
     //onEnded
     
     private func onToMenu(_ value: DragGesture.Value) -> Bool {
-        scrollPosition = .top
-        didSetScrollPosition.send()
+        didSetScrollPosition.send(.top)
         return value.translation.width >= 50 && dragState == .none
     }
     
@@ -258,10 +257,8 @@ final class GoalModel: TransitionObservableObject {
     //Scroll Proxy
     
     func downArrowTapped() {
-        scrollPosition = showJourneyView ? .top : .current
-        
+        didSetScrollPosition.send(showJourneyView ? .top : .current)
         showJourneyView.toggle()
-        didSetScrollPosition.send()
     }
     
     
