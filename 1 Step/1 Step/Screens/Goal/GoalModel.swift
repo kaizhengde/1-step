@@ -15,11 +15,20 @@ final class GoalModel: TransitionObservableObject {
         case complete
     }
     
+    enum ScrollPosition: Int {
+        case none       = -1
+        case top        = 0
+        case current    = 1
+    }
+    
     @Published var transition: TransitionManager<GoalModel> = TransitionManager()
     @Published var selectedGoal: Goal!
     
     @Published var dragState: DragState = .none
     @Published private var dragOffset: CGFloat = .zero
+    
+    @Published var scrollPosition: ScrollPosition = .none
+    let didSetScrollPosition = ObjectWillChangePublisher()
     
     @Published var showJourneyView: Bool = false 
     
@@ -112,10 +121,6 @@ final class GoalModel: TransitionObservableObject {
         return dragState == .none && dragOffset == 0 ? (transition.isFullAppeared ? true : false) : false
     }
     
-    var downArrayOpacity: Double {
-        return showDownArrow ? 1.0 : 0.0
-    }
-    
     
     //MARK: - Menu
     
@@ -128,6 +133,11 @@ final class GoalModel: TransitionObservableObject {
         case .complete: return -menuWidth + Layout.screenWidth
         }
     }
+    
+    
+    //MARK: - Journey
+    
+    var journeyViewDragOpacity: Double { return 1-dragProgressToMenu }
     
     
     //MARK: - Drag
@@ -208,6 +218,8 @@ final class GoalModel: TransitionObservableObject {
     //onEnded
     
     private func onToMenu(_ value: DragGesture.Value) -> Bool {
+        scrollPosition = .top
+        didSetScrollPosition.send()
         return value.translation.width >= 50 && dragState == .none
     }
     
@@ -241,11 +253,22 @@ final class GoalModel: TransitionObservableObject {
     }
     
     
-    //MARK: - Scroll Offset Preference
+    //MARK: - Scroll
+    
+    //Scroll Proxy
+    
+    func downArrowTapped() {
+        scrollPosition = showJourneyView ? .top : .current
+        
+        showJourneyView.toggle()
+        didSetScrollPosition.send()
+    }
+    
+    
+    //Preference
     
     func updatePreferences(_ value: ScrollPK.Value) {
-        if value >= 30 { showJourneyView = true }
-        else { showJourneyView = false }
+        showJourneyView = value >= 30 ? true : false
     }
     
     

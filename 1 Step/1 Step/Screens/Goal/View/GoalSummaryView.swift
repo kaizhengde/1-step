@@ -99,7 +99,7 @@ struct GoalSummaryView: View {
                             timerHigh.toggle()
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) { timerHigh.toggle() }
                         }
-                        .onTapGesture { goalModel.showJourneyView.toggle() }
+                        .onTapGesture { goalModel.downArrowTapped() }
                 }
                 
                 

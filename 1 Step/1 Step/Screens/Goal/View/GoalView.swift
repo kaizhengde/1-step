@@ -19,8 +19,10 @@ struct GoalView: View {
                 .oneSShadow(opacity: 0.2, y: 0, blur: 13)
             
             ScrollView(showsIndicators: false) {
-                ScrollViewReader { value in
-                    ZStack {
+                ScrollViewReader { scrollProxy in
+                    ZStack(alignment: .top) {
+                        Color.clear.frame(height: 0).id(GoalModel.ScrollPosition.top)
+                        
                         GoalHeaderView()
                         
                         Group {
@@ -28,9 +30,13 @@ struct GoalView: View {
                             VStack {
                                 GoalSummaryView()
                                 GoalJourneyView()
+                                    .opacity(goalModel.journeyViewDragOpacity)
                             }
                         }
                         .offset(x: goalModel.goalContentDragOffset)
+                    }
+                    .onReceive(goalModel.didSetScrollPosition) {
+                        withAnimation { scrollProxy.scrollTo(goalModel.scrollPosition) }
                     }
                 }
                 .background(GoalModel.ScrollVS())
