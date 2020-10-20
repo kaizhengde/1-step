@@ -9,7 +9,14 @@ import SwiftUI
 
 struct ProfileScreen: View {
     
+    @StateObject private var mainModel = MainModel.shared
+    
+    
     var body: some View {
-        Text("Profile")
+        VStack {
+            OneSHeaderView("Profile", trailingButton: (.close, .grayToBackground, { mainModel.toScreen(.goals) }))
+            Spacer()
+        }
+        .padding(.horizontal, Layout.firstLayerPadding)
     }
 }

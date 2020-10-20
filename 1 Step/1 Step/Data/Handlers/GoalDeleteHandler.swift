@@ -10,6 +10,6 @@ import Foundation
 struct GoalDeleteHandler {
     
     static func confirmDelete(with goal: Goal) {
-        PopupManager.shared.showTextFieldConfirmationPopup(titleText: "Delete", bodyText: "Are you sure?\nThis action cannot be undone.\n\nConfirm with your Goal.", placerholder: "Your Goal", textLimit: Goal.nameDigitsLimit, confirmationText: goal.name, backgroundColor: .grayToBackground)
+        PopupManager.shared.showTextFieldConfirmationPopup(titleText: "Delete", bodyText: "Are you sure?\n\nThis action cannot be undone.\nConfirm with your Goal.", placerholder: "Your Goal", textLimit: Goal.nameDigitsLimit, confirmationText: goal.name, backgroundColor: .grayToBackground)
     }
 }

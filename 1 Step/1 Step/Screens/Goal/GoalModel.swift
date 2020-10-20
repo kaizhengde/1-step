@@ -106,6 +106,14 @@ final class GoalModel: TransitionObservableObject {
         return selectedGoal.step.unit == .custom ? selectedGoal.step.customUnit : selectedGoal.step.unit.description
     }
     
+    var showDownArrow: Bool {
+        return dragState == .none && dragOffset == 0 ? (transition.isFullAppeared ? true : false) : false
+    }
+    
+    var downArrayOpacity: Double {
+        return showDownArrow ? 1.0 : 0.0
+    }
+    
     
     //MARK: - Menu
     

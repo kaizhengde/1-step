@@ -59,16 +59,40 @@ struct GoalSummaryView: View {
             
             
             var body: some View {
-                VStack(spacing: 0) {
+                VStack(spacing: 16) {
                     OneSText(text: "\(goalModel.selectedGoal.currentPercent)%", font: .custom(weight: Raleway.extraBold, size: 60), color: .backgroundToGray)
                     
-                    SFSymbol.downArrow
-                        .font(.system(size: 50, weight: .medium))
-                        .foregroundColor(.backgroundToGray)
+                    if goalModel.showDownArrow {
+                        DownArrow()
+                    }
                 }
-                .frame(height: 80)
+                .frame(height: 120)
                 .padding(.horizontal, Layout.secondLayerPadding)
-                .padding(.top, Layout.screenHeight - 140 - SafeAreaSize.bottom)
+                .padding(.top, Layout.screenHeight - 200 - SafeAreaSize.bottom)
+            }
+            
+            
+            private struct DownArrow: View {
+                
+                @EnvironmentObject var goalModel: GoalModel
+                
+                let timer = Timer.publish(every: 3.6, on: .main, in: .common).autoconnect()
+                @State var timerHigh: Bool = true
+                
+                
+                var body: some View {
+                    SFSymbol.downArrow
+                        .font(.system(size: 100, weight: .medium))
+                        .foregroundColor(.backgroundToGray)
+                        .scaleEffect(timerHigh ? 1.0 : 0.7)
+                        .offset(y: timerHigh ? 0 : 24)
+                        .animation(.easeInOut(duration: 1.2))
+                        .onAppear { timerHigh.toggle() }
+                        .onReceive(timer) { _ in
+                            timerHigh.toggle()
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) { timerHigh.toggle() }
+                        }
+                }
             }
         }
     }
