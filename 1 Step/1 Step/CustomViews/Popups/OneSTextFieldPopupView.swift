@@ -15,9 +15,7 @@ struct OneSTextFieldPopupView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             OneSText(text: manager.bodyText, font: .body2, color: .backgroundToGray)
-            OneSTextField(input: $manager.input, placeholder: manager.placerholder, inputColor: manager.inputColor, placerholderColor: manager.placerholderColor, inputLimit: manager.inputLimit, keyboard: manager.keyboard, lowercased: manager.lowercased) {
-                manager.saveAndDismiss()
-            }
+            OneSTextField(input: $manager.input, placeholder: manager.placerholder, inputColor: .backgroundToGray, placerholderColor: .opacityBackgroundDarker, inputLimit: manager.inputLimit, keyboard: manager.keyboard, lowercased: manager.lowercased) { manager.textFieldDismiss() }
         }
     }
 }

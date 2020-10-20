@@ -24,14 +24,17 @@ struct PersistenceManager {
     }
     
     
-    func saveContext() {
+    func saveContext() -> Bool {
         if context.hasChanges {
             do {
                 print("Sucess!!")
                 try context.save()
+                return true
             } catch {
-                print("Error while saving managedObjectContext \(error)")
+                PopupManager.shared.showTextPopup(titleText: "Unknown Error", bodyText: "There was a problem saving your data but it is not your fault. Try to do it again or restart the app.", backgroundColor: .grayToBackground)
+                return false
             }
         }
+        return true 
     }
 }

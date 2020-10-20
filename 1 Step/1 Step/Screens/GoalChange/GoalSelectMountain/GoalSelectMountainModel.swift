@@ -138,7 +138,7 @@ final class GoalSelectMountainModel: TransitionObservableObject {
     
     //MARK: - DragGesture
     
-    lazy private(set) var dragMountains = DragGesture()
+    lazy private(set) var dragMountains = DragGesture(minimumDistance: 20)
         .onChanged { [weak self] value in self?.onChanged(value) }
         .onEnded { [weak self] value in self?.onEnded(value) }
     

@@ -21,7 +21,7 @@ struct GoalMenuView: View {
                 OneSSecondaryHeaderText(text: "Goals", color: .grayToBackground)
                 
                 VStack(spacing: 5) {
-                    GoalMenuItem(goal: goalModel.selectedGoal)
+                    GoalMenuItem(goal: $goalModel.selectedGoal)
                     
                     RoundedRectangle(cornerRadius: 2)
                         .frame(width: GoalItemArt.width/1.2, height: 4)
@@ -31,7 +31,7 @@ struct GoalMenuView: View {
                 
                 VStack(spacing: 20) {
                     ForEach(activeGoalsRest, id: \.self) { goal in
-                        GoalMenuItem(goal: goal)
+                        GoalMenuItem(goal: .constant(goal))
                     }
                 }
             }
@@ -47,11 +47,11 @@ struct GoalMenuView: View {
     private struct GoalMenuItem: View {
         
         @EnvironmentObject var goalModel: GoalModel
-        let goal: Goal
+        @Binding var goal: Goal
         
         
         var body: some View {
-            GoalItem(goalActiveModel: GoalsActiveModel(), goal: goal) {
+            GoalItem(goalActiveModel: GoalsActiveModel(), goal: $goal) {
                 goalModel.selectedGoal = goal
                 goalModel.dragState = .none
             }

@@ -13,15 +13,15 @@ struct GoalItem: View {
     @State private var isCurrentDrag: Bool = false
     @State private var tapAnimation: Bool = false
     
-    let goal: Goal
+    @Binding var goal: Goal
     let onTap: () -> ()
     
         
     var body: some View {
         ZStack {
-            MountainView(goal: goal)
-            PercentView(goalActiveModel: goalActiveModel, goal: goal)
-            TextView(goal: goal)
+            MountainView(goal: $goal)
+            PercentView(goalActiveModel: goalActiveModel, goal: $goal)
+            TextView(goal: $goal)
         }
         .frame(width: GoalItemArt.width, height: GoalItemArt.height)
         .background(GoalItemArt.color(isCurrentDrag, of: goal))
@@ -43,7 +43,7 @@ struct GoalItem: View {
         let goalActiveModel: GoalsActiveModel? 
         @State private var isCurrentDrag: Bool = false
 
-        let goal: Goal
+        @Binding var goal: Goal
         
         
         var body: some View {
@@ -70,7 +70,7 @@ struct GoalItem: View {
 
     private struct TextView: View {
         
-        let goal: Goal
+        @Binding var goal: Goal
         
         
         var body: some View {
@@ -95,7 +95,7 @@ struct GoalItem: View {
     
     private struct MountainView: View {
         
-        let goal: Goal
+        @Binding var goal: Goal
         
         
         var body: some View {

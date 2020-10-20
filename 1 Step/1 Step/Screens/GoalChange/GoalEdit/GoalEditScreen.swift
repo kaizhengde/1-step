@@ -23,21 +23,25 @@ struct GoalEditScreen: View {
             ScrollView(showsIndicators: false) {
                 VStack {
                     Group {
-                        OneSHeaderView("Edit", trailingButton: (.close, .grayToBackground, { sheetManager.dismiss() }), secondaryButtonOuter: (.save, { viewModel.trySaveEditAndDismiss(goalModel.selectedGoal) }), secondaryButtonInner: (.delete, { viewModel.deleteGoalAndDismiss(goalModel.selectedGoal) }))
+                        OneSHeaderView("Edit", trailingButton: (.close, .grayToBackground, { sheetManager.dismiss() }), secondaryButtonOuter: (.save, {
+                            viewModel.trySaveEditAndDismiss(goalModel.selectedGoal)
+                            goalModel.objectWillChange.send()
+                        }), secondaryButtonInner: (.delete, { viewModel.tryDelete(goalModel.selectedGoal) }))
                         
                         GoalEnterInputView(viewModel: goalEnterInputModel, selectedColor: $viewModel.selectedMountainData.color)
                         
                         //Notification
+                        Color.clear.frame(height: 240)
                     }
                     .padding(.horizontal, Layout.firstLayerPadding)
                     
-                    Spacer()
                     GoalSelectMountainView(viewModel: goalSelectMountainModel)
                 }
                 .padding(.top, 12)
             }
         }
         .onAppear { setUpChangeViews() }
+        .onReceive(PopupManager.shared.textFieldConfirmation) { viewModel.deleteGoalAndDismiss(goalModel.selectedGoal) }
     }
     
     

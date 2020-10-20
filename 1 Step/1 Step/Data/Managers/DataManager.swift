@@ -43,7 +43,7 @@ final class DataManager {
     
     //MARK: - Insert
     
-    func insertGoal(with changeData: Goal.ChangeData) {
+    func insertGoal(with changeData: Goal.ChangeData) -> Bool {
         let activeGoalsCount = fetchActiveGoalCount()
         
         let newGoal = Goal(context: persistenceManager.context)
@@ -67,13 +67,13 @@ final class DataManager {
         newGoal.color           = changeData.color!
         newGoal.milestones      = []
         
-        persistenceManager.saveContext()
+        return persistenceManager.saveContext()
     }
     
     
     //MARK: - Change
     
-    func editGoal(_ goal: Goal, with changeData: Goal.ChangeData) {
+    func editGoal(_ goal: Goal, with changeData: Goal.ChangeData) -> Bool {
         goal.name            = changeData.name
         goal.step.category   = changeData.stepCategory!
         goal.step.unit       = changeData.stepUnit!
@@ -82,28 +82,28 @@ final class DataManager {
         goal.mountain        = changeData.mountain!
         goal.color           = changeData.color!
         
-        persistenceManager.saveContext()
+        return persistenceManager.saveContext()
     }
     
     
-    func changeGoalOrder(_ goal: Goal, with newOrder: Int16) {
+    func changeGoalOrder(_ goal: Goal, with newOrder: Int16) -> Bool {
         goal.sortOrder      = newOrder
-        persistenceManager.saveContext()
+        return persistenceManager.saveContext()
     }
     
     
     //MARK: - Delete
     
-    func deleteGoal(_ goal: Goal) {
+    func deleteGoal(_ goal: Goal) -> Bool {
         if goal.currentState == .active {
             for activeGoal in DataModel.shared.activeGoals {
                 if activeGoal.sortOrder > goal.sortOrder {
-                    changeGoalOrder(activeGoal, with: activeGoal.sortOrder-1)
+                    guard changeGoalOrder(activeGoal, with: activeGoal.sortOrder-1) else { return false }
                 }
             }
         }
         
         persistenceManager.context.delete(goal)
-        persistenceManager.saveContext()
+        return persistenceManager.saveContext()
     }
 }

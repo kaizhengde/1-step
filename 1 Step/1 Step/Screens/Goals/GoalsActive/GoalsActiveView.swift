@@ -18,7 +18,7 @@ struct GoalsActiveView: View {
     var body: some View {
         LazyVGrid(columns: viewModel.goalItemColumns, spacing: 24) {
             ForEach(dataModel.activeGoals, id: \.self) { goal in
-                GoalItem(goalActiveModel: viewModel, goal: goal) {
+                GoalItem(goalActiveModel: viewModel, goal: .constant(goal)) {
                     goalModel.selectedGoal = goal
                     mainModel.toGoalScreen()
                 }

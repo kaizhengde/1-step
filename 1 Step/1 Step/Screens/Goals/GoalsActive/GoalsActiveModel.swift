@@ -101,8 +101,10 @@ class GoalsActiveModel: ObservableObject {
         
         func performDrop(info: DropInfo) -> Bool {
             current = nil
-            DataModel.shared.moveGoals()
-            return true
+            if DataModel.shared.moveGoals() {
+                return true
+            }
+            return false 
         }
     }
     

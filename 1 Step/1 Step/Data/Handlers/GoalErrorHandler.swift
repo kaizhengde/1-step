@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GoalErrorHandler {
+enum GoalErrorHandler {
     
     enum GoalError: Error {
         case goalNameEmpty

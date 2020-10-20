@@ -43,8 +43,8 @@ final class DataModel: ObservableObject {
     
     func createGoal(with changeData: Goal.ChangeData) -> Bool {
         guard !GoalErrorHandler.hasErrors(with: changeData) else { return false }
+        guard dataManager.insertGoal(with: changeData) else { return false }
         
-        dataManager.insertGoal(with: changeData)
         fetchAllActiveGoals()
         return true
     }
@@ -54,26 +54,30 @@ final class DataModel: ObservableObject {
     
     func editGoal(_ goal: Goal, with changeData: Goal.ChangeData) -> Bool {
         guard !GoalErrorHandler.hasErrors(with: changeData) else { return false }
+        guard dataManager.editGoal(goal, with: changeData) else { return false }
         
-        dataManager.editGoal(goal, with: changeData)
         fetchAllActiveGoals()
         return true
     }
     
     
-    func moveGoals() {
+    func moveGoals() -> Bool {
         for goal in activeGoals {
-            dataManager.changeGoalOrder(goal, with: goal.sortOrder)
+            guard dataManager.changeGoalOrder(goal, with: goal.sortOrder) else { return false }
         }
+        
+        fetchAllActiveGoals()
+        return true
     }
     
     
     //MARK: - Delete
     
-    func deleteGoal(_ goal: Goal) {
-        dataManager.deleteGoal(goal)
-        fetchAllGoals()
+    func deleteGoal(_ goal: Goal) -> Bool {
+        guard dataManager.deleteGoal(goal) else { return false }
         
+        fetchAllGoals()
         print(activeGoals.map { $0.sortOrder })
+        return true
     }
 }

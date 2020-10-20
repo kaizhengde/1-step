@@ -32,10 +32,15 @@ final class GoalEditModel: ObservableObject, GoalSelectMountainDelegate, GoalEnt
     }
     
     
+    func tryDelete(_ goal: Goal) {
+        GoalDeleteHandler.confirmDelete(with: goal)
+    }
+    
+    
     func deleteGoalAndDismiss(_ goal: Goal) {
-        DataModel.shared.deleteGoal(goal)
-        
-        MainModel.shared.toScreen(.goals)
-        SheetManager.shared.dismiss()
+        if DataModel.shared.deleteGoal(goal) {
+            MainModel.shared.toScreen(.goals)
+            SheetManager.shared.dismiss()
+        }
     }
 }

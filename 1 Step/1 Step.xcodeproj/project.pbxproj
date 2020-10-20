@@ -60,6 +60,8 @@
 		3D7396BD2533730700BD4169 /* GoalsActiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7396BC2533730700BD4169 /* GoalsActiveView.swift */; };
 		3D7396C12533732600BD4169 /* GoalsReachedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7396C02533732600BD4169 /* GoalsReachedView.swift */; };
 		3D7396C7253373F500BD4169 /* GoalsActiveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7396C6253373F500BD4169 /* GoalsActiveModel.swift */; };
+		3D854B11253EA3F900A4F80E /* GoalDeleteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D854B10253EA3F900A4F80E /* GoalDeleteHandler.swift */; };
+		3D854B14253EAC2500A4F80E /* OneSTextFieldConfirmationPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D854B13253EAC2500A4F80E /* OneSTextFieldConfirmationPopup.swift */; };
 		3DA7BD362532D41400171360 /* OneSTextFieldPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA7BD352532D41400171360 /* OneSTextFieldPopupView.swift */; };
 		3DA7BD3A2532F6A600171360 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA7BD392532F6A600171360 /* DataManager.swift */; };
 		3DA96165253D5ACC00B82CB0 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 3DA96164253D5ACC00B82CB0 /* Introspect */; };
@@ -157,6 +159,8 @@
 		3D7396BC2533730700BD4169 /* GoalsActiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsActiveView.swift; sourceTree = "<group>"; };
 		3D7396C02533732600BD4169 /* GoalsReachedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsReachedView.swift; sourceTree = "<group>"; };
 		3D7396C6253373F500BD4169 /* GoalsActiveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsActiveModel.swift; sourceTree = "<group>"; };
+		3D854B10253EA3F900A4F80E /* GoalDeleteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDeleteHandler.swift; sourceTree = "<group>"; };
+		3D854B13253EAC2500A4F80E /* OneSTextFieldConfirmationPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSTextFieldConfirmationPopup.swift; sourceTree = "<group>"; };
 		3DA7BD352532D41400171360 /* OneSTextFieldPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSTextFieldPopupView.swift; sourceTree = "<group>"; };
 		3DA7BD392532F6A600171360 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		3DAE7AE325309D0F00B162B1 /* FloaterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloaterManager.swift; sourceTree = "<group>"; };
@@ -213,12 +217,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3D0B594A253319B000079856 /* Errors */ = {
+		3D0B594A253319B000079856 /* Handlers */ = {
 			isa = PBXGroup;
 			children = (
 				3D0B5947253319AC00079856 /* GoalErrorHandler.swift */,
+				3D854B10253EA3F900A4F80E /* GoalDeleteHandler.swift */,
 			);
-			path = Errors;
+			path = Handlers;
 			sourceTree = "<group>";
 		};
 		3D160D53252E2053008588D5 /* Managers */ = {
@@ -262,6 +267,7 @@
 				3D2E795C25301ED600788AA2 /* OneSPopup.swift */,
 				3D2E7971253033B400788AA2 /* OneSTextPopupView.swift */,
 				3DA7BD352532D41400171360 /* OneSTextFieldPopupView.swift */,
+				3D854B13253EAC2500A4F80E /* OneSTextFieldConfirmationPopup.swift */,
 			);
 			path = Popups;
 			sourceTree = "<group>";
@@ -338,7 +344,7 @@
 			children = (
 				3DA7BD3C2532F72B00171360 /* Managers */,
 				3DDF70272531A5AE00FD3011 /* Models */,
-				3D0B594A253319B000079856 /* Errors */,
+				3D0B594A253319B000079856 /* Handlers */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -761,6 +767,7 @@
 				3D47CC91252C71EA00A8CA1B /* CoordinateSpace.swift in Sources */,
 				3DE9C50B252C8F500023C212 /* OneSText.swift in Sources */,
 				3D0B59452533123600079856 /* DataModel.swift in Sources */,
+				3D854B11253EA3F900A4F80E /* GoalDeleteHandler.swift in Sources */,
 				3DD5C9CD2539CF6600861784 /* GoalScreen.swift in Sources */,
 				3D2E7939252F9D7A00788AA2 /* OneSScaleButtonStyle.swift in Sources */,
 				3DBB6B24252CC08D002C0D03 /* EnumTypeEquatable.swift in Sources */,
@@ -787,6 +794,7 @@
 				3D6F43A5253B268B00785586 /* GoalView.swift in Sources */,
 				3DDF703E2531BB5E00FD3011 /* StepCategory.swift in Sources */,
 				3DDF703A2531BB5200FD3011 /* GoalState.swift in Sources */,
+				3D854B14253EAC2500A4F80E /* OneSTextFieldConfirmationPopup.swift in Sources */,
 				3D2E7972253033B400788AA2 /* OneSTextPopupView.swift in Sources */,
 				3D7396BD2533730700BD4169 /* GoalsActiveView.swift in Sources */,
 				3DDF70252531A57700FD3011 /* StepUnit.swift in Sources */,
