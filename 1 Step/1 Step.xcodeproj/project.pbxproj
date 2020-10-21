@@ -62,6 +62,7 @@
 		3D7396C7253373F500BD4169 /* GoalsActiveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7396C6253373F500BD4169 /* GoalsActiveModel.swift */; };
 		3D854B11253EA3F900A4F80E /* GoalDeleteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D854B10253EA3F900A4F80E /* GoalDeleteHandler.swift */; };
 		3D854B14253EAC2500A4F80E /* OneSTextFieldConfirmationPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D854B13253EAC2500A4F80E /* OneSTextFieldConfirmationPopup.swift */; };
+		3D996778253F57F7000CE151 /* MilestonesHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D996777253F57F7000CE151 /* MilestonesHandler.swift */; };
 		3DA7BD362532D41400171360 /* OneSTextFieldPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA7BD352532D41400171360 /* OneSTextFieldPopupView.swift */; };
 		3DA7BD3A2532F6A600171360 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA7BD392532F6A600171360 /* DataManager.swift */; };
 		3DA96165253D5ACC00B82CB0 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 3DA96164253D5ACC00B82CB0 /* Introspect */; };
@@ -161,6 +162,7 @@
 		3D7396C6253373F500BD4169 /* GoalsActiveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsActiveModel.swift; sourceTree = "<group>"; };
 		3D854B10253EA3F900A4F80E /* GoalDeleteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDeleteHandler.swift; sourceTree = "<group>"; };
 		3D854B13253EAC2500A4F80E /* OneSTextFieldConfirmationPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSTextFieldConfirmationPopup.swift; sourceTree = "<group>"; };
+		3D996777253F57F7000CE151 /* MilestonesHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestonesHandler.swift; sourceTree = "<group>"; };
 		3DA7BD352532D41400171360 /* OneSTextFieldPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSTextFieldPopupView.swift; sourceTree = "<group>"; };
 		3DA7BD392532F6A600171360 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		3DAE7AE325309D0F00B162B1 /* FloaterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloaterManager.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 		3D0B594A253319B000079856 /* Handlers */ = {
 			isa = PBXGroup;
 			children = (
+				3D996777253F57F7000CE151 /* MilestonesHandler.swift */,
 				3D0B5947253319AC00079856 /* GoalErrorHandler.swift */,
 				3D854B10253EA3F900A4F80E /* GoalDeleteHandler.swift */,
 			);
@@ -763,6 +766,7 @@
 				3D47CCC2252C807000A8CA1B /* Colors.swift in Sources */,
 				3DE11C3E252C681600F13719 /* PersistenceManger.swift in Sources */,
 				3D4B78D8252CD4F000A45755 /* GoalCreateModel.swift in Sources */,
+				3D996778253F57F7000CE151 /* MilestonesHandler.swift in Sources */,
 				3DE9C519252CB0520023C212 /* GoalCreateItem.swift in Sources */,
 				3DDF702C2531A5D800FD3011 /* MountainImage.swift in Sources */,
 				3D2E7968253021A900788AA2 /* PopupManager.swift in Sources */,

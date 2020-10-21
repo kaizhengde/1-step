@@ -65,9 +65,16 @@ final class DataManager {
         newGoal.endDate         = nil
         newGoal.mountain        = changeData.mountain!
         newGoal.color           = changeData.color!
-        newGoal.milestones      = []
+        newGoal.milestones      = getNewMilestones(with: newGoal)
         
         return persistenceManager.saveContext()
+    }
+    
+    
+    private func getNewMilestones(with goal: Goal) -> Set<Milestone> {
+        MilestonesHandler.generateNewMilestones(with: goal)
+        
+        return []
     }
     
     
