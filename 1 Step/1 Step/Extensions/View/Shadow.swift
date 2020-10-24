@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct OneSShadow: ViewModifier {
+    
     var opacity: Double
     var x: CGFloat
     var y: CGFloat
     var blur: CGFloat
+    
     
     func body(content: Content) -> some View {
         content

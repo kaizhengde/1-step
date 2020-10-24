@@ -29,7 +29,7 @@ fileprivate struct OneSPopup<PopupContent>: ViewModifier where PopupContent: Vie
         ZStack {
             if manager.transition.didAppear {
             Color.opacityBlur.edgesIgnoringSafeArea(.all)
-                .onTapGesture { manager.dismiss() }
+                .onTapGesture { if manager.dismissOnTapOutside { manager.dismiss() } }
             }
             
             if !manager.transition.isFullHidden {

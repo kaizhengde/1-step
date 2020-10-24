@@ -23,6 +23,8 @@ struct __StepApp: App {
     let miniSheetManager = MiniSheetManager.shared
     let popupManager = PopupManager.shared
     let floaterManager = FloaterManager.shared
+    
+    let infinteAnimationManager = InfinteAnimationManager.shared
 
     
     var body: some Scene {

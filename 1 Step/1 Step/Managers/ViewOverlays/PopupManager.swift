@@ -15,6 +15,7 @@ final class PopupManager: ViewOverlayManagerProtocol {
     @Published var transition: TransitionManager<PopupManager> = TransitionManager()
 
     @Published var dismissOnTap: Bool!
+    @Published var dismissOnTapOutside: Bool!
     @Published var continueButton: Bool!
     @Published var continueAction: (() -> ())!
     
@@ -30,17 +31,20 @@ final class PopupManager: ViewOverlayManagerProtocol {
     
     //TextPopup
     
-    func showTextPopup(titleText: String, titleImage: Image? = nil, bodyText: String, backgroundColor: Color, height: CGFloat = 300+Layout.onlyOniPhoneXType(40)) {
+    func showTextPopup(titleText: String, titleImage: Image? = nil, bodyText: String, backgroundColor: Color, height: CGFloat = 260+Layout.onlyOniPhoneXType(40)) {
         initTransition()
         
-        self.dismissOnTap       = true
-        self.continueButton     = false
-        self.titleText          = titleText
-        self.titleImage         = titleImage
-        self.bodyText           = bodyText
-        self.backgroundColor    = backgroundColor
-        self.height             = height
-        self.content            = { AnyView(OneSTextPopupView()) }
+        self.dismissOnTap           = true
+        self.dismissOnTapOutside    = true
+        self.continueButton     	= false
+        
+        self.titleText          	= titleText
+        self.titleImage         	= titleImage
+        self.bodyText           	= bodyText
+        
+        self.backgroundColor    	= backgroundColor
+        self.height             	= height
+        self.content            	= { AnyView(OneSTextPopupView()) }
     }
     
     
@@ -58,20 +62,24 @@ final class PopupManager: ViewOverlayManagerProtocol {
     func showTextFieldPopup(titleText: String, bodyText: String, input: String, placerholder: String, textLimit: Int, keyboard: UIKeyboardType = .default, lowercased: Bool = false, backgroundColor: Color, height: CGFloat = 300+Layout.onlyOniPhoneXType(40)) {
         initTransition()
         
-        self.dismissOnTap       = false
-        self.continueButton     = true
-        self.continueAction     = { self.textFieldSave.send() }
-        self.titleText          = titleText
-        self.titleImage         = nil
-        self.bodyText           = bodyText
-        self.input              = input
-        self.placerholder       = placerholder
-        self.inputLimit         = textLimit
-        self.keyboard           = keyboard
-        self.lowercased         = lowercased
-        self.backgroundColor    = backgroundColor
-        self.height             = height
-        self.content            = { AnyView(OneSTextFieldPopupView()) }
+        self.dismissOnTap           = false
+        self.dismissOnTapOutside    = true
+        self.continueButton         = true
+        self.continueAction         = { self.textFieldSave.send() }
+        
+        self.titleText              = titleText
+        self.titleImage             = nil
+        self.bodyText               = bodyText
+        
+        self.input                  = input
+        self.placerholder           = placerholder
+        self.inputLimit             = textLimit
+        self.keyboard               = keyboard
+        self.lowercased             = lowercased
+        
+        self.backgroundColor        = backgroundColor
+        self.height                 = height
+        self.content                = { AnyView(OneSTextFieldPopupView()) }
     }
     
     
@@ -91,19 +99,23 @@ final class PopupManager: ViewOverlayManagerProtocol {
     func showTextFieldConfirmationPopup(titleText: String, bodyText: String, placerholder: String, textLimit: Int, confirmationText: String, backgroundColor: Color, height: CGFloat = 380+Layout.onlyOniPhoneXType(40)) {
         initTransition()
         
-        self.dismissOnTap       = false
-        self.continueButton     = false
-        self.continueAction     = { self.textFieldConfirmation.send() }
-        self.titleText          = titleText
-        self.titleImage         = nil
-        self.bodyText           = bodyText
-        self.confirmationInput  = ""
-        self.placerholder       = placerholder
-        self.inputLimit         = textLimit
-        self.confirmationText   = confirmationText
-        self.backgroundColor    = backgroundColor
-        self.height             = height
-        self.content            = { AnyView(OneSTextFieldConfirmationPopupView()) }
+        self.dismissOnTap           = false
+        self.dismissOnTapOutside    = true
+        self.continueButton         = false
+        self.continueAction         = { self.textFieldConfirmation.send() }
+        
+        self.titleText              = titleText
+        self.titleImage             = nil
+        self.bodyText               = bodyText
+        
+        self.confirmationInput      = ""
+        self.placerholder           = placerholder
+        self.inputLimit             = textLimit
+        self.confirmationText       = confirmationText
+        
+        self.backgroundColor        = backgroundColor
+        self.height                 = height
+        self.content                = { AnyView(OneSTextFieldConfirmationPopupView()) }
     }
     
     

@@ -25,7 +25,7 @@ extension TransitionObservableObject {
 }
 
 
-class TransitionManager<TransitionDelegate> where TransitionDelegate: TransitionObservableObject {
+final class TransitionManager<TransitionDelegate> where TransitionDelegate: TransitionObservableObject {
     
     enum TransitionState {
         case fullHide, firstAppear, fullAppear, firstHide

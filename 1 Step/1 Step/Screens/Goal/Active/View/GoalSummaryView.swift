@@ -76,29 +76,21 @@ struct GoalSummaryView: View {
             private struct DownArrowView: View {
                 
                 @EnvironmentObject var goalModel: GoalModel
-                @State private var timerHigh: Bool = true
-                
-                private let timer = Timer.publish(every: 3.6, on: .main, in: .common).autoconnect()
-                private let arrowWidth: CGFloat = 80
-                
-                private var timerHighSummary: Bool { return timerHigh && !goalModel.showJourneyView }
+                @StateObject private var infinteAnimationManager = InfinteAnimationManager.shared
+                                
+                private var isOnForwardAndActive: Bool { return infinteAnimationManager.slow.isOnForward && !goalModel.showJourneyView }
                 
                 
                 var body: some View {
-                    DownArrow(width: arrowWidth, offset: goalModel.showJourneyView ? -20 : 20)
+                    DownArrow(width: 80, offset: goalModel.showJourneyView ? -20 : 20)
                         .stroke(style: StrokeStyle(lineWidth: 12, lineCap: .round))
-                        .frame(width: arrowWidth)
+                        .frame(width: 80)
                         .foregroundColor(.backgroundToGray)
                         .offset(y: goalModel.showJourneyView ? -120 : 0)
                         .oneSAnimation()
-                        .scaleEffect(x: timerHighSummary ? 1.0 : 0.6, y: timerHighSummary ? 1.0 : 0.7)
-                        .offset(y: timerHighSummary ? 0 : 24)
+                        .scaleEffect(x: isOnForwardAndActive ? 1.0 : 0.6, y: isOnForwardAndActive ? 1.0 : 0.7)
+                        .offset(y: isOnForwardAndActive ? 0 : 24)
                         .animation(goalModel.showJourneyView ? .oneSAnimation() : .easeInOut(duration: 1.2))
-                        .onAppear { timerHigh.toggle() }
-                        .onReceive(timer) { _ in
-                            timerHigh.toggle()
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) { timerHigh.toggle() }
-                        }
                         .onTapGesture { goalModel.downArrowTapped() }
                 }
                 

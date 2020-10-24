@@ -22,7 +22,7 @@ final class GoalModel: TransitionObservableObject {
         case current    = 1
     }
     
-    @Published var transition: TransitionManager<GoalModel> = TransitionManager()
+    @Published var transition = TransitionManager<GoalModel>()
     @Published var selectedGoal: Goal!
     
     @Published var dragState: DragState = .none
@@ -31,7 +31,6 @@ final class GoalModel: TransitionObservableObject {
     let didSetScrollPosition = PassthroughSubject<ScrollPosition, Never>()
     
     @Published var showJourneyView: Bool = false 
-    
     
     //MARK: - Transition
     

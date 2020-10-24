@@ -70,6 +70,7 @@
 		3DAE7AE725309DBB00B162B1 /* OneSFloater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE7AE625309DBB00B162B1 /* OneSFloater.swift */; };
 		3DAE7AEB2530A3E600B162B1 /* OneSTextFloater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE7AEA2530A3E600B162B1 /* OneSTextFloater.swift */; };
 		3DBB6B24252CC08D002C0D03 /* EnumTypeEquatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBB6B23252CC08D002C0D03 /* EnumTypeEquatable.swift */; };
+		3DC617262544145C00A1F204 /* InfiniteAnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC617252544145C00A1F204 /* InfiniteAnimationManager.swift */; };
 		3DCDDD94253C1E3100873D26 /* GoalJourneyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCDDD93253C1E3100873D26 /* GoalJourneyView.swift */; };
 		3DD5C9CD2539CF6600861784 /* GoalScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD5C9CC2539CF6600861784 /* GoalScreen.swift */; };
 		3DD5C9D02539CF7B00861784 /* GoalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD5C9CF2539CF7B00861784 /* GoalModel.swift */; };
@@ -169,6 +170,7 @@
 		3DAE7AE625309DBB00B162B1 /* OneSFloater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSFloater.swift; sourceTree = "<group>"; };
 		3DAE7AEA2530A3E600B162B1 /* OneSTextFloater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSTextFloater.swift; sourceTree = "<group>"; };
 		3DBB6B23252CC08D002C0D03 /* EnumTypeEquatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumTypeEquatable.swift; sourceTree = "<group>"; };
+		3DC617252544145C00A1F204 /* InfiniteAnimationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfiniteAnimationManager.swift; sourceTree = "<group>"; };
 		3DCDDD93253C1E3100873D26 /* GoalJourneyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalJourneyView.swift; sourceTree = "<group>"; };
 		3DD5C9CC2539CF6600861784 /* GoalScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalScreen.swift; sourceTree = "<group>"; };
 		3DD5C9CF2539CF7B00861784 /* GoalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalModel.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				3D160D54252E2067008588D5 /* TransitionManager.swift */,
+				3DC617252544145C00A1F204 /* InfiniteAnimationManager.swift */,
 				3D5156B62531FB2600A44450 /* ViewOverlays */,
 			);
 			path = Managers;
@@ -795,6 +798,7 @@
 				3DDF70452531BC1200FD3011 /* MilestoneImage.swift in Sources */,
 				3D5156B32531F83700A44450 /* OneSMiniSheet.swift in Sources */,
 				3D2E7928252F6C2C00788AA2 /* GoalEnterInputModel.swift in Sources */,
+				3DC617262544145C00A1F204 /* InfiniteAnimationManager.swift in Sources */,
 				3D5156AF2531F66D00A44450 /* GoalEnterInputSelectStepUnitView.swift in Sources */,
 				3D2E79752530344D00788AA2 /* OneSSecondaryHeaderText.swift in Sources */,
 				3D4B78E1252CDD9200A45755 /* GoalSelectMountainItem.swift in Sources */,

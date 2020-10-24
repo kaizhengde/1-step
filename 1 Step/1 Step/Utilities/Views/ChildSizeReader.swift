@@ -29,7 +29,9 @@ struct ChildSizeReader<Content: View>: View {
     }
 }
 
+
 struct SizePreferenceKey: PreferenceKey {
+    
     typealias Value = CGSize
     
     static var defaultValue: Value = .zero
