@@ -43,11 +43,6 @@ enum GoalItemArt {
     
     //Text
     
-    static func stepUnitText(_ goal: Goal) -> String {
-        return goal.step.unit == .custom ? goal.step.customUnit : goal.step.unit.description
-    }
-    
-    
     static var nameFont: OneSFont {
         switch current {
         case .grid: return .custom(weight: Raleway.extraBold, size: 20)

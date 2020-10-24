@@ -8,11 +8,12 @@
 import SwiftUI
 import CoreData
 
-class Milestone: NSManagedObject {
+final class Milestone: NSManagedObject {
     
     @NSManaged var name: String
     
-    @NSManaged var stepsNeeded: Int16
+    @NSManaged var neededStepUnits: Int16
+    @NSManaged var neededSteps: Int16
     @NSManaged var state: MilestoneState
     
     @NSManaged var endDate: Date?

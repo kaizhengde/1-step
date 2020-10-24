@@ -16,17 +16,16 @@ final class GoalEditModel: ObservableObject, GoalSelectMountainDelegate, GoalEnt
     
     
     func trySaveEditAndDismiss(_ goal: Goal) {
-        let changeData: Goal.ChangeData = (
-            name:           selectedEnterInputData.goalName.trimmingCharacters(in: .whitespaces),
-            stepCategory:   selectedEnterInputData.stepCategory,
-            stepUnit:       selectedEnterInputData.stepUnit,
-            stepCustomUnit: selectedEnterInputData.stepCustomUnit.trimmingCharacters(in: .whitespaces),
-            stepsNeeded:    Int16(selectedEnterInputData.stepsNeeded),
-            mountain:       selectedMountainData.mountain,
-            color:          selectedMountainData.color
+        let baseData: Goal.BaseData = (
+            name:           	selectedEnterInputData.goalName.trimmingCharacters(in: .whitespaces),
+            stepCategory:   	selectedEnterInputData.stepCategory,
+            stepUnit:       	selectedEnterInputData.stepUnit!.description,
+            neededStepUnits:    Int16(selectedEnterInputData.neededStepUnits),
+            mountain:           selectedMountainData.mountain,
+            color:              selectedMountainData.color
         )
         
-        if DataModel.shared.editGoal(goal, with: changeData) {
+        if DataModel.shared.editGoal(goal, with: baseData) {
             SheetManager.shared.dismiss()
         }
     }

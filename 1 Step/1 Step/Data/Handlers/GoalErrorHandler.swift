@@ -22,7 +22,7 @@ enum GoalErrorHandler {
     }
     
     
-    static func hasErrors(with changeData: Goal.ChangeData) -> Bool {
+    static func hasErrors(with changeData: Goal.BaseData) -> Bool {
         let errorText: String!
         
         do {
@@ -42,10 +42,10 @@ enum GoalErrorHandler {
             errorText = "Your custom unit is empty?\n\nPlease re enter."
         }
         catch GoalError.stepsNeededTooLittle {
-            errorText =  "Too little steps to take, maybe change the unit (km -> m)?\n\nMinimum steps: \(Goal.stepsNeededMinimum)."
+            errorText =  "Too little steps to take.?\n\nMinimum steps: \(Goal.stepsNeededMinimum)."
         }
         catch GoalError.stepsNeededTooMany {
-            errorText =  "Too many steps to take, maybe change the unit (m -> km)?\n\nMaximum steps: \(Goal.stepsNeededMaximum)."
+            errorText =  "Too many steps to take.?\n\nMaximum steps: \(Goal.stepsNeededMaximum)."
         }
         catch {
             errorText = "Goal create failed with an unknown error.\n\nConsider restarting the app."
@@ -57,18 +57,18 @@ enum GoalErrorHandler {
     }
     
     
-    static func correctInput(with changeData: Goal.ChangeData) throws {
+    static func correctInput(with baseData: Goal.BaseData) throws {
         
-        if changeData.name.isEmpty { throw GoalError.goalNameEmpty }
-        if changeData.stepsNeeded == nil { throw GoalError.stepsNeededEmpty }
-        if changeData.stepCategory == nil { throw GoalError.stepCategoryEmpty }
-        if changeData.stepUnit == nil { throw GoalError.stepUnitEmpty }
-        if changeData.stepCustomUnit.isEmpty && changeData.stepUnit! == .custom { throw GoalError.stepCustomUnitEmpty }
+        if baseData.name.isEmpty { throw GoalError.goalNameEmpty }
+        if baseData.neededStepUnits == nil { throw GoalError.stepsNeededEmpty }
+        if baseData.stepCategory == nil { throw GoalError.stepCategoryEmpty }
+        if baseData.stepUnit.isEmpty { throw GoalError.stepUnitEmpty }
+        if baseData.stepUnit == "custom" { throw GoalError.stepCustomUnitEmpty }
         
-        if changeData.stepsNeeded! < Goal.stepsNeededMinimum {
+        if baseData.neededStepUnits! < Goal.stepsNeededMinimum {
             throw GoalError.stepsNeededTooLittle
         }
-        if changeData.stepsNeeded! > Goal.stepsNeededMaximum {
+        if baseData.neededStepUnits! > Goal.stepsNeededMaximum {
             throw GoalError.stepsNeededTooMany
         }
     }

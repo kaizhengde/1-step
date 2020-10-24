@@ -8,11 +8,11 @@
 import SwiftUI
 import CoreData
 
-class Step: NSManagedObject {
+final class Step: NSManagedObject {
     
     @NSManaged var category: StepCategory
-    @NSManaged var unit: StepUnit
-    @NSManaged var customUnit: String
+    @NSManaged var unit: String
+    @NSManaged var unitRatio: Double 
     
     @NSManaged var goal: Goal
 }

@@ -41,9 +41,9 @@ final class DataModel: ObservableObject {
     
     //MARK: - Insert
     
-    func createGoal(with changeData: Goal.ChangeData) -> Bool {
-        guard !GoalErrorHandler.hasErrors(with: changeData) else { return false }
-        guard dataManager.insertGoal(with: changeData) else { return false }
+    func createGoal(with baseData: Goal.BaseData) -> Bool {
+        guard !GoalErrorHandler.hasErrors(with: baseData) else { return false }
+        guard dataManager.insertGoal(with: baseData) else { return false }
         
         fetchAllActiveGoals()
         return true
@@ -52,9 +52,9 @@ final class DataModel: ObservableObject {
     
     //MARK: - Change
     
-    func editGoal(_ goal: Goal, with changeData: Goal.ChangeData) -> Bool {
-        guard !GoalErrorHandler.hasErrors(with: changeData) else { return false }
-        guard dataManager.editGoal(goal, with: changeData) else { return false }
+    func editGoal(_ goal: Goal, with baseData: Goal.BaseData) -> Bool {
+        guard !GoalErrorHandler.hasErrors(with: baseData) else { return false }
+        guard dataManager.editGoal(goal, with: baseData) else { return false }
         
         fetchAllActiveGoals()
         return true

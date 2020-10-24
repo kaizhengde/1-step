@@ -79,8 +79,8 @@ struct GoalItem: View {
                     OneSText(text: goal.name, font: GoalItemArt.nameFont, color: .backgroundToGray)
                     
                     HStack(spacing: 1.5) {
-                        OneSText(text: "\(goal.stepsNeeded)", font: GoalItemArt.stepsFont, color: .backgroundToGray)
-                        OneSText(text: GoalItemArt.stepUnitText(goal), font: GoalItemArt.stepsFont, color: .backgroundToGray)
+                        OneSText(text: "\(goal.neededStepUnits)", font: GoalItemArt.stepsFont, color: .backgroundToGray)
+                        OneSText(text: goal.step.unit, font: GoalItemArt.stepsFont, color: .backgroundToGray)
                         Spacer()
                     }
                 }

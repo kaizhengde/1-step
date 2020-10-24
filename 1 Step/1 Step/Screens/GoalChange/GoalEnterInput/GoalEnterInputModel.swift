@@ -10,11 +10,10 @@ import Combine
 
 struct GoalEnterInputData {
     
-    var goalName: String            = ""
-    var stepsNeeded: String         = ""
-    var stepCategory: StepCategory? = nil
-    var stepUnit: StepUnit?         = nil
-    var stepCustomUnit: String      = ""
+    var goalName: String                = ""
+    var neededStepUnits: String         = ""
+    var stepCategory: StepCategory?     = nil
+    var stepUnit: StepUnit?             = nil
 }
 
 
@@ -32,23 +31,19 @@ final class GoalEnterInputModel: ObservableObject {
     
     weak var delegate: GoalEnterInputDelegate?
     
-    
     //MARK: - GoalEnterInputSelectStepUnit
     
     //Button
     
     func stepEnterUnitButtonText() -> String {
         guard let stepUnit = selectedData.stepUnit else { return "trees" }
-        
-        if stepUnit == .custom {
-            return selectedData.stepCustomUnit.isEmpty ? "custom" : selectedData.stepCustomUnit
-        }
-        return stepUnit.description
+        return stepUnit.description.isEmpty ? "trees" : stepUnit.description
     }
     
     
     func stepEnterUnitButtonColor(_ selectedColor: UserColor) -> Color {
-        return selectedData.stepUnit == nil ? .lightNeutralToLightGray : selectedColor.get()
+        guard let stepUnit = selectedData.stepUnit else { return .lightNeutralToLightGray }
+        return stepUnit.description.isEmpty ? .lightNeutralToLightGray : selectedColor.get()
     }
 
     

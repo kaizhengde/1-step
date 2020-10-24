@@ -7,28 +7,27 @@
 
 import Foundation
 
-@objc
-enum StepUnit: Int16 {
+enum StepUnit: Equatable {
         
     //Duration
-    case hours      = 0
-    case min        = 1
+    case hours
+    case min
     
     //Distance
-    case km         = 2
-    case m          = 3
-    case miles      = 4
-    case feets      = 5
+    case km
+    case m
+    case miles
+    case feets
     
     //Reps
-    case times      = 6
-    case pages      = 7
-    case steps      = 8
-    case decisions  = 9
-    case trees  = 10
-    case books      = 11
+    case times
+    case pages
+    case steps
+    case decisions
+    case trees
+    case books
     
-    case custom     = 12
+    case custom(String)
     
     
     var description: String {
@@ -45,7 +44,16 @@ enum StepUnit: Int16 {
         case .decisions:    return "decisions"
         case .trees:        return "trees"
         case .books:        return "books"
-        case .custom:       return "custom"
+        case let .custom(text):
+            return text.isEmpty ? "" : text
+        }
+    }
+    
+    
+    var isCustom: Bool {
+        switch self {
+        case .custom(_):    return true
+        default:            return false
         }
     }
     
@@ -54,7 +62,34 @@ enum StepUnit: Int16 {
         switch category {
         case .duration: return [.hours, .min]
         case .distance: return [.km, .m, .miles, .feets]
-        case .reps: return [.times, .pages, .steps, .decisions, .trees, .books, .custom]
+        case .reps: return [.times, .pages, .steps, .decisions, .trees, .books, .custom("")]
+        }
+    }
+    
+    
+    static func stepUnitFrom(description: String) -> Self {
+        switch description {
+        case "hours":       return .hours
+        case "min":         return .min
+        case "km":          return .km
+        case "m":           return .m
+        case "miles":       return .miles
+        case "feets":       return .feets
+        case "times":       return .times
+        case "pages":       return .pages
+        case "steps":       return .steps
+        case "decisions":   return .decisions
+        case "trees":       return .trees
+        case "books":       return .books
+        default:            return .custom(description)
+        }
+    }
+    
+    
+    static func ==(lhs: Self, rhs: Self) -> Bool {
+        switch (lhs, rhs) {
+        case (.custom(_), .custom(_)): return true
+        default: return lhs.description == rhs.description
         }
     }
 }

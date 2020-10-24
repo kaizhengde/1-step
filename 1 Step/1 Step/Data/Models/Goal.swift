@@ -8,7 +8,7 @@
 import SwiftUI
 import CoreData
 
-class Goal: NSManagedObject, Identifiable {
+final class Goal: NSManagedObject, Identifiable {
     
     //Consecutive from 0..<#activeGoals -> deletion, reached - update all orders respectively
     //For reachedGoals: -1
@@ -17,8 +17,10 @@ class Goal: NSManagedObject, Identifiable {
     @NSManaged var name: String
     
     @NSManaged var step: Step
-    @NSManaged var stepsNeeded: Int16
+    @NSManaged var neededStepUnits: Int16
+    @NSManaged var neededSteps: Int16
     
+    @NSManaged var currentStepUnits: Int16
     @NSManaged var currentSteps: Int16
     @NSManaged var currentPercent: Int16
     @NSManaged var currentState: GoalState
@@ -33,15 +35,19 @@ class Goal: NSManagedObject, Identifiable {
 
 extension Goal {
     
-    typealias ChangeData = (
-        name:           String,
-        stepCategory:   StepCategory?,
-        stepUnit:       StepUnit?,
-        stepCustomUnit: String,
-        stepsNeeded:    Int16?,
-        mountain:       MountainImage?,
-        color:          UserColor?
+    typealias BaseData = (
+        name:               String,
+        stepCategory:       StepCategory?,
+        stepUnit:           String,
+        neededStepUnits:    Int16?,
+        mountain:           MountainImage?,
+        color:              UserColor?
     )
+    
+    typealias JourneyData = ()
+    
+    typealias NotificationData = ()
+    
     
     static let nameDigitsLimit = 15
     static let stepsNeededDigitsLimit = 4

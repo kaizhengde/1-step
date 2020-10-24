@@ -41,9 +41,9 @@ struct GoalSummaryView: View {
                     OneSText(text: goalModel.selectedGoal.name, font: .custom(weight: Raleway.light, size: 28), color: goalModel.topTextColor)
                     
                     HStack(spacing: 3) {
-                        OneSText(text: "\(goalModel.selectedGoal.stepsNeeded)", font: .custom(weight: Raleway.bold, size: 45), color: goalModel.topTextColor)
+                        OneSText(text: "\(goalModel.selectedGoal.neededStepUnits)", font: .custom(weight: Raleway.bold, size: 45), color: goalModel.topTextColor)
                         
-                        OneSText(text: goalModel.stepUnitText, font: .custom(weight: Raleway.bold, size: 36), color: goalModel.topTextColor)
+                        OneSText(text: goalModel.selectedGoal.step.unit, font: .custom(weight: Raleway.bold, size: 36), color: goalModel.topTextColor)
                     }
                 }
                 .frame(height: 80)

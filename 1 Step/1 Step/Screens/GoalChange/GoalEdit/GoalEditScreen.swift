@@ -52,10 +52,9 @@ struct GoalEditScreen: View {
         let goal = goalModel.selectedGoal!
         
         goalEnterInputModel.selectedData.goalName = goal.name
-        goalEnterInputModel.selectedData.stepsNeeded = String(goal.stepsNeeded)
+        goalEnterInputModel.selectedData.neededStepUnits = String(goal.neededStepUnits)
         goalEnterInputModel.selectedData.stepCategory = goal.step.category
-        goalEnterInputModel.selectedData.stepUnit = goal.step.unit
-        goalEnterInputModel.selectedData.stepCustomUnit = goal.step.customUnit
+        goalEnterInputModel.selectedData.stepUnit = StepUnit.stepUnitFrom(description: goal.step.unit)
         
         goalSelectMountainModel.currentMountain = goal.mountain
         

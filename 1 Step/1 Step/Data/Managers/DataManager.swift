@@ -43,28 +43,27 @@ final class DataManager {
     
     //MARK: - Insert
     
-    func insertGoal(with changeData: Goal.ChangeData) -> Bool {
+    func insertGoal(with baseData: Goal.BaseData) -> Bool {
         let activeGoalsCount = fetchActiveGoalCount()
         
         let newGoal = Goal(context: persistenceManager.context)
         let newStep = Step(context: persistenceManager.context)
         
-        newStep.category        = changeData.stepCategory!
-        newStep.unit            = changeData.stepUnit!
-        newStep.customUnit      = changeData.stepCustomUnit
+        newStep.category        = baseData.stepCategory!
+        newStep.unit            = baseData.stepUnit
         newStep.goal            = newGoal
 
         newGoal.sortOrder       = activeGoalsCount
-        newGoal.name            = changeData.name
+        newGoal.name            = baseData.name
         newGoal.step            = newStep
-        newGoal.stepsNeeded     = changeData.stepsNeeded!
+        newGoal.neededStepUnits = baseData.neededStepUnits!
         newGoal.currentSteps    = .zero
         newGoal.currentPercent  = Int16(Int.random(in: 0...100))
         newGoal.currentState    = .active
         newGoal.startDate       = Date()
         newGoal.endDate         = nil
-        newGoal.mountain        = changeData.mountain!
-        newGoal.color           = changeData.color!
+        newGoal.mountain        = baseData.mountain!
+        newGoal.color           = baseData.color!
         newGoal.milestones      = getNewMilestones(with: newGoal)
         
         return persistenceManager.saveContext()
@@ -72,7 +71,7 @@ final class DataManager {
     
     
     private func getNewMilestones(with goal: Goal) -> Set<Milestone> {
-        MilestonesHandler.generateNewMilestones(with: goal)
+        //MilestonesHandler.generateNewMilestones(with: goal)
         
         return []
     }
@@ -80,14 +79,13 @@ final class DataManager {
     
     //MARK: - Change
     
-    func editGoal(_ goal: Goal, with changeData: Goal.ChangeData) -> Bool {
-        goal.name            = changeData.name
-        goal.step.category   = changeData.stepCategory!
-        goal.step.unit       = changeData.stepUnit!
-        goal.step.customUnit = changeData.stepCustomUnit
-        goal.stepsNeeded     = changeData.stepsNeeded!
-        goal.mountain        = changeData.mountain!
-        goal.color           = changeData.color!
+    func editGoal(_ goal: Goal, with baseData: Goal.BaseData) -> Bool {
+        goal.name            = baseData.name
+        goal.step.category   = baseData.stepCategory!
+        goal.step.unit       = baseData.stepUnit
+        goal.neededStepUnits = baseData.neededStepUnits!
+        goal.mountain        = baseData.mountain!
+        goal.color           = baseData.color!
         
         return persistenceManager.saveContext()
     }
