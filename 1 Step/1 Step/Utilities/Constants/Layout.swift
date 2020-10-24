@@ -40,10 +40,11 @@ enum Device {
     static let isiPhone8Zoomed              = idiom == .phone && Layout.screenHeight == 667.0 && nativeScale > scale
     static let isiPhone8PlusStandard        = idiom == .phone && Layout.screenHeight == 736.0
     static let isiPhone8PlusZoomed          = idiom == .phone && Layout.screenHeight == 736.0 && nativeScale < scale
-    static let isiPhoneX                    = idiom == .phone && Layout.screenHeight == 812.0
-    static let isiPhoneXsMaxAndXr           = idiom == .phone && Layout.screenHeight == 896.0
+    static let isiPhoneXAnd11And12Mini      = idiom == .phone && Layout.screenHeight == 812.0
+    static let isiPhoneXsMaxAndXrAnd11Max   = idiom == .phone && Layout.screenHeight == 896.0
+    static let isiPhone12                   = idiom == .phone && Layout.screenHeight == 844.0
 
-    static let isiPhoneXType: Bool = { return isiPhoneX || isiPhoneXsMaxAndXr }()
+    static let isiPhoneXType: Bool = { return isiPhoneXAnd11And12Mini || isiPhoneXsMaxAndXrAnd11Max || isiPhone12 }()
 }
 
 

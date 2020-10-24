@@ -49,3 +49,4 @@ extension Goal {
     static let stepsNeededMinimum: Int16 = 10
     static let stepsNeededMaximum: Int16 = 1000
 }
+ 
