@@ -35,8 +35,7 @@ fileprivate struct OneSMiniSheet<MiniSheetContent>: ViewModifier where MiniSheet
             
             if !manager.transition.isFullHidden {
                 OneSMiniSheetView()
-                    .opacity(manager.transition.isFullAppeared ? 1.0 : 0.0)
-                    .offset(y: manager.transition.isFullAppeared ? manager.extraHeight : manager.height+manager.extraHeight)
+                    .offset(y: manager.transition.isFullAppeared ? manager.extraHeight : manager.height+2*manager.extraHeight)
                     .offset(y: dragOffset)
                     .gesture(
                         DragGesture()
