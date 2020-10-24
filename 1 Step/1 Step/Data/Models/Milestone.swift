@@ -10,10 +10,11 @@ import CoreData
 
 final class Milestone: NSManagedObject {
     
-    @NSManaged var stage: MilestoneStage
-    
-    @NSManaged var neededStepUnits: Int16
+    @NSManaged var neededStepUnits: Double
     @NSManaged var neededSteps: Int16
+    
+    @NSManaged var image: MilestoneImage
+    
     @NSManaged var state: MilestoneState
     @NSManaged var endDate: Date?
     

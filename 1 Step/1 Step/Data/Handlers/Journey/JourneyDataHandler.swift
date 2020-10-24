@@ -14,7 +14,6 @@ enum JourneyDataHandler {
      
      Invariant:         Prev <= Next, 1 or 10 <= NeededStepsUnit <= NeededSteps <= 1000
      Ratio:             [Step:StepUnit] Reps: 1:1, Duration & Distance: 1:n with n is natural number >= 1
-     Max:               10 | 25 | 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 1000
      Milestones max:    13
      Preference:        300 - 600 Steps range
      
@@ -112,36 +111,36 @@ enum JourneyDataHandler {
     //ALGO: O(1) From goal.neededStepUnits & goal.step.ratio -> goal.milestones
     static func generateMilestones(with goal: Goal) -> Set<Milestone> {
         
-        let neededStepUnits = goal.neededStepUnits
-        let milestoneSteps: MilestoneStage.MilestoneSteps = neededStepUnits < 10 ? .small : .big
+        let milestoneStages = MilestoneStages(maxNeededStepUnits: MilestoneStages.getMaxNeededStepUnits(from: goal.neededStepUnits))
+        
         
         //1. Find lower bound [690 -> 600]
         
-        var lowerBoundNeeded: Int16 = 0
-        var lowerBound: MilestoneStage = .none
+        var lowerBound: Double = 0
+        var lowerBoundPrev: Double = 0
 
-        for milestoneStage in MilestoneStage.allCases {
-            if milestoneStage.neededStepUnits(milestoneSteps) <= neededStepUnits {
-                lowerBoundNeeded = max(milestoneStage.neededStepUnits(milestoneSteps), lowerBoundNeeded)
-                lowerBound = MilestoneStage.stageFrom(neededStepUnits: lowerBoundNeeded, milestoneSteps)
+        for i in 0..<milestoneStages.neededStepUnits.count {
+            if milestoneStages.neededStepUnits[i] <= Double(goal.neededStepUnits) {
+                lowerBound = max(milestoneStages.neededStepUnits[i], lowerBound)
+                lowerBoundPrev = milestoneStages.neededStepUnits[i-1 >= 0 ? i-1 : 0]
             }
         }
         
         
         //2. Calculate differences [85 - 50 -> 35], [50 - 25 -> 25]
         
-        let differenceNeededLower = neededStepUnits - lowerBound.neededStepUnits(milestoneSteps)
-        let differenceLowerPrev   = lowerBound.neededStepUnits(milestoneSteps) - lowerBound.infos.prev.neededStepUnits(milestoneSteps)
+        let differenceNeededLower = Double(goal.neededStepUnits) - lowerBound
+        let differenceLowerPrev   = lowerBound - lowerBoundPrev
         
         
         //3. Determine last milestone before summit (Invariant!)
         
-        var lastMilestoneStage: MilestoneStage = .none
+        var lastStageNeededStepUnits: Double = 0
         
         if differenceNeededLower >= differenceLowerPrev {
-            lastMilestoneStage = lowerBound
+            lastStageNeededStepUnits = lowerBound
         } else {
-            lastMilestoneStage = lowerBound.infos.prev
+            lastStageNeededStepUnits = lowerBoundPrev
         }
         
         
@@ -149,18 +148,18 @@ enum JourneyDataHandler {
         
         var milestones: Set<Milestone> = []
         
-        for milestoneStage in MilestoneStage.allCases {
-            if milestoneStage.neededStepUnits(milestoneSteps) <= lastMilestoneStage.neededStepUnits(milestoneSteps) && milestoneStage != .none {
+        for stageNeededStepUnits in milestoneStages.neededStepUnits {
+            if stageNeededStepUnits <= lastStageNeededStepUnits {
                 let milestone = Milestone(context: PersistenceManager.defaults.context)
                 
-                milestone.stage             = milestoneStage
-                milestone.neededSteps       = milestoneStage.neededStepUnits(milestoneSteps) * goal.step.unitRatio
+                milestone.neededStepUnits   = stageNeededStepUnits
+                milestone.neededSteps       = Int16(stageNeededStepUnits * Double(goal.step.unitRatio))
                 milestone.state             = .active
                 milestone.endDate           = nil
                 milestone.parentGoal        = goal
                 
                 print("---------------------------")
-                print("Title: \(milestone.stage.neededStepUnits(milestoneSteps)) \(goal.step.unit)")
+                print("Title: \(milestone.neededStepUnits) \(goal.step.unit)")
                 print("Steps: \(milestone.neededSteps)")
                 
                 milestones.insert(milestone)
@@ -172,9 +171,8 @@ enum JourneyDataHandler {
         
         let summitMilestone = Milestone(context: PersistenceManager.defaults.context)
         
-        summitMilestone.stage             = MilestoneStage.summit
-        summitMilestone.neededStepUnits   = neededStepUnits
-        summitMilestone.neededSteps       = neededStepUnits * goal.step.unitRatio
+        summitMilestone.neededStepUnits   = Double(goal.neededStepUnits)
+        summitMilestone.neededSteps       = goal.neededStepUnits * goal.step.unitRatio
         summitMilestone.state             = .active
         summitMilestone.endDate           = nil
         summitMilestone.parentGoal        = goal
