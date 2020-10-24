@@ -18,7 +18,6 @@ enum GoalErrorHandler {
         
         case stepCategoryEmpty
         case stepUnitEmpty
-        case stepCustomUnitEmpty
     }
     
     
@@ -37,9 +36,6 @@ enum GoalErrorHandler {
         }
         catch GoalError.stepCategoryEmpty, GoalError.stepUnitEmpty {
             errorText = "What do you want to track?\n\nPlease select a unit."
-        }
-        catch GoalError.stepCustomUnitEmpty {
-            errorText = "Your custom unit is empty?\n\nPlease re enter."
         }
         catch GoalError.stepsNeededTooLittle {
             errorText =  "Too little steps to take.?\n\nMinimum steps: \(Goal.stepsNeededMinimum)."
@@ -63,7 +59,6 @@ enum GoalErrorHandler {
         if baseData.neededStepUnits == nil { throw GoalError.stepsNeededEmpty }
         if baseData.stepCategory == nil { throw GoalError.stepCategoryEmpty }
         if baseData.stepUnit.isEmpty { throw GoalError.stepUnitEmpty }
-        if baseData.stepUnit == "custom" { throw GoalError.stepCustomUnitEmpty }
         
         if baseData.neededStepUnits! < Goal.stepsNeededMinimum {
             throw GoalError.stepsNeededTooLittle
