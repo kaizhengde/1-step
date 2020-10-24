@@ -38,12 +38,12 @@ struct GoalSummaryView: View {
             
             var body: some View {
                 VStack(spacing: -5) {
-                    OneSText(text: goalModel.selectedGoal.name, font: .custom(weight: Raleway.light, size: 28), color: goalModel.topTextColor)
+                    OneSText(text: goalModel.selectedGoal.name, font: .custom(weight: Raleway.light, size: 32*Layout.multiplierHeight), color: goalModel.topTextColor)
                     
                     HStack(spacing: 3) {
-                        OneSText(text: "\(goalModel.selectedGoal.neededStepUnits)", font: .custom(weight: Raleway.bold, size: 45), color: goalModel.topTextColor)
+                        OneSText(text: "\(goalModel.selectedGoal.neededStepUnits)", font: .custom(weight: Raleway.bold, size: 52*Layout.multiplierHeight), color: goalModel.topTextColor)
                         
-                        OneSText(text: goalModel.selectedGoal.step.unit, font: .custom(weight: Raleway.bold, size: 36), color: goalModel.topTextColor)
+                        OneSText(text: goalModel.selectedGoal.step.unit, font: .custom(weight: Raleway.bold, size: 40*Layout.multiplierHeight), color: goalModel.topTextColor)
                     }
                 }
                 .frame(height: 80)

@@ -15,6 +15,7 @@ class GoalsActiveModel: ObservableObject {
     
     var itemsAppeared: Int { itemsAppear.reduce(0) { $0 + ($1 ? 1 : 0) } }
     
+    
     //MARK: - Transition
     
     func initItemTransition(of sortOrder: Int) {
