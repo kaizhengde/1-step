@@ -46,9 +46,7 @@ enum JourneyDataHandler {
 
     static func calculateRatioDuration(_ baseData: Goal.BaseData) -> Int16 {
 
-        //If minutes just return
-        guard baseData.stepUnit == StepUnit.hours.description else { return 1 }
-        
+        guard baseData.stepUnit == StepUnit.hours.description else { return 1 }        
         
         switch baseData.neededStepUnits! {
         case 400...1000:    return 1    //Steps: [400 -> 1000]      1 Step = 1 Hour
@@ -69,39 +67,18 @@ enum JourneyDataHandler {
     
     static func calculateRatioDistance(_ baseData: Goal.BaseData) -> Int16 {
         
-        //Check if kilometer/meter or miles/feet
-        if baseData.stepUnit == StepUnit.km.description || baseData.stepUnit == StepUnit.m.description {
-            
-            //If meters, just return
-            guard baseData.stepUnit == StepUnit.km.description else { return 1 }
-            
-            switch baseData.neededStepUnits! {
-            case 400...1000:    return 1    //Steps: [400 -> 1000]      1 Step = 1 Kilometer
-            case 200...399:     return 2    //Steps: [400 -> 798]       1 Step = 500 Meters
-            case 100...199:     return 4    //Steps: [400 -> 796]       1 Step = 250 Meters
-            case 40...99:       return 5    //Steps: [200 -> 495]       1 Step = 200 Meters
-            case 20...39:       return 10   //Steps: [200 -> 390]       1 Step = 100 Meters
-            case 8...19:        return 20   //Steps: [160 -> 380]       1 Step = 50 Meters
-            case 4...7:         return 50   //Steps: [200 -> 350]       1 Step = 20 Meters
-            case 1...3:         return 100  //Steps: [100 -> 300]       1 Step = 10 Meters
-            default: break
-            }
-        } else {
-            
-            //If feets, just return
-            guard baseData.stepUnit == StepUnit.miles.description else { return 1 }
-            
-            switch baseData.neededStepUnits! {
-            case 400...1000:    return 1    //Steps: [400 -> 1000]      1 Step = 1 Mile
-            case 200...399:     return 2    //Steps: [400 -> 798]       1 Step = 0.5 Mile
-            case 100...199:     return 4    //Steps: [400 -> 796]       1 Step = 0.25 Mile
-            case 40...99:       return 5    //Steps: [200 -> 495]       1 Step = 0.2 Mile
-            case 20...39:       return 10   //Steps: [200 -> 390]       1 Step = 0.1 Mile
-            case 8...19:        return 20   //Steps: [160 -> 380]       1 Step = 0.05 Mile
-            case 4...7:         return 50   //Steps: [200 -> 350]       1 Step = 0.02 Mile
-            case 1...3:         return 100  //Steps: [100 -> 300]       1 Step = 0.01 Mile
-            default: break
-            }
+        guard baseData.stepUnit == StepUnit.km.description || baseData.stepUnit == StepUnit.miles.description else { return 1 }
+                
+        switch baseData.neededStepUnits! {
+        case 400...1000:    return 1    //Steps: [400 -> 1000]      1 Step = 1 Kilometer    1 Mile
+        case 200...399:     return 2    //Steps: [400 -> 798]       1 Step = 500 Meters     0.5 Mile
+        case 100...199:     return 4    //Steps: [400 -> 796]       1 Step = 250 Meters     0.25 Mile
+        case 40...99:       return 5    //Steps: [200 -> 495]       1 Step = 200 Meters     0.2 Mile
+        case 20...39:       return 10   //Steps: [200 -> 390]       1 Step = 100 Meters     0.1 Mile
+        case 8...19:        return 20   //Steps: [160 -> 380]       1 Step = 50 Meters      0.05 Mile
+        case 4...7:         return 50   //Steps: [200 -> 350]       1 Step = 20 Meters      0.02 Mile
+        case 1...3:         return 100  //Steps: [100 -> 300]       1 Step = 10 Meters      0.01 Mile
+        default: break
         }
         
         return 0
@@ -161,6 +138,7 @@ enum JourneyDataHandler {
                 print("---------------------------")
                 print("Title: \(milestone.neededStepUnits) \(goal.step.unit)")
                 print("Steps: \(milestone.neededSteps)")
+                print("Ratio: \(goal.step.unitRatio)")
                 
                 milestones.insert(milestone)
             }
@@ -182,6 +160,7 @@ enum JourneyDataHandler {
         print("-----------Summit-----------")
         print("Title: \(summitMilestone.neededStepUnits) \(goal.step.unit)")
         print("Steps: \(summitMilestone.neededSteps)")
+        print("Ratio: \(goal.step.unitRatio)")
         
         
         //6. Return

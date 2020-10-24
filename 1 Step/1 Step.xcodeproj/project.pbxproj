@@ -549,8 +549,8 @@
 		3DC6172F2544958700A1F204 /* Journey */ = {
 			isa = PBXGroup;
 			children = (
-				3DC6172B2544882B00A1F204 /* MilestoneStages.swift */,
 				3D996777253F57F7000CE151 /* JourneyDataHandler.swift */,
+				3DC6172B2544882B00A1F204 /* MilestoneStages.swift */,
 			);
 			path = Journey;
 			sourceTree = "<group>";

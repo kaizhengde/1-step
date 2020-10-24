@@ -62,6 +62,8 @@ fileprivate struct OneSPopup<PopupContent>: ViewModifier where PopupContent: Vie
                         if manager.continueButton {
                             Spacer()
                             OneSSmallBorderButton(symbol: SFSymbol.arrow, color: .backgroundToGray, withScale: false) { manager.textFieldDismiss() }
+                        } else {
+                            Color.clear.frame(height: 38)
                         }
                     }
                     manager.content()

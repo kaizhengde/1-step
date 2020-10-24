@@ -21,6 +21,7 @@ struct MilestoneStages {
         case one
     }
     
+    
     static func getMaxNeededStepUnits(from neededStepUnits: Int16) -> MaxNeededStepUnits {
         switch neededStepUnits {
         case 100...1000:    return .thousand

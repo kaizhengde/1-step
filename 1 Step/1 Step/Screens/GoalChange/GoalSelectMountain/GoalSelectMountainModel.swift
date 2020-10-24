@@ -51,10 +51,11 @@ final class GoalSelectMountainModel: TransitionObservableObject {
     weak var delegate: GoalSelectMountainDelegate?
     
     //MARK: - Transition
-    ///fullHide:    Mountain hide
-    ///firstAppear: Mountain appear
-    ///fullAppear:  Text and selectButton appear
-    ///firstHide:   Text and selectButton hide
+    //fullHide:    Mountain hide
+    //firstAppear: Mountain appear
+    //fullAppear:  Text and selectButton appear
+    //firstHide:   Text and selectButton hide
+    
         
     func initTransition() {
         transition = TransitionManager(fullAppearAfter: DelayAfter.mountainAppear, fullHideAfter: DelayAfter.opacity)
