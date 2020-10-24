@@ -12,7 +12,7 @@ final class Step: NSManagedObject {
     
     @NSManaged var category: StepCategory
     @NSManaged var unit: String
-    @NSManaged var unitRatio: Double 
+    @NSManaged var unitRatio: Int16
     
     @NSManaged var goal: Goal
 }

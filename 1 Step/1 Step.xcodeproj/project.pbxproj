@@ -62,7 +62,7 @@
 		3D7396C7253373F500BD4169 /* GoalsActiveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7396C6253373F500BD4169 /* GoalsActiveModel.swift */; };
 		3D854B11253EA3F900A4F80E /* GoalDeleteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D854B10253EA3F900A4F80E /* GoalDeleteHandler.swift */; };
 		3D854B14253EAC2500A4F80E /* OneSTextFieldConfirmationPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D854B13253EAC2500A4F80E /* OneSTextFieldConfirmationPopup.swift */; };
-		3D996778253F57F7000CE151 /* MilestonesHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D996777253F57F7000CE151 /* MilestonesHandler.swift */; };
+		3D996778253F57F7000CE151 /* JourneyDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D996777253F57F7000CE151 /* JourneyDataHandler.swift */; };
 		3DA7BD362532D41400171360 /* OneSTextFieldPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA7BD352532D41400171360 /* OneSTextFieldPopupView.swift */; };
 		3DA7BD3A2532F6A600171360 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA7BD392532F6A600171360 /* DataManager.swift */; };
 		3DA96165253D5ACC00B82CB0 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 3DA96164253D5ACC00B82CB0 /* Introspect */; };
@@ -84,7 +84,7 @@
 		3DDF703A2531BB5200FD3011 /* GoalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDF70392531BB5200FD3011 /* GoalState.swift */; };
 		3DDF703E2531BB5E00FD3011 /* StepCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDF703D2531BB5E00FD3011 /* StepCategory.swift */; };
 		3DDF70422531BBBB00FD3011 /* MilestoneState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDF70412531BBBB00FD3011 /* MilestoneState.swift */; };
-		3DDF70452531BC1200FD3011 /* MilestoneImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDF70442531BC1200FD3011 /* MilestoneImage.swift */; };
+		3DDF70452531BC1200FD3011 /* MilestoneStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDF70442531BC1200FD3011 /* MilestoneStage.swift */; };
 		3DE0796625340E410024E17D /* Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE0796525340E410024E17D /* Shadow.swift */; };
 		3DE0796925340F080024E17D /* GoalItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE0796825340F080024E17D /* GoalItem.swift */; };
 		3DE0796C25340F550024E17D /* GoalItemArt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE0796B25340F550024E17D /* GoalItemArt.swift */; };
@@ -163,7 +163,7 @@
 		3D7396C6253373F500BD4169 /* GoalsActiveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsActiveModel.swift; sourceTree = "<group>"; };
 		3D854B10253EA3F900A4F80E /* GoalDeleteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDeleteHandler.swift; sourceTree = "<group>"; };
 		3D854B13253EAC2500A4F80E /* OneSTextFieldConfirmationPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSTextFieldConfirmationPopup.swift; sourceTree = "<group>"; };
-		3D996777253F57F7000CE151 /* MilestonesHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestonesHandler.swift; sourceTree = "<group>"; };
+		3D996777253F57F7000CE151 /* JourneyDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyDataHandler.swift; sourceTree = "<group>"; };
 		3DA7BD352532D41400171360 /* OneSTextFieldPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSTextFieldPopupView.swift; sourceTree = "<group>"; };
 		3DA7BD392532F6A600171360 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		3DAE7AE325309D0F00B162B1 /* FloaterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloaterManager.swift; sourceTree = "<group>"; };
@@ -184,7 +184,7 @@
 		3DDF70392531BB5200FD3011 /* GoalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalState.swift; sourceTree = "<group>"; };
 		3DDF703D2531BB5E00FD3011 /* StepCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCategory.swift; sourceTree = "<group>"; };
 		3DDF70412531BBBB00FD3011 /* MilestoneState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneState.swift; sourceTree = "<group>"; };
-		3DDF70442531BC1200FD3011 /* MilestoneImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneImage.swift; sourceTree = "<group>"; };
+		3DDF70442531BC1200FD3011 /* MilestoneStage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneStage.swift; sourceTree = "<group>"; };
 		3DE0796525340E410024E17D /* Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shadow.swift; sourceTree = "<group>"; };
 		3DE0796825340F080024E17D /* GoalItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalItem.swift; sourceTree = "<group>"; };
 		3DE0796B25340F550024E17D /* GoalItemArt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalItemArt.swift; sourceTree = "<group>"; };
@@ -224,7 +224,7 @@
 		3D0B594A253319B000079856 /* Handlers */ = {
 			isa = PBXGroup;
 			children = (
-				3D996777253F57F7000CE151 /* MilestonesHandler.swift */,
+				3D996777253F57F7000CE151 /* JourneyDataHandler.swift */,
 				3D0B5947253319AC00079856 /* GoalErrorHandler.swift */,
 				3D854B10253EA3F900A4F80E /* GoalDeleteHandler.swift */,
 			);
@@ -564,7 +564,7 @@
 				3DDF70242531A57700FD3011 /* StepUnit.swift */,
 				3DDF702B2531A5D800FD3011 /* MountainImage.swift */,
 				3DDF70282531A5BB00FD3011 /* UserColor.swift */,
-				3DDF70442531BC1200FD3011 /* MilestoneImage.swift */,
+				3DDF70442531BC1200FD3011 /* MilestoneStage.swift */,
 			);
 			path = Types;
 			sourceTree = "<group>";
@@ -769,7 +769,7 @@
 				3D47CCC2252C807000A8CA1B /* Colors.swift in Sources */,
 				3DE11C3E252C681600F13719 /* PersistenceManger.swift in Sources */,
 				3D4B78D8252CD4F000A45755 /* GoalCreateModel.swift in Sources */,
-				3D996778253F57F7000CE151 /* MilestonesHandler.swift in Sources */,
+				3D996778253F57F7000CE151 /* JourneyDataHandler.swift in Sources */,
 				3DE9C519252CB0520023C212 /* GoalCreateItem.swift in Sources */,
 				3DDF702C2531A5D800FD3011 /* MountainImage.swift in Sources */,
 				3D2E7968253021A900788AA2 /* PopupManager.swift in Sources */,
@@ -795,7 +795,7 @@
 				3D2E7939252F9D7A00788AA2 /* OneSScaleButtonStyle.swift in Sources */,
 				3DBB6B24252CC08D002C0D03 /* EnumTypeEquatable.swift in Sources */,
 				3D72B8C3252DB5B8006E660D /* Animations.swift in Sources */,
-				3DDF70452531BC1200FD3011 /* MilestoneImage.swift in Sources */,
+				3DDF70452531BC1200FD3011 /* MilestoneStage.swift in Sources */,
 				3D5156B32531F83700A44450 /* OneSMiniSheet.swift in Sources */,
 				3D2E7928252F6C2C00788AA2 /* GoalEnterInputModel.swift in Sources */,
 				3DC617262544145C00A1F204 /* InfiniteAnimationManager.swift in Sources */,
