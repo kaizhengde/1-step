@@ -24,11 +24,14 @@ final class InfinteAnimationManager: ObservableObject {
     
     static let shared = InfinteAnimationManager()
     
+    static let slowAnimation: Animation = .easeInOut(duration: 1.2)
+    static let fastAnimation: Animation = .easeInOut(duration: 0.2)
+    
     @Published var timer: AnyCancellable!
     
     @Published var slow: AnimationState = .onForward
     @Published var fast: AnimationState = .onForward
-
+    
     
     private init() {
         timer = Timer.publish(every: 3.6, on: .main, in: .common)
