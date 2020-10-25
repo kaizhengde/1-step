@@ -94,6 +94,12 @@ final class GoalModel: TransitionObservableObject {
         return standard + (menu - standard) * CGFloat(dragProgressToMenu)
     }
     
+    //AddStepView
+    
+    var showAddStepDragArea: Bool { return noDrag ? true : false }
+    
+    var addStepViewOffset: CGFloat { return noDrag ? 0 : 20 }
+    
     
     //MARK: - Summary
     
@@ -113,9 +119,7 @@ final class GoalModel: TransitionObservableObject {
         return viewDragColor(standard: .grayToBackground, menu: .neutralToDarkNeutral)
     }
     
-    var showDownArrow: Bool {
-        return dragState == .none && dragOffset == 0 ? (transition.isFullAppeared ? true : false) : false
-    }
+    var showDownArrow: Bool { return noDrag ? true : false }
     
     
     //MARK: - Menu
@@ -137,6 +141,10 @@ final class GoalModel: TransitionObservableObject {
     
     
     //MARK: - Drag
+    
+    private var noDrag: Bool {
+        return transition.isFullAppeared && dragState == .none && dragOffset == 0
+    }
     
     private let hidePoint: CGFloat = (Layout.screenWidth-160)/2
     

@@ -76,7 +76,7 @@ struct GoalSummaryView: View {
             private struct DownArrowView: View {
                 
                 @EnvironmentObject var goalModel: GoalModel
-                @StateObject private var infinteAnimationManager = InfinteAnimationManager.shared
+                @StateObject private var infinteAnimationManager = InfiniteAnimationManager.shared
                                 
                 private var animationOnForwardActive: Bool { infinteAnimationManager.slow.isOnForward && !goalModel.showJourneyView }
                 
@@ -90,7 +90,7 @@ struct GoalSummaryView: View {
                         .oneSAnimation()
                         .scaleEffect(x: animationOnForwardActive ? 1.0 : 0.6, y: animationOnForwardActive ? 1.0 : 0.7)
                         .offset(y: animationOnForwardActive ? 0 : 24)
-                        .animation(goalModel.showJourneyView ? .oneSAnimation() : InfinteAnimationManager.slowAnimation)
+                        .animation(goalModel.showJourneyView ? .oneSAnimation() : InfiniteAnimationManager.slowAnimation)
                         .onTapGesture { goalModel.downArrowTapped() }
                 }
                 

@@ -14,11 +14,15 @@ struct GoalScreen: View {
     
     var body: some View {
         ZStack(alignment: .leading) {
-            GoalMenuView()
-            GoalView()
+            Group {
+                GoalMenuView()
+                GoalView()
+            }
+            .highPriorityGesture(goalModel.dragMenu)
+            
+            AddStepView()
         }
         .onAppear { goalModel.initTransition() }
-        .highPriorityGesture(goalModel.dragMenu)
         .oneSAnimation()
         .transition(.identity)
     }

@@ -8,7 +8,7 @@
 import SwiftUI
 import Combine
 
-final class InfinteAnimationManager: ObservableObject {
+final class InfiniteAnimationManager: ObservableObject {
 
     enum AnimationState {
         
@@ -22,7 +22,7 @@ final class InfinteAnimationManager: ObservableObject {
         var isOnBackward: Bool { return self == .onBackward }
     }
     
-    static let shared = InfinteAnimationManager()
+    static let shared = InfiniteAnimationManager()
     
     static let slowAnimation: Animation = .easeInOut(duration: 1.2)
     static let fastAnimation: Animation = .easeInOut(duration: 0.2)

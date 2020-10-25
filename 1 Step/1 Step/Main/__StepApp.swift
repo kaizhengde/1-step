@@ -24,7 +24,7 @@ struct __StepApp: App {
     let popupManager            = PopupManager.shared
     let floaterManager          = FloaterManager.shared
     
-    let infinteAnimationManager = InfinteAnimationManager.shared
+    let infinteAnimationManager = InfiniteAnimationManager.shared
 
     
     var body: some Scene {

@@ -20,6 +20,8 @@ extension Color {
     
     static let opacityBackgroundDarker = Color("OpacityBackgroundDarker")
     static let opacityBlur = Color("OpacityBlur")
+    
+    static let hidden = Color.black.opacity(0.0000001)
 }
 
 
