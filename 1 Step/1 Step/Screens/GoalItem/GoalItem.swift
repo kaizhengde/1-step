@@ -78,11 +78,17 @@ struct GoalItem: View {
                 VStack(alignment: .leading) {
                     OneSText(text: goal.name, font: GoalItemArt.nameFont, color: .backgroundToGray)
                     
-                    HStack(spacing: 1.5) {
-                        OneSText(text: "\(goal.neededStepUnits)", font: GoalItemArt.stepsFont, color: .backgroundToGray)
-                        OneSText(text: goal.step.unit, font: GoalItemArt.stepsFont, color: .backgroundToGray)
+                    HStack {
+                        Text("\(goal.neededStepUnits)")
+                        +
+                        Text(" ").font(.system(size: 5))
+                        +
+                        Text(goal.step.unit)
                         Spacer()
                     }
+                    .font(GoalItemArt.stepsFont.get())
+                    .foregroundColor(.backgroundToGray)
+                    .multilineTextAlignment(.leading)
                 }
                 .padding(12)
                 .offset(y: GoalItemArt.textOffset)

@@ -38,10 +38,10 @@ enum GoalErrorHandler {
             errorText = "What do you want to track?\n\nPlease select a unit."
         }
         catch GoalError.stepsNeededTooLittle {
-            errorText =  "Too little steps to take.\n\nMinimum steps: \(Goal.stepsNeededMinimum)."
+            errorText =  "Too little steps to take.\n\nMinimum steps: \(Goal.neededStepUnitsMinimum)."
         }
         catch GoalError.stepsNeededTooMany {
-            errorText =  "Too many steps to take.\n\nMaximum steps: \(Goal.stepsNeededMaximum)."
+            errorText =  "Too many steps to take.\n\nMaximum steps: \(Goal.neededStepUnitsMaximum)."
         }
         catch {
             errorText = "Goal create failed with an unknown error.\n\nConsider restarting the app."
@@ -60,13 +60,13 @@ enum GoalErrorHandler {
         if baseData.stepCategory == nil { throw GoalError.stepCategoryEmpty }
         if baseData.stepUnit.isEmpty { throw GoalError.stepUnitEmpty }
         
-        if baseData.neededStepUnits! < Goal.stepsNeededMinimum
+        if baseData.neededStepUnits! < Goal.neededStepUnitsMinimum
             && baseData.stepUnit != StepUnit.km.description
             && baseData.stepUnit != StepUnit.miles.description
             && baseData.stepUnit != StepUnit.hours.description {
             throw GoalError.stepsNeededTooLittle
         }
-        if baseData.neededStepUnits! > Goal.stepsNeededMaximum {
+        if baseData.neededStepUnits! > Goal.neededStepUnitsMaximum {
             throw GoalError.stepsNeededTooMany
         }
     }

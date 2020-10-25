@@ -44,24 +44,17 @@ final class DataManager {
     //MARK: - Insert
     
     func insertGoal(with baseData: Goal.BaseData) -> Bool {
-        let activeGoalsCount    = fetchActiveGoalCount()
-        
-        let stepUnitRatio       = JourneyDataHandler.calculateRatio(from: baseData)
-        let goalNeededSteps     = baseData.neededStepUnits! * stepUnitRatio
         
         let newGoal = Goal(context: persistenceManager.context)
         let newStep = Step(context: persistenceManager.context)
         
         newStep.category        = baseData.stepCategory!
         newStep.unit            = baseData.stepUnit
-        newStep.unitRatio       = stepUnitRatio
         newStep.goal            = newGoal
 
-        newGoal.sortOrder       = activeGoalsCount
         newGoal.name            = baseData.name
         newGoal.step            = newStep
         newGoal.neededStepUnits = baseData.neededStepUnits!
-        newGoal.neededSteps     = goalNeededSteps
         newGoal.currentSteps    = .zero
         newGoal.currentPercent  = Int16(Int.random(in: 0...100)) //For now
         newGoal.currentState    = .active
@@ -69,7 +62,19 @@ final class DataManager {
         newGoal.endDate         = nil
         newGoal.mountain        = baseData.mountain!
         newGoal.color           = baseData.color!
-        newGoal.milestones      = JourneyDataHandler.generateMilestones(with: newGoal)
+        
+        //Calculate
+        
+        let activeGoalsCount    = fetchActiveGoalCount()
+        
+        let stepUnitRatio       = JourneyDataHandler.calculateRatio(from: baseData)
+        let goalNeededSteps     = baseData.neededStepUnits! * stepUnitRatio
+        let milestones          = JourneyDataHandler.generateMilestones(with: newGoal)
+        
+        newGoal.sortOrder       = activeGoalsCount
+        newStep.unitRatio       = stepUnitRatio
+        newGoal.neededSteps     = goalNeededSteps
+        newGoal.milestones      = milestones
         
         return persistenceManager.saveContext()
     }
@@ -78,12 +83,23 @@ final class DataManager {
     //MARK: - Change
     
     func editGoal(_ goal: Goal, with baseData: Goal.BaseData) -> Bool {
+        
         goal.name            = baseData.name
         goal.step.category   = baseData.stepCategory!
         goal.step.unit       = baseData.stepUnit
         goal.neededStepUnits = baseData.neededStepUnits!
         goal.mountain        = baseData.mountain!
         goal.color           = baseData.color!
+        
+        //Calculate
+        
+        let stepUnitRatio       = JourneyDataHandler.calculateRatio(from: baseData)
+        let goalNeededSteps     = baseData.neededStepUnits! * stepUnitRatio
+        let milestones          = JourneyDataHandler.generateMilestones(with: goal)
+        
+        goal.step.unitRatio  = stepUnitRatio
+        goal.neededSteps     = goalNeededSteps
+        goal.milestones      = milestones
         
         return persistenceManager.saveContext()
     }

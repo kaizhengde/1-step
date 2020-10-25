@@ -526,6 +526,7 @@
 				3DD5C9CC2539CF6600861784 /* GoalScreen.swift */,
 				3D6F43A1253B266F00785586 /* GoalMenuView.swift */,
 				3D6F43A8253B269500785586 /* View */,
+				3DCA9097254540E90030FE61 /* AddStep */,
 			);
 			path = Active;
 			sourceTree = "<group>";
@@ -553,6 +554,13 @@
 				3DC6172B2544882B00A1F204 /* MilestoneStages.swift */,
 			);
 			path = Journey;
+			sourceTree = "<group>";
+		};
+		3DCA9097254540E90030FE61 /* AddStep */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AddStep;
 			sourceTree = "<group>";
 		};
 		3DDF70272531A5AE00FD3011 /* Models */ = {

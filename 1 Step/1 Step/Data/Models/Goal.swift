@@ -20,7 +20,7 @@ final class Goal: NSManagedObject, Identifiable {
     @NSManaged var neededStepUnits: Int16
     @NSManaged var neededSteps: Int16
     
-    @NSManaged var currentStepUnits: Int16
+    @NSManaged var currentStepUnits: Double
     @NSManaged var currentSteps: Int16
     @NSManaged var currentPercent: Int16
     @NSManaged var currentState: GoalState
@@ -50,9 +50,9 @@ extension Goal {
     
     
     static let nameDigitsLimit = 15
-    static let stepsNeededDigitsLimit = 4
+    static let neededStepUnitsDigitsLimit = 4
     
-    static let stepsNeededMinimum: Int16 = 10
-    static let stepsNeededMaximum: Int16 = 1000
+    static let neededStepUnitsMinimum: Int16 = 10
+    static let neededStepUnitsMaximum: Int16 = 1000
 }
  

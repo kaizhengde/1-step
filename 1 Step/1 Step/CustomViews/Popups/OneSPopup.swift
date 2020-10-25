@@ -63,7 +63,7 @@ fileprivate struct OneSPopup<PopupContent>: ViewModifier where PopupContent: Vie
                             Spacer()
                             OneSSmallBorderButton(symbol: SFSymbol.arrow, color: .backgroundToGray, withScale: false) { manager.textFieldDismiss() }
                         } else {
-                            Color.clear.frame(height: 38)
+                            Color.clear.frame(width: 0, height: 38)
                         }
                     }
                     manager.content()

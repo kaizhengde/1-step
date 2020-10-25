@@ -20,7 +20,7 @@ struct GoalEnterInputView: View {
             OneSTextField(input: $viewModel.selectedData.goalName, placeholder: "Plant", inputColor: selectedColor.get(), inputLimit: Goal.nameDigitsLimit)
             
             HStack {
-                OneSTextField(input: $viewModel.selectedData.neededStepUnits, placeholder: "30", inputColor: selectedColor.get(), inputLimit: Goal.stepsNeededDigitsLimit, keyboard: .numberPad)
+                OneSTextField(input: $viewModel.selectedData.neededStepUnits, placeholder: "30", inputColor: selectedColor.get(), inputLimit: Goal.neededStepUnitsDigitsLimit, keyboard: .numberPad)
                     
                 OneSFillButton(text:        viewModel.stepEnterUnitButtonText(),
                                textFont:    .custom(weight: Raleway.bold, size: 20),
