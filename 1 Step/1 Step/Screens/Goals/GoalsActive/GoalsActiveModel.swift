@@ -85,7 +85,7 @@ class GoalsActiveModel: ObservableObject {
         
         
         private func updateSortOrder(_ from: Int, _ to: Int) {
-            Feedback.impact(style: .soft)
+            Feedback.impact(style: .light)
             
             let sortOrders = gridItems.map { $0.sortOrder }
             

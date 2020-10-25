@@ -23,12 +23,13 @@ class AddStepModel: ObservableObject {
     
     var dragHiddenScaleEffect: CGFloat {
         let progress = dragOffset/200
-        return dragState == .show ? 0.0 : 1+progress
+        return dragState == .show ? 0.5 : 1+progress
     }
     
-    var dragHiddenOpacity: Double {
-        let progress = dragOffset/50
-        return dragState == .show ? 0.0 : 1+Double(progress)
+    
+    func hiddenForegroundColor(_ colorHidden: Color, _ colorOnDrag: Color) -> Color {
+        let progress = -dragOffset/20
+        return colorHidden.interpolateTo(color: colorOnDrag, fraction: Double(progress))
     }
     
     
@@ -69,6 +70,18 @@ class AddStepModel: ObservableObject {
     //onEnded
     
     private func onToShow(_ value: DragGesture.Value) -> Bool {
-        return dragState == .hidden && value.translation.width <= -50
+        return dragState == .hidden && value.translation.width <= -20
     }
+}
+
+
+extension VerticalAlignment {
+    
+    enum AddStepAlignment: AlignmentID {
+        static func defaultValue(in d: ViewDimensions) -> CGFloat {
+            return d[VerticalAlignment.center]
+        }
+    }
+    
+    static let addStepAlignment = Self(AddStepAlignment.self)
 }
