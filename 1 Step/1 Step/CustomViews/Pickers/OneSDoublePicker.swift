@@ -9,15 +9,19 @@ import SwiftUI
 
 struct OneSDoublePicker: View {
     
-    @State private var selections: [Int] = [0, 0]
+    @State var selected = (left: 9, right: 9)
     
+
     var data: (left: [String], right: [String])
-    var selectedData: (left: String, right: String) { return (data.left[selections[0]], data.right[selections[1]]) }
+    var unit: (left: String, right: String)
     
-    
+    var selectedColor: Color
+
+
     var body: some View {
-        Text("hi")
+        HStack {
+            OneSPicker(data: data.left, unit: unit.left, selectedColor: selectedColor, width: 60)
+            OneSPicker(data: data.right, unit: unit.right, selectedColor: selectedColor, width: 60)
+        }
     }
 }
-
-

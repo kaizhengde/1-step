@@ -10,6 +10,7 @@ import SwiftUI
 struct GoalScreen: View {
     
     @EnvironmentObject var goalModel: GoalModel
+    @StateObject private var addStepModel = AddStepModel()
     
     
     var body: some View {
@@ -19,8 +20,9 @@ struct GoalScreen: View {
                 GoalView()
             }
             .highPriorityGesture(goalModel.dragMenu)
+            .onTapGesture { addStepModel.dragState = .hidden }
             
-            AddStepView()
+            AddStepView(viewModel: addStepModel)
         }
         .onAppear { goalModel.initTransition() }
         .oneSAnimation()

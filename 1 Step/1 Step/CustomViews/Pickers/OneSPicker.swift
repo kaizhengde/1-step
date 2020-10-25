@@ -22,35 +22,46 @@ import SwiftUI
 //}
 
 struct OneSPicker: View {
+    
+    @State var selected = 9
 
     var data: [String]
     var unit: String
     
     var selectedColor: Color
+    var width: CGFloat
     
-    @State var selected = 9
+    private var multiplier: CGFloat = 150/90
+    
+    
+    init(data: [String], unit: String, selectedColor: Color, width: CGFloat = 90) {
+        self.data = data
+        self.unit = unit
+        self.selectedColor = selectedColor
+        self.width = width
+    }
 
 
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 5)
-                .frame(width: 90, height: 32)
+                .frame(width: width, height: 32)
                 .foregroundColor(selectedColor)
             
             Picker("", selection: $selected) {
                 ForEach(0 ..< data.count) { i in
                     if i == selected {
-                        HStack(spacing: 3) {
-                            OneSText(text: data[data.count-1-i], font: .header2, color: .backgroundToGray)
-                            OneSText(text: unit, font: .custom(weight: Raleway.extraBold, size: 12), color: .backgroundToGray)
+                        HStack(spacing: 1.5) {
+                            OneSText(text: data[data.count-1-i], font: .title2, color: .backgroundToGray)
+                            OneSText(text: unit, font: .custom(weight: Raleway.semiBold, size: 12), color: .backgroundToGray)
                         }
                     } else {
-                        OneSText(text: data[data.count-1-i], font: .header2, color: .backgroundToGray)
+                        OneSText(text: data[data.count-1-i], font: .title2, color: .backgroundToGray)
                     }
                 }
             }
         }
-        .frame(width: 150, height: 150)
+        .frame(width: width*multiplier, height: 150)
         .scaleEffect(1.7)
         .clipped()
         .contentShape(Rectangle())

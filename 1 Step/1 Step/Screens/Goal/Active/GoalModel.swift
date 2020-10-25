@@ -94,12 +94,6 @@ final class GoalModel: TransitionObservableObject {
         return standard + (menu - standard) * CGFloat(dragProgressToMenu)
     }
     
-    //AddStepView
-    
-    var showAddStepDragArea: Bool { return noDrag ? true : false }
-    
-    var addStepViewOffset: CGFloat { return noDrag ? 0 : 20 }
-    
     
     //MARK: - Summary
     
@@ -142,7 +136,7 @@ final class GoalModel: TransitionObservableObject {
     
     //MARK: - Drag
     
-    private var noDrag: Bool {
+    var noDrag: Bool {
         return transition.isFullAppeared && dragState == .none && dragOffset == 0
     }
     

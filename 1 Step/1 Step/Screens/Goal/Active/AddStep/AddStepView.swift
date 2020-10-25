@@ -10,7 +10,7 @@ import SwiftUI
 struct AddStepView: View {
     
     @EnvironmentObject var goalModel: GoalModel
-    @StateObject private var viewModel = AddStepModel()
+    @ObservedObject var viewModel: AddStepModel
     
     
     var body: some View {
@@ -50,14 +50,15 @@ struct AddStepView: View {
                 .scaleEffect(y: viewModel.dragHiddenScaleEffect)
                 .overlay(
                     Group {
-                        if goalModel.showAddStepDragArea {
+                        if goalModel.noDrag {
                             Color.hidden.frame(width: 150, height: 300)
                         }
                     }
                 )
                 .padding(8)
                 .highPriorityGesture(viewModel.dragGesture)
-                .offset(x: goalModel.addStepViewOffset)
+                .offset(x: goalModel.noDrag ? 0 : 20)
+                .opacity(viewModel.dragState == .show ? 0.0 : 1.0)
                 .alignmentGuide(.addStepAlignment) { d in d[.top] }
         }
     }
@@ -74,9 +75,11 @@ struct AddStepView: View {
                 Group {
                     VStack {
                         OneSPicker(data: Array(1...10).map { "\($0)" }, unit: goalModel.selectedGoal.step.unit, selectedColor: goalModel.selectedGoal.color.get())
+                        
+                        //OneSDoublePicker(data: (Array(0...24).map { "\($0)" }, Array(0...60).map { "\($0)" }), unit: ("h", "min"), selectedColor: goalModel.selectedGoal.color.get())
                     }
-                    .frame(width: 180, height: 175)
-                    .background(goalModel.selectedGoal.color.get(.dark))
+                    .frame(width: 180/*240*/, height: 175)
+                    .background(goalModel.selectedGoal.color.get(.light))
     
                     VStack {
                         SFSymbol.plus
@@ -85,7 +88,7 @@ struct AddStepView: View {
                             .foregroundColor(.backgroundToGray)
                     }
                     .frame(width: 90, height: 90)
-                    .background(goalModel.selectedGoal.color.get(.light))
+                    .background(goalModel.selectedGoal.color.get(.dark))
                     .offset(y: viewModel.dragState == .show ? 0 : -100)
                     .onTapGesture { viewModel.dragState = .hidden }
                 }
@@ -93,7 +96,7 @@ struct AddStepView: View {
                 .oneSShadow(opacity: 0.12, x: 0, y: 2, blur: 8)
             }
             .padding(.horizontal, Layout.firstLayerPadding)
-            .offset(x: viewModel.dragState == .show ? 0 : 220)
+            .offset(x: viewModel.dragState == .show && goalModel.noDrag ? 0 : 220/*280*/)
             .oneSAnimation(duration: 0.3)
             .alignmentGuide(.addStepAlignment) { d in d[.top] }
         }
