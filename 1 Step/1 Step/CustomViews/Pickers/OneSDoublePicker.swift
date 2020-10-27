@@ -20,8 +20,8 @@ struct OneSDoublePicker: View {
 
     var body: some View {
         HStack {
-            OneSPicker(data: data.left, unit: unit.left, selectedColor: selectedColor, width: 60)
-            OneSPicker(data: data.right, unit: unit.right, selectedColor: selectedColor, width: 60)
+            OneSPicker(selected: $selected.left, data: data.left, unit: unit.left, selectedColor: selectedColor, width: 60)
+            OneSPicker(selected: $selected.right, data: data.right, unit: unit.right, selectedColor: selectedColor, width: 60)
         }
     }
 }

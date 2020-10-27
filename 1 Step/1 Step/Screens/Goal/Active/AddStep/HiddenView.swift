@@ -1,0 +1,51 @@
+//
+//  HiddenView.swift
+//  1 Step
+//
+//  Created by Kai Zheng on 27.10.20.
+//
+
+import SwiftUI
+
+struct HiddenView: View {
+    
+    @EnvironmentObject var goalModel: GoalModel
+    @ObservedObject var viewModel: AddStepModel
+    
+    
+    var body: some View {
+        HiddenRectangle(viewModel: viewModel)
+            .offset(x: viewModel.dragState == .show ? -50 : viewModel.dragOffset)
+            .scaleEffect(y: viewModel.dragHiddenScaleEffect)
+            .offset(x: goalModel.noDrag ? 0 : 20)
+            .opacity(viewModel.dragState == .show ? 0.0 : 1.0)
+            .overlay(
+                Group {
+                    if goalModel.noDrag {
+                        Color.hidden.frame(width: 150, height: 300)
+                    }
+                }
+            )
+            .highPriorityGesture(viewModel.dragGesture)
+            .alignmentGuide(.addStepAlignment) { d in d[.top] }
+            .padding(8)
+    }
+    
+    
+    private struct HiddenRectangle: View {
+        
+        @EnvironmentObject var goalModel: GoalModel
+        @StateObject private var infiniteAnimationManager = InfiniteAnimationManager.shared
+        @ObservedObject var viewModel: AddStepModel
+        
+        
+        var body: some View {
+            RoundedRectangle(cornerRadius: 5)
+                .frame(width: 10, height: 140)
+                .foregroundColor(viewModel.hiddenForegroundColor(goalModel.selectedGoal.color.get(.light), goalModel.selectedGoal.color.get(.dark) ))
+                .oneSShadow(opacity: 0.12, x: 0, y: 2, blur: 8)
+                .offset(x: viewModel.animate ? -5 : 0)
+                .scaleEffect(y: viewModel.animate ? 1.05 : 1.0)
+        }
+    }
+}

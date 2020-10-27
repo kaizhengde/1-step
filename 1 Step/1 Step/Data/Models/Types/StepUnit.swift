@@ -58,6 +58,23 @@ enum StepUnit: Equatable {
     }
     
     
+    var isDoubleUnit: Bool {
+        switch self {
+        case .hours, .km:   return true
+        default:            return false
+        }
+    }
+    
+    
+    var doubleDescription: (String, String) {
+        switch self {
+        case .hours:        return ("hour", "min")
+        case .km:           return ("km", "m")
+        default:            return ("", "")
+        }
+    }
+    
+    
     static func unitsOfCategory(_ category: StepCategory) -> [StepUnit] {
         switch category {
         case .duration: return [.hours, .min]

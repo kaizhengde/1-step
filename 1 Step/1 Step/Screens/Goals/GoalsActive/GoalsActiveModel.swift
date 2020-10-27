@@ -19,7 +19,7 @@ class GoalsActiveModel: ObservableObject {
     //MARK: - Transition
     
     func initItemTransition(of sortOrder: Int) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds((sortOrder+1-itemsAppeared)*130)) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds((sortOrder+1-itemsAppeared)*150)) {
             self.itemsAppear[sortOrder] = true
         }
     }

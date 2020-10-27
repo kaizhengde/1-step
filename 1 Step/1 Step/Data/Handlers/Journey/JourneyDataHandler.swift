@@ -45,43 +45,19 @@ enum JourneyDataHandler {
     
 
     static func calculateRatioDuration(_ baseData: Goal.BaseData) -> Int16 {
-
-        guard baseData.stepUnit == StepUnit.hours.description else { return 1 }        
-        
-        switch baseData.neededStepUnits! {
-        case 400...1000:    return 1    //Steps: [400 -> 1000]      1 Step = 1 Hour
-        case 200...399:     return 2    //Steps: [400 -> 798]       1 Step = 30 Minutes
-        case 90...199:      return 3    //Steps: [270 -> 597]       1 Step = 20 Minutes
-        case 60...89:       return 4    //Steps: [240 -> 356]       1 Step = 15 Minutes
-        case 30...59:       return 6    //Steps: [180 -> 354]       1 Step = 10 Minutes
-        case 15...29:       return 10   //Steps: [150 -> 297]       1 Step = 6 Minutes
-        case 8...14:        return 20   //Steps: [160 -> 280]       1 Step = 3 Minutes
-        case 4...7:         return 30   //Steps: [120 -> 210]       1 Step = 2 Minutes
-        case 1...3:         return 60   //Steps: [60 -> 180]        1 Step = 1 Minute
-        default: break
-        }
-        
-        return 0
+        guard baseData.stepUnit == StepUnit.hours.description else { return 1 }
+        return baseData.stepCategory!.getRatioFrom(baseData.neededStepUnits!)
     }
     
     
     static func calculateRatioDistance(_ baseData: Goal.BaseData) -> Int16 {
-        
         guard baseData.stepUnit == StepUnit.km.description || baseData.stepUnit == StepUnit.miles.description else { return 1 }
-                
-        switch baseData.neededStepUnits! {
-        case 400...1000:    return 1    //Steps: [400 -> 1000]      1 Step = 1 Kilometer    1 Mile
-        case 200...399:     return 2    //Steps: [400 -> 798]       1 Step = 500 Meters     0.5 Mile
-        case 100...199:     return 4    //Steps: [400 -> 796]       1 Step = 250 Meters     0.25 Mile
-        case 40...99:       return 5    //Steps: [200 -> 495]       1 Step = 200 Meters     0.2 Mile
-        case 20...39:       return 10   //Steps: [200 -> 390]       1 Step = 100 Meters     0.1 Mile
-        case 8...19:        return 20   //Steps: [160 -> 380]       1 Step = 50 Meters      0.05 Mile
-        case 4...7:         return 50   //Steps: [200 -> 350]       1 Step = 20 Meters      0.02 Mile
-        case 1...3:         return 100  //Steps: [100 -> 300]       1 Step = 10 Meters      0.01 Mile
-        default: break
-        }
-        
-        return 0
+        return baseData.stepCategory!.getRatioFrom(baseData.neededStepUnits!)
+    }
+    
+    
+    static func calculateStepsArray(from baseData: Goal.BaseData) -> [String] {
+        return baseData.stepCategory!.getStepArrayFrom(baseData.neededStepUnits!, StepUnit.stepUnitFrom(description: baseData.stepUnit))
     }
     
 

@@ -13,6 +13,7 @@
         <attribute name="neededStepUnits" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="sortOrder" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="stepsArray" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer" customClassName="Array&lt;String&gt;"/>
         <relationship name="milestones" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Milestone" inverseName="parentGoal" inverseEntity="Milestone"/>
         <relationship name="step" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Step" inverseName="goal" inverseEntity="Step"/>
     </entity>
@@ -31,7 +32,7 @@
         <relationship name="goal" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Goal" inverseName="step" inverseEntity="Goal"/>
     </entity>
     <elements>
-        <element name="Goal" positionX="-54.56640625" positionY="-24.515625" width="128" height="253"/>
+        <element name="Goal" positionX="-54.56640625" positionY="-24.515625" width="128" height="268"/>
         <element name="Milestone" positionX="170.6015625" positionY="4.609375" width="128" height="133"/>
         <element name="Step" positionX="-55.56640625" positionY="304.453125" width="128" height="103"/>
     </elements>

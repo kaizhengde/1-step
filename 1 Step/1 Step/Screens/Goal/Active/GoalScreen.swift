@@ -25,6 +25,7 @@ struct GoalScreen: View {
             AddStepView(viewModel: addStepModel)
         }
         .onAppear { goalModel.initTransition() }
+        .onReceive(goalModel.dragPublisher) { addStepModel.dragState = .hidden }
         .oneSAnimation()
         .transition(.identity)
     }

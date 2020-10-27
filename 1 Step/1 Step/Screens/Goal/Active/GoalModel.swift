@@ -26,7 +26,7 @@ final class GoalModel: TransitionObservableObject {
     @Published var selectedGoal: Goal!
     
     @Published var dragState: DragState = .none
-    @Published private var dragOffset: CGFloat = .zero
+    @Published private(set) var dragOffset: CGFloat = .zero
     
     let didSetScrollPosition = PassthroughSubject<ScrollPosition, Never>()
     
@@ -136,6 +136,8 @@ final class GoalModel: TransitionObservableObject {
     
     //MARK: - Drag
     
+    var dragPublisher = PassthroughSubject<Void, Never>()
+    
     var noDrag: Bool {
         return transition.isFullAppeared && dragState == .none && dragOffset == 0
     }
@@ -169,6 +171,7 @@ final class GoalModel: TransitionObservableObject {
     private func onChanged(_ value: DragGesture.Value) {
         if legalDrag(value) {
             dragOffset = value.translation.width
+            dragPublisher.send()
         }
     }
     

@@ -15,10 +15,15 @@ struct Screen {
             case transition, appear
         }
         
-        case goals, goal(GoalScreenShowState), goalAdd, profile
+        case none
+        case goals
+        case goal(GoalScreenShowState)
+        case goalAdd
+        case profile
 
         func isScreen(_ screen: Self) -> Bool {
             switch screen {
+            case .none: return self == .none
             case .goals: return self == .goals || self == .goal(.transition)
             case .goal(.transition): return self == .goal(.transition)
             case .goal(.appear): return self == .goal(.appear)
@@ -29,7 +34,7 @@ struct Screen {
     }
 
     
-    var active: Active = .goals
+    var active: Active = .none
     var opacity: Double = 1.0
 
     mutating func dismiss() { opacity = 0.0 }
@@ -40,7 +45,11 @@ struct Screen {
 final class MainModel: ObservableObject {
     
     static let shared = MainModel()
-    private init() {} 
+    private init() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.currentScreen.active = .goals
+        }
+    }
     
     @Published private(set) var currentScreen: Screen = Screen() 
     

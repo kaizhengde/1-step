@@ -69,11 +69,13 @@ final class DataManager {
         
         let stepUnitRatio       = JourneyDataHandler.calculateRatio(from: baseData)
         let goalNeededSteps     = baseData.neededStepUnits! * stepUnitRatio
+        let stepsArray          = JourneyDataHandler.calculateStepsArray(from: baseData)
         let milestones          = JourneyDataHandler.generateMilestones(with: newGoal)
         
         newGoal.sortOrder       = activeGoalsCount
         newStep.unitRatio       = stepUnitRatio
         newGoal.neededSteps     = goalNeededSteps
+        newGoal.stepsArray      = stepsArray
         newGoal.milestones      = milestones
         
         return persistenceManager.saveContext()
@@ -95,10 +97,12 @@ final class DataManager {
         
         let stepUnitRatio       = JourneyDataHandler.calculateRatio(from: baseData)
         let goalNeededSteps     = baseData.neededStepUnits! * stepUnitRatio
+        let stepsArray          = JourneyDataHandler.calculateStepsArray(from: baseData)
         let milestones          = JourneyDataHandler.generateMilestones(with: goal)
         
         goal.step.unitRatio  = stepUnitRatio
         goal.neededSteps     = goalNeededSteps
+        goal.stepsArray      = stepsArray
         goal.milestones      = milestones
         
         return persistenceManager.saveContext()

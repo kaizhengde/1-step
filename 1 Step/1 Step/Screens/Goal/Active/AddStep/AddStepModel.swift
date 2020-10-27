@@ -16,6 +16,8 @@ class AddStepModel: ObservableObject {
     @Published var dragState: DragState = .hidden
     @Published var dragOffset: CGFloat = .zero
     
+    @Published var selectedStep: Int = 0
+    
     
     //MARK: - (Hidden) Rectangle
     

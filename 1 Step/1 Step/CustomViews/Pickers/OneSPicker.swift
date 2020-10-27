@@ -23,7 +23,7 @@ import SwiftUI
 
 struct OneSPicker: View {
     
-    @State var selected = 9
+    @Binding var selected: Int
 
     var data: [String]
     var unit: String
@@ -34,7 +34,8 @@ struct OneSPicker: View {
     private var multiplier: CGFloat = 150/90
     
     
-    init(data: [String], unit: String, selectedColor: Color, width: CGFloat = 90) {
+    init(selected: Binding<Int>, data: [String], unit: String, selectedColor: Color, width: CGFloat = 90) {
+        self._selected = selected
         self.data = data
         self.unit = unit
         self.selectedColor = selectedColor
