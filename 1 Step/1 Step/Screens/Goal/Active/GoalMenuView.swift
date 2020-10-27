@@ -54,6 +54,7 @@ struct GoalMenuView: View {
             GoalItem(goalActiveModel: GoalsActiveModel(), goal: $goal) {
                 goalModel.selectedGoal = goal
                 goalModel.dragState = .none
+                goalModel.dragOffset = .zero
             }
         }
     }

@@ -26,7 +26,7 @@ final class GoalModel: TransitionObservableObject {
     @Published var selectedGoal: Goal!
     
     @Published var dragState: DragState = .none
-    @Published private(set) var dragOffset: CGFloat = .zero
+    @Published var dragOffset: CGFloat = .zero
     
     let didSetScrollPosition = PassthroughSubject<ScrollPosition, Never>()
     
