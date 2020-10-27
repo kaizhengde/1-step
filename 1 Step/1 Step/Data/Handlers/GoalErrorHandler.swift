@@ -16,8 +16,8 @@ enum GoalErrorHandler {
         case stepsNeededTooLittle
         case stepsNeededTooMany
         
-        case stepCategoryEmpty
         case stepUnitEmpty
+        case stepCustomUnitEmpty
     }
     
     
@@ -34,8 +34,11 @@ enum GoalErrorHandler {
         catch GoalError.stepsNeededEmpty {
             errorText = "How many steps does it take to reach your goal?\n\nPlease enter a number."
         }
-        catch GoalError.stepCategoryEmpty, GoalError.stepUnitEmpty {
+        catch GoalError.stepUnitEmpty {
             errorText = "What do you want to track?\n\nPlease select a unit."
+        }
+        catch GoalError.stepCustomUnitEmpty {
+            errorText = "You have entered nothing.\n\nPlease again enter a custom unit."
         }
         catch GoalError.stepsNeededTooLittle {
             errorText =  "Too little steps to take.\n\nMinimum steps: \(Goal.neededStepUnitsMinimum)."
@@ -57,13 +60,13 @@ enum GoalErrorHandler {
         
         if baseData.name.isEmpty { throw GoalError.goalNameEmpty }
         if baseData.neededStepUnits == nil { throw GoalError.stepsNeededEmpty }
-        if baseData.stepCategory == nil { throw GoalError.stepCategoryEmpty }
-        if baseData.stepUnit.isEmpty { throw GoalError.stepUnitEmpty }
+        if baseData.stepUnit == nil { throw GoalError.stepUnitEmpty }
+        if baseData.stepUnit == .custom && baseData.customUnit.isEmpty { throw GoalError.stepCustomUnitEmpty }
         
         if baseData.neededStepUnits! < Goal.neededStepUnitsMinimum
-            && baseData.stepUnit != StepUnit.km.description
-            && baseData.stepUnit != StepUnit.miles.description
-            && baseData.stepUnit != StepUnit.hours.description {
+            && baseData.stepUnit != .km
+            && baseData.stepUnit != .miles
+            && baseData.stepUnit != .hours {
             throw GoalError.stepsNeededTooLittle
         }
         if baseData.neededStepUnits! > Goal.neededStepUnitsMaximum {

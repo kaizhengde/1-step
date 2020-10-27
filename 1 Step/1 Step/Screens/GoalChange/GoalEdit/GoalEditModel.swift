@@ -18,8 +18,8 @@ final class GoalEditModel: ObservableObject, GoalSelectMountainDelegate, GoalEnt
     func trySaveEditAndDismiss(_ goal: Goal) {
         let baseData: Goal.BaseData = (
             name:           	selectedEnterInputData.goalName.trimmingCharacters(in: .whitespaces),
-            stepCategory:   	selectedEnterInputData.stepCategory,
-            stepUnit:       	selectedEnterInputData.stepUnit?.description ?? "",
+            stepUnit:       	selectedEnterInputData.stepUnit,
+            customUnit:         selectedEnterInputData.customUnit,
             neededStepUnits:    Int16(selectedEnterInputData.neededStepUnits),
             mountain:           selectedMountainData.mountain,
             color:              selectedMountainData.color

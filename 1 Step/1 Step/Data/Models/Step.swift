@@ -10,8 +10,9 @@ import CoreData
 
 final class Step: NSManagedObject {
     
-    @NSManaged var category: StepCategory
-    @NSManaged var unit: String
+    @NSManaged var unit: StepUnit
+    @NSManaged var customUnit: String
+    
     @NSManaged var unitRatio: Int16
     
     @NSManaged var goal: Goal

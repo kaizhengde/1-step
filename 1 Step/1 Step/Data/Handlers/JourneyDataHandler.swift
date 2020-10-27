@@ -34,30 +34,13 @@ enum JourneyDataHandler {
      */
     
     
-    //From goal.neededStepUnits -> goal.step.unit
     static func calculateRatio(from baseData: Goal.BaseData) -> Int16 {
-        switch baseData.stepCategory! {
-        case .duration: return calculateRatioDuration(baseData)
-        case .distance: return calculateRatioDistance(baseData)
-        case .reps:     return 1
-        }
-    }
-    
-
-    static func calculateRatioDuration(_ baseData: Goal.BaseData) -> Int16 {
-        guard baseData.stepUnit == StepUnit.hours.description else { return 1 }
-        return baseData.stepCategory!.getRatioFrom(baseData.neededStepUnits!)
+        return baseData.stepUnit!.getRatio(from: baseData.neededStepUnits!)
     }
     
     
-    static func calculateRatioDistance(_ baseData: Goal.BaseData) -> Int16 {
-        guard baseData.stepUnit == StepUnit.km.description || baseData.stepUnit == StepUnit.miles.description else { return 1 }
-        return baseData.stepCategory!.getRatioFrom(baseData.neededStepUnits!)
-    }
-    
-    
-    static func calculateStepsArray(from baseData: Goal.BaseData) -> [String] {
-        return baseData.stepCategory!.getStepArrayFrom(baseData.neededStepUnits!, StepUnit.stepUnitFrom(description: baseData.stepUnit))
+    static func calculateStepsAddArray(from baseData: Goal.BaseData) -> [String] {
+        return baseData.stepUnit!.getStepArray(from: baseData.neededStepUnits!)
     }
     
 

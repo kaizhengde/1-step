@@ -83,7 +83,7 @@ struct GoalItem: View {
                         +
                         Text(" ").font(.system(size: 5))
                         +
-                        Text(goal.step.unit)
+                        Text(goal.step.unit == .custom ? goal.step.customUnit : goal.step.unit.description.plural)
                         Spacer()
                     }
                     .font(GoalItemArt.stepsFont.get())

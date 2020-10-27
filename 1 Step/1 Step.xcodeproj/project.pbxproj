@@ -108,6 +108,7 @@
 		3DE9C522252CB5820023C212 /* GoalCreateScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE9C521252CB5820023C212 /* GoalCreateScreen.swift */; };
 		3DE9C527252CB6FF0023C212 /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE9C526252CB6FF0023C212 /* ProfileScreen.swift */; };
 		3DF1E2722547F04A00D65244 /* HiddenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF1E2712547F04A00D65244 /* HiddenView.swift */; };
+		3DF1E276254819FF00D65244 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF1E275254819FF00D65244 /* Double.swift */; };
 		3DF7916D25307EBF00F00174 /* ChildSizeReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF7916C25307EBF00F00174 /* ChildSizeReader.swift */; };
 		3DFDE052253C4663006B1A7E /* GoalEditScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFDE051253C4663006B1A7E /* GoalEditScreen.swift */; };
 		3DFDE055253C4678006B1A7E /* GoalEditModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFDE054253C4678006B1A7E /* GoalEditModel.swift */; };
@@ -217,6 +218,7 @@
 		3DE9C521252CB5820023C212 /* GoalCreateScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCreateScreen.swift; sourceTree = "<group>"; };
 		3DE9C526252CB6FF0023C212 /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
 		3DF1E2712547F04A00D65244 /* HiddenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiddenView.swift; sourceTree = "<group>"; };
+		3DF1E275254819FF00D65244 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		3DF7916C25307EBF00F00174 /* ChildSizeReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildSizeReader.swift; sourceTree = "<group>"; };
 		3DFDE051253C4663006B1A7E /* GoalEditScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEditScreen.swift; sourceTree = "<group>"; };
 		3DFDE054253C4678006B1A7E /* GoalEditModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEditModel.swift; sourceTree = "<group>"; };
@@ -238,7 +240,7 @@
 		3D0B594A253319B000079856 /* Handlers */ = {
 			isa = PBXGroup;
 			children = (
-				3DC6172F2544958700A1F204 /* Journey */,
+				3D996777253F57F7000CE151 /* JourneyDataHandler.swift */,
 				3D0B5947253319AC00079856 /* GoalErrorHandler.swift */,
 				3D854B10253EA3F900A4F80E /* GoalDeleteHandler.swift */,
 			);
@@ -356,6 +358,7 @@
 				3D2E795B25301EA900788AA2 /* View */,
 				3D2E7949253019A200788AA2 /* UIApplication.swift */,
 				3D258281253C0A9300DC19E7 /* Color.swift */,
+				3DF1E275254819FF00D65244 /* Double.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -560,15 +563,6 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
-		3DC6172F2544958700A1F204 /* Journey */ = {
-			isa = PBXGroup;
-			children = (
-				3D996777253F57F7000CE151 /* JourneyDataHandler.swift */,
-				3DC6172B2544882B00A1F204 /* MilestoneStages.swift */,
-			);
-			path = Journey;
-			sourceTree = "<group>";
-		};
 		3DCA9097254540E90030FE61 /* AddStep */ = {
 			isa = PBXGroup;
 			children = (
@@ -610,6 +604,7 @@
 				3DDF702B2531A5D800FD3011 /* MountainImage.swift */,
 				3DDF70282531A5BB00FD3011 /* UserColor.swift */,
 				3DDF70442531BC1200FD3011 /* MilestoneImage.swift */,
+				3DC6172B2544882B00A1F204 /* MilestoneStages.swift */,
 			);
 			path = Types;
 			sourceTree = "<group>";
@@ -889,6 +884,7 @@
 				3DDF70422531BBBB00FD3011 /* MilestoneState.swift in Sources */,
 				3DE9C50E252CAACC0023C212 /* GoalsModel.swift in Sources */,
 				3D47CC89252C70B700A8CA1B /* Images.swift in Sources */,
+				3DF1E276254819FF00D65244 /* Double.swift in Sources */,
 				3DDF70292531A5BB00FD3011 /* UserColor.swift in Sources */,
 				3D160D55252E2067008588D5 /* TransitionManager.swift in Sources */,
 				3DE0796C25340F550024E17D /* GoalItemArt.swift in Sources */,

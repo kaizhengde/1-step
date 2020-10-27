@@ -53,8 +53,8 @@ struct GoalEditScreen: View {
         
         goalEnterInputModel.selectedData.goalName = goal.name
         goalEnterInputModel.selectedData.neededStepUnits = String(goal.neededStepUnits)
-        goalEnterInputModel.selectedData.stepCategory = goal.step.category
-        goalEnterInputModel.selectedData.stepUnit = StepUnit.stepUnitFrom(description: goal.step.unit)
+        goalEnterInputModel.selectedData.stepUnit = goal.step.unit
+        goalEnterInputModel.selectedData.customUnit = goal.step.customUnit
         
         goalSelectMountainModel.currentMountain = goal.mountain
         

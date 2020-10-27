@@ -14,6 +14,7 @@ struct GoalEnterInputData {
     var neededStepUnits: String         = ""
     var stepCategory: StepCategory?     = nil
     var stepUnit: StepUnit?             = nil
+    var customUnit: String              = ""
 }
 
 
@@ -37,13 +38,18 @@ final class GoalEnterInputModel: ObservableObject {
     
     func stepEnterUnitButtonText() -> String {
         guard let stepUnit = selectedData.stepUnit else { return "trees" }
-        return stepUnit.description.isEmpty ? "trees" : stepUnit.description
+
+        if stepUnit == .custom {
+            return selectedData.customUnit.isEmpty ? "custom" : selectedData.customUnit
+        }
+        
+        return stepUnit.description.plural
     }
     
     
     func stepEnterUnitButtonColor(_ selectedColor: UserColor) -> Color {
         guard let stepUnit = selectedData.stepUnit else { return .lightNeutralToLightGray }
-        return stepUnit.description.isEmpty ? .lightNeutralToLightGray : selectedColor.get()
+        return stepUnit.description.plural.isEmpty ? .lightNeutralToLightGray : selectedColor.get()
     }
 
     

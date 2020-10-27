@@ -13,7 +13,7 @@
         <attribute name="neededStepUnits" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="sortOrder" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="stepsArray" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer" customClassName="Array&lt;String&gt;"/>
+        <attribute name="stepsAddArray" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer" customClassName="Array&lt;String&gt;"/>
         <relationship name="milestones" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Milestone" inverseName="parentGoal" inverseEntity="Milestone"/>
         <relationship name="step" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Step" inverseName="goal" inverseEntity="Step"/>
     </entity>
@@ -26,8 +26,8 @@
         <relationship name="parentGoal" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Goal" inverseName="milestones" inverseEntity="Goal"/>
     </entity>
     <entity name="Step" representedClassName=".Step" syncable="YES">
-        <attribute name="category" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="unit" optional="YES" attributeType="String"/>
+        <attribute name="customUnit" optional="YES" attributeType="String"/>
+        <attribute name="unit" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="unitRatio" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="goal" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Goal" inverseName="step" inverseEntity="Goal"/>
     </entity>

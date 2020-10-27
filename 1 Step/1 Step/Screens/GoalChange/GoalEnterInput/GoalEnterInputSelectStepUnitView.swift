@@ -81,7 +81,7 @@ struct GoalEnterInputSelectStepUnitView: View {
                     }
                 }
                 if stepCategory == .reps {
-                    StepUnitButton(viewModel: viewModel, selectedColor: $selectedColor, stepUnit: .custom("custom"))
+                    StepUnitButton(viewModel: viewModel, selectedColor: $selectedColor, stepUnit: .custom)
                 }
             }
         }
@@ -95,12 +95,10 @@ struct GoalEnterInputSelectStepUnitView: View {
             @Binding var selectedColor: UserColor
             let stepUnit: StepUnit
             
-            @State private var customUnitInput: String = ""
-            
             
             var body: some View {
                 OneSFillButton(
-                    text:           stepUnit.description,
+                    text:           stepUnit.description.plural,
                     textFont:       .custom(weight: Raleway.semiBold, size: 14),
                     textColor:      viewModel.stepUnitButtonTextColor(stepUnit),
                     buttonColor:    viewModel.stepUnitButtonColor(stepUnit),
@@ -108,13 +106,13 @@ struct GoalEnterInputSelectStepUnitView: View {
                     withScale:      false
                 ) {
                     if stepUnit.isCustom {
-                        popupManager.showTextFieldPopup(titleText: "Custom", bodyText: "Enter your unit.", input: customUnitInput, placerholder: "unit", textLimit: Step.customUnitDigitsLimit, lowercased: true, backgroundColor: selectedColor.get())
+                        popupManager.showTextFieldPopup(titleText: "Custom", bodyText: "Enter your unit.", input: viewModel.selectedData.customUnit, placerholder: "unit", textLimit: Step.customUnitDigitsLimit, lowercased: true, backgroundColor: selectedColor.get())
                     }
                     viewModel.selectedData.stepUnit = stepUnit
                 }
                 .onReceive(popupManager.textFieldSave, perform: {
                     DispatchQueue.main.async {
-                        viewModel.selectedData.stepUnit = .custom(popupManager.input.trimmingCharacters(in: .whitespaces))
+                        viewModel.selectedData.customUnit = popupManager.input.trimmingCharacters(in: .whitespaces)
                     }
                 })
             }

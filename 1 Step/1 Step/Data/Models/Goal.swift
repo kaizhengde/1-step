@@ -19,7 +19,7 @@ final class Goal: NSManagedObject, Identifiable {
     @NSManaged var step: Step
     @NSManaged var neededStepUnits: Int16
     @NSManaged var neededSteps: Int16
-    @NSManaged var stepsArray: [String]
+    @NSManaged var stepsAddArray: [String]
     
     @NSManaged var currentStepUnits: Double
     @NSManaged var currentSteps: Int16
@@ -38,8 +38,8 @@ extension Goal {
     
     typealias BaseData = (
         name:               String,
-        stepCategory:       StepCategory?,
-        stepUnit:           String,
+        stepUnit:           StepUnit?,
+        customUnit:         String,
         neededStepUnits:    Int16?,
         mountain:           MountainImage?,
         color:              UserColor?

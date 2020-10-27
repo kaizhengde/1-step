@@ -37,7 +37,12 @@ struct AddView: View {
         var body: some View {
             VStack {
                 if viewModel.dragState == .show {
-                    OneSPicker(selected: $viewModel.selectedStep, data: Array(0...10).map { "\($0)" }, unit: goalModel.selectedGoal.step.unit, selectedColor: goalModel.selectedGoal.color.get())
+                    OneSPicker(
+                        selected: $viewModel.selectedStep,
+                        data: goalModel.selectedGoal.stepsAddArray,
+                        unit: goalModel.selectedGoal.step.unit == .custom ? goalModel.selectedGoal.step.customUnit : goalModel.selectedGoal.step.unit.description.plural,
+                        selectedColor: goalModel.selectedGoal.color.get()
+                    )
                 }
                 
                 //OneSDoublePicker(data: (Array(0...24).map { "\($0)" }, Array(0...60).map { "\($0)" }), unit: ("h", "min"), selectedColor: goalModel.selectedGoal.color.get())

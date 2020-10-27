@@ -35,8 +35,8 @@ final class GoalCreateModel: ObservableObject, GoalSelectMountainDelegate, GoalE
     func tryCreateGoalAndDismiss() {
         let baseData: Goal.BaseData = (
             name:               selectedEnterInputData.goalName.trimmingCharacters(in: .whitespaces),
-            stepCategory:       selectedEnterInputData.stepCategory,
-            stepUnit:           selectedEnterInputData.stepUnit?.description ?? "",
+            stepUnit:           selectedEnterInputData.stepUnit,
+            customUnit:         selectedEnterInputData.customUnit,
             neededStepUnits:    Int16(selectedEnterInputData.neededStepUnits),
             mountain:           selectedMountainData.mountain,
             color:              selectedMountainData.color
