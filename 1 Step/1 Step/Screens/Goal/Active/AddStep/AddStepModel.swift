@@ -13,10 +13,27 @@ class AddStepModel: ObservableObject {
         case hidden, show
     }
     
-    @Published var dragState: DragState = .hidden
+    @Published var dragState: DragState = .hidden 
     @Published var dragOffset: CGFloat = .zero
     
-    @Published var selectedStep: Int = 0
+    @Published var selectedStep: (unit: Int, dual: Int) = (0, 0)
+    @Published var stepsAddArray: (unit: [String], dual: [String]) = ([], [])
+
+    
+    //MARK: - Setup
+    
+    func setupAddStepView(_ noDrag: Bool, _ goal: Goal) {
+        if noDrag {
+            stepsAddArray = (goal.step.addArray, goal.step.addArrayDual)
+            
+            let selectedStepUnit = stepsAddArray.unit.count-1
+            let selectedStepDual = stepsAddArray.dual.count-1
+            
+            selectedStep = (selectedStepUnit == -1 ? selectedStepDual : selectedStepUnit, selectedStepDual)
+        } else {
+            dragState = .hidden
+        }
+    }
     
     
     //MARK: - (Hidden) Rectangle

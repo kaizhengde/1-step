@@ -39,8 +39,8 @@ enum JourneyDataHandler {
     }
     
     
-    static func calculateStepsAddArray(from baseData: Goal.BaseData) -> [String] {
-        return baseData.stepUnit!.getStepArray(from: baseData.neededStepUnits!)
+    static func calculateStepAddArrays(from baseData: Goal.BaseData) -> (unit: [String], dual: [String]) {
+        return baseData.stepUnit!.getStepAddArrays(from: baseData.neededStepUnits!)
     }
     
 

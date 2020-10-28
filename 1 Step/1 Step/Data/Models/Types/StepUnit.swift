@@ -29,6 +29,7 @@ enum StepUnit: Int16 {
     case books      = 11
     
     case custom     = 12
+    case none       = 13
     
     
     var isCustom: Bool { self == .custom }
@@ -36,28 +37,29 @@ enum StepUnit: Int16 {
     
     //MARK: - Description
     
-    var description: (plural: String, singular: String) {
+    var description: String {
         switch self {
-        case .hours:        return ("hours"     , "hour")
-        case .min:          return ("min"       , "min")
-        case .km:           return ("km"        , "km")
-        case .m:            return ("m"         , "m")
-        case .miles:        return ("miles"     , "mile")
-        case .feets:        return ("feets"     , "feet")
-        case .times:        return ("times"     , "time")
-        case .pages:        return ("pages"     , "page")
-        case .steps:        return ("steps"     , "step")
-        case .decisions:    return ("decisions" , "decision")
-        case .trees:        return ("trees"     , "tree")
-        case .books:        return ("books"     , "book")
-        case .custom:       return ("custom"    , "custom")
+        case .hours:        return "h"
+        case .min:          return "min"
+        case .km:           return "km"
+        case .m:            return "m"
+        case .miles:        return "miles"
+        case .feets:        return "feets"
+        case .times:        return "times"
+        case .pages:        return "pages"
+        case .steps:        return "steps"
+        case .decisions:    return "decisions"
+        case .trees:        return "trees"
+        case .books:        return "books"
+        case .custom:       return "custom"
+        case .none:         return ""
         }
     }
     
     
     //MARK: - DualUnit
     
-    var isDualUnit: Bool {
+    var isDual: Bool {
         switch self {
         case .hours, .km, .miles:
             return true
@@ -67,12 +69,12 @@ enum StepUnit: Int16 {
     }
     
     var dualUnit: Self? {
-        guard self.isDualUnit else { return nil }
+        guard self.isDual else { return nil }
         
         switch self {
         case .hours:    return .min
         case .km:       return .m
-        case .miles:    return .miles
+        case .miles:    return StepUnit.none
         default:        return nil
         }
     }
@@ -82,7 +84,7 @@ enum StepUnit: Int16 {
     
     func getRatio(from neededStepUnits: Int16) -> Int16 {
         
-        guard self.isDualUnit else { return 1 }
+        guard self.isDual else { return 1 }
         
         switch self {
         case .hours:
@@ -117,65 +119,74 @@ enum StepUnit: Int16 {
     }
     
     
-    //MARK: - AddArray
+    //MARK: - AddArrays
     
-    func getStepArray(from neededStepUnits: Int16) -> [String] {
+    func getStepAddArrays(from neededStepUnits: Int16) -> (unit: [String], dual: [String]) {
         
-        var array: [Int] = []
-        var scale: Double = 1
+        var array: (unit: [Int], dual: [Int]) = ([], [])
         
         switch self {
         case .hours:
+            array = ([], Array(1...10))
+            
             switch neededStepUnits {
-            case 400...1000:    array = Array(1...300)
-            case 200...399:     array = Array(1...120)
-            case 90...199:      array = Array(1...60)
-            case 60...89:       array = Array(1...60)
-            case 30...59:       array = Array(1...30)
-            case 15...29:       array = Array(1...30)
-            case 8...14:        array = Array(1...30)
-            case 4...7:         array = Array(1...30)
-            case 1...3:         array = Array(1...15)
+            case 30...89:       array.unit.append(contentsOf: Array(0...1))
+            case 90...199:      array.unit.append(contentsOf: Array(0...2))
+            case 200...399:     array.unit.append(contentsOf: Array(0...5))
+            case 400...1000:    array.unit.append(contentsOf: Array(0...10))
             default: break
             }
             
+            if 4...1000 ~= neededStepUnits { array.dual.append(contentsOf: [12, 14, 16, 18, 20]) }
+            if 30...1000 ~= neededStepUnits {
+                array.unit.append(-1)
+                array.dual.append(contentsOf: [25, 30, 40, 50])
+                array.dual.insert(0, at: 0)
+            }
+            
+            array.dual.append(-1)
+
         case .km, .miles:
+            
             switch neededStepUnits {
-            case 400...1000:    array = Array(10...1500)
-            case 200...399:     array = Array(10...1000)
-            case 100...199:     array = Array(10...500)
-            case 40...99:       array = Array(10...200)
-            case 20...39:       array = Array(10...200)
-            case 8...19:        array = Array(5...100)
-            case 4...7:         array = Array(1...50)
-            case 1...3:         array = Array(1...20)
+            case 20...39:       array.unit.append(contentsOf: Array(0...1))
+            case 40...99:       array.unit.append(contentsOf: Array(0...1))
+            case 100...199:     array.unit.append(contentsOf: Array(0...2))
+            case 200...399:     array.unit.append(contentsOf: Array(0...5))
+            case 400...1000:    array.unit.append(contentsOf: Array(0...10))
             default: break
             }
             
-            scale = self == .km ? 10 : 0.01
-            array = array.filter { $0%array.first! == 0 }
+            if 1...19 ~= neededStepUnits {
+                array = ([], Array(1...10).map { $0*10 })
+                array.dual.append(-10)
+            }
+            if 20...1000 ~= neededStepUnits {
+                array.unit.append(-1)
+                array.dual = [0, 100, 200, 300, 400, 500, -100]
+            }
             
         default:
+            array = (Array(1...3), [])
+            
             switch neededStepUnits {
-            case 300...1000:
-                array = Array(1...10)
-                array.append(15)
-                array.append(20)
-            case 100...299:       array = Array(1...10)
-            case 30...99:         array = Array(1...5)
-            case 10...29:         array = Array(1...3)
+            case 30...99:       array.unit.append(contentsOf: Array(4...5))
+            case 100...299:     array.unit.append(contentsOf: Array(4...10))
+            case 300...1000:    array.unit.append(contentsOf: Array(4...10))
+                array.unit.append(contentsOf: [15, 20])
             default: break
             }
+            
+            array.unit.append(-1)
         }
         
-        var arrayWithScale = array.map { Double($0)*scale }
-        arrayWithScale.append((-1)*scale)
-        
-        return arrayWithScale.map { $0.removeTrailingZerosToString() }
+        let dualArray: [Double] = array.dual.map { self == .miles ? Double($0)/1000 : Double($0) }
+
+        return (array.unit.map { "\($0)" }, dualArray.map { $0.removeTrailingZerosToString() })
     }
     
     
-    //MARK: - Methods
+    //MARK: - Category
     
     static func unitsOfCategory(_ category: StepCategory) -> [StepUnit] {
         switch category {

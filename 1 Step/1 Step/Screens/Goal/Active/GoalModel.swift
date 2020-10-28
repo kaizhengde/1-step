@@ -114,7 +114,7 @@ final class GoalModel: TransitionObservableObject {
     }
     
     var goalUnitText: String {
-        return selectedGoal.step.unit == .custom ? selectedGoal.step.customUnit : selectedGoal.step.unit.description.plural
+        return selectedGoal.step.unit == .custom ? selectedGoal.step.customUnit : selectedGoal.step.unit.description
     }
     
     var showDownArrow: Bool { return noDrag ? true : false }
@@ -139,9 +139,7 @@ final class GoalModel: TransitionObservableObject {
     
     
     //MARK: - Drag
-    
-    var dragPublisher = PassthroughSubject<Void, Never>()
-    
+        
     var noDrag: Bool {
         return transition.isFullAppeared && dragState == .none && dragOffset == 0
     }
@@ -175,7 +173,6 @@ final class GoalModel: TransitionObservableObject {
     private func onChanged(_ value: DragGesture.Value) {
         if legalDrag(value) {
             dragOffset = value.translation.width
-            dragPublisher.send()
         }
     }
     

@@ -29,6 +29,8 @@ struct AddStepView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .offset(y: -60 * Layout.multiplierHeight)
         .oneSAnimation()
+        .onChange(of: goalModel.selectedGoal.step.addArray) { _ in viewModel.setupAddStepView(true, goalModel.selectedGoal) }
+        .onChange(of: goalModel.noDrag) { viewModel.setupAddStepView($0, goalModel.selectedGoal) }
     }
 }
 

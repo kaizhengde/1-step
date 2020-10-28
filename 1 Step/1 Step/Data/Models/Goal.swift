@@ -19,7 +19,6 @@ final class Goal: NSManagedObject, Identifiable {
     @NSManaged var step: Step
     @NSManaged var neededStepUnits: Int16
     @NSManaged var neededSteps: Int16
-    @NSManaged var stepsAddArray: [String]
     
     @NSManaged var currentStepUnits: Double
     @NSManaged var currentSteps: Int16

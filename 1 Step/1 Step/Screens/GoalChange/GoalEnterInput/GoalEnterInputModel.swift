@@ -43,13 +43,13 @@ final class GoalEnterInputModel: ObservableObject {
             return selectedData.customUnit.isEmpty ? "custom" : selectedData.customUnit
         }
         
-        return stepUnit.description.plural
+        return stepUnit.description
     }
     
     
     func stepEnterUnitButtonColor(_ selectedColor: UserColor) -> Color {
         guard let stepUnit = selectedData.stepUnit else { return .lightNeutralToLightGray }
-        return stepUnit.description.plural.isEmpty ? .lightNeutralToLightGray : selectedColor.get()
+        return stepUnit.description.isEmpty ? .lightNeutralToLightGray : selectedColor.get()
     }
 
     

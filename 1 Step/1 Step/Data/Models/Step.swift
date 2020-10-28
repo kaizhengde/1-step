@@ -14,6 +14,8 @@ final class Step: NSManagedObject {
     @NSManaged var customUnit: String
     
     @NSManaged var unitRatio: Int16
+    @NSManaged var addArray: [String]
+    @NSManaged var addArrayDual: [String]
     
     @NSManaged var goal: Goal
 }

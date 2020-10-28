@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AddView: View {
     
+    @EnvironmentObject var goalModel: GoalModel
     @ObservedObject var viewModel: AddStepModel
     
     
@@ -22,7 +23,7 @@ struct AddView: View {
             .oneSShadow(opacity: 0.12, x: 0, y: 2, blur: 8)
         }
         .padding(.horizontal, Layout.firstLayerPadding)
-        .offset(x: viewModel.dragState == .show ? 0 : 220/*280*/)
+        .offset(x: viewModel.dragState == .show ? 0 : goalModel.selectedGoal.step.addArrayDual.isEmpty || goalModel.selectedGoal.step.addArray.isEmpty ? 220 : 280)
         .alignmentGuide(.addStepAlignment) { d in d[.top] }
         .oneSAnimation(duration: 0.3)
     }
@@ -33,21 +34,33 @@ struct AddView: View {
         @EnvironmentObject var goalModel: GoalModel
         @ObservedObject var viewModel: AddStepModel
         
+        var step: Step { goalModel.selectedGoal.step }
+        var singlePicker: Bool { step.addArrayDual.isEmpty || step.addArray.isEmpty }
+        
         
         var body: some View {
             VStack {
                 if viewModel.dragState == .show {
-                    OneSPicker(
-                        selected: $viewModel.selectedStep,
-                        data: goalModel.selectedGoal.stepsAddArray,
-                        unit: goalModel.selectedGoal.step.unit == .custom ? goalModel.selectedGoal.step.customUnit : goalModel.selectedGoal.step.unit.description.plural,
-                        selectedColor: goalModel.selectedGoal.color.get()
-                    )
+                    if singlePicker {
+                        OneSPicker(
+                            selected: $viewModel.selectedStep.unit,
+                            data: viewModel.stepsAddArray.unit.isEmpty ? viewModel.stepsAddArray.dual : viewModel.stepsAddArray.unit,
+                            unit: step.unit == .custom ? goalModel.selectedGoal.step.customUnit : viewModel.stepsAddArray.unit.isEmpty ? step.unit.dualUnit!.description : step.unit.description,
+                            selectedColor: goalModel.selectedGoal.color.get()
+                        )
+
+                    } else {
+                        OneSDualPicker(
+                            selectedLeft: $viewModel.selectedStep.unit,
+                            selectedRight: $viewModel.selectedStep.dual,
+                            data: (viewModel.stepsAddArray.unit, viewModel.stepsAddArray.dual),
+                            unit: (step.unit.description, step.unit.dualUnit!.description),
+                            selectedColor: goalModel.selectedGoal.color.get()
+                        )
+                    }
                 }
-                
-                //OneSDoublePicker(data: (Array(0...24).map { "\($0)" }, Array(0...60).map { "\($0)" }), unit: ("h", "min"), selectedColor: goalModel.selectedGoal.color.get())
             }
-            .frame(width: 180/*240*/, height: 175)
+            .frame(width: singlePicker ? 180 : 240, height: 175)
             .background(goalModel.selectedGoal.color.get(.light))
         }
     }
@@ -64,7 +77,7 @@ struct AddView: View {
                 SFSymbol.plus
                     .resizable()
                     .frame(width: 30, height: 30)
-                    .foregroundColor(.backgroundToGray)
+                    .foregroundColor(.backgroundStatic)
             }
             .frame(width: 90, height: 90)
             .background(goalModel.selectedGoal.color.get(.dark))

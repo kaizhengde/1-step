@@ -48,35 +48,31 @@ final class DataManager {
         let newGoal = Goal(context: persistenceManager.context)
         let newStep = Step(context: persistenceManager.context)
         
-        newStep.unit            = baseData.stepUnit!
-        newStep.customUnit      = baseData.customUnit
-        newStep.goal            = newGoal
-
-        newGoal.name            = baseData.name
-        newGoal.step            = newStep
-        newGoal.neededStepUnits = baseData.neededStepUnits!
-        newGoal.currentSteps    = .zero
-        newGoal.currentPercent  = Int16(Int.random(in: 0...100)) //For now
-        newGoal.currentState    = .active
-        newGoal.startDate       = Date()
-        newGoal.endDate         = nil
-        newGoal.mountain        = baseData.mountain!
-        newGoal.color           = baseData.color!
-        
+        newStep.unit                = baseData.stepUnit!
+        newStep.customUnit          = baseData.customUnit
+        newStep.goal                = newGoal
+    
+        newGoal.name                = baseData.name
+        newGoal.step                = newStep
+        newGoal.neededStepUnits     = baseData.neededStepUnits!
+        newGoal.currentStepUnits    = .zero
+        newGoal.currentSteps        = .zero
+        newGoal.currentPercent      = Int16(Int.random(in: 0...100))
+        newGoal.currentState        = .active
+        newGoal.startDate           = Date()
+        newGoal.endDate             = nil
+        newGoal.mountain            = baseData.mountain!
+        newGoal.color               = baseData.color!
+            
         //Calculate
-        
-        let activeGoalsCount    = fetchActiveGoalCount()
-        
-        let stepUnitRatio       = JourneyDataHandler.calculateRatio(from: baseData)
-        let goalNeededSteps     = baseData.neededStepUnits! * stepUnitRatio
-        let stepsAddArray          = JourneyDataHandler.calculateStepsAddArray(from: baseData)
-        let milestones          = JourneyDataHandler.generateMilestones(with: newGoal)
-        
-        newGoal.sortOrder       = activeGoalsCount
-        newStep.unitRatio       = stepUnitRatio
-        newGoal.neededSteps     = goalNeededSteps
-        newGoal.stepsAddArray      = stepsAddArray
-        newGoal.milestones      = milestones
+            
+        newGoal.sortOrder           = fetchActiveGoalCount()
+        newStep.unitRatio           = JourneyDataHandler.calculateRatio(from: baseData)
+        newGoal.neededSteps         = baseData.neededStepUnits! * newStep.unitRatio
+        let addArrays               = JourneyDataHandler.calculateStepAddArrays(from: baseData)
+        newStep.addArray            = addArrays.unit
+        newStep.addArrayDual        = addArrays.dual
+        newGoal.milestones          = JourneyDataHandler.generateMilestones(with: newGoal)
         
         return persistenceManager.saveContext()
     }
@@ -86,24 +82,21 @@ final class DataManager {
     
     func editGoal(_ goal: Goal, with baseData: Goal.BaseData) -> Bool {
         
-        goal.name            = baseData.name
-        goal.step.unit       = baseData.stepUnit!
-        goal.step.customUnit = baseData.customUnit
-        goal.neededStepUnits = baseData.neededStepUnits!
-        goal.mountain        = baseData.mountain!
-        goal.color           = baseData.color!
+        goal.name               = baseData.name
+        goal.step.unit          = baseData.stepUnit!
+        goal.step.customUnit    = baseData.customUnit
+        goal.neededStepUnits    = baseData.neededStepUnits!
+        goal.mountain           = baseData.mountain!
+        goal.color              = baseData.color!
         
         //Calculate
         
-        let stepUnitRatio    = JourneyDataHandler.calculateRatio(from: baseData)
-        let goalNeededSteps  = baseData.neededStepUnits! * stepUnitRatio
-        let stepsAddArray    = JourneyDataHandler.calculateStepsAddArray(from: baseData)
-        let milestones       = JourneyDataHandler.generateMilestones(with: goal)
-        
-        goal.step.unitRatio  = stepUnitRatio
-        goal.neededSteps     = goalNeededSteps
-        goal.stepsAddArray   = stepsAddArray
-        goal.milestones      = milestones
+        goal.step.unitRatio     = JourneyDataHandler.calculateRatio(from: baseData)
+        goal.neededSteps        = baseData.neededStepUnits! * goal.step.unitRatio
+        let addArrays           = JourneyDataHandler.calculateStepAddArrays(from: baseData)
+        goal.step.addArray      = addArrays.unit
+        goal.step.addArrayDual  = addArrays.dual
+        goal.milestones         = JourneyDataHandler.generateMilestones(with: goal)
         
         return persistenceManager.saveContext()
     }
