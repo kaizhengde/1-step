@@ -80,6 +80,12 @@ final class DataManager {
     
     //MARK: - Change
     
+    func changeGoalOrder(_ goal: Goal, with newOrder: Int16) -> Bool {
+        goal.sortOrder      = newOrder
+        return persistenceManager.saveContext()
+    }
+    
+    
     func editGoal(_ goal: Goal, with baseData: Goal.BaseData) -> Bool {
         
         goal.name               = baseData.name
@@ -102,10 +108,20 @@ final class DataManager {
     }
     
     
-    func changeGoalOrder(_ goal: Goal, with newOrder: Int16) -> Bool {
-        goal.sortOrder      = newOrder
+    func addSteps(_ goal: Goal, stepUnits: Double, stepUnitsDual: Double) -> Bool {
+        
+        let journeyData = JourneyDataHandler.addStepsAndUpdate(with: goal, stepUnits, stepUnitsDual)
+        
+        goal.currentStepUnits   = journeyData.currentStepUnits
+        goal.currentSteps       = journeyData.currentSteps
+        goal.currentPercent     = journeyData.currentPercent
+        goal.currentState       = journeyData.currentState
+        goal.milestones         = journeyData.milestones
+        
         return persistenceManager.saveContext()
     }
+    
+    
     
     
     //MARK: - Delete

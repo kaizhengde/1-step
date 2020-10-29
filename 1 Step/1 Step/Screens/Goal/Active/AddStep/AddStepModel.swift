@@ -35,6 +35,17 @@ class AddStepModel: ObservableObject {
         }
     }
     
+    //MARK: - Data
+    
+    func tryAddStepsAndHide(with goal: Goal) {
+        if DataModel.shared.addSteps(goal,
+          stepUnits: Double(stepsAddArray.unit[selectedStep.unit])!,
+          stepUnitsDual: Double(stepsAddArray.dual[selectedStep.dual])!
+        ) {
+            dragState = .hidden
+        }
+    }
+    
     
     //MARK: - (Hidden) Rectangle
     

@@ -79,6 +79,16 @@ enum StepUnit: Int16 {
         }
     }
     
+    var dualRatio: Double {
+        guard self.isDual else { return 1 }
+        
+        switch self {
+        case .hours:        return 60
+        case .km, .miles:   return 1000
+        default:            return 0
+        }
+    }
+    
     
     //MARK: - Ratio
     

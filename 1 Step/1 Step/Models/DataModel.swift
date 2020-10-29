@@ -52,21 +52,25 @@ final class DataModel: ObservableObject {
     
     //MARK: - Change
     
-    func editGoal(_ goal: Goal, with baseData: Goal.BaseData) -> Bool {
-        guard !GoalErrorHandler.hasErrors(with: baseData) else { return false }
-        guard dataManager.editGoal(goal, with: baseData) else { return false }
-        
-        fetchAllActiveGoals()
-        return true
-    }
-    
-    
     func moveGoals() -> Bool {
         for goal in activeGoals {
             guard dataManager.changeGoalOrder(goal, with: goal.sortOrder) else { return false }
         }
         
         fetchAllActiveGoals()
+        return true
+    }
+    
+    
+    func editGoal(_ goal: Goal, with baseData: Goal.BaseData) -> Bool {
+        guard !GoalErrorHandler.hasErrors(with: baseData) else { return false }
+        guard dataManager.editGoal(goal, with: baseData) else { return false }
+        return true
+    }
+    
+    
+    func addSteps(_ goal: Goal, stepUnits: Double, stepUnitsDual: Double) -> Bool {
+        guard dataManager.addSteps(goal, stepUnits: stepUnits, stepUnitsDual: stepUnitsDual) else { return false }
         return true
     }
     

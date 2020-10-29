@@ -44,7 +44,13 @@ extension Goal {
         color:              UserColor?
     )
     
-    typealias JourneyData = ()
+    typealias JourneyData = (
+        currentStepUnits:   Double,
+        currentSteps:       Int16,
+        currentPercent:     Int16,
+        currentState:       GoalState,
+        milestones:         Set<Milestone>
+    )
     
     typealias NotificationData = ()
     

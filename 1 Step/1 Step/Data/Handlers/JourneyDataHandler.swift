@@ -10,27 +10,10 @@ import SwiftUI
 enum JourneyDataHandler {
     
     /*
-     ALGORITHM
-     
      Invariant:         Prev <= Next, 1 or 10 <= NeededStepsUnit <= NeededSteps <= 1000
      Ratio:             [Step:StepUnit] Reps: 1:1, Duration & Distance: 1:n with n is natural number >= 1
      Milestones max:    13
      Preference:        300 - 600 Steps range
-     
-     Expls:
-     70h [duration]
-     -> 4200min
-     -> 700 Steps with ratio: 1:6
-
-     3km [distance]
-     -> 3000m
-     -> 500 Steps with ratio: 1:6
-     
-     123km [distance]
-     -> 123 Steps with ratio 1:1
-     
-     60trees [reps]
-     -> 60 Steps with ratio 1:1
      */
     
     
@@ -44,7 +27,6 @@ enum JourneyDataHandler {
     }
     
 
-    //ALGO: O(1) From goal.neededStepUnits & goal.step.ratio -> goal.milestones
     static func generateMilestones(with goal: Goal) -> Set<Milestone> {
         
         let milestoneStages = MilestoneStages(maxNeededStepUnits: MilestoneStages.getMaxNeededStepUnits(from: goal.neededStepUnits))
@@ -125,5 +107,61 @@ enum JourneyDataHandler {
         //6. Return
         
         return milestones
+    }
+    
+    
+    static func addStepsAndUpdate(with goal: Goal, _ stepUnits: Double, _ stepUnitsDual: Double) -> Goal.JourneyData {
+        
+        var journeyData: Goal.JourneyData = (0, 0, 0, .active, [])
+        
+        //1. Calculate StepUnits to be added
+        
+        var stepUnitsTotal = stepUnits
+        
+        if goal.step.unit.isDual { stepUnitsTotal += stepUnitsDual/goal.step.unit.dualRatio }
+        
+        
+        //2. Update Currents
+        
+        journeyData.currentStepUnits    = goal.currentStepUnits + stepUnitsTotal
+        journeyData.currentSteps        = Int16(journeyData.currentStepUnits*Double(goal.step.unitRatio))
+        journeyData.currentPercent      = Int16(journeyData.currentStepUnits)/goal.neededStepUnits
+        journeyData.currentState        = Int16(journeyData.currentStepUnits) >= goal.neededStepUnits ? .reached : .active
+        
+        
+        //3. Update Milestones
+        
+        let milestones = Array(goal.milestones)
+        
+        for i in 0..<milestones.count {
+            
+            let milestone = milestones[i]
+            let prevMilestone = milestones[i == 0 ? i : i-1]
+            let currentStepUnits = journeyData.currentStepUnits
+            
+            if currentStepUnits < prevMilestone.neededStepUnits {
+                milestones[i].state = .active
+            }
+            if currentStepUnits < milestone.neededStepUnits && currentStepUnits >= prevMilestone.neededStepUnits {
+                milestones[i].state = .current
+            }
+            if currentStepUnits > milestone.neededStepUnits {
+                milestones[i].state = .done
+                milestones[i].endDate = milestones[i].endDate == nil ? Date() : milestones[i].endDate
+            }
+        }
+        
+        journeyData.milestones = Set(milestones)
+        
+        print("-------------")
+        print("Goal:        \(goal.name)")
+        print("StepUnits:   \(journeyData.currentStepUnits)")
+        print("Steps:       \(journeyData.currentSteps)")
+        print("Percent:     \(journeyData.currentPercent)")
+        print("State:       \(journeyData.currentState.rawValue)")
+        print("Milestones:  \(journeyData.milestones.map { "Needed Units: \($0.neededStepUnits), State: \($0.state.rawValue)" })")
+        print("-------------")
+        
+        return journeyData
     }
 }

@@ -83,7 +83,7 @@ struct AddView: View {
             .frame(width: 90, height: 90)
             .background(goalModel.selectedGoal.color.get(.dark))
             .offset(y: viewModel.dragState == .show ? 0 : -100)
-            .onTapGesture { viewModel.dragState = .hidden }
+            .onTapGesture { viewModel.tryAddStepsAndHide(with: goalModel.selectedGoal) }
         }
     }
 }
