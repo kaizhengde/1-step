@@ -43,17 +43,18 @@ struct AddView: View {
                 if viewModel.dragState == .show {
                     if singlePicker {
                         OneSPicker(
+                            data: viewModel.stepsAddArray.unit.isEmpty ? $viewModel.stepsAddArray.dual : $viewModel.stepsAddArray.unit,
                             selected: $viewModel.selectedStep.unit,
-                            data: viewModel.stepsAddArray.unit.isEmpty ? viewModel.stepsAddArray.dual : viewModel.stepsAddArray.unit,
                             unit: step.unit == .custom ? goalModel.selectedGoal.step.customUnit : viewModel.stepsAddArray.unit.isEmpty ? step.unit.dualUnit!.description : step.unit.description,
                             selectedColor: goalModel.selectedGoal.color.get()
                         )
 
                     } else {
                         OneSDualPicker(
+                            dataLeft: $viewModel.stepsAddArray.unit,
+                            dataRight: $viewModel.stepsAddArray.dual,
                             selectedLeft: $viewModel.selectedStep.unit,
                             selectedRight: $viewModel.selectedStep.dual,
-                            data: (viewModel.stepsAddArray.unit, viewModel.stepsAddArray.dual),
                             unit: (step.unit.description, step.unit.dualUnit!.description),
                             selectedColor: goalModel.selectedGoal.color.get()
                         )

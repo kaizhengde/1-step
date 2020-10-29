@@ -23,9 +23,9 @@ import SwiftUI
 
 struct OneSPicker: View {
     
+    @Binding var data: [String]
     @Binding var selected: Int
-
-    var data: [String]
+    
     var unit: String
     
     var selectedColor: Color
@@ -34,9 +34,9 @@ struct OneSPicker: View {
     private var multiplier: CGFloat = 150/90
     
     
-    init(selected: Binding<Int>, data: [String], unit: String, selectedColor: Color, width: CGFloat = 90) {
+    init(data: Binding<[String]>, selected: Binding<Int>, unit: String, selectedColor: Color, width: CGFloat = 90) {
+        self._data = data
         self._selected = selected
-        self.data = data
         self.unit = unit
         self.selectedColor = selectedColor
         self.width = width
@@ -50,7 +50,7 @@ struct OneSPicker: View {
                 .foregroundColor(selectedColor)
             
             Picker("", selection: $selected) {
-                ForEach(0 ..< data.count) { i in
+                ForEach(0 ..< data.count, id: \.self) { i in
                     if i == selected {
                         HStack(spacing: 1.5) {
                             OneSText(text: data[data.count-1-i], font: .title2, color: .backgroundStatic)
