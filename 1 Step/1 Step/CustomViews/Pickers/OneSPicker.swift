@@ -66,6 +66,7 @@ struct OneSPicker: View {
         .scaleEffect(1.7)
         .clipped()
         .contentShape(Rectangle())
+        .onChange(of: data) { selected = $0.count-1 }
     }
 }
 

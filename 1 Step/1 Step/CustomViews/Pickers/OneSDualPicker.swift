@@ -23,7 +23,7 @@ struct OneSDualPicker: View {
             OneSPicker(
                 data: Binding<[String]>(
                     get: {
-                        if dataRight[dataRight.count-1-selectedRight] == "-1" { return ["0"] }
+                        if selectedRight == 0 { return [] }
                         return dataLeft
                     },
                     set: { dataLeft = $0 }
@@ -37,9 +37,8 @@ struct OneSDualPicker: View {
             OneSPicker(
                 data: Binding<[String]>(
                     get: {
-                        if dataLeft[dataLeft.count-1-selectedLeft] == "-1" { return ["0"] }
-                        if dataLeft[dataLeft.count-1-selectedLeft] == "0" { return dataRight.filter { $0 != "0" } }
-                        if dataLeft[dataLeft.count-1-selectedLeft+1] == "-1" { return ["0"] }
+                        if selectedLeft == 0 || selectedLeft == 1 { return [] }
+                        if selectedLeft == dataLeft.count-1 { return dataRight.filter { $0 != "0" } }
                         return dataRight
                     },
                     set: { dataRight = $0 }
