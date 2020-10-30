@@ -94,6 +94,11 @@ enum JourneyDataHandler {
             milestonesArray[i].image = MilestoneImage(rawValue: Int16(i))!
         }
         
+        
+        //5.1 Init starting milestone to current
+        
+        milestonesArray[0].state = .current
+        
         milestones = Set(milestonesArray)
         
         
@@ -157,7 +162,7 @@ enum JourneyDataHandler {
             if currentStepUnits < milestone.neededStepUnits && currentStepUnits >= prevMilestone?.neededStepUnits ?? 0 {
                 milestones[i].state = .current
             }
-            if currentStepUnits > milestone.neededStepUnits {
+            if currentStepUnits >= milestone.neededStepUnits {
                 milestones[i].state = .done
                 milestones[i].endDate = milestones[i].endDate == nil ? Date() : milestones[i].endDate
             }
