@@ -29,7 +29,7 @@ enum GoalItemArt {
     static var height: CGFloat {
         switch current {
         case .grid: return 250*Layout.multiplierWidth
-        case .menu: return 160
+        case .menu: return 165
         }
     }
     
@@ -74,7 +74,7 @@ enum GoalItemArt {
         
         switch current {
         case .grid: offset = 120*Layout.multiplierWidth
-        case .menu: offset = 85
+        case .menu: offset = 70
         }
         
         return generateDynamicOffset(with: offset, goal)

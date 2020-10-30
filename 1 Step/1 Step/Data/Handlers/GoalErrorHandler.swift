@@ -21,11 +21,18 @@ enum GoalErrorHandler {
     }
     
     
-    static func hasErrors(with changeData: Goal.BaseData) -> Bool {
+    enum GoalEditError: Error {
+        
+        case currentBelowNeededStepUnits
+        case changeOfCategory(from: StepCategory, to: StepCategory)
+    }
+    
+    
+    static func hasErrors(with baseData: Goal.BaseData) -> Bool {
         let errorText: String!
         
         do {
-            try correctInput(with: changeData)
+            try correctInput(with: baseData)
             return false
         }
         catch GoalError.goalNameEmpty {
@@ -47,10 +54,10 @@ enum GoalErrorHandler {
             errorText =  "Too many steps to take.\n\nMaximum steps: \(Goal.neededStepUnitsMaximum)."
         }
         catch {
-            errorText = "Goal create failed with an unknown error.\n\nConsider restarting the app."
+            errorText = "Failed with an unknown error.\n\nConsider restarting the app."
         }
         
-        PopupManager.shared.showTextPopup(titleText: "Oh Deer", titleImage: Emoji.deer, bodyText: errorText, backgroundColor: changeData.color!.get())
+        PopupManager.shared.showTextPopup(titleText: "Oh Deer", titleImage: Emoji.deer, bodyText: errorText, backgroundColor: baseData.color!.get())
         
         return true
     }
@@ -71,6 +78,40 @@ enum GoalErrorHandler {
         }
         if baseData.neededStepUnits! > Goal.neededStepUnitsMaximum {
             throw GoalError.stepsNeededTooMany
+        }
+    }
+    
+    
+    static func editGoalHasErrors(with goal: Goal, baseData: Goal.BaseData) -> Bool {
+        let errorText: String!
+        
+        do {
+            try correctEdit(with: goal, baseData: baseData)
+            return false
+        }
+        catch GoalEditError.currentBelowNeededStepUnits {
+            errorText = "You can't have a goal with steps to take lower than your current steps."
+        }
+        catch let GoalEditError.changeOfCategory(from: fromCategory, to: toCategory) {
+            errorText = "You can't change your step category.\n\(fromCategory) -> \(toCategory)\n\nCreate a new goal instead."
+        }
+        catch {
+            errorText = "Failed with an unknown error.\n\nConsider restarting the app."
+        }
+        
+        PopupManager.shared.showTextPopup(titleText: "Oh Deer", titleImage: Emoji.deer, bodyText: errorText, backgroundColor: goal.color.get())
+        
+        return true
+    }
+    
+    
+    static func correctEdit(with goal: Goal, baseData: Goal.BaseData) throws {
+        if goal.currentStepUnits > Double(baseData.neededStepUnits!) {
+            throw GoalEditError.currentBelowNeededStepUnits
+        }
+        
+        if goal.step.unit.category != baseData.stepUnit!.category {
+            throw GoalEditError.changeOfCategory(from: goal.step.unit.category, to: baseData.stepUnit!.category)
         }
     }
 }

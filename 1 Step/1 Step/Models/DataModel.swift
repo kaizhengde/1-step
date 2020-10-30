@@ -64,12 +64,14 @@ final class DataModel: ObservableObject {
     
     func editGoal(_ goal: Goal, with baseData: Goal.BaseData) -> Bool {
         guard !GoalErrorHandler.hasErrors(with: baseData) else { return false }
+        guard !GoalErrorHandler.editGoalHasErrors(with: goal, baseData: baseData) else { return false }
         guard dataManager.editGoal(goal, with: baseData) else { return false }
         return true
     }
     
     
     func addSteps(_ goal: Goal, stepUnits: Double, stepUnitsDual: Double) -> Bool {
+        guard !JourneyErrorHandler.addHasErrors(with: goal, stepUnits, stepUnitsDual) else { return false }
         guard dataManager.addSteps(goal, stepUnits: stepUnits, stepUnitsDual: stepUnitsDual) else { return false }
         return true
     }

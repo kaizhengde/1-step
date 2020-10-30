@@ -31,7 +31,7 @@ final class PopupManager: ViewOverlayManagerProtocol {
     
     //TextPopup
     
-    func showTextPopup(titleText: String, titleImage: Image? = nil, bodyText: String, backgroundColor: Color, height: CGFloat = 260+Layout.onlyOniPhoneXType(40)) {
+    func showTextPopup(titleText: String, titleImage: Image? = nil, bodyText: String, backgroundColor: Color, height: CGFloat = 280+Layout.onlyOniPhoneXType(40)) {
         initTransition()
         
         self.dismissOnTap           = true

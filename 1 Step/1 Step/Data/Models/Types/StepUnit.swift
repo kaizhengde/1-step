@@ -204,4 +204,13 @@ enum StepUnit: Int16 {
         case .reps: return [.times, .pages, .steps, .decisions, .trees, .books, .custom]
         }
     }
+    
+    
+    var category: StepCategory {
+        switch self {
+        case .hours, .min:              return .duration
+        case .km, .m, .miles, .feets:   return .distance
+        default:                        return .reps 
+        }
+    }
 }
