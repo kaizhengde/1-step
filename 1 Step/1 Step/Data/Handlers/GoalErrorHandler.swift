@@ -25,6 +25,7 @@ enum GoalErrorHandler {
         
         case currentBelowNeededStepUnits
         case changeOfCategory(from: StepCategory, to: StepCategory)
+        case changeOfDistanceUnitsSystem
     }
     
     
@@ -95,6 +96,9 @@ enum GoalErrorHandler {
         catch let GoalEditError.changeOfCategory(from: fromCategory, to: toCategory) {
             errorText = "You can't change your step category.\n\(fromCategory) -> \(toCategory)\n\nCreate a new goal instead."
         }
+        catch GoalEditError.changeOfDistanceUnitsSystem {
+            errorText = "You can't change between metric and imperial units.\n\nCreate a new goal instead."
+        }
         catch {
             errorText = "Failed with an unknown error.\n\nConsider restarting the app."
         }
@@ -106,12 +110,16 @@ enum GoalErrorHandler {
     
     
     static func correctEdit(with goal: Goal, baseData: Goal.BaseData) throws {
-        if goal.currentStepUnits > Double(baseData.neededStepUnits!) {
-            throw GoalEditError.currentBelowNeededStepUnits
-        }
-        
         if goal.step.unit.category != baseData.stepUnit!.category {
             throw GoalEditError.changeOfCategory(from: goal.step.unit.category, to: baseData.stepUnit!.category)
+        }
+        
+        if goal.step.unit.isMetric && baseData.stepUnit!.isImperial || goal.step.unit.isImperial && baseData.stepUnit!.isMetric {
+            throw GoalEditError.changeOfDistanceUnitsSystem
+        }
+        
+        if goal.currentStepUnits > Double(Double(baseData.neededStepUnits!)*baseData.stepUnit!.translateMultiplier(to: goal.step.unit)) {
+            throw GoalEditError.currentBelowNeededStepUnits
         }
     }
 }

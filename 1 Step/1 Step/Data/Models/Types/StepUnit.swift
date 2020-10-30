@@ -91,6 +91,16 @@ enum StepUnit: Int16 {
     }
     
     
+    func translateMultiplier(to unit: Self) -> Double {
+        if unit.isDual && unit != self {
+            return 1/unit.dualRatio
+        } else if self.isDual && unit != self {
+            return self.dualRatio
+        }
+        return 1
+    }
+    
+    
     //MARK: - Ratio
     
     func getRatio(from neededStepUnits: Int16) -> Int16 {
@@ -213,4 +223,7 @@ enum StepUnit: Int16 {
         default:                        return .reps 
         }
     }
+    
+    var isMetric: Bool { self == .km || self == .m }
+    var isImperial: Bool { self == .miles || self == .feets }
 }

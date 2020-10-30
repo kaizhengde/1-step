@@ -112,14 +112,7 @@ final class DataManager {
     
     
     private func updateSteps(_ goal: Goal, _ oldUnit: StepUnit) -> Bool {
-        let newUnit = goal.step.unit
-        
-        if newUnit.isDual && newUnit != oldUnit {
-            goal.currentStepUnits /= newUnit.dualRatio
-        } else if oldUnit.isDual && newUnit != oldUnit {
-            goal.currentStepUnits *= oldUnit.dualRatio
-        }
-        
+        goal.currentStepUnits *= oldUnit.translateMultiplier(to: goal.step.unit)
         return addSteps(goal, stepUnits: 0, stepUnitsDual: 0)
     }
     

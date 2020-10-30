@@ -66,6 +66,8 @@ final class DataModel: ObservableObject {
         guard !GoalErrorHandler.hasErrors(with: baseData) else { return false }
         guard !GoalErrorHandler.editGoalHasErrors(with: goal, baseData: baseData) else { return false }
         guard dataManager.editGoal(goal, with: baseData) else { return false }
+        
+        fetchAllActiveGoals()
         return true
     }
     
