@@ -125,24 +125,24 @@ enum JourneyDataHandler {
         
         journeyData.currentStepUnits    = goal.currentStepUnits + stepUnitsTotal
         journeyData.currentSteps        = Int16(journeyData.currentStepUnits*Double(goal.step.unitRatio))
-        journeyData.currentPercent      = Int16(journeyData.currentStepUnits)/goal.neededStepUnits
+        journeyData.currentPercent      = Int16((journeyData.currentStepUnits/Double(goal.neededStepUnits))*100)
         journeyData.currentState        = Int16(journeyData.currentStepUnits) >= goal.neededStepUnits ? .reached : .active
         
         
         //3. Update Milestones
         
-        let milestones = Array(goal.milestones)
+        let milestones = Array(goal.milestones.sorted { $0.neededStepUnits < $1.neededStepUnits })
         
         for i in 0..<milestones.count {
             
             let milestone = milestones[i]
-            let prevMilestone = milestones[i == 0 ? i : i-1]
+            let prevMilestone: Milestone? = i == 0 ? nil : milestones[i-1]
             let currentStepUnits = journeyData.currentStepUnits
             
-            if currentStepUnits < prevMilestone.neededStepUnits {
+            if currentStepUnits < prevMilestone?.neededStepUnits ?? 0 {
                 milestones[i].state = .active
             }
-            if currentStepUnits < milestone.neededStepUnits && currentStepUnits >= prevMilestone.neededStepUnits {
+            if currentStepUnits < milestone.neededStepUnits && currentStepUnits >= prevMilestone?.neededStepUnits ?? 0 {
                 milestones[i].state = .current
             }
             if currentStepUnits > milestone.neededStepUnits {

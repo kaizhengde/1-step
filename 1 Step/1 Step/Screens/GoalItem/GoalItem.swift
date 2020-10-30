@@ -23,7 +23,7 @@ struct GoalItem: View {
             PercentView(goalActiveModel: goalActiveModel, goal: $goal)
             TextView(goal: $goal)
         }
-        .frame(width: GoalItemArt.width, height: GoalItemArt.height)
+        .frame(width: GoalItemArt.width, height: GoalItemArt.height, alignment: .top)
         .background(GoalItemArt.color(isCurrentDrag, of: goal))
         .clipShape(GoalItemArt.shape)
         .contentShape(GoalItemArt.shape)

@@ -38,9 +38,27 @@ class AddStepModel: ObservableObject {
     //MARK: - Data
     
     func tryAddStepsAndHide(with goal: Goal) {
+        var stepsUnitArray = stepsAddArray.unit
+        var stepsDualArray = stepsAddArray.dual
+        
+        var selectedStepUnit = selectedStep.unit == -1 ? stepsAddArray.unit.count-1 : selectedStep.unit
+        var selectedStepDual = selectedStep.dual == -1 ? stepsAddArray.dual.count-1 : selectedStep.dual
+        
+        if stepsUnitArray.isEmpty {
+            stepsUnitArray = ["0"]
+            selectedStepUnit = 0
+        }
+        if stepsDualArray.isEmpty {
+            stepsDualArray = ["0"]
+            selectedStepDual = 0
+        }
+        
+        print(stepsDualArray)
+        print(selectedStepDual)
+        
         if DataModel.shared.addSteps(goal,
-          stepUnits: Double(stepsAddArray.unit[selectedStep.unit])!,
-          stepUnitsDual: Double(stepsAddArray.dual[selectedStep.dual])!
+             stepUnits: Double(stepsUnitArray.reversed()[selectedStepUnit])!,
+             stepUnitsDual: Double(stepsDualArray.reversed()[selectedStepDual])!
         ) {
             dragState = .hidden
         }

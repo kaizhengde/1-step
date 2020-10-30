@@ -62,7 +62,7 @@ enum GoalItemArt {
     static var textOffset: CGFloat {
         switch current {
         case .grid: return 36
-        case .menu: return 16
+        case .menu: return 8
         }
     }
     
@@ -74,7 +74,7 @@ enum GoalItemArt {
         
         switch current {
         case .grid: offset = 120*Layout.multiplierWidth
-        case .menu: offset = 85*Layout.multiplierWidth
+        case .menu: offset = 85
         }
         
         return generateDynamicOffset(with: offset, goal)

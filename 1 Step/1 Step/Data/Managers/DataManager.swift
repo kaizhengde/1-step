@@ -57,7 +57,7 @@ final class DataManager {
         newGoal.neededStepUnits     = baseData.neededStepUnits!
         newGoal.currentStepUnits    = .zero
         newGoal.currentSteps        = .zero
-        newGoal.currentPercent      = Int16(Int.random(in: 0...100))
+        newGoal.currentPercent      = .zero
         newGoal.currentState        = .active
         newGoal.startDate           = Date()
         newGoal.endDate             = nil
@@ -120,8 +120,6 @@ final class DataManager {
         
         return persistenceManager.saveContext()
     }
-    
-    
     
     
     //MARK: - Delete

@@ -35,10 +35,10 @@ struct GoalMenuView: View {
                     }
                 }
             }
+            .frame(width: goalModel.menuWidth)
             .padding(.vertical, 50)
             .padding(.bottom, 80)
         }
-        .frame(width: goalModel.menuWidth)
         .offset(x: goalModel.menuDragOffset)
         .opacity(goalModel.viewDragOpacity)
     }
