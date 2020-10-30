@@ -17,19 +17,16 @@ class AddStepModel: ObservableObject {
     @Published var dragOffset: CGFloat = .zero
     
     @Published var selectedStep: (unit: Int, dual: Int) = (0, 0)
-    @Published var stepsAddArray: (unit: [String], dual: [String]) = ([], [])
 
     
     //MARK: - Setup
     
     func setupAddStepView(_ noDrag: Bool, _ goal: Goal) {
         if noDrag {
-            stepsAddArray = (goal.step.addArray, goal.step.addArrayDual)
+            let selectedStepUnit = goal.step.addArrayLastIndex
+            let selectedStepDual = goal.step.addArrayDualLastIndex
             
-            let selectedStepUnit = stepsAddArray.unit.count-1
-            let selectedStepDual = stepsAddArray.dual.count-1
-            
-            selectedStep = (selectedStepUnit == -1 ? selectedStepDual : selectedStepUnit, selectedStepDual)
+            selectedStep = (goal.step.addArray.isEmpty ? selectedStepDual : selectedStepUnit, selectedStepDual)
         } else {
             dragState = .hidden
         }
@@ -38,27 +35,25 @@ class AddStepModel: ObservableObject {
     //MARK: - Data
     
     func tryAddStepsAndHide(with goal: Goal) {
-        var stepsUnitArray = stepsAddArray.unit
-        var stepsDualArray = stepsAddArray.dual
         
-        var selectedStepUnit = selectedStep.unit == -1 ? stepsAddArray.unit.count-1 : selectedStep.unit
-        var selectedStepDual = selectedStep.dual == -1 ? stepsAddArray.dual.count-1 : selectedStep.dual
+        var stepAddArray        = goal.step.addArray
+        var stepAddArrayDual    = goal.step.addArrayDual
         
-        if stepsUnitArray.isEmpty {
-            stepsUnitArray = ["0"]
+        var selectedStepUnit    = selectedStep.unit == -1 ? goal.step.addArrayLastIndex : selectedStep.unit
+        var selectedStepDual    = selectedStep.dual == -1 ? goal.step.addArrayDualLastIndex : selectedStep.dual
+        
+        if stepAddArray.isEmpty {
+            stepAddArray = ["0"]
             selectedStepUnit = 0
         }
-        if stepsDualArray.isEmpty {
-            stepsDualArray = ["0"]
+        if stepAddArrayDual.isEmpty {
+            stepAddArrayDual = ["0"]
             selectedStepDual = 0
         }
         
-        print(stepsDualArray)
-        print(selectedStepDual)
-        
         if DataModel.shared.addSteps(goal,
-             stepUnits: Double(stepsUnitArray.reversed()[selectedStepUnit])!,
-             stepUnitsDual: Double(stepsDualArray.reversed()[selectedStepDual])!
+             stepUnits: Double(stepAddArray.reversed()[selectedStepUnit])!,
+             stepUnitsDual: Double(stepAddArrayDual.reversed()[selectedStepDual])!
         ) {
             dragState = .hidden
         }

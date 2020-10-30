@@ -83,9 +83,10 @@ enum StepUnit: Int16 {
         guard self.isDual else { return 1 }
         
         switch self {
-        case .hours:        return 60
-        case .km, .miles:   return 1000
-        default:            return 0
+        case .hours:    return 60
+        case .km:       return 1000
+        case .miles:    return 1
+        default:        return 0
         }
     }
     
@@ -167,13 +168,11 @@ enum StepUnit: Int16 {
             default: break
             }
             
-            if 1...19 ~= neededStepUnits {
-                array = ([], Array(1...10).map { $0*10 })
-                array.dual.append(-10)
-            }
+            array.dual = [100, 200, 300, 400, 500, -100]
+            
             if 20...1000 ~= neededStepUnits {
                 array.unit.append(-1)
-                array.dual = [0, 100, 200, 300, 400, 500, -100]
+                array.dual.insert(0, at: 0)
             }
             
         default:

@@ -120,6 +120,8 @@ enum JourneyDataHandler {
         
         if goal.step.unit.isDual { stepUnitsTotal += stepUnitsDual/goal.step.unit.dualRatio }
         
+        print(stepUnitsDual)
+        print(stepUnitsTotal)
         
         //2. Update Currents
         

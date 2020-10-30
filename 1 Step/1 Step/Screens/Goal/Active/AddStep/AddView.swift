@@ -23,7 +23,7 @@ struct AddView: View {
             .oneSShadow(opacity: 0.12, x: 0, y: 2, blur: 8)
         }
         .padding(.horizontal, Layout.firstLayerPadding)
-        .offset(x: viewModel.dragState == .show ? 0 : goalModel.selectedGoal.step.addArrayDual.isEmpty || goalModel.selectedGoal.step.addArray.isEmpty ? 220 : 280)
+        .offset(x: viewModel.dragState == .show ? 0 : goalModel.selectedGoal.step.oneAddArrayEmpty ? 220 : 280)
         .alignmentGuide(.addStepAlignment) { d in d[.top] }
         .oneSAnimation(duration: 0.3)
     }
@@ -35,24 +35,23 @@ struct AddView: View {
         @ObservedObject var viewModel: AddStepModel
         
         var step: Step { goalModel.selectedGoal.step }
-        var singlePicker: Bool { step.addArrayDual.isEmpty || step.addArray.isEmpty }
         
         
         var body: some View {
             VStack {
                 if viewModel.dragState == .show {
-                    if singlePicker {
+                    if step.oneAddArrayEmpty {
                         OneSPicker(
-                            data: viewModel.stepsAddArray.unit.isEmpty ? $viewModel.stepsAddArray.dual : $viewModel.stepsAddArray.unit,
-                            selected: $viewModel.selectedStep.unit,
-                            unit: step.unit == .custom ? goalModel.selectedGoal.step.customUnit : viewModel.stepsAddArray.unit.isEmpty ? step.unit.dualUnit!.description : step.unit.description,
+                            data: step.addArray.isEmpty ? $goalModel.selectedGoal.step.addArrayDual : $goalModel.selectedGoal.step.addArray,
+                            selected: step.addArray.isEmpty ? $viewModel.selectedStep.dual : $viewModel.selectedStep.unit,
+                            unit: step.unit == .custom ? goalModel.selectedGoal.step.customUnit : (step.addArray.isEmpty ? step.unit.dualUnit!.description : step.unit.description),
                             selectedColor: goalModel.selectedGoal.color.get()
                         )
 
                     } else {
                         OneSDualPicker(
-                            dataLeft: $viewModel.stepsAddArray.unit,
-                            dataRight: $viewModel.stepsAddArray.dual,
+                            dataLeft: $goalModel.selectedGoal.step.addArray,
+                            dataRight: $goalModel.selectedGoal.step.addArrayDual,
                             selectedLeft: $viewModel.selectedStep.unit,
                             selectedRight: $viewModel.selectedStep.dual,
                             unit: (step.unit.description, step.unit.dualUnit!.description),
@@ -61,7 +60,7 @@ struct AddView: View {
                     }
                 }
             }
-            .frame(width: singlePicker ? 180 : 240, height: 175)
+            .frame(width: step.oneAddArrayEmpty ? 180 : 240, height: 175)
             .background(goalModel.selectedGoal.color.get(.light))
         }
     }
