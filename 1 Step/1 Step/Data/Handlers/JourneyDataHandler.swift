@@ -86,15 +86,27 @@ enum JourneyDataHandler {
         }
         
         
-        //5. Add the summit milestone
+        //5. Assign images to all milestones
+        
+        let milestonesArray = Array(milestones.sorted { $0.neededStepUnits < $1.neededStepUnits })
+        
+        for i in 0..<milestonesArray.count {
+            milestonesArray[i].image = MilestoneImage(rawValue: Int16(i))!
+        }
+        
+        milestones = Set(milestonesArray)
+        
+        
+        //6. Add the summit milestone
         
         let summitMilestone = Milestone(context: PersistenceManager.defaults.context)
         
-        summitMilestone.neededStepUnits   = Double(goal.neededStepUnits)
-        summitMilestone.neededSteps       = goal.neededStepUnits * goal.step.unitRatio
-        summitMilestone.state             = .active
-        summitMilestone.endDate           = nil
-        summitMilestone.parentGoal        = goal
+        summitMilestone.neededStepUnits = Double(goal.neededStepUnits)
+        summitMilestone.neededSteps     = goal.neededStepUnits * goal.step.unitRatio
+        summitMilestone.state           = .active
+        summitMilestone.endDate         = nil
+        summitMilestone.image           = .summit
+        summitMilestone.parentGoal      = goal
         
         milestones.insert(summitMilestone)
         
@@ -104,7 +116,7 @@ enum JourneyDataHandler {
         print("Ratio: \(goal.step.unitRatio)")
         
         
-        //6. Return
+        //7. Return
         
         return milestones
     }

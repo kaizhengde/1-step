@@ -1,0 +1,68 @@
+//
+//  SummitMilestoneItem.swift
+//  1 Step
+//
+//  Created by Kai Zheng on 30.10.20.
+//
+
+import SwiftUI
+
+struct SummitMilestoneItem: View {
+    
+    @Binding var goal: Goal
+    @Binding var milestone: Milestone
+    
+    @State private var tapAnimation: Bool = false
+    
+    
+    var body: some View {
+        VStack(spacing: 10) {
+            milestone.image.get()
+                .font(.system(size: 60, weight: .ultraLight))
+                .foregroundColor(.backgroundStatic)
+                .padding(.bottom, 30)
+            
+            OneSSecondaryHeaderText(text: "Summit", color: .backgroundStatic)
+            
+            HStack {
+                Spacer()
+                Text(milestone.neededStepUnits.toUI())
+                    .font(.custom(Raleway.regular, size: 18))
+                +
+                Text(" ").font(.system(size: 5))
+                +
+                Text(goal.step.unit == .custom ? goal.step.customUnit : goal.step.unit.description)
+                    .font(.custom(Raleway.regular, size: 14))
+                Spacer()
+            }
+            .foregroundColor(.backgroundStatic)
+        }
+        .padding(8)
+        .frame(width: 170, height: 280)
+        .background(goal.color.get(milestone.state == .active ? .dark : .light))
+        .cornerRadius(8)
+        .contentShape(Rectangle())
+        .oneSShadow(opacity: 0.15, y: 3, blur: 10)
+        .overlay(
+            Group {
+                if milestone.state == .done {
+                    VStack {
+                        HStack {
+                            Spacer()
+                            SFSymbol.checkmark
+                                .font(.system(size: 24, weight: .semibold))
+                                .foregroundColor(goal.color.get(.dark))
+                                .padding(20)
+                        }
+                        Spacer()
+                    }
+                }
+            }
+        )
+        .scaleEffect(tapAnimation ? 1.05 : 1.0)
+        .onTapGesture {
+            tapAnimation = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { tapAnimation = false }
+        }
+    }
+}

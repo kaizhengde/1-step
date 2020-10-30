@@ -29,8 +29,10 @@ struct GoalView: View {
                             goalModel.backgroundColor.offset(y: Layout.screenHeight + 20)
                             VStack {
                                 GoalSummaryView()
-                                GoalJourneyView()
+                                JourneyView()
                                     .opacity(goalModel.journeyViewDragOpacity)
+                                    .opacity(goalModel.showJourneyView ? 1.0 : 0.0)
+                                    .offset(y: -200)
                             }
                         }
                         .offset(x: goalModel.goalContentDragOffset)

@@ -10,36 +10,36 @@ import SwiftUI
 @objc
 enum MilestoneImage: Int16 {
     
-    case one    = 1
-    case two    = 2
-    case three  = 3
-    case four   = 4
-    case five   = 5
-    case six    = 6
-    case seven  = 7
-    case eigth  = 8
-    case nine   = 9
-    case ten    = 10
-    case eleven = 11
-    case twelve = 12
-    case summit = 13
+    case one    = 0
+    case two    = 1
+    case three  = 2
+    case four   = 3
+    case five   = 4
+    case six    = 5
+    case seven  = 6
+    case eigth  = 7
+    case nine   = 8
+    case ten    = 9
+    case eleven = 10
+    case twelve = 11
+    case summit = 12
     
     
-    var image: Image {
+    func get() -> Image {
         switch self {
-        case .one:      return SFSymbol.rosette
-        case .two:      return SFSymbol.rosette
-        case .three:    return SFSymbol.rosette
-        case .four:     return SFSymbol.rosette
-        case .five:     return SFSymbol.rosette
-        case .six:      return SFSymbol.rosette
-        case .seven:    return SFSymbol.rosette
-        case .eigth:    return SFSymbol.rosette
-        case .nine:     return SFSymbol.rosette
-        case .ten:      return SFSymbol.rosette
-        case .eleven:   return SFSymbol.rosette
-        case .twelve:   return SFSymbol.rosette
-        case .summit:   return SFSymbol.rosette
+        case .one:      return Image(systemName: "house")
+        case .two:      return Image(systemName: "house")
+        case .three:    return Image(systemName: "cloud")
+        case .four:     return Image(systemName: "cloud")
+        case .five:     return Image(systemName: "cloud.fog")
+        case .six:      return Image(systemName: "cloud.fog")
+        case .seven:    return Image(systemName: "cloud.snow")
+        case .eigth:    return Image(systemName: "cloud.snow")
+        case .nine:     return Image(systemName: "wind")
+        case .ten:      return Image(systemName: "wind")
+        case .eleven:   return Image(systemName: "snow")
+        case .twelve:   return Image(systemName: "snow")
+        case .summit:   return Image(systemName: "flag")
         }
     }
 }

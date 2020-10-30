@@ -22,7 +22,7 @@ struct HiddenView: View {
             .overlay(
                 Group {
                     if goalModel.noDrag {
-                        Color.hidden.frame(width: 150, height: 300)
+                        Color.hidden.frame(width: 100, height: 300)
                     }
                 }
             )

@@ -53,6 +53,7 @@
 		3D5156B82531FB3F00A44450 /* ViewOverlayManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5156B72531FB3F00A44450 /* ViewOverlayManagerProtocol.swift */; };
 		3D5156BC2531FB7E00A44450 /* MiniSheetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5156BB2531FB7E00A44450 /* MiniSheetManager.swift */; };
 		3D6D6454254C0F2400FAA37F /* JourneyErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6D6453254C0F2400FAA37F /* JourneyErrorHandler.swift */; };
+		3D6D6458254C4D2400FAA37F /* JourneyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6D6457254C4D2400FAA37F /* JourneyModel.swift */; };
 		3D6F4399253AE19C00785586 /* GoalHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6F4398253AE19C00785586 /* GoalHeaderView.swift */; };
 		3D6F439D253AE20500785586 /* GoalSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6F439C253AE20500785586 /* GoalSummaryView.swift */; };
 		3D6F43A2253B266F00785586 /* GoalMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6F43A1253B266F00785586 /* GoalMenuView.swift */; };
@@ -75,7 +76,7 @@
 		3DC6172C2544882B00A1F204 /* MilestoneStages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC6172B2544882B00A1F204 /* MilestoneStages.swift */; };
 		3DCA909A254546690030FE61 /* AddStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA9099254546690030FE61 /* AddStepView.swift */; };
 		3DCA909D25454A080030FE61 /* AddStepModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA909C25454A080030FE61 /* AddStepModel.swift */; };
-		3DCDDD94253C1E3100873D26 /* GoalJourneyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCDDD93253C1E3100873D26 /* GoalJourneyView.swift */; };
+		3DCDDD94253C1E3100873D26 /* JourneyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCDDD93253C1E3100873D26 /* JourneyView.swift */; };
 		3DCFE29625459E390012C536 /* OneSPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCFE29525459E390012C536 /* OneSPicker.swift */; };
 		3DCFE29F2545A2B30012C536 /* OneSDualPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCFE29E2545A2B30012C536 /* OneSDualPicker.swift */; };
 		3DCFE2C025469DFB0012C536 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCFE2BF25469DFB0012C536 /* AddView.swift */; };
@@ -108,6 +109,8 @@
 		3DE9C51D252CB28D0023C212 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE9C51C252CB28D0023C212 /* MainModel.swift */; };
 		3DE9C522252CB5820023C212 /* GoalCreateScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE9C521252CB5820023C212 /* GoalCreateScreen.swift */; };
 		3DE9C527252CB6FF0023C212 /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE9C526252CB6FF0023C212 /* ProfileScreen.swift */; };
+		3DF1BFD4254C557E004E1AB6 /* MilestoneItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF1BFD3254C557E004E1AB6 /* MilestoneItem.swift */; };
+		3DF1BFD7254C67D2004E1AB6 /* SummitMilestoneItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF1BFD6254C67D2004E1AB6 /* SummitMilestoneItem.swift */; };
 		3DF1E2722547F04A00D65244 /* HiddenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF1E2712547F04A00D65244 /* HiddenView.swift */; };
 		3DF1E276254819FF00D65244 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF1E275254819FF00D65244 /* Double.swift */; };
 		3DF7916D25307EBF00F00174 /* ChildSizeReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF7916C25307EBF00F00174 /* ChildSizeReader.swift */; };
@@ -163,6 +166,7 @@
 		3D5156B72531FB3F00A44450 /* ViewOverlayManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewOverlayManagerProtocol.swift; sourceTree = "<group>"; };
 		3D5156BB2531FB7E00A44450 /* MiniSheetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniSheetManager.swift; sourceTree = "<group>"; };
 		3D6D6453254C0F2400FAA37F /* JourneyErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyErrorHandler.swift; sourceTree = "<group>"; };
+		3D6D6457254C4D2400FAA37F /* JourneyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyModel.swift; sourceTree = "<group>"; };
 		3D6F4398253AE19C00785586 /* GoalHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalHeaderView.swift; sourceTree = "<group>"; };
 		3D6F439C253AE20500785586 /* GoalSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSummaryView.swift; sourceTree = "<group>"; };
 		3D6F43A1253B266F00785586 /* GoalMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalMenuView.swift; sourceTree = "<group>"; };
@@ -184,7 +188,7 @@
 		3DC6172B2544882B00A1F204 /* MilestoneStages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneStages.swift; sourceTree = "<group>"; };
 		3DCA9099254546690030FE61 /* AddStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStepView.swift; sourceTree = "<group>"; };
 		3DCA909C25454A080030FE61 /* AddStepModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStepModel.swift; sourceTree = "<group>"; };
-		3DCDDD93253C1E3100873D26 /* GoalJourneyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalJourneyView.swift; sourceTree = "<group>"; };
+		3DCDDD93253C1E3100873D26 /* JourneyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyView.swift; sourceTree = "<group>"; };
 		3DCFE29525459E390012C536 /* OneSPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSPicker.swift; sourceTree = "<group>"; };
 		3DCFE29E2545A2B30012C536 /* OneSDualPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSDualPicker.swift; sourceTree = "<group>"; };
 		3DCFE2BF25469DFB0012C536 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
@@ -219,6 +223,8 @@
 		3DE9C51C252CB28D0023C212 /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 		3DE9C521252CB5820023C212 /* GoalCreateScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCreateScreen.swift; sourceTree = "<group>"; };
 		3DE9C526252CB6FF0023C212 /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
+		3DF1BFD3254C557E004E1AB6 /* MilestoneItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneItem.swift; sourceTree = "<group>"; };
+		3DF1BFD6254C67D2004E1AB6 /* SummitMilestoneItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummitMilestoneItem.swift; sourceTree = "<group>"; };
 		3DF1E2712547F04A00D65244 /* HiddenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiddenView.swift; sourceTree = "<group>"; };
 		3DF1E275254819FF00D65244 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		3DF7916C25307EBF00F00174 /* ChildSizeReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildSizeReader.swift; sourceTree = "<group>"; };
@@ -503,10 +509,21 @@
 			path = Floaters;
 			sourceTree = "<group>";
 		};
+		3D6D6460254C4E1000FAA37F /* Milestone */ = {
+			isa = PBXGroup;
+			children = (
+				3DF1BFD6254C67D2004E1AB6 /* SummitMilestoneItem.swift */,
+				3DF1BFD3254C557E004E1AB6 /* MilestoneItem.swift */,
+			);
+			path = Milestone;
+			sourceTree = "<group>";
+		};
 		3D6F439F253AE21600785586 /* Journey */ = {
 			isa = PBXGroup;
 			children = (
-				3DCDDD93253C1E3100873D26 /* GoalJourneyView.swift */,
+				3D6D6457254C4D2400FAA37F /* JourneyModel.swift */,
+				3DCDDD93253C1E3100873D26 /* JourneyView.swift */,
+				3D6D6460254C4E1000FAA37F /* Milestone */,
 			);
 			path = Journey;
 			sourceTree = "<group>";
@@ -815,6 +832,7 @@
 				3DE11C3E252C681600F13719 /* PersistenceManger.swift in Sources */,
 				3D4B78D8252CD4F000A45755 /* GoalCreateModel.swift in Sources */,
 				3D996778253F57F7000CE151 /* JourneyDataHandler.swift in Sources */,
+				3D6D6458254C4D2400FAA37F /* JourneyModel.swift in Sources */,
 				3DC6172C2544882B00A1F204 /* MilestoneStages.swift in Sources */,
 				3DE9C519252CB0520023C212 /* GoalCreateItem.swift in Sources */,
 				3DDF702C2531A5D800FD3011 /* MountainImage.swift in Sources */,
@@ -844,6 +862,7 @@
 				3D72B8C3252DB5B8006E660D /* Animations.swift in Sources */,
 				3DCFE2C025469DFB0012C536 /* AddView.swift in Sources */,
 				3DDF70452531BC1200FD3011 /* MilestoneImage.swift in Sources */,
+				3DF1BFD7254C67D2004E1AB6 /* SummitMilestoneItem.swift in Sources */,
 				3D5156B32531F83700A44450 /* OneSMiniSheet.swift in Sources */,
 				3D2E7928252F6C2C00788AA2 /* GoalEnterInputModel.swift in Sources */,
 				3DC617262544145C00A1F204 /* InfiniteAnimationManager.swift in Sources */,
@@ -897,8 +916,9 @@
 				3D4B78E5252CDE9E00A45755 /* GoalSelectMountainModel.swift in Sources */,
 				3D4CC511252F558C00133CD6 /* OneSBorderButton.swift in Sources */,
 				3D7396C7253373F500BD4169 /* GoalsActiveModel.swift in Sources */,
-				3DCDDD94253C1E3100873D26 /* GoalJourneyView.swift in Sources */,
+				3DCDDD94253C1E3100873D26 /* JourneyView.swift in Sources */,
 				3DE9C527252CB6FF0023C212 /* ProfileScreen.swift in Sources */,
+				3DF1BFD4254C557E004E1AB6 /* MilestoneItem.swift in Sources */,
 				3DD5C9D42539D27100861784 /* GoalTransitionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
