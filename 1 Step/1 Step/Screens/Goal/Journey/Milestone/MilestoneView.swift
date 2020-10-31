@@ -13,9 +13,6 @@ struct MilestoneView: View {
     var milestone: Milestone
     
     var steps: [Int: Double] {
-        print(goal.name)
-        print(milestone.parentGoal.name)
-        
         var dictionary: [Int: Double] = [:]
         
         let prevNeededSteps = Int(milestone.neededSteps-milestone.stepsFromPrev)

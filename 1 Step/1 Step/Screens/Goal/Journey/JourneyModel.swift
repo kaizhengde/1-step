@@ -9,49 +9,11 @@ import SwiftUI
 
 class JourneyModel: ObservableObject {
     
-    @Published var rects: [CGRect] = []
+    @Published var milestonePositions: [CGFloat] = []
     
     init(milestonesAmount: Int) {
-        rects = Array<CGRect>(repeating: .zero, count: milestonesAmount)
+        milestonePositions = Array<CGFloat>(repeating: .zero, count: milestonesAmount)
     }
-    
-    
-    func updatePreferences(_ preferences: MilestonePK.Value) {
-        for p in preferences {
-            rects[Int(p.milestoneID)] = p.rect
-        }
-    }
-
-
-    struct MilestoneVS: View {
-        let mountainID: MountainImage.RawValue
-        
-        var body: some View {
-            GeometryReader { geometry in
-                Rectangle()
-                    .fill(Color.clear)
-                    .preference(key: MilestonePK.self, value: [MilestonePD(milestoneID: self.mountainID, rect: geometry.frame(in: .selectMountain))])
-            }
-        }
-    }
-
-
-    struct MilestonePK: PreferenceKey {
-        typealias Value = [MilestonePD]
-        
-        static var defaultValue: [MilestonePD] = []
-        
-        static func reduce(value: inout [MilestonePD], nextValue: () -> [MilestonePD]) {
-            value.append(contentsOf: nextValue())
-        }
-    }
-
-
-    struct MilestonePD: Equatable {
-        var milestoneID: MountainImage.RawValue
-        var rect: CGRect
-    }
-
 }
 
 

@@ -28,6 +28,7 @@ final class GoalModel: TransitionObservableObject {
     @Published var dragState: DragState = .none
     @Published var dragOffset: CGFloat = .zero
     
+    @Published var scrollOffset: CGFloat = .zero
     let didSetScrollPosition = PassthroughSubject<ScrollPosition, Never>()
     
     @Published var showJourneyView: Bool = false
@@ -259,15 +260,25 @@ final class GoalModel: TransitionObservableObject {
     //Scroll Proxy
     
     func downArrowTapped() {
-        didSetScrollPosition.send(showJourneyView ? .top : .current)
-        showJourneyView.toggle()
+        if showJourneyView {
+            didSetScrollPosition.send(.top)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { self.showJourneyView = false }
+        } else {
+            showJourneyView = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) { self.didSetScrollPosition.send(.current) }
+        }
     }
     
     
     //Preference
     
     func updatePreferences(_ value: ScrollPK.Value) {
-        showJourneyView = value >= 30 ? true : false
+        scrollOffset = value
+        if value >= 30 {
+            showJourneyView = true
+        } else if value <= -27 {
+            showJourneyView = false
+        }
     }
     
     
