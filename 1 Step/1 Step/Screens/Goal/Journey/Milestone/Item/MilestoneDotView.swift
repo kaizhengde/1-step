@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MilestoneDotView: View {
     
-    @Binding var goal: Goal
+    var goal: Goal
     
     
     var body: some View {

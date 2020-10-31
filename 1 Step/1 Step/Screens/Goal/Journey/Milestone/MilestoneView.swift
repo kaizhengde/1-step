@@ -9,10 +9,13 @@ import SwiftUI
 
 struct MilestoneView: View {
     
-    @Binding var goal: Goal
+    var goal: Goal
     var milestone: Milestone
     
     var steps: [Int: Double] {
+        print(goal.name)
+        print(milestone.parentGoal.name)
+        
         var dictionary: [Int: Double] = [:]
         
         let prevNeededSteps = Int(milestone.neededSteps-milestone.stepsFromPrev)
@@ -41,19 +44,19 @@ struct MilestoneView: View {
         ZStack(alignment: .init(horizontal: .center, vertical: .progressStartAlignment)) {
             VStack(spacing: 40) {
                 if showLongMark {
-                    StepLongMarkView(goal: $goal)
+                    StepLongMarkView(goal: goal)
                         .padding(.bottom, 30)
                 }
                 
                 ForEach(steps.sorted(by: >), id: \.key) { steps, stepUnits in
                     if steps > goal.currentSteps && steps%(goal.step.unit == .hours ? 6 : 5) == 0 {
-                        StepTextMarkView(goal: $goal, stepUnitsNeeded: stepUnits.toUI())
+                        StepTextMarkView(goal: goal, stepUnitsNeeded: stepUnits.toUI())
                     } else {
                         if steps == goal.currentSteps {
-                            StepMarkView(goal: $goal)
+                            StepMarkView(goal: goal)
                                 .alignmentGuide(.progressStartAlignment) { $0[.center] }
                         } else {
-                            StepMarkView(goal: $goal)
+                            StepMarkView(goal: goal)
                         }
                     }
                 }
@@ -77,7 +80,7 @@ struct MilestoneView: View {
     
     private struct StepTextMarkView: View {
         
-        @Binding var goal: Goal
+        var goal: Goal
         let stepUnitsNeeded: String
         
         
@@ -89,7 +92,7 @@ struct MilestoneView: View {
     
     private struct StepLongMarkView: View {
         
-        @Binding var goal: Goal
+        var goal: Goal
         
         
         var body: some View {
@@ -102,7 +105,7 @@ struct MilestoneView: View {
     
     private struct StepMarkView: View {
         
-        @Binding var goal: Goal
+        var goal: Goal
         
         
         var body: some View {

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MilestoneItem: View {
     
-    @Binding var goal: Goal
+    var goal: Goal
     var milestone: Milestone
     
     @State private var appearDot: Bool = false
@@ -18,7 +18,7 @@ struct MilestoneItem: View {
     
     var body: some View {
         VStack(spacing: 40) {
-            ItemView(goal: $goal, milestone: milestone)
+            ItemView(goal: goal, milestone: milestone)
                 .scaleEffect(tapAnimation ? 1.05 : 1.0)
                 .onTapGesture {
                     tapAnimation = true
@@ -26,7 +26,7 @@ struct MilestoneItem: View {
                 }
             
             if milestone.state == .active {
-                MilestoneDotView(goal: $goal)
+                MilestoneDotView(goal: goal)
                     .opacity(appearDot ? 1.0 : 0.0)
             } else {
                 Color.clear.frame(height: 15)
@@ -38,7 +38,7 @@ struct MilestoneItem: View {
     
     private struct ItemView: View {
         
-        @Binding var goal: Goal
+        var goal: Goal
         var milestone: Milestone
         
         
