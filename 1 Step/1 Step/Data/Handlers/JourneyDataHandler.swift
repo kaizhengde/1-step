@@ -86,29 +86,7 @@ enum JourneyDataHandler {
         }
         
         
-        //5. Assign images and stepsFromPrev to all milestones
-        
-        let milestonesArray = Array(milestones.sorted { $0.neededStepUnits < $1.neededStepUnits })
-        
-        for i in 0..<milestonesArray.count {
-            let prevMilestone: Milestone? = i == 0 ? nil : milestonesArray[i-1]
-            let milestone = milestonesArray[i]
-                        
-            milestonesArray[i].stepUnitsFromPrev = milestone.neededStepUnits - (prevMilestone?.neededStepUnits ?? 0)
-            milestonesArray[i].stepsFromPrev = milestone.neededSteps - (prevMilestone?.neededSteps ?? 0)
-            
-            milestonesArray[i].image = MilestoneImage(rawValue: Int16(i))!
-        }
-        
-        
-        //5.1 Init starting milestone to current
-        
-        milestonesArray[0].state = .current
-        
-        milestones = Set(milestonesArray)
-        
-        
-        //6. Add the summit milestone
+        //5. Add the summit milestone
         
         let summitMilestone = Milestone(context: PersistenceManager.defaults.context)
         
@@ -125,6 +103,29 @@ enum JourneyDataHandler {
         print("Title: \(summitMilestone.neededStepUnits) \(goal.step.unit)")
         print("Steps: \(summitMilestone.neededSteps)")
         print("Ratio: \(goal.step.unitRatio)")
+        
+        
+        //6. Assign images and stepsFromPrev to all milestones
+        
+        let milestonesArray = Array(milestones.sorted { $0.neededStepUnits < $1.neededStepUnits })
+        
+        for i in 0..<milestonesArray.count {
+            let prevMilestone: Milestone? = i == 0 ? nil : milestonesArray[i-1]
+            let milestone = milestonesArray[i]
+                        
+            milestonesArray[i].stepUnitsFromPrev = milestone.neededStepUnits - (prevMilestone?.neededStepUnits ?? 0)
+            milestonesArray[i].stepsFromPrev = milestone.neededSteps - (prevMilestone?.neededSteps ?? 0)
+            
+            milestonesArray[i].image = MilestoneImage(rawValue: Int16(i))!
+        }
+        
+        
+        //6.1 Correct starting milestone and summit milestone
+        
+        milestonesArray[0].state = .current
+        milestonesArray[milestonesArray.count-1].image = .summit
+        
+        milestones = Set(milestonesArray)
         
         
         //7. Return

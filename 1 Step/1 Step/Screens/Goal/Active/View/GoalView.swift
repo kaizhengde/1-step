@@ -30,10 +30,11 @@ struct GoalView: View {
                             VStack {
                                 GoalSummaryView()
                                 
-                                JourneyView()
-                                    .opacity(goalModel.journeyViewDragOpacity)
-                                    .opacity(goalModel.showJourneyView ? 1.0 : 0.0)
-                                    .offset(y: -250)
+                                if goalModel.showJourneyView {
+                                    JourneyView()
+                                        .opacity(goalModel.journeyViewDragOpacity)
+                                        .offset(y: -250)
+                                }
                             }
                         }
                         .offset(x: goalModel.goalContentDragOffset)

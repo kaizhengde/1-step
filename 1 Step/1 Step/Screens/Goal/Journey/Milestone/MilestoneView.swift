@@ -12,12 +12,23 @@ struct MilestoneView: View {
     @Binding var goal: Goal
     @Binding var milestone: Milestone
     
+    var steps: [Int: Double] {
+        var dictionary: [Int: Double] = [:]
+        
+        let prevNeededSteps = Int(milestone.neededSteps-milestone.stepsFromPrev)
+        
+        for i in prevNeededSteps+1..<Int(milestone.neededSteps) {
+            dictionary[i] = Double(i)/Double(goal.step.unitRatio)
+        }
+        return dictionary
+    }
+    
     
     var body: some View {
         VStack(spacing: 40) {
-            ForEach(Int(milestone.stepsFromPrev)..<Int(milestone.neededSteps)) {
-                if $0%5 == 0 {
-                    StepTextMarkView(goal: $goal, stepUnitsNeeded: "\($0)")
+            ForEach(steps.sorted(by: >), id: \.key) { steps, stepUnits in
+                if steps%5 == 0 {
+                    StepTextMarkView(goal: $goal, stepUnitsNeeded: stepUnits.toUI())
                 } else {
                     StepMarkView(goal: $goal)
                 }
@@ -40,7 +51,7 @@ struct MilestoneView: View {
         
         
         var body: some View {
-            OneSText(text: stepUnitsNeeded, font: .custom(weight: Raleway.extraBold, size: 50), color: goal.color.get(.light))
+            OneSText(text: stepUnitsNeeded, font: .custom(weight: Raleway.extraBold, size: 45), color: goal.color.get(.light))
         }
     }
     
