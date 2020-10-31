@@ -10,14 +10,15 @@ import SwiftUI
 struct MilestoneItem: View {
     
     @Binding var goal: Goal
-    @Binding var milestone: Milestone
+    var milestone: Milestone
     
+    @State private var appearDot: Bool = false
     @State private var tapAnimation: Bool = false
 
     
     var body: some View {
         VStack(spacing: 40) {
-            ItemView(goal: $goal, milestone: $milestone)
+            ItemView(goal: $goal, milestone: milestone)
                 .scaleEffect(tapAnimation ? 1.05 : 1.0)
                 .onTapGesture {
                     tapAnimation = true
@@ -26,17 +27,19 @@ struct MilestoneItem: View {
             
             if milestone.state == .active {
                 MilestoneDotView(goal: $goal)
+                    .opacity(appearDot ? 1.0 : 0.0)
             } else {
                 Color.clear.frame(height: 15)
             }
         }
+        .onAppear { DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) { self.appearDot = true } }
     }
     
     
     private struct ItemView: View {
         
         @Binding var goal: Goal
-        @Binding var milestone: Milestone
+        var milestone: Milestone
         
         
         var body: some View {

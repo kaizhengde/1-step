@@ -10,14 +10,14 @@ import SwiftUI
 struct MilestoneView: View {
     
     @Binding var goal: Goal
-    @Binding var milestone: Milestone
+    var milestone: Milestone
     
     var steps: [Int: Double] {
         var dictionary: [Int: Double] = [:]
         
         let prevNeededSteps = Int(milestone.neededSteps-milestone.stepsFromPrev)
         
-        var lowerBound = prevNeededSteps+1
+        var lowerBound = prevNeededSteps
         var upperBound = Int(milestone.neededSteps)
         
         if Int(goal.currentSteps) - prevNeededSteps > 3 {
@@ -38,27 +38,40 @@ struct MilestoneView: View {
     
     
     var body: some View {
-        VStack(spacing: 40) {
-            if showLongMark {
-                StepLongMarkView(goal: $goal)
-                    .padding(.bottom, 30)
-            }
-            
-            ForEach(steps.sorted(by: >), id: \.key) { steps, stepUnits in
-                if steps%(goal.step.unit == .hours ? 6 : 5) == 0 {
-                    StepTextMarkView(goal: $goal, stepUnitsNeeded: stepUnits.toUI())
-                } else {
-                    StepMarkView(goal: $goal)
+        ZStack(alignment: .init(horizontal: .center, vertical: .progressStartAlignment)) {
+            VStack(spacing: 40) {
+                if showLongMark {
+                    StepLongMarkView(goal: $goal)
+                        .padding(.bottom, 30)
+                }
+                
+                ForEach(steps.sorted(by: >), id: \.key) { steps, stepUnits in
+                    if steps > goal.currentSteps && steps%(goal.step.unit == .hours ? 6 : 5) == 0 {
+                        StepTextMarkView(goal: $goal, stepUnitsNeeded: stepUnits.toUI())
+                    } else {
+                        if steps == goal.currentSteps {
+                            StepMarkView(goal: $goal)
+                                .alignmentGuide(.progressStartAlignment) { $0[.center] }
+                        } else {
+                            StepMarkView(goal: $goal)
+                        }
+                    }
                 }
             }
+            .padding(.top, milestone.image == .summit ? 150 : 100)
+            .padding(.bottom, 80)
+            .frame(maxWidth: .infinity)
+            .background(goal.color.get(.dark))
+            .cornerRadius(20)
+            .padding(.horizontal, Layout.firstLayerPadding)
+            .padding(.bottom, 20)
+            
+            Circle()
+                .frame(width: 50, height: 50)
+                .foregroundColor(.whiteToDarkGray)
+                .alignmentGuide(.progressStartAlignment) { $0[VerticalAlignment.center] - 10 }
+                .id(GoalModel.ScrollPosition.current)
         }
-        .padding(.top, milestone.image == .summit ? 150 : 100)
-        .padding(.bottom, 80)
-        .frame(maxWidth: .infinity)
-        .background(goal.color.get(.dark))
-        .cornerRadius(20)
-        .padding(.horizontal, Layout.firstLayerPadding)
-        .padding(.bottom, 20)
     }
     
     

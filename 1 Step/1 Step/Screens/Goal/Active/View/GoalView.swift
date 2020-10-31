@@ -30,17 +30,16 @@ struct GoalView: View {
                             VStack {
                                 GoalSummaryView()
                                 
-                                if goalModel.showJourneyView {
-                                    JourneyView()
-                                        .opacity(goalModel.journeyViewDragOpacity)
-                                        .offset(y: -250)
-                                }
+                                JourneyView()
+                                    .opacity(goalModel.journeyViewDragOpacity)
+                                    .opacity(goalModel.showJourneyView ? 1.0 : 0.0)
+                                    .offset(y: -250)
                             }
                         }
                         .offset(x: goalModel.goalContentDragOffset)
                     }
                     .onReceive(goalModel.didSetScrollPosition) { position in
-                        withAnimation { scrollProxy.scrollTo(position) }
+                        withAnimation { scrollProxy.scrollTo(position, anchor: .center) }
                     }
                 }
                 .background(GoalModel.ScrollVS())

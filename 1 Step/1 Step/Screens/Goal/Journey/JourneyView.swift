@@ -25,38 +25,27 @@ struct JourneyView: View {
     var body: some View {
         ZStack(alignment: .init(horizontal: .center, vertical: .progressStartAlignment)) {
             LazyVStack(spacing: 60) {
-                MilestoneViewGroup(milestone: .constant(summitMilestone)) {
-                    SummitMilestoneItem(goal: $goalModel.selectedGoal, milestone: .constant(summitMilestone))
+                MilestoneViewGroup(milestone: summitMilestone) {
+                    SummitMilestoneItem(goal: $goalModel.selectedGoal, milestone: summitMilestone)
                 }
                 .padding(.bottom, 20)
                 
                 ForEach(milestonesUI, id: \.self) { milestone in
-                    if milestone == milestonesUI.last! {
-                        MilestoneViewGroup(milestone: .constant(milestone)) {
-                            MilestoneItem(goal: $goalModel.selectedGoal, milestone: .constant(milestone))
-                        }
-                        .alignmentGuide(.progressStartAlignment) { $0[.bottom] }
-                    } else {
-                        MilestoneViewGroup(milestone: .constant(milestone)) {
-                            MilestoneItem(goal: $goalModel.selectedGoal, milestone: .constant(milestone))
-                        }
+                    MilestoneViewGroup(milestone: milestone) {
+                        MilestoneItem(goal: $goalModel.selectedGoal, milestone: milestone)
                     }
                 }
             }
-            
-            JourneyProgressView(goal: $goalModel.selectedGoal)
-                .zIndex(1)
-                .alignmentGuide(.progressStartAlignment) { $0[.bottom] }
         }
-        .onAppear { print("app")}
-        .onDisappear { print("dis")}
     }
     
     
     private struct MilestoneViewGroup<Content: View>: View {
         
         @EnvironmentObject var goalModel: GoalModel
-        @Binding var milestone: Milestone
+        var milestone: Milestone
+        
+        @State private var appear = false 
         
         let itemView: () -> Content
         
@@ -64,14 +53,15 @@ struct JourneyView: View {
         var body: some View {
             ZStack(alignment: .init(horizontal: .center, vertical: .milestoneAlignment)) {
                 if milestone.state == .current {
-                    MilestoneView(goal: $goalModel.selectedGoal, milestone: $milestone)
+                    MilestoneView(goal: $goalModel.selectedGoal, milestone: milestone)
                         .alignmentGuide(.milestoneAlignment) { $0[.top] }
-                        .zIndex(0)
                 }
                 itemView()
                     .alignmentGuide(.milestoneAlignment) { $0[VerticalAlignment.center] }
-                    .zIndex(2)
             }
+            .scaleEffect(appear ? 1.0 : 0.9)
+            .opacity(appear ? 1.0 : 0.0)
+            .onAppear { DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { self.appear = true } }
         }
     }
 }

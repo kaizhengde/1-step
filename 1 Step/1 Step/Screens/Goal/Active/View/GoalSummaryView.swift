@@ -70,6 +70,8 @@ struct GoalSummaryView: View {
                 .frame(height: 120)
                 .padding(.horizontal, Layout.secondLayerPadding)
                 .padding(.top, Layout.screenHeight - 200 - SafeAreaSize.bottom)
+                .contentShape(Rectangle())
+                .onTapGesture { goalModel.downArrowTapped() }
             }
             
             
@@ -91,7 +93,6 @@ struct GoalSummaryView: View {
                         .scaleEffect(x: animationOnForwardActive ? 1.0 : 0.6, y: animationOnForwardActive ? 1.0 : 0.7)
                         .offset(y: animationOnForwardActive ? 0 : 24)
                         .animation(goalModel.showJourneyView ? .oneSAnimation() : InfiniteAnimationManager.slowAnimation)
-                        .onTapGesture { goalModel.downArrowTapped() }
                 }
                 
                 
