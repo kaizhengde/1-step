@@ -17,10 +17,10 @@ struct MilestoneView: View {
             Color.clear
         }
         .frame(maxWidth: .infinity)
-        .frame(height: 10000)
+        .frame(height: 1000)
         .background(goal.color.get(.dark))
         .cornerRadius(20)
         .padding(.horizontal, Layout.firstLayerPadding)
-        .padding(.vertical, 120)
+        .padding(.bottom, 20)
     }
 }

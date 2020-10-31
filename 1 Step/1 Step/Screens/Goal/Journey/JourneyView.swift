@@ -24,26 +24,41 @@ struct JourneyView: View {
     
     var body: some View {
         ZStack {
-            VStack(spacing: 60) {
-                ZStack(alignment: .top) {
-                    if summitMilestone.state == .current {
-                        MilestoneView(goal: $goalModel.selectedGoal)
-                    }
+            LazyVStack(spacing: 60) {
+                MilestoneViewGroup(milestone: .constant(summitMilestone)) {
                     SummitMilestoneItem(goal: $goalModel.selectedGoal, milestone: .constant(summitMilestone))
                 }
                 .padding(.bottom, 20)
                 
                 ForEach(milestonesUI, id: \.self) { milestone in
-                    ZStack(alignment: .top) {
-                        if milestone.state == .current {
-                            MilestoneView(goal: $goalModel.selectedGoal)
-                        }
+                    MilestoneViewGroup(milestone: .constant(milestone)) {
                         MilestoneItem(goal: $goalModel.selectedGoal, milestone: .constant(milestone))
                     }
                 }
             }
             
             #warning("ProgressView")
+        }
+    }
+    
+    
+    private struct MilestoneViewGroup<Content: View>: View {
+        
+        @EnvironmentObject var goalModel: GoalModel
+        @Binding var milestone: Milestone
+        
+        let itemView: () -> Content
+        
+        
+        var body: some View {
+            ZStack(alignment: .init(horizontal: .center, vertical: .milestoneAlignment)) {
+                if milestone.state == .current {
+                    MilestoneView(goal: $goalModel.selectedGoal)
+                        .alignmentGuide(.milestoneAlignment) { $0[.top] }
+                }
+                itemView()
+                    .alignmentGuide(.milestoneAlignment) { $0[VerticalAlignment.center] }
+            }
         }
     }
 }
