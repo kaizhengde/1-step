@@ -23,14 +23,27 @@ struct JourneyView: View {
     
     
     var body: some View {
-        VStack(spacing: 80) {
-            SummitMilestoneItem(goal: $goalModel.selectedGoal, milestone: .constant(summitMilestone))
-                .padding(.bottom, 50)
-            
-            ForEach(milestonesUI, id: \.self) { milestone in
-                MilestoneItem(goal: $goalModel.selectedGoal, milestone: .constant(milestone))
+        ZStack {
+            VStack(spacing: 60) {
+                ZStack(alignment: .top) {
+                    if summitMilestone.state == .current {
+                        MilestoneView(goal: $goalModel.selectedGoal)
+                    }
+                    SummitMilestoneItem(goal: $goalModel.selectedGoal, milestone: .constant(summitMilestone))
+                }
+                .padding(.bottom, 20)
+                
+                ForEach(milestonesUI, id: \.self) { milestone in
+                    ZStack(alignment: .top) {
+                        if milestone.state == .current {
+                            MilestoneView(goal: $goalModel.selectedGoal)
+                        }
+                        MilestoneItem(goal: $goalModel.selectedGoal, milestone: .constant(milestone))
+                    }
+                }
             }
+            
+            #warning("ProgressView")
         }
-        .padding(.bottom, 260*Layout.multiplierHeight)
     }
 }

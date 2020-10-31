@@ -86,7 +86,7 @@ struct GoalSummaryView: View {
                         .stroke(style: StrokeStyle(lineWidth: 12, lineCap: .round))
                         .frame(width: 80)
                         .foregroundColor(.backgroundToGray)
-                        .offset(y: goalModel.showJourneyView ? -120 : 0)
+                        .offset(y: goalModel.showJourneyView ? -180 : 0)
                         .oneSAnimation()
                         .scaleEffect(x: animationOnForwardActive ? 1.0 : 0.6, y: animationOnForwardActive ? 1.0 : 0.7)
                         .offset(y: animationOnForwardActive ? 0 : 24)

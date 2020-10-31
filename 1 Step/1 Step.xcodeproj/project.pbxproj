@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		3D0B59452533123600079856 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0B59442533123600079856 /* DataModel.swift */; };
 		3D0B5948253319AC00079856 /* GoalErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0B5947253319AC00079856 /* GoalErrorHandler.swift */; };
+		3D10D1CD254D2D53002D2D3E /* MilestoneDotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D10D1CC254D2D53002D2D3E /* MilestoneDotView.swift */; };
+		3D10D1D1254D3051002D2D3E /* MilestoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D10D1D0254D3051002D2D3E /* MilestoneView.swift */; };
 		3D160D55252E2067008588D5 /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D160D54252E2067008588D5 /* TransitionManager.swift */; };
 		3D258282253C0A9300DC19E7 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D258281253C0A9300DC19E7 /* Color.swift */; };
 		3D2E7928252F6C2C00788AA2 /* GoalEnterInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2E7927252F6C2C00788AA2 /* GoalEnterInputModel.swift */; };
@@ -122,6 +124,8 @@
 /* Begin PBXFileReference section */
 		3D0B59442533123600079856 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		3D0B5947253319AC00079856 /* GoalErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalErrorHandler.swift; sourceTree = "<group>"; };
+		3D10D1CC254D2D53002D2D3E /* MilestoneDotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneDotView.swift; sourceTree = "<group>"; };
+		3D10D1D0254D3051002D2D3E /* MilestoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneView.swift; sourceTree = "<group>"; };
 		3D160D54252E2067008588D5 /* TransitionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
 		3D258281253C0A9300DC19E7 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		3D2E7927252F6C2C00788AA2 /* GoalEnterInputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEnterInputModel.swift; sourceTree = "<group>"; };
@@ -254,6 +258,16 @@
 				3D996777253F57F7000CE151 /* JourneyDataHandler.swift */,
 			);
 			path = Handlers;
+			sourceTree = "<group>";
+		};
+		3D10D1CF254D3044002D2D3E /* Item */ = {
+			isa = PBXGroup;
+			children = (
+				3DF1BFD6254C67D2004E1AB6 /* SummitMilestoneItem.swift */,
+				3DF1BFD3254C557E004E1AB6 /* MilestoneItem.swift */,
+				3D10D1CC254D2D53002D2D3E /* MilestoneDotView.swift */,
+			);
+			path = Item;
 			sourceTree = "<group>";
 		};
 		3D160D53252E2053008588D5 /* Managers */ = {
@@ -512,8 +526,8 @@
 		3D6D6460254C4E1000FAA37F /* Milestone */ = {
 			isa = PBXGroup;
 			children = (
-				3DF1BFD6254C67D2004E1AB6 /* SummitMilestoneItem.swift */,
-				3DF1BFD3254C557E004E1AB6 /* MilestoneItem.swift */,
+				3D10D1D0254D3051002D2D3E /* MilestoneView.swift */,
+				3D10D1CF254D3044002D2D3E /* Item */,
 			);
 			path = Milestone;
 			sourceTree = "<group>";
@@ -843,6 +857,7 @@
 				3DDF70312531BAA100FD3011 /* Goal.swift in Sources */,
 				3DAE7AE425309D0F00B162B1 /* FloaterManager.swift in Sources */,
 				3DD5C9D02539CF7B00861784 /* GoalModel.swift in Sources */,
+				3D10D1D1254D3051002D2D3E /* MilestoneView.swift in Sources */,
 				3D47CC7B252C6C1C00A8CA1B /* MainView.swift in Sources */,
 				3D2E794A253019A200788AA2 /* UIApplication.swift in Sources */,
 				3D258282253C0A9300DC19E7 /* Color.swift in Sources */,
@@ -875,6 +890,7 @@
 				3D5156BC2531FB7E00A44450 /* MiniSheetManager.swift in Sources */,
 				3DFDE07A253C8800006B1A7E /* SheetManager.swift in Sources */,
 				3DA7BD3A2532F6A600171360 /* DataManager.swift in Sources */,
+				3D10D1CD254D2D53002D2D3E /* MilestoneDotView.swift in Sources */,
 				3DCFE29625459E390012C536 /* OneSPicker.swift in Sources */,
 				3D6D6454254C0F2400FAA37F /* JourneyErrorHandler.swift in Sources */,
 				3D2E7941253017B600788AA2 /* OneSSmallBorderButton.swift in Sources */,
