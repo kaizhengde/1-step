@@ -86,11 +86,17 @@ enum JourneyDataHandler {
         }
         
         
-        //5. Assign images to all milestones
+        //5. Assign images and stepsFromPrev to all milestones
         
         let milestonesArray = Array(milestones.sorted { $0.neededStepUnits < $1.neededStepUnits })
         
         for i in 0..<milestonesArray.count {
+            let prevMilestone: Milestone? = i == 0 ? nil : milestonesArray[i-1]
+            let milestone = milestonesArray[i]
+                        
+            milestonesArray[i].stepUnitsFromPrev = milestone.neededStepUnits - (prevMilestone?.neededStepUnits ?? 0)
+            milestonesArray[i].stepsFromPrev = milestone.neededSteps - (prevMilestone?.neededSteps ?? 0)
+            
             milestonesArray[i].image = MilestoneImage(rawValue: Int16(i))!
         }
         
@@ -151,11 +157,11 @@ enum JourneyDataHandler {
         let milestones = Array(goal.milestones.sorted { $0.neededStepUnits < $1.neededStepUnits })
         
         for i in 0..<milestones.count {
-            
+
             let milestone = milestones[i]
             let prevMilestone: Milestone? = i == 0 ? nil : milestones[i-1]
             let currentStepUnits = journeyData.currentStepUnits
-            
+
             if currentStepUnits < prevMilestone?.neededStepUnits ?? 0 {
                 milestones[i].state = .active
             }

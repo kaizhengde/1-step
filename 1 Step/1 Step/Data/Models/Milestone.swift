@@ -13,6 +13,9 @@ final class Milestone: NSManagedObject {
     @NSManaged var neededStepUnits: Double
     @NSManaged var neededSteps: Int16
     
+    @NSManaged var stepUnitsFromPrev: Double
+    @NSManaged var stepsFromPrev: Int16
+    
     @NSManaged var image: MilestoneImage
     
     @NSManaged var state: MilestoneState

@@ -38,6 +38,7 @@ struct JourneyView: View {
             }
             
             #warning("ProgressView")
+            //.zIndex(1)
         }
     }
     
@@ -53,11 +54,13 @@ struct JourneyView: View {
         var body: some View {
             ZStack(alignment: .init(horizontal: .center, vertical: .milestoneAlignment)) {
                 if milestone.state == .current {
-                    MilestoneView(goal: $goalModel.selectedGoal)
+                    MilestoneView(goal: $goalModel.selectedGoal, milestone: $milestone)
                         .alignmentGuide(.milestoneAlignment) { $0[.top] }
+                        .zIndex(0)
                 }
                 itemView()
                     .alignmentGuide(.milestoneAlignment) { $0[VerticalAlignment.center] }
+                    .zIndex(2)
             }
         }
     }
