@@ -11,6 +11,7 @@
 		3D0B5948253319AC00079856 /* GoalErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0B5947253319AC00079856 /* GoalErrorHandler.swift */; };
 		3D10D1CD254D2D53002D2D3E /* MilestoneDotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D10D1CC254D2D53002D2D3E /* MilestoneDotView.swift */; };
 		3D10D1D1254D3051002D2D3E /* MilestoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D10D1D0254D3051002D2D3E /* MilestoneView.swift */; };
+		3D10D1F3254D642A002D2D3E /* JourneyProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D10D1F2254D642A002D2D3E /* JourneyProgressView.swift */; };
 		3D160D55252E2067008588D5 /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D160D54252E2067008588D5 /* TransitionManager.swift */; };
 		3D258282253C0A9300DC19E7 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D258281253C0A9300DC19E7 /* Color.swift */; };
 		3D2E7928252F6C2C00788AA2 /* GoalEnterInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2E7927252F6C2C00788AA2 /* GoalEnterInputModel.swift */; };
@@ -126,6 +127,7 @@
 		3D0B5947253319AC00079856 /* GoalErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalErrorHandler.swift; sourceTree = "<group>"; };
 		3D10D1CC254D2D53002D2D3E /* MilestoneDotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneDotView.swift; sourceTree = "<group>"; };
 		3D10D1D0254D3051002D2D3E /* MilestoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneView.swift; sourceTree = "<group>"; };
+		3D10D1F2254D642A002D2D3E /* JourneyProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyProgressView.swift; sourceTree = "<group>"; };
 		3D160D54252E2067008588D5 /* TransitionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
 		3D258281253C0A9300DC19E7 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		3D2E7927252F6C2C00788AA2 /* GoalEnterInputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEnterInputModel.swift; sourceTree = "<group>"; };
@@ -537,6 +539,7 @@
 			children = (
 				3D6D6457254C4D2400FAA37F /* JourneyModel.swift */,
 				3DCDDD93253C1E3100873D26 /* JourneyView.swift */,
+				3D10D1F2254D642A002D2D3E /* JourneyProgressView.swift */,
 				3D6D6460254C4E1000FAA37F /* Milestone */,
 			);
 			path = Journey;
@@ -837,6 +840,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D47CCBD252C7EF900A8CA1B /* GoalsScreen.swift in Sources */,
+				3D10D1F3254D642A002D2D3E /* JourneyProgressView.swift in Sources */,
 				3DCA909D25454A080030FE61 /* AddStepModel.swift in Sources */,
 				3DE9C522252CB5820023C212 /* GoalCreateScreen.swift in Sources */,
 				3DFDE055253C4678006B1A7E /* GoalEditModel.swift in Sources */,

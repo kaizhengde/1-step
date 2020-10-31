@@ -17,17 +17,35 @@ struct MilestoneView: View {
         
         let prevNeededSteps = Int(milestone.neededSteps-milestone.stepsFromPrev)
         
-        for i in prevNeededSteps+1..<Int(milestone.neededSteps) {
+        var lowerBound = prevNeededSteps+1
+        var upperBound = Int(milestone.neededSteps)
+        
+        if Int(goal.currentSteps) - prevNeededSteps > 3 {
+            lowerBound = Int(goal.currentSteps)-3
+        }
+        
+        if milestone.neededSteps - goal.currentSteps > 20 {
+            upperBound = Int(goal.currentSteps)+20
+        }
+        
+        for i in lowerBound..<upperBound {
             dictionary[i] = Double(i)/Double(goal.step.unitRatio)
         }
         return dictionary
     }
     
+    var showLongMark: Bool { return milestone.neededSteps - goal.currentSteps > 20 }
+    
     
     var body: some View {
         VStack(spacing: 40) {
+            if showLongMark {
+                StepLongMarkView(goal: $goal)
+                    .padding(.bottom, 30)
+            }
+            
             ForEach(steps.sorted(by: >), id: \.key) { steps, stepUnits in
-                if steps%5 == 0 {
+                if steps%(goal.step.unit == .hours ? 6 : 5) == 0 {
                     StepTextMarkView(goal: $goal, stepUnitsNeeded: stepUnits.toUI())
                 } else {
                     StepMarkView(goal: $goal)
@@ -52,6 +70,19 @@ struct MilestoneView: View {
         
         var body: some View {
             OneSText(text: stepUnitsNeeded, font: .custom(weight: Raleway.extraBold, size: 45), color: goal.color.get(.light))
+        }
+    }
+    
+    
+    private struct StepLongMarkView: View {
+        
+        @Binding var goal: Goal
+        
+        
+        var body: some View {
+            RoundedRectangle(cornerRadius: 4)
+                .frame(width: 8, height: 120)
+                .foregroundColor(goal.color.get(.light))
         }
     }
     

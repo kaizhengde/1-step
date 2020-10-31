@@ -23,7 +23,7 @@ struct JourneyView: View {
     
     
     var body: some View {
-        ZStack {
+        ZStack(alignment: .init(horizontal: .center, vertical: .progressStartAlignment)) {
             LazyVStack(spacing: 60) {
                 MilestoneViewGroup(milestone: .constant(summitMilestone)) {
                     SummitMilestoneItem(goal: $goalModel.selectedGoal, milestone: .constant(summitMilestone))
@@ -31,15 +31,25 @@ struct JourneyView: View {
                 .padding(.bottom, 20)
                 
                 ForEach(milestonesUI, id: \.self) { milestone in
-                    MilestoneViewGroup(milestone: .constant(milestone)) {
-                        MilestoneItem(goal: $goalModel.selectedGoal, milestone: .constant(milestone))
+                    if milestone == milestonesUI.last! {
+                        MilestoneViewGroup(milestone: .constant(milestone)) {
+                            MilestoneItem(goal: $goalModel.selectedGoal, milestone: .constant(milestone))
+                        }
+                        .alignmentGuide(.progressStartAlignment) { $0[.bottom] }
+                    } else {
+                        MilestoneViewGroup(milestone: .constant(milestone)) {
+                            MilestoneItem(goal: $goalModel.selectedGoal, milestone: .constant(milestone))
+                        }
                     }
                 }
             }
             
-            #warning("ProgressView")
-            //.zIndex(1)
+            JourneyProgressView(goal: $goalModel.selectedGoal)
+                .zIndex(1)
+                .alignmentGuide(.progressStartAlignment) { $0[.bottom] }
         }
+        .onAppear { print("app")}
+        .onDisappear { print("dis")}
     }
     
     

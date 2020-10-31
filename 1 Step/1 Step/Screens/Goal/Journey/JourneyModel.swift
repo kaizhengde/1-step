@@ -17,9 +17,19 @@ extension VerticalAlignment {
     
     enum MilestoneAlignment: AlignmentID {
         static func defaultValue(in d: ViewDimensions) -> CGFloat {
-            return d[VerticalAlignment.bottom]
+            return d[.bottom]
+        }
+    }
+    
+    enum ProgressStartAlignment: AlignmentID {
+        static func defaultValue(in d: ViewDimensions) -> CGFloat {
+            return d[.bottom]
         }
     }
     
     static let milestoneAlignment = Self(MilestoneAlignment.self)
+    static let progressStartAlignment = Self(ProgressStartAlignment.self)
 }
+
+
+
