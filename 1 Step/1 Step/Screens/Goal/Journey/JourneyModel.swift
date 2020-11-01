@@ -34,3 +34,13 @@ extension VerticalAlignment {
 }
 
 
+extension HorizontalAlignment {
+    
+    enum CurrentCircleTextAlignment: AlignmentID {
+        static func defaultValue(in d: ViewDimensions) -> CGFloat {
+            return d[HorizontalAlignment.center]
+        }
+    }
+    
+    static let currentCircleTextAlignment = Self(CurrentCircleTextAlignment.self)
+}

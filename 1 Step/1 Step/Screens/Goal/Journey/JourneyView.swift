@@ -39,7 +39,7 @@ struct JourneyView: View {
                     .opacity(viewModel.currentMilestoneAppear ? 1.0 : 0.0)
                 }
                 
-                JourneyProgressView()
+                JourneyProgressView(goal: goalModel.selectedGoal)
             }
             
             VStack(spacing: 60) {

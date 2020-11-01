@@ -45,7 +45,7 @@ struct GoalView: View {
                     }
                 }
                 .background(GoalModel.ScrollVS())
-                .onPreferenceChange(GoalModel.ScrollPK.self) { goalModel.updatePreferences($0) }
+                .onPreferenceChange(GoalModel.ScrollPK.self) { goalModel.updatePreferences($0) }                
             }
             .opacity(goalModel.viewDragOpacity)
             .coordinateSpace(name: CoordinateSpace.goalScroll)

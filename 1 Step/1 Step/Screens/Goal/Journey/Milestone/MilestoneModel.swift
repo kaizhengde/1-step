@@ -31,8 +31,8 @@ class MilestoneModel: ObservableObject {
             lowerBound = Int(goal.currentSteps)-3
         }
         
-        if milestone.neededSteps - goal.currentSteps > 20 {
-            upperBound = Int(goal.currentSteps)+20
+        if milestone.neededSteps - goal.currentSteps > 12 {
+            upperBound = Int(goal.currentSteps)+12
         }
         
         for i in lowerBound..<upperBound {
