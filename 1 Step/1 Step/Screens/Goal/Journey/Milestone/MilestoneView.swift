@@ -21,7 +21,6 @@ struct MilestoneView: View {
             .cornerRadius(20)
             .padding(.horizontal, Layout.firstLayerPadding)
             .padding(.bottom, 20)
-            .oneSAnimation(delay: 1.2)
     }
     
     

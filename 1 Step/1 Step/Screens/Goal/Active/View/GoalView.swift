@@ -53,3 +53,6 @@ struct GoalView: View {
         .offset(x: goalModel.goalDragOffset)
     }
 }
+
+
+
