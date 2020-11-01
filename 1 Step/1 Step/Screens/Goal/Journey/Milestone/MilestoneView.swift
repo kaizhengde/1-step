@@ -9,62 +9,19 @@ import SwiftUI
 
 struct MilestoneView: View {
     
-    var goal: Goal
-    var milestone: Milestone
-    
-    var steps: [Int: Double] {
-        var dictionary: [Int: Double] = [:]
-        
-        let prevNeededSteps = Int(milestone.neededSteps-milestone.stepsFromPrev)
-        
-        var lowerBound = prevNeededSteps
-        var upperBound = Int(milestone.neededSteps)
-        
-        if Int(goal.currentSteps) - prevNeededSteps > 3 {
-            lowerBound = Int(goal.currentSteps)-3
-        }
-        
-        if milestone.neededSteps - goal.currentSteps > 20 {
-            upperBound = Int(goal.currentSteps)+20
-        }
-        
-        for i in lowerBound..<upperBound {
-            dictionary[i] = Double(i)/Double(goal.step.unitRatio)
-        }
-        return dictionary
-    }
-    
-    var showLongMark: Bool { return milestone.neededSteps - goal.currentSteps > 20 }
+    @ObservedObject var viewModel: MilestoneModel
     
     
     var body: some View {
         ZStack(alignment: .init(horizontal: .center, vertical: .progressStartAlignment)) {
-            VStack(spacing: 40) {
-                if showLongMark {
-                    StepLongMarkView(goal: goal)
-                        .padding(.bottom, 30)
-                }
-                
-                ForEach(steps.sorted(by: >), id: \.key) { steps, stepUnits in
-                    if steps > goal.currentSteps && steps%(goal.step.unit == .hours ? 6 : 5) == 0 {
-                        StepTextMarkView(goal: goal, stepUnitsNeeded: stepUnits.toUI())
-                    } else {
-                        if steps == goal.currentSteps {
-                            StepMarkView(goal: goal)
-                                .alignmentGuide(.progressStartAlignment) { $0[.center] }
-                        } else {
-                            StepMarkView(goal: goal)
-                        }
-                    }
-                }
-            }
-            .padding(.top, milestone.image == .summit ? 150 : 100)
-            .padding(.bottom, 80)
-            .frame(maxWidth: .infinity)
-            .background(goal.color.get(.dark))
-            .cornerRadius(20)
-            .padding(.horizontal, Layout.firstLayerPadding)
-            .padding(.bottom, 20)
+            StepsMap(viewModel: viewModel)
+                .padding(.top, viewModel.milestone.image == .summit ? 150 : 100)
+                .padding(.bottom, 80)
+                .frame(maxWidth: .infinity)
+                .background(viewModel.goal.color.get(.dark))
+                .cornerRadius(20)
+                .padding(.horizontal, Layout.firstLayerPadding)
+                .padding(.bottom, 20)
             
             Circle()
                 .frame(width: 50, height: 50)
@@ -75,40 +32,69 @@ struct MilestoneView: View {
     }
     
     
-    private struct StepTextMarkView: View {
+    private struct StepsMap: View {
         
-        var goal: Goal
-        let stepUnitsNeeded: String
+        @ObservedObject var viewModel: MilestoneModel
         
         
         var body: some View {
-            OneSText(text: stepUnitsNeeded, font: .custom(weight: Raleway.extraBold, size: 45), color: goal.color.get(.light))
+            VStack(spacing: 40) {
+                if viewModel.showLongMark {
+                    StepLongMarkView(goal: viewModel.goal)
+                        .padding(.bottom, 30)
+                }
+                
+                ForEach(viewModel.stepsDic.sorted(by: >), id: \.key) { steps, stepUnits in
+                    if steps > viewModel.goal.currentSteps && steps%(viewModel.goal.step.unit == .hours ? 6 : 5) == 0 {
+                        StepTextMarkView(goal: viewModel.goal, stepUnitsNeeded: stepUnits.toUI())
+                    } else {
+                        if steps == viewModel.goal.currentSteps {
+                            StepMarkView(goal: viewModel.goal)
+                                .alignmentGuide(.progressStartAlignment) { $0[.center] }
+                        } else {
+                            StepMarkView(goal: viewModel.goal)
+                        }
+                    }
+                }
+            }
         }
-    }
-    
-    
-    private struct StepLongMarkView: View {
-        
-        var goal: Goal
         
         
-        var body: some View {
-            RoundedRectangle(cornerRadius: 4)
-                .frame(width: 8, height: 120)
-                .foregroundColor(goal.color.get(.light))
+        private struct StepTextMarkView: View {
+            
+            var goal: Goal
+            let stepUnitsNeeded: String
+            
+            
+            var body: some View {
+                OneSText(text: stepUnitsNeeded, font: .custom(weight: Raleway.extraBold, size: 45), color: goal.color.get(.light))
+            }
         }
-    }
-    
-    
-    private struct StepMarkView: View {
-        
-        var goal: Goal
         
         
-        var body: some View {
-            RoundedRectangle(cornerRadius: 4)
-                .frame(width: 8, height: 32)
-                .foregroundColor(goal.color.get(.light))
+        private struct StepLongMarkView: View {
+            
+            var goal: Goal
+            
+            
+            var body: some View {
+                RoundedRectangle(cornerRadius: 4)
+                    .frame(width: 8, height: 120)
+                    .foregroundColor(goal.color.get(.light))
+            }
+        }
+        
+        
+        private struct StepMarkView: View {
+            
+            var goal: Goal
+            
+            
+            var body: some View {
+                RoundedRectangle(cornerRadius: 4)
+                    .frame(width: 8, height: 32)
+                    .foregroundColor(goal.color.get(.light))
+            }
         }
     }
 }

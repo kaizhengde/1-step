@@ -6,14 +6,12 @@
 //
 
 import SwiftUI
+import CoreData
 
 class JourneyModel: ObservableObject {
     
-    @Published var milestonePositions: [CGFloat] = []
-    
-    init(milestonesAmount: Int) {
-        milestonePositions = Array<CGFloat>(repeating: .zero, count: milestonesAmount)
-    }
+    @Published var milestoneViewSize: CGSize = .zero
+    @Published var currentMilestoneAppear: Bool = false
 }
 
 

@@ -6,12 +6,11 @@
 //
 
 import SwiftUI
-import CoreData
 
 struct JourneyView: View {
     
     @EnvironmentObject var goalModel: GoalModel
-    @State private var milestoneViewSize: CGSize = .zero
+    @StateObject private var viewModel = JourneyModel()
     
     var milestonesUI: [Milestone] {
         Array(goalModel.selectedGoal.milestones)
@@ -31,21 +30,23 @@ struct JourneyView: View {
     var body: some View {
         ZStack(alignment: .init(horizontal: .center, vertical: .milestoneAlignment)) {
             if let milestone = currentMilestone {
-                ChildSizeReader(size: $milestoneViewSize) {
-                    MilestoneView(goal: milestone.parentGoal, milestone: milestone)
+                ChildSizeReader(size: $viewModel.milestoneViewSize) {
+                    MilestoneView(viewModel: MilestoneModel(goal: milestone.parentGoal, milestone: milestone))
                         .alignmentGuide(.milestoneAlignment) { $0[.top] }
                 }
+                .scaleEffect(viewModel.currentMilestoneAppear ? 1.0 : 0.9)
+                .opacity(viewModel.currentMilestoneAppear ? 1.0 : 0.0)
             }
             
             VStack(spacing: 60) {
-                MilestoneViewGroup(milestone: summitMilestone, milestoneViewSize: milestoneViewSize) {
-                    SummitMilestoneItem(goal: summitMilestone.parentGoal, milestone: summitMilestone)
+                MilestoneViewGroup(viewModel: viewModel, milestone: summitMilestone) { appear in
+                    SummitMilestoneItem(appear: appear, milestone: summitMilestone)
                 }
                 .padding(.bottom, 20)
                 
                 ForEach(milestonesUI, id: \.self) { milestone in
-                    MilestoneViewGroup(milestone: milestone, milestoneViewSize: milestoneViewSize) {
-                        MilestoneItem(goal: milestone.parentGoal, milestone: milestone)
+                    MilestoneViewGroup(viewModel: viewModel, milestone: milestone) { appear in
+                        MilestoneItem(appear: appear, milestone: milestone)
                     }
                 }
             }
@@ -56,39 +57,38 @@ struct JourneyView: View {
     private struct MilestoneViewGroup<Content: View>: View {
         
         @EnvironmentObject var goalModel: GoalModel
+        @ObservedObject var viewModel: JourneyModel
         
         var milestone: Milestone
-        var milestoneViewSize: CGSize
-        let itemView: () -> Content
+        let itemView: (Binding<Bool>) -> Content
         
-        @State private var milestonePositions: [NSManagedObjectID: CGFloat] = [:]
+        @State private var position: CGFloat = .zero
         @State private var appear = false
         
         
         var body: some View {
             ZStack {
                 if milestone.state == .current {
-                    itemView()
+                    itemView($appear)
                         .alignmentGuide(.milestoneAlignment) { $0[VerticalAlignment.center] }
-                        .padding(.bottom, milestoneViewSize.height-50)
+                        .padding(.bottom, viewModel.milestoneViewSize.height-50)
                 } else {
-                    itemView()
+                    itemView($appear)
                 }
             }
             .scaleEffect(appear ? 1.0 : 0.9)
             .opacity(appear ? 1.0 : 0.0)
             .background(
-                GeometryReader { geometry in
-                    Rectangle()
-                        .fill(Color.clear)
-                        .onAppear {
-                            milestonePositions[milestone.objectID] = geometry.frame(in: .journey).minY
-                        }
+                GeometryReader { proxy in
+                    Color.clear
+                        .onAppear { position = proxy.frame(in: .journey).minY }
+                        .onChange(of: viewModel.milestoneViewSize) { _ in position = proxy.frame(in: .journey).minY }
                 }
             )
             .onChange(of: goalModel.scrollOffset) { offset in
-                for position in milestonePositions {
-                    if offset+400 > position.value { appear = true }
+                if offset+400*Layout.multiplierHeight > position {
+                    appear = true
+                    if milestone.state == .current { viewModel.currentMilestoneAppear = true }
                 }
             }
         }

@@ -9,10 +9,11 @@ import SwiftUI
 
 struct MilestoneItem: View {
     
-    var goal: Goal
-    var milestone: Milestone
+    @Binding var appear: Bool
     
-    @State private var appearDot: Bool = false
+    var milestone: Milestone
+    var goal: Goal { milestone.parentGoal }
+    
     @State private var tapAnimation: Bool = false
 
     
@@ -25,14 +26,8 @@ struct MilestoneItem: View {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { tapAnimation = false }
                 }
             
-            if milestone.state == .active {
-                MilestoneDotView(goal: goal)
-                    .opacity(appearDot ? 1.0 : 0.0)
-            } else {
-                Color.clear.frame(height: 15)
-            }
+            MilestoneDotView(milestoneAppear: $appear, milestone: milestone, appearAfter: .milliseconds(400))
         }
-        .onAppear { DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) { self.appearDot = true } }
     }
     
     
@@ -63,26 +58,7 @@ struct MilestoneItem: View {
             }
             .padding(8)
             .frame(width: milestone.state == .done ? 230 : 140, height: 160)
-            .background(goal.color.get(milestone.state == .active ? .dark : .light))
-            .cornerRadius(8)
-            .contentShape(Rectangle())
-            .oneSShadow(opacity: 0.15, y: 3, blur: 10)
-            .overlay(
-                Group {
-                    if milestone.state == .done {
-                        VStack {
-                            HStack {
-                                Spacer()
-                                SFSymbol.checkmark
-                                    .font(.system(size: 24, weight: .semibold))
-                                    .foregroundColor(goal.color.get(.dark))
-                                    .padding(20)
-                            }
-                            Spacer()
-                        }
-                    }
-                }
-            )
+            .modifier(MilestoneModel.MilestoneItemModifier(milestone: milestone))
         }
     }
 }

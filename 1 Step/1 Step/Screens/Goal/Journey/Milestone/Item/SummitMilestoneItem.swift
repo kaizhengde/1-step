@@ -9,11 +9,11 @@ import SwiftUI
 
 struct SummitMilestoneItem: View {
     
-    var goal: Goal
-    var milestone: Milestone
+    @Binding var appear: Bool
     
-    @State private var appearDotOne: Bool = false
-    @State private var appearDotTwo: Bool = false
+    var milestone: Milestone
+    var goal: Goal { milestone.parentGoal }
+    
     @State private var tapAnimation: Bool = false
     
     
@@ -26,23 +26,10 @@ struct SummitMilestoneItem: View {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { tapAnimation = false }
                 }
             
-            if milestone.state == .active {
-                VStack(spacing: 20) {
-                    MilestoneDotView(goal: goal)
-                        .opacity(appearDotOne ? 1.0 : 0.0)
-                    MilestoneDotView(goal: goal)
-                        .opacity(appearDotTwo ? 1.0 : 0.0)
-                }
-            } else {
-                VStack(spacing: 20) {
-                    Color.clear.frame(height: 15)
-                    Color.clear.frame(height: 15)
-                }
+            VStack(spacing: 20) {
+                MilestoneDotView(milestoneAppear: $appear, milestone: milestone, appearAfter: .milliseconds(400))
+                MilestoneDotView(milestoneAppear: $appear, milestone: milestone, appearAfter: .milliseconds(600))
             }
-        }
-        .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) { self.appearDotOne = true }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) { self.appearDotTwo = true }
         }
     }
     
@@ -77,26 +64,7 @@ struct SummitMilestoneItem: View {
             }
             .padding(8)
             .frame(width: 170, height: 280)
-            .background(goal.color.get(milestone.state == .active ? .dark : .light))
-            .cornerRadius(8)
-            .contentShape(Rectangle())
-            .oneSShadow(opacity: 0.15, y: 3, blur: 10)
-            .overlay(
-                Group {
-                    if milestone.state == .done {
-                        VStack {
-                            HStack {
-                                Spacer()
-                                SFSymbol.checkmark
-                                    .font(.system(size: 24, weight: .semibold))
-                                    .foregroundColor(goal.color.get(.dark))
-                                    .padding(20)
-                            }
-                            Spacer()
-                        }
-                    }
-                }
-            )
+            .modifier(MilestoneModel.MilestoneItemModifier(milestone: milestone))
         }
     }
 }
