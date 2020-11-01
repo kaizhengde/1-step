@@ -13,16 +13,15 @@ struct MilestoneView: View {
     
     
     var body: some View {
-        ZStack {
-            StepsMap(viewModel: viewModel)
-                .padding(.top, viewModel.milestone.image == .summit ? 150 : 100)
-                .padding(.bottom, 80)
-                .frame(maxWidth: .infinity)
-                .background(viewModel.goal.color.get(.dark))
-                .cornerRadius(20)
-                .padding(.horizontal, Layout.firstLayerPadding)
-                .padding(.bottom, 20)
-        }
+        StepsMap(viewModel: viewModel)
+            .padding(.top, viewModel.milestone.image == .summit ? 150 : 100)
+            .padding(.bottom, 80)
+            .frame(maxWidth: .infinity)
+            .background(viewModel.goal.color.get(.dark))
+            .cornerRadius(20)
+            .padding(.horizontal, Layout.firstLayerPadding)
+            .padding(.bottom, 20)
+            .oneSAnimation(delay: 1.2)
     }
     
     

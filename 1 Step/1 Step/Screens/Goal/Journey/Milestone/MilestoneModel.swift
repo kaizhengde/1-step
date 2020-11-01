@@ -51,6 +51,7 @@ class MilestoneModel: ObservableObject {
         var milestone: Milestone
         var goal: Goal { milestone.parentGoal }
         
+        
         func body(content: Content) -> some View {
             content
                 .background(goal.color.get(milestone.state == .active ? .dark : .light))

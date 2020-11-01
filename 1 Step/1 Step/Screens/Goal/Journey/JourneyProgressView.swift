@@ -19,6 +19,8 @@ struct JourneyProgressView: View {
                 .frame(width: 10)
                 .frame(maxWidth: .infinity)
                 .foregroundColor(.backgroundToGray)
+                .scaleEffect(x: infiniteAnimationManager.slow.isOnBackward ? 1.1 : 1.0)
+                .animation(InfiniteAnimationManager.slowAnimation)
 
             
             HStack(spacing: 16) {

@@ -84,8 +84,9 @@ struct AddView: View {
             .offset(y: viewModel.dragState == .show ? 0 : -100)
             .onTapGesture {
                 viewModel.tryAddStepsAndHide(with: goalModel.selectedGoal)
-                goalModel.setScrollPosition.send(.current)
                 goalModel.objectWillChange.send()
+                goalModel.didAddSteps.send()
+                goalModel.setScrollPosition.send(.current)
             }
         }
     }
