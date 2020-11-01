@@ -13,7 +13,7 @@ struct MilestoneView: View {
     
     
     var body: some View {
-        ZStack(alignment: .init(horizontal: .center, vertical: .progressStartAlignment)) {
+        ZStack {
             StepsMap(viewModel: viewModel)
                 .padding(.top, viewModel.milestone.image == .summit ? 150 : 100)
                 .padding(.bottom, 80)
@@ -22,12 +22,6 @@ struct MilestoneView: View {
                 .cornerRadius(20)
                 .padding(.horizontal, Layout.firstLayerPadding)
                 .padding(.bottom, 20)
-            
-            Circle()
-                .frame(width: 50, height: 50)
-                .foregroundColor(.whiteToDarkGray)
-                .alignmentGuide(.progressStartAlignment) { $0[VerticalAlignment.center] - 10 }
-                .id(GoalModel.ScrollPosition.current)
         }
     }
     
@@ -50,7 +44,7 @@ struct MilestoneView: View {
                     } else {
                         if steps == viewModel.goal.currentSteps {
                             StepMarkView(goal: viewModel.goal)
-                                .alignmentGuide(.progressStartAlignment) { $0[.center] }
+                                .alignmentGuide(.progressCurrentAlignment) { $0[.center] }
                         } else {
                             StepMarkView(goal: viewModel.goal)
                         }

@@ -2,19 +2,27 @@
 //  JourneyProgressView.swift
 //  1 Step
 //
-//  Created by Kai Zheng on 31.10.20.
+//  Created by Kai Zheng on 01.11.20.
 //
 
 import SwiftUI
 
 struct JourneyProgressView: View {
     
-    @Binding var goal: Goal
-    
     
     var body: some View {
-        RoundedRectangle(cornerRadius: 6)
-            .frame(width: 12, height: 1000)
-            .foregroundColor(.whiteToDarkGray)
+        Group {
+            RoundedRectangle(cornerRadius: 5)
+                .frame(width: 10)
+                .frame(maxWidth: .infinity)
+                .foregroundColor(.whiteToDarkGray)
+                .alignmentGuide(.progressCurrentAlignment) { $0[.top] }
+            
+            Circle()
+                .frame(width: 50, height: 50)
+                .foregroundColor(.whiteToDarkGray)
+                .alignmentGuide(.progressCurrentAlignment) { $0[VerticalAlignment.center] - 10 }
+                .id(GoalModel.ScrollPosition.current)
+        }
     }
 }

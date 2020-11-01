@@ -29,7 +29,7 @@ final class GoalModel: TransitionObservableObject {
     @Published var dragOffset: CGFloat = .zero
     
     @Published var scrollOffset: CGFloat = .zero
-    let didSetScrollPosition = PassthroughSubject<ScrollPosition, Never>()
+    let setScrollPosition = PassthroughSubject<ScrollPosition, Never>()
     
     @Published var showJourneyView: Bool = false
     
@@ -221,7 +221,7 @@ final class GoalModel: TransitionObservableObject {
     //onEnded
     
     private func onToMenu(_ value: DragGesture.Value) -> Bool {
-        didSetScrollPosition.send(.top)
+        setScrollPosition.send(.top)
         return value.translation.width >= 50 && dragState == .none
     }
     
@@ -261,11 +261,11 @@ final class GoalModel: TransitionObservableObject {
     
     func downArrowTapped() {
         if showJourneyView {
-            didSetScrollPosition.send(.top)
+            setScrollPosition.send(.top)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { self.showJourneyView = false }
         } else {
             showJourneyView = true
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) { self.didSetScrollPosition.send(.current) }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) { self.setScrollPosition.send(.current) }
         }
     }
     

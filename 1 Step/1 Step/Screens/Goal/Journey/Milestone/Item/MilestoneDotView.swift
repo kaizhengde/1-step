@@ -28,7 +28,7 @@ struct MilestoneDotView: View {
                     .scaleEffect(appear ? 1.0 : 0.9)
                     .opacity(appear ? 1.0 : 0.0)
             } else {
-                Color.clear.frame(height: 15)
+                Color.clear.frame(height: 5)
             }
         }
         .onChange(of: milestoneAppear) {
