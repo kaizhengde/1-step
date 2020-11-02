@@ -26,35 +26,44 @@ struct JourneyView: View {
         goalModel.selectedGoal.milestones.filter { $0.state == .current }.first
     }
     
+    var currentMilestoneAppear: Bool {
+        return viewModel.milestoneAppears[currentMilestone!.objectID] ?? false
+    }
+    
+    var lastMilestone: Milestone { milestonesUI.last! }
+    
     
     var body: some View {
         ZStack(alignment: .init(horizontal: .center, vertical: .milestoneAlignment)) {
-            ZStack(alignment: .init(horizontal: .center, vertical: .progressCurrentAlignment)) {
-                if let milestone = currentMilestone {
-                    ChildSizeReader(size: $viewModel.milestoneViewSize) {
-                        MilestoneView(viewModel: MilestoneModel(goal: milestone.parentGoal, milestone: milestone))
-                            .alignmentGuide(.milestoneAlignment) { $0[.top] }
-                    }
-                    .scaleEffect(viewModel.currentMilestoneAppear ? 1.0 : 0.9)
-                    .opacity(viewModel.currentMilestoneAppear ? 1.0 : 0.0)
+            if let milestone = currentMilestone {
+                ChildSizeReader(size: $viewModel.milestoneViewSize) {
+                    MilestoneView(viewModel: MilestoneModel(goal: milestone.parentGoal, milestone: milestone))
+                        .alignmentGuide(.milestoneAlignment) { $0[.top] }
                 }
-                
-                JourneyProgressView(goal: goalModel.selectedGoal)
+                .scaleEffect(currentMilestoneAppear ? 1.0 : 0.9)
+                .opacity(currentMilestoneAppear ? 1.0 : 0.0)
             }
             
-            VStack(spacing: 60) {
-                MilestoneViewGroup(viewModel: viewModel, milestone: summitMilestone) {
-                    SummitMilestoneItem(appear: $0, milestone: summitMilestone)
-                }
-                .padding(.bottom, 20)
+            ZStack(alignment: .init(horizontal: .center, vertical: .lineLastMilestoneAlignment)) {
+                JourneyProgressView(viewModel: viewModel, goal: goalModel.selectedGoal, lastMilestone: lastMilestone)
                 
-                ForEach(milestonesUI, id: \.self) { milestone in
-                    MilestoneViewGroup(viewModel: viewModel, milestone: milestone) {
-                        MilestoneItem(appear: $0, milestone: milestone)
+                VStack(spacing: 60) {
+                    MilestoneViewGroup(viewModel: viewModel, milestone: summitMilestone, lastMilestone: lastMilestone) {
+                        SummitMilestoneItem(appear: $0, milestone: summitMilestone)
+                    }
+                    .padding(.bottom, 20)
+                    
+                    ForEach(milestonesUI, id: \.self) { milestone in
+                        MilestoneViewGroup(viewModel: viewModel, milestone: milestone, lastMilestone: lastMilestone) {
+                            MilestoneItem(appear: $0, milestone: milestone)
+                        }
                     }
                 }
             }
         }
+        .coordinateSpace(name: CoordinateSpace.journey)
+        .onPreferenceChange(JourneyModel.MilestonePK.self) { viewModel.updateMilestonePositions($0) }
+        .onPreferenceChange(JourneyModel.StepPK.self) { viewModel.updateCurrentStepPosition($0) }
     }
     
     
@@ -64,38 +73,28 @@ struct JourneyView: View {
         @ObservedObject var viewModel: JourneyModel
         
         var milestone: Milestone
+        var lastMilestone: Milestone
         let itemView: (Binding<Bool>) -> Content
         
-        @State private var position: CGFloat = .zero
-        @State private var appear = false
+        var appear: Bool { viewModel.milestoneAppears[milestone.objectID] ?? false }
         
         
         var body: some View {
             ZStack {
                 if milestone.state == .current {
-                    itemView($appear)
+                    itemView(Binding<Bool>(get: { appear }, set: { _ in }))
                         .alignmentGuide(.milestoneAlignment) { $0[VerticalAlignment.center] }
                         .padding(.bottom, viewModel.milestoneViewSize.height-50)
+                } else if milestone === lastMilestone {
+                    itemView(Binding<Bool>(get: { appear }, set: { _ in }))
+                        .alignmentGuide(.lineLastMilestoneAlignment) { $0[.bottom] }
                 } else {
-                    itemView($appear)
+                    itemView(Binding<Bool>(get: { appear }, set: { _ in }))
                 }
             }
+            .background(JourneyModel.MilestoneVS(milestone: milestone))
             .scaleEffect(appear ? 1.0 : 0.9)
             .opacity(appear ? 1.0 : 0.0)
-            .background(
-                GeometryReader { proxy in
-                    Color.clear
-                        .onAppear { position = proxy.frame(in: .journey).minY }
-                        .onChange(of: viewModel.milestoneViewSize) { _ in position = proxy.frame(in: .journey).minY }
-                }
-            )
-            .onChange(of: goalModel.scrollOffset) { offset in
-                let showPoint = Layout.screenHeight-200*Layout.multiplierHeight
-                if offset+showPoint > position {
-                    appear = true
-                    if milestone.state == .current { viewModel.currentMilestoneAppear = true }
-                }
-            }
         }
     }
 }

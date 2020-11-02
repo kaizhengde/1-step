@@ -9,7 +9,10 @@ import SwiftUI
 
 struct JourneyProgressView: View {
     
-    var goal: Goal
+    @ObservedObject var viewModel: JourneyModel
+    let goal: Goal
+    let lastMilestone: Milestone
+    
     @StateObject private var infiniteAnimationManager = InfiniteAnimationManager.shared
     
     
@@ -17,11 +20,9 @@ struct JourneyProgressView: View {
         ZStack(alignment: .init(horizontal: .currentCircleTextAlignment, vertical: .top)) {
             RoundedRectangle(cornerRadius: 5)
                 .frame(width: 10)
-                .frame(maxWidth: .infinity)
+                .frame(height: abs(viewModel.currentStepPosition.y-(viewModel.milestonePositions[lastMilestone.objectID]?.y ?? 0))+220)
                 .foregroundColor(.backgroundToGray)
-                .scaleEffect(x: infiniteAnimationManager.slow.isOnBackward ? 1.1 : 1.0)
-                .animation(InfiniteAnimationManager.slowAnimation)
-
+                .alignmentGuide(.lineLastMilestoneAlignment) { $0[.bottom] }
             
             HStack(spacing: 16) {
                 Circle()
@@ -31,13 +32,32 @@ struct JourneyProgressView: View {
                     .scaleEffect(infiniteAnimationManager.slow.isOnBackward ? 1.3 : 1.0)
                     .id(GoalModel.ScrollPosition.current)
                     .alignmentGuide(.currentCircleTextAlignment) { $0[HorizontalAlignment.center] }
-               
-                
+
+
                 OneSText(text: goal.currentStepUnits.toUI(), font: .custom(weight: Raleway.extraBold, size: 48), color: .backgroundToGray)
             }
-            .offset(y: -25)
         }
-        .alignmentGuide(.progressCurrentAlignment) { $0[.top] }
         .animation(InfiniteAnimationManager.slowAnimation)
+    }
+    
+    
+    private struct Line: Shape {
+
+        var height: CGFloat
+
+        var animatableData: CGFloat {
+            get { height }
+            set { height = newValue }
+        }
+
+
+        func path(in rect: CGRect) -> Path {
+            var path = Path()
+
+            path.move(to: .zero)
+            path.addLine(to: CGPoint(x: .zero, y: height))
+
+            return path
+        }
     }
 }

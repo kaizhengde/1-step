@@ -42,7 +42,7 @@ struct MilestoneView: View {
                     } else {
                         if steps == viewModel.goal.currentSteps {
                             StepMarkView(goal: viewModel.goal)
-                                .alignmentGuide(.progressCurrentAlignment) { $0[.center] }
+                                .background(JourneyModel.StepVS())
                         } else {
                             StepMarkView(goal: viewModel.goal)
                         }

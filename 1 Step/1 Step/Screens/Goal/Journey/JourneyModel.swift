@@ -11,7 +11,89 @@ import CoreData
 class JourneyModel: ObservableObject {
     
     @Published var milestoneViewSize: CGSize = .zero
-    @Published var currentMilestoneAppear: Bool = false
+
+    @Published var milestoneAppears: [NSManagedObjectID: Bool] = [:]
+    @Published var milestonePositions: [NSManagedObjectID: CGPoint] = [:]
+    @Published var currentStepPosition: CGPoint = .zero
+    
+    
+    //MARK: - Step Preferences
+    
+    func updateCurrentStepPosition(_ preference: StepPK.Value) {
+        currentStepPosition = preference[0]
+    }
+    
+    
+    struct StepVS: View {
+        
+        var body: some View {
+            GeometryReader { proxy in
+                Rectangle()
+                    .fill(Color.clear)
+                    .preference(key: StepPK.self, value: [proxy.frame(in: .journey).origin])
+            }
+        }
+    }
+    
+    
+    struct StepPK: PreferenceKey {
+        
+        typealias Value = [CGPoint]
+        
+        static var defaultValue: [CGPoint] = []
+        
+        
+        static func reduce(value: inout [CGPoint], nextValue: () -> [CGPoint]) {
+            value.append(contentsOf: nextValue())
+        }
+    }
+    
+    
+    //MARK: - Milestone Preferences
+    
+    func updateMilestonePositions(_ preferences: MilestonePK.Value) {
+        for p in preferences {
+            milestonePositions[p.objectID] = p.point
+            
+            if p.point.y <= Layout.screenHeight-200 {
+                milestoneAppears[p.objectID] = true
+            }
+        }
+    }
+    
+    
+    struct MilestoneVS: View {
+        
+        let milestone: Milestone
+        
+        
+        var body: some View {
+            GeometryReader { proxy in
+                Rectangle()
+                    .fill(Color.clear)
+                    .preference(key: MilestonePK.self, value: [MilestonePD(objectID: milestone.objectID, point: proxy.frame(in: .journey).origin)])
+            }
+        }
+    }
+    
+
+    struct MilestonePK: PreferenceKey {
+        
+        typealias Value = [MilestonePD]
+        
+        static var defaultValue: [MilestonePD] = []
+        
+        static func reduce(value: inout [MilestonePD], nextValue: () -> [MilestonePD]) {
+            value.append(contentsOf: nextValue())
+        }
+    }
+    
+
+    struct MilestonePD: Equatable {
+        
+        var objectID: NSManagedObjectID
+        var point: CGPoint
+    }
 }
 
 
@@ -23,14 +105,14 @@ extension VerticalAlignment {
         }
     }
     
-    enum ProgressCurrentAlignment: AlignmentID {
+    enum LineLastMilestoneAlignment: AlignmentID {
         static func defaultValue(in d: ViewDimensions) -> CGFloat {
-            return d[VerticalAlignment.center]
+            return d[.bottom]
         }
     }
     
     static let milestoneAlignment = Self(MilestoneAlignment.self)
-    static let progressCurrentAlignment = Self(ProgressCurrentAlignment.self)
+    static let lineLastMilestoneAlignment = Self(LineLastMilestoneAlignment.self)
 }
 
 
