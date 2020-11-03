@@ -19,7 +19,7 @@ struct GoalSummaryView: View {
     
     private struct DetailsView: View {
         
-        @EnvironmentObject var goalModel: GoalModel
+        @StateObject private var goalModel = GoalModel.shared
         
         
         var body: some View {
@@ -33,7 +33,7 @@ struct GoalSummaryView: View {
         
         private struct TopView: View {
             
-            @EnvironmentObject var goalModel: GoalModel
+            @StateObject private var goalModel = GoalModel.shared
             
             
             var body: some View {
@@ -55,7 +55,7 @@ struct GoalSummaryView: View {
         
         private struct BottomView: View {
             
-            @EnvironmentObject var goalModel: GoalModel
+            @StateObject private var goalModel = GoalModel.shared
             
             
             var body: some View {
@@ -67,17 +67,17 @@ struct GoalSummaryView: View {
                         DownArrowView()
                     }
                 }
+                .contentShape(Rectangle())
+                .onTapGesture { goalModel.downArrowTapped() }
                 .frame(height: 120)
                 .padding(.horizontal, Layout.secondLayerPadding)
                 .padding(.top, Layout.screenHeight - 200 - SafeAreaSize.bottom)
-                .contentShape(Rectangle())
-                .onTapGesture { goalModel.downArrowTapped() }
             }
             
             
             private struct DownArrowView: View {
                 
-                @EnvironmentObject var goalModel: GoalModel
+                @StateObject private var goalModel = GoalModel.shared
                 @StateObject private var infinteAnimationManager = InfiniteAnimationManager.shared
                                 
                 private var animationOnForwardActive: Bool { infinteAnimationManager.slow.isOnForward && !goalModel.showJourneyView }
@@ -125,7 +125,7 @@ struct GoalSummaryView: View {
     
     private struct MountainView: View {
         
-        @EnvironmentObject var goalModel: GoalModel
+        @StateObject private var goalModel = GoalModel.shared
         
         
         var body: some View {

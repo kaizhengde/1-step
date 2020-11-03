@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GoalEditScreen: View {
     
-    @EnvironmentObject var goalModel: GoalModel
+    @StateObject private var goalModel = GoalModel.shared
     @StateObject private var viewModel = GoalEditModel()
     @StateObject private var goalSelectMountainModel = GoalSelectMountainModel()
     @StateObject private var goalEnterInputModel = GoalEnterInputModel()

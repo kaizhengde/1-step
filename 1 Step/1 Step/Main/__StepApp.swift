@@ -17,7 +17,7 @@ struct __StepApp: App {
     let mainModel               = MainModel.shared
     let goalsModel              = GoalsModel()
     let goalAddModel            = GoalCreateModel()
-    let goalModel               = GoalModel()
+    let goalModel               = GoalModel.shared
         
     let sheetManager            = SheetManager.shared
     let miniSheetManager        = MiniSheetManager.shared
@@ -34,7 +34,6 @@ struct __StepApp: App {
                 .environment(\.managedObjectContext, persistenceManager.context)
                 .environmentObject(goalsModel)
                 .environmentObject(goalAddModel)
-                .environmentObject(goalModel)
         }
     }
 }

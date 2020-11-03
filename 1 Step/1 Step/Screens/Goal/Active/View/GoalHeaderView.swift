@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GoalHeaderView: View {
     
-    @EnvironmentObject var goalModel: GoalModel
+    @StateObject private var goalModel = GoalModel.shared
     @StateObject private var sheetManager = SheetManager.shared
     
     
@@ -28,7 +28,7 @@ struct GoalHeaderView: View {
     
     private struct MenuButton: View {
         
-        @EnvironmentObject var goalModel: GoalModel
+        @StateObject private var goalModel = GoalModel.shared
         
         
         var body: some View {

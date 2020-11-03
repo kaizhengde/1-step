@@ -57,13 +57,9 @@ struct MilestoneStages {
         (one: 0.4,  two: 1.0,  five: 2.0,  ten: 5,    twenty: 10,   fifty: 20,   thousand: 50),
         (one: 1.0,  two: 2.0,  five: 5.0,  ten: 10,   twenty: 20,   fifty: 50,   thousand: 100),
         (one: 1000, two: 1000, five: 1000, ten: 1000, twenty: 1000, fifty: 1000, thousand: 200),
-        (one: 1000, two: 1000, five: 1000, ten: 1000, twenty: 1000, fifty: 1000, thousand: 300),
         (one: 1000, two: 1000, five: 1000, ten: 1000, twenty: 1000, fifty: 1000, thousand: 400),
-        (one: 1000, two: 1000, five: 1000, ten: 1000, twenty: 1000, fifty: 1000, thousand: 500),
         (one: 1000, two: 1000, five: 1000, ten: 1000, twenty: 1000, fifty: 1000, thousand: 600),
-        (one: 1000, two: 1000, five: 1000, ten: 1000, twenty: 1000, fifty: 1000, thousand: 700),
         (one: 1000, two: 1000, five: 1000, ten: 1000, twenty: 1000, fifty: 1000, thousand: 800),
-        (one: 1000, two: 1000, five: 1000, ten: 1000, twenty: 1000, fifty: 1000, thousand: 900),
         (one: 1000, two: 1000, five: 1000, ten: 1000, twenty: 1000, fifty: 1000, thousand: 1000)
     ]
 }

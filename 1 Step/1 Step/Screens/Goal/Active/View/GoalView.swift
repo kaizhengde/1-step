@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GoalView: View {
     
-    @EnvironmentObject var goalModel: GoalModel
+    @StateObject private var goalModel = GoalModel.shared
     
     
     var body: some View {

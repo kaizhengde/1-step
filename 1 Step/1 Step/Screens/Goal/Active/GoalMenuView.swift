@@ -10,7 +10,7 @@ import SwiftUI
 struct GoalMenuView: View {
     
     @StateObject private var dataModel = DataModel.shared
-    @EnvironmentObject var goalModel: GoalModel
+    @StateObject private var goalModel = GoalModel.shared
     
     var activeGoalsRest: [Goal] { dataModel.activeGoals.filter { $0 != goalModel.selectedGoal }}
     
@@ -46,7 +46,7 @@ struct GoalMenuView: View {
     
     private struct GoalMenuItem: View {
         
-        @EnvironmentObject var goalModel: GoalModel
+        @StateObject private var goalModel = GoalModel.shared
         @Binding var goal: Goal
         
         

@@ -14,23 +14,51 @@ class JourneyModel: ObservableObject {
 
     @Published var milestoneAppears: [NSManagedObjectID: Bool] = [:]
     @Published var milestoneRects: [NSManagedObjectID: CGRect] = [:]
-    @Published var currentStepPosition: CGPoint = .zero
+    
+    @Published var stepPositions: [Int: CGPoint] = [:]
+    
+    var goal: Goal { GoalModel.shared.selectedGoal }
+    
+    var milestonesUI: [Milestone] {
+        Array(goal.milestones)
+            .sorted { $0.neededStepUnits > $1.neededStepUnits }
+            .filter { $0.image != .summit }
+    }
+    
+    var summitMilestone: Milestone {
+        goal.milestones.filter { $0.image == .summit }.first!
+    }
+    
+    var currentMilestone: Milestone? {
+        goal.milestones.filter { $0.state == .current }.first
+    }
+    
+    var currentMilestoneAppear: Bool {
+        return milestoneAppears[currentMilestone!.objectID] ?? false
+    }
+    
+    var lastMilestone: Milestone { milestonesUI.last! }
     
     
     //MARK: - Step Preferences
     
-    func updateCurrentStepPosition(_ preference: StepPK.Value) {
-        currentStepPosition = preference[0]
+    func updateStepPositions(_ preferences: StepPK.Value) {
+        for p in preferences {
+            stepPositions[p.steps] = p.position
+        }
     }
     
     
     struct StepVS: View {
         
+        let steps: Int
+        
+        
         var body: some View {
             GeometryReader { proxy in
                 Rectangle()
                     .fill(Color.clear)
-                    .preference(key: StepPK.self, value: [proxy.frame(in: .journey).origin])
+                    .preference(key: StepPK.self, value: [StepPD(steps: steps, position: proxy.frame(in: .journey).origin)])
             }
         }
     }
@@ -38,14 +66,21 @@ class JourneyModel: ObservableObject {
     
     struct StepPK: PreferenceKey {
         
-        typealias Value = [CGPoint]
+        typealias Value = [StepPD]
         
-        static var defaultValue: [CGPoint] = []
+        static var defaultValue: [StepPD] = []
         
         
-        static func reduce(value: inout [CGPoint], nextValue: () -> [CGPoint]) {
+        static func reduce(value: inout [StepPD], nextValue: () -> [StepPD]) {
             value.append(contentsOf: nextValue())
         }
+    }
+    
+    
+    struct StepPD: Equatable {
+        
+        var steps: Int
+        var position: CGPoint
     }
     
     

@@ -9,23 +9,18 @@ import SwiftUI
 
 class MilestoneModel: ObservableObject {
     
-    @Published var goal: Goal
-    var milestone: Milestone
-    
-    
-    init(goal: Goal, milestone: Milestone) {
-        self.goal = goal
-        self.milestone = milestone
-        
-        updateStepsMap()
-        print("1")
+    var milestone: Milestone {
+        GoalModel.shared.selectedGoal.milestones.filter { $0.state == .current }.first!
     }
+    var goal: Goal { milestone.parentGoal }
+    
+    
+    init() { updateStepsMap() }
     
     
     @Published var stepsDic: [Int: Double] = [:]
     
     func updateStepsMap() {
-        print("2")
         
         var dictionary: [Int: Double] = [:]
         

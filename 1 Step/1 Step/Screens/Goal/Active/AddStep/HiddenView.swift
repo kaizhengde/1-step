@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HiddenView: View {
     
-    @EnvironmentObject var goalModel: GoalModel
+    @StateObject private var goalModel = GoalModel.shared
     @ObservedObject var viewModel: AddStepModel
     
     
@@ -34,15 +34,14 @@ struct HiddenView: View {
     
     private struct HiddenRectangle: View {
         
-        @EnvironmentObject var goalModel: GoalModel
-        @StateObject private var infiniteAnimationManager = InfiniteAnimationManager.shared
         @ObservedObject var viewModel: AddStepModel
+        @StateObject private var infiniteAnimationManager = InfiniteAnimationManager.shared
         
         
         var body: some View {
             RoundedRectangle(cornerRadius: 5)
                 .frame(width: 10, height: 140)
-                .foregroundColor(viewModel.hiddenForegroundColor(goalModel.selectedGoal.color.get(.light), goalModel.selectedGoal.color.get(.dark) ))
+                .foregroundColor(viewModel.hiddenForegroundColor(viewModel.goal.color.get(.light), viewModel.goal.color.get(.dark) ))
                 .oneSShadow(opacity: 0.12, x: 0, y: 2, blur: 8)
                 .offset(x: viewModel.animate ? -5 : 0)
                 .scaleEffect(y: viewModel.animate ? 1.05 : 1.0)

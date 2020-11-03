@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GoalScreen: View {
     
-    @EnvironmentObject var goalModel: GoalModel
+    @StateObject private var goalModel = GoalModel.shared
     @StateObject private var addStepModel = AddStepModel()
     
     

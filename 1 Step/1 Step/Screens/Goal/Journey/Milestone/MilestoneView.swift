@@ -9,15 +9,8 @@ import SwiftUI
 
 struct MilestoneView: View {
     
-    @EnvironmentObject var goalModel: GoalModel
-    @StateObject private var viewModel: MilestoneModel
-    
-    var milestone: Milestone
-    
-    init(milestone: Milestone) {
-        self.milestone = milestone
-        _viewModel = StateObject(wrappedValue: MilestoneModel(goal: milestone.parentGoal, milestone: milestone))
-    }
+    @StateObject private var goalModel = GoalModel.shared
+    @StateObject private var viewModel = MilestoneModel()
     
     
     var body: some View {
@@ -29,13 +22,8 @@ struct MilestoneView: View {
             .cornerRadius(20)
             .padding(.horizontal, Layout.firstLayerPadding)
             .padding(.bottom, 20)
-            .onChange(of: goalModel.selectedGoal) {
-                viewModel.goal = $0!
-            }
-            .onChange(of: viewModel.goal.currentSteps) { _ in
-                print("3")
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
-                    print("4")
+            .onChange(of: goalModel.selectedGoal.currentSteps) { _ in
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                     viewModel.updateStepsMap()
                 }
             }
@@ -58,12 +46,8 @@ struct MilestoneView: View {
                     if steps > viewModel.goal.currentSteps && steps%(viewModel.goal.step.unit == .hours ? 6 : 5) == 0 {
                         StepTextMarkView(goal: viewModel.goal, stepUnitsNeeded: stepUnits.toUI())
                     } else {
-                        if steps == viewModel.goal.currentSteps {
-                            StepMarkView(goal: viewModel.goal)
-                                .background(JourneyModel.StepVS())
-                        } else {
-                            StepMarkView(goal: viewModel.goal)
-                        }
+                        StepMarkView(goal: viewModel.goal)
+                            .background(JourneyModel.StepVS(steps: steps))
                     }
                 }
             }

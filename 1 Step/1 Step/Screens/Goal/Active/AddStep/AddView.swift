@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AddView: View {
     
-    @EnvironmentObject var goalModel: GoalModel
+    @StateObject private var goalModel = GoalModel.shared
     @ObservedObject var viewModel: AddStepModel
     
     
@@ -31,7 +31,7 @@ struct AddView: View {
     
     private struct SelectView: View {
         
-        @EnvironmentObject var goalModel: GoalModel
+        @StateObject private var goalModel = GoalModel.shared
         @ObservedObject var viewModel: AddStepModel
         
         var step: Step { goalModel.selectedGoal.step }
@@ -68,7 +68,7 @@ struct AddView: View {
     
     private struct AddButton: View {
         
-        @EnvironmentObject var goalModel: GoalModel
+        @StateObject private var goalModel = GoalModel.shared
         @ObservedObject var viewModel: AddStepModel
         
         
@@ -83,7 +83,7 @@ struct AddView: View {
             .background(goalModel.selectedGoal.color.get(.dark))
             .offset(y: viewModel.dragState == .show ? 0 : -100)
             .onTapGesture {
-                viewModel.tryAddStepsAndHide(with: goalModel.selectedGoal)
+                viewModel.tryAddStepsAndHide()
                 goalModel.objectWillChange.send()
                 goalModel.didAddSteps.send()
                 goalModel.setScrollPosition.send(.current)

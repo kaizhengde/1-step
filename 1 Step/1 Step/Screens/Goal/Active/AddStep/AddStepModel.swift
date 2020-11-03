@@ -17,11 +17,13 @@ class AddStepModel: ObservableObject {
     @Published var dragOffset: CGFloat = .zero
     
     @Published var selectedStep: (unit: Int, dual: Int) = (0, 0)
+    
+    var goal: Goal { GoalModel.shared.selectedGoal }
 
     
     //MARK: - Setup
     
-    func setupAddStepView(_ noDrag: Bool, _ goal: Goal) {
+    func setupAddStepView(_ noDrag: Bool) {
         if noDrag {
             let selectedStepUnit = goal.step.addArrayLastIndex
             let selectedStepDual = goal.step.addArrayDualLastIndex
@@ -34,7 +36,7 @@ class AddStepModel: ObservableObject {
     
     //MARK: - Data
     
-    func tryAddStepsAndHide(with goal: Goal) {
+    func tryAddStepsAndHide() {
         
         var stepAddArray        = goal.step.addArray
         var stepAddArrayDual    = goal.step.addArrayDual

@@ -22,6 +22,8 @@ final class GoalModel: TransitionObservableObject {
         case current    = 1
     }
     
+    static let shared = GoalModel()
+    private init() {}
     
     
     @Published var transition = TransitionManager<GoalModel>()

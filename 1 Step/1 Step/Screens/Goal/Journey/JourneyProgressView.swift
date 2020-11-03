@@ -10,8 +10,6 @@ import SwiftUI
 struct JourneyProgressView: View {
     
     @ObservedObject var viewModel: JourneyModel
-    let goal: Goal
-    let lastMilestone: Milestone
     
     @StateObject private var infiniteAnimationManager = InfiniteAnimationManager.shared
     
@@ -25,7 +23,7 @@ struct JourneyProgressView: View {
         ZStack(alignment: .init(horizontal: .currentCircleTextAlignment, vertical: .top)) {
             RoundedRectangle(cornerRadius: 5)
                 .frame(width: 10)
-                .frame(height: abs(viewModel.currentStepPosition.y-(viewModel.milestoneRects[lastMilestone.objectID]?.maxY ?? 0)))
+                .frame(height: abs((viewModel.stepPositions[Int(viewModel.goal.currentSteps)]?.y ?? 0)-(viewModel.milestoneRects[viewModel.lastMilestone.objectID]?.maxY ?? 0)))
                 .foregroundColor(.backgroundToGray)
                 .alignmentGuide(.lineLastMilestoneAlignment) { $0[.bottom] }
             
@@ -38,7 +36,7 @@ struct JourneyProgressView: View {
                     .id(GoalModel.ScrollPosition.current)
                     .alignmentGuide(.currentCircleTextAlignment) { $0[HorizontalAlignment.center] }
 
-                OneSText(text: goal.currentStepUnits.toUI(), font: .custom(weight: Raleway.extraBold, size: 48), color: .backgroundToGray)
+                OneSText(text: viewModel.goal.currentStepUnits.toUI(), font: .custom(weight: Raleway.extraBold, size: 48), color: .backgroundToGray)
             }
             .offset(y: -25)
         }

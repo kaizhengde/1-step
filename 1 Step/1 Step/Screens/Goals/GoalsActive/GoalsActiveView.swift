@@ -11,7 +11,7 @@ struct GoalsActiveView: View {
     
     @StateObject private var mainModel = MainModel.shared
     @StateObject private var dataModel = DataModel.shared
-    @EnvironmentObject var goalModel: GoalModel
+    @StateObject private var goalModel = GoalModel.shared
     @ObservedObject var viewModel: GoalsActiveModel
     
     
