@@ -15,11 +15,18 @@ class MilestoneModel: ObservableObject {
     
     init(goal: Goal, milestone: Milestone) {
         self.goal = goal
-        self.milestone = milestone 
+        self.milestone = milestone
+        
+        updateStepsMap()
+        print("1")
     }
     
     
-    var stepsDic: [Int: Double] {
+    @Published var stepsDic: [Int: Double] = [:]
+    
+    func updateStepsMap() {
+        print("2")
+        
         var dictionary: [Int: Double] = [:]
         
         let prevNeededSteps = Int(milestone.neededSteps-milestone.stepsFromPrev)
@@ -38,8 +45,10 @@ class MilestoneModel: ObservableObject {
         for i in lowerBound..<upperBound {
             dictionary[i] = Double(i)/Double(goal.step.unitRatio)
         }
-        return dictionary
+        
+        stepsDic = dictionary
     }
+
     
     var showLongMark: Bool { milestone.neededSteps - goal.currentSteps > 20 }
     

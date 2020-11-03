@@ -9,7 +9,15 @@ import SwiftUI
 
 struct MilestoneView: View {
     
-    @ObservedObject var viewModel: MilestoneModel
+    @EnvironmentObject var goalModel: GoalModel
+    @StateObject private var viewModel: MilestoneModel
+    
+    var milestone: Milestone
+    
+    init(milestone: Milestone) {
+        self.milestone = milestone
+        _viewModel = StateObject(wrappedValue: MilestoneModel(goal: milestone.parentGoal, milestone: milestone))
+    }
     
     
     var body: some View {
@@ -21,6 +29,16 @@ struct MilestoneView: View {
             .cornerRadius(20)
             .padding(.horizontal, Layout.firstLayerPadding)
             .padding(.bottom, 20)
+            .onChange(of: goalModel.selectedGoal) {
+                viewModel.goal = $0!
+            }
+            .onChange(of: viewModel.goal.currentSteps) { _ in
+                print("3")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+                    print("4")
+                    viewModel.updateStepsMap()
+                }
+            }
     }
     
     
