@@ -22,6 +22,8 @@ final class GoalModel: TransitionObservableObject {
         case current    = 1
     }
     
+    
+    
     @Published var transition = TransitionManager<GoalModel>()
     @Published var selectedGoal: Goal!
     
