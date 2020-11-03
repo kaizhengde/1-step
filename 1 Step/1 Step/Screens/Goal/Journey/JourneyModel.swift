@@ -13,7 +13,7 @@ class JourneyModel: ObservableObject {
     @Published var milestoneViewSize: CGSize = .zero
 
     @Published var milestoneAppears: [NSManagedObjectID: Bool] = [:]
-    @Published var milestonePositions: [NSManagedObjectID: CGPoint] = [:]
+    @Published var milestoneRects: [NSManagedObjectID: CGRect] = [:]
     @Published var currentStepPosition: CGPoint = .zero
     
     
@@ -53,9 +53,9 @@ class JourneyModel: ObservableObject {
     
     func updateMilestonePositions(_ preferences: MilestonePK.Value) {
         for p in preferences {
-            milestonePositions[p.objectID] = p.point
+            milestoneRects[p.objectID] = p.rect
             
-            if p.point.y <= Layout.screenHeight-200 {
+            if p.rect.minY <= Layout.screenHeight-200 {
                 milestoneAppears[p.objectID] = true
             }
         }
@@ -71,7 +71,7 @@ class JourneyModel: ObservableObject {
             GeometryReader { proxy in
                 Rectangle()
                     .fill(Color.clear)
-                    .preference(key: MilestonePK.self, value: [MilestonePD(objectID: milestone.objectID, point: proxy.frame(in: .journey).origin)])
+                    .preference(key: MilestonePK.self, value: [MilestonePD(objectID: milestone.objectID, rect: proxy.frame(in: .journey))])
             }
         }
     }
@@ -92,7 +92,7 @@ class JourneyModel: ObservableObject {
     struct MilestonePD: Equatable {
         
         var objectID: NSManagedObjectID
-        var point: CGPoint
+        var rect: CGRect
     }
 }
 

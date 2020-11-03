@@ -44,7 +44,7 @@ struct JourneyView: View {
                 .opacity(currentMilestoneAppear ? 1.0 : 0.0)
             }
             
-            ZStack(alignment: .init(horizontal: .center, vertical: .lineLastMilestoneAlignment)) {
+            ZStack(alignment: .init(horizontal: .currentCircleTextAlignment, vertical: .lineLastMilestoneAlignment)) {
                 JourneyProgressView(viewModel: viewModel, goal: goalModel.selectedGoal, lastMilestone: lastMilestone)
                 
                 VStack(spacing: 60) {
