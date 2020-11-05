@@ -23,9 +23,7 @@ struct MilestoneView: View {
             .padding(.horizontal, Layout.firstLayerPadding)
             .padding(.bottom, 20)
             .onChange(of: goalModel.selectedGoal.currentSteps) { _ in
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                    viewModel.updateStepsMap()
-                }
+                viewModel.updateStepsMap()
             }
     }
     

@@ -13,19 +13,26 @@ struct JourneyProgressView: View {
     
     @StateObject private var infiniteAnimationManager = InfiniteAnimationManager.shared
     
-    #warning("For the first milestone I could just set the alignment not to the last item but to the first step. That way it would start inside and give the appropriate look")
-    #warning("For the animation part the rectangle background animation or with other words the removing of extra steps to make the whole thing smaller has to come delayed after the increase animation. Otherwise we would just stand still at the current point and do nothing.")
-    #warning("The milestone item change animation weird offset I think comes from the dragging part, that way there is this strange y offset. I think I can fixed that quite easily by just switching clearly with the animation, to have a new animation for that. But I don't know if thats as easy to do.")
-    #warning("To make everything clean everything should go inside the journeyModel for sure.")
-    #warning("Other than that there isn't really much else to say!")
+    var lineHeight: CGFloat {
+        let currentStepPosition = viewModel.stepPositions[Int(viewModel.goal.currentSteps)]?.y ?? 0
+        var lastMilestoneBottom = viewModel.milestoneRects[viewModel.lastMilestone.objectID]?.maxY ?? 0
+        
+        if currentStepPosition == .zero {
+            lastMilestoneBottom = .zero
+        }
+        
+        return abs(currentStepPosition-lastMilestoneBottom)
+    }
+        
     
     var body: some View {
         ZStack(alignment: .init(horizontal: .currentCircleTextAlignment, vertical: .top)) {
             RoundedRectangle(cornerRadius: 5)
                 .frame(width: 10)
-                .frame(height: abs((viewModel.stepPositions[Int(viewModel.goal.currentSteps)]?.y ?? 0)-(viewModel.milestoneRects[viewModel.lastMilestone.objectID]?.maxY ?? 0)))
+                .frame(height: lineHeight)
                 .foregroundColor(.backgroundToGray)
-                .alignmentGuide(.lineLastMilestoneAlignment) { $0[.bottom] }
+                .opacity(lineHeight == 0 ? 0.0 : 1.0)
+                .alignmentGuide(.lineBottomAlignment) { $0[.bottom] }
             
             HStack(spacing: 16) {
                 Circle()

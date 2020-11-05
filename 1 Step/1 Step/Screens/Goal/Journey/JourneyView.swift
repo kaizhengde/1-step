@@ -24,7 +24,7 @@ struct JourneyView: View {
                 .opacity(viewModel.currentMilestoneAppear ? 1.0 : 0.0)
             }
             
-            ZStack(alignment: .init(horizontal: .currentCircleTextAlignment, vertical: .lineLastMilestoneAlignment)) {
+            ZStack(alignment: .init(horizontal: .currentCircleTextAlignment, vertical: .lineBottomAlignment)) {
                 JourneyProgressView(viewModel: viewModel)
                 
                 VStack(spacing: 60) {
@@ -65,7 +65,7 @@ struct JourneyView: View {
                         .padding(.bottom, viewModel.milestoneViewSize.height-50)
                 } else if milestone === viewModel.lastMilestone {
                     itemView(Binding<Bool>(get: { appear }, set: { _ in }))
-                        .alignmentGuide(.lineLastMilestoneAlignment) { $0[.bottom] }
+                        .alignmentGuide(.lineBottomAlignment) { $0[.bottom] }
                 } else {
                     itemView(Binding<Bool>(get: { appear }, set: { _ in }))
                 }

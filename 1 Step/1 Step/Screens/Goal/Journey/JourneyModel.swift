@@ -40,6 +40,21 @@ class JourneyModel: ObservableObject {
     var lastMilestone: Milestone { milestonesUI.last! }
     
     
+    //MARK: - Animation Handling
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     //MARK: - Step Preferences
     
     func updateStepPositions(_ preferences: StepPK.Value) {
@@ -140,14 +155,14 @@ extension VerticalAlignment {
         }
     }
     
-    enum LineLastMilestoneAlignment: AlignmentID {
+    enum LineBottomAlignment: AlignmentID {
         static func defaultValue(in d: ViewDimensions) -> CGFloat {
             return d[.bottom]
         }
     }
     
     static let milestoneAlignment = Self(MilestoneAlignment.self)
-    static let lineLastMilestoneAlignment = Self(LineLastMilestoneAlignment.self)
+    static let lineBottomAlignment = Self(LineBottomAlignment.self)
 }
 
 
