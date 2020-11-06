@@ -10,44 +10,22 @@ import SwiftUI
 struct MilestoneView: View {
     
     @StateObject private var goalModel = GoalModel.shared
+    @ObservedObject var journeyModel: JourneyModel
     @StateObject private var viewModel = MilestoneModel()
     
     
     var body: some View {
-        StepsMap(viewModel: viewModel)
-            .padding(.top, viewModel.milestone.image == .summit ? 150 : 100)
-            .padding(.bottom, 80)
-            .frame(maxWidth: .infinity)
-            .background(viewModel.goal.color.get(.dark))
-            .cornerRadius(20)
-            .padding(.horizontal, Layout.firstLayerPadding)
-            .padding(.bottom, 20)
-            .onChange(of: goalModel.selectedGoal.currentSteps) { _ in
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) { self.viewModel.updateStepsMap() }
-            }
-            .overlay(
-                ZStack(alignment: .init(horizontal: .currentCircleTextAlignment, vertical: .top)) {
-                    RoundedRectangle(cornerRadius: 5)
-                        .frame(width: 10)
-                        .frame(maxHeight: .infinity)
-                        .foregroundColor(.backgroundToGray)
-                    
-                    HStack(spacing: 16) {
-                        Circle()
-                            .frame(width: 50, height: 50)
-                            .foregroundColor(.backgroundToGray)
-                            .oneSShadow(opacity: 0.1, y: 3, blur: 0.15)
-                            .id(GoalModel.ScrollPosition.current)
-                            .alignmentGuide(.currentCircleTextAlignment) { $0[HorizontalAlignment.center] }
-
-                        OneSText(text: viewModel.goal.currentStepUnits.toUI(), font: .custom(weight: Raleway.extraBold, size: 48), color: .backgroundToGray)
-                    }
-                    .offset(y: -25)
-                }
-                .frame(width: Layout.firstLayerWidth, alignment: .init(horizontal: .currentCircleTextAlignment, vertical: .top))
-                .offset(y: 200)
-            )
-            .clipped()
+        ZStack {
+            StepsMap(viewModel: viewModel)
+                .padding(.top, viewModel.milestone.image == .summit ? 150 : 100)
+                .padding(.bottom, 80)
+                .frame(maxWidth: .infinity)
+                .background(viewModel.goal.color.get(.dark))
+                .cornerRadius(20)
+                .padding(.horizontal, Layout.firstLayerPadding)
+                .padding(.bottom, 20)
+                .onChange(of: goalModel.selectedGoal.currentSteps) { _ in viewModel.updateStepsMap() }
+        }
     }
     
     

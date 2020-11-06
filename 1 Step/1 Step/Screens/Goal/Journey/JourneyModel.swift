@@ -17,6 +17,8 @@ class JourneyModel: ObservableObject {
     
     @Published var stepPositions: [Int: CGPoint] = [:]
     
+    init() { updateLineHeight() }
+    
     var goal: Goal { GoalModel.shared.selectedGoal }
     
     var milestonesUI: [Milestone] {
@@ -82,7 +84,10 @@ class JourneyModel: ObservableObject {
     
     //MARK: - Layout
     
-    var lineHeight: CGFloat {
+    @Published var lineHeight: CGFloat = .zero
+    
+    
+    func updateLineHeight() {
         let currentStepPosition = stepPositions[Int(goal.currentSteps)]?.y ?? 0
         var lastMilestoneBottom = milestoneRects[lastMilestone.objectID]?.maxY ?? 0
         
@@ -90,7 +95,7 @@ class JourneyModel: ObservableObject {
             lastMilestoneBottom = .zero
         }
         
-        return abs(currentStepPosition-lastMilestoneBottom)
+        lineHeight = abs(currentStepPosition-lastMilestoneBottom)
     }
     
     
@@ -193,7 +198,7 @@ extension VerticalAlignment {
             return d[.bottom]
         }
     }
-    
+
     enum LineBottomAlignment: AlignmentID {
         static func defaultValue(in d: ViewDimensions) -> CGFloat {
             return d[.bottom]

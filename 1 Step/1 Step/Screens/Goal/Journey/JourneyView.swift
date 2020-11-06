@@ -17,14 +17,16 @@ struct JourneyView: View {
         ZStack(alignment: .init(horizontal: .center, vertical: .milestoneAlignment)) {
             if viewModel.currentMilestone != nil {
                 ChildSizeReader(size: $viewModel.milestoneViewSize) {
-                    MilestoneView()
+                    MilestoneView(journeyModel: viewModel)
                         .alignmentGuide(.milestoneAlignment) { $0[.top] }
                 }
                 .scaleEffect(viewModel.currentMilestoneAppear ? 1.0 : 0.9)
                 .opacity(viewModel.currentMilestoneAppear ? 1.0 : 0.0)
             }
             
-            ZStack(alignment: .init(horizontal: .center, vertical: .lineBottomAlignment)) {
+            ZStack(alignment: .init(horizontal: .currentCircleTextAlignment, vertical: .lineBottomAlignment)) {
+                JourneyProgressView(viewModel: viewModel)
+                
                 VStack(spacing: 60) {
                     MilestoneViewGroup(viewModel: viewModel, milestone: viewModel.summitMilestone) {
                         SummitMilestoneItem(appear: $0, milestone: viewModel.summitMilestone)
