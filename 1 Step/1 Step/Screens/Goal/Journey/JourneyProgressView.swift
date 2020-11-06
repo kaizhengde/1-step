@@ -10,28 +10,15 @@ import SwiftUI
 struct JourneyProgressView: View {
     
     @ObservedObject var viewModel: JourneyModel
-    
     @StateObject private var infiniteAnimationManager = InfiniteAnimationManager.shared
-    
-    var lineHeight: CGFloat {
-        let currentStepPosition = viewModel.stepPositions[Int(viewModel.goal.currentSteps)]?.y ?? 0
-        var lastMilestoneBottom = viewModel.milestoneRects[viewModel.lastMilestone.objectID]?.maxY ?? 0
-        
-        if currentStepPosition == .zero {
-            lastMilestoneBottom = .zero
-        }
-        
-        return abs(currentStepPosition-lastMilestoneBottom)
-    }
         
     
     var body: some View {
         ZStack(alignment: .init(horizontal: .currentCircleTextAlignment, vertical: .top)) {
             RoundedRectangle(cornerRadius: 5)
                 .frame(width: 10)
-                .frame(height: lineHeight)
+                .frame(height: viewModel.lineHeight)
                 .foregroundColor(.backgroundToGray)
-                .opacity(lineHeight == 0 ? 0.0 : 1.0)
                 .alignmentGuide(.lineBottomAlignment) { $0[.bottom] }
             
             HStack(spacing: 16) {

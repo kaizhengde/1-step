@@ -42,6 +42,35 @@ class JourneyModel: ObservableObject {
     
     //MARK: - Animation Handling
     
+    /*
+     ---Case distinction---
+     
+     ---Normal add
+     1. Move `progressView` to next current
+     1. Move to current (next current step) accordingly
+     1. Change `milestoneView` accordingly so that we have all invariants forfilled
+     
+     Note: MilestoneView's background height should *not* depend directly on the number of milestones - rather a calculated height indirectly as a background ZStack for example and aligned properly. Reason: Animation would be independent aswell!
+     
+     ---Milestone finish
+     1. Move `progressView` to reached milestone
+     1. Move to current (reached milestone) accordingly
+     1. Change current milestone state - from current to done
+     2. Close `milestoneView` of reached milestone
+     3. Open `milestoneView` of next milestone
+     4. Move `progressView` to next current
+     4. Move to current (next current step) accordingly
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     */
     
     
     
@@ -51,8 +80,18 @@ class JourneyModel: ObservableObject {
     
     
     
+    //MARK: - Layout
     
-    
+    var lineHeight: CGFloat {
+        let currentStepPosition = stepPositions[Int(goal.currentSteps)]?.y ?? 0
+        var lastMilestoneBottom = milestoneRects[lastMilestone.objectID]?.maxY ?? 0
+        
+        if currentStepPosition == .zero {
+            lastMilestoneBottom = .zero
+        }
+        
+        return abs(currentStepPosition-lastMilestoneBottom)
+    }
     
     
     //MARK: - Step Preferences

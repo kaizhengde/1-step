@@ -23,8 +23,31 @@ struct MilestoneView: View {
             .padding(.horizontal, Layout.firstLayerPadding)
             .padding(.bottom, 20)
             .onChange(of: goalModel.selectedGoal.currentSteps) { _ in
-                viewModel.updateStepsMap()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) { self.viewModel.updateStepsMap() }
             }
+            .overlay(
+                ZStack(alignment: .init(horizontal: .currentCircleTextAlignment, vertical: .top)) {
+                    RoundedRectangle(cornerRadius: 5)
+                        .frame(width: 10)
+                        .frame(maxHeight: .infinity)
+                        .foregroundColor(.backgroundToGray)
+                    
+                    HStack(spacing: 16) {
+                        Circle()
+                            .frame(width: 50, height: 50)
+                            .foregroundColor(.backgroundToGray)
+                            .oneSShadow(opacity: 0.1, y: 3, blur: 0.15)
+                            .id(GoalModel.ScrollPosition.current)
+                            .alignmentGuide(.currentCircleTextAlignment) { $0[HorizontalAlignment.center] }
+
+                        OneSText(text: viewModel.goal.currentStepUnits.toUI(), font: .custom(weight: Raleway.extraBold, size: 48), color: .backgroundToGray)
+                    }
+                    .offset(y: -25)
+                }
+                .frame(width: Layout.firstLayerWidth, alignment: .init(horizontal: .currentCircleTextAlignment, vertical: .top))
+                .offset(y: 200)
+            )
+            .clipped()
     }
     
     
@@ -43,6 +66,7 @@ struct MilestoneView: View {
                 ForEach(viewModel.stepsDic.sorted(by: >), id: \.key) { steps, stepUnits in
                     if steps > viewModel.goal.currentSteps && steps%(viewModel.goal.step.unit == .hours ? 6 : 5) == 0 {
                         StepTextMarkView(goal: viewModel.goal, stepUnitsNeeded: stepUnits.toUI())
+                            .background(JourneyModel.StepVS(steps: steps))
                     } else {
                         StepMarkView(goal: viewModel.goal)
                             .background(JourneyModel.StepVS(steps: steps))

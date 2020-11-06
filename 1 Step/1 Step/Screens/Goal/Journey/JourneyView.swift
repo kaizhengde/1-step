@@ -24,9 +24,7 @@ struct JourneyView: View {
                 .opacity(viewModel.currentMilestoneAppear ? 1.0 : 0.0)
             }
             
-            ZStack(alignment: .init(horizontal: .currentCircleTextAlignment, vertical: .lineBottomAlignment)) {
-                JourneyProgressView(viewModel: viewModel)
-                
+            ZStack(alignment: .init(horizontal: .center, vertical: .lineBottomAlignment)) {
                 VStack(spacing: 60) {
                     MilestoneViewGroup(viewModel: viewModel, milestone: viewModel.summitMilestone) {
                         SummitMilestoneItem(appear: $0, milestone: viewModel.summitMilestone)
