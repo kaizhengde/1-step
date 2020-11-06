@@ -16,9 +16,7 @@ class JourneyModel: ObservableObject {
     @Published var milestoneRects: [NSManagedObjectID: CGRect] = [:]
     
     @Published var stepPositions: [Int: CGPoint] = [:]
-    
-    init() { updateLineHeight() }
-    
+        
     var goal: Goal { GoalModel.shared.selectedGoal }
     
     var milestonesUI: [Milestone] {
@@ -41,6 +39,17 @@ class JourneyModel: ObservableObject {
     
     var lastMilestone: Milestone { milestonesUI.last! }
     
+    var prevMilestoneNeededSteps: Int { Int((currentMilestone?.neededSteps ?? 0)-(currentMilestone?.stepsFromPrev ?? 0)) }
+    
+    var constantMilestoneViewHeight: Bool {
+        print(prevMilestoneNeededSteps)
+        print(currentMilestone?.neededSteps ?? 0)
+        print("-----------")
+        
+        print(Int(goal.currentSteps) - prevMilestoneNeededSteps > 3 || (currentMilestone?.neededSteps ?? 0) - goal.currentSteps > 12)
+        
+        return Int(goal.currentSteps) - prevMilestoneNeededSteps > 3 || (currentMilestone?.neededSteps ?? 0) - goal.currentSteps > 12
+    }
     
     //MARK: - Animation Handling
     

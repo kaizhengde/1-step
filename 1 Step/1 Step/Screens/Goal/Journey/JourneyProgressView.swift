@@ -38,8 +38,9 @@ struct JourneyProgressView: View {
         .animation(InfiniteAnimationManager.slowAnimation)
         .onAppear { viewModel.updateLineHeight() }
         .onChange(of: goalModel.selectedGoal.currentSteps) { _ in
-            #warning("Idea: delay is even wrong. WE ONLY UPDATE, if the height stays constants!!!!!!! else there is no need to update the height since it stays at its position!!!")
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) { self.viewModel.updateLineHeight() }
+            if !viewModel.constantMilestoneViewHeight {
+                viewModel.updateLineHeight()
+            }
         }
     }
     
