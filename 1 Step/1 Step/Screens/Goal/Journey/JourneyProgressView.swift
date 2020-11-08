@@ -12,13 +12,12 @@ struct JourneyProgressView: View {
     @StateObject private var goalModel = GoalModel.shared
     @ObservedObject var viewModel: JourneyModel
     @StateObject private var infiniteAnimationManager = InfiniteAnimationManager.shared
-        
+    
     
     var body: some View {
         ZStack(alignment: .init(horizontal: .currentCircleTextAlignment, vertical: .top)) {
             RoundedRectangle(cornerRadius: 5)
-                .frame(width: 10)
-                .frame(height: viewModel.lineHeight)
+                .frame(width: 10, height: viewModel.lineHeight)
                 .foregroundColor(.backgroundToGray)
                 .alignmentGuide(.lineBottomAlignment) { $0[.bottom] }
             
@@ -36,32 +35,11 @@ struct JourneyProgressView: View {
             .offset(y: -25)
         }
         .animation(InfiniteAnimationManager.slowAnimation)
-        .onAppear { viewModel.updateLineHeight() }
-        .onChange(of: goalModel.selectedGoal.currentSteps) { _ in
-            if !viewModel.constantMilestoneViewHeight {
-                viewModel.updateLineHeight()
-            }
-        }
-    }
-    
-    
-    private struct Line: Shape {
-
-        var height: CGFloat
-
-        var animatableData: CGFloat {
-            get { height }
-            set { height = newValue }
-        }
-
-
-        func path(in rect: CGRect) -> Path {
-            var path = Path()
-
-            path.move(to: .zero)
-            path.addLine(to: CGPoint(x: .zero, y: height))
-
-            return path
-        }
+//        .onAppear { viewModel.updateLineHeight() }
+//        .onChange(of: goalModel.selectedGoal.currentSteps) { _ in
+//            if !viewModel.constantMilestoneViewHeight {
+//                viewModel.updateLineHeight()
+//            }
+//        }
     }
 }

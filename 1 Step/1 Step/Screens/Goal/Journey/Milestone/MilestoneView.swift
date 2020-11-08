@@ -10,22 +10,19 @@ import SwiftUI
 struct MilestoneView: View {
     
     @StateObject private var goalModel = GoalModel.shared
-    @ObservedObject var journeyModel: JourneyModel
     @StateObject private var viewModel = MilestoneModel()
     
     
     var body: some View {
-        ZStack {
-            StepsMap(viewModel: viewModel)
-                .padding(.top, viewModel.milestone.image == .summit ? 150 : 100)
-                .padding(.bottom, 80)
-                .frame(maxWidth: .infinity)
-                .background(viewModel.goal.color.get(.dark))
-                .cornerRadius(20)
-                .padding(.horizontal, Layout.firstLayerPadding)
-                .padding(.bottom, 20)
-                .onChange(of: goalModel.selectedGoal.currentSteps) { _ in viewModel.updateStepsMap() }
-        }
+        StepsMap(viewModel: viewModel)
+            .padding(.top, viewModel.milestone.image == .summit ? 150 : 100)
+            .padding(.bottom, 80)
+            .frame(maxWidth: .infinity)
+            .background(viewModel.goal.color.get(.dark))
+            .cornerRadius(20)
+            .padding(.horizontal, Layout.firstLayerPadding)
+            .padding(.bottom, 20)
+            .onChange(of: goalModel.selectedGoal.currentSteps) { _ in viewModel.updateStepsMap() }
     }
     
     

@@ -11,6 +11,7 @@ struct GoalScreen: View {
     
     @StateObject private var goalModel = GoalModel.shared
     @StateObject private var addStepModel = AddStepModel()
+    @GestureState private var dragOffset: CGFloat = .zero
     
     
     var body: some View {
@@ -19,7 +20,12 @@ struct GoalScreen: View {
                 GoalMenuView()
                 GoalView()
             }
-            .highPriorityGesture(goalModel.dragMenu)
+            .highPriorityGesture(
+                DragGesture()
+                    .updating($dragOffset) { goalModel.updating($0, &$1, $2) }
+                    .onEnded { goalModel.onEnded($0) }
+            )
+            .onChange(of: dragOffset) { goalModel.dragOffset = $0 }
             .onTapGesture { addStepModel.dragState = .hidden }
             
             AddStepView(viewModel: addStepModel)

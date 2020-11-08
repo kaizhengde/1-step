@@ -41,7 +41,7 @@ final class GoalSelectMountainModel: TransitionObservableObject {
     @Published var transition: TransitionManager<GoalSelectMountainModel> = TransitionManager()
 
     @Published var currentMountain: MountainImage = .mountain0
-    @Published private var dragOffset: CGSize = .zero
+    @Published var dragOffset: CGFloat = .zero
     @Published private var rects: [CGRect] = Array<CGRect>(repeating: .zero, count: MountainImage.allCases.count)
 
     @Published var selectedData: GoalSelectMountainData = (nil, .user0) {
@@ -83,14 +83,14 @@ final class GoalSelectMountainModel: TransitionObservableObject {
     
     
     func mountainItemOffsetX() -> CGFloat {
-        return dragOffset.width - Layout.screenWidth*CGFloat(currentMountain.rawValue)
+        return dragOffset - Layout.screenWidth*CGFloat(currentMountain.rawValue)
     }
     
     
     //Text
     
     func textAndButtonOpacity(_ mountain: MountainImage) -> Double {
-        return (transition.isFullAppeared && currentMountain == mountain && dragOffset.width == 0) ? 1.0 : 0.0
+        return (transition.isFullAppeared && currentMountain == mountain && dragOffset == 0) ? 1.0 : 0.0
     }
     
     
@@ -139,18 +139,13 @@ final class GoalSelectMountainModel: TransitionObservableObject {
     
     //MARK: - DragGesture
     
-    lazy private(set) var dragMountains = DragGesture(minimumDistance: 20)
-        .onChanged { [weak self] value in self?.onChanged(value) }
-        .onEnded { [weak self] value in self?.onEnded(value) }
-    
-    
-    private func onChanged(_ value: DragGesture.Value) {
+    func updating(_ value: DragGesture.Value, _ state: inout CGFloat, _ transaction: Transaction) {
         if illegalDrag() { return }
-        dragOffset = value.translation
+        state = value.translation.width
     }
     
     
-    private func onEnded(_ value: DragGesture.Value) {
+    func onEnded(_ value: DragGesture.Value) {
         if illegalDrag() {
             dragOffset = .zero
             return
@@ -167,12 +162,12 @@ final class GoalSelectMountainModel: TransitionObservableObject {
     
     
     private func goToNextMountain() {
-        if dragOffset.width < -50 { currentMountain.nextMountain() }
+        if dragOffset < -50 { currentMountain.nextMountain() }
     }
     
     
     private func goToPrevMountain() {
-        if dragOffset.width > 50 { currentMountain.prevMountain() }
+        if dragOffset > 50 { currentMountain.prevMountain() }
     }
     
     
@@ -182,12 +177,12 @@ final class GoalSelectMountainModel: TransitionObservableObject {
     
     
     private func illegalDragAtFirstMountain() -> Bool {
-        return currentMountain.isFirst() && dragOffset.width > 0
+        return currentMountain.isFirst() && dragOffset > 0
     }
     
     
     private func illegalDragAtLastMountain() -> Bool {
-        return currentMountain.isLast() && dragOffset.width < 0
+        return currentMountain.isLast() && dragOffset < 0
     }
     
     

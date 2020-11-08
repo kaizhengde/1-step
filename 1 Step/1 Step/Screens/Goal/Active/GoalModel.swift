@@ -171,19 +171,14 @@ final class GoalModel: TransitionObservableObject {
     
     //Gesture
     
-    lazy private(set) var dragMenu = DragGesture()
-        .onChanged { [weak self] value in self?.onChanged(value) }
-        .onEnded { [weak self] value in self?.onEnded(value) }
-    
-    
-    private func onChanged(_ value: DragGesture.Value) {
+    func updating(_ value: DragGesture.Value, _ state: inout CGFloat, _ transaction: Transaction) {
         if legalDrag(value) {
-            dragOffset = value.translation.width
+            state = value.translation.width
         }
     }
     
     
-    private func onEnded(_ value: DragGesture.Value) {
+    func onEnded(_ value: DragGesture.Value) {
         //If drag not legal - do nothing
         if !legalDrag(value) { return }
         

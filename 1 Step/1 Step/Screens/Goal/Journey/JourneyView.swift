@@ -17,7 +17,7 @@ struct JourneyView: View {
         ZStack(alignment: .init(horizontal: .center, vertical: .milestoneAlignment)) {
             if viewModel.currentMilestone != nil {
                 ChildSizeReader(size: $viewModel.milestoneViewSize) {
-                    MilestoneView(journeyModel: viewModel)
+                    MilestoneView()
                         .alignmentGuide(.milestoneAlignment) { $0[.top] }
                 }
                 .scaleEffect(viewModel.currentMilestoneAppear ? 1.0 : 0.9)

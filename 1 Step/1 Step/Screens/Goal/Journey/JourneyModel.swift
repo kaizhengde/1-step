@@ -16,7 +16,7 @@ class JourneyModel: ObservableObject {
     @Published var milestoneRects: [NSManagedObjectID: CGRect] = [:]
     
     @Published var stepPositions: [Int: CGPoint] = [:]
-        
+    
     var goal: Goal { GoalModel.shared.selectedGoal }
     
     var milestonesUI: [Milestone] {
@@ -51,6 +51,7 @@ class JourneyModel: ObservableObject {
         return Int(goal.currentSteps) - prevMilestoneNeededSteps > 3 || (currentMilestone?.neededSteps ?? 0) - goal.currentSteps > 12
     }
     
+    
     //MARK: - Animation Handling
     
     /*
@@ -71,24 +72,7 @@ class JourneyModel: ObservableObject {
      3. Open `milestoneView` of next milestone
      4. Move `progressView` to next current
      4. Move to current (next current step) accordingly
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
      */
-    
-    
-    
-    
-    
-    
-    
     
     
     //MARK: - Layout
@@ -106,12 +90,12 @@ class JourneyModel: ObservableObject {
     
     
     func updateLineHeight() {
-        let currentStepPosition = stepPositions[Int(goal.currentSteps)]?.y ?? 0
-        var lastMilestoneBottom = milestoneRects[lastMilestone.objectID]?.maxY ?? 0
-        
-        if currentStepPosition == .zero {
-            lastMilestoneBottom = .zero
-        }
+//        let currentStepPosition = stepPositions[Int(goal.currentSteps)]?.y ?? 0
+//        var lastMilestoneBottom = milestoneRects[lastMilestone.objectID]?.maxY ?? 0
+//
+//        if currentStepPosition == .zero {
+//            lastMilestoneBottom = .zero
+//        }
         
         //lineHeight = abs(currentStepPosition-lastMilestoneBottom)
     }

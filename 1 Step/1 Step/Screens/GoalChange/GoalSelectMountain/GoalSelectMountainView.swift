@@ -10,13 +10,19 @@ import SwiftUI
 struct GoalSelectMountainView: View {
     
     @ObservedObject var viewModel: GoalSelectMountainModel
+    @GestureState private var dragOffset: CGFloat = .zero
     
     
     var body: some View {
         HStack(spacing: 0) {
             ForEach(MountainImage.allCases, id: \.self) { mountain in
                 GoalSelectMountainItem(viewModel: viewModel, mountain: mountain)
-                    .highPriorityGesture(viewModel.dragMountains)
+                    .highPriorityGesture(
+                        DragGesture()
+                            .updating($dragOffset) { viewModel.updating($0, &$1, $2) }
+                            .onEnded { viewModel.onEnded($0) }
+                    )
+                    .onChange(of: dragOffset) { viewModel.dragOffset = $0 }
             }
             .frame(width: Layout.screenWidth, height: MountainLayout.height)
         }
