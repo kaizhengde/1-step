@@ -134,9 +134,18 @@ enum JourneyDataHandler {
     }
     
     
-    static func addStepsAndUpdate(with goal: Goal, _ stepUnits: Double, _ stepUnitsDual: Double) -> Goal.JourneyData {
+    enum AddStepsResult {
+        case failed
+        case normal
+        case milestoneChange
+        case goalDone
+    }
+    
+    
+    static func addStepsAndUpdate(with goal: Goal, _ stepUnits: Double, _ stepUnitsDual: Double) -> (data: Goal.JourneyData, result: AddStepsResult) {
         
         var journeyData: Goal.JourneyData = (0, 0, 0, .active, [])
+        var addStepsResult: AddStepsResult = .normal
         
         //1. Calculate StepUnits to be added
         
@@ -152,6 +161,7 @@ enum JourneyDataHandler {
         journeyData.currentPercent      = Int16((journeyData.currentStepUnits/Double(goal.neededStepUnits))*100)
         journeyData.currentState        = Int16(journeyData.currentStepUnits) >= goal.neededStepUnits ? .reached : .active
         
+        if journeyData.currentPercent >= 100 { addStepsResult = .goalDone }
         
         //3. Update Milestones
         
@@ -167,6 +177,7 @@ enum JourneyDataHandler {
                 milestones[i].state = .active
             }
             if currentStepUnits < milestone.neededStepUnits && currentStepUnits >= prevMilestone?.neededStepUnits ?? 0 {
+                if milestones[i].state != .current { addStepsResult = .milestoneChange }
                 milestones[i].state = .current
             }
             if currentStepUnits >= milestone.neededStepUnits {
@@ -176,7 +187,7 @@ enum JourneyDataHandler {
         }
         
         journeyData.milestones = Set(milestones)
-        
+
         print("-------------")
         print("Goal:        \(goal.name)")
         print("StepUnits:   \(journeyData.currentStepUnits)")
@@ -186,6 +197,6 @@ enum JourneyDataHandler {
         print("Milestones:  \(journeyData.milestones.map { "Needed Units: \($0.neededStepUnits), State: \($0.state.rawValue)" })")
         print("-------------")
         
-        return journeyData
+        return (journeyData, addStepsResult)
     }
 }

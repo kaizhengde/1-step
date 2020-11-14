@@ -113,13 +113,15 @@ final class DataManager {
     
     private func updateSteps(_ goal: Goal, _ oldUnit: StepUnit) -> Bool {
         goal.currentStepUnits *= oldUnit.translateMultiplier(to: goal.step.unit)
-        return addSteps(goal, stepUnits: 0, stepUnitsDual: 0)
+        return addSteps(goal, stepUnits: 0, stepUnitsDual: 0) != .failed
     }
     
     
-    func addSteps(_ goal: Goal, stepUnits: Double, stepUnitsDual: Double) -> Bool {
+    func addSteps(_ goal: Goal, stepUnits: Double, stepUnitsDual: Double) -> JourneyDataHandler.AddStepsResult {
         
-        let journeyData = JourneyDataHandler.addStepsAndUpdate(with: goal, stepUnits, stepUnitsDual)
+        let journeyDataAndResult = JourneyDataHandler.addStepsAndUpdate(with: goal, stepUnits, stepUnitsDual)
+        let journeyData = journeyDataAndResult.data
+        let addStepsResult = journeyDataAndResult.result
         
         goal.currentStepUnits   = journeyData.currentStepUnits
         goal.currentSteps       = journeyData.currentSteps
@@ -127,7 +129,7 @@ final class DataManager {
         goal.currentState       = journeyData.currentState
         goal.milestones         = journeyData.milestones
         
-        return persistenceManager.saveContext()
+        return persistenceManager.saveContext() ? addStepsResult : .failed
     }
     
     

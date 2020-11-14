@@ -53,11 +53,20 @@ class AddStepModel: ObservableObject {
             selectedStepDual = 0
         }
         
-        if DataModel.shared.addSteps(goal,
+        switch DataModel.shared.addSteps(goal,
              stepUnits: Double(stepAddArray.reversed()[selectedStepUnit])!,
              stepUnitsDual: Double(stepAddArrayDual.reversed()[selectedStepDual])!
         ) {
+        case .normal:
             dragState = .hidden
+            print("Normal")
+        case .milestoneChange:
+            dragState = .hidden
+            print("MilestoneChange")
+        case .goalDone:
+            dragState = .hidden
+            print("GoalDone")
+        case .failed: break
         }
     }
     

@@ -86,8 +86,7 @@ struct AddView: View {
             .onTapGesture {
                 viewModel.tryAddStepsAndHide()
                 goalModel.objectWillChange.send()
-                goalModel.didAddSteps.send()
-                //goalModel.setScrollPosition.send(.current)
+                goalModel.setScrollPosition.send(.current)
             }
         }
     }

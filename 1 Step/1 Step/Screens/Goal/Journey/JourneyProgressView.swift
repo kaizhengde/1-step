@@ -35,11 +35,13 @@ struct JourneyProgressView: View {
             .offset(y: -25)
         }
         .animation(InfiniteAnimationManager.slowAnimation)
-//        .onAppear { viewModel.updateLineHeight() }
+//        .onAppear { DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { self.viewModel.updateLineHeight() } }
 //        .onChange(of: goalModel.selectedGoal.currentSteps) { _ in
-//            if !viewModel.constantMilestoneViewHeight {
+//            if viewModel.milestoneViewHeightChange {
 //                viewModel.updateLineHeight()
+//                print(1)
 //            }
+//            print(0)
 //        }
     }
 }

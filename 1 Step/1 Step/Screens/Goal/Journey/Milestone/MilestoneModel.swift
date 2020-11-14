@@ -10,7 +10,7 @@ import SwiftUI
 class MilestoneModel: ObservableObject {
     
     var milestone: Milestone {
-        GoalModel.shared.selectedGoal.milestones.filter { $0.state == .current }.first!
+        GoalModel.shared.selectedGoal.milestones.filter { $0.state == .current }.first ?? Milestone(context: PersistenceManager.defaults.context)
     }
     var goal: Goal { milestone.parentGoal }
     

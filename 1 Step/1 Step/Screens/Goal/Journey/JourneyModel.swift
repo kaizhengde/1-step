@@ -41,14 +41,8 @@ class JourneyModel: ObservableObject {
     
     var prevMilestoneNeededSteps: Int { Int((currentMilestone?.neededSteps ?? 0)-(currentMilestone?.stepsFromPrev ?? 0)) }
     
-    var constantMilestoneViewHeight: Bool {
-        print(prevMilestoneNeededSteps)
-        print(currentMilestone?.neededSteps ?? 0)
-        print("-----------")
-        
-        print(Int(goal.currentSteps) - prevMilestoneNeededSteps > 3 || (currentMilestone?.neededSteps ?? 0) - goal.currentSteps > 12)
-        
-        return Int(goal.currentSteps) - prevMilestoneNeededSteps > 3 || (currentMilestone?.neededSteps ?? 0) - goal.currentSteps > 12
+    var milestoneViewHeightChange: Bool {
+        (Int(goal.currentSteps) - prevMilestoneNeededSteps) <= 3 || ((currentMilestone?.neededSteps ?? 0) - goal.currentSteps) <= 12
     }
     
     
@@ -77,28 +71,30 @@ class JourneyModel: ObservableObject {
     
     //MARK: - Layout
     
+//    @Published var lineHeight: CGFloat = .zero
+    
     var lineHeight: CGFloat {
         let currentStepPosition = stepPositions[Int(goal.currentSteps)]?.y ?? 0
         var lastMilestoneBottom = milestoneRects[lastMilestone.objectID]?.maxY ?? 0
-        
+
         if currentStepPosition == .zero {
             lastMilestoneBottom = .zero
         }
-        
+
         return abs(currentStepPosition-lastMilestoneBottom)
     }
     
     
-    func updateLineHeight() {
+//    func updateLineHeight() {
 //        let currentStepPosition = stepPositions[Int(goal.currentSteps)]?.y ?? 0
 //        var lastMilestoneBottom = milestoneRects[lastMilestone.objectID]?.maxY ?? 0
 //
 //        if currentStepPosition == .zero {
 //            lastMilestoneBottom = .zero
 //        }
-        
-        //lineHeight = abs(currentStepPosition-lastMilestoneBottom)
-    }
+//
+//        lineHeight = abs(currentStepPosition-lastMilestoneBottom)
+//    }
     
     
     //MARK: - Step Preferences
