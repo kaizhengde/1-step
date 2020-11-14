@@ -12,6 +12,7 @@ struct JourneyProgressView: View {
     @StateObject private var goalModel = GoalModel.shared
     @ObservedObject var viewModel: JourneyModel
     @StateObject private var infiniteAnimationManager = InfiniteAnimationManager.shared
+    @State private var timer: Timer? = nil
     
     
     var body: some View {
@@ -35,13 +36,17 @@ struct JourneyProgressView: View {
             .offset(y: -25)
         }
         .animation(InfiniteAnimationManager.slowAnimation)
-//        .onAppear { DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { self.viewModel.updateLineHeight() } }
-//        .onChange(of: goalModel.selectedGoal.currentSteps) { _ in
-//            if viewModel.milestoneViewHeightChange {
-//                viewModel.updateLineHeight()
-//                print(1)
-//            }
-//            print(0)
-//        }
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) { self.viewModel.updateLineHeight() }
+        }
+        .onChange(of: goalModel.selectedGoal.currentSteps) { _ in
+            if viewModel.milestoneViewHeightChange {
+//                timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { _ in
+//                    viewModel.updateLineHeight()
+//                    print(".")
+//                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) { /*timer?.invalidate()*/ viewModel.updateLineHeight() }
+            }
+        }
     }
 }

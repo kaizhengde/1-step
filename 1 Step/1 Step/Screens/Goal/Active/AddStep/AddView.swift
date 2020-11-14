@@ -84,9 +84,22 @@ struct AddView: View {
             .background(goalModel.selectedGoal.color.get(.dark))
             .offset(y: viewModel.dragState == .show ? 0 : -100)
             .onTapGesture {
-                viewModel.tryAddStepsAndHide()
+                switch viewModel.tryAddStepsAndHide() {
+                case .normal:
+                    goalModel.setScrollPosition.send(.current)
+                    break
+                case .milestoneChange:
+                    goalModel.showMilestoneView = false
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                        goalModel.showMilestoneView = true
+                        goalModel.setScrollPosition.send(.current)
+                    }
+                    break
+                case .goalDone: break
+                case .failed: return
+                }
+                viewModel.dragState = .hidden
                 goalModel.objectWillChange.send()
-                goalModel.setScrollPosition.send(.current)
             }
         }
     }

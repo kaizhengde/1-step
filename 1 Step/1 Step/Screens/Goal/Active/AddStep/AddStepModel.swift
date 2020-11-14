@@ -36,7 +36,7 @@ class AddStepModel: ObservableObject {
     
     //MARK: - Data
     
-    func tryAddStepsAndHide() {
+    func tryAddStepsAndHide() -> JourneyDataHandler.AddStepsResult {
         
         var stepAddArray        = goal.step.addArray
         var stepAddArrayDual    = goal.step.addArrayDual
@@ -53,21 +53,10 @@ class AddStepModel: ObservableObject {
             selectedStepDual = 0
         }
         
-        switch DataModel.shared.addSteps(goal,
+        return DataModel.shared.addSteps(goal,
              stepUnits: Double(stepAddArray.reversed()[selectedStepUnit])!,
              stepUnitsDual: Double(stepAddArrayDual.reversed()[selectedStepDual])!
-        ) {
-        case .normal:
-            dragState = .hidden
-            print("Normal")
-        case .milestoneChange:
-            dragState = .hidden
-            print("MilestoneChange")
-        case .goalDone:
-            dragState = .hidden
-            print("GoalDone")
-        case .failed: break
-        }
+        )
     }
     
     

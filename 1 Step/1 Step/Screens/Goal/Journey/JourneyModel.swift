@@ -71,9 +71,10 @@ class JourneyModel: ObservableObject {
     
     //MARK: - Layout
     
-//    @Published var lineHeight: CGFloat = .zero
+    @Published var lineHeight: CGFloat = .zero
     
-    var lineHeight: CGFloat {
+    
+    func updateLineHeight() {
         let currentStepPosition = stepPositions[Int(goal.currentSteps)]?.y ?? 0
         var lastMilestoneBottom = milestoneRects[lastMilestone.objectID]?.maxY ?? 0
 
@@ -81,20 +82,8 @@ class JourneyModel: ObservableObject {
             lastMilestoneBottom = .zero
         }
 
-        return abs(currentStepPosition-lastMilestoneBottom)
+        lineHeight = abs(currentStepPosition-lastMilestoneBottom)
     }
-    
-    
-//    func updateLineHeight() {
-//        let currentStepPosition = stepPositions[Int(goal.currentSteps)]?.y ?? 0
-//        var lastMilestoneBottom = milestoneRects[lastMilestone.objectID]?.maxY ?? 0
-//
-//        if currentStepPosition == .zero {
-//            lastMilestoneBottom = .zero
-//        }
-//
-//        lineHeight = abs(currentStepPosition-lastMilestoneBottom)
-//    }
     
     
     //MARK: - Step Preferences
