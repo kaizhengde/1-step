@@ -30,8 +30,8 @@ class MilestoneModel: ObservableObject {
         let stepsNeeded = Int(milestone.neededSteps)
         
         switch stepsNeeded-currentSteps {
-        case 0...3:         amount = 0
-        case 4...10:        amount = 1
+        case 0...2:         amount = 0
+        case 3...10:        amount = 1
         case 11...20:       amount = 2
         case 21...40:       amount = 3
         case 41...60:       amount = 4
@@ -57,11 +57,13 @@ class MilestoneModel: ObservableObject {
         
         switch currentSteps-prevStepsNeeded {
         case 0:             height = 0
-        case 1...5:         height = 50
-        case 6...20:        height = 80
-        case 21...50:       height = 120
-        case 51...100:      height = 170
-        case 101...200:     height = 230
+        case 1...3:         height = 50
+        case 4...10:        height = 80
+        case 11...20:       height = 120
+        case 21...50:       height = 170
+        case 51...100:      height = 230
+        case 101...150:     height = 300
+        case 151...200:     height = 380
         default: break
         }
         

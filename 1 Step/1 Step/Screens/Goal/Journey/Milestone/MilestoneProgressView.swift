@@ -21,14 +21,14 @@ struct MilestoneProgressView: View {
         ZStack(alignment: .init(horizontal: .center, vertical: .circleLineAlignment)) {
             RoundedRectangle(cornerRadius: 6, style: .continuous)
                 .frame(width: 12, height: show ? viewModel.lineHeight : 0)
-                .foregroundColor(.backgroundToGray)
+                .foregroundColor(.backgroundToDarkGray)
             
             VStack(spacing: 16) {
-                OneSText(text: viewModel.goal.currentStepUnits.toUI(), font: .custom(weight: Raleway.extraBold, size: 70), color: .backgroundToGray)
+                OneSText(text: viewModel.goal.currentStepUnits.toUI(), font: .custom(weight: Raleway.extraBold, size: 70), color: .backgroundToDarkGray)
                 
                 Circle()
                     .frame(width: 60, height: 60)
-                    .foregroundColor(.backgroundToGray)
+                    .foregroundColor(.backgroundToDarkGray)
                     .oneSShadow(opacity: 0.15, y: 0, blur: 0.2)
                     .scaleEffect(infiniteAnimationManager.slow.isOnBackward ? 1.2 : 1.0)
                     .alignmentGuide(.circleLineAlignment) { $0[VerticalAlignment.center] }

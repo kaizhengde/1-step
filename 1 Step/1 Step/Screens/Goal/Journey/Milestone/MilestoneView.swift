@@ -33,13 +33,30 @@ struct MilestoneView: View {
     private struct StepsMap: View {
         
         @ObservedObject var viewModel: MilestoneModel
+        @StateObject private var journeyAddStepsHandler = JourneyAddStepsHandler.shared
+        
+        @State private var animate = false
         
         
         var body: some View {
             VStack(spacing: 40) {
-                ForEach(0..<viewModel.markViewsAmount, id: \.self) { _ in
-                    StepMarkView(goal: viewModel.goal)
+                ForEach(0..<viewModel.markViewsAmount, id: \.self) { i in
+                    Group {
+                        if i == viewModel.markViewsAmount-1 {
+                            StepMarkView(goal: viewModel.goal)
+                                .offset(y: animate ? 76 : 0)
+                                .opacity(animate ? 0.0 : 1.0)
+                        } else {
+                            StepMarkView(goal: viewModel.goal)
+                                .offset(y: animate ? 76 : 0)
+                        }
+                    }
+                    .animation(animate ? .oneSAnimation() : nil)
                 }
+            }
+            .onReceive(journeyAddStepsHandler.normalAdd) {
+                animate = true
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) { animate = false }
             }
         }
     

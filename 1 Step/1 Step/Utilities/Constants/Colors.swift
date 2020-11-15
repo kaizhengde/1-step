@@ -18,6 +18,7 @@ extension Color {
     static let darkBackgroundToDarkGray = Color("DarkBackgroundToDarkGray")
     static let darkBackgroundToGray = Color("DarkBackgroundToGray")
     static let backgroundStatic = Color("BackgroundStatic")
+    static let backgroundToDarkGray = Color("BackgroundToDarkGray")
     
     static let opacityBackgroundDarker = Color("OpacityBackgroundDarker")
     static let opacityBlur = Color("OpacityBlur")

@@ -44,7 +44,7 @@ class AddStepModel: ObservableObject {
             JourneyAddStepsHandler.shared.startMilestoneChange()
             break
         case .normal:
-            GoalModel.shared.setScrollPosition.send(.current)
+            JourneyAddStepsHandler.shared.startNormalAdd()
             break
         }
         GoalModel.shared.objectWillChange.send()

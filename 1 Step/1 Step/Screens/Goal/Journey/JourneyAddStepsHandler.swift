@@ -27,12 +27,23 @@ class JourneyAddStepsHandler: ObservableObject {
         
         if currentMilestone.neededStepUnits <= goal.currentStepUnits + newStepUnits {
             return .milestoneChange
-        } else if prevMilestoneNeededStepUnits > goal.currentStepUnits + newStepUnits {
+        } else if prevMilestoneNeededStepUnits > goal.currentStepUnits + newStepUnits && goal.currentStepUnits > 0 {
             return .milestoneChange
         }
         
         return .normal
     }
+    
+    
+    //MARK: - Normal Add
+    
+    let normalAdd = ObjectWillChangePublisher()
+    
+    func startNormalAdd() {
+        normalAdd.send()
+        GoalModel.shared.setScrollPosition.send(.current)
+    }
+    
     
     
     //MARK: - MilestoneChange

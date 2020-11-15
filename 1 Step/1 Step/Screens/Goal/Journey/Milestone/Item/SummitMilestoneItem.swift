@@ -44,10 +44,10 @@ struct SummitMilestoneItem: View {
             VStack(spacing: 10) {
                 milestone.image.get()
                     .font(.system(size: 60, weight: .ultraLight))
-                    .foregroundColor(.backgroundStatic)
+                    .foregroundColor(.backgroundToGray)
                     .padding(.bottom, 30)
                 
-                OneSSecondaryHeaderText(text: "Summit", color: .backgroundStatic)
+                OneSSecondaryHeaderText(text: "Summit", color: .backgroundToGray)
                 
                 HStack {
                     Spacer()
@@ -60,7 +60,7 @@ struct SummitMilestoneItem: View {
                         .font(.custom(Raleway.regular, size: 14))
                     Spacer()
                 }
-                .foregroundColor(.backgroundStatic)
+                .foregroundColor(.backgroundToGray)
             }
             .padding(8)
             .frame(width: 170, height: 280)
