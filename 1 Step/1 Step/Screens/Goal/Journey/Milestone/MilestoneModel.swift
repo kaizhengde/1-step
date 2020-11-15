@@ -15,12 +15,52 @@ class MilestoneModel: ObservableObject {
     
     var goal: Goal { milestone.parentGoal }
     
-    var markViews: [Int] {
+    init() { updateMarkViewsAmount() }
+    
+    
+    //MARK: - layout
+    
+    @Published var markViewsAmount: Int = 0
+    
+    
+    func updateMarkViewsAmount() {
+        var amount = 0
         
+        let currentSteps = Int(goal.currentSteps)
+        let stepsNeeded = Int(milestone.neededSteps)
         
+        switch stepsNeeded-currentSteps {
+        case 0...3:     amount = 0
+        case 4...10:    amount = 1
+        case 11...30:   amount = 2
+        case 31...50:   amount = 3
+        case 51...100:  amount = 4
+        case 101...200: amount = 5
+        default: break
+        }
         
+        markViewsAmount = amount
+    }
+    
+    
+    var lineHeight: CGFloat {
+        var height: CGFloat = .zero
         
-        return []
+        let currentSteps = Int(goal.currentSteps)
+        
+        switch currentSteps {
+        case 0:             height = 0
+        case 1...5:         height = 50
+        case 6...20:        height = 80
+        case 21...50:       height = 120
+        case 51...100:      height = 170
+        case 101...200:     height = 230
+        case 201...500:     height = 300
+        case 501...1000:    height = 380
+        default: break
+        }
+        
+        return height
     }
     
     

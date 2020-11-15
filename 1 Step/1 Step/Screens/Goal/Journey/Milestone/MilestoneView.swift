@@ -25,6 +25,7 @@ struct MilestoneView: View {
         .cornerRadius(20)
         .padding(.horizontal, Layout.firstLayerPadding)
         .padding(.bottom, 20)
+        .onChange(of: goalModel.selectedGoal.currentSteps) { _ in viewModel.updateMarkViewsAmount() }
     }
     
     
@@ -35,7 +36,7 @@ struct MilestoneView: View {
         
         var body: some View {
             VStack(spacing: 40) {
-                ForEach(0..<2) { _ in
+                ForEach(0..<viewModel.markViewsAmount, id: \.self) { _ in
                     StepMarkView(goal: viewModel.goal)
                 }
             }

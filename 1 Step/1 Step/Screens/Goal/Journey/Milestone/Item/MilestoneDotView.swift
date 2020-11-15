@@ -23,8 +23,8 @@ struct MilestoneDotView: View {
                 Circle()
                     .frame(width: 15, height: 15)
                     .foregroundColor(goal.color.get(.dark))
-                    .scaleEffect(appear ? 1.0 : 0.9)
-                    .opacity(appear ? 1.0 : 0.0)
+                    //.scaleEffect(appear ? 1.0 : 0.9)
+                    //.opacity(appear ? 1.0 : 0.0)
             }
         }
         .onAppear {

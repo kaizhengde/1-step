@@ -54,7 +54,7 @@ struct JourneyView: View {
             }
             .scaleEffect(appear ? 1.0 : 0.9)
             .opacity(appear ? 1.0 : 0.0)
-            .onAppear { appear = true }
+            .onAppear { DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { appear = true } }
         }
     }
 }
