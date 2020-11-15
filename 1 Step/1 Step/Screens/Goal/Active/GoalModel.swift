@@ -36,7 +36,6 @@ final class GoalModel: TransitionObservableObject {
     let setScrollPosition = PassthroughSubject<ScrollPosition, Never>()
     
     @Published var showJourneyView: Bool = false
-    @Published var showMilestoneView: Bool = true 
     
     
     //MARK: - Transition

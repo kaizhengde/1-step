@@ -11,7 +11,7 @@ struct MilestoneView: View {
     
     @StateObject private var goalModel = GoalModel.shared
     @StateObject private var viewModel = MilestoneModel()
-    
+        
     
     var body: some View {
         VStack(spacing: 40) {
@@ -20,7 +20,7 @@ struct MilestoneView: View {
         }
         .padding(.top, viewModel.milestone.image == .summit ? 150 : 100)
         .padding(.bottom, 50)
-        .frame(maxWidth: .infinity)
+        .frame(maxWidth: .infinity, maxHeight: JourneyAnimationHandler.shared.milestoneChangeState == .closeFinished ? 0 : .infinity)
         .background(viewModel.goal.color.get(.dark))
         .cornerRadius(20)
         .padding(.horizontal, Layout.firstLayerPadding)

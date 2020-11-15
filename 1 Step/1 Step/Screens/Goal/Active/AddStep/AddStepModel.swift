@@ -36,6 +36,24 @@ class AddStepModel: ObservableObject {
     
     //MARK: - Data
     
+    func addButtonPressed() {
+        switch tryAddStepsAndHide() {
+        case .goalDone:
+            break
+        case .milestoneChange:
+            JourneyAnimationHandler.shared.startMilestoneChange()
+            break
+        case .normal:
+            GoalModel.shared.setScrollPosition.send(.current)
+            break
+        case .failed:
+            return
+        }
+        dragState = .hidden
+        GoalModel.shared.objectWillChange.send()
+    }
+    
+    
     func tryAddStepsAndHide() -> JourneyDataHandler.AddStepsResult {
         
         var stepAddArray        = goal.step.addArray
