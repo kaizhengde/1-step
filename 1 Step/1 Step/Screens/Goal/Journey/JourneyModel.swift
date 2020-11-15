@@ -25,8 +25,6 @@ class JourneyModel: ObservableObject {
         goal.milestones.filter { $0.image == .summit }.first!
     }
     
-    
-    
     var currentMilestone: Milestone {
         goal.milestones.filter { $0.state == .current }.first ?? Milestone(context: PersistenceManager.defaults.context)
     }
