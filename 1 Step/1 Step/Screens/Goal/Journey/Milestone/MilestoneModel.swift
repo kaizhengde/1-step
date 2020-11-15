@@ -136,12 +136,12 @@ class MilestoneModel: ObservableObject {
 
 extension VerticalAlignment {
     
-    enum MilestoneBottomAlignment: AlignmentID {
+    enum CurrentAlignment: AlignmentID {
         static func defaultValue(in d: ViewDimensions) -> CGFloat {
             return d[.top]
         }
     }
     
-    static let milestoneBottomAlignment = Self(MilestoneBottomAlignment.self)
+    static let currentAlignment = Self(CurrentAlignment.self)
 }
 

@@ -17,10 +17,11 @@ struct MilestoneProgressView: View {
     var body: some View {
         ZStack(alignment: .init(horizontal: .currentCircleTextAlignment, vertical: .top)) {
             RoundedRectangle(cornerRadius: 5)
-                .frame(width: 10, height: viewModel.lineHeight)
+                .frame(width: 10)
+                .frame(maxHeight: .infinity)
                 .foregroundColor(.backgroundToGray)
-                .alignmentGuide(.milestoneBottomAlignment) { $0[.bottom] }
-
+                .alignmentGuide(.currentAlignment) { $0[.top] }
+            
             HStack(spacing: 16) {
                 Circle()
                     .frame(width: 50, height: 50)
@@ -36,26 +37,5 @@ struct MilestoneProgressView: View {
         }
         .frame(alignment: .init(horizontal: .currentCircleTextAlignment, vertical: .top))
         .animation(InfiniteAnimationManager.slowAnimation)
-    }
-    
-    
-    private struct ProgressLine: Shape {
-        
-        var position: (start: CGPoint, end: CGPoint)
-        
-        var animatableData: (CGPoint, CGPoint) {
-            get { position }
-            set { position = newValue }
-        }
-        
-        
-        func path(in rect: CGRect) -> Path {
-            var path = Path()
-            
-            path.move(to: position.start)
-            path.addLine(to: position.end)
-            
-            return path
-        }
     }
 }
