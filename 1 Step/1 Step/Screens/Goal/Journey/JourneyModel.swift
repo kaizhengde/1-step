@@ -29,21 +29,20 @@ class JourneyModel: ObservableObject {
         goal.milestones.filter { $0.image == .summit }.first!
     }
     
-    var currentMilestone: Milestone? {
-        goal.milestones.filter { $0.state == .current }.first
+    var currentMilestone: Milestone {
+        goal.milestones.filter { $0.state == .current }.first ?? Milestone(context: PersistenceManager.defaults.context)
     }
     
     var currentMilestoneAppear: Bool {
-        return milestoneAppears[currentMilestone!.objectID] ?? false
+        return milestoneAppears[currentMilestone.objectID] ?? false
     }
     
     var lastMilestone: Milestone { milestonesUI.last! }
     
-    var prevMilestoneNeededSteps: Int { Int((currentMilestone?.neededSteps ?? 0)-(currentMilestone?.stepsFromPrev ?? 0)) }
+    var prevMilestoneNeededSteps: Int { Int((currentMilestone.neededSteps)-(currentMilestone.stepsFromPrev)) }
     
-    var milestoneViewHeightChange: Bool {
-        (Int(goal.currentSteps) - prevMilestoneNeededSteps) <= 3 || ((currentMilestone?.neededSteps ?? 0) - goal.currentSteps) <= 12
-    }
+    var milestoneViewHeightChangeTop: Bool { ((currentMilestone.neededSteps) - goal.currentSteps) <= 12 }
+    var milestoneViewHeightChangeBottom: Bool { (Int(goal.currentSteps) - prevMilestoneNeededSteps) <= 3 }
     
     
     //MARK: - Animation Handling
@@ -74,15 +73,21 @@ class JourneyModel: ObservableObject {
     @Published var lineHeight: CGFloat = .zero
     
     
-    func updateLineHeight() {
-        let currentStepPosition = stepPositions[Int(goal.currentSteps)]?.y ?? 0
+    func updateLineHeight(_ addResult: JourneyDataHandler.AddStepsResult) {
+        var currentPosition: CGFloat = .zero
         var lastMilestoneBottom = milestoneRects[lastMilestone.objectID]?.maxY ?? 0
+        
+        if addResult == .normal {
+            currentPosition = stepPositions[Int(goal.currentSteps)]?.y ?? 0
+        } else if addResult == .milestoneChange {
+            currentPosition = milestoneRects[currentMilestone.objectID]?.midY ?? 0
+        }
 
-        if currentStepPosition == .zero {
+        if currentPosition == .zero {
             lastMilestoneBottom = .zero
         }
 
-        lineHeight = abs(currentStepPosition-lastMilestoneBottom)
+        lineHeight = abs(currentPosition-lastMilestoneBottom)
     }
     
     

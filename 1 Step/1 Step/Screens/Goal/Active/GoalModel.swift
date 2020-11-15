@@ -241,10 +241,14 @@ final class GoalModel: TransitionObservableObject {
     }
     
     
-    private func toMenu() { dragState = .menu }
+    private func toMenu() {
+        dragState = .menu
+    }
     
     
-    private func backFromMenu() { dragState = .none }
+    private func backFromMenu() {
+        dragState = .none
+    }
     
     
     private func toGoals() {
@@ -262,7 +266,9 @@ final class GoalModel: TransitionObservableObject {
     func downArrowTapped() {
         if showJourneyView {
             setScrollPosition.send(.top)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { self.showJourneyView = false }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                self.showJourneyView = false
+            }
         } else {
             showJourneyView = true
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) { self.setScrollPosition.send(.current) }
@@ -276,7 +282,7 @@ final class GoalModel: TransitionObservableObject {
         scrollOffset = value
         if value >= 30 {
             showJourneyView = true
-        } else if value <= -27 {
+        } else if value <= 0 {
             showJourneyView = false
         }
     }

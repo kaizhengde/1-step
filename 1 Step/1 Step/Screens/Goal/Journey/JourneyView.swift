@@ -15,18 +15,16 @@ struct JourneyView: View {
     
     var body: some View {
         ZStack(alignment: .init(horizontal: .center, vertical: .milestoneAlignment)) {
-            if viewModel.currentMilestone != nil {
-                ChildSizeReader(size: $viewModel.milestoneViewSize) {
-                    Group {
-                        //if goalModel.showMilestoneView {
-                            MilestoneView()
-                                .alignmentGuide(.milestoneAlignment) { $0[.top] }
-                        //}
+            ChildSizeReader(size: $viewModel.milestoneViewSize) {
+                Group {
+                    if goalModel.showMilestoneView {
+                        MilestoneView()
+                            .alignmentGuide(.milestoneAlignment) { $0[.top] }
                     }
                 }
-                .scaleEffect(viewModel.currentMilestoneAppear ? 1.0 : 0.9)
-                .opacity(viewModel.currentMilestoneAppear ? 1.0 : 0.0)
             }
+            .scaleEffect(viewModel.currentMilestoneAppear ? 1.0 : 0.9)
+            .opacity(viewModel.currentMilestoneAppear ? 1.0 : 0.0)
             
             ZStack(alignment: .init(horizontal: .currentCircleTextAlignment, vertical: .lineBottomAlignment)) {
                 JourneyProgressView(viewModel: viewModel)

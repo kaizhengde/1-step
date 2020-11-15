@@ -37,15 +37,17 @@ struct JourneyProgressView: View {
         }
         .animation(InfiniteAnimationManager.slowAnimation)
         .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) { self.viewModel.updateLineHeight() }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) { self.viewModel.updateLineHeight(.normal) }
         }
         .onChange(of: goalModel.selectedGoal.currentSteps) { _ in
-            if viewModel.milestoneViewHeightChange {
-//                timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { _ in
-//                    viewModel.updateLineHeight()
-//                    print(".")
-//                }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) { /*timer?.invalidate()*/ viewModel.updateLineHeight() }
+            if !goalModel.showMilestoneView {
+                viewModel.updateLineHeight(.milestoneChange)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) { viewModel.updateLineHeight(.normal) }
+            } else if viewModel.milestoneViewHeightChangeTop {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) { viewModel.updateLineHeight(.normal) }
+            } else if viewModel.milestoneViewHeightChangeBottom {
+                timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { _ in viewModel.updateLineHeight(.normal) }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) { timer?.invalidate() }
             }
         }
     }
