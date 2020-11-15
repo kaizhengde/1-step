@@ -14,21 +14,17 @@ struct MilestoneView: View {
     
     
     var body: some View {
-        ZStack(alignment: .init(horizontal: .center, vertical: .milestoneBottomAlignment)) {
+        VStack(spacing: 40) {
             StepsMap(viewModel: viewModel)
-                .padding(.top, viewModel.milestone.image == .summit ? 150 : 100)
-                .padding(.bottom, 80)
-                .frame(maxWidth: .infinity)
-                .background(viewModel.goal.color.get(.dark))
-                .cornerRadius(20)
-                .padding(.horizontal, Layout.firstLayerPadding)
-                .padding(.bottom, 20)
-                .onChange(of: goalModel.selectedGoal.currentSteps) { _ in viewModel.updateStepsMap() }
-            
             MilestoneProgressView(viewModel: viewModel)
         }
-        .coordinateSpace(name: CoordinateSpace.milestoneView)
-        .onPreferenceChange(MilestoneModel.StepPK.self) { viewModel.updateStepPositions($0) }
+        .padding(.top, viewModel.milestone.image == .summit ? 150 : 100)
+        .padding(.bottom, 50)
+        .frame(maxWidth: .infinity)
+        .background(viewModel.goal.color.get(.dark))
+        .cornerRadius(20)
+        .padding(.horizontal, Layout.firstLayerPadding)
+        .padding(.bottom, 20)
     }
     
     
@@ -39,52 +35,12 @@ struct MilestoneView: View {
         
         var body: some View {
             VStack(spacing: 40) {
-                if viewModel.showLongMark {
-                    StepLongMarkView(goal: viewModel.goal)
-                        .padding(.bottom, 30)
+                ForEach(0..<2) { _ in
+                    StepMarkView(goal: viewModel.goal)
                 }
-                
-                ForEach(viewModel.stepsDic.sorted(by: >), id: \.key) { steps, stepUnits in
-                    if steps > viewModel.goal.currentSteps && steps%(viewModel.goal.step.unit == .hours ? 6 : 5) == 0 {
-                        StepTextMarkView(goal: viewModel.goal, stepUnitsNeeded: stepUnits.toUI())
-                            .background(MilestoneModel.StepVS(steps: steps))
-                    } else {
-                        StepMarkView(goal: viewModel.goal)
-                            .background(MilestoneModel.StepVS(steps: steps))
-                    }
-                }
-                
-                Color.clear
-                    .background(MilestoneModel.StepVS(steps: -1))
-                    .alignmentGuide(.milestoneBottomAlignment) { $0[VerticalAlignment.center] }
             }
         }
-        
-        
-        private struct StepTextMarkView: View {
-            
-            var goal: Goal
-            let stepUnitsNeeded: String
-            
-            
-            var body: some View {
-                OneSText(text: stepUnitsNeeded, font: .custom(weight: Raleway.extraBold, size: 45), color: goal.color.get(.light))
-            }
-        }
-        
-        
-        private struct StepLongMarkView: View {
-            
-            var goal: Goal
-            
-            
-            var body: some View {
-                RoundedRectangle(cornerRadius: 4)
-                    .frame(width: 8, height: 120)
-                    .foregroundColor(goal.color.get(.light))
-            }
-        }
-        
+    
         
         private struct StepMarkView: View {
             
@@ -92,8 +48,8 @@ struct MilestoneView: View {
             
             
             var body: some View {
-                RoundedRectangle(cornerRadius: 4)
-                    .frame(width: 8, height: 32)
+                RoundedRectangle(cornerRadius: 5, style: .continuous)
+                    .frame(width: 10, height: 36)
                     .foregroundColor(goal.color.get(.light))
             }
         }

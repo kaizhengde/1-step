@@ -15,26 +15,23 @@ struct MilestoneProgressView: View {
     
     
     var body: some View {
-        ZStack(alignment: .init(horizontal: .currentCircleTextAlignment, vertical: .top)) {
-            RoundedRectangle(cornerRadius: 5)
-                .frame(width: 10, height: viewModel.lineHeight)
+        ZStack(alignment: .init(horizontal: .center, vertical: .circleLineAlignment)) {
+            RoundedRectangle(cornerRadius: 6, style: .continuous)
+                .frame(width: 12, height: 150)
                 .foregroundColor(.backgroundToGray)
-                .alignmentGuide(.milestoneBottomAlignment) { $0[.bottom] }
             
-            HStack(spacing: 16) {
+            VStack(spacing: 16) {
+                OneSText(text: viewModel.goal.currentStepUnits.toUI(), font: .custom(weight: Raleway.extraBold, size: 70), color: .backgroundToGray)
+                
                 Circle()
-                    .frame(width: 50, height: 50)
+                    .frame(width: 60, height: 60)
                     .foregroundColor(.backgroundToGray)
-                    .oneSShadow(opacity: 0.1, y: 3, blur: 0.15)
+                    .oneSShadow(opacity: 0.15, y: 0, blur: 0.2)
                     .scaleEffect(infiniteAnimationManager.slow.isOnBackward ? 1.3 : 1.0)
                     .id(GoalModel.ScrollPosition.current)
-                    .alignmentGuide(.currentCircleTextAlignment) { $0[HorizontalAlignment.center] }
-
-                OneSText(text: viewModel.goal.currentStepUnits.toUI(), font: .custom(weight: Raleway.extraBold, size: 48), color: .backgroundToGray)
+                    .alignmentGuide(.circleLineAlignment) { $0[VerticalAlignment.center] }
+                    .animation(InfiniteAnimationManager.slowAnimation)
             }
-            .offset(y: -20)
         }
-        .frame(alignment: .init(horizontal: .currentCircleTextAlignment, vertical: .top))
-        .animation(InfiniteAnimationManager.slowAnimation)
     }
 }

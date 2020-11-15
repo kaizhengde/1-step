@@ -15,32 +15,29 @@ struct JourneyView: View {
     
     var body: some View {
         ZStack {
-            VStack(spacing: 60) {
+            LazyVStack(spacing: 60) {
                 MilestoneViewGroup(viewModel: viewModel, milestone: viewModel.summitMilestone) {
-                    SummitMilestoneItem(appear: $0, milestone: viewModel.summitMilestone)
+                    SummitMilestoneItem(milestone: viewModel.summitMilestone)
                 }
                 .padding(.bottom, 20)
                 
                 ForEach(viewModel.milestonesUI, id: \.self) { milestone in
                     MilestoneViewGroup(viewModel: viewModel, milestone: milestone) {
-                        MilestoneItem(appear: $0, milestone: milestone)
+                        MilestoneItem(milestone: milestone)
                     }
                 }
             }
         }
-        .coordinateSpace(name: CoordinateSpace.journey)
-        .onPreferenceChange(JourneyModel.MilestonePK.self) { viewModel.updateMilestonePositions($0) }
     }
     
     
     private struct MilestoneViewGroup<Content: View>: View {
         
         @ObservedObject var viewModel: JourneyModel
+        @State private var appear = false
         
         var milestone: Milestone
-        let itemView: (Binding<Bool>) -> Content
-        
-        var appear: Bool { viewModel.milestoneAppears[milestone.objectID] ?? false }
+        let itemView: () -> Content
         
         
         var body: some View {
@@ -49,15 +46,15 @@ struct JourneyView: View {
                     ZStack(alignment: .top) {
                         MilestoneView()
                             .padding(.top, viewModel.currentMilestone === viewModel.summitMilestone ? 200 : 100)
-                        itemView(Binding<Bool>(get: { appear }, set: { _ in }))
+                        itemView()
                     }
                 } else {
-                    itemView(Binding<Bool>(get: { appear }, set: { _ in }))
+                    itemView()
                 }
             }
-            .background(JourneyModel.MilestoneVS(milestone: milestone))
             .scaleEffect(appear ? 1.0 : 0.9)
             .opacity(appear ? 1.0 : 0.0)
+            .onAppear { appear = true }
         }
     }
 }
