@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MilestoneItem: View {
+    
+    @Binding var appear: Bool 
         
     var milestone: Milestone
     var goal: Goal { milestone.parentGoal }
@@ -24,7 +26,7 @@ struct MilestoneItem: View {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { tapAnimation = false }
                 }
             
-            MilestoneDotView(milestone: milestone, appearAfter: .milliseconds(400))
+            MilestoneDotView(milestoneAppear: $appear, milestone: milestone, appearAfter: .milliseconds(400))
         }
     }
     

@@ -15,29 +15,32 @@ struct JourneyView: View {
     
     var body: some View {
         ZStack {
-            LazyVStack(spacing: 60) {
+            VStack(spacing: 60) {
                 MilestoneViewGroup(viewModel: viewModel, milestone: viewModel.summitMilestone) {
-                    SummitMilestoneItem(milestone: viewModel.summitMilestone)
+                    SummitMilestoneItem(appear: $0, milestone: viewModel.summitMilestone)
                 }
                 .padding(.bottom, 20)
                 
                 ForEach(viewModel.milestonesUI, id: \.self) { milestone in
                     MilestoneViewGroup(viewModel: viewModel, milestone: milestone) {
-                        MilestoneItem(milestone: milestone)
+                        MilestoneItem(appear: $0, milestone: milestone)
                     }
                 }
             }
         }
+        .coordinateSpace(name: CoordinateSpace.journey)
+        .onPreferenceChange(JourneyModel.MilestonePK.self) { viewModel.updateMilestonePositions($0) }
     }
     
     
     private struct MilestoneViewGroup<Content: View>: View {
         
         @ObservedObject var viewModel: JourneyModel
-        @State private var appear = false
         
         var milestone: Milestone
-        let itemView: () -> Content
+        let itemView: (Binding<Bool>) -> Content
+        
+        var appear: Bool { viewModel.milestoneAppears[milestone.objectID] ?? false }
         
         
         var body: some View {
@@ -46,15 +49,17 @@ struct JourneyView: View {
                     ZStack(alignment: .top) {
                         MilestoneView()
                             .padding(.top, viewModel.currentMilestone === viewModel.summitMilestone ? 200 : 100)
-                        itemView()
+                            .id(GoalModel.ScrollPosition.current)
+                        
+                        itemView(Binding<Bool>(get: { appear }, set: { _ in }))
                     }
                 } else {
-                    itemView()
+                    itemView(Binding<Bool>(get: { appear }, set: { _ in }))
                 }
             }
+            .background(JourneyModel.MilestoneVS(milestone: milestone))
             .scaleEffect(appear ? 1.0 : 0.9)
             .opacity(appear ? 1.0 : 0.0)
-            .onAppear { DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { appear = true } }
         }
     }
 }

@@ -9,6 +9,8 @@ import SwiftUI
 
 struct SummitMilestoneItem: View {
         
+    @Binding var appear: Bool
+    
     var milestone: Milestone
     var goal: Goal { milestone.parentGoal }
     
@@ -25,8 +27,8 @@ struct SummitMilestoneItem: View {
                 }
             
             VStack(spacing: 20) {
-                MilestoneDotView(milestone: milestone, appearAfter: .milliseconds(400))
-                MilestoneDotView(milestone: milestone, appearAfter: .milliseconds(600))
+                MilestoneDotView(milestoneAppear: $appear, milestone: milestone, appearAfter: .milliseconds(400))
+                MilestoneDotView(milestoneAppear: $appear, milestone: milestone, appearAfter: .milliseconds(600))
             }
         }
     }

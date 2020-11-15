@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MilestoneDotView: View {
     
+    @Binding var milestoneAppear: Bool
     @State private var appear = false
     
     var milestone: Milestone
@@ -23,12 +24,12 @@ struct MilestoneDotView: View {
                 Circle()
                     .frame(width: 15, height: 15)
                     .foregroundColor(goal.color.get(.dark))
-                    //.scaleEffect(appear ? 1.0 : 0.9)
-                    //.opacity(appear ? 1.0 : 0.0)
+                    .scaleEffect(appear ? 1.0 : 0.9)
+                    .opacity(appear ? 1.0 : 0.0)
             }
         }
-        .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + appearAfter) { self.appear = true }
+        .onChange(of: milestoneAppear) {
+            if $0 { DispatchQueue.main.asyncAfter(deadline: .now() + appearAfter) { self.appear = true } }
         }
     }
 }

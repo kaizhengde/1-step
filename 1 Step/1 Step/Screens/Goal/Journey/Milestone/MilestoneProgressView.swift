@@ -27,8 +27,7 @@ struct MilestoneProgressView: View {
                     .frame(width: 60, height: 60)
                     .foregroundColor(.backgroundToGray)
                     .oneSShadow(opacity: 0.15, y: 0, blur: 0.2)
-                    .scaleEffect(infiniteAnimationManager.slow.isOnBackward ? 1.3 : 1.0)
-                    .id(GoalModel.ScrollPosition.current)
+                    .scaleEffect(infiniteAnimationManager.slow.isOnBackward ? 1.2 : 1.0)
                     .alignmentGuide(.circleLineAlignment) { $0[VerticalAlignment.center] }
                     .animation(InfiniteAnimationManager.slowAnimation)
             }
