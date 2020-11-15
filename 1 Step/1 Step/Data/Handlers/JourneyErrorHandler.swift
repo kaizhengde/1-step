@@ -15,12 +15,9 @@ enum JourneyErrorHandler {
     }
     
     
-    static func addHasErrors(with goal: Goal, _ stepUnits: Double, _ stepUnitsDual: Double) -> Bool {
+    static func addHasErrors(with goal: Goal, newStepUnits: Double) -> Bool {
         
-        var stepUnitsTotal = stepUnits
-        if goal.step.unit.isDual { stepUnitsTotal += stepUnitsDual/goal.step.unit.dualRatio }
-        
-        let newCurrentUnits = goal.currentStepUnits + stepUnitsTotal
+        let newCurrentUnits = goal.currentStepUnits + newStepUnits
         
         if newCurrentUnits < 0 {
             PopupManager.shared.showTextPopup(titleText: "Oh Deer", titleImage: Emoji.deer, bodyText: "You can't have negative steps.", backgroundColor: goal.color.get())

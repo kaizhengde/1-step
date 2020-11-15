@@ -41,20 +41,17 @@ class AddStepModel: ObservableObject {
         case .goalDone:
             break
         case .milestoneChange:
-            JourneyAnimationHandler.shared.startMilestoneChange()
+            JourneyAddStepsHandler.shared.startMilestoneChange()
             break
         case .normal:
             GoalModel.shared.setScrollPosition.send(.current)
             break
-        case .failed:
-            return
         }
-        dragState = .hidden
         GoalModel.shared.objectWillChange.send()
     }
     
     
-    func tryAddStepsAndHide() -> JourneyDataHandler.AddStepsResult {
+    func tryAddStepsAndHide() -> JourneyAddStepsHandler.AddStepsResult {
         
         var stepAddArray        = goal.step.addArray
         var stepAddArrayDual    = goal.step.addArrayDual
@@ -71,10 +68,23 @@ class AddStepModel: ObservableObject {
             selectedStepDual = 0
         }
         
-        return DataModel.shared.addSteps(goal,
-             stepUnits: Double(stepAddArray.reversed()[selectedStepUnit])!,
-             stepUnitsDual: Double(stepAddArrayDual.reversed()[selectedStepDual])!
-        )
+        let newStepUnits = calculateStepUnitsToBeAdded(Double(stepAddArray.reversed()[selectedStepUnit])!, Double(stepAddArrayDual.reversed()[selectedStepDual])!)
+        
+        let addStepsResult = JourneyAddStepsHandler.shared.getAddStepsResult(with: newStepUnits)
+        
+        if DataModel.shared.addSteps(goal, with: newStepUnits) {
+            dragState = .hidden
+        }
+        
+        return addStepsResult
+    }
+    
+    
+    func calculateStepUnitsToBeAdded(_ stepUnits: Double, _ stepUnitsDual: Double) -> Double {
+        var newStepUnits = stepUnits
+        if goal.step.unit.isDual { newStepUnits += stepUnitsDual/goal.step.unit.dualRatio }
+        
+        return newStepUnits
     }
     
     

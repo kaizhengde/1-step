@@ -30,12 +30,18 @@ class MilestoneModel: ObservableObject {
         let stepsNeeded = Int(milestone.neededSteps)
         
         switch stepsNeeded-currentSteps {
-        case 0...3:     amount = 0
-        case 4...10:    amount = 1
-        case 11...30:   amount = 2
-        case 31...50:   amount = 3
-        case 51...100:  amount = 4
-        case 101...200: amount = 5
+        case 0...3:         amount = 0
+        case 4...10:        amount = 1
+        case 11...20:       amount = 2
+        case 21...40:       amount = 3
+        case 41...60:       amount = 4
+        case 61...80:       amount = 5
+        case 81...100:      amount = 6
+        case 101...120:     amount = 7
+        case 121...140:     amount = 8
+        case 141...160:     amount = 9
+        case 161...180:     amount = 10
+        case 181...200:     amount = 11
         default: break
         }
         
@@ -47,16 +53,15 @@ class MilestoneModel: ObservableObject {
         var height: CGFloat = .zero
         
         let currentSteps = Int(goal.currentSteps)
+        let prevStepsNeeded = Int(milestone.neededSteps - milestone.stepsFromPrev)
         
-        switch currentSteps {
+        switch currentSteps-prevStepsNeeded {
         case 0:             height = 0
         case 1...5:         height = 50
         case 6...20:        height = 80
         case 21...50:       height = 120
         case 51...100:      height = 170
         case 101...200:     height = 230
-        case 201...500:     height = 300
-        case 501...1000:    height = 380
         default: break
         }
         

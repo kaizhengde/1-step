@@ -134,36 +134,20 @@ enum JourneyDataHandler {
     }
     
     
-    enum AddStepsResult {
-        case failed
-        case normal
-        case milestoneChange
-        case goalDone
-    }
-    
-    
-    static func addStepsAndUpdate(with goal: Goal, _ stepUnits: Double, _ stepUnitsDual: Double) -> (data: Goal.JourneyData, result: AddStepsResult) {
+    static func addStepsAndUpdate(with goal: Goal, newStepUnits: Double) -> Goal.JourneyData {
         
         var journeyData: Goal.JourneyData = (0, 0, 0, .active, [])
-        var addStepsResult: AddStepsResult = .normal
-        
-        //1. Calculate StepUnits to be added
-        
-        var stepUnitsTotal = stepUnits
-        
-        if goal.step.unit.isDual { stepUnitsTotal += stepUnitsDual/goal.step.unit.dualRatio }
         
         
-        //2. Update Currents
+        //1. Update Currents
         
-        journeyData.currentStepUnits    = goal.currentStepUnits + stepUnitsTotal
+        journeyData.currentStepUnits    = goal.currentStepUnits + newStepUnits
         journeyData.currentSteps        = Int16(journeyData.currentStepUnits*Double(goal.step.unitRatio))
         journeyData.currentPercent      = Int16((journeyData.currentStepUnits/Double(goal.neededStepUnits))*100)
         journeyData.currentState        = Int16(journeyData.currentStepUnits) >= goal.neededStepUnits ? .reached : .active
+
         
-        if journeyData.currentPercent >= 100 { addStepsResult = .goalDone }
-        
-        //3. Update Milestones
+        //2. Update Milestones
         
         let milestones = Array(goal.milestones.sorted { $0.neededStepUnits < $1.neededStepUnits })
         
@@ -177,7 +161,6 @@ enum JourneyDataHandler {
                 milestones[i].state = .active
             }
             if currentStepUnits < milestone.neededStepUnits && currentStepUnits >= prevMilestone?.neededStepUnits ?? 0 {
-                if milestones[i].state != .current { addStepsResult = .milestoneChange }
                 milestones[i].state = .current
             }
             if currentStepUnits >= milestone.neededStepUnits {
@@ -197,6 +180,6 @@ enum JourneyDataHandler {
         print("Milestones:  \(journeyData.milestones.map { "Needed Units: \($0.neededStepUnits), State: \($0.state.rawValue)" })")
         print("-------------")
         
-        return (journeyData, addStepsResult)
+        return journeyData
     }
 }

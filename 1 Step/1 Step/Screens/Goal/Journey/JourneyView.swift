@@ -49,7 +49,6 @@ struct JourneyView: View {
                     ZStack(alignment: .top) {
                         MilestoneView()
                             .padding(.top, viewModel.currentMilestone === viewModel.summitMilestone ? 200 : 100)
-                            .id(GoalModel.ScrollPosition.current)
                         
                         itemView(Binding<Bool>(get: { appear }, set: { _ in }))
                     }

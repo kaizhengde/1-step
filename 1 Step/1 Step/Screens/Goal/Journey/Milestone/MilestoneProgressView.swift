@@ -11,7 +11,7 @@ struct MilestoneProgressView: View {
     
     @StateObject private var goalModel = GoalModel.shared
     @ObservedObject var viewModel: MilestoneModel
-    @StateObject private var journeyAnimationHandler = JourneyAnimationHandler.shared
+    @StateObject private var journeyAddStepsHandler = JourneyAddStepsHandler.shared
     @StateObject private var infiniteAnimationManager = InfiniteAnimationManager.shared
     
     @State private var show: Bool = true
@@ -35,9 +35,10 @@ struct MilestoneProgressView: View {
                     .animation(InfiniteAnimationManager.slowAnimation)
                     .opacity(show ? 1.0 : 0.0)
                     .scaleEffect(show ? 1.0 : 0.9)
+                    .id(GoalModel.ScrollPosition.current)
             }
         }
-        .onChange(of: journeyAnimationHandler.milestoneChangeState) {
+        .onChange(of: journeyAddStepsHandler.milestoneChangeState) {
             if $0 == .closeFinished {
                 show = false
             } else if $0 == .openNewAndScrollToCurrent {

@@ -72,9 +72,9 @@ final class DataModel: ObservableObject {
     }
     
     
-    func addSteps(_ goal: Goal, stepUnits: Double, stepUnitsDual: Double) -> JourneyDataHandler.AddStepsResult {
-        guard !JourneyErrorHandler.addHasErrors(with: goal, stepUnits, stepUnitsDual) else { return .failed }
-        return dataManager.addSteps(goal, stepUnits: stepUnits, stepUnitsDual: stepUnitsDual)
+    func addSteps(_ goal: Goal, with newStepUnits: Double) -> Bool {
+        guard !JourneyErrorHandler.addHasErrors(with: goal, newStepUnits: newStepUnits) else { return false }
+        return dataManager.addSteps(goal, with: newStepUnits)
     }
     
     
