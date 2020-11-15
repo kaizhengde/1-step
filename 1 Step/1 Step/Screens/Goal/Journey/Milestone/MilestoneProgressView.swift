@@ -17,10 +17,9 @@ struct MilestoneProgressView: View {
     var body: some View {
         ZStack(alignment: .init(horizontal: .currentCircleTextAlignment, vertical: .top)) {
             RoundedRectangle(cornerRadius: 5)
-                .frame(width: 10)
-                .frame(maxHeight: .infinity)
+                .frame(width: 10, height: viewModel.lineHeight)
                 .foregroundColor(.backgroundToGray)
-                .alignmentGuide(.currentAlignment) { $0[.top] }
+                .alignmentGuide(.milestoneBottomAlignment) { $0[.bottom] }
             
             HStack(spacing: 16) {
                 Circle()

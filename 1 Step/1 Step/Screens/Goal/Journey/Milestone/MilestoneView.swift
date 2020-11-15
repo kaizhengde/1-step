@@ -14,7 +14,7 @@ struct MilestoneView: View {
     
     
     var body: some View {
-        ZStack(alignment: .init(horizontal: .center, vertical: .currentAlignment)) {
+        ZStack(alignment: .init(horizontal: .center, vertical: .milestoneBottomAlignment)) {
             StepsMap(viewModel: viewModel)
                 .padding(.top, viewModel.milestone.image == .summit ? 150 : 100)
                 .padding(.bottom, 80)
@@ -46,28 +46,17 @@ struct MilestoneView: View {
                 
                 ForEach(viewModel.stepsDic.sorted(by: >), id: \.key) { steps, stepUnits in
                     if steps > viewModel.goal.currentSteps && steps%(viewModel.goal.step.unit == .hours ? 6 : 5) == 0 {
-                        if viewModel.goal.currentSteps == steps {
-                            StepTextMarkView(goal: viewModel.goal, stepUnitsNeeded: stepUnits.toUI())
-                                .background(MilestoneModel.StepVS(steps: steps))
-                                .alignmentGuide(.currentAlignment) { $0[VerticalAlignment.center] }
-                        } else {
-                            StepTextMarkView(goal: viewModel.goal, stepUnitsNeeded: stepUnits.toUI())
-                                .background(MilestoneModel.StepVS(steps: steps))
-                        }
+                        StepTextMarkView(goal: viewModel.goal, stepUnitsNeeded: stepUnits.toUI())
+                            .background(MilestoneModel.StepVS(steps: steps))
                     } else {
-                        if viewModel.goal.currentSteps == steps {
-                            StepMarkView(goal: viewModel.goal)
-                                .background(MilestoneModel.StepVS(steps: steps))
-                                .alignmentGuide(.currentAlignment) { $0[VerticalAlignment.center] }
-                        } else {
-                            StepMarkView(goal: viewModel.goal)
-                                .background(MilestoneModel.StepVS(steps: steps))
-                        }
+                        StepMarkView(goal: viewModel.goal)
+                            .background(MilestoneModel.StepVS(steps: steps))
                     }
                 }
                 
                 Color.clear
                     .background(MilestoneModel.StepVS(steps: -1))
+                    .alignmentGuide(.milestoneBottomAlignment) { $0[VerticalAlignment.center] }
             }
         }
         
