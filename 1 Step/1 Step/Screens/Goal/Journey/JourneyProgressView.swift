@@ -18,9 +18,12 @@ struct JourneyProgressView: View {
     var body: some View {
         ZStack(alignment: .init(horizontal: .currentCircleTextAlignment, vertical: .top)) {
             RoundedRectangle(cornerRadius: 5)
-                .frame(width: 10, height: viewModel.lineHeight)
+                .frame(width: 10)
+                .frame(maxHeight: .infinity)
+                .animation(InfiniteAnimationManager.slowAnimation)
                 .foregroundColor(.backgroundToGray)
-                .alignmentGuide(.lineBottomAlignment) { $0[.bottom] }
+                .alignmentGuide(.currentAlignment) { $0[.top] }
+                .animation(InfiniteAnimationManager.slowAnimation)
             
             HStack(spacing: 16) {
                 Circle()
@@ -36,19 +39,5 @@ struct JourneyProgressView: View {
             .offset(y: -25)
         }
         .animation(InfiniteAnimationManager.slowAnimation)
-        .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) { self.viewModel.updateLineHeight(.normal) }
-        }
-        .onChange(of: goalModel.selectedGoal.currentSteps) { _ in
-            if !goalModel.showMilestoneView {
-                viewModel.updateLineHeight(.milestoneChange)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) { viewModel.updateLineHeight(.normal) }
-            } else if viewModel.milestoneViewHeightChangeTop {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) { viewModel.updateLineHeight(.normal) }
-            } else if viewModel.milestoneViewHeightChangeBottom {
-                timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { _ in viewModel.updateLineHeight(.normal) }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) { timer?.invalidate() }
-            }
-        }
     }
 }

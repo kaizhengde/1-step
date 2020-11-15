@@ -40,11 +40,19 @@ struct MilestoneView: View {
                 
                 ForEach(viewModel.stepsDic.sorted(by: >), id: \.key) { steps, stepUnits in
                     if steps > viewModel.goal.currentSteps && steps%(viewModel.goal.step.unit == .hours ? 6 : 5) == 0 {
-                        StepTextMarkView(goal: viewModel.goal, stepUnitsNeeded: stepUnits.toUI())
-                            .background(JourneyModel.StepVS(steps: steps))
+                        if steps == viewModel.goal.currentSteps {
+                            StepTextMarkView(goal: viewModel.goal, stepUnitsNeeded: stepUnits.toUI())
+                                .alignmentGuide(.currentAlignment) { $0[.center] }
+                        } else {
+                            StepTextMarkView(goal: viewModel.goal, stepUnitsNeeded: stepUnits.toUI())
+                        }
                     } else {
-                        StepMarkView(goal: viewModel.goal)
-                            .background(JourneyModel.StepVS(steps: steps))
+                        if steps == viewModel.goal.currentSteps {
+                            StepMarkView(goal: viewModel.goal)
+                                .alignmentGuide(.currentAlignment) { $0[.center] }
+                        } else {
+                            StepMarkView(goal: viewModel.goal)
+                        }
                     }
                 }
             }

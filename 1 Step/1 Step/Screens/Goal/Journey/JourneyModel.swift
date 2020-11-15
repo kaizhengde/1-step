@@ -14,9 +14,7 @@ class JourneyModel: ObservableObject {
 
     @Published var milestoneAppears: [NSManagedObjectID: Bool] = [:]
     @Published var milestoneRects: [NSManagedObjectID: CGRect] = [:]
-    
-    @Published var stepPositions: [Int: CGPoint] = [:]
-    
+        
     var goal: Goal { GoalModel.shared.selectedGoal }
     
     var milestonesUI: [Milestone] {
@@ -33,107 +31,19 @@ class JourneyModel: ObservableObject {
         goal.milestones.filter { $0.state == .current }.first ?? Milestone(context: PersistenceManager.defaults.context)
     }
     
+    var lastMilestone: Milestone {
+        milestonesUI.last!
+    }
+    
     var currentMilestoneAppear: Bool {
         return milestoneAppears[currentMilestone.objectID] ?? false
     }
-    
-    var lastMilestone: Milestone { milestonesUI.last! }
-    
+        
     var prevMilestoneNeededSteps: Int { Int((currentMilestone.neededSteps)-(currentMilestone.stepsFromPrev)) }
     
     var milestoneViewHeightChangeTop: Bool { ((currentMilestone.neededSteps) - goal.currentSteps) <= 12 }
     var milestoneViewHeightChangeBottom: Bool { (Int(goal.currentSteps) - prevMilestoneNeededSteps) <= 3 }
-    
-    
-    //MARK: - Animation Handling
-    
-    /*
-     ---Case distinction---
-     
-     ---Normal add
-     1. Move `progressView` to next current
-     1. Move to current (next current step) accordingly
-     1. Change `milestoneView` accordingly so that we have all invariants forfilled
-     
-     Note: MilestoneView's background height should *not* depend directly on the number of milestones - rather a calculated height indirectly as a background ZStack for example and aligned properly. Reason: Animation would be independent aswell!
-     
-     ---Milestone finish
-     1. Move `progressView` to reached milestone
-     1. Move to current (reached milestone) accordingly
-     1. Change current milestone state - from current to done
-     2. Close `milestoneView` of reached milestone
-     3. Open `milestoneView` of next milestone
-     4. Move `progressView` to next current
-     4. Move to current (next current step) accordingly
-     */
-    
-    
-    //MARK: - Layout
-    
-    @Published var lineHeight: CGFloat = .zero
-    
-    
-    func updateLineHeight(_ addResult: JourneyDataHandler.AddStepsResult) {
-        var currentPosition: CGFloat = .zero
-        var lastMilestoneBottom = milestoneRects[lastMilestone.objectID]?.maxY ?? 0
-        
-        if addResult == .normal {
-            currentPosition = stepPositions[Int(goal.currentSteps)]?.y ?? 0
-        } else if addResult == .milestoneChange {
-            currentPosition = milestoneRects[currentMilestone.objectID]?.midY ?? 0
-        }
 
-        if currentPosition == .zero {
-            lastMilestoneBottom = .zero
-        }
-
-        lineHeight = abs(currentPosition-lastMilestoneBottom)
-    }
-    
-    
-    //MARK: - Step Preferences
-    
-    func updateStepPositions(_ preferences: StepPK.Value) {
-        for p in preferences {
-            stepPositions[p.steps] = p.position
-        }
-    }
-    
-    
-    struct StepVS: View {
-        
-        let steps: Int
-        
-        
-        var body: some View {
-            GeometryReader { proxy in
-                Rectangle()
-                    .fill(Color.clear)
-                    .preference(key: StepPK.self, value: [StepPD(steps: steps, position: proxy.frame(in: .journey).origin)])
-            }
-        }
-    }
-    
-    
-    struct StepPK: PreferenceKey {
-        
-        typealias Value = [StepPD]
-        
-        static var defaultValue: [StepPD] = []
-        
-        
-        static func reduce(value: inout [StepPD], nextValue: () -> [StepPD]) {
-            value.append(contentsOf: nextValue())
-        }
-    }
-    
-    
-    struct StepPD: Equatable {
-        
-        var steps: Int
-        var position: CGPoint
-    }
-    
     
     //MARK: - Milestone Preferences
     
@@ -191,14 +101,14 @@ extension VerticalAlignment {
         }
     }
 
-    enum LineBottomAlignment: AlignmentID {
+    enum CurrentAlignment: AlignmentID {
         static func defaultValue(in d: ViewDimensions) -> CGFloat {
             return d[.bottom]
         }
     }
     
     static let milestoneAlignment = Self(MilestoneAlignment.self)
-    static let lineBottomAlignment = Self(LineBottomAlignment.self)
+    static let currentAlignment = Self(CurrentAlignment.self)
 }
 
 

@@ -15,37 +15,36 @@ struct JourneyView: View {
     
     var body: some View {
         ZStack(alignment: .init(horizontal: .center, vertical: .milestoneAlignment)) {
-            ChildSizeReader(size: $viewModel.milestoneViewSize) {
-                Group {
-                    if goalModel.showMilestoneView {
-                        MilestoneView()
-                            .alignmentGuide(.milestoneAlignment) { $0[.top] }
+            ZStack(alignment: .init(horizontal: .currentCircleTextAlignment, vertical: .currentAlignment)) {
+                ChildSizeReader(size: $viewModel.milestoneViewSize) {
+                    Group {
+                        if goalModel.showMilestoneView {
+                            MilestoneView()
+                                .alignmentGuide(.milestoneAlignment) { $0[.top] }
+                        }
                     }
                 }
-            }
-            .scaleEffect(viewModel.currentMilestoneAppear ? 1.0 : 0.9)
-            .opacity(viewModel.currentMilestoneAppear ? 1.0 : 0.0)
-            
-            ZStack(alignment: .init(horizontal: .currentCircleTextAlignment, vertical: .lineBottomAlignment)) {
-                JourneyProgressView(viewModel: viewModel)
+                .scaleEffect(viewModel.currentMilestoneAppear ? 1.0 : 0.9)
+                .opacity(viewModel.currentMilestoneAppear ? 1.0 : 0.0)
                 
-                VStack(spacing: 60) {
-                    MilestoneViewGroup(viewModel: viewModel, milestone: viewModel.summitMilestone) {
-                        SummitMilestoneItem(appear: $0, milestone: viewModel.summitMilestone)
-                    }
-                    .padding(.bottom, 20)
-                    
-                    ForEach(viewModel.milestonesUI, id: \.self) { milestone in
-                        MilestoneViewGroup(viewModel: viewModel, milestone: milestone) {
-                            MilestoneItem(appear: $0, milestone: milestone)
-                        }
+                JourneyProgressView(viewModel: viewModel)
+            }
+                 
+            VStack(spacing: 60) {
+                MilestoneViewGroup(viewModel: viewModel, milestone: viewModel.summitMilestone) {
+                    SummitMilestoneItem(appear: $0, milestone: viewModel.summitMilestone)
+                }
+                .padding(.bottom, 20)
+                
+                ForEach(viewModel.milestonesUI, id: \.self) { milestone in
+                    MilestoneViewGroup(viewModel: viewModel, milestone: milestone) {
+                        MilestoneItem(appear: $0, milestone: milestone)
                     }
                 }
             }
         }
         .coordinateSpace(name: CoordinateSpace.journey)
         .onPreferenceChange(JourneyModel.MilestonePK.self) { viewModel.updateMilestonePositions($0) }
-        .onPreferenceChange(JourneyModel.StepPK.self) { viewModel.updateStepPositions($0) }
     }
     
     
@@ -65,9 +64,6 @@ struct JourneyView: View {
                     itemView(Binding<Bool>(get: { appear }, set: { _ in }))
                         .alignmentGuide(.milestoneAlignment) { $0[VerticalAlignment.center] }
                         .padding(.bottom, viewModel.milestoneViewSize.height-50)
-                } else if milestone === viewModel.lastMilestone {
-                    itemView(Binding<Bool>(get: { appear }, set: { _ in }))
-                        .alignmentGuide(.lineBottomAlignment) { $0[.bottom] }
                 } else {
                     itemView(Binding<Bool>(get: { appear }, set: { _ in }))
                 }
