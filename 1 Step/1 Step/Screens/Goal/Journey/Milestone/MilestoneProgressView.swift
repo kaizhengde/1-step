@@ -7,24 +7,20 @@
 
 import SwiftUI
 
-struct JourneyProgressView: View {
+struct MilestoneProgressView: View {
     
     @StateObject private var goalModel = GoalModel.shared
-    @ObservedObject var viewModel: JourneyModel
+    @ObservedObject var viewModel: MilestoneModel
     @StateObject private var infiniteAnimationManager = InfiniteAnimationManager.shared
-    @State private var timer: Timer? = nil
     
     
     var body: some View {
         ZStack(alignment: .init(horizontal: .currentCircleTextAlignment, vertical: .top)) {
             RoundedRectangle(cornerRadius: 5)
-                .frame(width: 10)
-                .frame(maxHeight: .infinity)
-                .animation(InfiniteAnimationManager.slowAnimation)
+                .frame(width: 10, height: viewModel.lineHeight)
                 .foregroundColor(.backgroundToGray)
-                .alignmentGuide(.currentAlignment) { $0[.top] }
-                .animation(InfiniteAnimationManager.slowAnimation)
-            
+                .alignmentGuide(.milestoneBottomAlignment) { $0[.bottom] }
+
             HStack(spacing: 16) {
                 Circle()
                     .frame(width: 50, height: 50)
@@ -36,8 +32,30 @@ struct JourneyProgressView: View {
 
                 OneSText(text: viewModel.goal.currentStepUnits.toUI(), font: .custom(weight: Raleway.extraBold, size: 48), color: .backgroundToGray)
             }
-            .offset(y: -25)
+            .offset(y: -20)
         }
+        .frame(alignment: .init(horizontal: .currentCircleTextAlignment, vertical: .top))
         .animation(InfiniteAnimationManager.slowAnimation)
+    }
+    
+    
+    private struct ProgressLine: Shape {
+        
+        var position: (start: CGPoint, end: CGPoint)
+        
+        var animatableData: (CGPoint, CGPoint) {
+            get { position }
+            set { position = newValue }
+        }
+        
+        
+        func path(in rect: CGRect) -> Path {
+            var path = Path()
+            
+            path.move(to: position.start)
+            path.addLine(to: position.end)
+            
+            return path
+        }
     }
 }

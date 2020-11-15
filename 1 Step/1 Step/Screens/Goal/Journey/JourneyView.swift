@@ -14,23 +14,8 @@ struct JourneyView: View {
     
     
     var body: some View {
-        ZStack(alignment: .init(horizontal: .center, vertical: .milestoneAlignment)) {
-            ZStack(alignment: .init(horizontal: .currentCircleTextAlignment, vertical: .currentAlignment)) {
-                ChildSizeReader(size: $viewModel.milestoneViewSize) {
-                    Group {
-                        if goalModel.showMilestoneView {
-                            MilestoneView()
-                                .alignmentGuide(.milestoneAlignment) { $0[.top] }
-                        }
-                    }
-                }
-                .scaleEffect(viewModel.currentMilestoneAppear ? 1.0 : 0.9)
-                .opacity(viewModel.currentMilestoneAppear ? 1.0 : 0.0)
-                
-                JourneyProgressView(viewModel: viewModel)
-            }
-                 
-            VStack(spacing: 60) {
+        ZStack {
+            LazyVStack(spacing: 60) {
                 MilestoneViewGroup(viewModel: viewModel, milestone: viewModel.summitMilestone) {
                     SummitMilestoneItem(appear: $0, milestone: viewModel.summitMilestone)
                 }
@@ -43,8 +28,6 @@ struct JourneyView: View {
                 }
             }
         }
-        .coordinateSpace(name: CoordinateSpace.journey)
-        .onPreferenceChange(JourneyModel.MilestonePK.self) { viewModel.updateMilestonePositions($0) }
     }
     
     
@@ -55,20 +38,22 @@ struct JourneyView: View {
         var milestone: Milestone
         let itemView: (Binding<Bool>) -> Content
         
-        var appear: Bool { viewModel.milestoneAppears[milestone.objectID] ?? false }
+        @State private var appear = false
         
         
         var body: some View {
             ZStack {
                 if milestone.state == .current {
-                    itemView(Binding<Bool>(get: { appear }, set: { _ in }))
-                        .alignmentGuide(.milestoneAlignment) { $0[VerticalAlignment.center] }
-                        .padding(.bottom, viewModel.milestoneViewSize.height-50)
+                    ZStack(alignment: .top) {
+                        MilestoneView()
+                            .padding(.top, viewModel.currentMilestone === viewModel.summitMilestone ? 200 : 100)
+                        itemView(Binding<Bool>(get: { appear }, set: { _ in }))
+                    }
                 } else {
                     itemView(Binding<Bool>(get: { appear }, set: { _ in }))
                 }
             }
-            .background(JourneyModel.MilestoneVS(milestone: milestone))
+            .onAppear { appear = true }
             .scaleEffect(appear ? 1.0 : 0.9)
             .opacity(appear ? 1.0 : 0.0)
         }

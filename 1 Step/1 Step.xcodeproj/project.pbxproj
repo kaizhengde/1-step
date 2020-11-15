@@ -29,7 +29,7 @@
 		3D2E7972253033B400788AA2 /* OneSTextPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2E7971253033B400788AA2 /* OneSTextPopupView.swift */; };
 		3D2E79752530344D00788AA2 /* OneSSecondaryHeaderText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2E79742530344D00788AA2 /* OneSSecondaryHeaderText.swift */; };
 		3D407850254E83E600744652 /* MilestoneModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D40784F254E83E600744652 /* MilestoneModel.swift */; };
-		3D407855254E8E4E00744652 /* JourneyProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D407854254E8E4E00744652 /* JourneyProgressView.swift */; };
+		3D407855254E8E4E00744652 /* MilestoneProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D407854254E8E4E00744652 /* MilestoneProgressView.swift */; };
 		3D47CC7B252C6C1C00A8CA1B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D47CC7A252C6C1C00A8CA1B /* MainView.swift */; };
 		3D47CC83252C6F9300A8CA1B /* OneSHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D47CC82252C6F9300A8CA1B /* OneSHeaderView.swift */; };
 		3D47CC89252C70B700A8CA1B /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D47CC88252C70B700A8CA1B /* Images.swift */; };
@@ -146,7 +146,7 @@
 		3D2E7971253033B400788AA2 /* OneSTextPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSTextPopupView.swift; sourceTree = "<group>"; };
 		3D2E79742530344D00788AA2 /* OneSSecondaryHeaderText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSSecondaryHeaderText.swift; sourceTree = "<group>"; };
 		3D40784F254E83E600744652 /* MilestoneModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneModel.swift; sourceTree = "<group>"; };
-		3D407854254E8E4E00744652 /* JourneyProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyProgressView.swift; sourceTree = "<group>"; };
+		3D407854254E8E4E00744652 /* MilestoneProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneProgressView.swift; sourceTree = "<group>"; };
 		3D47CC7A252C6C1C00A8CA1B /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		3D47CC82252C6F9300A8CA1B /* OneSHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSHeaderView.swift; sourceTree = "<group>"; };
 		3D47CC88252C70B700A8CA1B /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
@@ -532,6 +532,7 @@
 			children = (
 				3D40784F254E83E600744652 /* MilestoneModel.swift */,
 				3D10D1D0254D3051002D2D3E /* MilestoneView.swift */,
+				3D407854254E8E4E00744652 /* MilestoneProgressView.swift */,
 				3D10D1CF254D3044002D2D3E /* Item */,
 			);
 			path = Milestone;
@@ -542,7 +543,6 @@
 			children = (
 				3D6D6457254C4D2400FAA37F /* JourneyModel.swift */,
 				3DCDDD93253C1E3100873D26 /* JourneyView.swift */,
-				3D407854254E8E4E00744652 /* JourneyProgressView.swift */,
 				3D6D6460254C4E1000FAA37F /* Milestone */,
 			);
 			path = Journey;
@@ -930,7 +930,7 @@
 				3DDF70422531BBBB00FD3011 /* MilestoneState.swift in Sources */,
 				3DE9C50E252CAACC0023C212 /* GoalsModel.swift in Sources */,
 				3D47CC89252C70B700A8CA1B /* Images.swift in Sources */,
-				3D407855254E8E4E00744652 /* JourneyProgressView.swift in Sources */,
+				3D407855254E8E4E00744652 /* MilestoneProgressView.swift in Sources */,
 				3DF1E276254819FF00D65244 /* Double.swift in Sources */,
 				3DDF70292531A5BB00FD3011 /* UserColor.swift in Sources */,
 				3D160D55252E2067008588D5 /* TransitionManager.swift in Sources */,
