@@ -12,6 +12,7 @@ extension CoordinateSpace {
     static let selectMountain: Self = .named("SelectMountain")
     static let goalScroll: Self = .named("GoalScroll")
     static let milestoneView: Self = .named("MilestoneView")
+    static let journey: Self = .named("Journey")
 }
 
 
