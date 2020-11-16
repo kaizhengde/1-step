@@ -14,18 +14,20 @@ final class SheetManager: ObservableObject {
     private init() {}
     
     @Published var appear: Bool = false
+    @Published var dragToHide: Bool = true
     @Published var content: () -> AnyView = { AnyView(EmptyView()) }
 
         
-    func showSheet<T: View>(@ViewBuilder content: @escaping () -> T) {
+    func showSheet<T: View>(dragToHide: Bool = true, @ViewBuilder content: @escaping () -> T) {
         self.appear = true
+        self.dragToHide = dragToHide
         
         self.content = { AnyView(
             content()
                 .oneSMiniSheet()
                 .oneSPopup()
                 .oneSFloater()
-                .introspectViewController { $0.isModalInPresentation = true }
+                .introspectViewController { $0.isModalInPresentation = !dragToHide }
         ) }
     }
     

@@ -58,7 +58,9 @@ struct GoalCreateScreen: View {
                 VStack(spacing: 12*Layout.multiplierHeight) {
                     OneSHeaderView("Create", leadingButton: (.back, viewModel.selectedMountainData.color.get(), { viewModel.goalCreateStage = .selectMountain }))
                     HStack {
-                        OneSHintButton(text: "How it works", color: viewModel.selectedMountainData.color.get()) {}
+                        OneSHintButton(text: "How it works", color: viewModel.selectedMountainData.color.get()) {
+                            SheetManager.shared.showSheet { GoalHowItWorksView() }
+                        }
                         Spacer()
                     }
                     .offset(x: 3)

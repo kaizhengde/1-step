@@ -23,6 +23,11 @@ class GoalsActiveModel: ObservableObject {
             self.itemsAppear[sortOrder] = true
         }
     }
+    
+    
+    func resetTransition() {
+        itemsAppear = Array(repeating: false, count: DataModel.shared.activeGoals.count+1)
+    }
         
     
     func itemsOpacityTransition(of goal: Goal) -> Double {

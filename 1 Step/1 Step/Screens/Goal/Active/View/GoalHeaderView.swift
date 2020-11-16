@@ -16,7 +16,7 @@ struct GoalHeaderView: View {
     var body: some View {
         VStack {
             OneSHeaderView(leadingButton: (.custom(AnyView(MenuButton())), goalModel.headerButtonColor, { goalModel.toggleMenuButton() }),
-                           trailingButton: (.settings, goalModel.headerButtonColor, { sheetManager.showSheet { GoalEditScreen().environmentObject(goalModel) } } ))
+                           trailingButton: (.settings, goalModel.headerButtonColor, { sheetManager.showSheet(dragToHide: false) { GoalEditScreen().environmentObject(goalModel) } } ))
             Spacer()
         }
         .padding(.horizontal, Layout.firstLayerPadding)

@@ -31,5 +31,9 @@ struct GoalsScreen: View {
         }
         .offset(x: mainModel.currentScreen.active.isScreen(.goal(.transition)) ? -80 : 0)
         .onDrop(of: goalsActiveModel.dropType, delegate: GoalsActiveModel.DropOutsideDelegate(current: $goalsActiveModel.currentDragItem))
+        .onChange(of: goalsModel.currentTab) {
+            if $0 == .reached { goalsActiveModel.resetTransition() }
+            else {}
+        }
     }
 }
