@@ -20,7 +20,7 @@ struct MilestoneProgressView: View {
     var body: some View {
         ZStack(alignment: .init(horizontal: .center, vertical: .circleLineAlignment)) {
             RoundedRectangle(cornerRadius: 6, style: .continuous)
-                .frame(width: 12, height: show ? viewModel.lineHeight : 0)
+                .frame(width: 12, height: viewModel.lineHeight)
                 .foregroundColor(.backgroundToDarkGray)
             
             VStack(spacing: 16) {

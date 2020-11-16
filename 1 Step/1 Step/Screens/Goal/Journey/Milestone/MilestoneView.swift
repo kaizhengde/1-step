@@ -12,6 +12,8 @@ struct MilestoneView: View {
     @StateObject private var goalModel = GoalModel.shared
     @StateObject private var viewModel = MilestoneModel()
     @StateObject private var journeyAddStepsHandler = JourneyAddStepsHandler.shared
+    
+    @State private var appear = false
         
     
     var body: some View {
@@ -21,12 +23,13 @@ struct MilestoneView: View {
         }
         .padding(.top, viewModel.milestone.image == .summit ? 150 : 100)
         .padding(.bottom, 50)
-        .frame(maxWidth: .infinity, maxHeight: journeyAddStepsHandler.milestoneChangeState == .closeFinished ? 0 : .infinity)
+        .frame(maxWidth: .infinity, maxHeight: journeyAddStepsHandler.hideMilestoneView ? 0 : (appear ? .infinity : 0))
         .background(viewModel.goal.color.get(.dark))
         .cornerRadius(20)
         .padding(.horizontal, Layout.firstLayerPadding)
         .padding(.bottom, 20)
         .onChange(of: goalModel.selectedGoal.currentSteps) { _ in viewModel.updateMarkViewsAmount() }
+        .onAppear { DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) { appear = true } }
     }
     
     

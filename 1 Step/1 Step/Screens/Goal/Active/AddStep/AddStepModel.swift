@@ -19,6 +19,7 @@ class AddStepModel: ObservableObject {
     @Published var selectedStep: (unit: Int, dual: Int) = (0, 0)
     
     var goal: Goal { GoalModel.shared.selectedGoal }
+    var journeyAddStepsHandler = JourneyAddStepsHandler.shared
 
     
     //MARK: - Setup
@@ -41,10 +42,10 @@ class AddStepModel: ObservableObject {
         case .goalDone:
             break
         case .milestoneChange:
-            JourneyAddStepsHandler.shared.startMilestoneChange()
+            journeyAddStepsHandler.startMilestoneChange()
             break
         case .normal:
-            JourneyAddStepsHandler.shared.startNormalAdd()
+            journeyAddStepsHandler.startNormalAdd()
             break
         }
         GoalModel.shared.objectWillChange.send()
@@ -70,11 +71,17 @@ class AddStepModel: ObservableObject {
         
         let newStepUnits = calculateStepUnitsToBeAdded(Double(stepAddArray.reversed()[selectedStepUnit])!, Double(stepAddArrayDual.reversed()[selectedStepDual])!)
         
-        let addStepsResult = JourneyAddStepsHandler.shared.getAddStepsResult(with: newStepUnits)
+        let addStepsResult = journeyAddStepsHandler.getAddStepsResult(with: newStepUnits)
         
-        if DataModel.shared.addSteps(goal, with: newStepUnits) {
-            dragState = .hidden
+        if addStepsResult == .milestoneChange {
+            DispatchQueue.main.asyncAfter(deadline: .now() + journeyAddStepsHandler.after(.closeFinished)) {
+                if DataModel.shared.addSteps(self.goal, with: newStepUnits) {}
+            }
+        } else {
+            if DataModel.shared.addSteps(goal, with: newStepUnits) {}
         }
+        
+        dragState = .hidden
         
         return addStepsResult
     }

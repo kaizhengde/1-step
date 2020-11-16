@@ -10,7 +10,7 @@ import SwiftUI
 struct GoalView: View {
     
     @StateObject private var goalModel = GoalModel.shared
-    
+
     
     var body: some View {
         Group {

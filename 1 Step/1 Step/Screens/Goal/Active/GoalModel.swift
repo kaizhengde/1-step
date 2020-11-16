@@ -17,9 +17,10 @@ final class GoalModel: TransitionObservableObject {
     }
     
     enum ScrollPosition: Int {
-        case none       = -1
-        case top        = 0
-        case current    = 1
+        case none               = -1
+        case top                = 0
+        case current            = 1
+        case currentMilestone   = 2
     }
     
     static let shared = GoalModel()
