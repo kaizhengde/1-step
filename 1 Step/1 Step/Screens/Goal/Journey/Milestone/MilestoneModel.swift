@@ -57,13 +57,27 @@ class MilestoneModel: ObservableObject {
         
         switch currentSteps-prevStepsNeeded {
         case 0:             height = 0
-        case 1...3:         height = 50
-        case 4...10:        height = 80
-        case 11...20:       height = 120
-        case 21...50:       height = 170
-        case 51...100:      height = 230
-        case 101...150:     height = 300
-        case 151...200:     height = 380
+        case 1...2:         height = 50
+        case 3...10:        height = 80
+        case 10...19:       height = 110
+        case 20...29:       height = 140
+        case 30...39:       height = 170
+        case 40...49:       height = 200
+        case 50...59:       height = 230
+        case 60...69:       height = 260
+        case 70...79:       height = 290
+        case 80...89:       height = 320
+        case 90...99:       height = 350
+        case 100...109:     height = 380
+        case 110...119:     height = 410
+        case 120...129:     height = 440
+        case 130...139:     height = 470
+        case 140...149:     height = 500
+        case 150...159:     height = 530
+        case 160...169:     height = 560
+        case 170...179:     height = 590
+        case 180...189:     height = 620
+        case 190...200:     height = 650
         default: break
         }
         

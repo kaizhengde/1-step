@@ -39,9 +39,8 @@ struct MilestoneProgressView: View {
             }
         }
         .onChange(of: journeyAddStepsHandler.milestoneChangeState) {
-            if $0 == .closeFinished {
-                show = false
-            } else if $0 == .openNewAndScrollToCurrent {
+            if $0 == .closeFinished { show = false }
+            else if $0 == .openNewAndScrollToCurrent {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) { show = true }
             }
         }
