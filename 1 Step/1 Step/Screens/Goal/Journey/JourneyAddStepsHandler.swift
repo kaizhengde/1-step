@@ -70,6 +70,10 @@ class JourneyAddStepsHandler: ObservableObject {
         return milestoneChangeState == .closeFinished
     }
     
+    var hideDoneMilestoneItems: Bool {
+        return milestoneChangeState != .none
+    }
+    
     @Published var milestoneChangeState: MilestoneChangeState = .none {
         didSet {
             if milestoneChangeState == .openNewAndScrollToCurrent {
@@ -86,6 +90,9 @@ class JourneyAddStepsHandler: ObservableObject {
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + after(.wait)) {
             self.milestoneChangeState = .openNewAndScrollToCurrent
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + after(.openNewAndScrollToCurrent)) {
+            self.milestoneChangeState = .none
         }
     }
 }

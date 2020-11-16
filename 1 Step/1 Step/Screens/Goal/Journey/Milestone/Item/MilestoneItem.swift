@@ -9,7 +9,8 @@ import SwiftUI
 
 struct MilestoneItem: View {
     
-    @Binding var appear: Bool 
+    @Binding var appear: Bool
+    @StateObject private var journeyAddStepsHandler = JourneyAddStepsHandler.shared
         
     var milestone: Milestone
     var goal: Goal { milestone.parentGoal }
@@ -28,6 +29,7 @@ struct MilestoneItem: View {
             
             MilestoneDotView(milestoneAppear: $appear, milestone: milestone, appearAfter: .milliseconds(400))
         }
+        .opacity(milestone.state == .done && journeyAddStepsHandler.hideDoneMilestoneItems ? 0.0 : 1.0)
     }
     
     
