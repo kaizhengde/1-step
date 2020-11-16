@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 class JourneyAddStepsHandler: ObservableObject {
     
@@ -14,16 +15,21 @@ class JourneyAddStepsHandler: ObservableObject {
     
     var goal: Goal { GoalModel.shared.selectedGoal }
     
+    
     enum AddStepsResult: Equatable {
-        case normal
+        
+        case none 
+        case normal(forward: Bool)
         case milestoneChange(forward: Bool)
         case goalDone
         
-        
         var isMilestoneChange: Bool {
-            return self == .milestoneChange(forward: true) || self == .milestoneChange(forward: false)
+            self == .milestoneChange(forward: true) || self == .milestoneChange(forward: false)
         }
+        
+        var isNormal: Bool { self == .normal(forward: true) || self == .normal(forward: false) }
     }
+    
     
     func getAddStepsResult(with newStepUnits: Double) -> AddStepsResult {
         let currentMilestone = goal.milestones.filter { $0.state == .current }.first!
@@ -36,16 +42,16 @@ class JourneyAddStepsHandler: ObservableObject {
             return .milestoneChange(forward: false)
         }
         
-        return .normal
+        return newStepUnits == 0 ? .none : (newStepUnits > 0 ? .normal(forward: true) : .normal(forward: false))
     }
     
     
     //MARK: - Normal Add
     
-    let normalAdd = ObjectWillChangePublisher()
+    let normalAdd = PassthroughSubject<Bool, Never>()
     
-    func startNormalAdd() {
-        normalAdd.send()
+    func startNormalAdd(forward: Bool) {
+        normalAdd.send(forward)
         GoalModel.shared.setScrollPosition.send(.current)
     }
     

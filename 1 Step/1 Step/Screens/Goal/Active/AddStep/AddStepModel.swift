@@ -44,15 +44,18 @@ class AddStepModel: ObservableObject {
         case let .milestoneChange(forward: forward):
             journeyAddStepsHandler.startMilestoneChange(forward: forward)
             break
-        case .normal:
-            journeyAddStepsHandler.startNormalAdd()
+        case let .normal(forward: forward):
+            journeyAddStepsHandler.startNormalAdd(forward: forward)
             break
+        case .none: return
         }
         GoalModel.shared.objectWillChange.send()
     }
     
     
-    func tryAddStepsAndHide() -> JourneyAddStepsHandler.AddStepsResult {
+    private func tryAddStepsAndHide() -> JourneyAddStepsHandler.AddStepsResult {
+        
+        //Calculate stepUnits to be added
         
         var stepAddArray        = goal.step.addArray
         var stepAddArrayDual    = goal.step.addArrayDual
@@ -71,15 +74,21 @@ class AddStepModel: ObservableObject {
         
         let newStepUnits = calculateStepUnitsToBeAdded(Double(stepAddArray.reversed()[selectedStepUnit])!, Double(stepAddArrayDual.reversed()[selectedStepDual])!)
         
+        //Determine AddStepsResult
+        
         let addStepsResult = journeyAddStepsHandler.getAddStepsResult(with: newStepUnits)
+        
+        //Save changed to CoreData
         
         if addStepsResult.isMilestoneChange {
             DispatchQueue.main.asyncAfter(deadline: .now() + journeyAddStepsHandler.after(.closeFinished)) {
-                if DataModel.shared.addSteps(self.goal, with: newStepUnits) {}
+                _ = DataModel.shared.addSteps(self.goal, with: newStepUnits)
             }
         } else {
-            if DataModel.shared.addSteps(goal, with: newStepUnits) {}
+            _ = DataModel.shared.addSteps(goal, with: newStepUnits)
         }
+        
+        //Hide
         
         dragState = .hidden
         
@@ -87,7 +96,7 @@ class AddStepModel: ObservableObject {
     }
     
     
-    func calculateStepUnitsToBeAdded(_ stepUnits: Double, _ stepUnitsDual: Double) -> Double {
+    private func calculateStepUnitsToBeAdded(_ stepUnits: Double, _ stepUnitsDual: Double) -> Double {
         var newStepUnits = stepUnits
         if goal.step.unit.isDual { newStepUnits += stepUnitsDual/goal.step.unit.dualRatio }
         

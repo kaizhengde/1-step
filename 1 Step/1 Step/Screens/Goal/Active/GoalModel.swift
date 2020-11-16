@@ -266,9 +266,7 @@ final class GoalModel: TransitionObservableObject {
     func downArrowTapped() {
         if showJourneyView {
             setScrollPosition.send(.top)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                self.showJourneyView = false
-            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { self.showJourneyView = false }
         } else {
             showJourneyView = true
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) { self.setScrollPosition.send(.current) }

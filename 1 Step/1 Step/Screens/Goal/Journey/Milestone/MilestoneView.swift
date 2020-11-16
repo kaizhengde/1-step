@@ -39,28 +39,84 @@ struct MilestoneView: View {
         @ObservedObject var viewModel: MilestoneModel
         @StateObject private var journeyAddStepsHandler = JourneyAddStepsHandler.shared
         
-        @State private var animate = false
+        @State private var animateMarks = false
+        @State private var forwardAdd = true
         
         
         var body: some View {
             VStack(spacing: 40) {
                 ForEach(0..<viewModel.markViewsAmount, id: \.self) { i in
                     Group {
-                        if i == viewModel.markViewsAmount-1 {
-                            StepMarkView(goal: viewModel.goal)
-                                .offset(y: animate ? 76 : 0)
-                                .opacity(animate ? 0.0 : 1.0)
+                        if i == 0 {
+                            TopAndBottomStepMarkView(viewModel: viewModel, animateMarks: $animateMarks, forwardAdd: $forwardAdd, index: i)
+                        } else if i == viewModel.markViewsAmount-1 {
+                            TopAndBottomStepMarkView(viewModel: viewModel, animateMarks: $animateMarks, forwardAdd: $forwardAdd, index: i)
                         } else {
                             StepMarkView(goal: viewModel.goal)
-                                .offset(y: animate ? 76 : 0)
+                                .offset(y: animateMarks ? (forwardAdd ? 76 : -76) : 0)
                         }
                     }
-                    .animation(animate ? .oneSAnimation() : nil)
+                    .animation(animateMarks ? .oneSAnimation() : nil)
                 }
             }
-            .onReceive(journeyAddStepsHandler.normalAdd) {
-                animate = true
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) { animate = false }
+            .onReceive(journeyAddStepsHandler.normalAdd) { forward in
+                animateMarks = true
+                forwardAdd = forward
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) { animateMarks = false }
+            }
+        }
+        
+        
+        private struct TopAndBottomStepMarkView: View {
+            
+            @ObservedObject var viewModel: MilestoneModel
+            @Binding var animateMarks: Bool
+            @Binding var forwardAdd: Bool
+            
+            var index: Int
+            var forward: Bool { index == 0 ? forwardAdd : !forwardAdd }
+            var offset: CGFloat { index == 0 ? 76 : -76 }
+            
+            
+            var body: some View {
+                if viewModel.markViewsAmount == 1 {
+                    if forward {
+                        ZStack {
+                            StepMarkView(goal: viewModel.goal)
+                                .offset(y: animateMarks ? 0 : -offset)
+                                .opacity(animateMarks ? 1.0 : 0.0)
+                            
+                            StepMarkView(goal: viewModel.goal)
+                                .offset(y: animateMarks ? offset : 0)
+                                .opacity(animateMarks ? 0.0 : 1.0)
+                        }
+                    } else {
+                        ZStack {
+                            StepMarkView(goal: viewModel.goal)
+                                .offset(y: animateMarks ? 0 : offset)
+                                .opacity(animateMarks ? 1.0 : 0.0)
+                            
+                            StepMarkView(goal: viewModel.goal)
+                                .offset(y: animateMarks ? -offset : 0)
+                                .opacity(animateMarks ? 0.0 : 1.0)
+                        }
+                    }
+                } else {
+                    if forward {
+                        ZStack {
+                            StepMarkView(goal: viewModel.goal)
+                                .offset(y: animateMarks ? 0 : -offset)
+                                .opacity(animateMarks ? 1.0 : 0.0)
+                            
+                            StepMarkView(goal: viewModel.goal)
+                                .offset(y: animateMarks ? offset : 0)
+                        }
+                    } else {
+                        StepMarkView(goal: viewModel.goal)
+                            .offset(y: animateMarks ? -offset : 0)
+                            .opacity(animateMarks ? 0.0 : 1.0)
+                    }
+                }
             }
         }
     
