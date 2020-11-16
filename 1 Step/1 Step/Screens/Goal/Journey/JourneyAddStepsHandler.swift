@@ -51,7 +51,6 @@ class JourneyAddStepsHandler: ObservableObject {
     enum MilestoneChangeState {
         case none
         case closeFinished
-        case wait
         case openNewAndScrollToCurrent
     }
 
@@ -60,8 +59,7 @@ class JourneyAddStepsHandler: ObservableObject {
         switch changeState {
         case .none:                         return 0.0
         case .closeFinished:                return 0.6
-        case .wait:                         return 1.2
-        case .openNewAndScrollToCurrent:    return 1.8
+        case .openNewAndScrollToCurrent:    return 1.2
         }
     }
     
@@ -77,7 +75,9 @@ class JourneyAddStepsHandler: ObservableObject {
     @Published var milestoneChangeState: MilestoneChangeState = .none {
         didSet {
             if milestoneChangeState == .openNewAndScrollToCurrent {
-                GoalModel.shared.setScrollPosition.send(.current)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    GoalModel.shared.setScrollPosition.send(.current)
+                }
             }
         }
     }
@@ -86,9 +86,6 @@ class JourneyAddStepsHandler: ObservableObject {
     func startMilestoneChange() {
         milestoneChangeState = .closeFinished
         DispatchQueue.main.asyncAfter(deadline: .now() + after(.closeFinished)) {
-            self.milestoneChangeState = .wait
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + after(.wait)) {
             self.milestoneChangeState = .openNewAndScrollToCurrent
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + after(.openNewAndScrollToCurrent)) {
