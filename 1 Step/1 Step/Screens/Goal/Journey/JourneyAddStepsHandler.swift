@@ -14,10 +14,15 @@ class JourneyAddStepsHandler: ObservableObject {
     
     var goal: Goal { GoalModel.shared.selectedGoal }
     
-    enum AddStepsResult {
+    enum AddStepsResult: Equatable {
         case normal
-        case milestoneChange
+        case milestoneChange(forward: Bool)
         case goalDone
+        
+        
+        var isMilestoneChange: Bool {
+            return self == .milestoneChange(forward: true) || self == .milestoneChange(forward: false)
+        }
     }
     
     func getAddStepsResult(with newStepUnits: Double) -> AddStepsResult {
@@ -26,9 +31,9 @@ class JourneyAddStepsHandler: ObservableObject {
         let prevMilestoneNeededStepUnits = currentMilestone.neededStepUnits - currentMilestone.stepUnitsFromPrev
         
         if currentMilestone.neededStepUnits <= goal.currentStepUnits + newStepUnits {
-            return .milestoneChange
+            return .milestoneChange(forward: true)
         } else if prevMilestoneNeededStepUnits > goal.currentStepUnits + newStepUnits && goal.currentStepUnits > 0 {
-            return .milestoneChange
+            return .milestoneChange(forward: false)
         }
         
         return .normal
@@ -48,6 +53,7 @@ class JourneyAddStepsHandler: ObservableObject {
     
     //MARK: - MilestoneChange
     
+
     enum MilestoneChangeState {
         case none
         case closeFinished
@@ -83,10 +89,18 @@ class JourneyAddStepsHandler: ObservableObject {
     }
     
     
-    func startMilestoneChange() {
+    func startMilestoneChange(forward: Bool) {
         milestoneChangeState = .closeFinished
         DispatchQueue.main.asyncAfter(deadline: .now() + after(.closeFinished)) {
             self.milestoneChangeState = .openNewAndScrollToCurrent
+            
+            if forward {
+                FloaterManager.shared.showTextFloater(
+                    titleText: "Congratz 🎉",
+                    bodyText: "You have reached \(self.goal.currentStepUnits.toUI()) \(self.goal.step.unit == .custom ? self.goal.step.customUnit : self.goal.step.unit.description)!",
+                    backgroundColor: self.goal.color.get(.light)
+                )
+            }
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + after(.openNewAndScrollToCurrent)) {
             self.milestoneChangeState = .none

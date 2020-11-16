@@ -27,10 +27,6 @@ fileprivate struct OneSFloater<FloaterContent>: ViewModifier where FloaterConten
     
     func sheet() -> some View {
         ZStack {
-            if manager.transition.didAppear {
-                Color.opacityBlur.edgesIgnoringSafeArea(.all)
-            }
-            
             if !manager.transition.isFullHidden {
                 OneSFloaterView()
                     .opacity(manager.transition.isFullAppeared ? 1.0 : 0.0)
@@ -60,6 +56,7 @@ fileprivate struct OneSFloater<FloaterContent>: ViewModifier where FloaterConten
                 .frame(width: Layout.floaterWidth, height: manager.height)
                 .background(manager.backgroundColor)
                 .cornerRadius(16)
+                .oneSShadow(opacity: 0.15, y: 0, blur: 10)
 
                 Spacer()
             }

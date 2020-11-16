@@ -21,7 +21,7 @@ enum Layout {
     static let secondLayerWidth             = screenWidth - (2.0 * secondLayerPadding)
     
     static let popoverWidth: CGFloat = 260*multiplierWidth
-    static let floaterWidth: CGFloat = firstLayerWidth
+    static let floaterWidth: CGFloat = secondLayerWidth
     
     static func onlyOniPhoneXType(_ value: CGFloat) -> CGFloat {
         return Device.isiPhoneXType ? value : 0

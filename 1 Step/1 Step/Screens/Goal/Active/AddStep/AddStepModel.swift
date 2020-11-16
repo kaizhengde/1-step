@@ -41,8 +41,8 @@ class AddStepModel: ObservableObject {
         switch tryAddStepsAndHide() {
         case .goalDone:
             break
-        case .milestoneChange:
-            journeyAddStepsHandler.startMilestoneChange()
+        case let .milestoneChange(forward: forward):
+            journeyAddStepsHandler.startMilestoneChange(forward: forward)
             break
         case .normal:
             journeyAddStepsHandler.startNormalAdd()
@@ -73,7 +73,7 @@ class AddStepModel: ObservableObject {
         
         let addStepsResult = journeyAddStepsHandler.getAddStepsResult(with: newStepUnits)
         
-        if addStepsResult == .milestoneChange {
+        if addStepsResult.isMilestoneChange {
             DispatchQueue.main.asyncAfter(deadline: .now() + journeyAddStepsHandler.after(.closeFinished)) {
                 if DataModel.shared.addSteps(self.goal, with: newStepUnits) {}
             }
