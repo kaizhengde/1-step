@@ -278,11 +278,7 @@ final class GoalModel: TransitionObservableObject {
     
     func updatePreferences(_ value: ScrollPK.Value) {
         scrollOffset = value
-        if value >= 30 {
-            showJourneyView = true
-        } else if value <= 0 {
-            showJourneyView = false
-        }
+        showJourneyView = value >= 30
     }
     
     

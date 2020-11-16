@@ -24,7 +24,7 @@ fileprivate struct OneSConfetti: ViewModifier {
         content.overlay(
             Group {
                 if manager.show {
-                    ConfettiView()
+                    ConfettiView(amount: manager.amount)
                 }
             }
         )

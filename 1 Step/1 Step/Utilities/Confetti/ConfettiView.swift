@@ -9,10 +9,25 @@
 import SwiftUI
 import UIKit
 
+enum ConfettisAmout {
+    
+    case small, normal
+    
+    func get() -> Float {
+        switch self {
+        case .small:    return Float(Int.random(in: 10...20))
+        case .normal:   return Float(Int.random(in: 50...100))
+        }
+    }
+}
+
+
 struct ConfettiView: UIViewControllerRepresentable {
     
-    final class Coordinator: NSObject {}
+    var amount: ConfettisAmout
     
+    
+    final class Coordinator: NSObject {}
     
     func makeCoordinator() -> Coordinator {
         return Coordinator()
@@ -20,7 +35,7 @@ struct ConfettiView: UIViewControllerRepresentable {
     
     
     func makeUIViewController(context: Context) -> UIConfettiView {
-        return UIConfettiView()
+        return UIConfettiView(amount: amount)
     }
 
 
@@ -29,6 +44,19 @@ struct ConfettiView: UIViewControllerRepresentable {
 
 
 class UIConfettiView: UIViewController {
+    
+    var amount: ConfettisAmout
+    
+    
+    init(amount: ConfettisAmout) {
+        self.amount = amount
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -80,7 +108,7 @@ class UIConfettiView: UIViewController {
             cell.name = confettiType.name
             
             cell.beginTime = 0.1
-            cell.birthRate = 100
+            cell.birthRate = amount.get()
             cell.contents = confettiType.image.cgImage
             cell.emissionRange = CGFloat(Double.pi)
             cell.lifetime = 10

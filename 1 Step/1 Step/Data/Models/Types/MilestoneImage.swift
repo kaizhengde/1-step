@@ -24,11 +24,11 @@ enum MilestoneImage: Int16 {
     func get() -> Image {
         switch self {
         case .one:      return Image(systemName: "house")
-        case .two:      return Image(systemName: "house")
-        case .three:    return Image(systemName: "cloud")
-        case .four:     return Image(systemName: "cloud")
-        case .five:     return Image(systemName: "cloud.fog")
-        case .six:      return Image(systemName: "cloud.snow")
+        case .two:      return Image(systemName: "tree")
+        case .three:    return Image(systemName: "cow")
+        case .four:     return Image(systemName: "grass")
+        case .five:     return Image(systemName: "stone")
+        case .six:      return Image(systemName: "cloud")
         case .seven:    return Image(systemName: "wind")
         case .eigth:    return Image(systemName: "snow")
         case .summit:   return Image(systemName: "flag")

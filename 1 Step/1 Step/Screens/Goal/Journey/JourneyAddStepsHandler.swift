@@ -99,18 +99,22 @@ class JourneyAddStepsHandler: ObservableObject {
         milestoneChangeState = .closeFinished
         DispatchQueue.main.asyncAfter(deadline: .now() + after(.closeFinished)) {
             self.milestoneChangeState = .openNewAndScrollToCurrent
-            
-            if forward {
-                FloaterManager.shared.showTextFloater(
-                    titleText: "Congratz 🎉",
-                    bodyText: "You have reached \(self.goal.currentStepUnits.toUI()) \(self.goal.step.unit == .custom ? self.goal.step.customUnit : self.goal.step.unit.description)!",
-                    backgroundColor: self.goal.color.get(.light)
-                )
-                ConfettiManager.shared.showConfetti()
-            }
+            self.startUIAnimations(forward)
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + after(.openNewAndScrollToCurrent)) {
             self.milestoneChangeState = .none
+        }
+    }
+    
+    
+    private func startUIAnimations(_ forward: Bool) {
+        if forward {
+            FloaterManager.shared.showTextFloater(
+                titleText: "Congratz 🎉",
+                bodyText: "You have reached \(self.goal.currentStepUnits.toUI()) \(self.goal.step.unit == .custom ? self.goal.step.customUnit : self.goal.step.unit.description)!",
+                backgroundColor: self.goal.color.get(.light)
+            )
+            ConfettiManager.shared.showConfetti(amount: .small)
         }
     }
 }

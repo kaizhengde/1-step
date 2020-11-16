@@ -10,6 +10,6 @@ import Foundation
 @objc
 enum GoalState: Int16 {
     
-    case active = 0
-    case reached   = 1
+    case active     = 0
+    case reached    = 1
 }
