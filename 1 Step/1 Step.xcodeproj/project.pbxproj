@@ -68,6 +68,10 @@
 		3D7396C7253373F500BD4169 /* GoalsActiveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7396C6253373F500BD4169 /* GoalsActiveModel.swift */; };
 		3D854B11253EA3F900A4F80E /* GoalDeleteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D854B10253EA3F900A4F80E /* GoalDeleteHandler.swift */; };
 		3D854B14253EAC2500A4F80E /* OneSTextFieldConfirmationPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D854B13253EAC2500A4F80E /* OneSTextFieldConfirmationPopup.swift */; };
+		3D959A8825628441007BAA07 /* ConfettiType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D959A8725628441007BAA07 /* ConfettiType.swift */; };
+		3D959A8B256286AE007BAA07 /* ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D959A8A256286AE007BAA07 /* ConfettiView.swift */; };
+		3D959A8E25628E74007BAA07 /* OneSConfetti.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D959A8D25628E74007BAA07 /* OneSConfetti.swift */; };
+		3D959A9125628ED4007BAA07 /* ConfettiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D959A9025628ED4007BAA07 /* ConfettiManager.swift */; };
 		3D996778253F57F7000CE151 /* JourneyDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D996777253F57F7000CE151 /* JourneyDataHandler.swift */; };
 		3DA7BD362532D41400171360 /* OneSTextFieldPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA7BD352532D41400171360 /* OneSTextFieldPopupView.swift */; };
 		3DA7BD3A2532F6A600171360 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA7BD392532F6A600171360 /* DataManager.swift */; };
@@ -186,6 +190,10 @@
 		3D7396C6253373F500BD4169 /* GoalsActiveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsActiveModel.swift; sourceTree = "<group>"; };
 		3D854B10253EA3F900A4F80E /* GoalDeleteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDeleteHandler.swift; sourceTree = "<group>"; };
 		3D854B13253EAC2500A4F80E /* OneSTextFieldConfirmationPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSTextFieldConfirmationPopup.swift; sourceTree = "<group>"; };
+		3D959A8725628441007BAA07 /* ConfettiType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfettiType.swift; sourceTree = "<group>"; };
+		3D959A8A256286AE007BAA07 /* ConfettiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfettiView.swift; sourceTree = "<group>"; };
+		3D959A8D25628E74007BAA07 /* OneSConfetti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSConfetti.swift; sourceTree = "<group>"; };
+		3D959A9025628ED4007BAA07 /* ConfettiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfettiManager.swift; sourceTree = "<group>"; };
 		3D996777253F57F7000CE151 /* JourneyDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyDataHandler.swift; sourceTree = "<group>"; };
 		3DA7BD352532D41400171360 /* OneSTextFieldPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSTextFieldPopupView.swift; sourceTree = "<group>"; };
 		3DA7BD392532F6A600171360 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
@@ -375,8 +383,8 @@
 				3D47CC8B252C71B500A8CA1B /* Constants */,
 				3D2E795225301AC800788AA2 /* Methods */,
 				3DF7916F25307EDE00F00174 /* Views */,
-				3DBB6B23252CC08D002C0D03 /* EnumTypeEquatable.swift */,
-				3D2E792E252F721A00788AA2 /* DismissableObservableObject.swift */,
+				3D959A85256283C1007BAA07 /* Helpers */,
+				3D959A86256283E0007BAA07 /* Confetti */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -576,6 +584,26 @@
 				3D7396C02533732600BD4169 /* GoalsReachedView.swift */,
 			);
 			path = GoalsReached;
+			sourceTree = "<group>";
+		};
+		3D959A85256283C1007BAA07 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				3DBB6B23252CC08D002C0D03 /* EnumTypeEquatable.swift */,
+				3D2E792E252F721A00788AA2 /* DismissableObservableObject.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		3D959A86256283E0007BAA07 /* Confetti */ = {
+			isa = PBXGroup;
+			children = (
+				3D959A8725628441007BAA07 /* ConfettiType.swift */,
+				3D959A8A256286AE007BAA07 /* ConfettiView.swift */,
+				3D959A9025628ED4007BAA07 /* ConfettiManager.swift */,
+				3D959A8D25628E74007BAA07 /* OneSConfetti.swift */,
+			);
+			path = Confetti;
 			sourceTree = "<group>";
 		};
 		3D996774253F4246000CE151 /* Active */ = {
@@ -864,6 +892,7 @@
 				3D2E792F252F721A00788AA2 /* DismissableObservableObject.swift in Sources */,
 				3D5156B82531FB3F00A44450 /* ViewOverlayManagerProtocol.swift in Sources */,
 				3DDF70312531BAA100FD3011 /* Goal.swift in Sources */,
+				3D959A8825628441007BAA07 /* ConfettiType.swift in Sources */,
 				3DAE7AE425309D0F00B162B1 /* FloaterManager.swift in Sources */,
 				3DD5C9D02539CF7B00861784 /* GoalModel.swift in Sources */,
 				3D10D1D1254D3051002D2D3E /* MilestoneView.swift in Sources */,
@@ -878,6 +907,7 @@
 				3D2E7933252F9CFA00788AA2 /* Animation+Delay.swift in Sources */,
 				3D47CC91252C71EA00A8CA1B /* CoordinateSpace.swift in Sources */,
 				3DE9C50B252C8F500023C212 /* OneSText.swift in Sources */,
+				3D959A9125628ED4007BAA07 /* ConfettiManager.swift in Sources */,
 				3D0B59452533123600079856 /* DataModel.swift in Sources */,
 				3D854B11253EA3F900A4F80E /* GoalDeleteHandler.swift in Sources */,
 				3DD5C9CD2539CF6600861784 /* GoalScreen.swift in Sources */,
@@ -907,6 +937,7 @@
 				3DF7916D25307EBF00F00174 /* ChildSizeReader.swift in Sources */,
 				3DE9C507252C8B8C0023C212 /* OneSHeaderText.swift in Sources */,
 				3DDF70372531BAB100FD3011 /* Milestone.swift in Sources */,
+				3D959A8B256286AE007BAA07 /* ConfettiView.swift in Sources */,
 				3DE11C35252C681200F13719 /* __StepApp.swift in Sources */,
 				3D2E792C252F6CAB00788AA2 /* GoalEnterInputView.swift in Sources */,
 				3D6F43A5253B268B00785586 /* GoalView.swift in Sources */,
@@ -938,6 +969,7 @@
 				3DF1E276254819FF00D65244 /* Double.swift in Sources */,
 				3DDF70292531A5BB00FD3011 /* UserColor.swift in Sources */,
 				3D160D55252E2067008588D5 /* TransitionManager.swift in Sources */,
+				3D959A8E25628E74007BAA07 /* OneSConfetti.swift in Sources */,
 				3DE0796C25340F550024E17D /* GoalItemArt.swift in Sources */,
 				3DFDE052253C4663006B1A7E /* GoalEditScreen.swift in Sources */,
 				3D6F4399253AE19C00785586 /* GoalHeaderView.swift in Sources */,

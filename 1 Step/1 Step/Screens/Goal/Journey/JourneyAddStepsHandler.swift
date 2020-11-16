@@ -100,6 +100,7 @@ class JourneyAddStepsHandler: ObservableObject {
                     bodyText: "You have reached \(self.goal.currentStepUnits.toUI()) \(self.goal.step.unit == .custom ? self.goal.step.customUnit : self.goal.step.unit.description)!",
                     backgroundColor: self.goal.color.get(.light)
                 )
+                ConfettiManager.shared.showConfetti()
             }
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + after(.openNewAndScrollToCurrent)) {

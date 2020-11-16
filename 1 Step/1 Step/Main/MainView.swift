@@ -25,6 +25,7 @@ struct MainView: View {
         }
         .oneSOpacityAnimation()
         .sheet(isPresented: $sheetManager.appear, content: sheetManager.content)
+        .oneSConfetti()
         .oneSMiniSheet()
         .oneSPopup()
         .oneSFloater()
