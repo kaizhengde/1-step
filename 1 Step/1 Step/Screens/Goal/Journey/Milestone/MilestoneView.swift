@@ -30,6 +30,7 @@ struct MilestoneView: View {
         .padding(.bottom, 20)
         .onChange(of: goalModel.selectedGoal.currentSteps) { _ in viewModel.updateMarkViewsAmount() }
         .onAppear { DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) { appear = true } }
+        .oneSAnimation()
     }
     
     

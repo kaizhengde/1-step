@@ -60,22 +60,20 @@ class JourneyAddStepsHandler: ObservableObject {
         switch changeState {
         case .none:                         return 0.0
         case .closeFinished:                return 0.6
-        case .wait:                         return 0.8
-        case .openNewAndScrollToCurrent:    return 1.4
+        case .wait:                         return 1.2
+        case .openNewAndScrollToCurrent:    return 1.8
         }
     }
     
     
     var hideMilestoneView: Bool {
-        return milestoneChangeState == .closeFinished || milestoneChangeState == .wait
+        return milestoneChangeState == .closeFinished
     }
     
     @Published var milestoneChangeState: MilestoneChangeState = .none {
         didSet {
             if milestoneChangeState == .openNewAndScrollToCurrent {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                    GoalModel.shared.setScrollPosition.send(.current)
-                }
+                GoalModel.shared.setScrollPosition.send(.current)
             }
         }
     }

@@ -27,6 +27,7 @@ struct JourneyView: View {
                     }
                 }
             }
+            .animation(nil)
         }
         .coordinateSpace(name: CoordinateSpace.journey)
         .onPreferenceChange(JourneyModel.MilestonePK.self) { viewModel.updateMilestonePositions($0) }
@@ -51,14 +52,18 @@ struct JourneyView: View {
                             .padding(.top, viewModel.currentMilestone === viewModel.summitMilestone ? 200 : 100)
                         
                         itemView(Binding<Bool>(get: { appear }, set: { _ in }))
+                            .scaleEffect(appear ? 1.0 : 0.9)
+                            .opacity(appear ? 1.0 : 0.0)
+                            .oneSAnimation()
                     }
                 } else {
                     itemView(Binding<Bool>(get: { appear }, set: { _ in }))
+                        .scaleEffect(appear ? 1.0 : 0.9)
+                        .opacity(appear ? 1.0 : 0.0)
+                        .oneSAnimation()
                 }
             }
             .background(JourneyModel.MilestoneVS(milestone: milestone))
-            .scaleEffect(appear ? 1.0 : 0.9)
-            .opacity(appear ? 1.0 : 0.0)
         }
     }
 }
