@@ -40,6 +40,7 @@ class AddStepModel: ObservableObject {
     func addButtonPressed() {
         switch tryAddStepsAndHide() {
         case .goalDone:
+            journeyAddStepsHandler.startGoalDone()
             break
         case let .milestoneChange(forward: forward):
             journeyAddStepsHandler.startMilestoneChange(forward: forward)

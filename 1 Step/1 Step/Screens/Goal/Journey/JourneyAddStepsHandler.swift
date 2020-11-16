@@ -33,8 +33,9 @@ class JourneyAddStepsHandler: ObservableObject {
     
     func getAddStepsResult(with newStepUnits: Double) -> AddStepsResult {
         let currentMilestone = goal.milestones.filter { $0.state == .current }.first!
-                
         let prevMilestoneNeededStepUnits = currentMilestone.neededStepUnits - currentMilestone.stepUnitsFromPrev
+        
+        if Int16(goal.currentStepUnits + newStepUnits) >= goal.neededStepUnits { return .goalDone }
         
         if currentMilestone.neededStepUnits <= goal.currentStepUnits + newStepUnits {
             return .milestoneChange(forward: true)
@@ -99,7 +100,7 @@ class JourneyAddStepsHandler: ObservableObject {
         milestoneChangeState = .closeFinished
         DispatchQueue.main.asyncAfter(deadline: .now() + after(.closeFinished)) {
             self.milestoneChangeState = .openNewAndScrollToCurrent
-            self.startUIAnimations(forward)
+            self.startMilestoneChangeUIAnimations(forward)
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + after(.openNewAndScrollToCurrent)) {
             self.milestoneChangeState = .none
@@ -107,7 +108,7 @@ class JourneyAddStepsHandler: ObservableObject {
     }
     
     
-    private func startUIAnimations(_ forward: Bool) {
+    private func startMilestoneChangeUIAnimations(_ forward: Bool) {
         if forward {
             FloaterManager.shared.showTextFloater(
                 titleText: "Congratz 🎉",
@@ -115,6 +116,20 @@ class JourneyAddStepsHandler: ObservableObject {
                 backgroundColor: self.goal.color.get(.light)
             )
             ConfettiManager.shared.showConfetti(amount: .small)
+        }
+    }
+    
+    
+    //MARK: - GoalDone
+    
+    func startGoalDone() {
+        milestoneChangeState = .closeFinished
+        DispatchQueue.main.asyncAfter(deadline: .now() + after(.closeFinished)) {
+            self.milestoneChangeState = .openNewAndScrollToCurrent
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + after(.openNewAndScrollToCurrent)) {
+            self.milestoneChangeState = .none
+            #warning("To the top and flag animation!")
         }
     }
 }
