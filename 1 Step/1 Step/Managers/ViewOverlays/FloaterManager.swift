@@ -20,6 +20,8 @@ final class FloaterManager: ViewOverlayManagerProtocol {
     @Published var height: CGFloat!
     @Published var content: () -> AnyView = { AnyView(EmptyView()) }
     
+    let dismissed = ObjectWillChangePublisher()
+    
 
     //MARK: - Transition
     

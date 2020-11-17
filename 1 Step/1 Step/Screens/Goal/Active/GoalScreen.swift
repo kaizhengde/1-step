@@ -33,6 +33,7 @@ struct GoalScreen: View {
         .onAppear { goalModel.initTransition() }
         .oneSAnimation()
         .transition(.identity)
+        .onReceive(PopupManager.shared.dismissed) { goalModel.onDismissGoalCompletePopup() }
     }
 }
 

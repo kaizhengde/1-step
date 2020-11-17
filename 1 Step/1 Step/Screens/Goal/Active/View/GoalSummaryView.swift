@@ -49,6 +49,7 @@ struct GoalSummaryView: View {
                 .frame(height: 80)
                 .padding(.horizontal, Layout.secondLayerPadding)
                 .padding(.top, MountainLayout.offsetY - 100)
+                .offset(y: goalModel.showFlag ? -40 : 0)
             }
         }
         
@@ -129,16 +130,52 @@ struct GoalSummaryView: View {
         
         
         var body: some View {
-            goalModel.selectedGoal.mountain.get()
-                .renderingMode(.template)
-                .resizable()
-                .frame(width: Layout.screenWidth, height: MountainLayout.height)
-                .aspectRatio(contentMode: .fit)
-                .edgesIgnoringSafeArea(.all)
-                .padding(.top, goalModel.mountainTransitionOffset)
-                .animation(goalModel.mountainAnimation)
-                .foregroundColor(.white)
-                .colorMultiply(goalModel.backgroundColor)
+            ZStack(alignment: .init(horizontal: .flagMountainAlignment, vertical: .top)) {
+                goalModel.selectedGoal.mountain.get()
+                    .renderingMode(.template)
+                    .resizable()
+                    .frame(width: Layout.screenWidth, height: MountainLayout.height)
+                    .aspectRatio(contentMode: .fit)
+                    .edgesIgnoringSafeArea(.all)
+                    .foregroundColor(.white)
+                    .colorMultiply(goalModel.backgroundColor)
+                    
+                FlagView()
+            }
+            .padding(.top, goalModel.mountainTransitionOffset)
+            .animation(goalModel.mountainAnimation)
+        }
+    }
+    
+    
+    private struct FlagView: View {
+        
+        @StateObject private var goalModel = GoalModel.shared
+        
+        
+        var body: some View {
+            ZStack {
+                Flag.flagFlag
+                    .renderingMode(.template)
+                    .foregroundColor(.white)
+                    .colorMultiply(goalModel.backgroundColor)
+                    .overlay(
+                        Rectangle()
+                            .foregroundColor(.backgroundToGray)
+                            .scaleEffect(x: goalModel.showFlag ? 0 : 1, y: 1, anchor: .trailing)
+                            .animation(goalModel.mountainAnimation.delay(goalModel.showFlag ? 0.7 : 0.0))
+                            .offset(y: -10)
+                    )
+                
+                Flag.flagLine
+                    .renderingMode(.template)
+                    .foregroundColor(.white)
+                    .colorMultiply(goalModel.backgroundColor)
+                    .scaleEffect(x: 1, y: goalModel.showFlag ? 1 : 0, anchor: .bottom)
+                    .animation(.easeInOut(duration: 0.6))
+            }
+            .alignmentGuide(.flagMountainAlignment) { $0[.leading] }
+            .offset(y: -40)
         }
     }
 }

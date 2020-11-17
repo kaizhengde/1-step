@@ -26,15 +26,17 @@ final class PopupManager: ViewOverlayManagerProtocol {
     @Published var height: CGFloat!
     @Published var content: () -> AnyView = { AnyView(EmptyView()) }
     
+    let dismissed = ObjectWillChangePublisher()
+    
     
     //MARK: - Popups
     
     //TextPopup
     
-    func showTextPopup(titleText: String, titleImage: Image? = nil, bodyText: String, backgroundColor: Color, height: CGFloat = 280+Layout.onlyOniPhoneXType(40)) {
+    func showTextPopup(titleText: String, titleImage: Image? = nil, bodyText: String, backgroundColor: Color, height: CGFloat = 280+Layout.onlyOniPhoneXType(40), dismissOnTap: Bool = true) {
         initTransition()
         
-        self.dismissOnTap           = true
+        self.dismissOnTap           = dismissOnTap
         self.dismissOnTapOutside    = true
         self.continueButton     	= false
         
@@ -50,7 +52,7 @@ final class PopupManager: ViewOverlayManagerProtocol {
     
     //TextField Popup
     
-    var textFieldSave = ObjectWillChangePublisher()
+    let textFieldSave = ObjectWillChangePublisher()
     
     @Published var input: String! 
     @Published var placerholder: String!
@@ -85,7 +87,7 @@ final class PopupManager: ViewOverlayManagerProtocol {
     
     //TextField confirmation Popup
     
-    var textFieldConfirmation = ObjectWillChangePublisher()
+    let textFieldConfirmation = ObjectWillChangePublisher()
     
     @Published var confirmationInput: String! {
         didSet {

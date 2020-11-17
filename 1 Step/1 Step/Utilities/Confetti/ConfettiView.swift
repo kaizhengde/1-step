@@ -11,12 +11,12 @@ import UIKit
 
 enum ConfettisAmout {
     
-    case small, normal
+    case small, big
     
     func get() -> Float {
         switch self {
         case .small:    return Float(Int.random(in: 10...20))
-        case .normal:   return Float(Int.random(in: 50...100))
+        case .big:   return Float(Int.random(in: 30...50))
         }
     }
 }
@@ -182,7 +182,7 @@ class UIConfettiView: UIViewController {
     func addAttractorAnimation(to layer: CALayer) {
         let animation = CAKeyframeAnimation()
         animation.timingFunction = CAMediaTimingFunction(name: .easeOut)
-        animation.duration = 3
+        animation.duration = amount == .big ? 5 : 3
         animation.keyTimes = [0, 0.4]
         animation.values = [80, 5]
 
@@ -192,7 +192,7 @@ class UIConfettiView: UIViewController {
     
     func addBirthrateAnimation(to layer: CALayer) {
         let animation = CABasicAnimation()
-        animation.duration = 1
+        animation.duration = amount == .big ? 2 : 1
         animation.fromValue = 1
         animation.toValue = 0
 

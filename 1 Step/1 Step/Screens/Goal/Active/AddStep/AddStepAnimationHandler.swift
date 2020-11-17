@@ -82,7 +82,7 @@ class AddStepAnimationHandler: ObservableObject {
     private func startMilestoneChangeUIAnimations(_ forward: Bool) {
         if forward {
             FloaterManager.shared.showTextFloater(
-                titleText: "Congratz 🎉",
+                titleText: "Awesome 🎉",
                 bodyText: "You have reached \(self.goal.currentStepUnits.toUI()) \(self.goal.step.unit == .custom ? self.goal.step.customUnit : self.goal.step.unit.description)!",
                 backgroundColor: self.goal.color.get(.light)
             )
@@ -107,9 +107,9 @@ class AddStepAnimationHandler: ObservableObject {
     func after(goalReachedState: GoalReachedState) -> Double {
         switch goalReachedState {
         case .none:                             return 0.0
-        case .closeSummit:                      return 0.6
-        case .scrollToTopAndStartFlagAnimation: return 3.0
-        case .finalPopup:                       return 3.6
+        case .closeSummit:                      return 1.2
+        case .scrollToTopAndStartFlagAnimation: return 3.6
+        case .finalPopup:                       return 4.2
         }
     }
     
@@ -119,15 +119,17 @@ class AddStepAnimationHandler: ObservableObject {
             if goalReachedState == .closeSummit {
                 milestoneChangeState = .closeFinished
                 goalReached.send()
+                
             } else if goalReachedState == .scrollToTopAndStartFlagAnimation {
-                GoalModel.shared.setScrollPosition.send(.top)
                 self.milestoneChangeState = .none
+                GoalModel.shared.setScrollPosition.send(.top)
+                
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                    self.startGoalReachedUIAnimations()
                     self.startGoalReachedFlagAnimation()
                 }
+                
             } else if goalReachedState == .finalPopup {
-                showGoalReachedFinalPopup()
+                self.startGoalReachedUIAnimations()
             }
         }
     }
@@ -148,22 +150,15 @@ class AddStepAnimationHandler: ObservableObject {
     }
     
     
-    private func startGoalReachedUIAnimations() {
-        FloaterManager.shared.showTextFloater(
-            titleText: "Congrats 🎉",
-            bodyText: "You have reached \(self.goal.currentStepUnits.toUI()) \(self.goal.step.unit == .custom ? self.goal.step.customUnit : self.goal.step.unit.description)!",
-            backgroundColor: self.goal.color.get(.light)
-        )
-        ConfettiManager.shared.showConfetti(amount: .normal)
-    }
-    
-    
     private func startGoalReachedFlagAnimation() {
-        
+        GoalModel.shared.showFlag = true
+        GoalModel.shared.objectWillChange.send()
     }
     
     
-    private func showGoalReachedFinalPopup() {
-        
+    private func startGoalReachedUIAnimations() {
+        PopupManager.shared.showTextPopup(titleText: "Congrats", bodyText: "You are on the peak of the mountain. 🎊\n\nAccomplishing a total of \(self.goal.currentStepUnits.toUI()) \(self.goal.step.unit == .custom ? self.goal.step.customUnit : self.goal.step.unit.description)!", backgroundColor: .grayToBackground, height: 360*Layout.multiplierHeight, dismissOnTap: false)
+        Feedback.haptic(type: .success)
+        ConfettiManager.shared.showConfetti(amount: .big)
     }
 }

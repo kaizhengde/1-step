@@ -18,6 +18,14 @@ enum SFSymbol {
 }
 
 
+enum Flag {
+    
+    static let flag         = Image("Flag")
+    static let flagLine     = Image("FlagLine")
+    static let flagFlag     = Image("FlagFlag")
+}
+
+
 enum Emoji {
     
     static let deer     = Image("DeerEmoji")

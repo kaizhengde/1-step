@@ -37,6 +37,7 @@ final class GoalModel: TransitionObservableObject {
     let setScrollPosition = PassthroughSubject<ScrollPosition, Never>()
     
     @Published var showJourneyView: Bool = false
+    @Published var showFlag: Bool = false 
     
     
     //MARK: - Transition
@@ -98,6 +99,14 @@ final class GoalModel: TransitionObservableObject {
     
     func menuButtonRotationOffset(standard: CGFloat, menu: CGFloat) -> CGFloat {
         return standard + (menu - standard) * CGFloat(dragProgressToMenu)
+    }
+    
+    
+    func onDismissGoalCompletePopup() {
+        if selectedGoal.currentState == .reached {
+            MainModel.shared.toScreen(.goals)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) { self.showFlag = false }
+        }
     }
     
     
@@ -302,4 +311,17 @@ final class GoalModel: TransitionObservableObject {
             value += nextValue()
         }
     }
+}
+
+
+extension HorizontalAlignment {
+    
+    enum FlagMountainAlignment: AlignmentID {
+        static func defaultValue(in d: ViewDimensions) -> CGFloat {
+            return d[HorizontalAlignment.center]
+        }
+    }
+    
+    
+    static let flagMountainAlignment = Self(FlagMountainAlignment.self)
 }

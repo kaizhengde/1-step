@@ -20,6 +20,7 @@ protocol ViewOverlayManagerProtocol: TransitionObservableObject {
     var height: CGFloat! { get set }
     var content: () -> AnyView { get set }
     
+    var dismissed: ObjectWillChangePublisher { get }
     func dismiss()
 }
 
@@ -48,6 +49,7 @@ extension ViewOverlayManagerProtocol {
     
     func dismiss() {
         transition.state = .firstHide
+        dismissed.send()
         objectWillChange.send()
     }
 }

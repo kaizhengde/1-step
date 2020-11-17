@@ -13,12 +13,12 @@ class ConfettiManager: ObservableObject {
     private init() {}
     
     @Published var show: Bool = false
-    @Published var amount: ConfettisAmout = .normal
+    @Published var amount: ConfettisAmout = .big
     
     
     func showConfetti(amount: ConfettisAmout) {
         show = true
         self.amount = amount
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { self.show = false }
+        DispatchQueue.main.asyncAfter(deadline: .now() + (amount == .big ? 5.0 : 3.0)) { self.show = false }
     }
 }
