@@ -121,9 +121,9 @@ class AddStepAnimationHandler: ObservableObject {
                 goalReached.send()
             } else if goalReachedState == .scrollToTopAndStartFlagAnimation {
                 GoalModel.shared.setScrollPosition.send(.top)
-                self.startGoalReachedUIAnimations()
                 self.milestoneChangeState = .none
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    self.startGoalReachedUIAnimations()
                     self.startGoalReachedFlagAnimation()
                 }
             } else if goalReachedState == .finalPopup {
