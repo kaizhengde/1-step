@@ -12,6 +12,7 @@ struct GoalsScreen: View {
     @StateObject private var mainModel = MainModel.shared
     @EnvironmentObject var goalsModel: GoalsModel
     @StateObject private var goalsActiveModel = GoalsActiveModel()
+    @StateObject private var goalsReachedModel = GoalsReachedModel()
     
     
     var body: some View {
@@ -22,7 +23,7 @@ struct GoalsScreen: View {
                 if goalsModel.currentTab == .active {
                     GoalsActiveView(viewModel: goalsActiveModel)
                 } else {
-                    GoalsReachedView()
+                    GoalsReachedView(viewModel: goalsReachedModel)
                 }
             }
             .frame(width: Layout.firstLayerWidth)

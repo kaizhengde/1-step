@@ -45,7 +45,7 @@ enum GoalItemArt {
     
     static var nameFont: OneSFont {
         switch current {
-        case .grid: return .custom(weight: Raleway.extraBold, size: 20)
+        case .grid: return .custom(weight: Raleway.extraBold, size: 21)
         case .menu: return .custom(weight: Raleway.extraBold, size: 17)
         }
     }
