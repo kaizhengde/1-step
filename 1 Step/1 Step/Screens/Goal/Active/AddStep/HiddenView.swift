@@ -24,12 +24,13 @@ struct HiddenView: View {
             .opacity(viewModel.dragState == .show ? 0.0 : 1.0)
             .overlay(
                 Group {
-                    if goalModel.noDrag {
-                        Color.hidden.frame(width: 100, height: 300)
+                    if goalModel.noDrag && !hide {
+                        Color.hidden
+                            .frame(width: 100, height: 300)
+                            .highPriorityGesture(viewModel.dragGesture)
                     }
                 }
             )
-            .highPriorityGesture(viewModel.dragGesture)
             .alignmentGuide(.addStepAlignment) { d in d[.top] }
             .padding(8)
             .onReceive(addStepAnimationHandler.goalReached) { hide = true }
