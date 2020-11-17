@@ -107,7 +107,7 @@ class AddStepAnimationHandler: ObservableObject {
     func after(goalReachedState: GoalReachedState) -> Double {
         switch goalReachedState {
         case .none:                             return 0.0
-        case .closeSummit:                      return 1.2
+        case .closeSummit:                      return 0.9
         case .scrollToTopAndStartFlagAnimation: return 3.6
         case .finalPopup:                       return 4.2
         }

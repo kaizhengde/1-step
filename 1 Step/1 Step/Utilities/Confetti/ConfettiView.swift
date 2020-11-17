@@ -16,7 +16,7 @@ enum ConfettisAmout {
     func get() -> Float {
         switch self {
         case .small:    return Float(Int.random(in: 10...20))
-        case .big:   return Float(Int.random(in: 30...50))
+        case .big:      return Float(Int.random(in: 20...30))
         }
     }
 }
