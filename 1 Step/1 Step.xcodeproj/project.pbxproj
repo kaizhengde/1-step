@@ -76,6 +76,7 @@
 		3D959A9A25630F90007BAA07 /* OneSMultilineText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D959A9925630F90007BAA07 /* OneSMultilineText.swift */; };
 		3D959AA325631199007BAA07 /* OneSBackgroundMultilineText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D959AA225631199007BAA07 /* OneSBackgroundMultilineText.swift */; };
 		3D959AA725631320007BAA07 /* GoalInfoBackgroundText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D959AA625631320007BAA07 /* GoalInfoBackgroundText.swift */; };
+		3D959AAE2563E79F007BAA07 /* GoalInfoArrowText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D959AAD2563E79F007BAA07 /* GoalInfoArrowText.swift */; };
 		3D996778253F57F7000CE151 /* JourneyDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D996777253F57F7000CE151 /* JourneyDataHandler.swift */; };
 		3DA7BD362532D41400171360 /* OneSTextFieldPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA7BD352532D41400171360 /* OneSTextFieldPopupView.swift */; };
 		3DA7BD3A2532F6A600171360 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA7BD392532F6A600171360 /* DataManager.swift */; };
@@ -202,6 +203,7 @@
 		3D959A9925630F90007BAA07 /* OneSMultilineText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSMultilineText.swift; sourceTree = "<group>"; };
 		3D959AA225631199007BAA07 /* OneSBackgroundMultilineText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSBackgroundMultilineText.swift; sourceTree = "<group>"; };
 		3D959AA625631320007BAA07 /* GoalInfoBackgroundText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalInfoBackgroundText.swift; sourceTree = "<group>"; };
+		3D959AAD2563E79F007BAA07 /* GoalInfoArrowText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalInfoArrowText.swift; sourceTree = "<group>"; };
 		3D996777253F57F7000CE151 /* JourneyDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyDataHandler.swift; sourceTree = "<group>"; };
 		3DA7BD352532D41400171360 /* OneSTextFieldPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSTextFieldPopupView.swift; sourceTree = "<group>"; };
 		3DA7BD392532F6A600171360 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
@@ -619,6 +621,7 @@
 			children = (
 				3D959A9525630913007BAA07 /* GoalHowItWorksView.swift */,
 				3D959AA625631320007BAA07 /* GoalInfoBackgroundText.swift */,
+				3D959AAD2563E79F007BAA07 /* GoalInfoArrowText.swift */,
 			);
 			path = GoalInfo;
 			sourceTree = "<group>";
@@ -934,6 +937,7 @@
 				3DF1E2722547F04A00D65244 /* HiddenView.swift in Sources */,
 				3D6F43A2253B266F00785586 /* GoalMenuView.swift in Sources */,
 				3D2E7933252F9CFA00788AA2 /* Animation+Delay.swift in Sources */,
+				3D959AAE2563E79F007BAA07 /* GoalInfoArrowText.swift in Sources */,
 				3D47CC91252C71EA00A8CA1B /* CoordinateSpace.swift in Sources */,
 				3DE9C50B252C8F500023C212 /* OneSText.swift in Sources */,
 				3D959A9125628ED4007BAA07 /* ConfettiManager.swift in Sources */,
