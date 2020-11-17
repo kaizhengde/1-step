@@ -91,7 +91,7 @@ enum GoalErrorHandler {
             return false
         }
         catch GoalEditError.currentBelowNeededStepUnits {
-            errorText = "You can't have a goal with steps to take lower than your current steps."
+            errorText = "You can't have a goal with steps to take lower than or equal to your current steps."
         }
         catch let GoalEditError.changeOfCategory(from: fromCategory, to: toCategory) {
             errorText = "You can't change your step category.\n\(fromCategory) -> \(toCategory)\n\nCreate a new goal instead."
@@ -118,7 +118,7 @@ enum GoalErrorHandler {
             throw GoalEditError.changeOfDistanceUnitsSystem
         }
         
-        if goal.currentStepUnits > Double(Double(baseData.neededStepUnits!)*baseData.stepUnit!.translateMultiplier(to: goal.step.unit)) {
+        if goal.currentStepUnits >= Double(Double(baseData.neededStepUnits!)*baseData.stepUnit!.translateMultiplier(to: goal.step.unit)) {
             throw GoalEditError.currentBelowNeededStepUnits
         }
     }

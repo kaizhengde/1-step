@@ -52,8 +52,10 @@ final class DataModel: ObservableObject {
     
     //MARK: - Change
     
-    func moveGoals() -> Bool {
-        for goal in activeGoals {
+    func moveGoals(in state: GoalState) -> Bool {
+        let goals = state == .active ? activeGoals : reachedGoals
+        
+        for goal in goals {
             guard dataManager.changeGoalOrder(goal, with: goal.sortOrder) else { return false }
         }
         
@@ -87,7 +89,7 @@ final class DataModel: ObservableObject {
         guard dataManager.deleteGoal(goal) else { return false }
         
         fetchAllGoals()
-        print(activeGoals.map { $0.sortOrder })
+        print(goal.currentState == .active ? activeGoals.map { $0.sortOrder } : reachedGoals.map { $0.sortOrder })
         return true
     }
 }

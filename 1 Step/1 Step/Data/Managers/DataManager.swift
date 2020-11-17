@@ -18,9 +18,9 @@ final class DataManager {
     
     //MARK: - Fetch
     
-    private func fetchActiveGoalCount() -> Int16 {
+    private func fetchGoalCount(for state: GoalState) -> Int16 {
         let request = Goal.fetchRequest()
-        request.predicate = NSPredicate(format: "currentState == 0")
+        request.predicate = NSPredicate(format: "currentState == \(state.rawValue)")
         
         do {
             let goals = try persistenceManager.context.fetch(request)
@@ -66,7 +66,7 @@ final class DataManager {
             
         //Calculate
             
-        newGoal.sortOrder           = fetchActiveGoalCount()
+        newGoal.sortOrder           = fetchGoalCount(for: .active)
         newStep.unitRatio           = JourneyDataHandler.calculateRatio(from: baseData)
         newGoal.neededSteps         = baseData.neededStepUnits! * newStep.unitRatio
         let addArrays               = JourneyDataHandler.calculateStepAddArrays(from: baseData)
@@ -125,7 +125,8 @@ final class DataManager {
         var updateResult = true
         
         if goal.currentState == .reached {
-            updateResult = updateActiveGoalsSortOrder(with: goal)
+            updateResult = updateGoalsSortOrder(with: goal, state: .active)
+            goal.sortOrder = fetchGoalCount(for: .reached)-1
         }
         
         return updateResult && persistenceManager.saveContext()
@@ -138,10 +139,11 @@ final class DataManager {
     }
     
     
-    private func updateActiveGoalsSortOrder(with goal: Goal) -> Bool {
-        for activeGoal in DataModel.shared.activeGoals {
-            if activeGoal.sortOrder > goal.sortOrder {
-                guard changeGoalOrder(activeGoal, with: activeGoal.sortOrder-1) else { return false }
+    private func updateGoalsSortOrder(with goal: Goal, state: GoalState) -> Bool {
+        let goals = state == .active ? DataModel.shared.activeGoals : DataModel.shared.reachedGoals
+        for g in goals {
+            if g.sortOrder > goal.sortOrder {
+                guard changeGoalOrder(g, with: g.sortOrder-1) else { return false }
             }
         }
         return true
@@ -152,9 +154,7 @@ final class DataManager {
     
     func deleteGoal(_ goal: Goal) -> Bool {
         var updateResult = true
-        if goal.currentState == .active {
-            updateResult = updateActiveGoalsSortOrder(with: goal)
-        }
+        updateResult = updateGoalsSortOrder(with: goal, state: goal.currentState)
         
         persistenceManager.context.delete(goal)
         return updateResult && persistenceManager.saveContext()

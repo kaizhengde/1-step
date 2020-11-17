@@ -30,7 +30,7 @@ struct GoalsGridView: View {
                     }
                 }
                 .onDrag { viewModel.onGoalDrag(goal) }
-                .onDrop(of: viewModel.dropType, delegate: GoalsGridModel.DragAndDropDelegate(gridItems: $dataModel.activeGoals, current: $viewModel.currentDragItem, item: goal))
+                .onDrop(of: viewModel.dropType, delegate: GoalsGridModel.DragAndDropDelegate(gridItems: selectedTab.isActive ? $dataModel.activeGoals : $dataModel.reachedGoals, current: $viewModel.currentDragItem, item: goal))
                 .onAppear { viewModel.initItemTransition(of: Int(goal.sortOrder)) }
                 .opacity(viewModel.itemsOpacityTransition(of: goal))
                 .scaleEffect(viewModel.itemsScaleTransition(of: goal))

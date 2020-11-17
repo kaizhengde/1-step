@@ -17,16 +17,17 @@ class GoalsGridModel: ObservableObject {
     
     
     //MARK: - Transition
+        
+    func resetTransition(with selectedTab: GoalsTab) {
+        let goals = selectedTab.isActive ? DataModel.shared.activeGoals : DataModel.shared.reachedGoals
+        itemsAppear = Array(repeating: false, count: goals.count+1)
+    }
+    
     
     func initItemTransition(of sortOrder: Int) {
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds((sortOrder+1-itemsAppeared)*150)) {
             self.itemsAppear[sortOrder] = true
         }
-    }
-    
-    
-    func resetTransition() {
-        itemsAppear = Array(repeating: false, count: DataModel.shared.activeGoals.count+1)
     }
         
     
@@ -110,7 +111,7 @@ class GoalsGridModel: ObservableObject {
         func performDrop(info: DropInfo) -> Bool {
             current = nil
             
-            if DataModel.shared.moveGoals() {
+            if DataModel.shared.moveGoals(in: item.currentState) {
                 return true
             }
             return false 

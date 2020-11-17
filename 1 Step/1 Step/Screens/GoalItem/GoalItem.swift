@@ -127,7 +127,8 @@ struct GoalItem: View {
                         .offset(y: -24)
                 }
             }
-            .offset(y: GoalItemArt.mountainOffset(goal.currentState == .active ? goal.currentPercent : Int16(Int.random(in: 30...70))))
+            .offset(y: GoalItemArt.mountainOffset(goal.currentState == .active ? goal.currentPercent : Int16(Int.random(in: 20...70))))
+            .oneSAnimation()
         }
     }
 }
