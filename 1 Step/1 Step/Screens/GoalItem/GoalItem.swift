@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GoalItem: View {
     
-    @ObservedObject var goalsGridModel: GoalsGridModel
+    let goalsGridModel: GoalsGridModel
     
     @State private var isCurrentDrag: Bool = false
     @State private var tapAnimation: Bool = false
@@ -41,7 +41,7 @@ struct GoalItem: View {
     
     private struct PercentView: View {
         
-        @ObservedObject var goalsGridModel: GoalsGridModel
+        let goalsGridModel: GoalsGridModel
         @State private var isCurrentDrag: Bool = false
 
         @Binding var goal: Goal
