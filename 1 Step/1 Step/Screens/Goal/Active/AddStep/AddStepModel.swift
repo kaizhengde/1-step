@@ -42,10 +42,10 @@ class AddStepModel: ObservableObject {
         case none
         case normal(forward: Bool)
         case milestoneChange(forward: Bool)
-        case goalDone
+        case goalReached
         
         var isMilestoneChange: Bool {
-            self == .milestoneChange(forward: true) || self == .milestoneChange(forward: false)
+            self == .milestoneChange(forward: true) || self == .milestoneChange(forward: false) || self == .goalReached
         }
         
         var isNormal: Bool { self == .normal(forward: true) || self == .normal(forward: false) }
@@ -54,15 +54,13 @@ class AddStepModel: ObservableObject {
     
     func addButtonPressed() {
         switch tryAddStepsAndHide() {
-        case .goalDone:
-            addStepAnimationHandler.startGoalDone()
-            break
+        case .goalReached:
+            dragState = .hidden
+            addStepAnimationHandler.startGoalReached()
         case let .milestoneChange(forward: forward):
             addStepAnimationHandler.startMilestoneChange(forward: forward)
-            break
         case let .normal(forward: forward):
             addStepAnimationHandler.startNormalAdd(forward: forward)
-            break
         case .none: return
         }
     }
@@ -96,7 +94,7 @@ class AddStepModel: ObservableObject {
         //Save changed to CoreData
         
         if addStepsResult.isMilestoneChange {
-            DispatchQueue.main.asyncAfter(deadline: .now() + addStepAnimationHandler.after(.closeFinished)) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + addStepAnimationHandler.after(milestoneChangeState: .closeFinished)) {
                 _ = DataModel.shared.addSteps(self.goal, with: newStepUnits)
                 GoalModel.shared.objectWillChange.send()
             }
@@ -121,11 +119,11 @@ class AddStepModel: ObservableObject {
     }
     
     
-    func getAddStepsResult(with newStepUnits: Double) -> AddStepsResult {
+    private func getAddStepsResult(with newStepUnits: Double) -> AddStepsResult {
         let currentMilestone = goal.milestones.filter { $0.state == .current }.first!
         let prevMilestoneNeededStepUnits = currentMilestone.neededStepUnits - currentMilestone.stepUnitsFromPrev
         
-        if Int16(goal.currentStepUnits + newStepUnits) >= goal.neededStepUnits { return .goalDone }
+        if Int16(goal.currentStepUnits + newStepUnits) >= goal.neededStepUnits { return .goalReached }
         
         if currentMilestone.neededStepUnits <= goal.currentStepUnits + newStepUnits {
             return .milestoneChange(forward: true)

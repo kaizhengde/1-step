@@ -10,14 +10,17 @@ import SwiftUI
 struct HiddenView: View {
     
     @StateObject private var goalModel = GoalModel.shared
+    @StateObject private var addStepAnimationHandler = AddStepAnimationHandler.shared
     @ObservedObject var viewModel: AddStepModel
+    
+    @State private var hide = false
     
     
     var body: some View {
         HiddenRectangle(viewModel: viewModel)
             .offset(x: viewModel.dragState == .show ? -50 : viewModel.dragOffset)
             .scaleEffect(y: viewModel.dragHiddenScaleEffect)
-            .offset(x: goalModel.noDrag ? 0 : 20)
+            .offset(x: goalModel.noDrag ? (hide ? 20 : 0) : 20)
             .opacity(viewModel.dragState == .show ? 0.0 : 1.0)
             .overlay(
                 Group {
@@ -29,6 +32,7 @@ struct HiddenView: View {
             .highPriorityGesture(viewModel.dragGesture)
             .alignmentGuide(.addStepAlignment) { d in d[.top] }
             .padding(8)
+            .onReceive(addStepAnimationHandler.goalReached) { hide = true }
     }
     
     
