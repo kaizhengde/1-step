@@ -11,8 +11,8 @@ struct GoalsScreen: View {
     
     @StateObject private var mainModel = MainModel.shared
     @StateObject private var goalsModel = GoalsModel()
-    @StateObject private var goalsActiveGridModel = GoalsGridModel()
-    @StateObject private var goalsReachedGridModel = GoalsGridModel()
+    @StateObject private var goalsActiveGridModel = GoalsGridModel(tab: .active)
+    @StateObject private var goalsReachedGridModel = GoalsGridModel(tab: .reached)
     
     
     var body: some View {
@@ -21,9 +21,9 @@ struct GoalsScreen: View {
                 GoalsHeaderView(goalsModel: goalsModel)
                 
                 if goalsModel.currentTab.isActive {
-                    GoalsGridView(goalsModel: goalsModel, viewModel: goalsActiveGridModel, selectedTab: .active)
+                    GoalsGridView(viewModel: goalsActiveGridModel)
                 } else {
-                    GoalsGridView(goalsModel: goalsModel, viewModel: goalsReachedGridModel, selectedTab: .reached)
+                    GoalsGridView(viewModel: goalsReachedGridModel)
                 }
             }
             .frame(width: Layout.firstLayerWidth)
@@ -34,9 +34,9 @@ struct GoalsScreen: View {
         .offset(x: mainModel.currentScreen.active.isScreen(.goal(.transition)) ? -80 : 0)
         .onDrop(of: goalsActiveGridModel.dropType, delegate: GoalsGridModel.DropOutsideDelegate(current: $goalsActiveGridModel.currentDragItem))
         .onDrop(of: goalsReachedGridModel.dropType, delegate: GoalsGridModel.DropOutsideDelegate(current: $goalsReachedGridModel.currentDragItem))
-        .onChange(of: goalsModel.currentTab) {
-            goalsActiveGridModel.resetTransition(with: $0)
-            goalsReachedGridModel.resetTransition(with: $0)
+        .onChange(of: goalsModel.currentTab) { _ in 
+            goalsActiveGridModel.resetTransition()
+            goalsReachedGridModel.resetTransition()
         }
     }
 }

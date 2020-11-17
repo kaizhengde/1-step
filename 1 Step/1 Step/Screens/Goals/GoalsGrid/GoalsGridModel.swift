@@ -10,16 +10,24 @@ import UniformTypeIdentifiers
 
 class GoalsGridModel: ObservableObject {
     
-    @Published var itemsAppear: [Bool] = Array(repeating: false, count: DataModel.shared.activeGoals.count+1)
+    var tab: GoalsTab
+    var goals: [Goal] { tab.isActive ? DataModel.shared.activeGoals : DataModel.shared.reachedGoals }
+    
+    @Published var itemsAppear: [Bool] = []
     @Published var currentDragItem: Goal? = nil
     
     var itemsAppeared: Int { itemsAppear.reduce(0) { $0 + ($1 ? 1 : 0) } }
     
     
+    init(tab: GoalsTab) {
+        self.tab = tab
+        itemsAppear = Array(repeating: false, count: goals.count+1)
+    }
+    
+    
     //MARK: - Transition
         
-    func resetTransition(with selectedTab: GoalsTab) {
-        let goals = selectedTab.isActive ? DataModel.shared.activeGoals : DataModel.shared.reachedGoals
+    func resetTransition() {
         itemsAppear = Array(repeating: false, count: goals.count+1)
     }
     
@@ -56,6 +64,19 @@ class GoalsGridModel: ObservableObject {
     
     func itemsAnimation() -> Animation {
         return currentDragItem == nil ? .oneSMountainAnimation(response: 0.4, dampingFraction: 0.5) : .oneSAnimation()
+    }
+    
+    
+    //MARK: - Actions
+    
+    func itemTapped(of goal: Goal) {
+        if tab.isActive {
+            GoalModel.shared.selectedGoal = goal
+            MainModel.shared.toGoalScreen()
+        } else {
+            
+        }
+        //DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) { self.resetTransition() }
     }
     
     
