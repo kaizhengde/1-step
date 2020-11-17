@@ -80,11 +80,6 @@ final class DataManager {
     
     //MARK: - Change
     
-    func changeGoalOrder(_ goal: Goal, with newOrder: Int16) -> Bool {
-        goal.sortOrder      = newOrder
-        return persistenceManager.saveContext()
-    }
-    
     
     func editGoal(_ goal: Goal, with baseData: Goal.BaseData) -> Bool {
         
@@ -127,22 +122,41 @@ final class DataManager {
         goal.currentState       = journeyData.currentState
         goal.milestones         = journeyData.milestones
         
+        var updateResult = true
+        
+        if goal.currentState == .reached {
+            updateResult = updateActiveGoalsSortOrder(with: goal)
+        }
+        
+        return updateResult && persistenceManager.saveContext()
+    }
+    
+    
+    func changeGoalOrder(_ goal: Goal, with newOrder: Int16) -> Bool {
+        goal.sortOrder      = newOrder
         return persistenceManager.saveContext()
+    }
+    
+    
+    private func updateActiveGoalsSortOrder(with goal: Goal) -> Bool {
+        for activeGoal in DataModel.shared.activeGoals {
+            if activeGoal.sortOrder > goal.sortOrder {
+                guard changeGoalOrder(activeGoal, with: activeGoal.sortOrder-1) else { return false }
+            }
+        }
+        return true
     }
     
     
     //MARK: - Delete
     
     func deleteGoal(_ goal: Goal) -> Bool {
+        var updateResult = true
         if goal.currentState == .active {
-            for activeGoal in DataModel.shared.activeGoals {
-                if activeGoal.sortOrder > goal.sortOrder {
-                    guard changeGoalOrder(activeGoal, with: activeGoal.sortOrder-1) else { return false }
-                }
-            }
+            updateResult = updateActiveGoalsSortOrder(with: goal)
         }
         
         persistenceManager.context.delete(goal)
-        return persistenceManager.saveContext()
+        return updateResult && persistenceManager.saveContext()
     }
 }
