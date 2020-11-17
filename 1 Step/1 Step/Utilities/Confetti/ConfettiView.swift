@@ -12,13 +12,6 @@ import UIKit
 enum ConfettisAmout {
     
     case small, big
-    
-    func get() -> Float {
-        switch self {
-        case .small:    return Float(Int.random(in: 10...20))
-        case .big:      return Float(Int.random(in: 20...30))
-        }
-    }
 }
 
 
@@ -108,7 +101,7 @@ class UIConfettiView: UIViewController {
             cell.name = confettiType.name
             
             cell.beginTime = 0.1
-            cell.birthRate = amount.get()
+            cell.birthRate = Float(Int.random(in: 10...20))
             cell.contents = confettiType.image.cgImage
             cell.emissionRange = CGFloat(Double.pi)
             cell.lifetime = 10

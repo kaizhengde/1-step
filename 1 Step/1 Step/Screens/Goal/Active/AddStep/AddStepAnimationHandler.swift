@@ -124,7 +124,7 @@ class AddStepAnimationHandler: ObservableObject {
                 self.milestoneChangeState = .none
                 GoalModel.shared.setScrollPosition.send(.top)
                 
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
                     self.startGoalReachedFlagAnimation()
                 }
                 
