@@ -11,7 +11,7 @@ struct MilestoneView: View {
     
     @StateObject private var goalModel = GoalModel.shared
     @StateObject private var viewModel = MilestoneModel()
-    @StateObject private var journeyAddStepsHandler = JourneyAddStepsHandler.shared
+    @StateObject private var addStepAnimationHandler = AddStepAnimationHandler.shared
     
     @State private var appear = false
         
@@ -23,7 +23,7 @@ struct MilestoneView: View {
         }
         .padding(.top, viewModel.milestone.image == .summit ? 150 : 100)
         .padding(.bottom, 50)
-        .frame(maxWidth: .infinity, maxHeight: journeyAddStepsHandler.hideMilestoneView ? 0 : (appear ? .infinity : 0))
+        .frame(maxWidth: .infinity, maxHeight: addStepAnimationHandler.hideMilestoneView ? 0 : (appear ? .infinity : 0))
         .background(viewModel.goal.color.get(.dark))
         .cornerRadius(20)
         .padding(.horizontal, Layout.firstLayerPadding)
@@ -37,7 +37,7 @@ struct MilestoneView: View {
     private struct StepsMap: View {
         
         @ObservedObject var viewModel: MilestoneModel
-        @StateObject private var journeyAddStepsHandler = JourneyAddStepsHandler.shared
+        @StateObject private var addStepAnimationHandler = AddStepAnimationHandler.shared
         
         @State private var animateMarks = false
         @State private var forwardAdd = true
@@ -59,7 +59,7 @@ struct MilestoneView: View {
                     .animation(animateMarks ? .oneSAnimation() : nil)
                 }
             }
-            .onReceive(journeyAddStepsHandler.normalAdd) { forward in
+            .onReceive(addStepAnimationHandler.normalAdd) { forward in
                 animateMarks = true
                 forwardAdd = forward
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) { animateMarks = false }

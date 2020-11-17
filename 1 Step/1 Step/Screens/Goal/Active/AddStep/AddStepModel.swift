@@ -19,7 +19,7 @@ class AddStepModel: ObservableObject {
     @Published var selectedStep: (unit: Int, dual: Int) = (0, 0)
     
     var goal: Goal { GoalModel.shared.selectedGoal }
-    var journeyAddStepsHandler = JourneyAddStepsHandler.shared
+    var addStepAnimationHandler = AddStepAnimationHandler.shared
 
     
     //MARK: - Setup
@@ -37,24 +37,38 @@ class AddStepModel: ObservableObject {
     
     //MARK: - Data
     
-    func addButtonPressed() {
-        switch tryAddStepsAndHide() {
-        case .goalDone:
-            journeyAddStepsHandler.startGoalDone()
-            break
-        case let .milestoneChange(forward: forward):
-            journeyAddStepsHandler.startMilestoneChange(forward: forward)
-            break
-        case let .normal(forward: forward):
-            journeyAddStepsHandler.startNormalAdd(forward: forward)
-            break
-        case .none: return
+    enum AddStepsResult: Equatable {
+        
+        case none
+        case normal(forward: Bool)
+        case milestoneChange(forward: Bool)
+        case goalDone
+        
+        var isMilestoneChange: Bool {
+            self == .milestoneChange(forward: true) || self == .milestoneChange(forward: false)
         }
-        GoalModel.shared.objectWillChange.send()
+        
+        var isNormal: Bool { self == .normal(forward: true) || self == .normal(forward: false) }
     }
     
     
-    private func tryAddStepsAndHide() -> JourneyAddStepsHandler.AddStepsResult {
+    func addButtonPressed() {
+        switch tryAddStepsAndHide() {
+        case .goalDone:
+            addStepAnimationHandler.startGoalDone()
+            break
+        case let .milestoneChange(forward: forward):
+            addStepAnimationHandler.startMilestoneChange(forward: forward)
+            break
+        case let .normal(forward: forward):
+            addStepAnimationHandler.startNormalAdd(forward: forward)
+            break
+        case .none: return
+        }
+    }
+    
+    
+    private func tryAddStepsAndHide() -> AddStepsResult {
         
         //Calculate stepUnits to be added
         
@@ -77,16 +91,18 @@ class AddStepModel: ObservableObject {
         
         //Determine AddStepsResult
         
-        let addStepsResult = journeyAddStepsHandler.getAddStepsResult(with: newStepUnits)
+        let addStepsResult = getAddStepsResult(with: newStepUnits)
         
         //Save changed to CoreData
         
         if addStepsResult.isMilestoneChange {
-            DispatchQueue.main.asyncAfter(deadline: .now() + journeyAddStepsHandler.after(.closeFinished)) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + addStepAnimationHandler.after(.closeFinished)) {
                 _ = DataModel.shared.addSteps(self.goal, with: newStepUnits)
+                GoalModel.shared.objectWillChange.send()
             }
         } else {
             _ = DataModel.shared.addSteps(goal, with: newStepUnits)
+            GoalModel.shared.objectWillChange.send()
         }
         
         //Hide
@@ -102,6 +118,22 @@ class AddStepModel: ObservableObject {
         if goal.step.unit.isDual { newStepUnits += stepUnitsDual/goal.step.unit.dualRatio }
         
         return newStepUnits
+    }
+    
+    
+    func getAddStepsResult(with newStepUnits: Double) -> AddStepsResult {
+        let currentMilestone = goal.milestones.filter { $0.state == .current }.first!
+        let prevMilestoneNeededStepUnits = currentMilestone.neededStepUnits - currentMilestone.stepUnitsFromPrev
+        
+        if Int16(goal.currentStepUnits + newStepUnits) >= goal.neededStepUnits { return .goalDone }
+        
+        if currentMilestone.neededStepUnits <= goal.currentStepUnits + newStepUnits {
+            return .milestoneChange(forward: true)
+        } else if prevMilestoneNeededStepUnits > goal.currentStepUnits + newStepUnits && goal.currentStepUnits > 0 {
+            return .milestoneChange(forward: false)
+        }
+        
+        return newStepUnits == 0 ? .none : (newStepUnits > 0 ? .normal(forward: true) : .normal(forward: false))
     }
     
     

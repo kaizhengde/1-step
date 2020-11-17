@@ -1,5 +1,5 @@
 //
-//  JourneyAddStepsHandler.swift
+//  AddStepAnimationHandler.swift
 //  1 Step
 //
 //  Created by Kai Zheng on 15.11.20.
@@ -8,43 +8,12 @@
 import SwiftUI
 import Combine
 
-class JourneyAddStepsHandler: ObservableObject {
+class AddStepAnimationHandler: ObservableObject {
     
-    static let shared = JourneyAddStepsHandler()
+    static let shared = AddStepAnimationHandler()
     private init() {}
     
     var goal: Goal { GoalModel.shared.selectedGoal }
-    
-    
-    enum AddStepsResult: Equatable {
-        
-        case none 
-        case normal(forward: Bool)
-        case milestoneChange(forward: Bool)
-        case goalDone
-        
-        var isMilestoneChange: Bool {
-            self == .milestoneChange(forward: true) || self == .milestoneChange(forward: false)
-        }
-        
-        var isNormal: Bool { self == .normal(forward: true) || self == .normal(forward: false) }
-    }
-    
-    
-    func getAddStepsResult(with newStepUnits: Double) -> AddStepsResult {
-        let currentMilestone = goal.milestones.filter { $0.state == .current }.first!
-        let prevMilestoneNeededStepUnits = currentMilestone.neededStepUnits - currentMilestone.stepUnitsFromPrev
-        
-        if Int16(goal.currentStepUnits + newStepUnits) >= goal.neededStepUnits { return .goalDone }
-        
-        if currentMilestone.neededStepUnits <= goal.currentStepUnits + newStepUnits {
-            return .milestoneChange(forward: true)
-        } else if prevMilestoneNeededStepUnits > goal.currentStepUnits + newStepUnits && goal.currentStepUnits > 0 {
-            return .milestoneChange(forward: false)
-        }
-        
-        return newStepUnits == 0 ? .none : (newStepUnits > 0 ? .normal(forward: true) : .normal(forward: false))
-    }
     
     
     //MARK: - Normal Add
