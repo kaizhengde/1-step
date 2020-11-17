@@ -43,7 +43,7 @@ struct GoalsHeaderView: View {
             
             let text: String
             var font: OneSFont { isActive ? .subtitle : .custom(weight: Raleway.extraLight, size: 15) }
-            var color: Color { isActive ? .grayToBackground : .neutralToDarkNeutral }
+            var color: Color { isActive ? .grayToBackground : .darkNeutralToNeutral }
             
             
             var body: some View {

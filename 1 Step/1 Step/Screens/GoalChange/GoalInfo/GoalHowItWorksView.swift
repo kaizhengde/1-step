@@ -11,16 +11,18 @@ struct GoalHowItWorksView: View {
     
     @StateObject private var sheetManager = SheetManager.shared
     
+    let selectedColor: UserColor
+    
     
     var body: some View {
         ZStack {
             Color.backgroundToGray.edgesIgnoringSafeArea(.all)
             
             ScrollView {
-                LazyVStack(spacing: 26) {
+                VStack(spacing: 26) {
                     OneSHeaderView("How it works", trailingButton: (.close, .grayToBackground, { sheetManager.dismiss() }))
                     
-                    LazyVStack(spacing: 20) {
+                    VStack(spacing: 20) {
                         OneSMultilineText(text: "When it comes down to reaching a goal, one of the most important things is actually the formulation.")
                         
                         OneSMultilineText(text: "Even more - having a intelligent formulation for your goal will pretty much decide, whether you succeed or not.")
@@ -33,27 +35,27 @@ struct GoalHowItWorksView: View {
                             .padding(.vertical, 20)
                     }
                     
-                    LazyVStack(spacing: 10) {
+                    VStack(spacing: 10) {
                         OneSText(text: "I want to...", font: .custom(weight: Raleway.semiBold, size: 20), color: .grayToBackground)
                             .frame(width: Layout.firstLayerWidth, alignment: .leading)
                         
-                        GoalInfoBackgroundText(text: "Lose weight", backgroundColor: UserColor.user0.get(), big: true)
+                        GoalInfoBackgroundText(text: "Lose weight", backgroundColor: selectedColor.get(.light), big: true)
                         GoalInfoArrowText(text: "What?", big: true)
                         
-                        GoalInfoBackgroundText(text: "Lose 20 pounds", backgroundColor: UserColor.user0.get(), big: true)
+                        GoalInfoBackgroundText(text: "Lose 20 pounds", backgroundColor: selectedColor.get(.light), big: true)
                         GoalInfoArrowText(text: "How?", big: true)
                         
-                        GoalInfoBackgroundText(text: "Exercise more often", backgroundColor: UserColor.user0.get(), big: true)
+                        GoalInfoBackgroundText(text: "Exercise more often", backgroundColor: selectedColor.get(.light), big: true)
                         GoalInfoArrowText(text: "What?", big: true)
                         
-                        GoalInfoBackgroundText(text: "Go for a run regularly", backgroundColor: UserColor.user0.get(), big: true)
+                        GoalInfoBackgroundText(text: "Go for a run regularly", backgroundColor: selectedColor.get(.light), big: true)
                         GoalInfoArrowText(text: "What?", big: true)
                         
-                        GoalInfoBackgroundText(text: "Run 100 miles in total", backgroundColor: UserColor.user0.get(.light), big: true)
+                        GoalInfoBackgroundText(text: "Run 100 miles in total", backgroundColor: selectedColor.get(), big: true)
                     }
                     .padding(.bottom, 20)
                     
-                    LazyVStack(spacing: 20) {
+                    VStack(spacing: 20) {
                         OneSMultilineText(text: "Basically all we do is to continually ask ourselves how we can specify what it is that we want to achieve and how we can actually get there.")
                         
                         OneSMultilineText(text: "The main idea is then to reach a point where we have something that is trackable. Hence we can now take tiny steps to move closer and closer towards our goal.")
@@ -62,24 +64,30 @@ struct GoalHowItWorksView: View {
                             .padding(.vertical, 20)
                     }
                     
-                    LazyVStack(spacing: 10) {
-                        GoalInfoBackgroundText(text: "Go for a run regularly", backgroundColor: UserColor.user0.get(), big: true)
+                    VStack(spacing: 10) {
+                        GoalInfoBackgroundText(text: "Go for a run regularly", backgroundColor: selectedColor.get(.light), big: true)
                         GoalInfoArrowText(text: "What?", big: true)
                         
-                        GoalInfoBackgroundText(text: "Run 100 miles in total", backgroundColor: UserColor.user0.get(.light), big: true)
-                        GoalInfoBackgroundText(text: "Run for 300 times", backgroundColor: UserColor.user0.get(.light), big: true)
-                        GoalInfoBackgroundText(text: "Run to 50 parks in town", backgroundColor: UserColor.user0.get(.light), big: true)
-                        GoalInfoBackgroundText(text: "Hike 12 mountains in the swiss alps", backgroundColor: UserColor.user0.get(.light), big: true)
+                        GoalInfoBackgroundText(text: "Run 100 miles in total", backgroundColor: selectedColor.get(), big: true)
+                        GoalInfoBackgroundText(text: "Run for 300 times", backgroundColor: selectedColor.get(), big: true)
+                        GoalInfoBackgroundText(text: "Run to 50 parks in town", backgroundColor: selectedColor.get(), big: true)
+                        GoalInfoBackgroundText(text: "Hike 12 mountains in the swiss alps", backgroundColor: selectedColor.get(), big: true)
                     }
                     .padding(.bottom, 20)
                     
-                    LazyVStack(spacing: 20) {
-                        OneSMultilineText(text: "And that’s it, simple right?", bold: true)
+                    VStack(spacing: 20) {
+                        OneSMultilineText(text: "And that's it!", bold: true)
+                    }
+                    .padding(.bottom, 20)
+                    
+                    HStack {
+                        Spacer()
+                        OneSSmallBorderButton(symbol: SFSymbol.arrow, color: .grayToBackground) {}
                     }
                 }
                 .padding(.horizontal, Layout.firstLayerPadding)
                 .padding(.top, 12)
-                .padding(.bottom, 300*Layout.multiplierHeight)
+                .padding(.bottom, 80*Layout.multiplierHeight)
             }
         }
     }

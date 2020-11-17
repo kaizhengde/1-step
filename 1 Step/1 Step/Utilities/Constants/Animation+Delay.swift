@@ -9,7 +9,7 @@ import Foundation
 
 enum AnimationDuration {
     
-    static let opacity: Double = 0.4
+    static let opacity: Double = 0.3
     static let halfOpacity: Double = opacity/2.0
     static let mountainAppear: Double = 0.8
     static let mountainDismiss: Double = 0.6

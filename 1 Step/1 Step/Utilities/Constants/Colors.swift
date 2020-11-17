@@ -12,6 +12,7 @@ extension Color {
     static let whiteToDarkGray = Color("WhiteToDarkGray")
     static let grayToBackground = Color("GrayToBackground")
     static let darkBackgroundToBlack = Color("DarkBackgroundToBlack")
+    static let darkNeutralToNeutral = Color("DarkNeutralToNeutral")
     static let neutralToDarkNeutral = Color("NeutralToDarkNeutral")
     static let lightNeutralToLightGray = Color("LightNeutralToLightGray")
     static let backgroundToGray = Color("BackgroundToGray")
