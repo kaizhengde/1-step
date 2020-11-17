@@ -9,7 +9,8 @@ import SwiftUI
 
 struct GoalItem: View {
     
-    let goalActiveModel: GoalsActiveModel
+    @ObservedObject var goalsGridModel: GoalsGridModel
+    
     @State private var isCurrentDrag: Bool = false
     @State private var tapAnimation: Bool = false
     
@@ -20,7 +21,7 @@ struct GoalItem: View {
     var body: some View {
         ZStack {
             MountainView(goal: $goal)
-            PercentView(goalActiveModel: goalActiveModel, goal: $goal)
+            PercentView(goalsGridModel: goalsGridModel, goal: $goal)
             TextView(goal: $goal)
         }
         .frame(width: GoalItemArt.width, height: GoalItemArt.height, alignment: .top)
@@ -29,7 +30,7 @@ struct GoalItem: View {
         .contentShape(GoalItemArt.shape)
         .oneSShadow(opacity: 0.15, y: 3, blur: 10)
         .scaleEffect(tapAnimation ? 1.05 : 1.0)
-        .onReceive(goalActiveModel.$currentDragItem) { isCurrentDrag = $0 == goal }
+        .onReceive(goalsGridModel.$currentDragItem) { isCurrentDrag = $0 == goal }
         .onTapGesture {
             onTap()
             tapAnimation = true
@@ -40,14 +41,14 @@ struct GoalItem: View {
     
     private struct PercentView: View {
         
-        let goalActiveModel: GoalsActiveModel? 
+        @ObservedObject var goalsGridModel: GoalsGridModel
         @State private var isCurrentDrag: Bool = false
 
         @Binding var goal: Goal
-        
+                
         
         var body: some View {
-            GoalItemArt.current == .grid ?
+            GoalItemArt.current == .grid && goal.currentState == .active ?
             VStack {
                 HStack {
                     Spacer()
@@ -62,7 +63,7 @@ struct GoalItem: View {
                 Spacer()
             }
             .padding([.horizontal, .top], 12)
-            .onReceive(goalActiveModel!.$currentDragItem) { isCurrentDrag = $0 == goal }
+            .onReceive(goalsGridModel.$currentDragItem) { isCurrentDrag = $0 == goal }
             : nil
         }
     }
@@ -71,7 +72,7 @@ struct GoalItem: View {
     private struct TextView: View {
         
         @Binding var goal: Goal
-        
+                
         
         var body: some View {
             VStack {
@@ -91,7 +92,7 @@ struct GoalItem: View {
                     .multilineTextAlignment(.leading)
                 }
                 .padding(12)
-                .offset(y: GoalItemArt.textOffset)
+                .offset(y: goal.currentState == .reached ? 24 : GoalItemArt.textOffset)
                 
                 Spacer()
             }
@@ -102,17 +103,31 @@ struct GoalItem: View {
     private struct MountainView: View {
         
         @Binding var goal: Goal
-        
+            
         
         var body: some View {
-            goal.mountain.get()
-                .renderingMode(.template)
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .foregroundColor(.white)
-                .colorMultiply(.backgroundToGray)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .offset(y: GoalItemArt.mountainOffset(goal))
+            ZStack(alignment: .init(horizontal: .flagMountainAlignment, vertical: .top)) {
+                goal.mountain.get()
+                    .renderingMode(.template)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .foregroundColor(.white)
+                    .colorMultiply(.backgroundToGray)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                
+                if goal.currentState == .reached {
+                    Flag.flag
+                        .renderingMode(.template)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 24, height: 24)
+                        .foregroundColor(.white)
+                        .colorMultiply(.backgroundToGray)
+                        .alignmentGuide(.flagMountainAlignment) { $0[.leading] }
+                        .offset(y: -24)
+                }
+            }
+            .offset(y: GoalItemArt.mountainOffset(goal.currentState == .active ? goal.currentPercent : Int16(Int.random(in: 30...70))))
         }
     }
 }

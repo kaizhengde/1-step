@@ -19,6 +19,9 @@ enum GoalsTab: String {
         if self == .active { self = .reached }
         else { self = .active }
     }
+    
+    var isActive: Bool { return self == .active }
+    var isReached: Bool { return self == .reached }
 }
 
 

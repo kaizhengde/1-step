@@ -10,12 +10,13 @@ import SwiftUI
 struct GoalsHeaderView: View {
     
     @StateObject private var mainModel = MainModel.shared
+    @ObservedObject var goalsModel: GoalsModel
     
     
     var body: some View {
         VStack(spacing: Device.isiPhoneXType ? 8 : 3) {
             OneSHeaderView("Goals", trailingButton: (.profile, .grayToBackground, { mainModel.toScreen(.profile) }))
-            TabBarView()
+            TabBarView(goalsModel: goalsModel)
         }
         .padding(.bottom, 24)
     }
@@ -23,10 +24,13 @@ struct GoalsHeaderView: View {
     
     private struct TabBarView: View {
         
+        @ObservedObject var goalsModel: GoalsModel
+        
+        
         var body: some View {
             HStack(spacing: 4) {
-                TabBarButtonView(tabActive: .active, text: GoalsTab.active.description)
-                TabBarButtonView(tabActive: .reached, text: GoalsTab.reached.description)
+                TabBarButtonView(goalsModel: goalsModel, tabActive: .active, text: GoalsTab.active.description)
+                TabBarButtonView(goalsModel: goalsModel, tabActive: .reached, text: GoalsTab.reached.description)
             }
             .frame(height: 38)
             .cornerRadius(20)
@@ -36,7 +40,7 @@ struct GoalsHeaderView: View {
         
         private struct TabBarButtonView: View {
             
-            @EnvironmentObject var goalsModel: GoalsModel
+            @ObservedObject var goalsModel: GoalsModel
             
             let tabActive: GoalsTab
             var isActive: Bool { goalsModel.currentTab == tabActive }

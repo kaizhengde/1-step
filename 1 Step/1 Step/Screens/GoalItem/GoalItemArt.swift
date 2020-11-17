@@ -69,7 +69,7 @@ enum GoalItemArt {
 
     //Mountain
     
-    static func mountainOffset(_ goal: Goal) -> CGFloat {
+    static func mountainOffset(_ percent: Int16) -> CGFloat {
         var offset: CGFloat = 0
         
         switch current {
@@ -77,13 +77,13 @@ enum GoalItemArt {
         case .menu: offset = 70
         }
         
-        return generateDynamicOffset(with: offset, goal)
+        return generateDynamicOffset(with: offset, percent)
     }
     
     
-    static func generateDynamicOffset(with offset: CGFloat, _ goal: Goal) -> CGFloat {
+    static func generateDynamicOffset(with offset: CGFloat, _ percent: Int16) -> CGFloat {
         let mountainPositionRange = height - offset
-        let dynamicOffset = mountainPositionRange * CGFloat(goal.currentPercent)/100
+        let dynamicOffset = mountainPositionRange * CGFloat(percent)/100
         
         return offset + mountainPositionRange - dynamicOffset
     }

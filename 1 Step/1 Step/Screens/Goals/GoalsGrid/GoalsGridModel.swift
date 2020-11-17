@@ -1,5 +1,5 @@
 //
-//  GoalsActiveModel.swift
+//  GoalsGridModel.swift
 //  1 Step
 //
 //  Created by Kai Zheng on 11.10.20.
@@ -8,7 +8,7 @@
 import SwiftUI
 import UniformTypeIdentifiers
 
-class GoalsActiveModel: ObservableObject {
+class GoalsGridModel: ObservableObject {
     
     @Published var itemsAppear: [Bool] = Array(repeating: false, count: DataModel.shared.activeGoals.count+1)
     @Published var currentDragItem: Goal? = nil

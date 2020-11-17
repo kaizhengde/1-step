@@ -10,20 +10,19 @@ import SwiftUI
 struct GoalsScreen: View {
     
     @StateObject private var mainModel = MainModel.shared
-    @EnvironmentObject var goalsModel: GoalsModel
-    @StateObject private var goalsActiveModel = GoalsActiveModel()
-    @StateObject private var goalsReachedModel = GoalsReachedModel()
+    @StateObject private var goalsModel = GoalsModel()
+    @StateObject private var goalsGridModel = GoalsGridModel()
     
     
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack {
-                GoalsHeaderView()
+                GoalsHeaderView(goalsModel: goalsModel)
                 
-                if goalsModel.currentTab == .active {
-                    GoalsActiveView(viewModel: goalsActiveModel)
+                if goalsModel.currentTab.isActive {
+                    GoalsGridView(goalsModel: goalsModel, viewModel: goalsGridModel, selectedTab: .active)
                 } else {
-                    GoalsReachedView(viewModel: goalsReachedModel)
+                    GoalsGridView(goalsModel: goalsModel, viewModel: goalsGridModel, selectedTab: .reached)
                 }
             }
             .frame(width: Layout.firstLayerWidth)
@@ -32,9 +31,7 @@ struct GoalsScreen: View {
             .animation(nil)
         }
         .offset(x: mainModel.currentScreen.active.isScreen(.goal(.transition)) ? -80 : 0)
-        .onDrop(of: goalsActiveModel.dropType, delegate: GoalsActiveModel.DropOutsideDelegate(current: $goalsActiveModel.currentDragItem))
-        .onChange(of: goalsModel.currentTab) {
-            if $0 == .reached { goalsActiveModel.resetTransition() }
-        }
+        .onDrop(of: goalsGridModel.dropType, delegate: GoalsGridModel.DropOutsideDelegate(current: $goalsGridModel.currentDragItem))
+        .onChange(of: goalsModel.currentTab) { _ in goalsGridModel.resetTransition() }
     }
 }

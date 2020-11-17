@@ -51,7 +51,7 @@ struct GoalMenuView: View {
         
         
         var body: some View {
-            GoalItem(goalActiveModel: GoalsActiveModel(), goal: $goal) {
+            GoalItem(goalsGridModel: GoalsGridModel(), goal: $goal) {
                 goalModel.selectedGoal = goal
                 goalModel.dragState = .none
                 goalModel.dragOffset = .zero

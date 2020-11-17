@@ -15,8 +15,6 @@ struct __StepApp: App {
     let dataModel               = DataModel.shared
         
     let mainModel               = MainModel.shared
-    let goalsModel              = GoalsModel()
-    let goalAddModel            = GoalCreateModel()
     let goalModel               = GoalModel.shared
         
     let sheetManager            = SheetManager.shared
@@ -33,8 +31,6 @@ struct __StepApp: App {
             MainView()
                 .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
                 .environment(\.managedObjectContext, persistenceManager.context)
-                .environmentObject(goalsModel)
-                .environmentObject(goalAddModel)
         }
     }
 }
