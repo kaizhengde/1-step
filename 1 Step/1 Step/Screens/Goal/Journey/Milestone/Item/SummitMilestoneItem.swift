@@ -28,7 +28,7 @@ struct SummitMilestoneItem: View {
             
             VStack(spacing: 20) {
                 MilestoneDotView(milestoneAppear: $appear, milestone: milestone, appearAfter: .milliseconds(400))
-                MilestoneDotView(milestoneAppear: $appear, milestone: milestone, appearAfter: .milliseconds(600))
+                MilestoneDotView(milestoneAppear: $appear, milestone: milestone, appearAfter: .milliseconds(600), showEndDate: false)
             }
         }
     }

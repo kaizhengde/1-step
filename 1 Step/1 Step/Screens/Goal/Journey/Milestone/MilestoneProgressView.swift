@@ -9,7 +9,6 @@ import SwiftUI
 
 struct MilestoneProgressView: View {
     
-    @StateObject private var goalModel = GoalModel.shared
     @ObservedObject var viewModel: MilestoneModel
     @StateObject private var addStepAnimationHandler = AddStepAnimationHandler.shared
     @StateObject private var infiniteAnimationManager = InfiniteAnimationManager.shared

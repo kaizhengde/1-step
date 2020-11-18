@@ -16,12 +16,21 @@ struct MilestoneDotView: View {
     var goal: Goal { milestone.parentGoal }
     
     var appearAfter: DispatchTimeInterval
+    var showEndDate: Bool
+    
+    init(milestoneAppear: Binding<Bool>, milestone: Milestone, appearAfter: DispatchTimeInterval, showEndDate: Bool = true) {
+        self._milestoneAppear = milestoneAppear
+        self.milestone = milestone
+        self.appearAfter = appearAfter
+        self.showEndDate = showEndDate
+    }
     
     
     var body: some View {
         VStack {
-            if milestone.state == .done {
+            if milestone.state == .done && showEndDate {
                 OneSText(text: milestone.endDate!.toString(), font: .custom(weight: milestone.image == .summit ? Raleway.extraBold : Raleway.bold, size: milestone.image == .summit ? 24 : 17), color: goal.color.get(.dark))
+                    .frame(width: 150)
             }
             if milestone.state != .current {
                 Circle()

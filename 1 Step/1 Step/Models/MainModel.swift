@@ -12,7 +12,7 @@ struct Screen {
     enum Active: Equatable {
         
         enum GoalScreenShowState {
-            case transition, appear
+            case transition, showActive, showReached
         }
         
         case none
@@ -26,7 +26,8 @@ struct Screen {
             case .none: return self == .none
             case .goals: return self == .goals || self == .goal(.transition)
             case .goal(.transition): return self == .goal(.transition)
-            case .goal(.appear): return self == .goal(.appear)
+            case .goal(.showActive): return self == .goal(.showActive)
+            case .goal(.showReached): return self == .goal(.showReached)
             case .goalAdd: return self == .goalAdd
             case .profile: return self == .profile
             }
@@ -77,13 +78,13 @@ final class MainModel: ObservableObject {
     }
     
     
-    func toGoalScreen() {
+    func toGoalScreen(_ state: GoalState) {
         currentScreen.active = .goal(.transition)
         currentScreen.show()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
             self.currentScreen.dismiss()
-            self.currentScreen.active = .goal(.appear)
+            self.currentScreen.active = .goal(state == .active ? .showActive : .showReached)
             self.currentScreen.show()
         }
     }

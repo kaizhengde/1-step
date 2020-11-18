@@ -19,7 +19,8 @@ struct MainView: View {
             
             mainModel.screen(.goals) { GoalsScreen() }
             mainModel.screen(.goal(.transition)) { GoalTransitionView() }
-            mainModel.screen(.goal(.appear)) { GoalScreen() }
+            mainModel.screen(.goal(.showActive)) { GoalScreen() }
+            mainModel.screen(.goal(.showReached)) { GoalReachedScreen() }
             mainModel.screen(.goalAdd) { GoalCreateScreen() }
             mainModel.screen(.profile) { ProfileScreen() }
         }

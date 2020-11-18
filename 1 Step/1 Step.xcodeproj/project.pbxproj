@@ -53,6 +53,8 @@
 		3D4B78E5252CDE9E00A45755 /* GoalSelectMountainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4B78E4252CDE9E00A45755 /* GoalSelectMountainModel.swift */; };
 		3D4CC511252F558C00133CD6 /* OneSBorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4CC510252F558C00133CD6 /* OneSBorderButton.swift */; };
 		3D4FD8632564E9E800103C73 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4FD8622564E9E800103C73 /* Date.swift */; };
+		3D4FD8662564EDD200103C73 /* GoalReachedScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4FD8652564EDD200103C73 /* GoalReachedScreen.swift */; };
+		3D4FD8692564EE0700103C73 /* GoalReachedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4FD8682564EE0700103C73 /* GoalReachedModel.swift */; };
 		3D5156AF2531F66D00A44450 /* GoalEnterInputSelectStepUnitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5156AE2531F66D00A44450 /* GoalEnterInputSelectStepUnitView.swift */; };
 		3D5156B32531F83700A44450 /* OneSMiniSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5156B22531F83700A44450 /* OneSMiniSheet.swift */; };
 		3D5156B82531FB3F00A44450 /* ViewOverlayManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5156B72531FB3F00A44450 /* ViewOverlayManagerProtocol.swift */; };
@@ -180,6 +182,8 @@
 		3D4B78E4252CDE9E00A45755 /* GoalSelectMountainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSelectMountainModel.swift; sourceTree = "<group>"; };
 		3D4CC510252F558C00133CD6 /* OneSBorderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSBorderButton.swift; sourceTree = "<group>"; };
 		3D4FD8622564E9E800103C73 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		3D4FD8652564EDD200103C73 /* GoalReachedScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalReachedScreen.swift; sourceTree = "<group>"; };
+		3D4FD8682564EE0700103C73 /* GoalReachedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalReachedModel.swift; sourceTree = "<group>"; };
 		3D5156AE2531F66D00A44450 /* GoalEnterInputSelectStepUnitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEnterInputSelectStepUnitView.swift; sourceTree = "<group>"; };
 		3D5156B22531F83700A44450 /* OneSMiniSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSMiniSheet.swift; sourceTree = "<group>"; };
 		3D5156B72531FB3F00A44450 /* ViewOverlayManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewOverlayManagerProtocol.swift; sourceTree = "<group>"; };
@@ -642,6 +646,8 @@
 		3D996775253F424D000CE151 /* Reached */ = {
 			isa = PBXGroup;
 			children = (
+				3D4FD8682564EE0700103C73 /* GoalReachedModel.swift */,
+				3D4FD8652564EDD200103C73 /* GoalReachedScreen.swift */,
 			);
 			path = Reached;
 			sourceTree = "<group>";
@@ -927,6 +933,7 @@
 				3D2E795D25301ED600788AA2 /* OneSPopup.swift in Sources */,
 				3DE11C41252C681600F13719 /* __Step.xcdatamodeld in Sources */,
 				3DF1E2722547F04A00D65244 /* HiddenView.swift in Sources */,
+				3D4FD8692564EE0700103C73 /* GoalReachedModel.swift in Sources */,
 				3D6F43A2253B266F00785586 /* GoalMenuView.swift in Sources */,
 				3D2E7933252F9CFA00788AA2 /* Animation+Delay.swift in Sources */,
 				3D959AAE2563E79F007BAA07 /* GoalInfoArrowText.swift in Sources */,
@@ -943,6 +950,7 @@
 				3DDF70452531BC1200FD3011 /* MilestoneImage.swift in Sources */,
 				3DF1BFD7254C67D2004E1AB6 /* SummitMilestoneItem.swift in Sources */,
 				3D5156B32531F83700A44450 /* OneSMiniSheet.swift in Sources */,
+				3D4FD8662564EDD200103C73 /* GoalReachedScreen.swift in Sources */,
 				3D2E7928252F6C2C00788AA2 /* GoalEnterInputModel.swift in Sources */,
 				3DC617262544145C00A1F204 /* InfiniteAnimationManager.swift in Sources */,
 				3D5156AF2531F66D00A44450 /* GoalEnterInputSelectStepUnitView.swift in Sources */,

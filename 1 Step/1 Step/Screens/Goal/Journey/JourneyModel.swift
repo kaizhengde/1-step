@@ -8,7 +8,7 @@
 import SwiftUI
 import CoreData
 
-class JourneyModel: ObservableObject {
+final class JourneyModel: ObservableObject {
     
     @Published var milestoneAppears: [NSManagedObjectID: Bool] = [:]
     @Published var milestoneRects: [NSManagedObjectID: CGRect] = [:]

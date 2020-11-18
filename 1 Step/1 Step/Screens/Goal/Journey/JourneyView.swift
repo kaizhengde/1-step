@@ -9,7 +9,6 @@ import SwiftUI
 
 struct JourneyView: View {
     
-    @StateObject private var goalModel = GoalModel.shared
     @StateObject private var viewModel = JourneyModel()
     
     

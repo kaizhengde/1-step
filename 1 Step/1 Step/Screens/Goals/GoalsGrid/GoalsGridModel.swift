@@ -72,9 +72,10 @@ class GoalsGridModel: ObservableObject {
     func itemTapped(of goal: Goal) {
         if tab.isActive {
             GoalModel.shared.selectedGoal = goal
-            MainModel.shared.toGoalScreen()
+            MainModel.shared.toGoalScreen(.active)
         } else {
-            
+            GoalReachedModel.shared.selectedGoal = goal
+            MainModel.shared.toGoalScreen(.reached)
         }
         //DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) { self.resetTransition() }
     }
