@@ -17,11 +17,11 @@ struct GoalsGridView: View {
         LazyVGrid(columns: viewModel.goalItemColumns, spacing: 24) {
             ForEach(viewModel.goals, id: \.self) { goal in
                 GoalItem(goalsGridModel: viewModel, goal: .constant(goal)) { viewModel.itemTapped(of: goal) }
-                .onDrag { viewModel.onGoalDrag(goal) }
-                .onDrop(of: viewModel.dropType, delegate: GoalsGridModel.DragAndDropDelegate(gridItems: viewModel.tab.isActive ? $dataModel.activeGoals : $dataModel.reachedGoals, current: $viewModel.currentDragItem, item: goal))
-                .onAppear { viewModel.initItemTransition(of: Int(goal.sortOrder)) }
-                .opacity(viewModel.itemsOpacityTransition(of: goal))
-                .scaleEffect(viewModel.itemsScaleTransition(of: goal))
+                    .onDrag { viewModel.onGoalDrag(goal) }
+                    .onDrop(of: viewModel.dropType, delegate: GoalsGridModel.DragAndDropDelegate(gridItems: viewModel.tab.isActive ? $dataModel.activeGoals : $dataModel.reachedGoals, current: $viewModel.currentDragItem, item: goal))
+                    .onAppear { viewModel.initItemTransition(of: Int(goal.sortOrder)) }
+                    .opacity(viewModel.itemsOpacityTransition(of: goal))
+                    .scaleEffect(viewModel.itemsScaleTransition(of: goal))
             }
             
             if viewModel.tab.isActive {

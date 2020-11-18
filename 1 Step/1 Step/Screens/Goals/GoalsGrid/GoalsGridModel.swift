@@ -139,16 +139,4 @@ class GoalsGridModel: ObservableObject {
             return false 
         }
     }
-    
-    
-    struct DropOutsideDelegate: DropDelegate {
-        
-        @Binding var current: Goal?
-        
-        
-        func performDrop(info: DropInfo) -> Bool {
-            current = nil
-            return true
-        }
-    }
 }

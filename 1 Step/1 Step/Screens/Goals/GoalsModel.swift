@@ -40,4 +40,18 @@ final class GoalsModel: ObservableObject {
         let count = currentTab == .active ? DataModel.shared.activeGoals.count : DataModel.shared.reachedGoals.count
         return count < 2 ? 0 : 260*Layout.multiplierHeight
     }
+    
+    
+    //MARK: - Drag and Drop
+    
+    struct DropOutsideDelegate: DropDelegate {
+        
+        @Binding var current: Goal?
+        
+        
+        func performDrop(info: DropInfo) -> Bool {
+            current = nil
+            return true
+        }
+    }
 }

@@ -32,8 +32,7 @@ struct GoalsScreen: View {
             .animation(nil)
         }
         .offset(x: mainModel.currentScreen.active.isScreen(.goal(.transition)) ? -80 : 0)
-        .onDrop(of: goalsActiveGridModel.dropType, delegate: GoalsGridModel.DropOutsideDelegate(current: $goalsActiveGridModel.currentDragItem))
-        .onDrop(of: goalsReachedGridModel.dropType, delegate: GoalsGridModel.DropOutsideDelegate(current: $goalsReachedGridModel.currentDragItem))
+        .onDrop(of: goalsActiveGridModel.dropType, delegate: GoalsModel.DropOutsideDelegate(current: goalsModel.currentTab.isActive ? $goalsActiveGridModel.currentDragItem : $goalsReachedGridModel.currentDragItem))
         .onChange(of: goalsModel.currentTab) { _ in 
             goalsActiveGridModel.resetTransition()
             goalsReachedGridModel.resetTransition()
