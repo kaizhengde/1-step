@@ -19,17 +19,21 @@ struct MilestoneDotView: View {
     
     
     var body: some View {
-        Group {
+        VStack {
+            if milestone.state == .done {
+                OneSText(text: milestone.endDate!.toString(), font: .custom(weight: milestone.image == .summit ? Raleway.extraBold : Raleway.bold, size: milestone.image == .summit ? 24 : 17), color: goal.color.get(.dark))
+            }
             if milestone.state != .current {
                 Circle()
                     .frame(width: 15, height: 15)
                     .foregroundColor(goal.color.get(.dark))
-                    .scaleEffect(appear ? 1.0 : 0.9)
-                    .opacity(appear ? 1.0 : 0.0)
             }
         }
+        .scaleEffect(appear ? 1.0 : 0.9)
+        .opacity(appear ? 1.0 : 0.0)
         .onChange(of: milestoneAppear) {
             if $0 { DispatchQueue.main.asyncAfter(deadline: .now() + appearAfter) { self.appear = true } }
         }
+        .onChange(of: AddStepAnimationHandler.shared.milestoneChangeState) { _ in appear = true  }
     }
 }

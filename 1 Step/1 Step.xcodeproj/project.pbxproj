@@ -52,6 +52,7 @@
 		3D4B78E1252CDD9200A45755 /* GoalSelectMountainItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4B78E0252CDD9200A45755 /* GoalSelectMountainItem.swift */; };
 		3D4B78E5252CDE9E00A45755 /* GoalSelectMountainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4B78E4252CDE9E00A45755 /* GoalSelectMountainModel.swift */; };
 		3D4CC511252F558C00133CD6 /* OneSBorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4CC510252F558C00133CD6 /* OneSBorderButton.swift */; };
+		3D4FD8632564E9E800103C73 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4FD8622564E9E800103C73 /* Date.swift */; };
 		3D5156AF2531F66D00A44450 /* GoalEnterInputSelectStepUnitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5156AE2531F66D00A44450 /* GoalEnterInputSelectStepUnitView.swift */; };
 		3D5156B32531F83700A44450 /* OneSMiniSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5156B22531F83700A44450 /* OneSMiniSheet.swift */; };
 		3D5156B82531FB3F00A44450 /* ViewOverlayManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5156B72531FB3F00A44450 /* ViewOverlayManagerProtocol.swift */; };
@@ -178,6 +179,7 @@
 		3D4B78E0252CDD9200A45755 /* GoalSelectMountainItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSelectMountainItem.swift; sourceTree = "<group>"; };
 		3D4B78E4252CDE9E00A45755 /* GoalSelectMountainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSelectMountainModel.swift; sourceTree = "<group>"; };
 		3D4CC510252F558C00133CD6 /* OneSBorderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSBorderButton.swift; sourceTree = "<group>"; };
+		3D4FD8622564E9E800103C73 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		3D5156AE2531F66D00A44450 /* GoalEnterInputSelectStepUnitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEnterInputSelectStepUnitView.swift; sourceTree = "<group>"; };
 		3D5156B22531F83700A44450 /* OneSMiniSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSMiniSheet.swift; sourceTree = "<group>"; };
 		3D5156B72531FB3F00A44450 /* ViewOverlayManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewOverlayManagerProtocol.swift; sourceTree = "<group>"; };
@@ -405,6 +407,7 @@
 				3D2E7949253019A200788AA2 /* UIApplication.swift */,
 				3D258281253C0A9300DC19E7 /* Color.swift */,
 				3DF1E275254819FF00D65244 /* Double.swift */,
+				3D4FD8622564E9E800103C73 /* Date.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -944,6 +947,7 @@
 				3DC617262544145C00A1F204 /* InfiniteAnimationManager.swift in Sources */,
 				3D5156AF2531F66D00A44450 /* GoalEnterInputSelectStepUnitView.swift in Sources */,
 				3D959AA725631320007BAA07 /* GoalInfoBackgroundText.swift in Sources */,
+				3D4FD8632564E9E800103C73 /* Date.swift in Sources */,
 				3D2E79752530344D00788AA2 /* OneSSecondaryHeaderText.swift in Sources */,
 				3D4B78E1252CDD9200A45755 /* GoalSelectMountainItem.swift in Sources */,
 				3D47CC83252C6F9300A8CA1B /* OneSHeaderView.swift in Sources */,
