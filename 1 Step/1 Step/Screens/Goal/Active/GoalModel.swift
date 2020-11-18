@@ -205,7 +205,7 @@ final class GoalModel: TransitionObservableObject {
     //onChanged
     
     private func legalDrag(_ value: DragGesture.Value) -> Bool {
-        return onDragBackward(value) || onDragForward(value)
+        return (onDragBackward(value) || onDragForward(value)) && transition.isFullAppeared
     }
     
     
