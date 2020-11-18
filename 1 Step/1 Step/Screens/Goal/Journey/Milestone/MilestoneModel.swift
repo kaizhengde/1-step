@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-final class MilestoneModel: ObservableObject {
+class MilestoneModel: ObservableObject {
     
     var milestone: Milestone {
         GoalModel.shared.selectedGoal.milestones.filter { $0.state == .current }.first ?? Milestone(context: PersistenceManager.defaults.context)

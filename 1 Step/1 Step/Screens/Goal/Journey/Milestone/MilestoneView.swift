@@ -12,9 +12,9 @@ struct MilestoneView: View {
     @StateObject private var goalModel = GoalModel.shared
     @StateObject private var viewModel = MilestoneModel()
     @StateObject private var addStepAnimationHandler = AddStepAnimationHandler.shared
-    
+
     @State private var appear = false
-        
+    
     
     var body: some View {
         VStack(spacing: 40) {

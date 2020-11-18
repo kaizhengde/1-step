@@ -55,6 +55,9 @@
 		3D4FD8632564E9E800103C73 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4FD8622564E9E800103C73 /* Date.swift */; };
 		3D4FD8662564EDD200103C73 /* GoalReachedScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4FD8652564EDD200103C73 /* GoalReachedScreen.swift */; };
 		3D4FD8692564EE0700103C73 /* GoalReachedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4FD8682564EE0700103C73 /* GoalReachedModel.swift */; };
+		3D4FD86E2564F39100103C73 /* GoalReachedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4FD86D2564F39100103C73 /* GoalReachedView.swift */; };
+		3D4FD8722564F48F00103C73 /* GoalReachedSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4FD8712564F48F00103C73 /* GoalReachedSummaryView.swift */; };
+		3D4FD8762564F4C900103C73 /* GoalReachedHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4FD8752564F4C900103C73 /* GoalReachedHeaderView.swift */; };
 		3D5156AF2531F66D00A44450 /* GoalEnterInputSelectStepUnitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5156AE2531F66D00A44450 /* GoalEnterInputSelectStepUnitView.swift */; };
 		3D5156B32531F83700A44450 /* OneSMiniSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5156B22531F83700A44450 /* OneSMiniSheet.swift */; };
 		3D5156B82531FB3F00A44450 /* ViewOverlayManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5156B72531FB3F00A44450 /* ViewOverlayManagerProtocol.swift */; };
@@ -184,6 +187,9 @@
 		3D4FD8622564E9E800103C73 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		3D4FD8652564EDD200103C73 /* GoalReachedScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalReachedScreen.swift; sourceTree = "<group>"; };
 		3D4FD8682564EE0700103C73 /* GoalReachedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalReachedModel.swift; sourceTree = "<group>"; };
+		3D4FD86D2564F39100103C73 /* GoalReachedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalReachedView.swift; sourceTree = "<group>"; };
+		3D4FD8712564F48F00103C73 /* GoalReachedSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalReachedSummaryView.swift; sourceTree = "<group>"; };
+		3D4FD8752564F4C900103C73 /* GoalReachedHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalReachedHeaderView.swift; sourceTree = "<group>"; };
 		3D5156AE2531F66D00A44450 /* GoalEnterInputSelectStepUnitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEnterInputSelectStepUnitView.swift; sourceTree = "<group>"; };
 		3D5156B22531F83700A44450 /* OneSMiniSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSMiniSheet.swift; sourceTree = "<group>"; };
 		3D5156B72531FB3F00A44450 /* ViewOverlayManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewOverlayManagerProtocol.swift; sourceTree = "<group>"; };
@@ -523,6 +529,16 @@
 			path = GoalSelectMountain;
 			sourceTree = "<group>";
 		};
+		3D4FD86C2564F38300103C73 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3D4FD86D2564F39100103C73 /* GoalReachedView.swift */,
+				3D4FD8752564F4C900103C73 /* GoalReachedHeaderView.swift */,
+				3D4FD8712564F48F00103C73 /* GoalReachedSummaryView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		3D5156B12531F80D00A44450 /* MiniSheets */ = {
 			isa = PBXGroup;
 			children = (
@@ -648,6 +664,7 @@
 			children = (
 				3D4FD8682564EE0700103C73 /* GoalReachedModel.swift */,
 				3D4FD8652564EDD200103C73 /* GoalReachedScreen.swift */,
+				3D4FD86C2564F38300103C73 /* View */,
 			);
 			path = Reached;
 			sourceTree = "<group>";
@@ -907,6 +924,7 @@
 				3D959A9625630913007BAA07 /* GoalHowItWorksView.swift in Sources */,
 				3DE9C522252CB5820023C212 /* GoalCreateScreen.swift in Sources */,
 				3DFDE055253C4678006B1A7E /* GoalEditModel.swift in Sources */,
+				3D4FD86E2564F39100103C73 /* GoalReachedView.swift in Sources */,
 				3D0B5948253319AC00079856 /* GoalErrorHandler.swift in Sources */,
 				3DCA909A254546690030FE61 /* AddStepView.swift in Sources */,
 				3D47CCC2252C807000A8CA1B /* Colors.swift in Sources */,
@@ -969,6 +987,7 @@
 				3DCFE29625459E390012C536 /* OneSPicker.swift in Sources */,
 				3D6D6454254C0F2400FAA37F /* JourneyErrorHandler.swift in Sources */,
 				3D2E7941253017B600788AA2 /* OneSSmallBorderButton.swift in Sources */,
+				3D4FD8722564F48F00103C73 /* GoalReachedSummaryView.swift in Sources */,
 				3DE0796925340F080024E17D /* GoalItem.swift in Sources */,
 				3DF7916D25307EBF00F00174 /* ChildSizeReader.swift in Sources */,
 				3DE9C507252C8B8C0023C212 /* OneSHeaderText.swift in Sources */,
@@ -997,6 +1016,7 @@
 				3DAE7AE725309DBB00B162B1 /* OneSFloater.swift in Sources */,
 				3D2E79452530187800788AA2 /* OneSTextField.swift in Sources */,
 				3D2E7936252F9D3E00788AA2 /* OneSHintButton.swift in Sources */,
+				3D4FD8762564F4C900103C73 /* GoalReachedHeaderView.swift in Sources */,
 				3DA7BD362532D41400171360 /* OneSTextFieldPopupView.swift in Sources */,
 				3DDF70422531BBBB00FD3011 /* MilestoneState.swift in Sources */,
 				3DE9C50E252CAACC0023C212 /* GoalsModel.swift in Sources */,

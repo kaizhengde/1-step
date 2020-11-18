@@ -13,7 +13,7 @@ final class JourneyModel: ObservableObject {
     @Published var milestoneAppears: [NSManagedObjectID: Bool] = [:]
     @Published var milestoneRects: [NSManagedObjectID: CGRect] = [:]
         
-    var goal: Goal { GoalModel.shared.selectedGoal }
+    var goal: Goal { MainModel.shared.currentScreen.active == .goal(.showActive) ? GoalModel.shared.selectedGoal : GoalReachedModel.shared.selectedGoal }
     
     var milestonesUI: [Milestone] {
         Array(goal.milestones)

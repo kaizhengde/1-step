@@ -11,6 +11,8 @@ struct JourneyView: View {
     
     @StateObject private var viewModel = JourneyModel()
     
+    let state: GoalState
+    
     
     var body: some View {
         ZStack {

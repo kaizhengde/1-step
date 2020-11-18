@@ -10,6 +10,7 @@ import SwiftUI
 struct GoalTransitionView: View {
     
     @StateObject private var goalModel = GoalModel.shared
+    @StateObject private var goalReachedModel = GoalReachedModel.shared
     
     
     var body: some View {
@@ -17,6 +18,9 @@ struct GoalTransitionView: View {
             .oneSShadow(opacity: 0.2, y: 0, blur: 13)
             .transition(AnyTransition.move(edge: .trailing))
             .oneSAnimation()
-            .onAppear { goalModel.initAppear() }
+            .onAppear {
+                goalModel.initAppear()
+                goalReachedModel.initAppear()
+            }
     }
 }

@@ -13,7 +13,10 @@ struct GoalReachedScreen: View {
     
     
     var body: some View {
-        EmptyView()
+        ZStack {
+            GoalReachedView()
+        }
+        .onAppear { goalReachedModel.initTransition() }
         .oneSAnimation()
         .transition(.identity)
     }

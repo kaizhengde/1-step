@@ -31,7 +31,7 @@ struct GoalView: View {
                                 GoalSummaryView()
                                 
                                 if goalModel.showJourneyView {
-                                    JourneyView()
+                                    JourneyView(state: .active)
                                         .opacity(goalModel.journeyViewDragOpacity)
                                         .opacity(goalModel.showJourneyView ? 1.0 : 0.0)
                                         .offset(y: -250)
