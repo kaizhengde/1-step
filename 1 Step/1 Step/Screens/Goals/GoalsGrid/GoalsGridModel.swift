@@ -23,7 +23,7 @@ class GoalsGridModel: ObservableObject {
         self.tab = tab
         itemsAppear = Array(repeating: false, count: goals.count+1)
     }
-    
+        
     
     //MARK: - Transition
         

@@ -145,8 +145,6 @@ enum JourneyDataHandler {
         journeyData.currentSteps        = Int16(journeyData.currentStepUnits*Double(goal.step.unitRatio))
         journeyData.currentPercent      = Int16((journeyData.currentStepUnits/Double(goal.neededStepUnits))*100)
         journeyData.currentState        = Int16(journeyData.currentStepUnits) >= goal.neededStepUnits ? .reached : .active
-
-        if journeyData.currentState == .reached { journeyData.currentPercent = 100 }
         
         
         //2. Update Milestones

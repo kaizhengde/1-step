@@ -61,7 +61,7 @@ struct GoalSummaryView: View {
             
             var body: some View {
                 VStack(spacing: 16) {
-                    OneSText(text: "\(goalModel.selectedGoal.currentPercent)%", font: .custom(weight: Raleway.extraBold, size: 60), color: .backgroundToGray)
+                    OneSText(text: goalModel.selectedGoal.currentState == .active ?  "\(goalModel.selectedGoal.currentPercent)%" : "100%", font: .custom(weight: Raleway.extraBold, size: 60), color: .backgroundToGray)
                         .opacity(goalModel.showJourneyView ? 0.0 : 1.0)
                     
                     if goalModel.showDownArrow {

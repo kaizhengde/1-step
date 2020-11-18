@@ -150,6 +150,15 @@ final class DataManager {
     }
     
     
+    func updateReachedGoalsPercentage() -> Bool {
+        for goal in DataModel.shared.reachedGoals {
+            goal.currentPercent = Int16(Int.random(in: 20...80))
+        }
+        
+        return persistenceManager.saveContext()
+    }
+    
+    
     //MARK: - Delete
     
     func deleteGoal(_ goal: Goal) -> Bool {

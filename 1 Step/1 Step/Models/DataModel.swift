@@ -83,6 +83,11 @@ final class DataModel: ObservableObject {
     }
     
     
+    func updateReachedGoalsPercentage() {
+        _ = dataManager.updateReachedGoalsPercentage()
+    }
+    
+    
     //MARK: - Delete
     
     func deleteGoal(_ goal: Goal) -> Bool {

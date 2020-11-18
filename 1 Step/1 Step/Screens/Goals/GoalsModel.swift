@@ -29,6 +29,10 @@ final class GoalsModel: ObservableObject {
     
     @Published var currentTab: GoalsTab = .active
     
+    init() {
+        DataModel.shared.updateReachedGoalsPercentage()
+    }
+    
     
     //MARK: - Scroll
     
