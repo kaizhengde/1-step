@@ -139,9 +139,16 @@ enum JourneyDataHandler {
         var journeyData: Goal.JourneyData = (0, 0, 0, .active, [])
         
         
+        //0. Calculate new CurrentStepUnits
+        var newCurrentStepUnits = goal.currentStepUnits + newStepUnits
+        
+        if abs(newCurrentStepUnits - newCurrentStepUnits.rounded()) < 0.000000001 {
+            newCurrentStepUnits.round()
+        }
+        
         //1. Update Currents
         
-        journeyData.currentStepUnits    = goal.currentStepUnits + newStepUnits
+        journeyData.currentStepUnits    = newCurrentStepUnits
         journeyData.currentSteps        = Int16(journeyData.currentStepUnits*Double(goal.step.unitRatio))
         journeyData.currentPercent      = Int16((journeyData.currentStepUnits/Double(goal.neededStepUnits))*100)
         journeyData.currentState        = Int16(journeyData.currentStepUnits) >= goal.neededStepUnits ? .reached : .active

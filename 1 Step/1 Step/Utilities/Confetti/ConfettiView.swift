@@ -27,16 +27,16 @@ struct ConfettiView: UIViewControllerRepresentable {
     }
     
     
-    func makeUIViewController(context: Context) -> UIConfettiView {
-        return UIConfettiView(amount: amount)
+    func makeUIViewController(context: Context) -> UIConfettiVC {
+        return UIConfettiVC(amount: amount)
     }
 
 
-    func updateUIViewController(_ uiViewController: UIConfettiView, context: Context) {}
+    func updateUIViewController(_ uiViewController: UIConfettiVC, context: Context) {}
 }
 
 
-class UIConfettiView: UIViewController {
+class UIConfettiVC: UIViewController {
     
     var amount: ConfettisAmout
     

@@ -123,11 +123,17 @@ class AddStepModel: ObservableObject {
         let currentMilestone = goal.milestones.filter { $0.state == .current }.first!
         let prevMilestoneNeededStepUnits = currentMilestone.neededStepUnits - currentMilestone.stepUnitsFromPrev
         
-        if Int16(goal.currentStepUnits + newStepUnits) >= goal.neededStepUnits { return .goalReached }
+        var newCurrentStepUnits = goal.currentStepUnits + newStepUnits
         
-        if currentMilestone.neededStepUnits <= goal.currentStepUnits + newStepUnits {
+        if abs(newCurrentStepUnits - newCurrentStepUnits.rounded()) < 0.000000001 {
+            newCurrentStepUnits.round()
+        }
+        
+        if Int16(newCurrentStepUnits) >= goal.neededStepUnits { return .goalReached }
+        
+        if currentMilestone.neededStepUnits <= newCurrentStepUnits {
             return .milestoneChange(forward: true)
-        } else if prevMilestoneNeededStepUnits > goal.currentStepUnits + newStepUnits && goal.currentStepUnits > 0 {
+        } else if prevMilestoneNeededStepUnits > newCurrentStepUnits && goal.currentStepUnits > 0 {
             return .milestoneChange(forward: false)
         }
         
