@@ -36,8 +36,9 @@ struct MilestoneView: View {
     
     private struct StepsMap: View {
         
-        @ObservedObject var viewModel: MilestoneModel
+        @StateObject private var goalModel = GoalModel.shared
         @StateObject private var addStepAnimationHandler = AddStepAnimationHandler.shared
+        @ObservedObject var viewModel: MilestoneModel
         
         @State private var animateMarks = false
         @State private var forwardAdd = true
@@ -56,7 +57,7 @@ struct MilestoneView: View {
                                 .offset(y: animateMarks ? (forwardAdd ? 76 : -76) : 0)
                         }
                     }
-                    .animation(animateMarks ? .oneSAnimation() : nil)
+                    .animation(!goalModel.noDrag || animateMarks ? .oneSAnimation() : nil)
                 }
             }
             .onReceive(addStepAnimationHandler.normalAdd) { forward in

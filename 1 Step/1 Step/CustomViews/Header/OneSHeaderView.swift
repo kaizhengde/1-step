@@ -22,7 +22,7 @@ struct OneSHeaderViewCustom<Content: View>: View {
     let customView: (() -> Content)?
     
     
-    init(_ titleText: String? = nil, leadingButton: HeaderButton? = nil, trailingButton: HeaderButton? = nil, secondaryButtonOuter: SecondaryHeaderButton? = nil, secondaryButtonInner: SecondaryHeaderButton? = nil,  customView: (() -> Content)? = nil) {
+    init(_ titleText: String? = nil, leadingButton: HeaderButton? = nil, trailingButton: HeaderButton? = nil, secondaryButtonOuter: SecondaryHeaderButton? = nil, secondaryButtonInner: SecondaryHeaderButton? = nil, customView: (() -> Content)? = nil) {
         self.titleText = titleText
         self.leadingButton = leadingButton
         self.trailingButton = trailingButton
