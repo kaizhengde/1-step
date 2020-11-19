@@ -35,13 +35,14 @@ class MilestoneModel: ObservableObject {
         case 11...20:       amount = 2
         case 21...40:       amount = 3
         case 41...60:       amount = 4
-        case 61...80:       amount = 5
-        case 81...100:      amount = 6
-        case 101...120:     amount = 7
-        case 121...140:     amount = 8
-        case 141...160:     amount = 9
-        case 161...180:     amount = 10
-        case 181...200:     amount = 11
+        case 61...100:      amount = 5
+        case 101...140:     amount = 6
+        case 141...180:     amount = 7
+        case 181...220:     amount = 8
+        case 221...260:     amount = 9
+        case 261...300:     amount = 10
+        case 301...340:     amount = 11
+        case 341...400:     amount = 12
         default: break
         }
         
@@ -60,24 +61,25 @@ class MilestoneModel: ObservableObject {
         case 1...2:         height = 50
         case 3...10:        height = 80
         case 10...19:       height = 110
-        case 20...29:       height = 140
-        case 30...39:       height = 170
-        case 40...49:       height = 200
-        case 50...59:       height = 230
-        case 60...69:       height = 260
-        case 70...79:       height = 290
-        case 80...89:       height = 320
-        case 90...99:       height = 350
-        case 100...109:     height = 380
-        case 110...119:     height = 410
-        case 120...129:     height = 440
-        case 130...139:     height = 470
-        case 140...149:     height = 500
-        case 150...159:     height = 530
-        case 160...169:     height = 560
-        case 170...179:     height = 590
-        case 180...189:     height = 620
-        case 190...200:     height = 650
+        case 20...39:       height = 140
+        case 40...59:       height = 170
+        case 60...79:       height = 200
+        case 80...99:       height = 230
+        case 100...119:     height = 260
+        case 120...139:     height = 290
+        case 140...159:     height = 320
+        case 160...179:     height = 350
+        case 180...199:     height = 380
+        case 200...219:     height = 410
+        case 220...239:     height = 440
+        case 240...259:     height = 470
+        case 260...279:     height = 500
+        case 280...299:     height = 530
+        case 300...319:     height = 560
+        case 320...339:     height = 590
+        case 340...359:     height = 620
+        case 360...379:     height = 650
+        case 380...400:     height = 680
         default: break
         }
         

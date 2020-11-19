@@ -19,7 +19,6 @@ final class MiniSheetManager: ViewOverlayManagerProtocol {
     @Published var height: CGFloat!
     @Published var content: () -> AnyView = { AnyView(EmptyView()) }
     
-    let dismissed = ObjectWillChangePublisher()
     let extraHeight: CGFloat = 60
 
     

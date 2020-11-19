@@ -6,6 +6,19 @@
 //
 
 import SwiftUI
+import Combine
+
+enum PopupKey {
+    case none
+    
+    case goalReached
+    case journeyError
+    
+    case goalCustomUnit
+    case goalEnterInputError
+    case goalDelete
+}
+
 
 final class PopupManager: ViewOverlayManagerProtocol {
     
@@ -17,7 +30,8 @@ final class PopupManager: ViewOverlayManagerProtocol {
     @Published var dismissOnTap: Bool!
     @Published var dismissOnTapOutside: Bool!
     @Published var continueButton: Bool!
-    @Published var continueAction: (() -> ())!
+    
+    @Published var currentKey: PopupKey!
     
     @Published var titleText: String!
     @Published var titleImage: Image?
@@ -26,15 +40,18 @@ final class PopupManager: ViewOverlayManagerProtocol {
     @Published var height: CGFloat!
     @Published var content: () -> AnyView = { AnyView(EmptyView()) }
     
-    let dismissed = ObjectWillChangePublisher()
+    let dismissed = PassthroughSubject<PopupKey, Never>()
+    let buttonDismissed = PassthroughSubject<PopupKey, Never>()
     
     
     //MARK: - Popups
     
     //TextPopup
     
-    func showTextPopup(titleText: String, titleImage: Image? = nil, bodyText: String, backgroundColor: Color, height: CGFloat = 280+Layout.onlyOniPhoneXType(40), dismissOnTap: Bool = true) {
+    func showTextPopup(_ key: PopupKey, titleText: String, titleImage: Image? = nil, bodyText: String, backgroundColor: Color, height: CGFloat = 280+Layout.onlyOniPhoneXType(40), dismissOnTap: Bool = true) {
         initTransition()
+        
+        self.currentKey = key 
         
         self.dismissOnTap           = dismissOnTap
         self.dismissOnTapOutside    = true
@@ -51,23 +68,23 @@ final class PopupManager: ViewOverlayManagerProtocol {
     
     
     //TextField Popup
+        
+    @Published var input: String!
     
-    let textFieldSave = ObjectWillChangePublisher()
-    
-    @Published var input: String! 
     @Published var placerholder: String!
     @Published var inputLimit: Int!
     @Published var keyboard: UIKeyboardType!
     @Published var lowercased: Bool!
     
     
-    func showTextFieldPopup(titleText: String, bodyText: String, input: String, placerholder: String, textLimit: Int, keyboard: UIKeyboardType = .default, lowercased: Bool = false, backgroundColor: Color, height: CGFloat = 300+Layout.onlyOniPhoneXType(40)) {
+    func showTextFieldPopup(_ key: PopupKey, titleText: String, bodyText: String, input: String, placerholder: String, textLimit: Int, keyboard: UIKeyboardType = .default, lowercased: Bool = false, backgroundColor: Color, height: CGFloat = 300+Layout.onlyOniPhoneXType(40)) {
         initTransition()
+        
+        self.currentKey = key
         
         self.dismissOnTap           = false
         self.dismissOnTapOutside    = true
         self.continueButton         = true
-        self.continueAction         = { self.textFieldSave.send() }
         
         self.titleText              = titleText
         self.titleImage             = nil
@@ -86,9 +103,7 @@ final class PopupManager: ViewOverlayManagerProtocol {
     
     
     //TextField confirmation Popup
-    
-    let textFieldConfirmation = ObjectWillChangePublisher()
-    
+        
     @Published var confirmationInput: String! {
         didSet {
             if confirmationInput == confirmationText { continueButton = true }
@@ -98,13 +113,14 @@ final class PopupManager: ViewOverlayManagerProtocol {
     @Published var confirmationText: String!
     
     
-    func showTextFieldConfirmationPopup(titleText: String, bodyText: String, placerholder: String, textLimit: Int, confirmationText: String, backgroundColor: Color, height: CGFloat = 380+Layout.onlyOniPhoneXType(40)) {
+    func showTextFieldConfirmationPopup(_ key: PopupKey, titleText: String, bodyText: String, placerholder: String, textLimit: Int, confirmationText: String, backgroundColor: Color, height: CGFloat = 380+Layout.onlyOniPhoneXType(40)) {
         initTransition()
+        
+        self.currentKey = key
         
         self.dismissOnTap           = false
         self.dismissOnTapOutside    = true
         self.continueButton         = false
-        self.continueAction         = { self.textFieldConfirmation.send() }
         
         self.titleText              = titleText
         self.titleImage             = nil
@@ -121,8 +137,17 @@ final class PopupManager: ViewOverlayManagerProtocol {
     }
     
     
-    func textFieldDismiss() {
-        continueAction()
+    //MARK: - Dismiss
+    
+    
+    func dismiss() {
+        dismissed.send(currentKey)
+        defaultDismiss()
+    }
+    
+    
+    func buttonDismiss() {
+        buttonDismissed.send(currentKey)
         dismiss()
     }
 }
