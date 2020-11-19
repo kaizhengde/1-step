@@ -41,15 +41,15 @@ struct GoalReachedSummaryView: View {
                     OneSText(text: goalReachedModel.selectedGoal.name, font: .custom(weight: Raleway.light, size: 32*Layout.multiplierHeight), color: .grayToBackground)
                     
                     HStack(spacing: 3) {
-                        OneSText(text: "\(goalReachedModel.selectedGoal.neededStepUnits)", font: .custom(weight: Raleway.bold, size: 52*Layout.multiplierHeight), color: .grayToBackground)
+                        OneSText(text: "\(goalReachedModel.selectedGoal.neededStepUnits)", font: .custom(weight: Raleway.bold, size: 52*Layout.multiplierWidth), color: .grayToBackground)
                         
-                        OneSText(text: goalReachedModel.goalUnitText, font: .custom(weight: Raleway.bold, size: 40*Layout.multiplierHeight), color: .grayToBackground)
+                        OneSText(text: goalReachedModel.goalUnitText, font: .custom(weight: Raleway.bold, size: 40*Layout.multiplierWidth), color: .grayToBackground)
                     }
                 }
                 .frame(height: 80)
                 .padding(.horizontal, Layout.secondLayerPadding)
-                .padding(.top, MountainLayout.offsetY - 100)
-                .offset(y: -40)
+                .padding(.top, MountainLayout.offsetYText)
+                .offset(y: MountainLayout.offsetYFlag)
                 .opacity(goalReachedModel.transition.isFullAppeared ? 1.0 : 0.0)
             }
         }
@@ -61,7 +61,7 @@ struct GoalReachedSummaryView: View {
                 OneSText(text: "100%", font: .custom(weight: Raleway.extraBold, size: 60), color: .backgroundToGray)
                     .frame(height: 120)
                     .padding(.horizontal, Layout.secondLayerPadding)
-                    .padding(.top, Layout.screenHeight - 260 - SafeAreaSize.bottom)
+                    .padding(.top, Layout.screenHeight - 240*Layout.multiplierHeight - SafeAreaSize.bottom)
             }
         }
     }

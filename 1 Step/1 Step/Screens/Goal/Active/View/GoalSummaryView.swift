@@ -41,15 +41,15 @@ struct GoalSummaryView: View {
                     OneSText(text: goalModel.selectedGoal.name, font: .custom(weight: Raleway.light, size: 32*Layout.multiplierHeight), color: goalModel.topTextColor)
                     
                     HStack(spacing: 3) {
-                        OneSText(text: "\(goalModel.selectedGoal.neededStepUnits)", font: .custom(weight: Raleway.bold, size: 52*Layout.multiplierHeight), color: goalModel.topTextColor)
+                        OneSText(text: "\(goalModel.selectedGoal.neededStepUnits)", font: .custom(weight: Raleway.bold, size: 52*Layout.multiplierWidth), color: goalModel.topTextColor)
                         
-                        OneSText(text: goalModel.goalUnitText, font: .custom(weight: Raleway.bold, size: 40*Layout.multiplierHeight), color: goalModel.topTextColor)
+                        OneSText(text: goalModel.goalUnitText, font: .custom(weight: Raleway.bold, size: 40*Layout.multiplierWidth), color: goalModel.topTextColor)
                     }
                 }
                 .frame(height: 80)
                 .padding(.horizontal, Layout.secondLayerPadding)
-                .padding(.top, MountainLayout.offsetY - 100)
-                .offset(y: goalModel.showFlag ? -40 : 0)
+                .padding(.top, MountainLayout.offsetYText)
+                .offset(y: goalModel.showFlag ? MountainLayout.offsetYFlag : 0)
             }
         }
         

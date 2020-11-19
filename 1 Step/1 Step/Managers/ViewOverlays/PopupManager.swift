@@ -48,13 +48,17 @@ final class PopupManager: ViewOverlayManagerProtocol {
     
     //TextPopup
     
-    func showTextPopup(_ key: PopupKey, titleText: String, titleImage: Image? = nil, bodyText: String, backgroundColor: Color, height: CGFloat = 280+Layout.onlyOniPhoneXType(40), dismissOnTap: Bool = true) {
+    func showTextPopup(_ key: PopupKey, titleText: String, titleImage: Image? = nil, bodyText: String, backgroundColor: Color, height: CGFloat = 300+Layout.onlyOniPhoneXType(40), dismissOnTap: Bool = true) {
         initTransition()
         
         self.currentKey = key 
         
-        self.dismissOnTap           = dismissOnTap
-        self.dismissOnTapOutside    = true
+        self.dismissOnTap           = false
+        self.dismissOnTapOutside    = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            self.dismissOnTap           = dismissOnTap
+            self.dismissOnTapOutside    = true
+        }
         self.continueButton     	= false
         
         self.titleText          	= titleText
@@ -77,13 +81,16 @@ final class PopupManager: ViewOverlayManagerProtocol {
     @Published var lowercased: Bool!
     
     
-    func showTextFieldPopup(_ key: PopupKey, titleText: String, bodyText: String, input: String, placerholder: String, textLimit: Int, keyboard: UIKeyboardType = .default, lowercased: Bool = false, backgroundColor: Color, height: CGFloat = 300+Layout.onlyOniPhoneXType(40)) {
+    func showTextFieldPopup(_ key: PopupKey, titleText: String, bodyText: String, input: String, placerholder: String, textLimit: Int, keyboard: UIKeyboardType = .default, lowercased: Bool = false, backgroundColor: Color, height: CGFloat = 320+Layout.onlyOniPhoneXType(40)) {
         initTransition()
         
         self.currentKey = key
         
         self.dismissOnTap           = false
-        self.dismissOnTapOutside    = true
+        self.dismissOnTapOutside    = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            self.dismissOnTapOutside    = true
+        }
         self.continueButton         = true
         
         self.titleText              = titleText
@@ -119,7 +126,10 @@ final class PopupManager: ViewOverlayManagerProtocol {
         self.currentKey = key
         
         self.dismissOnTap           = false
-        self.dismissOnTapOutside    = true
+        self.dismissOnTapOutside    = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            self.dismissOnTapOutside    = true
+        }
         self.continueButton         = false
         
         self.titleText              = titleText

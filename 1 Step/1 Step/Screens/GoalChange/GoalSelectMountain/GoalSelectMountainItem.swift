@@ -22,7 +22,6 @@ struct GoalSelectMountainItem: View {
                 //Mountain
                 GoalSelectMountainImage(viewModel: viewModel, mountain: mountain)
             }
-            .padding(.top, MountainLayout.offsetY*1.5)
             
             //Select Button
             GoalSelectMountainButton(viewModel: viewModel, mountain: mountain)
@@ -40,13 +39,13 @@ struct GoalSelectMountainItem: View {
         
         var body: some View {
             VStack(spacing: -5) {
-                OneSText(text: mountain.name.top, font: .custom(weight: Raleway.light, size: 28*Layout.multiplierHeight), color: .grayToBackground)
+                OneSText(text: mountain.name.top, font: .custom(weight: Raleway.light, size: 28*Layout.multiplierWidth), color: .grayToBackground)
                 
-                OneSText(text: mountain.name.bottom, font: .custom(weight: Raleway.bold, size: 44*Layout.multiplierHeight), color: .grayToBackground)
+                OneSText(text: mountain.name.bottom, font: .custom(weight: Raleway.bold, size: 46*Layout.multiplierWidth), color: .grayToBackground)
             }
             .frame(width: Layout.firstLayerWidth, height: 80)
             .opacity(viewModel.textAndButtonOpacity(mountain))
-            .padding(.top, -100)
+            .padding(.top, MountainLayout.offsetYTextNoScrollView)
         }
     }
     
@@ -85,7 +84,7 @@ struct GoalSelectMountainItem: View {
                 Spacer()
                 OneSBorderButton(text: viewModel.selectButtonText(mountain), color: viewModel.selectButtonColor(mountain)) { viewModel.selectMountainAndDismiss() }
             }
-            .padding(.bottom, 200)
+            .padding(.bottom, 40*Layout.multiplierHeight)
             .opacity(viewModel.textAndButtonOpacity(mountain))
         }
     }

@@ -63,6 +63,11 @@ enum SafeAreaSize {
 enum MountainLayout {
     
     static let offsetY: CGFloat             = Layout.screenHeight/3.2
+    static let offsetYNoScrollView          = offsetY - Layout.onlyOniPhoneXType(SafeAreaSize.top) - 10
+    static let offsetYText                  = offsetY - 80 - 20*Layout.multiplierHeight
+    static let offsetYTextNoScrollView      = offsetYNoScrollView - 80 - 20*Layout.multiplierHeight
+    static let offsetYFlag                  = -36*Layout.multiplierHeight
+    
     static let height: CGFloat              = 626.0 * Layout.multiplierWidth
     static let withFlagHeight: CGFloat      = 670.0 * Layout.multiplierWidth
 }

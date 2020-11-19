@@ -97,7 +97,7 @@ final class GoalSelectMountainModel: TransitionObservableObject {
     //Mountain
     
     func mountainTransistionOffset() -> CGFloat {
-        return transition.isFullHidden ? Layout.screenHeight/1.3 : 0
+        return MountainLayout.offsetYNoScrollView + (!transition.isFullHidden ? 0 : MountainLayout.height)
     }
     
     
