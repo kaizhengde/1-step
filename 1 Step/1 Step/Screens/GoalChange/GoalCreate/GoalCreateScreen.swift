@@ -60,7 +60,7 @@ struct GoalCreateScreen: View {
                     HStack {
                         OneSHintButton(text: "How it works", color: viewModel.selectedMountainData.color.get()) {
                             SheetManager.shared.showSheet {
-                                GoalHowItWorksView(selectedColor: viewModel.selectedMountainData.color)
+                                GoalInfoView(selectedColor: viewModel.selectedMountainData.color)
                             }
                         }
                         Spacer()

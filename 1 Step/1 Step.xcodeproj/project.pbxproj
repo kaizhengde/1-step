@@ -68,9 +68,14 @@
 		3D6F439D253AE20500785586 /* GoalSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6F439C253AE20500785586 /* GoalSummaryView.swift */; };
 		3D6F43A2253B266F00785586 /* GoalMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6F43A1253B266F00785586 /* GoalMenuView.swift */; };
 		3D6F43A5253B268B00785586 /* GoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6F43A4253B268B00785586 /* GoalView.swift */; };
+		3D6FDDB025670851002854E6 /* OneSSmallDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6FDDAF25670851002854E6 /* OneSSmallDropDown.swift */; };
+		3D6FDDB425670868002854E6 /* OneSDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6FDDB325670868002854E6 /* OneSDropDown.swift */; };
 		3D72B8C3252DB5B8006E660D /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D72B8C2252DB5B8006E660D /* Animations.swift */; };
 		3D7396BD2533730700BD4169 /* GoalsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7396BC2533730700BD4169 /* GoalsGridView.swift */; };
 		3D7396C7253373F500BD4169 /* GoalsGridModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7396C6253373F500BD4169 /* GoalsGridModel.swift */; };
+		3D78FD332566FB6F00C1D0D2 /* GoalExamplesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D78FD322566FB6F00C1D0D2 /* GoalExamplesView.swift */; };
+		3D78FD362566FC7900C1D0D2 /* GoalInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D78FD352566FC7900C1D0D2 /* GoalInfoView.swift */; };
+		3D78FD3A2566FD1D00C1D0D2 /* GoalInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D78FD392566FD1D00C1D0D2 /* GoalInfoModel.swift */; };
 		3D854B11253EA3F900A4F80E /* GoalDeleteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D854B10253EA3F900A4F80E /* GoalDeleteHandler.swift */; };
 		3D854B14253EAC2500A4F80E /* OneSTextFieldConfirmationPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D854B13253EAC2500A4F80E /* OneSTextFieldConfirmationPopup.swift */; };
 		3D959A8825628441007BAA07 /* ConfettiType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D959A8725628441007BAA07 /* ConfettiType.swift */; };
@@ -200,9 +205,14 @@
 		3D6F439C253AE20500785586 /* GoalSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSummaryView.swift; sourceTree = "<group>"; };
 		3D6F43A1253B266F00785586 /* GoalMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalMenuView.swift; sourceTree = "<group>"; };
 		3D6F43A4253B268B00785586 /* GoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalView.swift; sourceTree = "<group>"; };
+		3D6FDDAF25670851002854E6 /* OneSSmallDropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSSmallDropDown.swift; sourceTree = "<group>"; };
+		3D6FDDB325670868002854E6 /* OneSDropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSDropDown.swift; sourceTree = "<group>"; };
 		3D72B8C2252DB5B8006E660D /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
 		3D7396BC2533730700BD4169 /* GoalsGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsGridView.swift; sourceTree = "<group>"; };
 		3D7396C6253373F500BD4169 /* GoalsGridModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsGridModel.swift; sourceTree = "<group>"; };
+		3D78FD322566FB6F00C1D0D2 /* GoalExamplesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalExamplesView.swift; sourceTree = "<group>"; };
+		3D78FD352566FC7900C1D0D2 /* GoalInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalInfoView.swift; sourceTree = "<group>"; };
+		3D78FD392566FD1D00C1D0D2 /* GoalInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalInfoModel.swift; sourceTree = "<group>"; };
 		3D854B10253EA3F900A4F80E /* GoalDeleteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDeleteHandler.swift; sourceTree = "<group>"; };
 		3D854B13253EAC2500A4F80E /* OneSTextFieldConfirmationPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSTextFieldConfirmationPopup.swift; sourceTree = "<group>"; };
 		3D959A8725628441007BAA07 /* ConfettiType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfettiType.swift; sourceTree = "<group>"; };
@@ -389,6 +399,7 @@
 				3D959A9825630F74007BAA07 /* MultilineTexts */,
 				3D2E79432530186700788AA2 /* TextFields */,
 				3D47CCB2252C77A300A8CA1B /* Buttons */,
+				3D6FDDAE25670801002854E6 /* DropDowns */,
 				3DCFE29425459E260012C536 /* Pickers */,
 				3D5156B12531F80D00A44450 /* MiniSheets */,
 				3D2E795A25301E8E00788AA2 /* Popups */,
@@ -599,6 +610,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		3D6FDDAE25670801002854E6 /* DropDowns */ = {
+			isa = PBXGroup;
+			children = (
+				3D6FDDB325670868002854E6 /* OneSDropDown.swift */,
+				3D6FDDAF25670851002854E6 /* OneSSmallDropDown.swift */,
+			);
+			path = DropDowns;
+			sourceTree = "<group>";
+		};
 		3D7396C4253373D000BD4169 /* GoalsGrid */ = {
 			isa = PBXGroup;
 			children = (
@@ -606,6 +626,17 @@
 				3D7396BC2533730700BD4169 /* GoalsGridView.swift */,
 			);
 			path = GoalsGrid;
+			sourceTree = "<group>";
+		};
+		3D78FD3D2566FD2D00C1D0D2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3D959A9525630913007BAA07 /* GoalHowItWorksView.swift */,
+				3D78FD322566FB6F00C1D0D2 /* GoalExamplesView.swift */,
+				3D959AA625631320007BAA07 /* GoalInfoBackgroundText.swift */,
+				3D959AAD2563E79F007BAA07 /* GoalInfoArrowText.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		3D959A85256283C1007BAA07 /* Helpers */ = {
@@ -631,9 +662,9 @@
 		3D959A94256308D5007BAA07 /* GoalInfo */ = {
 			isa = PBXGroup;
 			children = (
-				3D959A9525630913007BAA07 /* GoalHowItWorksView.swift */,
-				3D959AA625631320007BAA07 /* GoalInfoBackgroundText.swift */,
-				3D959AAD2563E79F007BAA07 /* GoalInfoArrowText.swift */,
+				3D78FD392566FD1D00C1D0D2 /* GoalInfoModel.swift */,
+				3D78FD352566FC7900C1D0D2 /* GoalInfoView.swift */,
+				3D78FD3D2566FD2D00C1D0D2 /* View */,
 			);
 			path = GoalInfo;
 			sourceTree = "<group>";
@@ -932,6 +963,7 @@
 				3D4B78D8252CD4F000A45755 /* GoalCreateModel.swift in Sources */,
 				3D996778253F57F7000CE151 /* JourneyDataHandler.swift in Sources */,
 				3D6D6458254C4D2400FAA37F /* JourneyModel.swift in Sources */,
+				3D6FDDB025670851002854E6 /* OneSSmallDropDown.swift in Sources */,
 				3DC6172C2544882B00A1F204 /* MilestoneStages.swift in Sources */,
 				3DE9C519252CB0520023C212 /* GoalCreateItem.swift in Sources */,
 				3DDF702C2531A5D800FD3011 /* MountainImage.swift in Sources */,
@@ -949,6 +981,7 @@
 				3D258282253C0A9300DC19E7 /* Color.swift in Sources */,
 				3D2E795825301DA400788AA2 /* OneSFillButton.swift in Sources */,
 				3D2E795D25301ED600788AA2 /* OneSPopup.swift in Sources */,
+				3D78FD362566FC7900C1D0D2 /* GoalInfoView.swift in Sources */,
 				3DE11C41252C681600F13719 /* __Step.xcdatamodeld in Sources */,
 				3DF1E2722547F04A00D65244 /* HiddenView.swift in Sources */,
 				3D4FD8692564EE0700103C73 /* GoalReachedModel.swift in Sources */,
@@ -988,6 +1021,7 @@
 				3D6D6454254C0F2400FAA37F /* JourneyErrorHandler.swift in Sources */,
 				3D2E7941253017B600788AA2 /* OneSSmallBorderButton.swift in Sources */,
 				3D4FD8722564F48F00103C73 /* GoalReachedSummaryView.swift in Sources */,
+				3D78FD3A2566FD1D00C1D0D2 /* GoalInfoModel.swift in Sources */,
 				3DE0796925340F080024E17D /* GoalItem.swift in Sources */,
 				3DF7916D25307EBF00F00174 /* ChildSizeReader.swift in Sources */,
 				3DE9C507252C8B8C0023C212 /* OneSHeaderText.swift in Sources */,
@@ -1013,6 +1047,7 @@
 				3D959A9A25630F90007BAA07 /* OneSMultilineText.swift in Sources */,
 				3DE9C51D252CB28D0023C212 /* MainModel.swift in Sources */,
 				3D2E795425301ADD00788AA2 /* HapticFeedback.swift in Sources */,
+				3D78FD332566FB6F00C1D0D2 /* GoalExamplesView.swift in Sources */,
 				3DAE7AE725309DBB00B162B1 /* OneSFloater.swift in Sources */,
 				3D2E79452530187800788AA2 /* OneSTextField.swift in Sources */,
 				3D2E7936252F9D3E00788AA2 /* OneSHintButton.swift in Sources */,
@@ -1020,6 +1055,7 @@
 				3DA7BD362532D41400171360 /* OneSTextFieldPopupView.swift in Sources */,
 				3DDF70422531BBBB00FD3011 /* MilestoneState.swift in Sources */,
 				3DE9C50E252CAACC0023C212 /* GoalsModel.swift in Sources */,
+				3D6FDDB425670868002854E6 /* OneSDropDown.swift in Sources */,
 				3D47CC89252C70B700A8CA1B /* Images.swift in Sources */,
 				3D407855254E8E4E00744652 /* MilestoneProgressView.swift in Sources */,
 				3DF1E276254819FF00D65244 /* Double.swift in Sources */,
