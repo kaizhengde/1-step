@@ -159,6 +159,10 @@ enum JourneyDataHandler {
             newCurrentStepUnits.round()
         }
         
+        if newCurrentStepUnits > Double(goal.neededStepUnits) {
+            newCurrentStepUnits = Double(goal.neededStepUnits)
+        }
+        
         //1. Update Currents and StepsDate
         
         journeyData.currentStepUnits    = newCurrentStepUnits
@@ -195,7 +199,7 @@ enum JourneyDataHandler {
             }
             if currentStepUnits >= milestone.neededStepUnits {
                 milestones[i].state = .done
-                milestones[i].endDate = journeyData.stepsDate[Int(milestones[i].neededSteps)]
+                milestones[i].endDate = journeyData.stepsDate[Int(milestones[i].neededSteps)-1]
             }
         }
         
