@@ -195,7 +195,7 @@ enum JourneyDataHandler {
             }
             if currentStepUnits >= milestone.neededStepUnits {
                 milestones[i].state = .done
-                milestones[i].endDate = milestones[i].endDate == nil ? Date() : milestones[i].endDate
+                milestones[i].endDate = journeyData.stepsDate[Int(milestones[i].neededSteps)]
             }
         }
         
