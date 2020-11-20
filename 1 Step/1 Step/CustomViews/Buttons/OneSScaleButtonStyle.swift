@@ -11,7 +11,7 @@ struct OneSScaleButtonStyle: ButtonStyle {
     
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
-            .scaleEffect(configuration.isPressed ? 1.05 : 1)
+            .scaleEffect(configuration.isPressed ? 1.02 : 1)
     }
 }
 

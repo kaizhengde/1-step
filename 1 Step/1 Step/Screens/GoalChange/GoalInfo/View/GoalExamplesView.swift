@@ -13,6 +13,13 @@ struct GoalExamplesView: View {
 
     
     var body: some View {
-        Text("")
+        VStack(spacing: 30) {
+            OneSRowButton(.long, text: "Settings", accessoryCustomSymbol: Image("SettingsSymbol")) {}
+            OneSRowButton(.long, text: "Share") {}
+            
+            OneSRowButton(.shortBig, text: "Plant a real tree 🌳", accessorySFSymbol: SFSymbol.plus) {}
+            
+            OneSRowButton(.shortSmall, text: "Premium", textColor: .whiteToDarkGray, backgroundColor: UserColor.user0.get(), accessoryText: "Yes!", accessoryColor: .whiteToDarkGray) {}
+        }
     }
 }

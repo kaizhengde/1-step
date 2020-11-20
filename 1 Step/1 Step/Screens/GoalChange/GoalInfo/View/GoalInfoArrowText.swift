@@ -23,7 +23,7 @@ struct GoalInfoArrowText: View {
             Symbol.longArrowDown
                 .renderingMode(.template)
                 .resizable()
-                .frame(width: 24, height: 60)
+                .frame(width: 24, height: big ? 60 : 40)
                 .aspectRatio(contentMode: .fit)
                 .foregroundColor(.white)
                 .colorMultiply(.neutralToDarkNeutral)
