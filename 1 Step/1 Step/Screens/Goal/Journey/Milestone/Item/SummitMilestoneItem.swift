@@ -45,15 +45,18 @@ struct SummitMilestoneItem: View {
                 Group {
                     if milestone.image.isCustom {
                         milestone.image.get()
+                            .renderingMode(.template)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 50, height: 50)
+                            .foregroundColor(.white)
+                            .colorMultiply(.backgroundStatic)
                     } else {
                         milestone.image.get()
                             .font(.system(size: 50, weight: .ultraLight))
+                            .foregroundColor(.backgroundStatic)
                     }
                 }
-                .foregroundColor(.backgroundStatic)
                 .padding(.bottom, 30)
                 
                 OneSSecondaryHeaderText(text: "Summit", color: .backgroundStatic)

@@ -41,19 +41,19 @@ struct MilestoneItem: View {
         
         var body: some View {
             VStack(spacing: 10) {
-                Group {
-                    if milestone.image.isCustom {
-                        milestone.image.get()
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 50, height: 50)
-                    } else {
-                        milestone.image.get()
-                            .font(.system(size: 50, weight: .ultraLight))
-                            
-                    }
+                if milestone.image.isCustom {
+                    milestone.image.get()
+                        .renderingMode(.template)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 50, height: 50)
+                        .foregroundColor(.white)
+                        .colorMultiply(.backgroundStatic)
+                } else {
+                    milestone.image.get()
+                        .font(.system(size: 50, weight: .ultraLight))
+                        .foregroundColor(.backgroundStatic)
                 }
-                .foregroundColor(.backgroundStatic)
                 
                 HStack {
                     Spacer()
