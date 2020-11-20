@@ -78,7 +78,7 @@ struct AddView: View {
                 SFSymbol.plus
                     .resizable()
                     .frame(width: 30, height: 30)
-                    .foregroundColor(.backgroundStatic)
+                    .foregroundColor(.backgroundToDarkGray)
             }
             .frame(width: 90, height: 90)
             .background(goalModel.selectedGoal.color.get(.dark))

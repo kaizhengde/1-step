@@ -53,7 +53,7 @@ struct MilestoneItem: View {
                             
                     }
                 }
-                .foregroundColor(.backgroundToGray)
+                .foregroundColor(.backgroundStatic)
                 
                 HStack {
                     Spacer()
@@ -66,7 +66,7 @@ struct MilestoneItem: View {
                         .font(.custom(Raleway.extraBold, size: 18))
                     Spacer()
                 }
-                .foregroundColor(.backgroundToGray)
+                .foregroundColor(.backgroundStatic)
             }
             .padding(8)
             .frame(width: milestone.state == .done ? 230 : 140, height: 160)
