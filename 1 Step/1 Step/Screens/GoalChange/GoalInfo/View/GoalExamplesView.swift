@@ -30,7 +30,7 @@ struct GoalExamplesView: View {
                 }
             }
             
-            OneSDropDown(.short, title: "Data & Privacy") {
+            OneSDropDown(.shortBig, title: "Data & Privacy") {
                 VStack(spacing: 10) {
                     OneSText(text: "I want to...", font: .custom(weight: Raleway.semiBold, size: 20), color: .grayToBackground)
                         .frame(width: Layout.firstLayerWidth, alignment: .leading)

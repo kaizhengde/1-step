@@ -6,40 +6,47 @@
 //
 
 import SwiftUI
-
-enum OneSDropDownArt {
-    
-    case long, short
-}
+import Combine
 
 struct OneSDropDown<Content>: View where Content: View {
     
     @State private var show = false
     
-    let dropDownArt: OneSDropDownArt
+    let rowButtonArt: OneSRowButtonArt
     
     let title: String
     let accessorySFSymbol: Image?
     let accessoryCustomSymbol: Image?
+    let accessoryText: String?
+    let accessoryColor: Color
     
     let content: () -> Content
     
     
-    init(_ dropDownArt: OneSDropDownArt, title: String, accessorySFSymbol: Image? = nil, accessoryCustomSymbol: Image? = nil, content: @escaping () -> Content) {
-        self.dropDownArt = dropDownArt
+    init(_ rowButtonArt: OneSRowButtonArt,
+         title: String,
+         accessorySFSymbol: Image?      = nil,
+         accessoryCustomSymbol: Image?  = nil,
+         accessoryText: String?         = nil,
+         accessoryColor: Color          = .grayToBackground,
+         content: @escaping () -> Content
+    ) {
+        self.rowButtonArt = rowButtonArt
         self.title = title
         self.accessorySFSymbol = accessorySFSymbol
         self.accessoryCustomSymbol = accessoryCustomSymbol
+        self.accessoryText = accessoryText
+        self.accessoryColor = accessoryColor
         self.content = content
     }
     
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
-            OneSRowButton(dropDownArt == .long ? .long : .shortBig, title: title, accessorySFSymbol: accessorySFSymbol, accessoryCustomSymbol: accessoryCustomSymbol) { show.toggle() }
+            OneSRowButton(rowButtonArt, title: title, accessorySFSymbol: accessorySFSymbol, accessoryCustomSymbol: accessoryCustomSymbol, accessoryText: accessoryText, accessoryColor: accessoryColor) { show.toggle() }
             
             if show {
-                DropDownContent(dropDownArt: dropDownArt, content: content)
+                DropDownContent(show: $show, rowButtonArt: rowButtonArt, content: content)
             }
         }
         .frame(width: Layout.firstLayerWidth, alignment: .leading)
@@ -48,28 +55,33 @@ struct OneSDropDown<Content>: View where Content: View {
     
     private struct DropDownContent: View {
         
-        let dropDownArt: OneSDropDownArt
+        @Binding var show: Bool
+        @State private var lineShow = false
+        
+        let rowButtonArt: OneSRowButtonArt
         let content: () -> Content
         
         
         var body: some View {
             HStack {
-                if dropDownArt == .long {
+                if rowButtonArt == .long {
                     Rectangle()
                         .frame(width: 3)
                         .frame(maxHeight: .infinity)
                         .foregroundColor(.lightNeutralToLightGray)
                         .padding(.leading, Layout.firstLayerPadding)
+                        .scaleEffect(x: 1, y: lineShow ? 1 : 0, anchor: .top)
                     
                     Spacer()
                 }
                 
                 content()
                 
-                if dropDownArt == .short {
+                if rowButtonArt == .shortBig {
                     Spacer()
                 }
             }
+            .onReceive(Just(show)) { show in DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) { lineShow = show } }
         }
     }
 }

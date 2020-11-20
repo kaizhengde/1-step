@@ -36,6 +36,7 @@ struct GoalInfoBackgroundText: View {
             .frame(maxHeight: .infinity)
             .background(backgroundColor)
             .cornerRadius(12)
+            .oneSItemTransition()
             
             Spacer()
         }

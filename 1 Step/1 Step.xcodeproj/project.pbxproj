@@ -70,6 +70,7 @@
 		3D6F43A5253B268B00785586 /* GoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6F43A4253B268B00785586 /* GoalView.swift */; };
 		3D6FDDB425670868002854E6 /* OneSDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6FDDB325670868002854E6 /* OneSDropDown.swift */; };
 		3D6FDDB92567808B002854E6 /* OneSRowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6FDDB82567808B002854E6 /* OneSRowButton.swift */; };
+		3D6FDDDF2567B6E2002854E6 /* Appear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6FDDDE2567B6E2002854E6 /* Appear.swift */; };
 		3D72B8C3252DB5B8006E660D /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D72B8C2252DB5B8006E660D /* Animations.swift */; };
 		3D7396BD2533730700BD4169 /* GoalsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7396BC2533730700BD4169 /* GoalsGridView.swift */; };
 		3D7396C7253373F500BD4169 /* GoalsGridModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7396C6253373F500BD4169 /* GoalsGridModel.swift */; };
@@ -207,6 +208,7 @@
 		3D6F43A4253B268B00785586 /* GoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalView.swift; sourceTree = "<group>"; };
 		3D6FDDB325670868002854E6 /* OneSDropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSDropDown.swift; sourceTree = "<group>"; };
 		3D6FDDB82567808B002854E6 /* OneSRowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSRowButton.swift; sourceTree = "<group>"; };
+		3D6FDDDE2567B6E2002854E6 /* Appear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appear.swift; sourceTree = "<group>"; };
 		3D72B8C2252DB5B8006E660D /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
 		3D7396BC2533730700BD4169 /* GoalsGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsGridView.swift; sourceTree = "<group>"; };
 		3D7396C6253373F500BD4169 /* GoalsGridModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsGridModel.swift; sourceTree = "<group>"; };
@@ -366,6 +368,7 @@
 			children = (
 				3D72B8C2252DB5B8006E660D /* Animations.swift */,
 				3DE0796525340E410024E17D /* Shadow.swift */,
+				3D6FDDDE2567B6E2002854E6 /* Appear.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1016,6 +1019,7 @@
 				3D6FDDB92567808B002854E6 /* OneSRowButton.swift in Sources */,
 				3DFDE07A253C8800006B1A7E /* SheetManager.swift in Sources */,
 				3DA7BD3A2532F6A600171360 /* DataManager.swift in Sources */,
+				3D6FDDDF2567B6E2002854E6 /* Appear.swift in Sources */,
 				3D10D1CD254D2D53002D2D3E /* MilestoneDotView.swift in Sources */,
 				3DCFE29625459E390012C536 /* OneSPicker.swift in Sources */,
 				3D6D6454254C0F2400FAA37F /* JourneyErrorHandler.swift in Sources */,

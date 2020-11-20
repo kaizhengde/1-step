@@ -14,7 +14,7 @@ enum OneSRowButtonArt {
 
 
 struct OneSRowButton: View {
-    
+        
     let buttonArt: OneSRowButtonArt
     
     let title: String
@@ -66,6 +66,7 @@ struct OneSRowButton: View {
             .oneSAnimation()
         }
         .oneSButtonScaleStyle()
+        .oneSItemTransition()
     }
     
     

@@ -27,7 +27,7 @@ struct GoalHowItWorksView: View {
                     .padding(.vertical, 20)
             }
             
-            VStack(spacing: 10) {
+            LazyVStack(spacing: 10) {
                 OneSText(text: "I want to...", font: .custom(weight: Raleway.semiBold, size: 20), color: .grayToBackground)
                     .frame(width: Layout.firstLayerWidth, alignment: .leading)
                 
@@ -56,7 +56,7 @@ struct GoalHowItWorksView: View {
                     .padding(.vertical, 20)
             }
             
-            VStack(spacing: 10) {
+            LazyVStack(spacing: 10) {
                 GoalInfoBackgroundText(text: "Go for a run regularly", backgroundColor: selectedColor.get(.light), big: true)
                 GoalInfoArrowText(text: "What?", big: true)
                 

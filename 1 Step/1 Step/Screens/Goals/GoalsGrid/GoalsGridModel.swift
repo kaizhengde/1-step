@@ -37,16 +37,12 @@ class GoalsGridModel: ObservableObject {
             self.itemsAppear[sortOrder] = true
         }
     }
-        
     
-    func itemsOpacityTransition(of goal: Goal) -> Double {
-        return itemsAppear[Int(goal.sortOrder)] ? 1.0 : 0.0
+    
+    func itemsTransition(of goal: Goal) -> Binding<Bool> {
+        return Binding<Bool>(get: { self.itemsAppear[Int(goal.sortOrder)] }, set: { _ in })
     }
     
-    
-    func itemsScaleTransition(of goal: Goal) -> CGFloat {
-        return itemsAppear[Int(goal.sortOrder)] ? 1.0 : 0.9
-    }
     
     
     func createItemOpacityTransition() -> Double {

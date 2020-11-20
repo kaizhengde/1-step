@@ -33,5 +33,6 @@ struct GoalInfoArrowText: View {
             Spacer()
         }
         .padding(.horizontal, Layout.firstLayerPadding)
+        .oneSItemTransition()
     }
 }

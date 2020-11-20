@@ -53,14 +53,12 @@ struct JourneyView: View {
                             .padding(.top, viewModel.currentMilestone === viewModel.summitMilestone ? 200 : 100)
                         
                         itemView(Binding<Bool>(get: { appear }, set: { _ in }))
-                            .scaleEffect(appear ? 1.0 : 0.9)
-                            .opacity(appear ? 1.0 : 0.0)
+                            .oneSItemTransition(Binding<Bool>(get: { appear }, set: { _ in }))
                             .oneSAnimation()
                     }
                 } else {
                     itemView(Binding<Bool>(get: { appear }, set: { _ in }))
-                        .scaleEffect(appear ? 1.0 : 0.9)
-                        .opacity(appear ? 1.0 : 0.0)
+                        .oneSItemTransition(Binding<Bool>(get: { appear }, set: { _ in }))
                         .oneSAnimation()
                 }
             }
