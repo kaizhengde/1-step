@@ -9,7 +9,6 @@ import SwiftUI
 
 struct GoalHowItWorksView: View {
     
-    @ObservedObject var viewModel: GoalInfoModel
     let selectedColor: UserColor
     
     
@@ -72,11 +71,6 @@ struct GoalHowItWorksView: View {
                 OneSMultilineText(text: "And that's it!", bold: true)
             }
             .padding(.bottom, 20)
-            
-            HStack {
-                Spacer()
-                OneSSmallBorderButton(symbol: SFSymbol.arrow, color: .grayToBackground) { viewModel.currentView = .examples }
-            }
         }
     }
 }

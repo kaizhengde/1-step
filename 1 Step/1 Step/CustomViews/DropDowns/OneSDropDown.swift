@@ -24,6 +24,7 @@ struct OneSDropDown<Content>: View where Content: View {
     
     let content: () -> Content
     
+    
     init(_ dropDownArt: OneSDropDownArt, title: String, accessorySFSymbol: Image? = nil, accessoryCustomSymbol: Image? = nil, content: @escaping () -> Content) {
         self.dropDownArt = dropDownArt
         self.title = title

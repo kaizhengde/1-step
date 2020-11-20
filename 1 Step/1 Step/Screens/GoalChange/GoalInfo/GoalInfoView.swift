@@ -20,20 +20,36 @@ struct GoalInfoView: View {
             Color.backgroundToGray.edgesIgnoringSafeArea(.all)
             
             ScrollView {
-                VStack(spacing: 32) {
-                    OneSHeaderView(viewModel.currentView.title, leadingButton: viewModel.currentView == .examples ? (.back, .grayToBackground, { viewModel.currentView = .howItWorks }) : nil, trailingButton: (.close, .grayToBackground, { sheetManager.dismiss() }))
+                ScrollViewReader { scrollProxy in
+                    Color.clear.frame(height: 0).id(0)
                     
-                    if viewModel.currentView == .howItWorks {
-                        GoalHowItWorksView(viewModel: viewModel, selectedColor: selectedColor)
+                    VStack(spacing: 32) {
+                        OneSHeaderView(viewModel.currentView.title, leadingButton: viewModel.currentView == .examples ? (.back, .grayToBackground, { viewModel.currentView = .howItWorks }) : nil, trailingButton: (.close, .grayToBackground, { sheetManager.dismiss() }))
+                        
+                        if viewModel.currentView == .howItWorks {
+                            Group {
+                                GoalHowItWorksView(selectedColor: selectedColor)
+                                
+                                HStack {
+                                    Spacer()
+                                    OneSSmallBorderButton(symbol: SFSymbol.arrow, color: .grayToBackground) {
+                                        withAnimation { scrollProxy.scrollTo(0) }
+                                        viewModel.currentView = .examples
+                                    }
+                                }
+                            }
                             .opacity(viewModel.currentView == .howItWorks ? 1.0 : 0.0)
-                    } else if viewModel.currentView == .examples {
-                        GoalExamplesView(selectedColor: selectedColor)
-                            .opacity(viewModel.currentView == .examples ? 1.0 : 0.0)
+                            
+                            
+                        } else if viewModel.currentView == .examples {
+                            GoalExamplesView(selectedColor: selectedColor)
+                                .opacity(viewModel.currentView == .examples ? 1.0 : 0.0)
+                        }
                     }
+                    .padding(.horizontal, Layout.firstLayerPadding)
+                    .padding(.top, 12)
+                    .padding(.bottom, 80*Layout.multiplierHeight)
                 }
-                .padding(.horizontal, Layout.firstLayerPadding)
-                .padding(.top, 12)
-                .padding(.bottom, 80*Layout.multiplierHeight)
             }
         }
         .oneSAnimation()
