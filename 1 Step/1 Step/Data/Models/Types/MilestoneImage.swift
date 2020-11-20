@@ -34,6 +34,14 @@ enum MilestoneImage: Int16 {
         case .summit:   return Image(systemName: "flag")
         }
     }
+    
+    
+    var isCustom: Bool {
+        switch self {
+        case .two, .three, .four, .five: return true
+        default: return false
+        }
+    }
 }
 
 
