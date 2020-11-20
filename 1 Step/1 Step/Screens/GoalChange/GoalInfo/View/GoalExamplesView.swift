@@ -24,7 +24,15 @@ struct GoalExamplesView: View {
             OneSDropDown(.long, title: "Data & Privacy", accessorySFSymbol: SFSymbol.delete) {
                 VStack(spacing: 10) {
                     OneSRowButton(.shortSmall, title: "Premium", textColor: .whiteToDarkGray, backgroundColor: UserColor.user0.get(), accessoryText: "Yes!", accessoryColor: .whiteToDarkGray) {}
-                    OneSRowButton(.shortSmall, title: "Language", accessoryText: "English", accessoryColor: UserColor.user0.get()) {}
+                    OneSDropDown(.shortSmall, title: "Language", accessoryText: "English", accessoryColor: UserColor.user0.get()) {
+                        VStack(spacing: 10) {
+                            OneSRowSelectButton(.constant(false), title: "German", selectedColor: UserColor.user0.get()) {}
+                            OneSRowSelectButton(.constant(true), title: "English", selectedColor: UserColor.user0.get()) {}
+                            OneSRowSelectButton(.constant(false), title: "Chinese", selectedColor: UserColor.user0.get()) {}
+                            OneSRowSelectButton(.constant(false), title: "French", selectedColor: UserColor.user0.get()) {}
+                        }
+                    }
+                    
                     OneSRowButton(.shortSmall, title: "Darkmode", accessoryText: "Off", accessoryColor: UserColor.user0.get()) {}
                     OneSRowButton(.shortSmall, title: "Notifications", textColor: .whiteToDarkGray, backgroundColor: UserColor.user0.get(), accessoryText: "On", accessoryColor: .whiteToDarkGray) {}
                 }
@@ -32,8 +40,10 @@ struct GoalExamplesView: View {
             
             OneSDropDown(.shortBig, title: "Data & Privacy") {
                 VStack(spacing: 10) {
-                    OneSText(text: "I want to...", font: .custom(weight: Raleway.semiBold, size: 20), color: .grayToBackground)
-                        .frame(width: Layout.firstLayerWidth, alignment: .leading)
+                    HStack {
+                        OneSText(text: "I want to...", font: .custom(weight: Raleway.semiBold, size: 20), color: .grayToBackground)
+                        Spacer()
+                    }
                     
                     GoalInfoBackgroundText(text: "Lose weight", backgroundColor: selectedColor.get(.light), big: true)
                     GoalInfoArrowText(text: "What?", big: true)

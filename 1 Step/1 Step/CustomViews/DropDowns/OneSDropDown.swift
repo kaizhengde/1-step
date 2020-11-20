@@ -49,7 +49,6 @@ struct OneSDropDown<Content>: View where Content: View {
                 DropDownContent(show: $show, rowButtonArt: rowButtonArt, content: content)
             }
         }
-        .frame(width: Layout.firstLayerWidth, alignment: .leading)
     }
     
     
