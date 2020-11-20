@@ -32,7 +32,7 @@ struct GoalInfoBackgroundText: View {
                 Spacer()
             }
             .padding(Layout.firstLayerPadding)
-            .frame(width: 260*Layout.multiplierHeight)
+            .frame(width: 260*Layout.multiplierWidth)
             .frame(maxHeight: .infinity)
             .background(backgroundColor)
             .cornerRadius(12)

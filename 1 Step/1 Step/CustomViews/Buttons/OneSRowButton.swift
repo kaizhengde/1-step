@@ -17,7 +17,7 @@ struct OneSRowButton: View {
     
     let buttonArt: OneSRowButtonArt
     
-    let text: String
+    let title: String
     let textColor: Color
     let backgroundColor: Color
     
@@ -29,7 +29,7 @@ struct OneSRowButton: View {
     let action: () -> ()
     
     init(_ buttonArt: OneSRowButtonArt,
-         text: String,
+         title: String,
          textColor: Color               = .grayToBackground,
          backgroundColor: Color         = .whiteToDarkGray,
          accessorySFSymbol: Image?      = nil,
@@ -39,7 +39,7 @@ struct OneSRowButton: View {
          action: @escaping () -> ()
     ) {
         self.buttonArt = buttonArt
-        self.text = text
+        self.title = title
         self.textColor = textColor
         self.backgroundColor = backgroundColor
         self.accessorySFSymbol = accessorySFSymbol
@@ -53,13 +53,13 @@ struct OneSRowButton: View {
     var body: some View {
         Button(action: action) {
             HStack {
-                OneSText(text: text, font: .body, color: textColor)
+                OneSText(text: title, font: .body, color: textColor)
                 Spacer()
-                AccessoryView(sFSymbol: accessorySFSymbol, customSymbol: accessoryCustomSymbol, text: accessoryText, color: accessoryColor)
+                AccessoryView(sFSymbol: accessorySFSymbol, customSymbol: accessoryCustomSymbol, title: accessoryText, color: accessoryColor)
             }
             .padding(.horizontal, Layout.firstLayerPadding)
             .frame(maxWidth: buttonArt == .long ? .infinity : 280*Layout.multiplierWidth)
-            .frame(height: buttonArt == .shortSmall ? 54 : 70)
+            .frame(height: buttonArt == .shortSmall ? 56 : 72)
             .background(backgroundColor)
             .cornerRadius(10)
             .oneSShadow(opacity: 0.1, y: 2, blur: 10)
@@ -73,7 +73,7 @@ struct OneSRowButton: View {
         
         let sFSymbol: Image?
         let customSymbol: Image?
-        let text: String?
+        let title: String?
         let color: Color
         
         
@@ -93,8 +93,8 @@ struct OneSRowButton: View {
                         .foregroundColor(.white)
                         .colorMultiply(color)
                     
-                } else if let text = text {
-                    OneSText(text: text, font: .custom(weight: Raleway.bold, size: 17), color: color)
+                } else if let text = title {
+                    OneSText(text: text, font: .custom(weight: Raleway.extraBold, size: 17), color: color)
                 }
             }
         }
