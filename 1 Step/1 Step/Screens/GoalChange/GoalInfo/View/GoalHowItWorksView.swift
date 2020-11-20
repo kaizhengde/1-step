@@ -16,41 +16,16 @@ struct GoalHowItWorksView: View {
     
     var body: some View {
         VStack(spacing: 26) {            
-            VStack(spacing: 20) {
-                OneSMultilineText(text: "When it comes down to reaching a goal, one of the most important things is actually the formulation.")
-                
-                OneSMultilineText(text: "Even more - having a intelligent formulation for your goal will pretty much decide, whether you succeed or not.")
-                
-                OneSMultilineText(text: "In the following, we will show you a proven strategy that will get you an excellent formulation.", bold: true)
-                
-                OneSMultilineText(text: "This strategy has brought surprising success to thousands of people world wide. The concept is simple, here is how it works:")
-                
-                OneSBackgroundMultilineText(text: "It’s all about tiny steps you can take and track. The key is to be specific.")
-                    .padding(.vertical, 20)
-            }
+            OneSTextPassage(passageData: viewModel.howItWorksTextPassageOneData)
             
-            VStack(spacing: 10) {
-                HStack {
-                    OneSText(text: "I want to...", font: .custom(weight: Raleway.semiBold, size: 20), color: .grayToBackground)
-                    Spacer()
-                }
-                
-                GoalExampleMapView(data: viewModel.howItWorksExampleOneData, selectedColor: selectedColor, big: true)
-            }
+            GoalExampleMapView(data: viewModel.howItWorksExampleOneData, selectedColor: selectedColor, big: true)
             
-            VStack(spacing: 20) {
-                OneSMultilineText(text: "Basically all we do is to continually ask ourselves how we can specify what it is that we want to achieve and how we can actually get there.")
-                
-                OneSMultilineText(text: "The main idea is then to reach a point where we have something that is trackable. Hence we can now take tiny steps to move closer and closer towards our goal.")
-                
-                OneSBackgroundMultilineText(text: "Sure, you can be as creative as you want. Choose whatever motivates you the most!")
-                    .padding(.vertical, 20)
-            }
+            OneSTextPassage(passageData: viewModel.howItWorksTextPassageTwoData)
             
             GoalExampleMapView(data: viewModel.howItWorksExampleTwoData, selectedColor: selectedColor, big: true)
             
-            OneSMultilineText(text: "And that's it!", bold: true)
-                .padding(.bottom, 20)
+            OneSTextPassage(passageData: viewModel.howItWorksTextPassageThreeData)
         }
+        .padding(.bottom, 20)
     }
 }
