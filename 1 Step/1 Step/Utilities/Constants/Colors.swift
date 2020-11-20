@@ -20,10 +20,10 @@ extension Color {
     static let darkBackgroundToGray = Color("DarkBackgroundToGray")
     static let backgroundStatic = Color("BackgroundStatic")
     static let backgroundToDarkGray = Color("BackgroundToDarkGray")
+    static let grayStatic = Color("GrayStatic")
+    static let blackStatic = Color("BlackStatic")
     
-    static let opacityBackgroundDarker = Color("OpacityBackgroundDarker")
     static let opacityBlur = Color("OpacityBlur")
-    
     static let hidden = Color.black.opacity(0.0000001)
 }
 

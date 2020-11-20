@@ -14,7 +14,7 @@ struct OneSTextField: View {
     
     var placeholder: String
     var inputColor: Color
-    var placerholderColor: Color = .lightNeutralToLightGray
+    var placeholderColor: Color = .lightNeutralToLightGray
     
     var inputLimit: Int
     
@@ -28,7 +28,7 @@ struct OneSTextField: View {
         VStack(alignment: .leading, spacing: 3) {
             ZStack(alignment: .leading) {
                 if input.isEmpty {
-                    OneSText(text: placeholder, font: .header2, color: placerholderColor)
+                    OneSText(text: placeholder, font: .header2, color: placeholderColor)
                 }
                 
                 TextField("", text: lowercased ? Binding(get: { input }, set: { input = $0.lowercased() }) : $input, onCommit: { action() })

@@ -36,6 +36,7 @@ final class PopupManager: ViewOverlayManagerProtocol {
     @Published var titleText: String!
     @Published var titleImage: Image?
     @Published var bodyText: String!
+    @Published var textColor: Color!
     @Published var backgroundColor: Color!
     @Published var height: CGFloat!
     @Published var content: () -> AnyView = { AnyView(EmptyView()) }
@@ -48,7 +49,16 @@ final class PopupManager: ViewOverlayManagerProtocol {
     
     //TextPopup
     
-    func showTextPopup(_ key: PopupKey, titleText: String, titleImage: Image? = nil, bodyText: String, backgroundColor: Color, height: CGFloat = 300+Layout.onlyOniPhoneXType(40), dismissOnTap: Bool = true) {
+    func showTextPopup(
+        _ key: PopupKey,
+        titleText: String,
+        titleImage: Image?          = nil,
+        bodyText: String,
+        textColor: Color            = .backgroundToGray,
+        backgroundColor: Color,
+        height: CGFloat             = 300+Layout.onlyOniPhoneXType(40),
+        dismissOnTap: Bool          = true
+    ) {
         initTransition()
         
         self.currentKey = key 
@@ -64,6 +74,7 @@ final class PopupManager: ViewOverlayManagerProtocol {
         self.titleText          	= titleText
         self.titleImage         	= titleImage
         self.bodyText           	= bodyText
+        self.textColor              = textColor
         
         self.backgroundColor    	= backgroundColor
         self.height             	= height
@@ -74,14 +85,29 @@ final class PopupManager: ViewOverlayManagerProtocol {
     //TextField Popup
         
     @Published var input: String!
+    @Published var inputColor: Color!
     
-    @Published var placerholder: String!
+    @Published var placeholder: String!
+    @Published var placeholderColor: Color!
     @Published var inputLimit: Int!
     @Published var keyboard: UIKeyboardType!
     @Published var lowercased: Bool!
     
     
-    func showTextFieldPopup(_ key: PopupKey, titleText: String, bodyText: String, input: String, placerholder: String, textLimit: Int, keyboard: UIKeyboardType = .default, lowercased: Bool = false, backgroundColor: Color, height: CGFloat = 320+Layout.onlyOniPhoneXType(40)) {
+    func showTextFieldPopup(
+        _ key: PopupKey,
+        titleText: String,
+        bodyText: String,
+        textColor: Color            = .backgroundToGray,
+        input: String,
+        placeholder: String,
+        placeholderColor: Color,
+        textLimit: Int,
+        keyboard: UIKeyboardType    = .default,
+        lowercased: Bool            = false,
+        backgroundColor: Color,
+        height: CGFloat             = 320+Layout.onlyOniPhoneXType(40)
+    ) {
         initTransition()
         
         self.currentKey = key
@@ -96,9 +122,11 @@ final class PopupManager: ViewOverlayManagerProtocol {
         self.titleText              = titleText
         self.titleImage             = nil
         self.bodyText               = bodyText
+        self.textColor              = textColor
         
         self.input                  = input
-        self.placerholder           = placerholder
+        self.placeholder            = placeholder
+        self.placeholderColor       = placeholderColor
         self.inputLimit             = textLimit
         self.keyboard               = keyboard
         self.lowercased             = lowercased
@@ -120,7 +148,18 @@ final class PopupManager: ViewOverlayManagerProtocol {
     @Published var confirmationText: String!
     
     
-    func showTextFieldConfirmationPopup(_ key: PopupKey, titleText: String, bodyText: String, placerholder: String, textLimit: Int, confirmationText: String, backgroundColor: Color, height: CGFloat = 380+Layout.onlyOniPhoneXType(40)) {
+    func showTextFieldConfirmationPopup(
+        _ key: PopupKey,
+        titleText: String,
+        bodyText: String,
+        textColor: Color            = .backgroundToGray,
+        placeholder: String,
+        placeholderColor: Color,
+        textLimit: Int,
+        confirmationText: String,
+        backgroundColor: Color,
+        height: CGFloat             = 380+Layout.onlyOniPhoneXType(40)
+    ) {
         initTransition()
         
         self.currentKey = key
@@ -135,9 +174,11 @@ final class PopupManager: ViewOverlayManagerProtocol {
         self.titleText              = titleText
         self.titleImage             = nil
         self.bodyText               = bodyText
+        self.textColor              = textColor
         
         self.confirmationInput      = ""
-        self.placerholder           = placerholder
+        self.placeholder            = placeholder
+        self.placeholderColor       = placeholderColor
         self.inputLimit             = textLimit
         self.confirmationText       = confirmationText
         

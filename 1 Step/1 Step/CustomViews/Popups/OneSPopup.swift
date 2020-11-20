@@ -52,7 +52,7 @@ fileprivate struct OneSPopup<PopupContent>: ViewModifier where PopupContent: Vie
             HStack {
                 VStack(alignment: .leading, spacing: 30) {
                     HStack(alignment: .bottom) {
-                        OneSSecondaryHeaderText(text: manager.titleText, color: .backgroundToGray)
+                        OneSSecondaryHeaderText(text: manager.titleText, color: manager.textColor)
                         if let titleImage = manager.titleImage {
                             titleImage
                                 .resizable()
@@ -61,7 +61,7 @@ fileprivate struct OneSPopup<PopupContent>: ViewModifier where PopupContent: Vie
                         }
                         if manager.continueButton {
                             Spacer()
-                            OneSSmallBorderButton(symbol: SFSymbol.arrow, color: .backgroundToGray, withScale: false) { manager.buttonDismiss() }
+                            OneSSmallBorderButton(symbol: SFSymbol.arrow, color: manager.textColor, withScale: false) { manager.buttonDismiss() }
                         } else {
                             Color.clear.frame(width: 0, height: 38)
                         }

@@ -17,11 +17,11 @@ struct GoalEnterInputSelectStepUnitView: View {
         VStack {
             //StepCategory
             HStack {
-                StepCategoryButton(viewModel: viewModel, stepCategory: .duration)
+                StepCategoryButton(viewModel: viewModel, selectedColor: $selectedColor, stepCategory: .duration)
                 Spacer()
-                StepCategoryButton(viewModel: viewModel, stepCategory: .distance)
+                StepCategoryButton(viewModel: viewModel, selectedColor: $selectedColor, stepCategory: .distance)
                 Spacer()
-                StepCategoryButton(viewModel: viewModel, stepCategory: .reps)
+                StepCategoryButton(viewModel: viewModel, selectedColor: $selectedColor, stepCategory: .reps)
             }
             
             //StepUnit
@@ -44,6 +44,7 @@ struct GoalEnterInputSelectStepUnitView: View {
     private struct StepCategoryButton: View {
         
         @ObservedObject var viewModel: GoalEnterInputModel
+        @Binding var selectedColor: UserColor
         let stepCategory: StepCategory
         
         
@@ -52,7 +53,7 @@ struct GoalEnterInputSelectStepUnitView: View {
                 text:           stepCategory.description,
                 textFont:       .subtitle,
                 textColor:      viewModel.stepCategoryButtonTextColor(stepCategory),
-                buttonColor:    viewModel.stepCategoryButtonColor(stepCategory),
+                buttonColor:    viewModel.stepCategoryButtonColor(stepCategory, selectedColor),
                 height:         55,
                 withScale:      false
             ) {
@@ -101,12 +102,12 @@ struct GoalEnterInputSelectStepUnitView: View {
                     text:           stepUnit.description,
                     textFont:       .custom(weight: Raleway.semiBold, size: 14),
                     textColor:      viewModel.stepUnitButtonTextColor(stepUnit),
-                    buttonColor:    viewModel.stepUnitButtonColor(stepUnit),
+                    buttonColor:    viewModel.stepUnitButtonColor(stepUnit, selectedColor),
                     height:         40,
                     withScale:      false
                 ) {
                     if stepUnit.isCustom {
-                        popupManager.showTextFieldPopup(.goalCustomUnit ,titleText: "Custom", bodyText: "Enter your unit.", input: viewModel.selectedData.customUnit, placerholder: "unit", textLimit: Step.customUnitDigitsLimit, lowercased: true, backgroundColor: selectedColor.get())
+                        popupManager.showTextFieldPopup(.goalCustomUnit ,titleText: "Custom", bodyText: "Enter your unit.", input: viewModel.selectedData.customUnit, placeholder: "unit", placeholderColor: selectedColor.get(.dark), textLimit: Step.customUnitDigitsLimit, lowercased: true, backgroundColor: selectedColor.get())
                     }
                     viewModel.selectedData.stepUnit = stepUnit
                 }

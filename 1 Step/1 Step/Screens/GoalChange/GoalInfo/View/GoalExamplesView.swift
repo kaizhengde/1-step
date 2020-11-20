@@ -13,54 +13,33 @@ struct GoalExamplesView: View {
 
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 30) {
-            OneSRowButton(.long, title: "Settings", accessoryCustomSymbol: Image("SettingsSymbol")) {}
-            OneSRowButton(.long, title: "Share") {}
-            
-            OneSRowButton(.shortBig, title: "Plant a real tree 🌳", accessorySFSymbol: SFSymbol.plus) {}
-            
-            OneSRowButton(.shortSmall, title: "Premium", textColor: .whiteToDarkGray, backgroundColor: UserColor.user0.get(), accessoryText: "Yes!", accessoryColor: .whiteToDarkGray) {}
-            
-            OneSDropDown(.long, title: "Data & Privacy", accessorySFSymbol: SFSymbol.delete) {
+        VStack(alignment: .leading, spacing: 20) {
+            OneSDropDown(.shortBig, title: "Lose weight") {
                 VStack(spacing: 10) {
-                    OneSRowButton(.shortSmall, title: "Premium", textColor: .whiteToDarkGray, backgroundColor: UserColor.user0.get(), accessoryText: "Yes!", accessoryColor: .whiteToDarkGray) {}
-                    OneSDropDown(.shortSmall, title: "Language", accessoryText: "English", accessoryColor: UserColor.user0.get()) {
-                        VStack(spacing: 10) {
-                            OneSRowSelectButton(.constant(false), title: "German", selectedColor: UserColor.user0.get()) {}
-                            OneSRowSelectButton(.constant(true), title: "English", selectedColor: UserColor.user0.get()) {}
-                            OneSRowSelectButton(.constant(false), title: "Chinese", selectedColor: UserColor.user0.get()) {}
-                            OneSRowSelectButton(.constant(false), title: "French", selectedColor: UserColor.user0.get()) {}
-                        }
-                    }
+                    GoalInfoBackgroundText(text: "Lose weight", backgroundColor: selectedColor.get(.light), big: false)
+                    GoalInfoArrowText(text: "What?", big: false)
                     
-                    OneSRowButton(.shortSmall, title: "Darkmode", accessoryText: "Off", accessoryColor: UserColor.user0.get()) {}
-                    OneSRowButton(.shortSmall, title: "Notifications", textColor: .whiteToDarkGray, backgroundColor: UserColor.user0.get(), accessoryText: "On", accessoryColor: .whiteToDarkGray) {}
+                    GoalInfoBackgroundText(text: "Lose 20 pounds", backgroundColor: selectedColor.get(.light), big: false)
+                    GoalInfoArrowText(text: "How?", big: false)
+                    
+                    GoalInfoBackgroundText(text: "Exercise more often", backgroundColor: selectedColor.get(.light), big: false)
+                    GoalInfoArrowText(text: "What?", big: false)
+                    
+                    GoalInfoBackgroundText(text: "Go for a run regularly", backgroundColor: selectedColor.get(.light), big: false)
+                    GoalInfoArrowText(text: "What?", big: false)
+                    
+                    GoalInfoBackgroundText(text: "Run 100 miles in total", backgroundColor: selectedColor.get(), big: false)
                 }
+                .padding(.bottom, 20)
             }
             
-            OneSDropDown(.shortBig, title: "Data & Privacy") {
-                VStack(spacing: 10) {
-                    HStack {
-                        OneSText(text: "I want to...", font: .custom(weight: Raleway.semiBold, size: 20), color: .grayToBackground)
-                        Spacer()
-                    }
-                    
-                    GoalInfoBackgroundText(text: "Lose weight", backgroundColor: selectedColor.get(.light), big: true)
-                    GoalInfoArrowText(text: "What?", big: true)
-                    
-                    GoalInfoBackgroundText(text: "Lose 20 pounds", backgroundColor: selectedColor.get(.light), big: true)
-                    GoalInfoArrowText(text: "How?", big: true)
-                    
-                    GoalInfoBackgroundText(text: "Exercise more often", backgroundColor: selectedColor.get(.light), big: true)
-                    GoalInfoArrowText(text: "What?", big: true)
-                    
-                    GoalInfoBackgroundText(text: "Go for a run regularly", backgroundColor: selectedColor.get(.light), big: true)
-                    GoalInfoArrowText(text: "What?", big: true)
-                    
-                    GoalInfoBackgroundText(text: "Run 100 miles in total", backgroundColor: selectedColor.get(), big: true)
-                }
-            }
+            OneSDropDown(.shortBig, title: "Become more aware") { EmptyView() }
+            OneSDropDown(.shortBig, title: "Help the environment") { EmptyView() }
+            OneSDropDown(.shortBig, title: "Get better at guitar") { EmptyView() }
+            OneSDropDown(.shortBig, title: "Be more happy") { EmptyView() }
+            OneSDropDown(.shortBig, title: "Stop procrastination") { EmptyView() }
+            OneSDropDown(.shortBig, title: "Learn a new language") { EmptyView() }
         }
-        .padding(.bottom, 400)
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
 }

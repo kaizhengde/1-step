@@ -55,8 +55,8 @@ final class GoalEnterInputModel: ObservableObject {
     
     //StepCategory
     
-    func stepCategoryButtonColor(_ stepCategory: StepCategory) -> Color {
-        return selectedData.stepCategory == stepCategory ? .backgroundToGray : .opacityBackgroundDarker
+    func stepCategoryButtonColor(_ stepCategory: StepCategory, _ selectedColor: UserColor) -> Color {
+        return selectedData.stepCategory == stepCategory ? .backgroundToGray : selectedColor.get(.dark)
     }
     
     
@@ -67,8 +67,8 @@ final class GoalEnterInputModel: ObservableObject {
     
     //StepUnit
     
-    func stepUnitButtonColor(_ stepUnit: StepUnit) -> Color {
-        return selectedData.stepUnit == stepUnit ? .backgroundToGray : .opacityBackgroundDarker
+    func stepUnitButtonColor(_ stepUnit: StepUnit, _ selectedColor: UserColor) -> Color {
+        return selectedData.stepUnit == stepUnit ? .backgroundToGray : selectedColor.get(.dark)
     }
     
     

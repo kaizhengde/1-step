@@ -24,14 +24,15 @@ struct GoalInfoBackgroundText: View {
         HStack {
             HStack {
                 Text(text)
-                    .font(.custom(Raleway.semiBold, size: big ? 20 : 15))
+                    .font(.custom(Raleway.semiBold, size: big ? 20 : 17))
                     .foregroundColor(.backgroundToGray)
                     .multilineTextAlignment(.leading)
                     .fixedSize(horizontal: false, vertical: true)
                 
                 Spacer()
             }
-            .padding(Layout.firstLayerPadding)
+            .padding(.horizontal, Layout.firstLayerPadding)
+            .padding(.vertical, big ? 20 : 15)
             .frame(width: 250*Layout.multiplierWidth)
             .frame(maxHeight: .infinity)
             .background(backgroundColor)
