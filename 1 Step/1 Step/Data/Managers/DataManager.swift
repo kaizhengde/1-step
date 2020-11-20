@@ -69,6 +69,7 @@ final class DataManager {
         newGoal.sortOrder           = fetchGoalCount(for: .active)
         newStep.unitRatio           = JourneyDataHandler.calculateRatio(from: baseData)
         newGoal.neededSteps         = baseData.neededStepUnits! * newStep.unitRatio
+        newGoal.stepsDate           = Array<Date>(repeating: .distantFuture, count: Int(newGoal.neededSteps))
         let addArrays               = JourneyDataHandler.calculateStepAddArrays(from: baseData)
         newStep.addArray            = addArrays.unit
         newStep.addArrayDual        = addArrays.dual
@@ -96,6 +97,7 @@ final class DataManager {
         
         goal.step.unitRatio     = JourneyDataHandler.calculateRatio(from: baseData)
         goal.neededSteps        = baseData.neededStepUnits! * goal.step.unitRatio
+        goal.stepsDate          = JourneyDataHandler.updateStepsDate(with: goal)
         let addArrays           = JourneyDataHandler.calculateStepAddArrays(from: baseData)
         goal.step.addArray      = addArrays.unit
         goal.step.addArrayDual  = addArrays.dual
@@ -120,6 +122,7 @@ final class DataManager {
         goal.currentSteps       = journeyData.currentSteps
         goal.currentPercent     = journeyData.currentPercent
         goal.currentState       = journeyData.currentState
+        goal.stepsDate          = journeyData.stepsDate
         goal.milestones         = journeyData.milestones
         
         var updateResult = true
