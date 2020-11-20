@@ -1,0 +1,30 @@
+//
+//  GoalExampleMapView.swift
+//  1 Step
+//
+//  Created by Kai Zheng on 20.11.20.
+//
+
+import SwiftUI
+
+struct GoalExampleMapView: View {
+    
+    let data: [GoalExampleData]
+    let selectedColor: UserColor
+    let big: Bool
+    
+    
+    var body: some View {
+        LazyVStack(spacing: 10) {
+            ForEach(0..<data.count, id: \.self) { i in
+                if data[i].final {
+                    GoalExampleBackgroundText(text: data[i].backgroundText, backgroundColor: selectedColor.get(), big: big)
+                } else {
+                    GoalExampleBackgroundText(text: data[i].backgroundText, backgroundColor: selectedColor.get(.light), big: big)
+                    GoalExampleArrowText(text: data[i].arrowText, big: big)
+                }
+            }
+        }
+        .padding(.bottom, 20)
+    }
+}

@@ -1,5 +1,5 @@
 //
-//  GoalInfoArrowText.swift
+//  GoalExampleArrowText.swift
 //  1 Step
 //
 //  Created by Kai Zheng on 17.11.20.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct GoalInfoArrowText: View {
+struct GoalExampleArrowText: View {
     
     let text: String
     let big: Bool

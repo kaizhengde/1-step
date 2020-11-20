@@ -28,7 +28,7 @@ struct GoalInfoView: View {
                         
                         if viewModel.currentView == .howItWorks {
                             Group {
-                                GoalHowItWorksView(selectedColor: selectedColor)
+                                GoalHowItWorksView(viewModel: viewModel, selectedColor: selectedColor)
                                 
                                 HStack {
                                     Spacer()
@@ -42,7 +42,7 @@ struct GoalInfoView: View {
                             
                             
                         } else if viewModel.currentView == .examples {
-                            GoalExamplesView(selectedColor: selectedColor)
+                            GoalExamplesView(viewModel: viewModel, selectedColor: selectedColor)
                                 .opacity(viewModel.currentView == .examples ? 1.0 : 0.0)
                         }
                     }

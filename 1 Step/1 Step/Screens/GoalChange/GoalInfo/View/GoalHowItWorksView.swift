@@ -9,6 +9,8 @@ import SwiftUI
 
 struct GoalHowItWorksView: View {
     
+    @ObservedObject var viewModel: GoalInfoModel
+    
     let selectedColor: UserColor
     
     
@@ -27,25 +29,14 @@ struct GoalHowItWorksView: View {
                     .padding(.vertical, 20)
             }
             
-            LazyVStack(spacing: 10) {
-                OneSText(text: "I want to...", font: .custom(weight: Raleway.semiBold, size: 20), color: .grayToBackground)
-                    .frame(width: Layout.firstLayerWidth, alignment: .leading)
+            VStack(spacing: 10) {
+                HStack {
+                    OneSText(text: "I want to...", font: .custom(weight: Raleway.semiBold, size: 20), color: .grayToBackground)
+                    Spacer()
+                }
                 
-                GoalInfoBackgroundText(text: "Lose weight", backgroundColor: selectedColor.get(.light), big: true)
-                GoalInfoArrowText(text: "What?", big: true)
-                
-                GoalInfoBackgroundText(text: "Lose 20 pounds", backgroundColor: selectedColor.get(.light), big: true)
-                GoalInfoArrowText(text: "How?", big: true)
-                
-                GoalInfoBackgroundText(text: "Exercise more often", backgroundColor: selectedColor.get(.light), big: true)
-                GoalInfoArrowText(text: "What?", big: true)
-                
-                GoalInfoBackgroundText(text: "Go for a run regularly", backgroundColor: selectedColor.get(.light), big: true)
-                GoalInfoArrowText(text: "What?", big: true)
-                
-                GoalInfoBackgroundText(text: "Run 100 miles in total", backgroundColor: selectedColor.get(), big: true)
+                GoalExampleMapView(data: viewModel.howItWorksExampleOneData, selectedColor: selectedColor, big: true)
             }
-            .padding(.bottom, 20)
             
             VStack(spacing: 20) {
                 OneSMultilineText(text: "Basically all we do is to continually ask ourselves how we can specify what it is that we want to achieve and how we can actually get there.")
@@ -56,21 +47,10 @@ struct GoalHowItWorksView: View {
                     .padding(.vertical, 20)
             }
             
-            LazyVStack(spacing: 10) {
-                GoalInfoBackgroundText(text: "Go for a run regularly", backgroundColor: selectedColor.get(.light), big: true)
-                GoalInfoArrowText(text: "What?", big: true)
-                
-                GoalInfoBackgroundText(text: "Run 100 miles in total", backgroundColor: selectedColor.get(), big: true)
-                GoalInfoBackgroundText(text: "Run for 300 times", backgroundColor: selectedColor.get(), big: true)
-                GoalInfoBackgroundText(text: "Run to 50 parks in town", backgroundColor: selectedColor.get(), big: true)
-                GoalInfoBackgroundText(text: "Hike 12 mountains in the swiss alps", backgroundColor: selectedColor.get(), big: true)
-            }
-            .padding(.bottom, 20)
+            GoalExampleMapView(data: viewModel.howItWorksExampleTwoData, selectedColor: selectedColor, big: true)
             
-            VStack(spacing: 20) {
-                OneSMultilineText(text: "And that's it!", bold: true)
-            }
-            .padding(.bottom, 20)
+            OneSMultilineText(text: "And that's it!", bold: true)
+                .padding(.bottom, 20)
         }
     }
 }

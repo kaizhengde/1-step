@@ -72,6 +72,7 @@
 		3D6FDDB92567808B002854E6 /* OneSRowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6FDDB82567808B002854E6 /* OneSRowButton.swift */; };
 		3D6FDDDF2567B6E2002854E6 /* Appear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6FDDDE2567B6E2002854E6 /* Appear.swift */; };
 		3D6FDDE22567C43B002854E6 /* OneSRowSelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6FDDE12567C43B002854E6 /* OneSRowSelectButton.swift */; };
+		3D6FDDE52567F268002854E6 /* GoalExampleMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6FDDE42567F268002854E6 /* GoalExampleMapView.swift */; };
 		3D72B8C3252DB5B8006E660D /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D72B8C2252DB5B8006E660D /* Animations.swift */; };
 		3D7396BD2533730700BD4169 /* GoalsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7396BC2533730700BD4169 /* GoalsGridView.swift */; };
 		3D7396C7253373F500BD4169 /* GoalsGridModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7396C6253373F500BD4169 /* GoalsGridModel.swift */; };
@@ -87,8 +88,8 @@
 		3D959A9625630913007BAA07 /* GoalHowItWorksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D959A9525630913007BAA07 /* GoalHowItWorksView.swift */; };
 		3D959A9A25630F90007BAA07 /* OneSMultilineText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D959A9925630F90007BAA07 /* OneSMultilineText.swift */; };
 		3D959AA325631199007BAA07 /* OneSBackgroundMultilineText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D959AA225631199007BAA07 /* OneSBackgroundMultilineText.swift */; };
-		3D959AA725631320007BAA07 /* GoalInfoBackgroundText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D959AA625631320007BAA07 /* GoalInfoBackgroundText.swift */; };
-		3D959AAE2563E79F007BAA07 /* GoalInfoArrowText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D959AAD2563E79F007BAA07 /* GoalInfoArrowText.swift */; };
+		3D959AA725631320007BAA07 /* GoalExampleBackgroundText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D959AA625631320007BAA07 /* GoalExampleBackgroundText.swift */; };
+		3D959AAE2563E79F007BAA07 /* GoalExampleArrowText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D959AAD2563E79F007BAA07 /* GoalExampleArrowText.swift */; };
 		3D996778253F57F7000CE151 /* JourneyDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D996777253F57F7000CE151 /* JourneyDataHandler.swift */; };
 		3DA7BD362532D41400171360 /* OneSTextFieldPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA7BD352532D41400171360 /* OneSTextFieldPopupView.swift */; };
 		3DA7BD3A2532F6A600171360 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA7BD392532F6A600171360 /* DataManager.swift */; };
@@ -211,6 +212,7 @@
 		3D6FDDB82567808B002854E6 /* OneSRowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSRowButton.swift; sourceTree = "<group>"; };
 		3D6FDDDE2567B6E2002854E6 /* Appear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appear.swift; sourceTree = "<group>"; };
 		3D6FDDE12567C43B002854E6 /* OneSRowSelectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSRowSelectButton.swift; sourceTree = "<group>"; };
+		3D6FDDE42567F268002854E6 /* GoalExampleMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalExampleMapView.swift; sourceTree = "<group>"; };
 		3D72B8C2252DB5B8006E660D /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
 		3D7396BC2533730700BD4169 /* GoalsGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsGridView.swift; sourceTree = "<group>"; };
 		3D7396C6253373F500BD4169 /* GoalsGridModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsGridModel.swift; sourceTree = "<group>"; };
@@ -226,8 +228,8 @@
 		3D959A9525630913007BAA07 /* GoalHowItWorksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalHowItWorksView.swift; sourceTree = "<group>"; };
 		3D959A9925630F90007BAA07 /* OneSMultilineText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSMultilineText.swift; sourceTree = "<group>"; };
 		3D959AA225631199007BAA07 /* OneSBackgroundMultilineText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSBackgroundMultilineText.swift; sourceTree = "<group>"; };
-		3D959AA625631320007BAA07 /* GoalInfoBackgroundText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalInfoBackgroundText.swift; sourceTree = "<group>"; };
-		3D959AAD2563E79F007BAA07 /* GoalInfoArrowText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalInfoArrowText.swift; sourceTree = "<group>"; };
+		3D959AA625631320007BAA07 /* GoalExampleBackgroundText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalExampleBackgroundText.swift; sourceTree = "<group>"; };
+		3D959AAD2563E79F007BAA07 /* GoalExampleArrowText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalExampleArrowText.swift; sourceTree = "<group>"; };
 		3D996777253F57F7000CE151 /* JourneyDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyDataHandler.swift; sourceTree = "<group>"; };
 		3DA7BD352532D41400171360 /* OneSTextFieldPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSTextFieldPopupView.swift; sourceTree = "<group>"; };
 		3DA7BD392532F6A600171360 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
@@ -625,6 +627,16 @@
 			path = DropDowns;
 			sourceTree = "<group>";
 		};
+		3D6FDDEB2567F455002854E6 /* ExampleMap */ = {
+			isa = PBXGroup;
+			children = (
+				3D6FDDE42567F268002854E6 /* GoalExampleMapView.swift */,
+				3D959AA625631320007BAA07 /* GoalExampleBackgroundText.swift */,
+				3D959AAD2563E79F007BAA07 /* GoalExampleArrowText.swift */,
+			);
+			path = ExampleMap;
+			sourceTree = "<group>";
+		};
 		3D7396C4253373D000BD4169 /* GoalsGrid */ = {
 			isa = PBXGroup;
 			children = (
@@ -639,8 +651,7 @@
 			children = (
 				3D959A9525630913007BAA07 /* GoalHowItWorksView.swift */,
 				3D78FD322566FB6F00C1D0D2 /* GoalExamplesView.swift */,
-				3D959AA625631320007BAA07 /* GoalInfoBackgroundText.swift */,
-				3D959AAD2563E79F007BAA07 /* GoalInfoArrowText.swift */,
+				3D6FDDEB2567F455002854E6 /* ExampleMap */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -974,6 +985,7 @@
 				3DDF702C2531A5D800FD3011 /* MountainImage.swift in Sources */,
 				3D2E7968253021A900788AA2 /* PopupManager.swift in Sources */,
 				3D6FDDE22567C43B002854E6 /* OneSRowSelectButton.swift in Sources */,
+				3D6FDDE52567F268002854E6 /* GoalExampleMapView.swift in Sources */,
 				3D4B78DE252CDD8600A45755 /* GoalSelectMountainView.swift in Sources */,
 				3D2E792F252F721A00788AA2 /* DismissableObservableObject.swift in Sources */,
 				3D5156B82531FB3F00A44450 /* ViewOverlayManagerProtocol.swift in Sources */,
@@ -993,7 +1005,7 @@
 				3D4FD8692564EE0700103C73 /* GoalReachedModel.swift in Sources */,
 				3D6F43A2253B266F00785586 /* GoalMenuView.swift in Sources */,
 				3D2E7933252F9CFA00788AA2 /* Animation+Delay.swift in Sources */,
-				3D959AAE2563E79F007BAA07 /* GoalInfoArrowText.swift in Sources */,
+				3D959AAE2563E79F007BAA07 /* GoalExampleArrowText.swift in Sources */,
 				3D47CC91252C71EA00A8CA1B /* CoordinateSpace.swift in Sources */,
 				3DE9C50B252C8F500023C212 /* OneSText.swift in Sources */,
 				3D959A9125628ED4007BAA07 /* ConfettiManager.swift in Sources */,
@@ -1011,7 +1023,7 @@
 				3D2E7928252F6C2C00788AA2 /* GoalEnterInputModel.swift in Sources */,
 				3DC617262544145C00A1F204 /* InfiniteAnimationManager.swift in Sources */,
 				3D5156AF2531F66D00A44450 /* GoalEnterInputSelectStepUnitView.swift in Sources */,
-				3D959AA725631320007BAA07 /* GoalInfoBackgroundText.swift in Sources */,
+				3D959AA725631320007BAA07 /* GoalExampleBackgroundText.swift in Sources */,
 				3D4FD8632564E9E800103C73 /* Date.swift in Sources */,
 				3D2E79752530344D00788AA2 /* OneSSecondaryHeaderText.swift in Sources */,
 				3D4B78E1252CDD9200A45755 /* GoalSelectMountainItem.swift in Sources */,

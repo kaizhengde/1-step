@@ -1,5 +1,5 @@
 //
-//  OneSBackgroundText.swift
+//  GoalExampleBackgroundText.swift
 //  1 Step
 //
 //  Created by Kai Zheng on 16.11.20.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct GoalInfoBackgroundText: View {
+struct GoalExampleBackgroundText: View {
     
     let text: String
     let backgroundColor: Color
