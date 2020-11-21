@@ -47,7 +47,7 @@ struct SummitMilestoneItem: View {
                             .colorMultiply(.backgroundStatic)
                     } else {
                         milestone.image.get()
-                            .font(.system(size: 50, weight: .ultraLight))
+                            .font(.system(size: 50, weight: .thin))
                             .foregroundColor(.backgroundStatic)
                     }
                 }
