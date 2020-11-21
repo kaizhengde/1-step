@@ -14,20 +14,24 @@ struct ProfileScreen: View {
     
     
     var body: some View {
-        ScrollView(showsIndicators: false) {
-            VStack(spacing: 32) {
-                ProfileHeaderView()
-                    .padding(.bottom, -12)
-                
-                ProfileAccomplishmentsSectionView(profileModel: profileModel)
-                Group {
-                    ProfileAppSectionView(profileModel: profileModel)
-                    ProfileAboutSectionView(profileModel: profileModel)
+        ZStack {
+            Color.backgroundToGray.edgesIgnoringSafeArea(.all)
+            
+            ScrollView(showsIndicators: false) {
+                VStack(spacing: 32) {
+                    ProfileHeaderView()
+                        .padding(.bottom, -12)
+                    
+                    ProfileAccomplishmentsSectionView(profileModel: profileModel)
+                    Group {
+                        ProfileAppSectionView(profileModel: profileModel)
+                        ProfileAboutSectionView(profileModel: profileModel)
+                    }
+                    .padding(.horizontal, Layout.firstLayerPadding)
+                    .offset(y: -32)
                 }
-                .padding(.horizontal, Layout.firstLayerPadding)
-                .offset(y: -32)
+                .padding(.bottom, 300*Layout.multiplierHeight)
             }
-            .padding(.bottom, 300*Layout.multiplierHeight)
         }
     }
 }
