@@ -25,7 +25,7 @@ struct ProfileAccomplishmentsSectionView: View {
                 .padding(.trailing, Layout.screenWidth-240)
             }
             .padding(.leading, -Layout.firstLayerPadding)
-            .offset(y: -20)
+            .offset(y: -10)
         }
         .padding(.leading, Layout.firstLayerPadding)
     }
@@ -48,7 +48,7 @@ struct ProfileAccomplishmentsSectionView: View {
             }
             .padding(.horizontal, Layout.firstLayerPadding)
             .padding(.top, 10)
-            .frame(width: 240, height: 128)
+            .frame(width: 240, height: 140)
             .background(profileModel.accomplishmentsData[index].color)
             .cornerRadius(10)
             .oneSShadow(opacity: 0.1, y: 2, blur: 10)

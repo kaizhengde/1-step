@@ -18,7 +18,7 @@ struct OneSHintButton: View {
         Button(action: { action() }) {
             HStack {
                 OneSText(text: text, font: .body, color: color)
-                SFSymbol.arrow
+                SFSymbol.`continue`
                     .font(OneSFont.custom(weight: Raleway.semiBold, size: 15).get())
                 Spacer()
             }

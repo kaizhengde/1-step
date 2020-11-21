@@ -32,7 +32,7 @@ struct GoalInfoView: View {
                                 
                                 HStack {
                                     Spacer()
-                                    OneSSmallBorderButton(symbol: SFSymbol.arrow, color: .grayToBackground) {
+                                    OneSSmallBorderButton(symbol: SFSymbol.`continue`, color: .grayToBackground) {
                                         withAnimation { scrollProxy.scrollTo(0) }
                                         viewModel.currentView = .examples
                                     }

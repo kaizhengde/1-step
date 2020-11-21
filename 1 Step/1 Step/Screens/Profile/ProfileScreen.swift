@@ -28,9 +28,9 @@ struct ProfileScreen: View {
                         ProfileAboutSectionView(profileModel: profileModel)
                     }
                     .padding(.horizontal, Layout.firstLayerPadding)
-                    .offset(y: -32)
+                    .offset(y: -24)
                 }
-                .padding(.bottom, 300*Layout.multiplierHeight)
+                .padding(.bottom, 120*Layout.multiplierHeight)
             }
         }
     }

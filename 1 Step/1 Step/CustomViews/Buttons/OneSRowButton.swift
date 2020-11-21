@@ -62,7 +62,7 @@ struct OneSRowButton: View {
             .frame(height: buttonArt == .shortSmall ? 56 : 72)
             .background(backgroundColor)
             .cornerRadius(10)
-            .oneSShadow(opacity: 0.1, y: 2, blur: 10)
+            .oneSShadow(opacity: 0.05, y: 2, blur: 10)
             .oneSAnimation()
         }
         .oneSButtonScaleStyle()

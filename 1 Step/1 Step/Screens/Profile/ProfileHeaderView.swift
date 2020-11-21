@@ -30,7 +30,7 @@ struct ProfileHeaderView: View {
         
         var body: some View {
             Circle()
-                .frame(width: 150*Layout.multiplierWidth, height: 150*Layout.multiplierWidth)
+                .frame(width: 150, height: 150)
                 .foregroundColor(.darkBackgroundToDarkGray)
                 .oneSShadow(opacity: 0.15, y: 2, blur: 8)
                 .overlay(
