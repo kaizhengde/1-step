@@ -1,0 +1,59 @@
+//
+//  ProfileAccomplishmentsSectionView.swift
+//  1 Step
+//
+//  Created by Kai Zheng on 21.11.20.
+//
+
+import SwiftUI
+
+struct ProfileAccomplishmentsSectionView: View {
+    
+    @ObservedObject var profileModel: ProfileModel
+    
+    
+    var body: some View {
+        OneSSectionView(title: "Accomplishments") {
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 12) {
+                    ForEach(0..<profileModel.accomplishmentsData.count) {
+                        Item(profileModel: profileModel, index: $0)
+                    }
+                }
+                .offset(x: Layout.firstLayerPadding)
+                .frame(height: 160)
+                .padding(.trailing, Layout.screenWidth-240)
+            }
+            .padding(.leading, -Layout.firstLayerPadding)
+            .offset(y: -20)
+        }
+        .padding(.leading, Layout.firstLayerPadding)
+    }
+    
+    
+    struct Item: View {
+        
+        @ObservedObject var profileModel: ProfileModel
+        let index: Int
+        
+        
+        var body: some View {
+            HStack() {
+                VStack(alignment: .leading) {
+                    OneSText(text: "\(profileModel.accomplishmentsData[index].value)", font: .custom(weight: Raleway.extraBold, size: 40), color: .backgroundToGray)
+                    OneSText(text: profileModel.accomplishmentsData[index].description, font: .custom(weight: Raleway.medium, size: 17), color: .backgroundToGray)
+                    Spacer()
+                }
+                Spacer()
+            }
+            .padding(.horizontal, Layout.firstLayerPadding)
+            .padding(.top, 10)
+            .frame(width: 240, height: 128)
+            .background(profileModel.accomplishmentsData[index].color)
+            .cornerRadius(10)
+            .oneSShadow(opacity: 0.1, y: 2, blur: 10)
+            .oneSItemTapScale()
+            .oneSItemTransition(after: profileModel.accomplishmentsData[index].appearDelay)
+        }
+    }
+}

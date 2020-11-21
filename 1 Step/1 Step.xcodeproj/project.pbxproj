@@ -75,6 +75,10 @@
 		3D5156BC2531FB7E00A44450 /* MiniSheetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5156BB2531FB7E00A44450 /* MiniSheetManager.swift */; };
 		3D59DE8625694F0C00CF24D7 /* GoalTestsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D59DE8525694F0C00CF24D7 /* GoalTestsModel.swift */; };
 		3D59DE8C2569510500CF24D7 /* TestsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D59DE8B2569510500CF24D7 /* TestsHelper.swift */; };
+		3D59DE92256964D600CF24D7 /* ProfileAccomplishmentsSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D59DE91256964D600CF24D7 /* ProfileAccomplishmentsSectionView.swift */; };
+		3D59DE972569657700CF24D7 /* OneSSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D59DE962569657700CF24D7 /* OneSSectionView.swift */; };
+		3D59DEA425697A8200CF24D7 /* ProfileAppSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D59DEA325697A8200CF24D7 /* ProfileAppSectionView.swift */; };
+		3D59DEA825697AC900CF24D7 /* ProfileAboutSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D59DEA725697AC900CF24D7 /* ProfileAboutSectionView.swift */; };
 		3D6D6454254C0F2400FAA37F /* JourneyErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6D6453254C0F2400FAA37F /* JourneyErrorHandler.swift */; };
 		3D6D6458254C4D2400FAA37F /* JourneyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6D6457254C4D2400FAA37F /* JourneyModel.swift */; };
 		3D6F4399253AE19C00785586 /* GoalHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6F4398253AE19C00785586 /* GoalHeaderView.swift */; };
@@ -240,6 +244,10 @@
 		3D5156BB2531FB7E00A44450 /* MiniSheetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniSheetManager.swift; sourceTree = "<group>"; };
 		3D59DE8525694F0C00CF24D7 /* GoalTestsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTestsModel.swift; sourceTree = "<group>"; };
 		3D59DE8B2569510500CF24D7 /* TestsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsHelper.swift; sourceTree = "<group>"; };
+		3D59DE91256964D600CF24D7 /* ProfileAccomplishmentsSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAccomplishmentsSectionView.swift; sourceTree = "<group>"; };
+		3D59DE962569657700CF24D7 /* OneSSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSSectionView.swift; sourceTree = "<group>"; };
+		3D59DEA325697A8200CF24D7 /* ProfileAppSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAppSectionView.swift; sourceTree = "<group>"; };
+		3D59DEA725697AC900CF24D7 /* ProfileAboutSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAboutSectionView.swift; sourceTree = "<group>"; };
 		3D6D6453254C0F2400FAA37F /* JourneyErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyErrorHandler.swift; sourceTree = "<group>"; };
 		3D6D6457254C4D2400FAA37F /* JourneyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyModel.swift; sourceTree = "<group>"; };
 		3D6F4398253AE19C00785586 /* GoalHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalHeaderView.swift; sourceTree = "<group>"; };
@@ -508,6 +516,7 @@
 				3D959A9825630F74007BAA07 /* MultilineTexts */,
 				3D47CCB2252C77A300A8CA1B /* Buttons */,
 				3D6FDDAE25670801002854E6 /* DropDowns */,
+				3D59DE9E256965BD00CF24D7 /* Sections */,
 				3DCFE29425459E260012C536 /* Pickers */,
 				3D5156B12531F80D00A44450 /* MiniSheets */,
 				3D2E795A25301E8E00788AA2 /* Popups */,
@@ -678,6 +687,24 @@
 				3DAE7AE325309D0F00B162B1 /* FloaterManager.swift */,
 			);
 			path = ViewOverlays;
+			sourceTree = "<group>";
+		};
+		3D59DE952569656100CF24D7 /* ProfileSections */ = {
+			isa = PBXGroup;
+			children = (
+				3D59DE91256964D600CF24D7 /* ProfileAccomplishmentsSectionView.swift */,
+				3D59DEA325697A8200CF24D7 /* ProfileAppSectionView.swift */,
+				3D59DEA725697AC900CF24D7 /* ProfileAboutSectionView.swift */,
+			);
+			path = ProfileSections;
+			sourceTree = "<group>";
+		};
+		3D59DE9E256965BD00CF24D7 /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				3D59DE962569657700CF24D7 /* OneSSectionView.swift */,
+			);
+			path = Sections;
 			sourceTree = "<group>";
 		};
 		3D5ACAF22530663A00E1FABE /* Floaters */ = {
@@ -979,6 +1006,7 @@
 				3D0BEB0C2568EA52002F74FE /* ProfileModel.swift */,
 				3DE9C526252CB6FF0023C212 /* ProfileScreen.swift */,
 				3D0BEB092568E9D6002F74FE /* ProfileHeaderView.swift */,
+				3D59DE952569656100CF24D7 /* ProfileSections */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1146,6 +1174,7 @@
 				3D10D1D1254D3051002D2D3E /* MilestoneView.swift in Sources */,
 				3D47CC7B252C6C1C00A8CA1B /* MainView.swift in Sources */,
 				3D2E794A253019A200788AA2 /* UIApplication.swift in Sources */,
+				3D59DEA425697A8200CF24D7 /* ProfileAppSectionView.swift in Sources */,
 				3D258282253C0A9300DC19E7 /* Color.swift in Sources */,
 				3D2E795825301DA400788AA2 /* OneSFillButton.swift in Sources */,
 				3D2E795D25301ED600788AA2 /* OneSPopup.swift in Sources */,
@@ -1189,6 +1218,7 @@
 				3DFDE07A253C8800006B1A7E /* SheetManager.swift in Sources */,
 				3DA7BD3A2532F6A600171360 /* DataManager.swift in Sources */,
 				3D6FDDDF2567B6E2002854E6 /* Appear.swift in Sources */,
+				3D59DE92256964D600CF24D7 /* ProfileAccomplishmentsSectionView.swift in Sources */,
 				3D10D1CD254D2D53002D2D3E /* MilestoneDotView.swift in Sources */,
 				3DCFE29625459E390012C536 /* OneSPicker.swift in Sources */,
 				3D6D6454254C0F2400FAA37F /* JourneyErrorHandler.swift in Sources */,
@@ -1201,6 +1231,7 @@
 				3DF7916D25307EBF00F00174 /* ChildSizeReader.swift in Sources */,
 				3DE9C507252C8B8C0023C212 /* OneSHeaderText.swift in Sources */,
 				3DDF70372531BAB100FD3011 /* Milestone.swift in Sources */,
+				3D59DE972569657700CF24D7 /* OneSSectionView.swift in Sources */,
 				3D959A8B256286AE007BAA07 /* ConfettiView.swift in Sources */,
 				3DE11C35252C681200F13719 /* __StepApp.swift in Sources */,
 				3D2E792C252F6CAB00788AA2 /* GoalEnterInputView.swift in Sources */,
@@ -1248,6 +1279,7 @@
 				3D7396C7253373F500BD4169 /* GoalsGridModel.swift in Sources */,
 				3DCDDD94253C1E3100873D26 /* JourneyView.swift in Sources */,
 				3DE9C527252CB6FF0023C212 /* ProfileScreen.swift in Sources */,
+				3D59DEA825697AC900CF24D7 /* ProfileAboutSectionView.swift in Sources */,
 				3D0BEAFC2568E83F002F74FE /* OneSLanguage.swift in Sources */,
 				3DF1BFD4254C557E004E1AB6 /* MilestoneItem.swift in Sources */,
 				3DD5C9D42539D27100861784 /* GoalTransitionView.swift in Sources */,

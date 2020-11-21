@@ -22,6 +22,7 @@ struct ProfileHeaderView: View {
                 .oneSItemTransition()
             )
         }
+        .padding(.horizontal, Layout.firstLayerPadding)
     }
     
     

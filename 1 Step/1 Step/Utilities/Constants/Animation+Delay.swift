@@ -17,6 +17,7 @@ enum AnimationDuration {
 
 enum DelayAfter {
     
+    static let none: DispatchTimeInterval = .milliseconds(0)
     static let opacity: DispatchTimeInterval = .milliseconds(Int(AnimationDuration.opacity*1000))
     static let halfOpacity: DispatchTimeInterval = .milliseconds(Int(AnimationDuration.halfOpacity*1000))
     static let mountainAppear: DispatchTimeInterval = .milliseconds(Int(AnimationDuration.mountainAppear*1000))
