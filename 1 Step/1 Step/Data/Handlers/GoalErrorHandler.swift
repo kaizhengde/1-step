@@ -49,10 +49,10 @@ enum GoalErrorHandler {
             errorText = "You have entered nothing.\n\nPlease again enter a custom unit."
         }
         catch GoalError.stepsNeededTooLittle {
-            errorText =  "Too little steps to take.\n\nMinimum steps: \(Goal.neededStepUnitsMinimum)."
+            errorText = "Too little steps to take.\n\nMinimum steps: \(Goal.neededStepUnitsMinimum)."
         }
         catch GoalError.stepsNeededTooMany {
-            errorText =  "Too many steps to take.\n\nMaximum steps: \(Goal.neededStepUnitsMaximum)."
+            errorText = "Too many steps to take.\n\nMaximum steps: \(Goal.neededStepUnitsMaximum)."
         }
         catch {
             errorText = "Failed with an unknown error.\n\nConsider restarting the app."

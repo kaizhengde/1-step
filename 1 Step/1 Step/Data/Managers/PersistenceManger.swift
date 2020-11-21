@@ -15,8 +15,14 @@ struct PersistenceManager {
     var context: NSManagedObjectContext { container.viewContext }
     
     
-    init() {
+    init(inMemory: Bool = false) {
         container = NSPersistentCloudKitContainer(name: "__Step")
+        
+        if inMemory {
+          let description = NSPersistentStoreDescription()
+          description.url = URL(fileURLWithPath: "/dev/null")
+          self.container.persistentStoreDescriptions = [description]
+        }
         
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? { fatalError("Unresolved error \(error), \(error.userInfo)") }
