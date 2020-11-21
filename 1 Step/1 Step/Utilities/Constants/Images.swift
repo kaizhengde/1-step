@@ -15,6 +15,7 @@ enum SFSymbol {
     static let checkmark    = Image(systemName: "checkmark.circle.fill")
     static let rosette      = Image(systemName: "rosette")
     static let plus         = Image(systemName: "plus")
+    static let camera       = Image(systemName: "camera.fill")
 }
 
 

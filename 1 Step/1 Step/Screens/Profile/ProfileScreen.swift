@@ -13,10 +13,11 @@ struct ProfileScreen: View {
     
     
     var body: some View {
-        VStack {
-            OneSHeaderView("Profile", trailingButton: (.close, .grayToBackground, { mainModel.toScreen(.goals) }))
-            Spacer()
+        ScrollView(showsIndicators: false) {
+            VStack {
+                ProfileHeaderView()
+            }
+            .padding(.horizontal, Layout.firstLayerPadding)
         }
-        .padding(.horizontal, Layout.firstLayerPadding)
     }
 }

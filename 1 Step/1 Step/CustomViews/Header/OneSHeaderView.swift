@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-typealias OneSHeaderView = OneSHeaderViewCustom<EmptyView>
+typealias OneSHeaderView = OneSHeaderViewCustom<AnyView>
 
 struct OneSHeaderViewCustom<Content: View>: View {
     
