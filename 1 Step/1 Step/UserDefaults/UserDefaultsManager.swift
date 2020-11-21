@@ -10,13 +10,18 @@ import SwiftUI
 @propertyWrapper
 struct UserDefault<T: UserDefaultType> where T: Codable {
     let key: UserDefaultKey
+    let defaultValue: T
+    
+    init(_ key: UserDefaultKey, default: T) {
+        self.key = key
+        self.defaultValue = `default`
+    }
 
-    var wrappedValue: T? {
+    var wrappedValue: T {
         get {
-            //UserDefaults.standard.value(forKey: key.rawValue) as? T
-            guard let data = UserDefaults.standard.value(forKey: key.rawValue) as? Data,
+            guard let data = (UserDefaults.standard.value(forKey: key.rawValue) ?? defaultValue) as? Data,
                 let decodedData = try? JSONDecoder().decode(T.self, from: data)
-                else { return nil }
+                else { return defaultValue }
             return decodedData
         }
         set {
@@ -24,7 +29,6 @@ struct UserDefault<T: UserDefaultType> where T: Codable {
                 UserDefaults.standard.set(encoded, forKey: key.rawValue)
                 print("Success.")
             }
-            //UserDefaults.standard.set(newValue, forKey: key.rawValue)
         }
     }
 }
@@ -48,34 +52,34 @@ enum UserDefaultsManager {
     
     //MARK: - First
     
-    @UserDefault(key: UserDefaultKey.First.start) static var firstStart: Bool?
-    @UserDefault(key: UserDefaultKey.First.selectMountain) static var firstSelectMountain: Bool?
-    @UserDefault(key: UserDefaultKey.First.selectColor) static var firstSelectColor: Bool?
-    @UserDefault(key: UserDefaultKey.First.enterInput) static var firstEnterInput: Bool?
-    @UserDefault(key: UserDefaultKey.First.openGoal) static var firstOpenGoal: Bool?
+    @UserDefault(UserDefaultKey.First.start, default: false) static var firstStart: Bool
+    @UserDefault(UserDefaultKey.First.selectMountain, default: false) static var firstSelectMountain: Bool
+    @UserDefault(UserDefaultKey.First.selectColor, default: false) static var firstSelectColor: Bool
+    @UserDefault(UserDefaultKey.First.enterInput, default: false) static var firstEnterInput: Bool
+    @UserDefault(UserDefaultKey.First.openGoal, default: false) static var firstOpenGoal: Bool
     
     
     //MARK: - User
     
-    @UserDefault(key: UserDefaultKey.User.name) static var userName: String?
-    @UserDefault(key: UserDefaultKey.User.profileImage) static var userProfileImage: Data?
+    @UserDefault(UserDefaultKey.User.name, default: "") static var userName: String
+    @UserDefault(UserDefaultKey.User.profileImage, default: Data()) static var userProfileImage: Data
     
     
     //MARK: - Accomplishments
     
-    @UserDefault(key: UserDefaultKey.Accomplishment.totalSteps) static var accomplishmentTotalSteps: Int?
-    @UserDefault(key: UserDefaultKey.Accomplishment.totalMilestonesReached) static var accomplishmentTotalMilestonesReached: Int?
-    @UserDefault(key: UserDefaultKey.Accomplishment.totalGoalsReached) static var accomplishmentTotalGoalsReached: Int?
+    @UserDefault(UserDefaultKey.Accomplishment.totalSteps, default: 0) static var accomplishmentTotalSteps: Int
+    @UserDefault(UserDefaultKey.Accomplishment.totalMilestonesReached, default: 0) static var accomplishmentTotalMilestonesReached: Int
+    @UserDefault(UserDefaultKey.Accomplishment.totalGoalsReached, default: 0) static var accomplishmentTotalGoalsReached: Int
     
     
     //MARK: - Settings
     
-    @UserDefault(key: UserDefaultKey.Setting.premium) static var settingPremium: Bool?
-    @UserDefault(key: UserDefaultKey.Setting.language) static var settingLanguage: OneSLanguage?
-    @UserDefault(key: UserDefaultKey.Setting.darkmode) static var settingDarkmode: OneSDarkmode?
-    @UserDefault(key: UserDefaultKey.Setting.colorTheme) static var settingColorTheme: OneSColorTheme?
-    @UserDefault(key: UserDefaultKey.Setting.notifications) static var settingNotifications: Bool?
-    @UserDefault(key: UserDefaultKey.Setting.iCloudSynch) static var settingICloudSynch: Bool?
+    @UserDefault(UserDefaultKey.Setting.premium, default: false) static var settingPremium: Bool
+    @UserDefault(UserDefaultKey.Setting.language, default: .english) static var settingLanguage: OneSLanguage
+    @UserDefault(UserDefaultKey.Setting.darkmode, default: .light) static var settingDarkmode: OneSDarkmode
+    @UserDefault(UserDefaultKey.Setting.colorTheme, default: .default) static var settingColorTheme: OneSColorTheme
+    @UserDefault(UserDefaultKey.Setting.notifications, default: false) static var settingNotifications: Bool
+    @UserDefault(UserDefaultKey.Setting.iCloudSynch, default: false) static var settingICloudSynch: Bool
 }
 
 
