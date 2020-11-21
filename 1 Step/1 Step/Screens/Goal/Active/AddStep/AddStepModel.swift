@@ -119,7 +119,7 @@ class AddStepModel: ObservableObject {
     }
     
     
-    private func getAddStepsResult(with newStepUnits: Double) -> AddStepsResult {
+    func getAddStepsResult(with newStepUnits: Double) -> AddStepsResult {
         let currentMilestone = goal.milestones.filter { $0.state == .current }.first!
         let prevMilestoneNeededStepUnits = currentMilestone.neededStepUnits - currentMilestone.stepUnitsFromPrev
         

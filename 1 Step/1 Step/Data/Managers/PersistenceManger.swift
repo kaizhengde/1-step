@@ -9,7 +9,11 @@ import CoreData
 
 struct PersistenceManager {
     
-    static let defaults = PersistenceManager(inMemory: true)
+    static let defaults = PersistenceManager()
+    /*
+     Unit Test
+     static let defaults = PersistenceManager(inMemory: true)
+     */
     
     let container: NSPersistentCloudKitContainer
     var context: NSManagedObjectContext { container.viewContext }

@@ -73,6 +73,8 @@
 		3D5156B32531F83700A44450 /* OneSMiniSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5156B22531F83700A44450 /* OneSMiniSheet.swift */; };
 		3D5156B82531FB3F00A44450 /* ViewOverlayManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5156B72531FB3F00A44450 /* ViewOverlayManagerProtocol.swift */; };
 		3D5156BC2531FB7E00A44450 /* MiniSheetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5156BB2531FB7E00A44450 /* MiniSheetManager.swift */; };
+		3D59DE8625694F0C00CF24D7 /* GoalTestsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D59DE8525694F0C00CF24D7 /* GoalTestsModel.swift */; };
+		3D59DE8C2569510500CF24D7 /* TestsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D59DE8B2569510500CF24D7 /* TestsHelper.swift */; };
 		3D6D6454254C0F2400FAA37F /* JourneyErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6D6453254C0F2400FAA37F /* JourneyErrorHandler.swift */; };
 		3D6D6458254C4D2400FAA37F /* JourneyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6D6457254C4D2400FAA37F /* JourneyModel.swift */; };
 		3D6F4399253AE19C00785586 /* GoalHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6F4398253AE19C00785586 /* GoalHeaderView.swift */; };
@@ -236,6 +238,8 @@
 		3D5156B22531F83700A44450 /* OneSMiniSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSMiniSheet.swift; sourceTree = "<group>"; };
 		3D5156B72531FB3F00A44450 /* ViewOverlayManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewOverlayManagerProtocol.swift; sourceTree = "<group>"; };
 		3D5156BB2531FB7E00A44450 /* MiniSheetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniSheetManager.swift; sourceTree = "<group>"; };
+		3D59DE8525694F0C00CF24D7 /* GoalTestsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTestsModel.swift; sourceTree = "<group>"; };
+		3D59DE8B2569510500CF24D7 /* TestsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsHelper.swift; sourceTree = "<group>"; };
 		3D6D6453254C0F2400FAA37F /* JourneyErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyErrorHandler.swift; sourceTree = "<group>"; };
 		3D6D6457254C4D2400FAA37F /* JourneyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyModel.swift; sourceTree = "<group>"; };
 		3D6F4398253AE19C00785586 /* GoalHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalHeaderView.swift; sourceTree = "<group>"; };
@@ -374,6 +378,7 @@
 		3D0BEB18256908CA002F74FE /* 1 Step Tests */ = {
 			isa = PBXGroup;
 			children = (
+				3D59DE8B2569510500CF24D7 /* TestsHelper.swift */,
 				3D0BEB25256908E2002F74FE /* Goal */,
 				3D0BEB1B256908CA002F74FE /* Info.plist */,
 			);
@@ -383,6 +388,7 @@
 		3D0BEB25256908E2002F74FE /* Goal */ = {
 			isa = PBXGroup;
 			children = (
+				3D59DE8525694F0C00CF24D7 /* GoalTestsModel.swift */,
 				3D0BEB6A256919A8002F74FE /* AddSteps */,
 				3D0BEB26256908E9002F74FE /* GoalChange */,
 			);
@@ -1102,6 +1108,8 @@
 			files = (
 				3D0BEB2825690967002F74FE /* GoalCreateTests.swift in Sources */,
 				3D0BEB6C256919C0002F74FE /* AddStepsTests.swift in Sources */,
+				3D59DE8625694F0C00CF24D7 /* GoalTestsModel.swift in Sources */,
+				3D59DE8C2569510500CF24D7 /* TestsHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
