@@ -41,7 +41,7 @@ struct SummitMilestoneItem: View {
                         milestone.image.get()
                             .renderingMode(.template)
                             .resizable()
-                            .aspectRatio(contentMode: .fit)
+                            .aspectRatio(contentMode: .fill)
                             .frame(width: 50, height: 50)
                             .foregroundColor(.white)
                             .colorMultiply(.backgroundStatic)

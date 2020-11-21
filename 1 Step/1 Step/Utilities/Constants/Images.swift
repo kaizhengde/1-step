@@ -49,7 +49,7 @@ enum HeaderButtonSymbol {
         case .profile:  return Image("ProfileSymbol")
         case .close:    return Image("CloseSymbol")
         case .back:     return Image("BackSymbol")
-        case .settings: return Image("SettingsSymbol")
+        case .settings: return Image("SettingsFillSymbol")
         case .custom(_): return Image("")
         }
     }
