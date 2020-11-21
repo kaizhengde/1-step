@@ -40,7 +40,6 @@ struct GoalInfoView: View {
                             }
                             .opacity(viewModel.currentView == .howItWorks ? 1.0 : 0.0)
                             
-                            
                         } else if viewModel.currentView == .examples {
                             GoalExamplesView(viewModel: viewModel, selectedColor: selectedColor)
                                 .opacity(viewModel.currentView == .examples ? 1.0 : 0.0)

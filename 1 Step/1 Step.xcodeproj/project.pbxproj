@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		3D0B59452533123600079856 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0B59442533123600079856 /* DataModel.swift */; };
 		3D0B5948253319AC00079856 /* GoalErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0B5947253319AC00079856 /* GoalErrorHandler.swift */; };
+		3D0BEAF02568D3E7002F74FE /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0BEAEF2568D3E7002F74FE /* UserDefaultsManager.swift */; };
+		3D0BEAF32568D4DC002F74FE /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0BEAF22568D4DC002F74FE /* UserDefaultsKeys.swift */; };
+		3D0BEAFC2568E83F002F74FE /* OneSLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0BEAFB2568E83F002F74FE /* OneSLanguage.swift */; };
+		3D0BEB042568E887002F74FE /* OneSDarkmode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0BEB032568E887002F74FE /* OneSDarkmode.swift */; };
+		3D0BEB072568E8B0002F74FE /* OneSColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0BEB062568E8B0002F74FE /* OneSColorTheme.swift */; };
 		3D10D1CD254D2D53002D2D3E /* MilestoneDotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D10D1CC254D2D53002D2D3E /* MilestoneDotView.swift */; };
 		3D10D1D1254D3051002D2D3E /* MilestoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D10D1D0254D3051002D2D3E /* MilestoneView.swift */; };
 		3D160D55252E2067008588D5 /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D160D54252E2067008588D5 /* TransitionManager.swift */; };
@@ -150,6 +155,11 @@
 /* Begin PBXFileReference section */
 		3D0B59442533123600079856 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		3D0B5947253319AC00079856 /* GoalErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalErrorHandler.swift; sourceTree = "<group>"; };
+		3D0BEAEF2568D3E7002F74FE /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		3D0BEAF22568D4DC002F74FE /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
+		3D0BEAFB2568E83F002F74FE /* OneSLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSLanguage.swift; sourceTree = "<group>"; };
+		3D0BEB032568E887002F74FE /* OneSDarkmode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSDarkmode.swift; sourceTree = "<group>"; };
+		3D0BEB062568E8B0002F74FE /* OneSColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSColorTheme.swift; sourceTree = "<group>"; };
 		3D10D1CC254D2D53002D2D3E /* MilestoneDotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneDotView.swift; sourceTree = "<group>"; };
 		3D10D1D0254D3051002D2D3E /* MilestoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneView.swift; sourceTree = "<group>"; };
 		3D160D54252E2067008588D5 /* TransitionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
@@ -310,6 +320,26 @@
 				3D996777253F57F7000CE151 /* JourneyDataHandler.swift */,
 			);
 			path = Handlers;
+			sourceTree = "<group>";
+		};
+		3D0BEAEE2568D110002F74FE /* UserDefaults */ = {
+			isa = PBXGroup;
+			children = (
+				3D0BEAF22568D4DC002F74FE /* UserDefaultsKeys.swift */,
+				3D0BEAEF2568D3E7002F74FE /* UserDefaultsManager.swift */,
+				3D0BEAF92568E82B002F74FE /* Types */,
+			);
+			path = UserDefaults;
+			sourceTree = "<group>";
+		};
+		3D0BEAF92568E82B002F74FE /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				3D0BEAFB2568E83F002F74FE /* OneSLanguage.swift */,
+				3D0BEB032568E887002F74FE /* OneSDarkmode.swift */,
+				3D0BEB062568E8B0002F74FE /* OneSColorTheme.swift */,
+			);
+			path = Types;
 			sourceTree = "<group>";
 		};
 		3D10D1CF254D3044002D2D3E /* Item */ = {
@@ -797,6 +827,7 @@
 			children = (
 				3D47CC7E252C6C4700A8CA1B /* Utilities */,
 				3D47CC7F252C6C5100A8CA1B /* Extensions */,
+				3D0BEAEE2568D110002F74FE /* UserDefaults */,
 				3D47CC80252C6C5700A8CA1B /* Data */,
 				3D160D53252E2053008588D5 /* Managers */,
 				3D47CC81252C6C6900A8CA1B /* Models */,
@@ -1010,6 +1041,7 @@
 				3D2E7933252F9CFA00788AA2 /* Animation+Delay.swift in Sources */,
 				3D959AAE2563E79F007BAA07 /* GoalExampleArrowText.swift in Sources */,
 				3D47CC91252C71EA00A8CA1B /* CoordinateSpace.swift in Sources */,
+				3D0BEB072568E8B0002F74FE /* OneSColorTheme.swift in Sources */,
 				3DE9C50B252C8F500023C212 /* OneSText.swift in Sources */,
 				3D959A9125628ED4007BAA07 /* ConfettiManager.swift in Sources */,
 				3D0B59452533123600079856 /* DataModel.swift in Sources */,
@@ -1027,6 +1059,7 @@
 				3DC617262544145C00A1F204 /* InfiniteAnimationManager.swift in Sources */,
 				3D5156AF2531F66D00A44450 /* GoalEnterInputSelectStepUnitView.swift in Sources */,
 				3D959AA725631320007BAA07 /* GoalExampleBackgroundText.swift in Sources */,
+				3D0BEB042568E887002F74FE /* OneSDarkmode.swift in Sources */,
 				3D4FD8632564E9E800103C73 /* Date.swift in Sources */,
 				3D2E79752530344D00788AA2 /* OneSSecondaryHeaderText.swift in Sources */,
 				3D4B78E1252CDD9200A45755 /* GoalSelectMountainItem.swift in Sources */,
@@ -1055,6 +1088,7 @@
 				3D2E792C252F6CAB00788AA2 /* GoalEnterInputView.swift in Sources */,
 				3D6F43A5253B268B00785586 /* GoalView.swift in Sources */,
 				3DDF703E2531BB5E00FD3011 /* StepCategory.swift in Sources */,
+				3D0BEAF02568D3E7002F74FE /* UserDefaultsManager.swift in Sources */,
 				3DCFE29F2545A2B30012C536 /* OneSDualPicker.swift in Sources */,
 				3DDF703A2531BB5200FD3011 /* GoalState.swift in Sources */,
 				3D854B14253EAC2500A4F80E /* OneSTextFieldConfirmationPopup.swift in Sources */,
@@ -1069,6 +1103,7 @@
 				3DDF70342531BAA900FD3011 /* Step.swift in Sources */,
 				3DE9C503252C8A2D0023C212 /* GoalsHeaderView.swift in Sources */,
 				3D959A9A25630F90007BAA07 /* OneSMultilineText.swift in Sources */,
+				3D0BEAF32568D4DC002F74FE /* UserDefaultsKeys.swift in Sources */,
 				3DE9C51D252CB28D0023C212 /* MainModel.swift in Sources */,
 				3D2E795425301ADD00788AA2 /* HapticFeedback.swift in Sources */,
 				3D78FD332566FB6F00C1D0D2 /* GoalExamplesView.swift in Sources */,
@@ -1094,6 +1129,7 @@
 				3D7396C7253373F500BD4169 /* GoalsGridModel.swift in Sources */,
 				3DCDDD94253C1E3100873D26 /* JourneyView.swift in Sources */,
 				3DE9C527252CB6FF0023C212 /* ProfileScreen.swift in Sources */,
+				3D0BEAFC2568E83F002F74FE /* OneSLanguage.swift in Sources */,
 				3DF1BFD4254C557E004E1AB6 /* MilestoneItem.swift in Sources */,
 				3DD5C9D42539D27100861784 /* GoalTransitionView.swift in Sources */,
 			);

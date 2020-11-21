@@ -17,13 +17,9 @@ struct GoalHowItWorksView: View {
     var body: some View {
         VStack(spacing: 26) {            
             OneSTextPassage(passageData: viewModel.howItWorksTextPassageOneData)
-            
             GoalExampleMapView(data: viewModel.howItWorksExampleOneData, selectedColor: selectedColor, big: true)
-            
             OneSTextPassage(passageData: viewModel.howItWorksTextPassageTwoData)
-            
             GoalExampleMapView(data: viewModel.howItWorksExampleTwoData, selectedColor: selectedColor, big: true)
-            
             OneSTextPassage(passageData: viewModel.howItWorksTextPassageThreeData)
         }
         .padding(.bottom, 20)
