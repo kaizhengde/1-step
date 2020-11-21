@@ -11,12 +11,17 @@ import Combine
 enum PopupKey {
     case none
     
+    //MARK: - Journey
     case goalReached
     case journeyError
     
+    //MARK: - Goal
     case goalCustomUnit
     case goalEnterInputError
     case goalDelete
+    
+    //MARK: - Profile
+    case changeName
 }
 
 

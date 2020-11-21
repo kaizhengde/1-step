@@ -27,7 +27,7 @@ struct GoalsGridView: View {
                 VStack {
                     GoalCreateItem()
                         .onAppear { viewModel.initItemTransition(of: dataModel.activeGoals.count) }
-                        .opacity(viewModel.createItemOpacityTransition())
+                        .oneSItemTransition(viewModel.createItemTransition())
                     Spacer()
                 }
                 .frame(height: GoalItemArt.height)

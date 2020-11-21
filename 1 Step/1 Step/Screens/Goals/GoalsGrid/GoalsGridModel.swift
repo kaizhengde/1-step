@@ -44,9 +44,8 @@ class GoalsGridModel: ObservableObject {
     }
     
     
-    
-    func createItemOpacityTransition() -> Double {
-        return itemsAppear[itemsAppear.count-1] ? 1.0 : 0.0
+    func createItemTransition() -> Binding<Bool> {
+        return Binding<Bool>(get: { self.itemsAppear[self.itemsAppear.count-1]}, set: { _ in })
     }
     
     

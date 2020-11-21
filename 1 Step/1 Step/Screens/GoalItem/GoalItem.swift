@@ -12,8 +12,6 @@ struct GoalItem: View {
     let goalsGridModel: GoalsGridModel
     
     @State private var isCurrentDrag: Bool = false
-    @State private var tapAnimation: Bool = false
-    
     @Binding var goal: Goal
     let onTap: () -> ()
     
@@ -29,13 +27,8 @@ struct GoalItem: View {
         .clipShape(GoalItemArt.shape)
         .contentShape(GoalItemArt.shape)
         .oneSShadow(opacity: 0.15, y: 3, blur: 10)
-        .scaleEffect(tapAnimation ? 1.05 : 1.0)
         .onReceive(goalsGridModel.$currentDragItem) { isCurrentDrag = $0 == goal }
-        .onTapGesture {
-            onTap()
-            tapAnimation = true
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { tapAnimation = false }
-        }
+        .oneSItemTapScale(with: onTap)
     }
     
     

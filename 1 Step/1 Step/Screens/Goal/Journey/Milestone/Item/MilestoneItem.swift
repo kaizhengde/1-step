@@ -15,17 +15,11 @@ struct MilestoneItem: View {
     var milestone: Milestone
     var goal: Goal { milestone.parentGoal }
     
-    @State private var tapAnimation: Bool = false
-
     
     var body: some View {
         VStack(spacing: 40) {
             ItemView(goal: goal, milestone: milestone)
-                .scaleEffect(tapAnimation ? 1.05 : 1.0)
-                .onTapGesture {
-                    tapAnimation = true
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { tapAnimation = false }
-                }
+                .oneSItemTapScale()
             
             MilestoneDotView(milestoneAppear: $appear, milestone: milestone, appearAfter: .milliseconds(400))
         }
