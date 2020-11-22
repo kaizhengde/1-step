@@ -212,9 +212,9 @@ enum JourneyDataHandler {
         let newDoneMilestonesAmount = goal.milestones.reduce(0) { $0 + ($1.state == .done ? 1 : 0) }
         let newMilestonesReached = newDoneMilestonesAmount - oldDoneMilestonesAmount
         
-        UserDefaultsManager.accomplishmentTotalSteps += Int(journeyData.currentSteps - goal.currentSteps)
-        UserDefaultsManager.accomplishmentTotalMilestonesReached += newMilestonesReached
-        UserDefaultsManager.accomplishmentTotalGoalsReached += (journeyData.currentState == .reached) ? 1 : 0
+        UserDefaultsManager.shared.accomplishmentTotalSteps += Int(journeyData.currentSteps - goal.currentSteps)
+        UserDefaultsManager.shared.accomplishmentTotalMilestonesReached += newMilestonesReached
+        UserDefaultsManager.shared.accomplishmentTotalGoalsReached += (journeyData.currentState == .reached) ? 1 : 0
         
 
         print("-------------")

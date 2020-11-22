@@ -7,10 +7,10 @@
 
 import Foundation
 
-enum OneSColorTheme: String, Codable {
-    case `default`
-    case pastel
-    case fall
+enum OneSColorTheme: String, Codable, CaseIterable {
+    case `default`  = "Default"
+    case pastel     = "Pastel"
+    case fall       = "Fall"
 }
 
 extension OneSColorTheme: UserDefaultType {}

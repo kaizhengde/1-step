@@ -7,10 +7,10 @@
 
 import Foundation
 
-enum OneSLanguage: String, Codable {
-    case english
-    case german
-    case chinese
+enum OneSLanguage: String, Codable, CaseIterable {
+    case english    = "English"
+    case german     = "German"
+    case chinese    = "Chinese"
 }
 
 extension OneSLanguage: UserDefaultType {}

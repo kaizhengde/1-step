@@ -12,7 +12,7 @@
 		3D0BEAF02568D3E7002F74FE /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0BEAEF2568D3E7002F74FE /* UserDefaultsManager.swift */; };
 		3D0BEAF32568D4DC002F74FE /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0BEAF22568D4DC002F74FE /* UserDefaultsKeys.swift */; };
 		3D0BEAFC2568E83F002F74FE /* OneSLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0BEAFB2568E83F002F74FE /* OneSLanguage.swift */; };
-		3D0BEB042568E887002F74FE /* OneSDarkmode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0BEB032568E887002F74FE /* OneSDarkmode.swift */; };
+		3D0BEB042568E887002F74FE /* OneSAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0BEB032568E887002F74FE /* OneSAppearance.swift */; };
 		3D0BEB072568E8B0002F74FE /* OneSColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0BEB062568E8B0002F74FE /* OneSColorTheme.swift */; };
 		3D0BEB0A2568E9D6002F74FE /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0BEB092568E9D6002F74FE /* ProfileHeaderView.swift */; };
 		3D0BEB0D2568EA52002F74FE /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0BEB0C2568EA52002F74FE /* ProfileModel.swift */; };
@@ -79,6 +79,7 @@
 		3D59DE972569657700CF24D7 /* OneSSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D59DE962569657700CF24D7 /* OneSSectionView.swift */; };
 		3D59DEA425697A8200CF24D7 /* ProfileAppSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D59DEA325697A8200CF24D7 /* ProfileAppSectionView.swift */; };
 		3D59DEA825697AC900CF24D7 /* ProfileAboutSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D59DEA725697AC900CF24D7 /* ProfileAboutSectionView.swift */; };
+		3D59DEAC256A59D000CF24D7 /* UserDefaultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D59DEAB256A59D000CF24D7 /* UserDefaultType.swift */; };
 		3D6D6454254C0F2400FAA37F /* JourneyErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6D6453254C0F2400FAA37F /* JourneyErrorHandler.swift */; };
 		3D6D6458254C4D2400FAA37F /* JourneyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6D6457254C4D2400FAA37F /* JourneyModel.swift */; };
 		3D6F4399253AE19C00785586 /* GoalHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6F4398253AE19C00785586 /* GoalHeaderView.swift */; };
@@ -179,7 +180,7 @@
 		3D0BEAEF2568D3E7002F74FE /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		3D0BEAF22568D4DC002F74FE /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
 		3D0BEAFB2568E83F002F74FE /* OneSLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSLanguage.swift; sourceTree = "<group>"; };
-		3D0BEB032568E887002F74FE /* OneSDarkmode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSDarkmode.swift; sourceTree = "<group>"; };
+		3D0BEB032568E887002F74FE /* OneSAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSAppearance.swift; sourceTree = "<group>"; };
 		3D0BEB062568E8B0002F74FE /* OneSColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSColorTheme.swift; sourceTree = "<group>"; };
 		3D0BEB092568E9D6002F74FE /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		3D0BEB0C2568EA52002F74FE /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
@@ -248,6 +249,7 @@
 		3D59DE962569657700CF24D7 /* OneSSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSSectionView.swift; sourceTree = "<group>"; };
 		3D59DEA325697A8200CF24D7 /* ProfileAppSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAppSectionView.swift; sourceTree = "<group>"; };
 		3D59DEA725697AC900CF24D7 /* ProfileAboutSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAboutSectionView.swift; sourceTree = "<group>"; };
+		3D59DEAB256A59D000CF24D7 /* UserDefaultType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultType.swift; sourceTree = "<group>"; };
 		3D6D6453254C0F2400FAA37F /* JourneyErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyErrorHandler.swift; sourceTree = "<group>"; };
 		3D6D6457254C4D2400FAA37F /* JourneyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyModel.swift; sourceTree = "<group>"; };
 		3D6F4398253AE19C00785586 /* GoalHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalHeaderView.swift; sourceTree = "<group>"; };
@@ -367,6 +369,7 @@
 			isa = PBXGroup;
 			children = (
 				3D0BEAF22568D4DC002F74FE /* UserDefaultsKeys.swift */,
+				3D59DEAB256A59D000CF24D7 /* UserDefaultType.swift */,
 				3D0BEAEF2568D3E7002F74FE /* UserDefaultsManager.swift */,
 				3D0BEAF92568E82B002F74FE /* Types */,
 			);
@@ -377,7 +380,7 @@
 			isa = PBXGroup;
 			children = (
 				3D0BEAFB2568E83F002F74FE /* OneSLanguage.swift */,
-				3D0BEB032568E887002F74FE /* OneSDarkmode.swift */,
+				3D0BEB032568E887002F74FE /* OneSAppearance.swift */,
 				3D0BEB062568E8B0002F74FE /* OneSColorTheme.swift */,
 			);
 			path = Types;
@@ -1205,7 +1208,7 @@
 				3D5156AF2531F66D00A44450 /* GoalEnterInputSelectStepUnitView.swift in Sources */,
 				3D959AA725631320007BAA07 /* GoalExampleBackgroundText.swift in Sources */,
 				3D0BEB112568EDB0002F74FE /* Scale.swift in Sources */,
-				3D0BEB042568E887002F74FE /* OneSDarkmode.swift in Sources */,
+				3D0BEB042568E887002F74FE /* OneSAppearance.swift in Sources */,
 				3D4FD8632564E9E800103C73 /* Date.swift in Sources */,
 				3D2E79752530344D00788AA2 /* OneSSecondaryHeaderText.swift in Sources */,
 				3D4B78E1252CDD9200A45755 /* GoalSelectMountainItem.swift in Sources */,
@@ -1269,6 +1272,7 @@
 				3D407855254E8E4E00744652 /* MilestoneProgressView.swift in Sources */,
 				3DF1E276254819FF00D65244 /* Double.swift in Sources */,
 				3DDF70292531A5BB00FD3011 /* UserColor.swift in Sources */,
+				3D59DEAC256A59D000CF24D7 /* UserDefaultType.swift in Sources */,
 				3D160D55252E2067008588D5 /* TransitionManager.swift in Sources */,
 				3D959A8E25628E74007BAA07 /* OneSConfetti.swift in Sources */,
 				3DE0796C25340F550024E17D /* GoalItemArt.swift in Sources */,

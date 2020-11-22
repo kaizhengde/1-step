@@ -45,17 +45,18 @@ struct ProfileHeaderView: View {
     
     private struct ProfileNameView: View {
         
+        @StateObject private var userDefaultsManager = UserDefaultsManager.shared
         @StateObject private var popupManager = PopupManager.shared
         
-        var name: String { UserDefaultsManager.userName.isEmpty ? "You" : UserDefaultsManager.userName }
+        var name: String { userDefaultsManager.userName.isEmpty ? "You" : userDefaultsManager.userName }
         
         var body: some View {
             OneSText(text: name, font: .custom(weight: Raleway.medium, size: 28), color: .grayToBackground)
                 .onTapGesture {
-                    popupManager.showTextFieldPopup(.changeName, titleText: "Name", bodyText: "Enter a new name.", input: UserDefaultsManager.userName, placeholder: "Your name", placeholderColor: UserColor.user0.get(.dark), textLimit: 20, backgroundColor: UserColor.user0.get())
+                    popupManager.showTextFieldPopup(.changeName, titleText: "Name", bodyText: "Enter a new name.", input: userDefaultsManager.userName, placeholder: "Your name", placeholderColor: UserColor.user0.get(.dark), textLimit: 20, backgroundColor: UserColor.user0.get())
                 }
                 .onReceive(popupManager.buttonDismissed) {
-                    if $0 == .changeName { UserDefaultsManager.userName = popupManager.input }
+                    if $0 == .changeName { userDefaultsManager.userName = popupManager.input }
                 }
         }
     }

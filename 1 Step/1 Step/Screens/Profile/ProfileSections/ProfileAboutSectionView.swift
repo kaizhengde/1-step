@@ -15,7 +15,7 @@ struct ProfileAboutSectionView: View {
     var body: some View {
         OneSSectionView(title: "About") {
             VStack(spacing: 20) {
-                OneSRowButton(.long, title: "Share", accessorySFSymbol: ProfileSymbol.share, accessoryColor: UserColor.user1.get()) {}
+                OneSRowButton(.long, title: "Share", accessorySFSymbol: ProfileSymbol.share, accessoryColor: UserColor.user0.get()) {}
                 
                 OneSRowButton(.long, title: "Rate on the App Store", accessorySFSymbol: ProfileSymbol.rate, accessoryColor: UserColor.user1.get()) {}
                 

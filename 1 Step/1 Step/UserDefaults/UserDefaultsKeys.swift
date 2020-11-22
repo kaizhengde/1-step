@@ -48,7 +48,7 @@ extension UserDefaultKey {
     enum Setting {
         static let premium: Key                  = "setting.premium"
         static let language: Key                 = "setting.language"
-        static let darkmode: Key                 = "setting.darkmode"
+        static let appearance: Key               = "setting.appearance"
         static let colorTheme: Key               = "setting.colorTheme"
         static let notifications: Key            = "setting.notifications"
         static let iCloudSynch: Key              = "setting.iCloudSynch"

@@ -29,57 +29,48 @@ struct UserDefault<T: UserDefaultType> where T: Codable {
                 UserDefaults.standard.set(encoded, forKey: key.rawValue)
                 print("Success.")
             }
+            UserDefaultsManager.shared.objectWillChange.send()
         }
     }
 }
 
 
-protocol UserDefaultType {}
-
-extension Data: UserDefaultType {}
-extension String: UserDefaultType {}
-extension Date: UserDefaultType {}
-extension Bool: UserDefaultType {}
-extension Int: UserDefaultType {}
-extension Double: UserDefaultType {}
-extension Float: UserDefaultType {}
-
-extension Array: UserDefaultType where Element: UserDefaultType {}
-extension Dictionary: UserDefaultType where Key == String, Value: UserDefaultType {}
-
-
-enum UserDefaultsManager {
+class UserDefaultsManager: ObservableObject {
+    
+    static let shared = UserDefaultsManager()
+    private init() {}
+    
     
     //MARK: - First
     
-    @UserDefault(UserDefaultKey.First.start, default: false) static var firstStart: Bool
-    @UserDefault(UserDefaultKey.First.selectMountain, default: false) static var firstSelectMountain: Bool
-    @UserDefault(UserDefaultKey.First.selectColor, default: false) static var firstSelectColor: Bool
-    @UserDefault(UserDefaultKey.First.enterInput, default: false) static var firstEnterInput: Bool
-    @UserDefault(UserDefaultKey.First.openGoal, default: false) static var firstOpenGoal: Bool
+    @UserDefault(UserDefaultKey.First.start, default: false) var firstStart: Bool
+    @UserDefault(UserDefaultKey.First.selectMountain, default: false) var firstSelectMountain: Bool
+    @UserDefault(UserDefaultKey.First.selectColor, default: false) var firstSelectColor: Bool
+    @UserDefault(UserDefaultKey.First.enterInput, default: false) var firstEnterInput: Bool
+    @UserDefault(UserDefaultKey.First.openGoal, default: false) var firstOpenGoal: Bool
     
     
     //MARK: - User
     
-    @UserDefault(UserDefaultKey.User.name, default: "") static var userName: String
-    @UserDefault(UserDefaultKey.User.profileImage, default: Data()) static var userProfileImage: Data
+    @UserDefault(UserDefaultKey.User.name, default: "") var userName: String
+    @UserDefault(UserDefaultKey.User.profileImage, default: Data()) var userProfileImage: Data
     
     
     //MARK: - Accomplishments
     
-    @UserDefault(UserDefaultKey.Accomplishment.totalSteps, default: 0) static var accomplishmentTotalSteps: Int
-    @UserDefault(UserDefaultKey.Accomplishment.totalMilestonesReached, default: 0) static var accomplishmentTotalMilestonesReached: Int
-    @UserDefault(UserDefaultKey.Accomplishment.totalGoalsReached, default: 0) static var accomplishmentTotalGoalsReached: Int
+    @UserDefault(UserDefaultKey.Accomplishment.totalSteps, default: 0) var accomplishmentTotalSteps: Int
+    @UserDefault(UserDefaultKey.Accomplishment.totalMilestonesReached, default: 0) var accomplishmentTotalMilestonesReached: Int
+    @UserDefault(UserDefaultKey.Accomplishment.totalGoalsReached, default: 0) var accomplishmentTotalGoalsReached: Int
     
     
     //MARK: - Settings
     
-    @UserDefault(UserDefaultKey.Setting.premium, default: false) static var settingPremium: Bool
-    @UserDefault(UserDefaultKey.Setting.language, default: .english) static var settingLanguage: OneSLanguage
-    @UserDefault(UserDefaultKey.Setting.darkmode, default: .light) static var settingDarkmode: OneSDarkmode
-    @UserDefault(UserDefaultKey.Setting.colorTheme, default: .default) static var settingColorTheme: OneSColorTheme
-    @UserDefault(UserDefaultKey.Setting.notifications, default: false) static var settingNotifications: Bool
-    @UserDefault(UserDefaultKey.Setting.iCloudSynch, default: false) static var settingICloudSynch: Bool
+    @UserDefault(UserDefaultKey.Setting.premium, default: false) var settingPremium: Bool
+    @UserDefault(UserDefaultKey.Setting.language, default: .english) var settingLanguage: OneSLanguage
+    @UserDefault(UserDefaultKey.Setting.appearance, default: .light) var settingAppearance: OneSAppearance
+    @UserDefault(UserDefaultKey.Setting.colorTheme, default: .default) var settingColorTheme: OneSColorTheme
+    @UserDefault(UserDefaultKey.Setting.notifications, default: false) var settingNotifications: Bool
+    @UserDefault(UserDefaultKey.Setting.iCloudSynch, default: false) var settingICloudSynch: Bool
 }
 
 
