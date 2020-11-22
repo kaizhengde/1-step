@@ -28,15 +28,42 @@ struct ProfileHeaderView: View {
     
     private struct ProfileImageView: View {
         
+        @StateObject private var userDefaultsManager = UserDefaultsManager.shared
+        @StateObject private var sheetManager = SheetManager.shared
+        
+        
         var body: some View {
             Circle()
                 .frame(width: 165, height: 165)
                 .foregroundColor(.darkBackgroundToDarkGray)
                 .oneSShadow(opacity: 0.15, y: 2, blur: 8)
                 .overlay(
-                    SFSymbol.camera
-                        .font(.system(size: 26, weight: .regular))
-                        .foregroundColor(.neutralToDarkNeutral)
+                    Group {
+                        if userDefaultsManager.userProfileImage != Data() {
+                            Image(uiImage: UIImage(data: userDefaultsManager.userProfileImage)!)
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 165, height: 165)
+                                .clipShape(Circle())
+                        } else {
+                            SFSymbol.camera
+                                .font(.system(size: 26, weight: .regular))
+                                .foregroundColor(.neutralToDarkNeutral)
+                                .frame(width: 165, height: 165)
+                                .contentShape(Circle())
+                        }
+                    }
+                    .onTapGesture {
+                        sheetManager.showSheet {
+                            OneSImagePicker(deleteAction: {
+                                userDefaultsManager.userProfileImage = Data()
+                                sheetManager.dismiss()
+                            }) { selectedImage in
+                                userDefaultsManager.userProfileImage = selectedImage.jpegData(compressionQuality: 0.1)!
+                            }
+                            .accentColor(UserColor.user0.standard)
+                        }
+                    }
                 )
                 .oneSItemTapScale()
         }

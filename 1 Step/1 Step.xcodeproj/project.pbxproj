@@ -159,6 +159,8 @@
 		3DF1E276254819FF00D65244 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF1E275254819FF00D65244 /* Double.swift */; };
 		3DF7916D25307EBF00F00174 /* ChildSizeReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF7916C25307EBF00F00174 /* ChildSizeReader.swift */; };
 		3DF9E75925618D4F0020A403 /* AddStepAnimationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF9E75825618D4F0020A403 /* AddStepAnimationHandler.swift */; };
+		3DFD9BA7256AE4E600CF9580 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD9BA6256AE4E600CF9580 /* ImagePicker.swift */; };
+		3DFD9BAD256AEF3B00CF9580 /* OneSImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD9BAC256AEF3B00CF9580 /* OneSImagePicker.swift */; };
 		3DFDE052253C4663006B1A7E /* GoalEditScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFDE051253C4663006B1A7E /* GoalEditScreen.swift */; };
 		3DFDE055253C4678006B1A7E /* GoalEditModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFDE054253C4678006B1A7E /* GoalEditModel.swift */; };
 		3DFDE07A253C8800006B1A7E /* SheetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFDE079253C8800006B1A7E /* SheetManager.swift */; };
@@ -330,6 +332,8 @@
 		3DF1E275254819FF00D65244 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		3DF7916C25307EBF00F00174 /* ChildSizeReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildSizeReader.swift; sourceTree = "<group>"; };
 		3DF9E75825618D4F0020A403 /* AddStepAnimationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStepAnimationHandler.swift; sourceTree = "<group>"; };
+		3DFD9BA6256AE4E600CF9580 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		3DFD9BAC256AEF3B00CF9580 /* OneSImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSImagePicker.swift; sourceTree = "<group>"; };
 		3DFDE051253C4663006B1A7E /* GoalEditScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEditScreen.swift; sourceTree = "<group>"; };
 		3DFDE054253C4678006B1A7E /* GoalEditModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEditModel.swift; sourceTree = "<group>"; };
 		3DFDE079253C8800006B1A7E /* SheetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetManager.swift; sourceTree = "<group>"; };
@@ -521,6 +525,7 @@
 				3D6FDDAE25670801002854E6 /* DropDowns */,
 				3D59DE9E256965BD00CF24D7 /* Sections */,
 				3DCFE29425459E260012C536 /* Pickers */,
+				3DFD9BB0256AEFDA00CF9580 /* ImagePickers */,
 				3D5156B12531F80D00A44450 /* MiniSheets */,
 				3D2E795A25301E8E00788AA2 /* Popups */,
 				3D5ACAF22530663A00E1FABE /* Floaters */,
@@ -790,6 +795,7 @@
 		3D959A85256283C1007BAA07 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				3DF7916C25307EBF00F00174 /* ChildSizeReader.swift */,
 				3DBB6B23252CC08D002C0D03 /* EnumTypeEquatable.swift */,
 				3D2E792E252F721A00788AA2 /* DismissableObservableObject.swift */,
 			);
@@ -1017,9 +1023,17 @@
 		3DF7916F25307EDE00F00174 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				3DF7916C25307EBF00F00174 /* ChildSizeReader.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		3DFD9BB0256AEFDA00CF9580 /* ImagePickers */ = {
+			isa = PBXGroup;
+			children = (
+				3DFD9BAC256AEF3B00CF9580 /* OneSImagePicker.swift */,
+				3DFD9BA6256AE4E600CF9580 /* ImagePicker.swift */,
+			);
+			path = ImagePickers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1165,6 +1179,7 @@
 				3DE9C519252CB0520023C212 /* GoalCreateItem.swift in Sources */,
 				3DDF702C2531A5D800FD3011 /* MountainImage.swift in Sources */,
 				3D2E7968253021A900788AA2 /* PopupManager.swift in Sources */,
+				3DFD9BA7256AE4E600CF9580 /* ImagePicker.swift in Sources */,
 				3D6FDDE22567C43B002854E6 /* OneSRowSelectButton.swift in Sources */,
 				3D6FDDE52567F268002854E6 /* GoalExampleMapView.swift in Sources */,
 				3D4B78DE252CDD8600A45755 /* GoalSelectMountainView.swift in Sources */,
@@ -1239,6 +1254,7 @@
 				3DE11C35252C681200F13719 /* __StepApp.swift in Sources */,
 				3D2E792C252F6CAB00788AA2 /* GoalEnterInputView.swift in Sources */,
 				3D6F43A5253B268B00785586 /* GoalView.swift in Sources */,
+				3DFD9BAD256AEF3B00CF9580 /* OneSImagePicker.swift in Sources */,
 				3DDF703E2531BB5E00FD3011 /* StepCategory.swift in Sources */,
 				3D0BEAF02568D3E7002F74FE /* UserDefaultsManager.swift in Sources */,
 				3DCFE29F2545A2B30012C536 /* OneSDualPicker.swift in Sources */,

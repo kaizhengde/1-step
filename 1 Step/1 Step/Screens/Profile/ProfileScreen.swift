@@ -29,9 +29,22 @@ struct ProfileScreen: View {
                     }
                     .padding(.horizontal, Layout.firstLayerPadding)
                     .offset(y: -24)
+                    
+                    BottomView()
                 }
-                .padding(.bottom, 120*Layout.multiplierHeight)
             }
+        }
+    }
+    
+    
+    private struct BottomView: View {
+        
+        var body: some View {
+            VStack(spacing: 3) {
+                OneSText(text: "Made in Zurich, Switzerland", font: .footnote2, color: .grayToBackground)
+                OneSText(text: "Version 1.0", font: .footnote2, color: .grayToBackground)
+            }
+            .padding(.bottom, 100*Layout.multiplierHeight)
         }
     }
 }

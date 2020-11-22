@@ -21,7 +21,7 @@ enum OneSFont {
         case .body:         return Font.custom(Raleway.medium, size: 17)
         case .body2:        return Font.custom(Raleway.regular, size: 17)
         case .footnote:     return Font.custom(Raleway.regular, size: 16)
-        case .footnote2:    return Font.custom(Raleway.regular, size: 12)
+        case .footnote2:    return Font.custom(Raleway.regular, size: 13)
         case let .custom(weight: weight, size: size):
             return Font.custom(weight, size: size)
         }

@@ -46,9 +46,7 @@ struct Screen {
 final class MainModel: ObservableObject {
     
     static let shared = MainModel()
-    private init() {
-        updateAppearance()
-        
+    private init() {        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.currentScreen.active = .goals
         }
