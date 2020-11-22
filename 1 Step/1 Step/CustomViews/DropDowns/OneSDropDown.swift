@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 
 enum OneSDropDownModel {
-    static let closeAllOpenExceptSelf = PassthroughSubject<String, Never>()
+    static let closeAllLongExceptSelf = PassthroughSubject<String, Never>()
 }
 
 struct OneSDropDown<Content>: View where Content: View {
@@ -49,14 +49,14 @@ struct OneSDropDown<Content>: View where Content: View {
         VStack(alignment: .leading, spacing: 20) {
             OneSRowButton(rowButtonArt, title: title, accessorySFSymbol: accessorySFSymbol, accessoryCustomSymbol: accessoryCustomSymbol, accessoryText: accessoryText, accessoryColor: accessoryColor) {
                 show.toggle()
-                if show { OneSDropDownModel.closeAllOpenExceptSelf.send(title) }
+                if show  && rowButtonArt == .long { OneSDropDownModel.closeAllLongExceptSelf.send(title) }
             }
             
             if show {
                 DropDownContent(show: $show, rowButtonArt: rowButtonArt, content: content)
             }
         }
-        .onReceive(OneSDropDownModel.closeAllOpenExceptSelf) { if $0 != title { show = false } }
+        .onReceive(OneSDropDownModel.closeAllLongExceptSelf) { if $0 != title { show = false } }
     }
     
     
