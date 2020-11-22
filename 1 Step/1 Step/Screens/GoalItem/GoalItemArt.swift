@@ -38,7 +38,7 @@ enum GoalItemArt {
     
     
     static func color(_ isCurrentDrag: Bool, of goal: Goal) -> Color {
-        return isCurrentDrag ? Color.lightNeutralToLightGray : goal.color.get()
+        return isCurrentDrag ? Color.lightNeutralToLightGray : goal.color.standard
     }
     
     //Text

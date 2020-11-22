@@ -21,7 +21,7 @@ struct GoalReachedView: View {
                     GoalReachedHeaderView()
                     
                     Group {
-                        goalReachedModel.selectedGoal.color.get().offset(y: Layout.screenHeight + 20)
+                        goalReachedModel.selectedGoal.color.standard.offset(y: Layout.screenHeight + 20)
                         VStack {
                             GoalReachedSummaryView()
                             JourneyView(state: .reached)

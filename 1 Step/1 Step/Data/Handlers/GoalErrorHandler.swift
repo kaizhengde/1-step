@@ -58,7 +58,7 @@ enum GoalErrorHandler {
             errorText = "Failed with an unknown error.\n\nConsider restarting the app."
         }
         
-        PopupManager.shared.showTextPopup(.none, titleText: "Oh Deer", titleImage: Emoji.deer, bodyText: errorText, backgroundColor: baseData.color!.get())
+        PopupManager.shared.showTextPopup(.none, titleText: "Oh Deer", titleImage: Emoji.deer, bodyText: errorText, backgroundColor: baseData.color!.standard)
         
         return true
     }
@@ -103,7 +103,7 @@ enum GoalErrorHandler {
             errorText = "Failed with an unknown error.\n\nConsider restarting the app."
         }
         
-        PopupManager.shared.showTextPopup(.none, titleText: "Oh Deer", titleImage: Emoji.deer, bodyText: errorText, backgroundColor: goal.color.get())
+        PopupManager.shared.showTextPopup(.none, titleText: "Oh Deer", titleImage: Emoji.deer, bodyText: errorText, backgroundColor: goal.color.standard)
         
         return true
     }

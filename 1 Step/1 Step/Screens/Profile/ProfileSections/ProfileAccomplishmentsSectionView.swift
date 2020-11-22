@@ -40,7 +40,9 @@ struct ProfileAccomplishmentsSectionView: View {
     
     struct Item: View {
         
+        @StateObject private var userDefaultsManager = UserDefaultsManager.shared
         @ObservedObject var profileModel: ProfileModel
+        
         let index: Int
         
         

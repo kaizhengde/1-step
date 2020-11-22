@@ -20,7 +20,7 @@ enum JourneyErrorHandler {
         let newCurrentUnits = goal.currentStepUnits + newStepUnits
         
         if newCurrentUnits < 0 {
-            PopupManager.shared.showTextPopup(.none, titleText: "Oh Deer", titleImage: Emoji.deer, bodyText: "You can't have negative steps.", backgroundColor: goal.color.get())
+            PopupManager.shared.showTextPopup(.none, titleText: "Oh Deer", titleImage: Emoji.deer, bodyText: "You can't have negative steps.", backgroundColor: goal.color.standard)
             
             return true
         }

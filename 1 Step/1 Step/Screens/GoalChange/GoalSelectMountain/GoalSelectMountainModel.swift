@@ -102,7 +102,7 @@ final class GoalSelectMountainModel: TransitionObservableObject {
     
     
     func mountainColor(_ mountain: MountainImage) -> Color {
-        return mountain == currentMountain ? selectedData.color.get() : .darkBackgroundToBlack
+        return mountain == currentMountain ? selectedData.color.standard : .darkBackgroundToBlack
     }
     
     

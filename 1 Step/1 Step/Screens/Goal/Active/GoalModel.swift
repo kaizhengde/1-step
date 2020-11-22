@@ -82,7 +82,7 @@ final class GoalModel: TransitionObservableObject {
     
     
     var headerButtonColor: Color {
-        return viewDragColor(standard: selectedGoal.color.get(), menu: .darkNeutralToNeutral)
+        return viewDragColor(standard: selectedGoal.color.standard, menu: .darkNeutralToNeutral)
     }
     
     
@@ -121,7 +121,7 @@ final class GoalModel: TransitionObservableObject {
     }
     
     var backgroundColor: Color {
-        return viewDragColor(standard: selectedGoal.color.get(), menu: .darkBackgroundToDarkGray)
+        return viewDragColor(standard: selectedGoal.color.standard, menu: .darkBackgroundToDarkGray)
     }
     
     var topTextColor: Color {

@@ -56,9 +56,9 @@ struct GoalCreateScreen: View {
                 OneSHeaderView(trailingButton: (.close, .grayToBackground, { mainModel.toScreen(.goals) }))
                 
                 VStack(spacing: 12*Layout.multiplierHeight) {
-                    OneSHeaderView("Create", leadingButton: (.back, viewModel.selectedMountainData.color.get(), { viewModel.goalCreateStage = .selectMountain }))
+                    OneSHeaderView("Create", leadingButton: (.back, viewModel.selectedMountainData.color.standard, { viewModel.goalCreateStage = .selectMountain }))
                     HStack {
-                        OneSHintButton(text: "How it works", color: viewModel.selectedMountainData.color.get()) {
+                        OneSHintButton(text: "How it works", color: viewModel.selectedMountainData.color.standard) {
                             SheetManager.shared.showSheet {
                                 GoalInfoView(selectedColor: viewModel.selectedMountainData.color)
                             }

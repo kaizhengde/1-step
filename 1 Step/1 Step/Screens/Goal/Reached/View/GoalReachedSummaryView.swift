@@ -81,12 +81,12 @@ struct GoalReachedSummaryView: View {
                     .aspectRatio(contentMode: .fit)
                     .edgesIgnoringSafeArea(.all)
                     .foregroundColor(.white)
-                    .colorMultiply(goalReachedModel.selectedGoal.color.get())
+                    .colorMultiply(goalReachedModel.selectedGoal.color.standard)
                     
                 Flag.flag
                     .renderingMode(.template)
                     .foregroundColor(.white)
-                    .colorMultiply(goalReachedModel.selectedGoal.color.get())
+                    .colorMultiply(goalReachedModel.selectedGoal.color.standard)
                     .alignmentGuide(.flagMountainAlignment) { $0[.leading] }
                     .offset(y: -40)
             }

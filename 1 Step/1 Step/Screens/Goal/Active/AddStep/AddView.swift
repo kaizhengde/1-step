@@ -46,7 +46,7 @@ struct AddView: View {
                             data: step.addArray.isEmpty ? $goalModel.selectedGoal.step.addArrayDual : $goalModel.selectedGoal.step.addArray,
                             selected: step.addArray.isEmpty ? $viewModel.selectedStep.dual : $viewModel.selectedStep.unit,
                             unit: step.unit == .custom ? goalModel.selectedGoal.step.customUnit : (step.addArray.isEmpty ? step.unit.dualUnit!.description : step.unit.description),
-                            selectedColor: goalModel.selectedGoal.color.get()
+                            selectedColor: goalModel.selectedGoal.color.standard
                         )
 
                     } else {
@@ -56,13 +56,13 @@ struct AddView: View {
                             selectedLeft: $viewModel.selectedStep.unit,
                             selectedRight: $viewModel.selectedStep.dual,
                             unit: (step.unit.description, step.unit.dualUnit!.description),
-                            selectedColor: goalModel.selectedGoal.color.get()
+                            selectedColor: goalModel.selectedGoal.color.standard
                         )
                     }
                 }
             }
             .frame(width: step.oneAddArrayEmpty ? 180 : 240, height: 175)
-            .background(goalModel.selectedGoal.color.get(.light))
+            .background(goalModel.selectedGoal.color.light)
         }
     }
     
@@ -81,7 +81,7 @@ struct AddView: View {
                     .foregroundColor(.backgroundToDarkGray)
             }
             .frame(width: 90, height: 90)
-            .background(goalModel.selectedGoal.color.get(.dark))
+            .background(goalModel.selectedGoal.color.dark)
             .offset(y: viewModel.dragState == .show ? 0 : -100)
             .onTapGesture { viewModel.addButtonPressed() }
         }

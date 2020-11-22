@@ -15,7 +15,7 @@ struct GoalReachedHeaderView: View {
     
     var body: some View {
         VStack {
-            OneSHeaderView(trailingButton: (.close, goalReachedModel.selectedGoal.color.get(), {
+            OneSHeaderView(trailingButton: (.close, goalReachedModel.selectedGoal.color.standard, {
                 mainModel.toScreen(.goals)
             }))
             Spacer()

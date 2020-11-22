@@ -53,7 +53,7 @@ struct ProfileHeaderView: View {
         var body: some View {
             OneSText(text: name, font: .custom(weight: Raleway.medium, size: 28), color: .grayToBackground)
                 .onTapGesture {
-                    popupManager.showTextFieldPopup(.changeName, titleText: "Name", bodyText: "Enter a new name.", input: userDefaultsManager.userName, placeholder: "Your name", placeholderColor: UserColor.user0.get(.dark), textLimit: 20, backgroundColor: UserColor.user0.get())
+                    popupManager.showTextFieldPopup(.changeName, titleText: "Name", bodyText: "Enter a new name.", input: userDefaultsManager.userName, placeholder: "Your name", placeholderColor: UserColor.user0.dark, textLimit: 20, backgroundColor: UserColor.user0.standard)
                 }
                 .onReceive(popupManager.buttonDismissed) {
                     if $0 == .changeName { userDefaultsManager.userName = popupManager.input }

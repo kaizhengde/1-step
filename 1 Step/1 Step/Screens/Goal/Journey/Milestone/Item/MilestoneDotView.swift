@@ -29,13 +29,13 @@ struct MilestoneDotView: View {
     var body: some View {
         VStack {
             if milestone.state == .done && showEndDate {
-                OneSText(text: milestone.endDate!.toString(), font: .custom(weight: milestone.image == .summit ? Raleway.extraBold : Raleway.bold, size: milestone.image == .summit ? 20 : 17), color: goal.color.get(.dark))
+                OneSText(text: milestone.endDate!.toString(), font: .custom(weight: milestone.image == .summit ? Raleway.extraBold : Raleway.bold, size: milestone.image == .summit ? 20 : 17), color: goal.color.dark)
                     .frame(width: 150)
             }
             if milestone.state != .current && !(milestone.image == .summit && milestone.state == .done && showEndDate) {
                 Circle()
                     .frame(width: 15, height: 15)
-                    .foregroundColor(goal.color.get(.dark))
+                    .foregroundColor(goal.color.dark)
             }
         }
         .oneSItemTransition($appear)

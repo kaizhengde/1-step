@@ -97,7 +97,7 @@ class MilestoneModel: ObservableObject {
         
         func body(content: Content) -> some View {
             content
-                .background(goal.color.get(milestone.state == .active ? .dark : .light))
+                .background(milestone.state == .active ? goal.color.dark : goal.color.light)
                 .cornerRadius(8)
                 .contentShape(Rectangle())
                 .oneSShadow(opacity: 0.15, y: 3, blur: 10)
@@ -109,7 +109,7 @@ class MilestoneModel: ObservableObject {
                                     Spacer()
                                     SFSymbol.checkmark
                                         .font(.system(size: 24, weight: .semibold))
-                                        .foregroundColor(goal.color.get(.dark))
+                                        .foregroundColor(goal.color.dark)
                                         .padding(20)
                                 }
                                 Spacer()

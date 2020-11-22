@@ -25,7 +25,7 @@ struct GoalMenuView: View {
                     
                     RoundedRectangle(cornerRadius: 2)
                         .frame(width: GoalItemArt.width/1.3, height: 4)
-                        .foregroundColor(goalModel.selectedGoal.color.get())
+                        .foregroundColor(goalModel.selectedGoal.color.standard)
                 }
                 .padding(.bottom, 12)
                 

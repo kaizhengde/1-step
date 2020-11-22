@@ -17,10 +17,10 @@ struct GoalEnterInputView: View {
     
     var body: some View {
         VStack {
-            OneSTextField(input: $viewModel.selectedData.goalName, placeholder: "Plant", inputColor: selectedColor.get(), inputLimit: Goal.nameDigitsLimit)
+            OneSTextField(input: $viewModel.selectedData.goalName, placeholder: "Plant", inputColor: selectedColor.standard, inputLimit: Goal.nameDigitsLimit)
             
             HStack {
-                OneSTextField(input: $viewModel.selectedData.neededStepUnits, placeholder: "30", inputColor: selectedColor.get(), inputLimit: Goal.neededStepUnitsDigitsLimit, keyboard: .numberPad)
+                OneSTextField(input: $viewModel.selectedData.neededStepUnits, placeholder: "30", inputColor: selectedColor.standard, inputLimit: Goal.neededStepUnitsDigitsLimit, keyboard: .numberPad)
                     
                 OneSFillButton(text:        viewModel.stepEnterUnitButtonText(),
                                textFont:    .custom(weight: Raleway.bold, size: 20),
@@ -29,7 +29,7 @@ struct GoalEnterInputView: View {
                                width:       140*Layout.multiplierWidth,
                                height:      70
                 ) {
-                    miniSheetManager.showCustomMiniSheet(titleText: "Select Unit", backgroundColor: selectedColor.get(), height: 500*Layout.multiplierHeight) {
+                    miniSheetManager.showCustomMiniSheet(titleText: "Select Unit", backgroundColor: selectedColor.standard, height: 500*Layout.multiplierHeight) {
                         GoalEnterInputSelectStepUnitView(viewModel: viewModel, selectedColor: $selectedColor)
                     }
                 }

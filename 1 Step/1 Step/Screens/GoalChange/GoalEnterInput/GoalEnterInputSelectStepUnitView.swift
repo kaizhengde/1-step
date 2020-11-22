@@ -107,7 +107,7 @@ struct GoalEnterInputSelectStepUnitView: View {
                     withScale:      false
                 ) {
                     if stepUnit.isCustom {
-                        popupManager.showTextFieldPopup(.goalCustomUnit ,titleText: "Custom", bodyText: "Enter your unit.", input: viewModel.selectedData.customUnit, placeholder: "unit", placeholderColor: selectedColor.get(.dark), textLimit: Step.customUnitDigitsLimit, lowercased: true, backgroundColor: selectedColor.get())
+                        popupManager.showTextFieldPopup(.goalCustomUnit ,titleText: "Custom", bodyText: "Enter your unit.", input: viewModel.selectedData.customUnit, placeholder: "unit", placeholderColor: selectedColor.dark, textLimit: Step.customUnitDigitsLimit, lowercased: true, backgroundColor: selectedColor.standard)
                     }
                     viewModel.selectedData.stepUnit = stepUnit
                 }

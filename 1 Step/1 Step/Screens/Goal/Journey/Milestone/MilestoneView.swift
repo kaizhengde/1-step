@@ -24,7 +24,7 @@ struct MilestoneView: View {
         .padding(.top, viewModel.milestone.image == .summit ? 150 : 100)
         .padding(.bottom, 50)
         .frame(maxWidth: .infinity, maxHeight: addStepAnimationHandler.hideMilestoneView ? 0 : (appear ? .infinity : 0))
-        .background(viewModel.goal.color.get(.dark))
+        .background(viewModel.goal.color.dark)
         .cornerRadius(20)
         .padding(.horizontal, Layout.firstLayerPadding)
         .padding(.bottom, 20)
@@ -130,7 +130,7 @@ struct MilestoneView: View {
             var body: some View {
                 RoundedRectangle(cornerRadius: 5, style: .continuous)
                     .frame(width: 10, height: 36)
-                    .foregroundColor(goal.color.get(.light))
+                    .foregroundColor(goal.color.light)
             }
         }
     }

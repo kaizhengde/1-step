@@ -49,14 +49,14 @@ final class GoalEnterInputModel: ObservableObject {
     
     func stepEnterUnitButtonColor(_ selectedColor: UserColor) -> Color {
         guard let stepUnit = selectedData.stepUnit else { return .lightNeutralToLightGray }
-        return stepUnit.description.isEmpty ? .lightNeutralToLightGray : selectedColor.get()
+        return stepUnit.description.isEmpty ? .lightNeutralToLightGray : selectedColor.standard
     }
 
     
     //StepCategory
     
     func stepCategoryButtonColor(_ stepCategory: StepCategory, _ selectedColor: UserColor) -> Color {
-        return selectedData.stepCategory == stepCategory ? .backgroundToGray : selectedColor.get(.dark)
+        return selectedData.stepCategory == stepCategory ? .backgroundToGray : selectedColor.dark
     }
     
     
@@ -68,7 +68,7 @@ final class GoalEnterInputModel: ObservableObject {
     //StepUnit
     
     func stepUnitButtonColor(_ stepUnit: StepUnit, _ selectedColor: UserColor) -> Color {
-        return selectedData.stepUnit == stepUnit ? .backgroundToGray : selectedColor.get(.dark)
+        return selectedData.stepUnit == stepUnit ? .backgroundToGray : selectedColor.dark
     }
     
     
