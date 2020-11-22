@@ -16,8 +16,15 @@ struct ProfileAccomplishmentsSectionView: View {
         OneSSectionView(title: "Accomplishments") {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 12) {
-                    ForEach(0..<profileModel.accomplishmentsData.count) {
-                        Item(profileModel: profileModel, index: $0)
+                    ForEach(0..<profileModel.accomplishmentsData.count) { i in
+                        Group {
+                            if profileModel.accomplishmentsData[i].value != 0 {
+                                Item(profileModel: profileModel, index: i)
+                            } else {
+                                EmptyItem(index: i)
+                            }
+                        }
+                        .oneSItemTransition(after: profileModel.accomplishmentsData[i].appearDelay)
                     }
                 }
                 .offset(x: Layout.firstLayerPadding)
@@ -53,7 +60,20 @@ struct ProfileAccomplishmentsSectionView: View {
             .cornerRadius(10)
             .oneSShadow(opacity: 0.1, y: 2, blur: 10)
             .oneSItemTapScale()
-            .oneSItemTransition(after: profileModel.accomplishmentsData[index].appearDelay)
+        }
+    }
+    
+    
+    struct EmptyItem: View {
+        
+        let index: Int
+        
+        var body: some View {
+            if index == 0 {
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.lightNeutralToLightGray, lineWidth: 1)
+                    .frame(width: 240, height: 140)
+            } else { EmptyView() }
         }
     }
 }

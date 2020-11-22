@@ -183,7 +183,7 @@ enum JourneyDataHandler {
         
         //2. Update Milestones
         
-        let oldCurrentMilestone = goal.milestones.filter { $0.state == .current }.first!
+        let oldDoneMilestonesAmount = goal.milestones.reduce(0) { $0 + ($1.state == .done ? 1 : 0) }
         let milestones = Array(goal.milestones.sorted { $0.neededStepUnits < $1.neededStepUnits })
         
         for i in 0..<milestones.count {
@@ -209,11 +209,11 @@ enum JourneyDataHandler {
         
         //3. Update Accomplishments
         
-        let newCurrentMilestone = journeyData.milestones.filter { $0.state == .current }.first
-        let milestonesReached = (newCurrentMilestone?.image.rawValue ?? Int16(journeyData.milestones.count)) - oldCurrentMilestone.image.rawValue
+        let newDoneMilestonesAmount = goal.milestones.reduce(0) { $0 + ($1.state == .done ? 1 : 0) }
+        let newMilestonesReached = newDoneMilestonesAmount - oldDoneMilestonesAmount
         
         UserDefaultsManager.accomplishmentTotalSteps += Int(journeyData.currentSteps - goal.currentSteps)
-        UserDefaultsManager.accomplishmentTotalMilestonesReached += Int(milestonesReached)
+        UserDefaultsManager.accomplishmentTotalMilestonesReached += newMilestonesReached
         UserDefaultsManager.accomplishmentTotalGoalsReached += (journeyData.currentState == .reached) ? 1 : 0
         
 
