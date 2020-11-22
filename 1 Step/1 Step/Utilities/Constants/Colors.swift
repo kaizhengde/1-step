@@ -28,7 +28,7 @@ extension Color {
 }
 
 
-enum OneSColorPalette {
+extension OneSColorTheme {
     
     enum Default {
         static let color0 = (standard: Color("Default0"), light: Color("Default0Light"), dark: Color("Default0Dark"))

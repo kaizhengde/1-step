@@ -20,7 +20,7 @@ class ProfileModel: ObservableObject {
     
     //MARK: - Section 1: App
     
-    let section1Color = UserColor.user0.get()
+    var section1Color: Color { UserColor.user0.standard }
     
     func appSelectedRowBackgroundColor(_ state: Bool) -> Color {
         return state ? section1Color : .whiteToDarkGray

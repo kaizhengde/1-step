@@ -37,6 +37,7 @@ struct ProfileAppSectionView: View {
         var premium: Bool { userDefaultsManager.settingPremium }
         var selectedLanguage: OneSLanguage { userDefaultsManager.settingLanguage }
         var selectedAppearance: OneSAppearance { userDefaultsManager.settingAppearance }
+        var selectedColorTheme: OneSColorTheme { userDefaultsManager.settingColorTheme }
         var notifications: Bool { userDefaultsManager.settingNotifications }
         
         
@@ -84,6 +85,25 @@ struct ProfileAppSectionView: View {
                                     title: appearance.rawValue,
                                     selectedColor: profileModel.section1Color,
                                     action: { userDefaultsManager.settingAppearance = appearance }
+                                )
+                            }
+                        }
+                    }
+                )
+                
+                OneSDropDown(
+                    .shortSmall,
+                    title: "Theme",
+                    accessoryText: selectedColorTheme.rawValue,
+                    accessoryColor: profileModel.section1Color,
+                    content: {
+                        VStack(spacing: 10) {
+                            ForEach(OneSColorTheme.allCases, id: \.self) { colorTheme in
+                                OneSRowSelectButton(
+                                    Binding<Bool>(get: { selectedColorTheme == colorTheme }, set: { _ in }),
+                                    title: colorTheme.rawValue,
+                                    selectedColor: profileModel.section1Color,
+                                    action: { userDefaultsManager.settingColorTheme = colorTheme }
                                 )
                             }
                         }
