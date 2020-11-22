@@ -14,7 +14,7 @@ extension View {
     }
     
     
-    func oneSItemTransition(after delay: DispatchTimeInterval = DelayAfter.halfOpacity) -> some View {
+    func oneSItemTransition(after delay: DispatchTimeInterval = DelayAfter.none) -> some View {
         return modifier(OneSItemTransition(delay: delay))
     }
 }

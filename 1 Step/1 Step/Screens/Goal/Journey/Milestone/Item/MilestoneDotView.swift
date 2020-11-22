@@ -38,8 +38,7 @@ struct MilestoneDotView: View {
                     .foregroundColor(goal.color.get(.dark))
             }
         }
-        .scaleEffect(appear ? 1.0 : 0.9)
-        .opacity(appear ? 1.0 : 0.0)
+        .oneSItemTransition($appear)
         .onChange(of: milestoneAppear) {
             if $0 { DispatchQueue.main.asyncAfter(deadline: .now() + appearAfter) { self.appear = true } }
         }

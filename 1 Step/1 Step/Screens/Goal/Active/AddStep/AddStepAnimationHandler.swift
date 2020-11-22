@@ -53,7 +53,7 @@ class AddStepAnimationHandler: ObservableObject {
     var hideDoneMilestoneItems: Bool {
         return milestoneChangeState != .none
     }
-    
+        
     @Published var milestoneChangeState: MilestoneChangeState = .none {
         didSet {
             if milestoneChangeState == .openNewAndScrollToCurrent {

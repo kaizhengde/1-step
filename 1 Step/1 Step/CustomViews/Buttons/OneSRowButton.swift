@@ -82,7 +82,7 @@ struct OneSRowButton: View {
             Group {
                 if let image = sFSymbol {
                     image
-                        .font(.system(size: 22, weight: .light))
+                        .font(.system(size: 22, weight: .regular))
                         .foregroundColor(color)
                     
                 } else if let image = customSymbol {

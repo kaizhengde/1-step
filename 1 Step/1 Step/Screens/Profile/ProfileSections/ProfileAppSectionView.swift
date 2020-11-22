@@ -15,15 +15,15 @@ struct ProfileAppSectionView: View {
     var body: some View {
         OneSSectionView(title: "App") {
             VStack(spacing: 20) {
-                OneSDropDown(.long, title: "Settings", accessoryCustomSymbol: ProfileSymbol.settings) {
+                OneSDropDown(.long, title: "Settings", accessoryCustomSymbol: ProfileSymbol.settings, accessoryColor: UserColor.user0.get()) {
                     EmptyView()
                 }
                 
-                OneSDropDown(.long, title: "Data & Privacy", accessorySFSymbol: ProfileSymbol.dataAndPrivacy) {
+                OneSDropDown(.long, title: "Data & Privacy", accessorySFSymbol: ProfileSymbol.dataAndPrivacy, accessoryColor: UserColor.user0.get()) {
                     EmptyView()
                 }
                 
-                OneSRowButton(.long, title: "Help", accessorySFSymbol: ProfileSymbol.help) {}
+                OneSRowButton(.long, title: "Help", accessorySFSymbol: ProfileSymbol.help, accessoryColor: UserColor.user0.get()) {}
             }
         }
     }

@@ -34,6 +34,7 @@ struct HiddenView: View {
             .alignmentGuide(.addStepAlignment) { d in d[.top] }
             .padding(8)
             .onReceive(addStepAnimationHandler.goalReached) { hide = true }
+            .onChange(of: addStepAnimationHandler.milestoneChangeState) { hide = $0 != .none }
     }
     
     

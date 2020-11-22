@@ -15,7 +15,7 @@ struct GoalExampleMapView: View {
     
     
     var body: some View {
-        LazyVStack(spacing: 10) {
+        VStack(spacing: 10) {
             ForEach(0..<data.count, id: \.self) { i in
                 if data[i].final {
                     GoalExampleBackgroundText(text: data[i].backgroundText, backgroundColor: selectedColor.get(), big: big)

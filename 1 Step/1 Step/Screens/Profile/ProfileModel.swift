@@ -12,8 +12,8 @@ class ProfileModel: ObservableObject {
     //MARK: - Section 0: Accomplishments
     
     let accomplishmentsData: [(description: String, value: Int, color: Color, appearDelay: DispatchTimeInterval)] = [
-        ("Steps in total", UserDefaultsManager.accomplishmentTotalSteps, UserColor.user0.get(), DelayAfter.halfOpacity),
-        ("Milestones reached", UserDefaultsManager.accomplishmentTotalMilestonesReached, UserColor.user1.get(), DelayAfter.opacity),
-        ("Goals completed", UserDefaultsManager.accomplishmentTotalGoalsReached, UserColor.user2.get(), DelayAfter.opacity)
+        ("Steps in total", UserDefaultsManager.accomplishmentTotalSteps, UserColor.user0.get(), DelayAfter.none),
+        ("Milestones reached", UserDefaultsManager.accomplishmentTotalMilestonesReached, UserColor.user1.get(), DelayAfter.halfOpacity),
+        ("Goals completed", UserDefaultsManager.accomplishmentTotalGoalsReached, UserColor.user2.get(), DelayAfter.halfOpacity)
     ]
 }

@@ -14,18 +14,18 @@ struct ProfileAboutSectionView: View {
     
     var body: some View {
         OneSSectionView(title: "About") {
-            LazyVStack(spacing: 20) {
-                OneSRowButton(.long, title: "Website", accessorySFSymbol: ProfileSymbol.website) {}
+            VStack(spacing: 20) {
+                OneSRowButton(.long, title: "Share", accessorySFSymbol: ProfileSymbol.share, accessoryColor: UserColor.user1.get()) {}
                 
-                OneSRowButton(.long, title: "Share", accessorySFSymbol: ProfileSymbol.share) {}
+                OneSRowButton(.long, title: "Rate on the App Store", accessorySFSymbol: ProfileSymbol.rate, accessoryColor: UserColor.user1.get()) {}
                 
-                OneSRowButton(.long, title: "Rate on the App Store", accessorySFSymbol: ProfileSymbol.rate) {}
+                OneSRowButton(.long, title: "Send your Feedback", accessorySFSymbol: ProfileSymbol.feedback, accessoryColor: UserColor.user1.get()) {}
                 
-                OneSRowButton(.long, title: "Send your Feedback", accessorySFSymbol: ProfileSymbol.feedback) {}
+                OneSRowButton(.long, title: "Website", accessorySFSymbol: ProfileSymbol.website, accessoryColor: UserColor.user2.get()) {}
                 
-                OneSRowButton(.long, title: "The VFD Collective", accessorySFSymbol: ProfileSymbol.vfdCollective) {}
+                OneSRowButton(.long, title: "The VFD Collective", accessorySFSymbol: ProfileSymbol.vfdCollective, accessoryColor: UserColor.user2.get()) {}
                 
-                OneSRowButton(.long, title: "Pastel Tree", accessorySFSymbol: ProfileSymbol.pastelTree) {}
+                OneSRowButton(.long, title: "Pastel Tree", accessorySFSymbol: ProfileSymbol.pastelTree, accessoryColor: UserColor.user2.get()) {}
             }
         }
     }
