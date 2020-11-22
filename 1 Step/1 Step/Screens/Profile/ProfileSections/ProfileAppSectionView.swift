@@ -20,7 +20,7 @@ struct ProfileAppSectionView: View {
                 }
                 
                 OneSDropDown(.long, title: "Data & Privacy", accessorySFSymbol: ProfileSymbol.dataAndPrivacy) {
-                    EmptyView()
+                    DataAndPrivacyContentView(profileModel: profileModel)
                 }
                 
                 OneSRowButton(.long, title: "Help", accessorySFSymbol: ProfileSymbol.help) {}
@@ -99,6 +99,38 @@ struct ProfileAppSectionView: View {
                     accessoryColor: profileModel.appSelectedRowAccessoryColor(notifications),
                     action: { userDefaultsManager.settingNotifications.toggle() }
                 )
+            }
+        }
+    }
+    
+    
+    private struct DataAndPrivacyContentView: View {
+        
+        @StateObject private var userDefaultsManager = UserDefaultsManager.shared
+        @ObservedObject var profileModel: ProfileModel
+        
+        var iCloudSynch: Bool { userDefaultsManager.settingICloudSynch }
+        
+        
+        var body: some View {
+            VStack(spacing: 10) {
+                OneSRowButton(
+                    .shortSmall,
+                    title: "iCloud Sync",
+                    textColor: profileModel.appSelectedRowTitleColor(iCloudSynch),
+                    backgroundColor: profileModel.appSelectedRowBackgroundColor(iCloudSynch),
+                    accessoryText: profileModel.appSelectedRowAccessoryText(iCloudSynch, enabled: "On", disabled: "Off"),
+                    accessoryColor: profileModel.appSelectedRowAccessoryColor(iCloudSynch),
+                    action: { userDefaultsManager.settingICloudSynch.toggle() }
+                )
+                
+                OneSRowButton(.shortSmall, title: "Download iCloud data") {}
+                
+                OneSRowButton(.shortSmall, title: "Delete iCloud data") {}
+                
+                OneSRowButton(.shortSmall, title: "Reset all data") {}
+                
+                OneSRowButton(.shortSmall, title: "Privacy Policy") {}
             }
         }
     }

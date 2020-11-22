@@ -8,6 +8,10 @@
 import SwiftUI
 import Combine
 
+enum OneSDropDownModel {
+    static let closeAllOpenExceptSelf = PassthroughSubject<String, Never>()
+}
+
 struct OneSDropDown<Content>: View where Content: View {
     
     @State private var show = false
@@ -43,12 +47,16 @@ struct OneSDropDown<Content>: View where Content: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
-            OneSRowButton(rowButtonArt, title: title, accessorySFSymbol: accessorySFSymbol, accessoryCustomSymbol: accessoryCustomSymbol, accessoryText: accessoryText, accessoryColor: accessoryColor) { show.toggle() }
+            OneSRowButton(rowButtonArt, title: title, accessorySFSymbol: accessorySFSymbol, accessoryCustomSymbol: accessoryCustomSymbol, accessoryText: accessoryText, accessoryColor: accessoryColor) {
+                show.toggle()
+                if show { OneSDropDownModel.closeAllOpenExceptSelf.send(title) }
+            }
             
             if show {
                 DropDownContent(show: $show, rowButtonArt: rowButtonArt, content: content)
             }
         }
+        .onReceive(OneSDropDownModel.closeAllOpenExceptSelf) { if $0 != title { show = false } }
     }
     
     
