@@ -84,7 +84,10 @@ struct ProfileAppSectionView: View {
                                     Binding<Bool>(get: { selectedAppearance == appearance }, set: { _ in }),
                                     title: appearance.rawValue,
                                     selectedColor: profileModel.section1Color,
-                                    action: { userDefaultsManager.settingAppearance = appearance }
+                                    action: {
+                                        userDefaultsManager.settingAppearance = appearance
+                                        MainModel.shared.updateAppearance()
+                                    }
                                 )
                             }
                         }

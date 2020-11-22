@@ -47,6 +47,8 @@ final class MainModel: ObservableObject {
     
     static let shared = MainModel()
     private init() {
+        updateAppearance()
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.currentScreen.active = .goals
         }
@@ -86,6 +88,29 @@ final class MainModel: ObservableObject {
             self.currentScreen.dismiss()
             self.currentScreen.active = .goal(state == .active ? .showActive : .showReached)
             self.currentScreen.show()
+        }
+    }
+    
+    
+    //MARK: - Window
+    
+    var window: UIWindow? {
+        guard let scene = UIApplication.shared.connectedScenes.first,
+              let windowSceneDelegate = scene.delegate as? UIWindowSceneDelegate,
+              let window = windowSceneDelegate.window else {
+            return nil
+        }
+        return window
+    }
+    
+    
+    func updateAppearance() {
+        let currentAppearance = UserDefaultsManager.shared.settingAppearance
+        
+        switch currentAppearance {
+        case .mirrorDevice: window?.overrideUserInterfaceStyle = .unspecified
+        case .light: window?.overrideUserInterfaceStyle = .light
+        case .dark: window?.overrideUserInterfaceStyle = .dark
         }
     }
 }

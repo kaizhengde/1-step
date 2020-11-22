@@ -37,7 +37,10 @@ final class GoalModel: TransitionObservableObject {
     let setScrollPosition = PassthroughSubject<ScrollPosition, Never>()
     
     @Published var showJourneyView: Bool = false
-    @Published var showFlag: Bool = false 
+    @Published var showFlag: Bool = false
+    
+    private var userdefaultsManager: UserDefaultsManager { UserDefaultsManager.shared }
+    private var selectedAppearance: OneSAppearance { userdefaultsManager.settingAppearance }
     
     
     //MARK: - Transition
@@ -82,7 +85,15 @@ final class GoalModel: TransitionObservableObject {
     
     
     var headerButtonColor: Color {
-        return viewDragColor(standard: selectedGoal.color.standard, menu: .darkNeutralToNeutral)
+        var menuColor: Color!
+        
+        switch selectedAppearance {
+        case .mirrorDevice: menuColor = .darkNeutralToNeutral
+        case .light: menuColor = .darkNeutralStatic
+        case .dark: menuColor = .neutralStatic
+        }
+        
+        return viewDragColor(standard: selectedGoal.color.standard, menu: menuColor)
     }
     
     
@@ -121,11 +132,34 @@ final class GoalModel: TransitionObservableObject {
     }
     
     var backgroundColor: Color {
-        return viewDragColor(standard: selectedGoal.color.standard, menu: .darkBackgroundToDarkGray)
+        var menuColor: Color!
+        
+        switch selectedAppearance {
+        case .mirrorDevice: menuColor = .darkBackgroundToDarkGray
+        case .light: menuColor = .darkBackgroundStatic
+        case .dark: menuColor = .darkGrayStatic
+        }
+        
+        return viewDragColor(standard: selectedGoal.color.standard, menu: menuColor)
     }
     
     var topTextColor: Color {
-        return viewDragColor(standard: .grayToBackground, menu: .darkNeutralToNeutral)
+        var standardColor: Color!
+        var menuColor: Color!
+        
+        switch selectedAppearance {
+        case .mirrorDevice: standardColor = .grayToBackground
+        case .light: standardColor = .grayStatic
+        case .dark: standardColor = .backgroundStatic
+        }
+        
+        switch selectedAppearance {
+        case .mirrorDevice: menuColor = .darkNeutralToNeutral
+        case .light: menuColor = .darkNeutralStatic
+        case .dark: menuColor = .neutralStatic
+        }
+        
+        return viewDragColor(standard: standardColor, menu: menuColor)
     }
     
     var goalUnitText: String {

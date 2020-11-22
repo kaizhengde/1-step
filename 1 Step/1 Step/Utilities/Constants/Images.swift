@@ -45,7 +45,7 @@ enum ProfileSymbol {
     static let dataAndPrivacy   = Image(systemName: "hand.raised")
     static let help             = Image(systemName: "questionmark.circle")
     static let share            = Image(systemName: "square.and.arrow.up")
-    static let rate             = Image(systemName: "pencil.circle")
+    static let rate             = Image(systemName: "star")
     static let feedback         = Image(systemName: "message")
     static let website          = Image(systemName: "globe")
     static let vfdCollective    = Image(systemName: "light.max")

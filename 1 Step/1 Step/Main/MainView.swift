@@ -10,6 +10,7 @@ import SwiftUI
 struct MainView: View {
     
     @StateObject private var mainModel = MainModel.shared
+    @StateObject private var userDefaultsManager = UserDefaultsManager.shared
     @StateObject private var sheetManager = SheetManager.shared
     
     
@@ -30,5 +31,6 @@ struct MainView: View {
         .oneSPopup()
         .oneSConfetti()
         .oneSFloater()
+        .onAppear { mainModel.updateAppearance() }
     }
 }
