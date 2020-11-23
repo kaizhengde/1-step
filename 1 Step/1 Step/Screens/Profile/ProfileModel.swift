@@ -8,14 +8,50 @@
 import SwiftUI
 
 class ProfileModel: ObservableObject {
+    
+    var userDefaultsManager: UserDefaultsManager { UserDefaultsManager.shared }
+    
+    
+    //MARK: - Profile Picture
+    
+    @Published var currentImage: Image?
+    
+    func profileImageViewAppear() {
+        DispatchQueue.global().async {
+            var savedImage: Image? = nil
+            let savedUIImage = UIImage(data: self.userDefaultsManager.userProfileImage)
+            
+            if let savedUIImage = savedUIImage {
+                savedImage = Image(uiImage: savedUIImage)
+            }
+            DispatchQueue.main.async { self.currentImage = savedImage }
+        }
+    }
+    
+    
+    func profileImageTapped() {
+        SheetManager.shared.showSheet {
+            OneSImagePicker(deleteAction: {
+                self.userDefaultsManager.userProfileImage = Data()
+                self.currentImage = nil
+                SheetManager.shared.dismiss()
+            }) { selectedImage in
+                self.userDefaultsManager.userProfileImage = selectedImage.jpegData(compressionQuality: 0.5)!
+                self.currentImage = Image(uiImage: UIImage(data: self.userDefaultsManager.userProfileImage)!)
+            }
+            .accentColor(UserColor.user0.standard)
+        }
+    }
+    
+    
 
     //MARK: - Section 0: Accomplishments
     
     var accomplishmentsData: [(description: String, value: Int, color: Color, appearDelay: DispatchTimeInterval)] {
         [
-            ("Steps in total", UserDefaultsManager.shared.accomplishmentTotalSteps, UserColor.user0.standard, DelayAfter.none),
-            ("Milestones reached", UserDefaultsManager.shared.accomplishmentTotalMilestonesReached, UserColor.user1.standard, DelayAfter.halfOpacity),
-            ("Goals completed", UserDefaultsManager.shared.accomplishmentTotalGoalsReached, UserColor.user2.standard, DelayAfter.halfOpacity)
+            ("Steps in total", userDefaultsManager.accomplishmentTotalSteps, UserColor.user0.standard, DelayAfter.none),
+            ("Milestones reached", userDefaultsManager.accomplishmentTotalMilestonesReached, UserColor.user1.standard, DelayAfter.halfOpacity),
+            ("Goals completed", userDefaultsManager.accomplishmentTotalGoalsReached, UserColor.user2.standard, DelayAfter.halfOpacity)
         ]
     }
     

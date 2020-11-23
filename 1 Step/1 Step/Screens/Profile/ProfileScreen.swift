@@ -19,7 +19,7 @@ struct ProfileScreen: View {
             
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 32) {
-                    ProfileHeaderView()
+                    ProfileHeaderView(profileModel: profileModel)
                         .padding(.bottom, -12)
                     
                     ProfileAccomplishmentsSectionView(profileModel: profileModel)

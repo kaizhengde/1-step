@@ -10,13 +10,14 @@ import SwiftUI
 struct ProfileHeaderView: View {
     
     @StateObject private var mainModel = MainModel.shared
+    @ObservedObject var profileModel: ProfileModel
     
     
     var body: some View {
         OneSHeaderView("Profile", trailingButton: (.close, .grayToBackground, { mainModel.toScreen(.goals) })) {
             AnyView(
                 VStack {
-                    ProfileImageView()
+                    ProfileImageView(profileModel: profileModel)
                     ProfileNameView()
                 }
                 .oneSItemTransition()
@@ -29,9 +30,7 @@ struct ProfileHeaderView: View {
     private struct ProfileImageView: View {
         
         @StateObject private var userDefaultsManager = UserDefaultsManager.shared
-        @StateObject private var sheetManager = SheetManager.shared
-        
-        @State private var selectedImage: Image?
+        @ObservedObject var profileModel: ProfileModel
         
         
         var body: some View {
@@ -41,7 +40,7 @@ struct ProfileHeaderView: View {
                 .oneSShadow(opacity: 0.15, y: 2, blur: 8)
                 .overlay(
                     Group {
-                        if let selectedImage = selectedImage {
+                        if let selectedImage = profileModel.currentImage {
                             selectedImage
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
@@ -54,33 +53,12 @@ struct ProfileHeaderView: View {
                                 .frame(width: 165, height: 165)
                                 .contentShape(Circle())
                         }
+                        EmptyView()
                     }
-                    .onTapGesture {
-                        sheetManager.showSheet {
-                            OneSImagePicker(deleteAction: {
-                                userDefaultsManager.userProfileImage = Data()
-                                selectedImage = nil
-                                sheetManager.dismiss()
-                            }) { selectedImage in
-                                userDefaultsManager.userProfileImage = selectedImage.jpegData(compressionQuality: 0.5)!
-                                self.selectedImage = Image(uiImage: UIImage(data: userDefaultsManager.userProfileImage)!)
-                            }
-                            .accentColor(UserColor.user0.standard)
-                        }
-                    }
+                    .onTapGesture { profileModel.profileImageTapped() }
                 )
                 .oneSItemTapScale()
-                .onAppear {
-                    DispatchQueue.global().async {
-                        var savedImage: Image? = nil
-                        let savedUIImage = UIImage(data: userDefaultsManager.userProfileImage)
-                        
-                        if let savedUIImage = savedUIImage {
-                            savedImage = Image(uiImage: savedUIImage)
-                        }
-                        DispatchQueue.main.async { selectedImage = savedImage }
-                    }
-                }
+                .onAppear { profileModel.profileImageViewAppear() }
         }
     }
     
