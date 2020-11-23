@@ -10,6 +10,7 @@ import SwiftUI
 struct GoalReachedView: View {
     
     @StateObject private var goalReachedModel = GoalReachedModel.shared
+    let goalEditModel = GoalEditModel()
 
     
     var body: some View {
@@ -24,12 +25,21 @@ struct GoalReachedView: View {
                         goalReachedModel.selectedGoal.color.standard.offset(y: Layout.screenHeight + 20)
                         VStack {
                             GoalReachedSummaryView()
-                            JourneyView(state: .reached)
-                                .offset(y: -250)
+                            
+                            Group {
+                                JourneyView(state: .reached)
+                                
+                                OneSSmallBorderButton(symbol: SFSymbol.delete, color: .backgroundToDarkGray) {
+                                    goalEditModel.tryDelete(goalReachedModel.selectedGoal)
+                                }
+                                .padding(.top, 50)
+                            }
+                            .offset(y: -250)
                         }
                     }
                 }
             }
         }
+        .onReceive(PopupManager.shared.buttonDismissed) { if $0 == .goalDelete { goalEditModel.deleteGoalAndDismiss(goalReachedModel.selectedGoal) } }
     }
 }

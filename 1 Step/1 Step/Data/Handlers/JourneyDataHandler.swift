@@ -207,14 +207,16 @@ enum JourneyDataHandler {
         journeyData.milestones = Set(milestones)
         
         
-        //3. Update Accomplishments
+        //3. Update Accomplishments (only if newStepsUnits is not 0 (edit excluded!))
         
         let newDoneMilestonesAmount = goal.milestones.reduce(0) { $0 + ($1.state == .done ? 1 : 0) }
         let newMilestonesReached = newDoneMilestonesAmount - oldDoneMilestonesAmount
         
-        UserDefaultsManager.shared.accomplishmentTotalSteps += Int(journeyData.currentSteps - goal.currentSteps)
-        UserDefaultsManager.shared.accomplishmentTotalMilestonesReached += newMilestonesReached
-        UserDefaultsManager.shared.accomplishmentTotalGoalsReached += (journeyData.currentState == .reached) ? 1 : 0
+        if newStepUnits != 0 {
+            UserDefaultsManager.shared.accomplishmentTotalSteps += Int(journeyData.currentSteps - goal.currentSteps)
+            UserDefaultsManager.shared.accomplishmentTotalMilestonesReached += newMilestonesReached
+            UserDefaultsManager.shared.accomplishmentTotalGoalsReached += (journeyData.currentState == .reached) ? 1 : 0
+        }
         
 
         print("-------------")

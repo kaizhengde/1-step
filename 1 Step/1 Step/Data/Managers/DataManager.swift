@@ -168,6 +168,7 @@ final class DataManager {
         var updateResult = true
         updateResult = updateGoalsSortOrder(with: goal, state: goal.currentState)
         
+        GoalDeleteHandler.updateAccomplishments(with: goal)
         persistenceManager.context.delete(goal)
         return updateResult && persistenceManager.saveContext()
     }
