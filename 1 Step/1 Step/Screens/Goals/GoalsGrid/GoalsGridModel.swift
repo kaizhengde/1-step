@@ -128,10 +128,8 @@ class GoalsGridModel: ObservableObject {
         func performDrop(info: DropInfo) -> Bool {
             current = nil
             
-            if DataModel.shared.moveGoals(in: item.currentState) {
-                return true
-            }
-            return false 
+            DataModel.shared.moveGoals(in: item.currentState) { _ in }
+            return true
         }
     }
 }

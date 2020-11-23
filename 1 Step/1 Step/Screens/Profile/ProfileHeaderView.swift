@@ -31,6 +31,8 @@ struct ProfileHeaderView: View {
         @StateObject private var userDefaultsManager = UserDefaultsManager.shared
         @StateObject private var sheetManager = SheetManager.shared
         
+        @State private var selectedImage: Image?
+        
         
         var body: some View {
             Circle()
@@ -39,8 +41,8 @@ struct ProfileHeaderView: View {
                 .oneSShadow(opacity: 0.15, y: 2, blur: 8)
                 .overlay(
                     Group {
-                        if userDefaultsManager.userProfileImage != Data() {
-                            Image(uiImage: UIImage(data: userDefaultsManager.userProfileImage)!)
+                        if let selectedImage = selectedImage {
+                            selectedImage
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
                                 .frame(width: 165, height: 165)
@@ -57,15 +59,28 @@ struct ProfileHeaderView: View {
                         sheetManager.showSheet {
                             OneSImagePicker(deleteAction: {
                                 userDefaultsManager.userProfileImage = Data()
+                                selectedImage = nil
                                 sheetManager.dismiss()
                             }) { selectedImage in
                                 userDefaultsManager.userProfileImage = selectedImage.jpegData(compressionQuality: 0.5)!
+                                self.selectedImage = Image(uiImage: UIImage(data: userDefaultsManager.userProfileImage)!)
                             }
                             .accentColor(UserColor.user0.standard)
                         }
                     }
                 )
                 .oneSItemTapScale()
+                .onAppear {
+                    DispatchQueue.global().async {
+                        var savedImage: Image? = nil
+                        let savedUIImage = UIImage(data: userDefaultsManager.userProfileImage)
+                        
+                        if let savedUIImage = savedUIImage {
+                            savedImage = Image(uiImage: savedUIImage)
+                        }
+                        DispatchQueue.main.async { selectedImage = savedImage }
+                    }
+                }
         }
     }
     

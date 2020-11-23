@@ -42,8 +42,8 @@ final class GoalCreateModel: ObservableObject, GoalSelectMountainDelegate, GoalE
             color:              selectedMountainData.color
         )
         
-        if DataModel.shared.createGoal(with: baseData) {
-            MainModel.shared.toScreen(.goals)
+        DataModel.shared.createGoal(with: baseData) {
+            if $0 { MainModel.shared.toScreen(.goals) }
         }
     }
 }

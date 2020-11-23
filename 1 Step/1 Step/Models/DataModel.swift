@@ -12,7 +12,7 @@ final class DataModel: ObservableObject {
     static let shared = DataModel()
     private let dataManager = DataManager.defaults
     
-    private init() { fetchAllGoals() }
+    private init() { fetchAllGoals() {} }
     
     
     //MARK: - Data
@@ -23,54 +23,90 @@ final class DataModel: ObservableObject {
     
     //MARK: - Fetch
     
-    private func fetchAllGoals() {
-        fetchAllActiveGoals()
-        fetchAllReachedGoals()
+    private func fetchAllGoals(completion: @escaping () -> ()) {
+        fetchAllActiveGoals() {
+            self.fetchAllReachedGoals() {
+                completion()
+            }
+        }
     }
     
     
-    private func fetchAllActiveGoals() {
-        activeGoals = dataManager.fetchGoals(for: .active)
+    private func fetchAllActiveGoals(completion: @escaping () -> ()) {
+        DispatchQueue.global().async {
+            let fetched = self.dataManager.fetchGoals(for: .active)
+            DispatchQueue.main.async {
+                self.activeGoals = fetched
+                completion()
+            }
+        }
     }
     
     
-    private func fetchAllReachedGoals() {
-        reachedGoals = dataManager.fetchGoals(for: .reached)
+    private func fetchAllReachedGoals(completion: @escaping () -> ()) {
+        DispatchQueue.global().async {
+            let fetched = self.dataManager.fetchGoals(for: .reached)
+            DispatchQueue.main.async {
+                self.reachedGoals = fetched
+                completion()
+            }
+        }
     }
     
     
     //MARK: - Insert
     
-    func createGoal(with baseData: Goal.BaseData) -> Bool {
-        guard !GoalErrorHandler.hasErrors(with: baseData) else { return false }
-        guard dataManager.insertGoal(with: baseData) else { return false }
+    func createGoal(with baseData: Goal.BaseData, completion: @escaping (Bool) -> ()) {
+        guard !GoalErrorHandler.hasErrors(with: baseData) else {
+            completion(false)
+            return
+        }
         
-        fetchAllActiveGoals()
-        return true
+        DispatchQueue.global().async {
+            if self.dataManager.insertGoal(with: baseData) {
+                self.fetchAllActiveGoals() {
+                    DispatchQueue.main.async { completion(true) }
+                }
+            }
+            DispatchQueue.main.async { completion(false) }
+        }
     }
     
     
     //MARK: - Change
     
-    func moveGoals(in state: GoalState) -> Bool {
+    func moveGoals(in state: GoalState, completion: @escaping (Bool) -> ()) {
         let goals = state == .active ? activeGoals : reachedGoals
         
-        for goal in goals {
-            guard dataManager.changeGoalOrder(goal, with: goal.sortOrder) else { return false }
+        DispatchQueue.global().async {
+            for goal in goals {
+                guard self.dataManager.changeGoalOrder(goal, with: goal.sortOrder) else {
+                    DispatchQueue.main.async { completion(false) }
+                    return
+                }
+            }
+            self.fetchAllActiveGoals() {
+                DispatchQueue.main.async { completion(true) }
+            }
         }
-        
-        fetchAllActiveGoals()
-        return true
     }
     
     
-    func editGoal(_ goal: Goal, with baseData: Goal.BaseData) -> Bool {
-        guard !GoalErrorHandler.hasErrors(with: baseData) else { return false }
-        guard !GoalErrorHandler.editGoalHasErrors(with: goal, baseData: baseData) else { return false }
-        guard dataManager.editGoal(goal, with: baseData) else { return false }
+    func editGoal(_ goal: Goal, with baseData: Goal.BaseData, completion: @escaping (Bool) -> ()) {
+        guard !GoalErrorHandler.hasErrors(with: baseData),
+              !GoalErrorHandler.editGoalHasErrors(with: goal, baseData: baseData) else {
+            completion(false)
+            return
+        }
         
-        fetchAllActiveGoals()
-        return true
+        DispatchQueue.global().async {
+            if self.dataManager.editGoal(goal, with: baseData) {
+                self.fetchAllActiveGoals() {
+                    DispatchQueue.main.async { completion(true) }
+                }
+            }
+            DispatchQueue.main.async { completion(false) }
+        }
     }
     
     
@@ -80,11 +116,10 @@ final class DataModel: ObservableObject {
             return
         }
         
-        DispatchQueue.global(qos: .default).async {
+        DispatchQueue.global().async {
             if self.dataManager.addSteps(goal, with: newStepUnits) {
-                DispatchQueue.main.async {
-                    self.fetchAllGoals()
-                    completion(true)
+                self.fetchAllGoals() {
+                    DispatchQueue.main.async { completion(true) }
                 }
             }
             DispatchQueue.main.async { completion(false) }
@@ -93,17 +128,20 @@ final class DataModel: ObservableObject {
     
     
     func updateReachedGoalsPercentage() {
-        _ = dataManager.updateReachedGoalsPercentage()
+        DispatchQueue.global().async { _ = self.dataManager.updateReachedGoalsPercentage() }
     }
     
     
     //MARK: - Delete
     
-    func deleteGoal(_ goal: Goal) -> Bool {
-        guard dataManager.deleteGoal(goal) else { return false }
-        
-        fetchAllGoals()
-        print(goal.currentState == .active ? activeGoals.map { $0.sortOrder } : reachedGoals.map { $0.sortOrder })
-        return true
+    func deleteGoal(_ goal: Goal, completion: @escaping (Bool) -> ()) {
+        DispatchQueue.global().async {
+            if self.dataManager.deleteGoal(goal) {
+                self.fetchAllGoals() {
+                    DispatchQueue.main.async { completion(true) }
+                }
+            }
+            DispatchQueue.main.async { completion(false) }
+        }
     }
 }
