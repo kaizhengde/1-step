@@ -142,7 +142,7 @@ struct PremiumView: View {
                     .padding(.vertical, 20)
                     .padding(.horizontal, 16)
                     .frame(maxWidth: .infinity)
-                    .frame(height: 135*Layout.multiplierHeight)
+                    .frame(height: 140*Layout.multiplierWidth)
                     .background(backgroundColor)
                     .cornerRadius(10)
                     .oneSShadow(opacity: 0.1, y: 2, blur: 10)

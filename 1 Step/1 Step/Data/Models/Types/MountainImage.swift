@@ -26,9 +26,9 @@ enum MountainImage: Int16, CaseIterable {
     
     var name: (top: String, bottom: String) {
         switch self {
-        case .mountain0: return ("", "")
-        case .mountain1: return ("", "")
-        case .mountain2: return ("", "")
+        case .mountain0: return ("Mount", "One")
+        case .mountain1: return ("Mount", "Two")
+        case .mountain2: return ("Mount", "Three")
         }
     }
 }

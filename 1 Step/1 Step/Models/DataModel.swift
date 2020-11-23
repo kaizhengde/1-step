@@ -74,12 +74,21 @@ final class DataModel: ObservableObject {
     }
     
     
-    func addSteps(_ goal: Goal, with newStepUnits: Double) -> Bool {
-        guard !JourneyErrorHandler.addHasErrors(with: goal, newStepUnits: newStepUnits) else { return false }
-        guard dataManager.addSteps(goal, with: newStepUnits) else { return false }
+    func addSteps(_ goal: Goal, with newStepUnits: Double, completion: @escaping ((Bool) -> Void)) {
+        guard !JourneyErrorHandler.addHasErrors(with: goal, newStepUnits: newStepUnits) else {
+            completion(false)
+            return
+        }
         
-        fetchAllGoals()
-        return true 
+        DispatchQueue.global(qos: .default).async {
+            if self.dataManager.addSteps(goal, with: newStepUnits) {
+                DispatchQueue.main.async {
+                    self.fetchAllGoals()
+                    completion(true)
+                }
+            }
+            DispatchQueue.main.async { completion(false) }
+        }
     }
     
     

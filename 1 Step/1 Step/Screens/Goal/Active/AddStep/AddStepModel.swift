@@ -95,12 +95,14 @@ class AddStepModel: ObservableObject {
         
         if addStepsResult.isMilestoneChange {
             DispatchQueue.main.asyncAfter(deadline: .now() + addStepAnimationHandler.after(milestoneChangeState: .closeFinished)) {
-                _ = DataModel.shared.addSteps(self.goal, with: newStepUnits)
-                GoalModel.shared.objectWillChange.send()
+                DataModel.shared.addSteps(self.goal, with: newStepUnits) { 
+                    if $0 { GoalModel.shared.objectWillChange.send() }
+                }
             }
         } else {
-            _ = DataModel.shared.addSteps(goal, with: newStepUnits)
-            GoalModel.shared.objectWillChange.send()
+            DataModel.shared.addSteps(self.goal, with: newStepUnits) {
+                if $0 { GoalModel.shared.objectWillChange.send() }
+            }
         }
         
         //Hide
