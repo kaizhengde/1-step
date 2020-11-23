@@ -11,7 +11,7 @@ struct OneSImagePicker: View {
     
     let deleteAction: () -> ()
     let onImagePicked: (UIImage) -> ()
-    
+
     
     var body: some View {
         ZStack {

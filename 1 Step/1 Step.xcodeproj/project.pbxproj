@@ -162,6 +162,10 @@
 		3DFD9BA7256AE4E600CF9580 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD9BA6256AE4E600CF9580 /* ImagePicker.swift */; };
 		3DFD9BAD256AEF3B00CF9580 /* OneSImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD9BAC256AEF3B00CF9580 /* OneSImagePicker.swift */; };
 		3DFD9BB6256B7CAA00CF9580 /* OneSSafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD9BB5256B7CAA00CF9580 /* OneSSafariView.swift */; };
+		3DFD9BBD256B864800CF9580 /* ProfileHelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD9BBC256B864800CF9580 /* ProfileHelpView.swift */; };
+		3DFD9BC6256B868700CF9580 /* ProfileHelpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD9BC5256B868700CF9580 /* ProfileHelpModel.swift */; };
+		3DFD9BCC256BA2A200CF9580 /* PremiumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD9BCB256BA2A200CF9580 /* PremiumModel.swift */; };
+		3DFD9BD0256BA2AB00CF9580 /* PremiumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD9BCF256BA2AB00CF9580 /* PremiumView.swift */; };
 		3DFDE052253C4663006B1A7E /* GoalEditScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFDE051253C4663006B1A7E /* GoalEditScreen.swift */; };
 		3DFDE055253C4678006B1A7E /* GoalEditModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFDE054253C4678006B1A7E /* GoalEditModel.swift */; };
 		3DFDE07A253C8800006B1A7E /* SheetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFDE079253C8800006B1A7E /* SheetManager.swift */; };
@@ -336,6 +340,10 @@
 		3DFD9BA6256AE4E600CF9580 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		3DFD9BAC256AEF3B00CF9580 /* OneSImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSImagePicker.swift; sourceTree = "<group>"; };
 		3DFD9BB5256B7CAA00CF9580 /* OneSSafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSSafariView.swift; sourceTree = "<group>"; };
+		3DFD9BBC256B864800CF9580 /* ProfileHelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHelpView.swift; sourceTree = "<group>"; };
+		3DFD9BC5256B868700CF9580 /* ProfileHelpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHelpModel.swift; sourceTree = "<group>"; };
+		3DFD9BCB256BA2A200CF9580 /* PremiumModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumModel.swift; sourceTree = "<group>"; };
+		3DFD9BCF256BA2AB00CF9580 /* PremiumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumView.swift; sourceTree = "<group>"; };
 		3DFDE051253C4663006B1A7E /* GoalEditScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEditScreen.swift; sourceTree = "<group>"; };
 		3DFDE054253C4678006B1A7E /* GoalEditModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEditModel.swift; sourceTree = "<group>"; };
 		3DFDE079253C8800006B1A7E /* SheetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetManager.swift; sourceTree = "<group>"; };
@@ -706,6 +714,8 @@
 				3D59DE91256964D600CF24D7 /* ProfileAccomplishmentsSectionView.swift */,
 				3D59DEA325697A8200CF24D7 /* ProfileAppSectionView.swift */,
 				3D59DEA725697AC900CF24D7 /* ProfileAboutSectionView.swift */,
+				3DFD9BC4256B865200CF9580 /* Premium */,
+				3DFD9BBB256B863400CF9580 /* Help */,
 			);
 			path = ProfileSections;
 			sourceTree = "<group>";
@@ -1047,6 +1057,24 @@
 			path = SafariView;
 			sourceTree = "<group>";
 		};
+		3DFD9BBB256B863400CF9580 /* Help */ = {
+			isa = PBXGroup;
+			children = (
+				3DFD9BC5256B868700CF9580 /* ProfileHelpModel.swift */,
+				3DFD9BBC256B864800CF9580 /* ProfileHelpView.swift */,
+			);
+			path = Help;
+			sourceTree = "<group>";
+		};
+		3DFD9BC4256B865200CF9580 /* Premium */ = {
+			isa = PBXGroup;
+			children = (
+				3DFD9BCB256BA2A200CF9580 /* PremiumModel.swift */,
+				3DFD9BCF256BA2AB00CF9580 /* PremiumView.swift */,
+			);
+			path = Premium;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1249,11 +1277,14 @@
 				3DA7BD3A2532F6A600171360 /* DataManager.swift in Sources */,
 				3D6FDDDF2567B6E2002854E6 /* Appear.swift in Sources */,
 				3D59DE92256964D600CF24D7 /* ProfileAccomplishmentsSectionView.swift in Sources */,
+				3DFD9BC6256B868700CF9580 /* ProfileHelpModel.swift in Sources */,
 				3D10D1CD254D2D53002D2D3E /* MilestoneDotView.swift in Sources */,
+				3DFD9BD0256BA2AB00CF9580 /* PremiumView.swift in Sources */,
 				3DCFE29625459E390012C536 /* OneSPicker.swift in Sources */,
 				3D6D6454254C0F2400FAA37F /* JourneyErrorHandler.swift in Sources */,
 				3D511EED256802C50028DB66 /* OneSTextPassage.swift in Sources */,
 				3D2E7941253017B600788AA2 /* OneSSmallBorderButton.swift in Sources */,
+				3DFD9BBD256B864800CF9580 /* ProfileHelpView.swift in Sources */,
 				3D4FD8722564F48F00103C73 /* GoalReachedSummaryView.swift in Sources */,
 				3D78FD3A2566FD1D00C1D0D2 /* GoalInfoModel.swift in Sources */,
 				3DE0796925340F080024E17D /* GoalItem.swift in Sources */,
@@ -1297,6 +1328,7 @@
 				3DE9C50E252CAACC0023C212 /* GoalsModel.swift in Sources */,
 				3D6FDDB425670868002854E6 /* OneSDropDown.swift in Sources */,
 				3D47CC89252C70B700A8CA1B /* Images.swift in Sources */,
+				3DFD9BCC256BA2A200CF9580 /* PremiumModel.swift in Sources */,
 				3D407855254E8E4E00744652 /* MilestoneProgressView.swift in Sources */,
 				3DF1E276254819FF00D65244 /* Double.swift in Sources */,
 				3DDF70292531A5BB00FD3011 /* UserColor.swift in Sources */,

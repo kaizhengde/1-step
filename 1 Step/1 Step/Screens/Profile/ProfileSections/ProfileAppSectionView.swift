@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ProfileAppSectionView: View {
     
+    @StateObject private var sheetManager = SheetManager.shared
     @ObservedObject var profileModel: ProfileModel
     
     
@@ -23,7 +24,9 @@ struct ProfileAppSectionView: View {
                     DataAndPrivacyContentView(profileModel: profileModel)
                 }
                 
-                OneSRowButton(.long, title: "Help", accessorySFSymbol: ProfileSymbol.help) {}
+                OneSRowButton(.long, title: "Help", accessorySFSymbol: ProfileSymbol.help) {
+                    sheetManager.showSheet { ProfileHelpView(profileModel: profileModel) }
+                }
             }
         }
     }

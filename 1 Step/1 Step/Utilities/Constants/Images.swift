@@ -48,6 +48,7 @@ enum ProfileSymbol {
     static let rate             = Image(systemName: "star")
     static let feedback         = Image(systemName: "message")
     static let website          = Image(systemName: "globe")
+    static let instagram        = Image(systemName: "camera.circle")
     static let vfdCollective    = Image(systemName: "light.max")
     static let pastelTree       = Image(systemName: "paintbrush")
 }
