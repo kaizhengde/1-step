@@ -22,6 +22,7 @@ struct GoalMenuView: View {
                 
                 VStack(spacing: 5) {
                     GoalMenuItem(goal: $goalModel.selectedGoal)
+                        .oneSItemTransition()
                     
                     RoundedRectangle(cornerRadius: 2)
                         .frame(width: GoalItemArt.width/1.3, height: 4)

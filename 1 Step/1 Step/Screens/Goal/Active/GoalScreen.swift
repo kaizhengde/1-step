@@ -17,7 +17,9 @@ struct GoalScreen: View {
     var body: some View {
         ZStack(alignment: .leading) {
             Group {
-                GoalMenuView()
+                if !goalModel.noDrag {
+                    GoalMenuView()
+                }
                 GoalView()
             }
             .highPriorityGesture(
