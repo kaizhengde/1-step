@@ -5,4 +5,7 @@
 //  Created by Kai Zheng on 23.11.20.
 //
 
-import Foundation
+import SwiftUI
+
+class PremiumModel: ObservableObject {
+}

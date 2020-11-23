@@ -53,7 +53,10 @@ struct ProfileAppSectionView: View {
                     backgroundColor: profileModel.appSelectedRowBackgroundColor(premium),
                     accessoryText: profileModel.appSelectedRowAccessoryText(premium, enabled: "Yes!", disabled: "No"),
                     accessoryColor: profileModel.appSelectedRowAccessoryColor(premium),
-                    action: { print("show PremiumView sheet.") }
+                    action: {
+                        if premium { ConfettiManager.shared.showConfetti(amount: .small) }
+                        else { FullSheetManager.shared.showFullSheet { PremiumView() } }
+                    }
                 )
                                 
                 OneSDropDown(

@@ -70,4 +70,5 @@ enum MountainLayout {
     
     static let height: CGFloat              = 626.0 * Layout.multiplierWidth
     static let withFlagHeight: CGFloat      = 670.0 * Layout.multiplierWidth
+    static let premiumHeight: CGFloat       = 585.0 * Layout.multiplierWidth
 }

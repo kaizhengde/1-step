@@ -166,6 +166,8 @@
 		3DFD9BC6256B868700CF9580 /* ProfileHelpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD9BC5256B868700CF9580 /* ProfileHelpModel.swift */; };
 		3DFD9BCC256BA2A200CF9580 /* PremiumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD9BCB256BA2A200CF9580 /* PremiumModel.swift */; };
 		3DFD9BD0256BA2AB00CF9580 /* PremiumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD9BCF256BA2AB00CF9580 /* PremiumView.swift */; };
+		3DFD9BD5256BBC9E00CF9580 /* OneSFullSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD9BD4256BBC9E00CF9580 /* OneSFullSheet.swift */; };
+		3DFD9BD9256BBCFD00CF9580 /* FullSheetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD9BD8256BBCFD00CF9580 /* FullSheetManager.swift */; };
 		3DFDE052253C4663006B1A7E /* GoalEditScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFDE051253C4663006B1A7E /* GoalEditScreen.swift */; };
 		3DFDE055253C4678006B1A7E /* GoalEditModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFDE054253C4678006B1A7E /* GoalEditModel.swift */; };
 		3DFDE07A253C8800006B1A7E /* SheetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFDE079253C8800006B1A7E /* SheetManager.swift */; };
@@ -344,6 +346,8 @@
 		3DFD9BC5256B868700CF9580 /* ProfileHelpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHelpModel.swift; sourceTree = "<group>"; };
 		3DFD9BCB256BA2A200CF9580 /* PremiumModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumModel.swift; sourceTree = "<group>"; };
 		3DFD9BCF256BA2AB00CF9580 /* PremiumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumView.swift; sourceTree = "<group>"; };
+		3DFD9BD4256BBC9E00CF9580 /* OneSFullSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSFullSheet.swift; sourceTree = "<group>"; };
+		3DFD9BD8256BBCFD00CF9580 /* FullSheetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullSheetManager.swift; sourceTree = "<group>"; };
 		3DFDE051253C4663006B1A7E /* GoalEditScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEditScreen.swift; sourceTree = "<group>"; };
 		3DFDE054253C4678006B1A7E /* GoalEditModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEditModel.swift; sourceTree = "<group>"; };
 		3DFDE079253C8800006B1A7E /* SheetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetManager.swift; sourceTree = "<group>"; };
@@ -537,6 +541,7 @@
 				3DCFE29425459E260012C536 /* Pickers */,
 				3DFD9BB0256AEFDA00CF9580 /* ImagePickers */,
 				3D5156B12531F80D00A44450 /* MiniSheets */,
+				3DFD9BD3256BBC7D00CF9580 /* FullSheets */,
 				3D2E795A25301E8E00788AA2 /* Popups */,
 				3D5ACAF22530663A00E1FABE /* Floaters */,
 				3DFD9BB3256B7B4300CF9580 /* SafariView */,
@@ -700,6 +705,7 @@
 			isa = PBXGroup;
 			children = (
 				3DFDE079253C8800006B1A7E /* SheetManager.swift */,
+				3DFD9BD8256BBCFD00CF9580 /* FullSheetManager.swift */,
 				3D5156B72531FB3F00A44450 /* ViewOverlayManagerProtocol.swift */,
 				3D5156BB2531FB7E00A44450 /* MiniSheetManager.swift */,
 				3D2E7967253021A900788AA2 /* PopupManager.swift */,
@@ -1075,6 +1081,14 @@
 			path = Premium;
 			sourceTree = "<group>";
 		};
+		3DFD9BD3256BBC7D00CF9580 /* FullSheets */ = {
+			isa = PBXGroup;
+			children = (
+				3DFD9BD4256BBC9E00CF9580 /* OneSFullSheet.swift */,
+			);
+			path = FullSheets;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1225,6 +1239,7 @@
 				3D2E792F252F721A00788AA2 /* DismissableObservableObject.swift in Sources */,
 				3D5156B82531FB3F00A44450 /* ViewOverlayManagerProtocol.swift in Sources */,
 				3DDF70312531BAA100FD3011 /* Goal.swift in Sources */,
+				3DFD9BD5256BBC9E00CF9580 /* OneSFullSheet.swift in Sources */,
 				3D959A8825628441007BAA07 /* ConfettiType.swift in Sources */,
 				3DAE7AE425309D0F00B162B1 /* FloaterManager.swift in Sources */,
 				3DD5C9D02539CF7B00861784 /* GoalModel.swift in Sources */,
@@ -1336,6 +1351,7 @@
 				3D160D55252E2067008588D5 /* TransitionManager.swift in Sources */,
 				3D959A8E25628E74007BAA07 /* OneSConfetti.swift in Sources */,
 				3DE0796C25340F550024E17D /* GoalItemArt.swift in Sources */,
+				3DFD9BD9256BBCFD00CF9580 /* FullSheetManager.swift in Sources */,
 				3DFDE052253C4663006B1A7E /* GoalEditScreen.swift in Sources */,
 				3D6F4399253AE19C00785586 /* GoalHeaderView.swift in Sources */,
 				3D4B78E5252CDE9E00A45755 /* GoalSelectMountainModel.swift in Sources */,

@@ -44,7 +44,7 @@ struct ProfileScreen: View {
                 OneSText(text: "Made in Zurich, Switzerland", font: .footnote2, color: .grayToBackground)
                 OneSText(text: "Version 1.0", font: .footnote2, color: .grayToBackground)
             }
-            .padding(.bottom, 100*Layout.multiplierHeight)
+            .padding(.bottom, 80*Layout.multiplierHeight)
         }
     }
 }

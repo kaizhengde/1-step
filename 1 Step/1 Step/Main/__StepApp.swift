@@ -19,6 +19,7 @@ struct __StepApp: App {
     let goalModel               = GoalModel.shared
         
     let sheetManager            = SheetManager.shared
+    let fullSheeetManager       = FullSheetManager.shared
     let miniSheetManager        = MiniSheetManager.shared
     let popupManager            = PopupManager.shared
     let floaterManager          = FloaterManager.shared

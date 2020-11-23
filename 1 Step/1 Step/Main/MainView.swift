@@ -25,6 +25,7 @@ struct MainView: View {
             mainModel.screen(.profile) { ProfileScreen() }
         }
         .oneSOpacityAnimation()
+        .oneSFullSheet()
         .sheet(isPresented: $sheetManager.appear, content: sheetManager.content)
         .oneSMiniSheet()
         .oneSPopup()

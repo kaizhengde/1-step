@@ -16,6 +16,7 @@ enum SFSymbol {
     static let rosette          = Image(systemName: "rosette")
     static let plus             = Image(systemName: "plus")
     static let camera           = Image(systemName: "camera.fill")
+    static let info             = Image(systemName: "info.circle.fill")
 }
 
 
@@ -102,4 +103,30 @@ enum SecondaryHeaderButtonSymbol {
 }
 
 
-
+enum MountainPremium {
+    
+    static let mountainPremiumDefaultLight = Image("MountainPremiumDefaultLight")
+    static let mountainPremiumDefaultDark = Image("MountainPremiumDefaultDark")
+    
+    static let mountainPremiumPastelLight = Image("MountainPremiumPastelLight")
+    static let mountainPremiumPastelDark = Image("MountainPremiumPastelDark")
+    
+    static let mountainPremiumFallLight = Image("MountainPremiumFallLight")
+    static let mountainPremiumFallDark = Image("MountainPremiumFallDark")
+    
+    static var currentLight: Image {
+        switch UserDefaultsManager.shared.settingColorTheme {
+        case .default: return mountainPremiumDefaultLight
+        case .pastel: return mountainPremiumPastelLight
+        case .fall: return mountainPremiumFallLight
+        }
+    }
+    
+    static var currentDark: Image {
+        switch UserDefaultsManager.shared.settingColorTheme {
+        case .default: return mountainPremiumDefaultDark
+        case .pastel: return mountainPremiumPastelDark
+        case .fall: return mountainPremiumFallDark
+        }
+    }
+}
