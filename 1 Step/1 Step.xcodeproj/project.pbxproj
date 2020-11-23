@@ -168,6 +168,8 @@
 		3DFD9BD0256BA2AB00CF9580 /* PremiumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD9BCF256BA2AB00CF9580 /* PremiumView.swift */; };
 		3DFD9BD5256BBC9E00CF9580 /* OneSFullSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD9BD4256BBC9E00CF9580 /* OneSFullSheet.swift */; };
 		3DFD9BD9256BBCFD00CF9580 /* FullSheetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD9BD8256BBCFD00CF9580 /* FullSheetManager.swift */; };
+		3DFD9BE0256C1B8500CF9580 /* FirstStartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD9BDF256C1B8500CF9580 /* FirstStartModel.swift */; };
+		3DFD9BE6256C1B9000CF9580 /* FirstStartScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD9BE5256C1B9000CF9580 /* FirstStartScreen.swift */; };
 		3DFDE052253C4663006B1A7E /* GoalEditScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFDE051253C4663006B1A7E /* GoalEditScreen.swift */; };
 		3DFDE055253C4678006B1A7E /* GoalEditModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFDE054253C4678006B1A7E /* GoalEditModel.swift */; };
 		3DFDE07A253C8800006B1A7E /* SheetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFDE079253C8800006B1A7E /* SheetManager.swift */; };
@@ -348,6 +350,8 @@
 		3DFD9BCF256BA2AB00CF9580 /* PremiumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumView.swift; sourceTree = "<group>"; };
 		3DFD9BD4256BBC9E00CF9580 /* OneSFullSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSFullSheet.swift; sourceTree = "<group>"; };
 		3DFD9BD8256BBCFD00CF9580 /* FullSheetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullSheetManager.swift; sourceTree = "<group>"; };
+		3DFD9BDF256C1B8500CF9580 /* FirstStartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstStartModel.swift; sourceTree = "<group>"; };
+		3DFD9BE5256C1B9000CF9580 /* FirstStartScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstStartScreen.swift; sourceTree = "<group>"; };
 		3DFDE051253C4663006B1A7E /* GoalEditScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEditScreen.swift; sourceTree = "<group>"; };
 		3DFDE054253C4678006B1A7E /* GoalEditModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEditModel.swift; sourceTree = "<group>"; };
 		3DFDE079253C8800006B1A7E /* SheetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetManager.swift; sourceTree = "<group>"; };
@@ -525,6 +529,7 @@
 			children = (
 				3DE11C34252C681200F13719 /* __StepApp.swift */,
 				3D47CC7A252C6C1C00A8CA1B /* MainView.swift */,
+				3DFD9BDE256C1B5C00CF9580 /* FirstStart */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -1089,6 +1094,15 @@
 			path = FullSheets;
 			sourceTree = "<group>";
 		};
+		3DFD9BDE256C1B5C00CF9580 /* FirstStart */ = {
+			isa = PBXGroup;
+			children = (
+				3DFD9BDF256C1B8500CF9580 /* FirstStartModel.swift */,
+				3DFD9BE5256C1B9000CF9580 /* FirstStartScreen.swift */,
+			);
+			path = FirstStart;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1227,6 +1241,7 @@
 				3DE11C3E252C681600F13719 /* PersistenceManger.swift in Sources */,
 				3D4B78D8252CD4F000A45755 /* GoalCreateModel.swift in Sources */,
 				3D996778253F57F7000CE151 /* JourneyDataHandler.swift in Sources */,
+				3DFD9BE0256C1B8500CF9580 /* FirstStartModel.swift in Sources */,
 				3D6D6458254C4D2400FAA37F /* JourneyModel.swift in Sources */,
 				3DC6172C2544882B00A1F204 /* MilestoneStages.swift in Sources */,
 				3DE9C519252CB0520023C212 /* GoalCreateItem.swift in Sources */,
@@ -1246,6 +1261,7 @@
 				3D10D1D1254D3051002D2D3E /* MilestoneView.swift in Sources */,
 				3D47CC7B252C6C1C00A8CA1B /* MainView.swift in Sources */,
 				3D2E794A253019A200788AA2 /* UIApplication.swift in Sources */,
+				3DFD9BE6256C1B9000CF9580 /* FirstStartScreen.swift in Sources */,
 				3D59DEA425697A8200CF24D7 /* ProfileAppSectionView.swift in Sources */,
 				3D258282253C0A9300DC19E7 /* Color.swift in Sources */,
 				3D2E795825301DA400788AA2 /* OneSFillButton.swift in Sources */,

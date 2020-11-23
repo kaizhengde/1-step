@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct Screen {
     
@@ -17,18 +18,20 @@ struct Screen {
         
         case none
         case goals
-        case goal(GoalScreenShowState)
         case goalAdd
+        case firstStart
+        case goal(GoalScreenShowState)
         case profile
 
         func isScreen(_ screen: Self) -> Bool {
             switch screen {
             case .none: return self == .none
             case .goals: return self == .goals || self == .goal(.transition)
+            case .goalAdd: return self == .goalAdd
+            case .firstStart: return self == .firstStart
             case .goal(.transition): return self == .goal(.transition)
             case .goal(.showActive): return self == .goal(.showActive)
             case .goal(.showReached): return self == .goal(.showReached)
-            case .goalAdd: return self == .goalAdd
             case .profile: return self == .profile
             }
         }
@@ -48,11 +51,12 @@ final class MainModel: ObservableObject {
     static let shared = MainModel()
     private init() {        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            self.currentScreen.active = .goals
+            let initialScreen: Screen.Active = UserDefaultsManager.shared.firstStart ? .firstStart : .goals
+            self.currentScreen.active = initialScreen
         }
     }
     
-    @Published private(set) var currentScreen: Screen = Screen() 
+    @Published private(set) var currentScreen: Screen = Screen()
     
     
     func toScreen(_ nextScreen: Screen.Active) {
@@ -91,7 +95,7 @@ final class MainModel: ObservableObject {
     
     
     //MARK: - Window
-    
+        
     var window: UIWindow? {
         guard let scene = UIApplication.shared.connectedScenes.first,
               let windowSceneDelegate = scene.delegate as? UIWindowSceneDelegate,

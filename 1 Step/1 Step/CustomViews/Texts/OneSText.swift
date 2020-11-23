@@ -12,13 +12,21 @@ struct OneSText: View {
     let text: String
     let font: OneSFont
     let color: Color
+    let alignment: TextAlignment
+    
+    init(text: String, font: OneSFont, color: Color, alignment: TextAlignment = .leading) {
+        self.text = text
+        self.font = font
+        self.color = color
+        self.alignment = alignment
+    }
     
     
     var body: some View {
         Text(text)
             .font(font.get())
             .foregroundColor(color)
-            .multilineTextAlignment(.leading)
+            .multilineTextAlignment(alignment)
     }
 }
 

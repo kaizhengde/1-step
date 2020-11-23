@@ -18,10 +18,11 @@ struct MainView: View {
             Color.whiteToDarkGray.edgesIgnoringSafeArea(.all)
             
             mainModel.screen(.goals) { GoalsScreen() }
+            mainModel.screen(.goalAdd) { GoalCreateScreen() }
+            mainModel.screen(.firstStart) { FirstStartScreen() }
             mainModel.screen(.goal(.transition)) { GoalTransitionView() }
             mainModel.screen(.goal(.showActive)) { GoalScreen() }
             mainModel.screen(.goal(.showReached)) { GoalReachedScreen() }
-            mainModel.screen(.goalAdd) { GoalCreateScreen() }
             mainModel.screen(.profile) { ProfileScreen() }
         }
         .oneSOpacityAnimation()
