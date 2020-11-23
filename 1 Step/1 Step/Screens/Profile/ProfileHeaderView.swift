@@ -59,7 +59,7 @@ struct ProfileHeaderView: View {
                                 userDefaultsManager.userProfileImage = Data()
                                 sheetManager.dismiss()
                             }) { selectedImage in
-                                userDefaultsManager.userProfileImage = selectedImage.jpegData(compressionQuality: 0.1)!
+                                userDefaultsManager.userProfileImage = selectedImage.jpegData(compressionQuality: 0.5)!
                             }
                             .accentColor(UserColor.user0.standard)
                         }

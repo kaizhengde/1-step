@@ -40,7 +40,7 @@ final class GoalModel: TransitionObservableObject {
     @Published var showFlag: Bool = false
     
     private var userdefaultsManager: UserDefaultsManager { UserDefaultsManager.shared }
-    private var selectedAppearance: OneSAppearance { userdefaultsManager.settingAppearance }
+    private var selectedAppearance: OneSAppearance { userdefaultsManager.settingAppearance }
     
     
     //MARK: - Transition
