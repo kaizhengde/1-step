@@ -55,12 +55,12 @@ struct FirstStartScreen: View {
         
         var body: some View {
             VStack(spacing: 70*Layout.multiplierHeight) {
-                OneSText(text: "Step 1 of 2", font: .custom(weight: Raleway.semiBold, size: 16), color: UserColor.user1.standard)
+                OneSText(text: "Step 1 of 2", font: .custom(.semiBold, 16), color: UserColor.user1.standard)
                     .padding(.top, 10)
                 
                 VStack(alignment: .leading, spacing: 28*Layout.multiplierHeight) {
-                    OneSText(text: "Hi 🙂\nWhat’s your name?", font: .custom(weight: Raleway.bold, size: 30), color: UserColor.user1.standard)
-                    OneSText(text: "How should we call you?", font: .custom(weight: Raleway.regular, size: 20), color: .grayToBackground)
+                    OneSText(text: "Hi 🙂\nWhat’s your name?", font: .custom(.bold, 30), color: UserColor.user1.standard)
+                    OneSText(text: "How should we call you?", font: .custom(.regular, 20), color: .grayToBackground)
                     OneSTextField(input: $viewModel.userNameInput, placeholder: "Your name", inputColor: UserColor.user0.standard, inputLimit: 20) { viewModel.toStepOneConfirm() }
                         .padding(.top, 20)
                     
@@ -95,7 +95,7 @@ struct FirstStartScreen: View {
         var body: some View {
             VStack(spacing: 20*Layout.multiplierHeight) {
                 OneSHeaderText(text: "Welcome")
-                OneSText(text: "\(viewModel.userNameInput), we are excited to support you on your journey", font: .custom(weight: Raleway.semiBold, size: 30), color: UserColor.user1.standard, alignment: .center)
+                OneSText(text: "\(viewModel.userNameInput), we are excited to support you on your journey", font: .custom(.semiBold, 30), color: UserColor.user1.standard, alignment: .center)
                 
                 Spacer()
                 
@@ -116,7 +116,7 @@ struct FirstStartScreen: View {
         
         var body: some View {
             ZStack(alignment: .top) {
-                MountainImage.mountain1.get()
+                MountainImage.mountain1.image
                     .renderingMode(.template)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
@@ -127,7 +127,7 @@ struct FirstStartScreen: View {
                     .offset(y: viewModel.currentStep == .two ? 0 : MountainLayout.height*0.7)
                     .oneSMountainAnimation(delay: 0.3)
                 
-                MountainImage.mountain0.get()
+                MountainImage.mountain0.image
                     .renderingMode(.template)
                     .resizable()
                     .aspectRatio(contentMode: .fit)

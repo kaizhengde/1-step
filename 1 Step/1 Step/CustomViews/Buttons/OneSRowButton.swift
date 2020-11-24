@@ -95,7 +95,7 @@ struct OneSRowButton: View {
                         .colorMultiply(color)
                     
                 } else if let text = title {
-                    OneSText(text: text, font: .custom(weight: Raleway.extraBold, size: 17), color: color)
+                    OneSText(text: text, font: .custom(.extraBold, 17), color: color)
                 }
             }
         }

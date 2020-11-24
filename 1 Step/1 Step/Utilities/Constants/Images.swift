@@ -23,19 +23,6 @@ enum SFSymbol {
 enum Symbol {
     
     static let longArrowDown    = Image("LongArrowDown")
-}
-
-
-enum Flag {
-    
-    static let flag             = Image("Flag")
-    static let flagLine         = Image("FlagLine")
-    static let flagFlag         = Image("FlagFlag")
-}
-
-
-enum Emoji {
-    
     static let deer             = Image("DeerEmoji")
 }
 
@@ -62,19 +49,19 @@ enum HeaderButtonSymbol {
     
     func get() -> Image {
         switch self {
-        case .profile:  return Image("ProfileSymbol")
-        case .close:    return Image("CloseSymbol")
-        case .back:     return Image("BackSymbol")
-        case .settings: return Image("SettingsFillSymbol")
-        case .custom(_): return Image("")
+        case .profile:          return Image("ProfileSymbol")
+        case .close:            return Image("CloseSymbol")
+        case .back:             return Image("BackSymbol")
+        case .settings:         return Image("SettingsFillSymbol")
+        case .custom(_):        return Image("")
         }
     }
     
     
     func isCustom() -> Bool {
         switch self {
-        case .custom(_): return true
-        default: return false 
+        case .custom(_):        return true
+        default:                return false
         }
     }
     
@@ -82,7 +69,7 @@ enum HeaderButtonSymbol {
     func getCustom() -> AnyView {
         switch self {
         case let .custom(view): return view
-        default: return AnyView(EmptyView())
+        default:                return AnyView(EmptyView())
         }
     }
 }
@@ -95,38 +82,71 @@ enum SecondaryHeaderButtonSymbol {
     
     func get() -> Image {
         switch self {
-        case .continue: return SFSymbol.`continue`
-        case .save:     return SFSymbol.check
-        case .delete:   return SFSymbol.delete
+        case .continue:         return SFSymbol.continue
+        case .save:             return SFSymbol.check
+        case .delete:           return SFSymbol.delete
         }
     }
 }
 
 
-enum MountainPremium {
+extension MountainImage {
     
-    static let mountainPremiumDefaultLight = Image("MountainPremiumDefaultLight")
-    static let mountainPremiumDefaultDark = Image("MountainPremiumDefaultDark")
-    
-    static let mountainPremiumPastelLight = Image("MountainPremiumPastelLight")
-    static let mountainPremiumPastelDark = Image("MountainPremiumPastelDark")
-    
-    static let mountainPremiumFallLight = Image("MountainPremiumFallLight")
-    static let mountainPremiumFallDark = Image("MountainPremiumFallDark")
-    
-    static var currentLight: Image {
-        switch UserDefaultsManager.shared.settingColorTheme {
-        case .default: return mountainPremiumDefaultLight
-        case .pastel: return mountainPremiumPastelLight
-        case .fall: return mountainPremiumFallLight
-        }
+    enum Goal {
+        
+        static let mountain0        = Image("Mountain0")
+        static let mountain1        = Image("Mountain1")
+        static let mountain2        = Image("Mountain2")
     }
     
-    static var currentDark: Image {
-        switch UserDefaultsManager.shared.settingColorTheme {
-        case .default: return mountainPremiumDefaultDark
-        case .pastel: return mountainPremiumPastelDark
-        case .fall: return mountainPremiumFallDark
+    
+    enum Flag {
+        
+        static let whole            = Image("Flag")
+        static let line             = Image("FlagLine")
+        static let top              = Image("FlagFlag")
+    }
+    
+    
+    enum Premium {
+        
+        static let defaultLight     = Image("MountainPremiumDefaultLight")
+        static let defaultDark      = Image("MountainPremiumDefaultDark")
+            
+        static let pastelLight      = Image("MountainPremiumPastelLight")
+        static let pastelDark       = Image("MountainPremiumPastelDark")
+            
+        static let fallLight        = Image("MountainPremiumFallLight")
+        static let fallDark         = Image("MountainPremiumFallDark")
+        
+        static var currentLight: Image {
+            switch UserDefaultsManager.shared.settingColorTheme {
+            case .default:          return defaultLight
+            case .pastel:           return pastelLight
+            case .fall:             return fallLight
+            }
+        }
+        
+        static var currentDark: Image {
+            switch UserDefaultsManager.shared.settingColorTheme {
+            case .default:          return defaultDark
+            case .pastel:           return pastelDark
+            case .fall:             return fallDark
+            }
         }
     }
+}
+
+
+extension MilestoneImage {
+    
+    static let house    = Image(systemName: "house")
+    static let tree     = Image("TreeSymbol")
+    static let cow      = Image("CowSymbol")
+    static let flower   = Image("GrassSymbol")
+    static let stone    = Image("StoneSymbol")
+    static let cloud    = Image(systemName: "cloud")
+    static let wind     = Image(systemName: "wind")
+    static let snow     = Image(systemName: "snow")
+    static let flag     = Image(systemName: "flag")
 }

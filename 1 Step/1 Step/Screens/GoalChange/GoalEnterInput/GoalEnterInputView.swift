@@ -23,7 +23,7 @@ struct GoalEnterInputView: View {
                 OneSTextField(input: $viewModel.selectedData.neededStepUnits, placeholder: "30", inputColor: selectedColor.standard, inputLimit: Goal.neededStepUnitsDigitsLimit, keyboard: .numberPad)
                     
                 OneSFillButton(text:        viewModel.stepEnterUnitButtonText(),
-                               textFont:    .custom(weight: Raleway.bold, size: 20),
+                               textFont:    .custom(.bold, 20),
                                textColor:   .whiteToDarkGray,
                                buttonColor: viewModel.stepEnterUnitButtonColor(selectedColor),
                                width:       140*Layout.multiplierWidth,

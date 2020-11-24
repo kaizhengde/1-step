@@ -18,7 +18,7 @@ struct GoalMenuView: View {
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(alignment: .leading) {
-                OneSText(text: "Goals", font: .custom(weight: Raleway.extraBold, size: 33), color: .grayToBackground)
+                OneSText(text: "Goals", font: .custom(.extraBold, 33), color: .grayToBackground)
                 
                 VStack(spacing: 5) {
                     GoalMenuItem(goal: $goalModel.selectedGoal)

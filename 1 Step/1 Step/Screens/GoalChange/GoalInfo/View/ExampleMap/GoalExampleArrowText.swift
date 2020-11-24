@@ -28,7 +28,7 @@ struct GoalExampleArrowText: View {
                 .foregroundColor(.white)
                 .colorMultiply(.neutralToDarkNeutral)
             
-            OneSText(text: text, font: .custom(weight: Raleway.medium, size: 17), color: .grayToBackground)
+            OneSText(text: text, font: .custom(.medium, 17), color: .grayToBackground)
             
             Spacer()
         }

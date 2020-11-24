@@ -54,7 +54,7 @@ struct OneSPicker: View {
                     if i == selected {
                         HStack(spacing: 1.5) {
                             OneSText(text: data.reversed()[i], font: .title2, color: .backgroundToDarkGray)
-                            OneSText(text: unit, font: .custom(weight: Raleway.semiBold, size: 12), color: .backgroundToGray)
+                            OneSText(text: unit, font: .custom(.semiBold, 12), color: .backgroundToGray)
                         }
                     } else {
                         OneSText(text: data.reversed()[i], font: .title2, color: .backgroundToDarkGray)

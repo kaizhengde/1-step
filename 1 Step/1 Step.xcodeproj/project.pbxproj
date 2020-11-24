@@ -26,7 +26,7 @@
 		3D2E7928252F6C2C00788AA2 /* GoalEnterInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2E7927252F6C2C00788AA2 /* GoalEnterInputModel.swift */; };
 		3D2E792C252F6CAB00788AA2 /* GoalEnterInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2E792B252F6CAB00788AA2 /* GoalEnterInputView.swift */; };
 		3D2E792F252F721A00788AA2 /* DismissableObservableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2E792E252F721A00788AA2 /* DismissableObservableObject.swift */; };
-		3D2E7933252F9CFA00788AA2 /* Animation+Delay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2E7932252F9CFA00788AA2 /* Animation+Delay.swift */; };
+		3D2E7933252F9CFA00788AA2 /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2E7932252F9CFA00788AA2 /* Duration.swift */; };
 		3D2E7936252F9D3E00788AA2 /* OneSHintButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2E7935252F9D3E00788AA2 /* OneSHintButton.swift */; };
 		3D2E7939252F9D7A00788AA2 /* OneSScaleButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2E7938252F9D7A00788AA2 /* OneSScaleButtonStyle.swift */; };
 		3D2E7941253017B600788AA2 /* OneSSmallBorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2E7940253017B600788AA2 /* OneSSmallBorderButton.swift */; };
@@ -207,7 +207,7 @@
 		3D2E7927252F6C2C00788AA2 /* GoalEnterInputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEnterInputModel.swift; sourceTree = "<group>"; };
 		3D2E792B252F6CAB00788AA2 /* GoalEnterInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEnterInputView.swift; sourceTree = "<group>"; };
 		3D2E792E252F721A00788AA2 /* DismissableObservableObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissableObservableObject.swift; sourceTree = "<group>"; };
-		3D2E7932252F9CFA00788AA2 /* Animation+Delay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Animation+Delay.swift"; sourceTree = "<group>"; };
+		3D2E7932252F9CFA00788AA2 /* Duration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Duration.swift; sourceTree = "<group>"; };
 		3D2E7935252F9D3E00788AA2 /* OneSHintButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSHintButton.swift; sourceTree = "<group>"; };
 		3D2E7938252F9D7A00788AA2 /* OneSScaleButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSScaleButtonStyle.swift; sourceTree = "<group>"; };
 		3D2E7940253017B600788AA2 /* OneSSmallBorderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSSmallBorderButton.swift; sourceTree = "<group>"; };
@@ -379,9 +379,8 @@
 		3D0B594A253319B000079856 /* Handlers */ = {
 			isa = PBXGroup;
 			children = (
-				3D0B5947253319AC00079856 /* GoalErrorHandler.swift */,
+				3D61083F256D0C8700DC20BD /* Error */,
 				3D854B10253EA3F900A4F80E /* GoalDeleteHandler.swift */,
-				3D6D6453254C0F2400FAA37F /* JourneyErrorHandler.swift */,
 				3D996777253F57F7000CE151 /* JourneyDataHandler.swift */,
 			);
 			path = Handlers;
@@ -550,6 +549,7 @@
 				3D2E795A25301E8E00788AA2 /* Popups */,
 				3D5ACAF22530663A00E1FABE /* Floaters */,
 				3DFD9BB3256B7B4300CF9580 /* SafariView */,
+				3D959A86256283E0007BAA07 /* Confetti */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -562,7 +562,6 @@
 				3D2E795225301AC800788AA2 /* Methods */,
 				3DF7916F25307EDE00F00174 /* Views */,
 				3D959A85256283C1007BAA07 /* Helpers */,
-				3D959A86256283E0007BAA07 /* Confetti */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -613,7 +612,7 @@
 				3D47CC88252C70B700A8CA1B /* Images.swift */,
 				3D47CCAD252C749500A8CA1B /* Fonts.swift */,
 				3D47CCC1252C807000A8CA1B /* Colors.swift */,
-				3D2E7932252F9CFA00788AA2 /* Animation+Delay.swift */,
+				3D2E7932252F9CFA00788AA2 /* Duration.swift */,
 				3D47CC90252C71EA00A8CA1B /* CoordinateSpace.swift */,
 			);
 			path = Constants;
@@ -746,6 +745,15 @@
 				3DAE7AEA2530A3E600B162B1 /* OneSTextFloater.swift */,
 			);
 			path = Floaters;
+			sourceTree = "<group>";
+		};
+		3D61083F256D0C8700DC20BD /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				3D0B5947253319AC00079856 /* GoalErrorHandler.swift */,
+				3D6D6453254C0F2400FAA37F /* JourneyErrorHandler.swift */,
+			);
+			path = Error;
 			sourceTree = "<group>";
 		};
 		3D6D6460254C4E1000FAA37F /* Milestone */ = {
@@ -1271,7 +1279,7 @@
 				3DF1E2722547F04A00D65244 /* HiddenView.swift in Sources */,
 				3D4FD8692564EE0700103C73 /* GoalReachedModel.swift in Sources */,
 				3D6F43A2253B266F00785586 /* GoalMenuView.swift in Sources */,
-				3D2E7933252F9CFA00788AA2 /* Animation+Delay.swift in Sources */,
+				3D2E7933252F9CFA00788AA2 /* Duration.swift in Sources */,
 				3D959AAE2563E79F007BAA07 /* GoalExampleArrowText.swift in Sources */,
 				3D47CC91252C71EA00A8CA1B /* CoordinateSpace.swift in Sources */,
 				3D0BEB072568E8B0002F74FE /* OneSColorTheme.swift in Sources */,

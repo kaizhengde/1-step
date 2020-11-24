@@ -61,7 +61,7 @@ struct PremiumView: View {
         @ObservedObject var viewModel: PremiumModel
         @Environment(\.colorScheme) var appearance: ColorScheme
         
-        var mountainPremium: Image { appearance == .light ? MountainPremium.currentLight : MountainPremium.currentDark }
+        var mountainPremium: Image { appearance == .light ? MountainImage.Premium.currentLight : MountainImage.Premium.currentDark }
         
         
         var body: some View {
@@ -92,7 +92,7 @@ struct PremiumView: View {
             
             var body: some View {
                 VStack(alignment: .leading, spacing: 20) {
-                    OneSText(text: "You choose the price", font: .custom(weight: Raleway.bold, size: 24), color: .grayToBackground)
+                    OneSText(text: "You choose the price", font: .custom(.bold, 24), color: .grayToBackground)
                     
                     HStack(spacing: 12) {
                         PremiumItem(price: "€ 7.99", backgroundColor: UserColor.user1.standard)
@@ -101,7 +101,7 @@ struct PremiumView: View {
                     .padding(.bottom, 40)
                     
                     Group {
-                        OneSText(text: "Note", font: .custom(weight: Raleway.bold, size: 20), color: .grayToBackground)
+                        OneSText(text: "Note", font: .custom(.bold, 20), color: .grayToBackground)
                         
                         OneSMultilineText(text: "This purchase will give you access to all current and future functionality. No subscription, you only pay once and it’s forever yours.")
                     }
@@ -110,8 +110,8 @@ struct PremiumView: View {
                         .padding(.top, 20)
                     
                     HStack(spacing: 40) {
-                        OneSText(text: "Privacy policy", font: .custom(weight: Raleway.semiBold, size: 13), color: UserColor.user0.standard)
-                        OneSText(text: "Terms of use", font: .custom(weight: Raleway.semiBold, size: 13), color: UserColor.user0.standard)
+                        OneSText(text: "Privacy policy", font: .custom(.semiBold, 13), color: UserColor.user0.standard)
+                        OneSText(text: "Terms of use", font: .custom(.semiBold, 13), color: UserColor.user0.standard)
                         Spacer()
                     }
                 }
@@ -129,15 +129,15 @@ struct PremiumView: View {
                     VStack {
                         HStack {
                             VStack(alignment: .leading, spacing: 3) {
-                                OneSText(text: "Lifetime", font: .custom(weight: Raleway.semiBold, size: 21), color: .whiteToDarkGray)
-                                OneSText(text: "PREMIUM", font: .custom(weight: Raleway.extraBold, size: 10), color: .whiteToDarkGray)
+                                OneSText(text: "Lifetime", font: .custom(.semiBold, 21), color: .whiteToDarkGray)
+                                OneSText(text: "PREMIUM", font: .custom(.extraBold, 10), color: .whiteToDarkGray)
                             }
                             Spacer()
                         }
                         
                         Spacer()
                         
-                        OneSText(text: price, font: .custom(weight: Raleway.extraBold, size: 28), color: .whiteToDarkGray)
+                        OneSText(text: price, font: .custom(.extraBold, 28), color: .whiteToDarkGray)
                     }
                     .padding(.vertical, 20)
                     .padding(.horizontal, 16)

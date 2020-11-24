@@ -21,7 +21,7 @@ struct OneSMultilineText: View {
     var body: some View {
         HStack {
             Text(text)
-                .font(.custom(bold ? Raleway.semiBold : Raleway.regular, size: 17))
+                .font(.custom(bold ? Raleway.semiBold.weight : Raleway.regular.weight, size: 17))
                 .foregroundColor(.grayToBackground)
                 .multilineTextAlignment(.leading)
                 .fixedSize(horizontal: false, vertical: true)

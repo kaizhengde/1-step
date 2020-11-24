@@ -39,9 +39,9 @@ struct GoalSelectMountainItem: View {
         
         var body: some View {
             VStack(spacing: -5) {
-                OneSText(text: mountain.name.top, font: .custom(weight: Raleway.light, size: 28*Layout.multiplierWidth), color: .grayToBackground)
+                OneSText(text: mountain.name.top, font: .custom(.light, 28*Layout.multiplierWidth), color: .grayToBackground)
                 
-                OneSText(text: mountain.name.bottom, font: .custom(weight: Raleway.bold, size: 46*Layout.multiplierWidth), color: .grayToBackground)
+                OneSText(text: mountain.name.bottom, font: .custom(.bold, 46*Layout.multiplierWidth), color: .grayToBackground)
             }
             .frame(width: Layout.firstLayerWidth, height: 80)
             .opacity(viewModel.textAndButtonOpacity(mountain))
@@ -57,7 +57,7 @@ struct GoalSelectMountainItem: View {
         
         
         var body: some View {
-            mountain.get()
+            mountain.image
                 .renderingMode(.template)
                 .resizable()
                 .frame(width: Layout.screenWidth, height: MountainLayout.height)

@@ -17,10 +17,19 @@ enum JourneyDataHandler {
      */
     
     
+    //MARK: - Calculation
+    
     static func calculateRatio(from baseData: Goal.BaseData) -> Int16 {
         return baseData.stepUnit!.getRatio(from: baseData.neededStepUnits!)
     }
     
+    
+    static func calculateStepAddArrays(from baseData: Goal.BaseData) -> (unit: [String], dual: [String]) {
+        return baseData.stepUnit!.getStepAddArrays(from: baseData.neededStepUnits!)
+    }
+    
+    
+    //MARK: - StepsDateArray
     
     static func updateStepsDate(with goal: Goal) -> [Date] {
         var newStepsDate = Array<Date>(repeating: .distantFuture, count: Int(goal.neededSteps))
@@ -35,10 +44,7 @@ enum JourneyDataHandler {
     }
     
     
-    static func calculateStepAddArrays(from baseData: Goal.BaseData) -> (unit: [String], dual: [String]) {
-        return baseData.stepUnit!.getStepAddArrays(from: baseData.neededStepUnits!)
-    }
-    
+    //MARK: - Milestones
 
     static func generateMilestones(with goal: Goal) -> Set<Milestone> {
         

@@ -80,7 +80,7 @@ struct GoalItem: View {
                         Text(goal.step.unit == .custom ? goal.step.customUnit : goal.step.unit.description)
                         Spacer()
                     }
-                    .font(GoalItemArt.stepsFont.get())
+                    .font(GoalItemArt.stepsFont.font)
                     .foregroundColor(.backgroundToGray)
                     .multilineTextAlignment(.leading)
                 }
@@ -100,7 +100,7 @@ struct GoalItem: View {
         
         var body: some View {
             ZStack(alignment: .init(horizontal: .flagMountainAlignment, vertical: .top)) {
-                goal.mountain.get()
+                goal.mountain.image
                     .renderingMode(.template)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
@@ -109,7 +109,7 @@ struct GoalItem: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                 
                 if goal.currentState == .reached {
-                    Flag.flag
+                    MountainImage.Flag.whole
                         .renderingMode(.template)
                         .resizable()
                         .aspectRatio(contentMode: .fill)

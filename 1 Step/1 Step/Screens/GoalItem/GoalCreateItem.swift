@@ -15,7 +15,7 @@ struct GoalCreateItem: View {
     var body: some View {
         Button(action: { mainModel.toScreen(.goalAdd) }) {
             SFSymbol.plus
-                .font(OneSFont.custom(weight: Raleway.light, size: 40).get())
+                .font(OneSFont.custom(.light, 40).font)
                 .foregroundColor(.lightNeutralToLightGray)
                 .frame(width: 145*Layout.multiplierWidth, height: 200)
                 .contentShape(Rectangle())

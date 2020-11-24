@@ -21,7 +21,7 @@ struct OneSImagePicker: View {
                     Spacer()
                     Button(action: deleteAction) {
                         SFSymbol.delete
-                            .font(.custom(Raleway.bold, size: 19))
+                            .font(.custom(Raleway.bold.weight, size: 19))
                             .foregroundColor(UserColor.user0.standard)
                     }
                     .padding()

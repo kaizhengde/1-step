@@ -24,7 +24,7 @@ struct GoalExampleBackgroundText: View {
         HStack {
             HStack {
                 Text(text)
-                    .font(.custom(Raleway.semiBold, size: big ? 20 : 17))
+                    .font(.custom(Raleway.semiBold.weight, size: big ? 20 : 17))
                     .foregroundColor(.backgroundToGray)
                     .multilineTextAlignment(.leading)
                     .fixedSize(horizontal: false, vertical: true)

@@ -16,7 +16,7 @@ struct OneSSectionView<Content: View>: View {
     var body: some View {
         VStack(spacing: 20) {
             HStack {
-                OneSText(text: title, font: .custom(weight: Raleway.semiBold, size: 16), color: .grayToBackground)
+                OneSText(text: title, font: .custom(.semiBold, 16), color: .grayToBackground)
                 Spacer()
             }
             content()

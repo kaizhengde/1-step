@@ -15,7 +15,7 @@ struct OneSBackgroundMultilineText: View {
     var body: some View {
         HStack {
             Text(text)
-                .font(.custom(Raleway.regular, size: 20))
+                .font(.custom(Raleway.regular.weight, size: 20))
                 .foregroundColor(.grayToBackground)
                 .multilineTextAlignment(.leading)
                 .fixedSize(horizontal: false, vertical: true)

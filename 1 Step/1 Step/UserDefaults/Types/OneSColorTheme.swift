@@ -18,25 +18,25 @@ enum OneSColorTheme: String, Codable, CaseIterable {
     
     var color0: OneSColorThemeType {
         switch self {
-        case .default: return Default.color0
-        case .pastel: return Pastel.color0
-        case .fall: return Fall.color0
+        case .default:  return Default.color0
+        case .pastel:   return Pastel.color0
+        case .fall:     return Fall.color0
         }
     }
     
     var color1: OneSColorThemeType {
         switch self {
-        case .default: return Default.color1
-        case .pastel: return Pastel.color1
-        case .fall: return Fall.color1
+        case .default:  return Default.color1
+        case .pastel:   return Pastel.color1
+        case .fall:     return Fall.color1
         }
     }
     
     var color2: OneSColorThemeType {
         switch self {
-        case .default: return Default.color2
-        case .pastel: return Pastel.color2
-        case .fall: return Fall.color2
+        case .default:  return Default.color2
+        case .pastel:   return Pastel.color2
+        case .fall:     return Fall.color2
         }
     }
 }

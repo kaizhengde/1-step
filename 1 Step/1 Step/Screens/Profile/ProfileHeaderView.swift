@@ -71,7 +71,7 @@ struct ProfileHeaderView: View {
         var name: String { userDefaultsManager.userName.isEmpty ? "You" : userDefaultsManager.userName }
         
         var body: some View {
-            OneSText(text: name, font: .custom(weight: Raleway.medium, size: 28), color: .grayToBackground)
+            OneSText(text: name, font: .custom(.medium, 28), color: .grayToBackground)
                 .onTapGesture {
                     popupManager.showTextFieldPopup(.changeName, titleText: "Name", bodyText: "Enter a new name.", input: userDefaultsManager.userName, placeholder: "Your name", placeholderColor: UserColor.user0.dark, textLimit: 20, backgroundColor: UserColor.user0.standard)
                 }

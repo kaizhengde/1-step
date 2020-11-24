@@ -46,7 +46,7 @@ struct GoalsHeaderView: View {
             var isActive: Bool { goalsModel.currentTab == tabActive }
             
             let text: String
-            var font: OneSFont { isActive ? .subtitle : .custom(weight: Raleway.extraLight, size: 15) }
+            var font: OneSFont { isActive ? .subtitle : .custom(.extraLight, 15) }
             var color: Color { isActive ? .grayToBackground : .darkNeutralToNeutral }
             
             

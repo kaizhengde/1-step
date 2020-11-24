@@ -9,35 +9,38 @@ import SwiftUI
 
 enum OneSFont {
     
-    case header, header2, title, title2, subtitle, body, body2, footnote, footnote2, custom(weight: String, size: CGFloat)
+    case header, header2, title, title2, subtitle, body, body2, footnote, footnote2, custom(Raleway, CGFloat)
     
-    func get() -> Font {
+    var font: Font {
         switch self {
-        case .header:       return Font.custom(Raleway.extraBold, size: 40)
-        case .header2:      return Font.custom(Raleway.extraBold, size: 30)
-        case .title:        return Font.custom(Raleway.bold, size: 32)
-        case .title2:       return Font.custom(Raleway.extraBold, size: 22)
-        case .subtitle:     return Font.custom(Raleway.bold, size: 16)
-        case .body:         return Font.custom(Raleway.medium, size: 17)
-        case .body2:        return Font.custom(Raleway.regular, size: 17)
-        case .footnote:     return Font.custom(Raleway.regular, size: 16)
-        case .footnote2:    return Font.custom(Raleway.regular, size: 13)
-        case let .custom(weight: weight, size: size):
-            return Font.custom(weight, size: size)
+        case .header:       return Font.custom(Raleway.extraBold.weight,    size: 40)
+        case .header2:      return Font.custom(Raleway.extraBold.weight,    size: 30)
+        case .title:        return Font.custom(Raleway.bold.weight,         size: 32)
+        case .title2:       return Font.custom(Raleway.extraBold.weight,    size: 22)
+        case .subtitle:     return Font.custom(Raleway.bold.weight,         size: 16)
+        case .body:         return Font.custom(Raleway.medium.weight,       size: 17)
+        case .body2:        return Font.custom(Raleway.regular.weight,      size: 17)
+        case .footnote:     return Font.custom(Raleway.regular.weight,      size: 16)
+        case .footnote2:    return Font.custom(Raleway.regular.weight,      size: 13)
+        case let .custom(weight, size):
+            return Font.custom(weight.weight, size: size)
         }
     }
 }
 
 
-enum Raleway {
+enum Raleway: String {
+
+    case black        = "Raleway-Black"
+    case extraBold    = "Raleway-ExtraBold"
+    case bold         = "Raleway-Bold"
+    case semiBold     = "Raleway-SemiBold"
+    case medium       = "Raleway-Medium"
+    case regular      = "Raleway-Regular"
+    case light        = "Raleway-Light"
+    case extraLight   = "Raleway-ExtraLight"
+    case thin         = "Raleway-Thin"
     
-    static let black        = "Raleway-Black"
-    static let extraBold    = "Raleway-ExtraBold"
-    static let bold         = "Raleway-Bold"
-    static let semiBold     = "Raleway-SemiBold"
-    static let medium       = "Raleway-Medium"
-    static let regular      = "Raleway-Regular"
-    static let light        = "Raleway-Light"
-    static let extraLight   = "Raleway-ExtraLight"
-    static let thin         = "Raleway-Thin"
+    
+    var weight: String { return self.rawValue }
 }

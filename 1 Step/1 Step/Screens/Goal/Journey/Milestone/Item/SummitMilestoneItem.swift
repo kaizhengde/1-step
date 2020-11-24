@@ -38,7 +38,7 @@ struct SummitMilestoneItem: View {
             VStack(spacing: 10) {
                 Group {
                     if milestone.image.isCustom {
-                        milestone.image.get()
+                        milestone.image.image
                             .renderingMode(.template)
                             .resizable()
                             .aspectRatio(contentMode: .fill)
@@ -46,7 +46,7 @@ struct SummitMilestoneItem: View {
                             .foregroundColor(.white)
                             .colorMultiply(.backgroundStatic)
                     } else {
-                        milestone.image.get()
+                        milestone.image.image
                             .font(.system(size: 50, weight: .thin))
                             .foregroundColor(.backgroundStatic)
                     }
@@ -58,12 +58,12 @@ struct SummitMilestoneItem: View {
                 HStack {
                     Spacer()
                     Text(milestone.neededStepUnits.toUI())
-                        .font(.custom(Raleway.regular, size: 18))
+                        .font(.custom(Raleway.regular.weight, size: 18))
                     +
                     Text(" ").font(.system(size: 5))
                     +
                     Text(goal.step.unit == .custom ? goal.step.customUnit : goal.step.unit.description)
-                        .font(.custom(Raleway.regular, size: 14))
+                        .font(.custom(Raleway.regular.weight, size: 14))
                     Spacer()
                 }
                 .foregroundColor(.backgroundStatic)

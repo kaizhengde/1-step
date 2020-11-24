@@ -24,8 +24,8 @@ extension Step {
     
     static let customUnitDigitsLimit = 10
     
-    var addArrayLastIndex: Int { addArray.count-1 }
-    var addArrayDualLastIndex: Int { addArrayDual.count-1 }
+    var addArrayLastIndex: Int      { addArray.count-1 }
+    var addArrayDualLastIndex: Int  { addArrayDual.count-1 }
     
-    var oneAddArrayEmpty: Bool { addArray.isEmpty || addArrayDual.isEmpty }
+    var oneAddArrayEmpty: Bool      { addArray.isEmpty || addArrayDual.isEmpty }
 }

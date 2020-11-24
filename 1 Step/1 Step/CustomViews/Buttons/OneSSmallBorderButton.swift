@@ -37,7 +37,7 @@ struct OneSSmallBorderButton: View {
         var body: some View {
             Button(action: { action() }) {
                 symbol
-                    .font(OneSFont.custom(weight: Raleway.bold, size: 19).get())
+                    .font(OneSFont.custom(.bold, 19).font)
                     .frame(width: 68 * Layout.multiplierWidth, height: 38)
                     .foregroundColor(color)
                     .contentShape(Rectangle())

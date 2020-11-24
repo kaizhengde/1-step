@@ -33,7 +33,7 @@ struct OneSTextField: View {
                 
                 TextField("", text: lowercased ? Binding(get: { input }, set: { input = $0.lowercased() }) : $input, onCommit: { action() })
                 .onReceive(Just(input)) { _ in limitInput(inputLimit) }
-                .font(OneSFont.header2.get())
+                .font(OneSFont.header2.font)
                 .foregroundColor(inputColor)
                 .accentColor(inputColor)
                 .multilineTextAlignment(.leading)

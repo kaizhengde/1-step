@@ -15,11 +15,11 @@ enum MountainImage: Int16, CaseIterable {
     case mountain2 = 2
     
     
-    func get() -> Image {
+    var image: Image {
         switch self {
-        case .mountain0: return Image("Mountain0")
-        case .mountain1: return Image("Mountain1")
-        case .mountain2: return Image("Mountain2")
+        case .mountain0: return Goal.mountain0
+        case .mountain1: return Goal.mountain1
+        case .mountain2: return Goal.mountain2
         }
     }
     

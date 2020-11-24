@@ -100,7 +100,7 @@ struct GoalEnterInputSelectStepUnitView: View {
             var body: some View {
                 OneSFillButton(
                     text:           stepUnit.description,
-                    textFont:       .custom(weight: Raleway.semiBold, size: 14),
+                    textFont:       .custom(.semiBold, 14),
                     textColor:      viewModel.stepUnitButtonTextColor(stepUnit),
                     buttonColor:    viewModel.stepUnitButtonColor(stepUnit, selectedColor),
                     height:         40,

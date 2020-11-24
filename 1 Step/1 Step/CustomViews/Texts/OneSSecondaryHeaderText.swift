@@ -15,7 +15,7 @@ struct OneSSecondaryHeaderText: View {
     
     var body: some View {
         Text(text)
-            .font(OneSFont.header2.get())
+            .font(OneSFont.header2.font)
             .foregroundColor(color)
     }
 }

@@ -24,7 +24,7 @@ struct OneSText: View {
     
     var body: some View {
         Text(text)
-            .font(font.get())
+            .font(font.font)
             .foregroundColor(color)
             .multilineTextAlignment(alignment)
     }

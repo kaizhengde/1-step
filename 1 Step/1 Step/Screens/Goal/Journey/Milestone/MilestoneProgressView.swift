@@ -23,7 +23,7 @@ struct MilestoneProgressView: View {
                 .foregroundColor(.backgroundToDarkGray)
             
             VStack(spacing: 16) {
-                OneSText(text: viewModel.goal.currentStepUnits.toUI(), font: .custom(weight: Raleway.extraBold, size: 70), color: .backgroundToDarkGray)
+                OneSText(text: viewModel.goal.currentStepUnits.toUI(), font: .custom(.extraBold, 70), color: .backgroundToDarkGray)
                 
                 Circle()
                     .frame(width: 60, height: 60)

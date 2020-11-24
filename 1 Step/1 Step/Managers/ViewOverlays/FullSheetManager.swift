@@ -19,7 +19,6 @@ final class FullSheetManager: ObservableObject {
     func showFullSheet<T: View>(@ViewBuilder content: @escaping () -> T) {
         self.appear = true
         self.content = { AnyView(content()) }
-        print("Show Full Sheet")
     }
     
     

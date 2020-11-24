@@ -27,7 +27,7 @@ struct OneSRowSelectButton: View {
     var body: some View {
         Button(action: action) {
             HStack {
-                OneSText(text: title, font: .custom(weight: selected ? Raleway.bold : Raleway.medium, size: 17), color: selected ? selectedColor : .darkNeutralToNeutral)
+                OneSText(text: title, font: .custom(selected ? .bold : .medium, 17), color: selected ? selectedColor : .darkNeutralToNeutral)
                 Spacer()
             }
             .padding(.horizontal, Layout.firstLayerPadding)

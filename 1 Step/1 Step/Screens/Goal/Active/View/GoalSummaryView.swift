@@ -38,12 +38,12 @@ struct GoalSummaryView: View {
             
             var body: some View {
                 VStack(spacing: -5) {
-                    OneSText(text: goalModel.selectedGoal.name, font: .custom(weight: Raleway.light, size: 32*Layout.multiplierHeight), color: goalModel.topTextColor)
+                    OneSText(text: goalModel.selectedGoal.name, font: .custom(.light, 32*Layout.multiplierHeight), color: goalModel.topTextColor)
                     
                     HStack(spacing: 3) {
-                        OneSText(text: "\(goalModel.selectedGoal.neededStepUnits)", font: .custom(weight: Raleway.bold, size: 52*Layout.multiplierWidth), color: goalModel.topTextColor)
+                        OneSText(text: "\(goalModel.selectedGoal.neededStepUnits)", font: .custom(.bold, 52*Layout.multiplierWidth), color: goalModel.topTextColor)
                         
-                        OneSText(text: goalModel.goalUnitText, font: .custom(weight: Raleway.bold, size: 40*Layout.multiplierWidth), color: goalModel.topTextColor)
+                        OneSText(text: goalModel.goalUnitText, font: .custom(.bold, 40*Layout.multiplierWidth), color: goalModel.topTextColor)
                     }
                 }
                 .frame(height: 80)
@@ -61,7 +61,7 @@ struct GoalSummaryView: View {
             
             var body: some View {
                 VStack(spacing: 16) {
-                    OneSText(text: goalModel.selectedGoal.currentState == .active ?  "\(goalModel.selectedGoal.currentPercent)%" : "100%", font: .custom(weight: Raleway.extraBold, size: 60), color: .backgroundToGray)
+                    OneSText(text: goalModel.selectedGoal.currentState == .active ?  "\(goalModel.selectedGoal.currentPercent)%" : "100%", font: .custom(.extraBold, 60), color: .backgroundToGray)
                         .opacity(goalModel.showJourneyView ? 0.0 : 1.0)
                     
                     if goalModel.showDownArrow {
@@ -131,7 +131,7 @@ struct GoalSummaryView: View {
         
         var body: some View {
             ZStack(alignment: .init(horizontal: .flagMountainAlignment, vertical: .top)) {
-                goalModel.selectedGoal.mountain.get()
+                goalModel.selectedGoal.mountain.image
                     .renderingMode(.template)
                     .resizable()
                     .frame(width: Layout.screenWidth, height: MountainLayout.height)
@@ -155,7 +155,7 @@ struct GoalSummaryView: View {
         
         var body: some View {
             ZStack {
-                Flag.flagFlag
+                MountainImage.Flag.top
                     .renderingMode(.template)
                     .foregroundColor(.white)
                     .colorMultiply(goalModel.backgroundColor)
@@ -167,7 +167,7 @@ struct GoalSummaryView: View {
                             .offset(y: -10)
                     )
                 
-                Flag.flagLine
+                MountainImage.Flag.line
                     .renderingMode(.template)
                     .foregroundColor(.white)
                     .colorMultiply(goalModel.backgroundColor)

@@ -9,6 +9,9 @@ import Foundation
 
 enum GoalErrorHandler {
     
+    
+    //MARK: - GoalCreate/Edit EnterInput
+    
     enum GoalError: Error {
         case goalNameEmpty
         
@@ -18,14 +21,6 @@ enum GoalErrorHandler {
         
         case stepUnitEmpty
         case stepCustomUnitEmpty
-    }
-    
-    
-    enum GoalEditError: Error {
-        
-        case currentBelowNeededStepUnits
-        case changeOfCategory(from: StepCategory, to: StepCategory)
-        case changeOfDistanceUnitsSystem
     }
     
     
@@ -58,7 +53,7 @@ enum GoalErrorHandler {
             errorText = "Failed with an unknown error.\n\nConsider restarting the app."
         }
         
-        PopupManager.shared.showTextPopup(.none, titleText: "Oh Deer", titleImage: Emoji.deer, bodyText: errorText, backgroundColor: baseData.color!.standard)
+        PopupManager.shared.showTextPopup(.none, titleText: "Oh Deer", titleImage: Symbol.deer, bodyText: errorText, backgroundColor: baseData.color!.standard)
         
         return true
     }
@@ -83,6 +78,16 @@ enum GoalErrorHandler {
     }
     
     
+    //MARK: - GoalEdit
+    
+    enum GoalEditError: Error {
+        
+        case currentBelowNeededStepUnits
+        case changeOfCategory(from: StepCategory, to: StepCategory)
+        case changeOfDistanceUnitsSystem
+    }
+    
+    
     static func editGoalHasErrors(with goal: Goal, baseData: Goal.BaseData) -> Bool {
         let errorText: String!
         
@@ -103,7 +108,7 @@ enum GoalErrorHandler {
             errorText = "Failed with an unknown error.\n\nConsider restarting the app."
         }
         
-        PopupManager.shared.showTextPopup(.none, titleText: "Oh Deer", titleImage: Emoji.deer, bodyText: errorText, backgroundColor: goal.color.standard)
+        PopupManager.shared.showTextPopup(.none, titleText: "Oh Deer", titleImage: Symbol.deer, bodyText: errorText, backgroundColor: goal.color.standard)
         
         return true
     }

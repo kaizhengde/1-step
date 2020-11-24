@@ -38,12 +38,12 @@ struct GoalReachedSummaryView: View {
             
             var body: some View {
                 VStack(spacing: -5) {
-                    OneSText(text: goalReachedModel.selectedGoal.name, font: .custom(weight: Raleway.light, size: 32*Layout.multiplierHeight), color: .grayToBackground)
+                    OneSText(text: goalReachedModel.selectedGoal.name, font: .custom(.light, 32*Layout.multiplierHeight), color: .grayToBackground)
                     
                     HStack(spacing: 3) {
-                        OneSText(text: "\(goalReachedModel.selectedGoal.neededStepUnits)", font: .custom(weight: Raleway.bold, size: 52*Layout.multiplierWidth), color: .grayToBackground)
+                        OneSText(text: "\(goalReachedModel.selectedGoal.neededStepUnits)", font: .custom(.bold, 52*Layout.multiplierWidth), color: .grayToBackground)
                         
-                        OneSText(text: goalReachedModel.goalUnitText, font: .custom(weight: Raleway.bold, size: 40*Layout.multiplierWidth), color: .grayToBackground)
+                        OneSText(text: goalReachedModel.goalUnitText, font: .custom(.bold, 40*Layout.multiplierWidth), color: .grayToBackground)
                     }
                 }
                 .frame(height: 80)
@@ -58,7 +58,7 @@ struct GoalReachedSummaryView: View {
         private struct BottomView: View {
             
             var body: some View {
-                OneSText(text: "100%", font: .custom(weight: Raleway.extraBold, size: 60), color: .backgroundToGray)
+                OneSText(text: "100%", font: .custom(.extraBold, 60), color: .backgroundToGray)
                     .frame(height: 120)
                     .padding(.horizontal, Layout.secondLayerPadding)
                     .padding(.top, Layout.screenHeight - 240*Layout.multiplierHeight - SafeAreaSize.bottom)
@@ -74,7 +74,7 @@ struct GoalReachedSummaryView: View {
         
         var body: some View {
             ZStack(alignment: .init(horizontal: .flagMountainAlignment, vertical: .top)) {
-                goalReachedModel.selectedGoal.mountain.get()
+                goalReachedModel.selectedGoal.mountain.image
                     .renderingMode(.template)
                     .resizable()
                     .frame(width: Layout.screenWidth, height: MountainLayout.height)
@@ -83,7 +83,7 @@ struct GoalReachedSummaryView: View {
                     .foregroundColor(.white)
                     .colorMultiply(goalReachedModel.selectedGoal.color.standard)
                     
-                Flag.flag
+                MountainImage.Flag.whole
                     .renderingMode(.template)
                     .foregroundColor(.white)
                     .colorMultiply(goalReachedModel.selectedGoal.color.standard)

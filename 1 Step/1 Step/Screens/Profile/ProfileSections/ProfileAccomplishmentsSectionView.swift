@@ -49,8 +49,8 @@ struct ProfileAccomplishmentsSectionView: View {
         var body: some View {
             HStack() {
                 VStack(alignment: .leading) {
-                    OneSText(text: "\(profileModel.accomplishmentsData[index].value)", font: .custom(weight: Raleway.extraBold, size: 36), color: .backgroundToGray)
-                    OneSText(text: profileModel.accomplishmentsData[index].description, font: .custom(weight: Raleway.medium, size: 17), color: .backgroundToGray)
+                    OneSText(text: "\(profileModel.accomplishmentsData[index].value)", font: .custom(.extraBold, 36), color: .backgroundToGray)
+                    OneSText(text: profileModel.accomplishmentsData[index].description, font: .custom(.medium, 17), color: .backgroundToGray)
                     Spacer()
                 }
                 Spacer()

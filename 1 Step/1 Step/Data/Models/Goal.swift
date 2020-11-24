@@ -10,8 +10,7 @@ import CoreData
 
 final class Goal: NSManagedObject, Identifiable {
     
-    //Consecutive from 0..<#activeGoals -> deletion, reached - update all orders respectively
-    //For reachedGoals: -1
+    //Consecutive from 0..<#(reached/active)goals -> deletion, reached - update all orders respectively
     @NSManaged var sortOrder: Int16
     
     @NSManaged var name: String
