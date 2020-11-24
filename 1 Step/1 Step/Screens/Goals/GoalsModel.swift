@@ -7,12 +7,17 @@
 
 import SwiftUI
 
-enum GoalsTab: String {
+enum GoalsTab {
     
-    case active     = "goalsScreen.goalsTab.active"
-    case reached    = "goalsScreen.goalsTab.reached"
+    case active
+    case reached
     
-    var description: String { return self.rawValue }
+    var description: String {
+        switch self {
+        case .active: return Localized.GoalsScreen.goalsTab_active
+        case .reached: return Localized.GoalsScreen.goalsTab_reached
+        }
+    }
     
     
     mutating func toggle() {

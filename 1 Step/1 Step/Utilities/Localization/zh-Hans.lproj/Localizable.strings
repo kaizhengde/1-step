@@ -1,0 +1,12 @@
+/* 
+  OneSLocalization.strings
+  1 Step
+
+  Created by Kai Zheng on 24.11.20.
+  
+*/
+
+goalsScreen_header_title      = "Goals";
+
+goalsScreen_goalsTab_active   = "Active";
+goalsScreen_goalsTab_reached  = "Reached";

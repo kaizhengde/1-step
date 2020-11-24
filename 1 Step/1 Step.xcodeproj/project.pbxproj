@@ -80,7 +80,9 @@
 		3D59DEA825697AC900CF24D7 /* ProfileAboutSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D59DEA725697AC900CF24D7 /* ProfileAboutSectionView.swift */; };
 		3D59DEAC256A59D000CF24D7 /* UserDefaultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D59DEAB256A59D000CF24D7 /* UserDefaultType.swift */; };
 		3D61084D256D40A400DC20BD /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D61084C256D40A400DC20BD /* String.swift */; };
-		3D61086B256D63DE00DC20BD /* OneSLocalization.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3D61086D256D63DE00DC20BD /* OneSLocalization.strings */; };
+		3D61086B256D63DE00DC20BD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3D61086D256D63DE00DC20BD /* Localizable.strings */; };
+		3D610881256D6E3A00DC20BD /* LocalizationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D610880256D6E3A00DC20BD /* LocalizationHelper.swift */; };
+		3D610887256D70CC00DC20BD /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D610886256D70CC00DC20BD /* Localized.swift */; };
 		3D6D6454254C0F2400FAA37F /* JourneyErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6D6453254C0F2400FAA37F /* JourneyErrorHandler.swift */; };
 		3D6D6458254C4D2400FAA37F /* JourneyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6D6457254C4D2400FAA37F /* JourneyModel.swift */; };
 		3D6F4399253AE19C00785586 /* GoalHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6F4398253AE19C00785586 /* GoalHeaderView.swift */; };
@@ -261,9 +263,11 @@
 		3D59DEA725697AC900CF24D7 /* ProfileAboutSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAboutSectionView.swift; sourceTree = "<group>"; };
 		3D59DEAB256A59D000CF24D7 /* UserDefaultType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultType.swift; sourceTree = "<group>"; };
 		3D61084C256D40A400DC20BD /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		3D61086C256D63DE00DC20BD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/OneSLocalization.strings; sourceTree = "<group>"; };
-		3D610870256D63E100DC20BD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/OneSLocalization.strings"; sourceTree = "<group>"; };
-		3D610871256D63E600DC20BD /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/OneSLocalization.strings; sourceTree = "<group>"; };
+		3D61086C256D63DE00DC20BD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		3D610870256D63E100DC20BD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		3D610871256D63E600DC20BD /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		3D610880256D6E3A00DC20BD /* LocalizationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationHelper.swift; sourceTree = "<group>"; };
+		3D610886256D70CC00DC20BD /* Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
 		3D6D6453254C0F2400FAA37F /* JourneyErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyErrorHandler.swift; sourceTree = "<group>"; };
 		3D6D6457254C4D2400FAA37F /* JourneyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyModel.swift; sourceTree = "<group>"; };
 		3D6F4398253AE19C00785586 /* GoalHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalHeaderView.swift; sourceTree = "<group>"; };
@@ -762,7 +766,9 @@
 		3D610860256D5BC200DC20BD /* Localization */ = {
 			isa = PBXGroup;
 			children = (
-				3D61086D256D63DE00DC20BD /* OneSLocalization.strings */,
+				3D610880256D6E3A00DC20BD /* LocalizationHelper.swift */,
+				3D610886256D70CC00DC20BD /* Localized.swift */,
+				3D61086D256D63DE00DC20BD /* Localizable.strings */,
 			);
 			path = Localization;
 			sourceTree = "<group>";
@@ -1161,7 +1167,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1220;
-				LastUpgradeCheck = 1200;
+				LastUpgradeCheck = 1220;
 				TargetAttributes = {
 					3D0BEB16256908CA002F74FE = {
 						CreatedOnToolsVersion = 12.2;
@@ -1219,7 +1225,7 @@
 				3D47CCA7252C73D300A8CA1B /* Raleway-ExtraLight.ttf in Resources */,
 				3D47CCA9252C73D300A8CA1B /* Raleway-Light.ttf in Resources */,
 				3D47CC9F252C73D300A8CA1B /* Raleway-Black.ttf in Resources */,
-				3D61086B256D63DE00DC20BD /* OneSLocalization.strings in Resources */,
+				3D61086B256D63DE00DC20BD /* Localizable.strings in Resources */,
 				3D47CCA3252C73D300A8CA1B /* Raleway-ExtraBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1338,6 +1344,7 @@
 				3D959A8B256286AE007BAA07 /* ConfettiView.swift in Sources */,
 				3DE11C35252C681200F13719 /* __StepApp.swift in Sources */,
 				3D2E792C252F6CAB00788AA2 /* GoalEnterInputView.swift in Sources */,
+				3D610887256D70CC00DC20BD /* Localized.swift in Sources */,
 				3D6F43A5253B268B00785586 /* GoalView.swift in Sources */,
 				3DFD9BAD256AEF3B00CF9580 /* OneSImagePicker.swift in Sources */,
 				3DDF703E2531BB5E00FD3011 /* StepCategory.swift in Sources */,
@@ -1353,6 +1360,7 @@
 				3D47CCAE252C749500A8CA1B /* Fonts.swift in Sources */,
 				3D407850254E83E600744652 /* MilestoneModel.swift in Sources */,
 				3DAE7AEB2530A3E600B162B1 /* OneSTextFloater.swift in Sources */,
+				3D610881256D6E3A00DC20BD /* LocalizationHelper.swift in Sources */,
 				3D0BEB0D2568EA52002F74FE /* ProfileModel.swift in Sources */,
 				3D6F439D253AE20500785586 /* GoalSummaryView.swift in Sources */,
 				3DDF70342531BAA900FD3011 /* Step.swift in Sources */,
@@ -1405,14 +1413,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		3D61086D256D63DE00DC20BD /* OneSLocalization.strings */ = {
+		3D61086D256D63DE00DC20BD /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				3D61086C256D63DE00DC20BD /* en */,
 				3D610870256D63E100DC20BD /* zh-Hans */,
 				3D610871256D63E600DC20BD /* de */,
 			);
-			name = OneSLocalization.strings;
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1467,6 +1475,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1528,6 +1537,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
