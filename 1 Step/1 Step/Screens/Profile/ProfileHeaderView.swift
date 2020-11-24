@@ -76,7 +76,7 @@ struct ProfileHeaderView: View {
                     popupManager.showTextFieldPopup(.changeName, titleText: "Name", bodyText: "Enter a new name.", input: userDefaultsManager.userName, placeholder: "Your name", placeholderColor: UserColor.user0.dark, textLimit: 20, backgroundColor: UserColor.user0.standard)
                 }
                 .onReceive(popupManager.buttonDismissed) {
-                    if $0 == .changeName { userDefaultsManager.userName = popupManager.input }
+                    if $0 == .changeName { userDefaultsManager.userName = popupManager.input.removeWhiteSpaces() }
                 }
         }
     }

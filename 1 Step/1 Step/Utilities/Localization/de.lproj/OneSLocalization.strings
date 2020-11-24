@@ -1,0 +1,13 @@
+/* 
+  OneSLocalization.strings
+  1 Step
+
+  Created by Kai Zheng on 24.11.20.
+  
+*/
+
+// GoalsScreen -----------------------------------------------------------------
+"goalsScreen.goalsTab.active"   = "Aktiv";
+"goalsScreen.goalsTab.reached"  = "Erreicht";
+
+

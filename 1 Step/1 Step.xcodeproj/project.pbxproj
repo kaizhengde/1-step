@@ -79,6 +79,8 @@
 		3D59DEA425697A8200CF24D7 /* ProfileAppSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D59DEA325697A8200CF24D7 /* ProfileAppSectionView.swift */; };
 		3D59DEA825697AC900CF24D7 /* ProfileAboutSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D59DEA725697AC900CF24D7 /* ProfileAboutSectionView.swift */; };
 		3D59DEAC256A59D000CF24D7 /* UserDefaultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D59DEAB256A59D000CF24D7 /* UserDefaultType.swift */; };
+		3D61084D256D40A400DC20BD /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D61084C256D40A400DC20BD /* String.swift */; };
+		3D61086B256D63DE00DC20BD /* OneSLocalization.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3D61086D256D63DE00DC20BD /* OneSLocalization.strings */; };
 		3D6D6454254C0F2400FAA37F /* JourneyErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6D6453254C0F2400FAA37F /* JourneyErrorHandler.swift */; };
 		3D6D6458254C4D2400FAA37F /* JourneyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6D6457254C4D2400FAA37F /* JourneyModel.swift */; };
 		3D6F4399253AE19C00785586 /* GoalHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6F4398253AE19C00785586 /* GoalHeaderView.swift */; };
@@ -258,6 +260,10 @@
 		3D59DEA325697A8200CF24D7 /* ProfileAppSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAppSectionView.swift; sourceTree = "<group>"; };
 		3D59DEA725697AC900CF24D7 /* ProfileAboutSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAboutSectionView.swift; sourceTree = "<group>"; };
 		3D59DEAB256A59D000CF24D7 /* UserDefaultType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultType.swift; sourceTree = "<group>"; };
+		3D61084C256D40A400DC20BD /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		3D61086C256D63DE00DC20BD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/OneSLocalization.strings; sourceTree = "<group>"; };
+		3D610870256D63E100DC20BD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/OneSLocalization.strings"; sourceTree = "<group>"; };
+		3D610871256D63E600DC20BD /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/OneSLocalization.strings; sourceTree = "<group>"; };
 		3D6D6453254C0F2400FAA37F /* JourneyErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyErrorHandler.swift; sourceTree = "<group>"; };
 		3D6D6457254C4D2400FAA37F /* JourneyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyModel.swift; sourceTree = "<group>"; };
 		3D6F4398253AE19C00785586 /* GoalHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalHeaderView.swift; sourceTree = "<group>"; };
@@ -553,6 +559,7 @@
 		3D47CC7E252C6C4700A8CA1B /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				3D610860256D5BC200DC20BD /* Localization */,
 				3D47CC93252C738D00A8CA1B /* Fonts */,
 				3D47CC8B252C71B500A8CA1B /* Constants */,
 				3D2E795225301AC800788AA2 /* Methods */,
@@ -569,6 +576,7 @@
 				3D258281253C0A9300DC19E7 /* Color.swift */,
 				3DF1E275254819FF00D65244 /* Double.swift */,
 				3D4FD8622564E9E800103C73 /* Date.swift */,
+				3D61084C256D40A400DC20BD /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -749,6 +757,14 @@
 				3D6D6453254C0F2400FAA37F /* JourneyErrorHandler.swift */,
 			);
 			path = Error;
+			sourceTree = "<group>";
+		};
+		3D610860256D5BC200DC20BD /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				3D61086D256D63DE00DC20BD /* OneSLocalization.strings */,
+			);
+			path = Localization;
 			sourceTree = "<group>";
 		};
 		3D6D6460254C4E1000FAA37F /* Milestone */ = {
@@ -1164,6 +1180,8 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
+				"zh-Hans",
 			);
 			mainGroup = 3DE11C28252C681200F13719;
 			packageReferences = (
@@ -1201,6 +1219,7 @@
 				3D47CCA7252C73D300A8CA1B /* Raleway-ExtraLight.ttf in Resources */,
 				3D47CCA9252C73D300A8CA1B /* Raleway-Light.ttf in Resources */,
 				3D47CC9F252C73D300A8CA1B /* Raleway-Black.ttf in Resources */,
+				3D61086B256D63DE00DC20BD /* OneSLocalization.strings in Resources */,
 				3D47CCA3252C73D300A8CA1B /* Raleway-ExtraBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1330,6 +1349,7 @@
 				3DF9E75925618D4F0020A403 /* AddStepAnimationHandler.swift in Sources */,
 				3D7396BD2533730700BD4169 /* GoalsGridView.swift in Sources */,
 				3DDF70252531A57700FD3011 /* StepUnit.swift in Sources */,
+				3D61084D256D40A400DC20BD /* String.swift in Sources */,
 				3D47CCAE252C749500A8CA1B /* Fonts.swift in Sources */,
 				3D407850254E83E600744652 /* MilestoneModel.swift in Sources */,
 				3DAE7AEB2530A3E600B162B1 /* OneSTextFloater.swift in Sources */,
@@ -1383,6 +1403,19 @@
 			targetProxy = 3D0BEB1C256908CA002F74FE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3D61086D256D63DE00DC20BD /* OneSLocalization.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3D61086C256D63DE00DC20BD /* en */,
+				3D610870256D63E100DC20BD /* zh-Hans */,
+				3D610871256D63E600DC20BD /* de */,
+			);
+			name = OneSLocalization.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		3D0BEB1F256908CA002F74FE /* Debug */ = {

@@ -33,7 +33,7 @@ class GoalsGridModel: ObservableObject {
     
     
     func initItemTransition(of sortOrder: Int) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds((sortOrder+1-itemsAppeared)*150)) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds((sortOrder+1-itemsAppeared)*120)) {
             self.itemsAppear[sortOrder] = true
         }
     }

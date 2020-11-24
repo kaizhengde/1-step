@@ -11,7 +11,7 @@ extension Date {
     
     func toString() -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd.MM.yyyy"
+        formatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyyMMdd", options: 0, locale: Locale.current)
         return formatter.string(from: self)
     }
 }

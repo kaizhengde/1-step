@@ -9,8 +9,8 @@ import SwiftUI
 
 enum GoalsTab: String {
     
-    case active = "Active"
-    case reached = "Reached"
+    case active     = "goalsScreen.goalsTab.active"
+    case reached    = "goalsScreen.goalsTab.reached"
     
     var description: String { return self.rawValue }
     

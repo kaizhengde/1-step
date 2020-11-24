@@ -48,7 +48,7 @@ struct MilestoneItem: View {
                         .font(.system(size: 50, weight: .thin))
                         .foregroundColor(.backgroundStatic)
                 }
-                
+
                 HStack {
                     Spacer()
                     Text(milestone.neededStepUnits.toUI())

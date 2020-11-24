@@ -52,9 +52,9 @@ struct SummitMilestoneItem: View {
                     }
                 }
                 .padding(.bottom, 30)
-                
+
                 OneSSecondaryHeaderText(text: "Summit", color: .backgroundStatic)
-                
+
                 HStack {
                     Spacer()
                     Text(milestone.neededStepUnits.toUI())
@@ -66,7 +66,7 @@ struct SummitMilestoneItem: View {
                         .font(.custom(Raleway.regular.weight, size: 14))
                     Spacer()
                 }
-                .foregroundColor(.backgroundStatic)
+                .foregroundColor(.backgroundStatic)                
             }
             .padding(8)
             .frame(width: 170, height: 280)

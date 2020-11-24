@@ -35,6 +35,7 @@ struct GoalView: View {
                                         .opacity(goalModel.journeyViewDragOpacity)
                                         .opacity(goalModel.showJourneyView ? 1.0 : 0.0)
                                         .offset(y: -250)
+                                        .padding(.bottom, Layout.onlyOniPhoneXType(200*Layout.multiplierHeight))
                                 } else {
                                     Spacer(minLength: 500)
                                 }

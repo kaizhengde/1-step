@@ -26,7 +26,7 @@ class FirstStartModel: ObservableObject {
     
     func finishFirstStart() {
         UserDefaultsManager.shared.firstStart = false
-        UserDefaultsManager.shared.userName = userNameInput
+        UserDefaultsManager.shared.userName = userNameInput.removeWhiteSpaces()
         
         currentStep = .done
         DispatchQueue.main.asyncAfter(deadline: .now() + Animation.Delay.opacity) { MainModel.shared.toScreen(.goals) }
