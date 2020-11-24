@@ -640,8 +640,8 @@
 			children = (
 				3D2E7938252F9D7A00788AA2 /* OneSScaleButtonStyle.swift */,
 				3D4CC510252F558C00133CD6 /* OneSBorderButton.swift */,
-				3D2E7935252F9D3E00788AA2 /* OneSHintButton.swift */,
 				3D2E7940253017B600788AA2 /* OneSSmallBorderButton.swift */,
+				3D2E7935252F9D3E00788AA2 /* OneSHintButton.swift */,
 				3D2E795725301DA400788AA2 /* OneSFillButton.swift */,
 				3D6FDDB82567808B002854E6 /* OneSRowButton.swift */,
 				3D6FDDE12567C43B002854E6 /* OneSRowSelectButton.swift */,

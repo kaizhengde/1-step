@@ -16,11 +16,16 @@ struct FirstStartScreen: View {
     var body: some View {
         ZStack {
             VStack {
+                if viewModel.currentStep == .two {
+                    OneSHeaderView(leadingButton: (.back, .grayToBackground, { viewModel.currentStep = .oneConfirm }))
+                }
+                
                 switch viewModel.currentStep {
-                case .one, .oneEntered: StepOneView(viewModel: viewModel)
+                case .one, .oneConfirm: StepOneView(viewModel: viewModel)
                 case .two:              StepTwoView(viewModel: viewModel)
                 default:                EmptyView()
                 }
+                
                 Spacer()
             }
             .padding(.horizontal, Layout.firstLayerPadding)
@@ -36,9 +41,9 @@ struct FirstStartScreen: View {
             }
             .frame(width: Layout.screenWidth)
         )
-        .onChange(of: viewModel.userNameInput) { viewModel.currentStep = $0.isEmpty ? .one : .oneEntered }
         .onAppear { viewModel.currentStep = .one }
         .oneSAnimation()
+        .onTapGesture { viewModel.toStepOneConfirm() }
     }
     
     
@@ -55,25 +60,31 @@ struct FirstStartScreen: View {
                 VStack(alignment: .leading, spacing: 28*Layout.multiplierHeight) {
                     OneSText(text: "Hi 🙂\nWhat’s your name?", font: .custom(weight: Raleway.bold, size: 30), color: UserColor.user1.standard)
                     OneSText(text: "How should we call you?", font: .custom(weight: Raleway.regular, size: 20), color: .grayToBackground)
-                    OneSTextField(input: $viewModel.userNameInput, placeholder: "Your name", inputColor: UserColor.user0.standard, inputLimit: 20)
+                    OneSTextField(input: $viewModel.userNameInput, placeholder: "Your name", inputColor: UserColor.user0.standard, inputLimit: 20) { viewModel.toStepOneConfirm() }
                         .padding(.top, 20)
                 }
                 
-                HStack {
-                    Spacer()
-                    OneSSmallBorderButton(symbol: SFSymbol.continue, color: .grayToBackground) {
-                        viewModel.currentStep = .two
+                if viewModel.currentStep == .oneConfirm {
+                    HStack {
+                        Spacer()
+                        OneSSmallBorderButton(symbol: SFSymbol.continue, color: .grayToBackground) {
+                            viewModel.currentStep = .two
+                        }
                     }
+                    .oneSItemTransition()
+                    .oneSAnimation(delay: 0.3)
                 }
-                .opacity(viewModel.currentStep == .oneEntered ? 1.0 : 0.0)
             }
             .ignoresSafeArea(.keyboard, edges: .bottom)
+            .oneSItemTransition()
+            .onChange(of: viewModel.userNameInput) { if $0.isEmpty { viewModel.currentStep = .one } }
         }
     }
     
     
     private struct StepTwoView: View {
         
+        @StateObject private var userDefaultsManager = UserDefaultsManager.shared
         @StateObject private var mainModel = MainModel.shared
         @ObservedObject var viewModel: FirstStartModel
         
@@ -86,13 +97,15 @@ struct FirstStartScreen: View {
                 Spacer()
                 
                 OneSBorderButton(text: "START", color: .backgroundToGray) {
-                    UserDefaultsManager.shared.firstStart = false
-                    mainModel.toScreen(.goals)
-                }
+                    userDefaultsManager.firstStart = false
+                    userDefaultsManager.userName = viewModel.userNameInput
+                    viewModel.currentStep = .done
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { mainModel.toScreen(.goals) }                }
             }
-            .padding(.top, 100*Layout.multiplierHeight)
             .padding(.bottom, 50*Layout.multiplierHeight)
             .padding(.horizontal, Layout.firstLayerPadding)
+            .oneSItemTransition()
+            .oneSAnimation(delay: 0.3)
         }
     }
     
@@ -104,17 +117,16 @@ struct FirstStartScreen: View {
         
         var body: some View {
             ZStack(alignment: .top) {
-                if viewModel.currentStep == .two {
-                    MountainImage.mountain1.get()
-                        .renderingMode(.template)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: Layout.screenWidth, height: MountainLayout.height)
-                        .foregroundColor(.darkBackgroundToDarkGray)
-                        .scaleEffect(0.7)
-                        .offset(x: Layout.screenWidth/4, y: 36)
-                        .offset(y: viewModel.currentStep == .two ? 0 : MountainLayout.height*0.7)
-                }
+                MountainImage.mountain1.get()
+                    .renderingMode(.template)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: Layout.screenWidth, height: MountainLayout.height)
+                    .foregroundColor(.darkBackgroundToDarkGray)
+                    .scaleEffect(0.7)
+                    .offset(x: Layout.screenWidth/4, y: 36)
+                    .offset(y: viewModel.currentStep == .two ? 0 : MountainLayout.height*0.7)
+                    .oneSMountainAnimation(delay: 0.3)
                 
                 MountainImage.mountain0.get()
                     .renderingMode(.template)
@@ -123,6 +135,7 @@ struct FirstStartScreen: View {
                     .frame(width: Layout.screenWidth, height: MountainLayout.height)
                     .foregroundColor(UserColor.user0.standard)
                     .offset(y: viewModel.mountainOffsetY)
+                    .oneSMountainAnimation(delay: 0.1)
             }
             .frame(height: MountainLayout.height)
             .offset(y: MountainLayout.offsetYNoScrollView)
