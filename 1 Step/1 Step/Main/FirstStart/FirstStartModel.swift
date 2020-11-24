@@ -24,9 +24,13 @@ class FirstStartModel: ObservableObject {
     }
     
     
-    //MARK: - UI
-    
-    var currentStepText: String { "Step 1 of 2" }
+    func finishFirstStart() {
+        UserDefaultsManager.shared.firstStart = false
+        UserDefaultsManager.shared.userName = userNameInput
+        
+        currentStep = .done
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { MainModel.shared.toScreen(.goals) }
+    }
     
     
     //MARK: - Mountain Animation
@@ -34,9 +38,9 @@ class FirstStartModel: ObservableObject {
     var mountainOffsetY: CGFloat {
         switch currentStep {
         case .appear:       return MountainLayout.height
-        case .one:          return MountainLayout.height*0.7
-        case .oneConfirm:   return MountainLayout.height*0.5
-        case .two:          return MountainLayout.height*0.2
+        case .one:          return MountainLayout.height*0.6 + Layout.onlyOniPhoneXType(MountainLayout.height*0.1)
+        case .oneConfirm:   return MountainLayout.height*0.45
+        case .two:          return MountainLayout.height*0.1 + Layout.onlyOniPhoneXType(MountainLayout.height*0.05)
         case .done:         return MountainLayout.height
         }
     }

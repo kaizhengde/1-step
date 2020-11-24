@@ -18,6 +18,7 @@ struct FirstStartScreen: View {
             VStack {
                 if viewModel.currentStep == .two {
                     OneSHeaderView(leadingButton: (.back, .grayToBackground, { viewModel.currentStep = .oneConfirm }))
+                        .padding(.bottom, -20 + Layout.onlyOniPhoneXType(20))
                 }
                 
                 switch viewModel.currentStep {
@@ -53,27 +54,31 @@ struct FirstStartScreen: View {
         
         
         var body: some View {
-            VStack(spacing: 50*Layout.multiplierHeight) {
-                OneSText(text: viewModel.currentStepText, font: .custom(weight: Raleway.semiBold, size: 16), color: UserColor.user1.standard)
-                    .padding(.bottom, 30)
+            VStack(spacing: 70*Layout.multiplierHeight) {
+                OneSText(text: "Step 1 of 2", font: .custom(weight: Raleway.semiBold, size: 16), color: UserColor.user1.standard)
+                    .padding(.top, 10)
                 
                 VStack(alignment: .leading, spacing: 28*Layout.multiplierHeight) {
                     OneSText(text: "Hi 🙂\nWhat’s your name?", font: .custom(weight: Raleway.bold, size: 30), color: UserColor.user1.standard)
                     OneSText(text: "How should we call you?", font: .custom(weight: Raleway.regular, size: 20), color: .grayToBackground)
                     OneSTextField(input: $viewModel.userNameInput, placeholder: "Your name", inputColor: UserColor.user0.standard, inputLimit: 20) { viewModel.toStepOneConfirm() }
                         .padding(.top, 20)
-                }
-                
-                if viewModel.currentStep == .oneConfirm {
-                    HStack {
-                        Spacer()
-                        OneSSmallBorderButton(symbol: SFSymbol.continue, color: .grayToBackground) {
-                            viewModel.currentStep = .two
+                    
+                    if viewModel.currentStep == .oneConfirm {
+                        HStack {
+                            Spacer()
+                            OneSSmallBorderButton(symbol: SFSymbol.continue, color: .grayToBackground) {
+                                viewModel.currentStep = .two
+                            }
                         }
+                        .oneSItemTransition()
+                        .oneSAnimation(delay: 0.3)
+                        .padding(.top, 20)
                     }
-                    .oneSItemTransition()
-                    .oneSAnimation(delay: 0.3)
+                    
+                    Spacer()
                 }
+                .frame(maxHeight: .infinity)
             }
             .ignoresSafeArea(.keyboard, edges: .bottom)
             .oneSItemTransition()
@@ -84,23 +89,17 @@ struct FirstStartScreen: View {
     
     private struct StepTwoView: View {
         
-        @StateObject private var userDefaultsManager = UserDefaultsManager.shared
-        @StateObject private var mainModel = MainModel.shared
         @ObservedObject var viewModel: FirstStartModel
         
         
         var body: some View {
-            VStack(spacing: 24) {
+            VStack(spacing: 20*Layout.multiplierHeight) {
                 OneSHeaderText(text: "Welcome")
                 OneSText(text: "\(viewModel.userNameInput), we are excited to support you on your journey", font: .custom(weight: Raleway.semiBold, size: 30), color: UserColor.user1.standard, alignment: .center)
                 
                 Spacer()
                 
-                OneSBorderButton(text: "START", color: .backgroundToGray) {
-                    userDefaultsManager.firstStart = false
-                    userDefaultsManager.userName = viewModel.userNameInput
-                    viewModel.currentStep = .done
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { mainModel.toScreen(.goals) }                }
+                OneSBorderButton(text: "START", color: .backgroundToGray) { viewModel.finishFirstStart() }
             }
             .padding(.bottom, 50*Layout.multiplierHeight)
             .padding(.horizontal, Layout.firstLayerPadding)
