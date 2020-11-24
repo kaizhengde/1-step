@@ -30,12 +30,12 @@ struct OneSRowButton: View {
     
     init(_ buttonArt: OneSRowButtonArt,
          title: String,
-         textColor: Color               = .grayToBackground,
-         backgroundColor: Color         = .whiteToDarkGray,
-         accessorySFSymbol: Image?      = nil,
-         accessoryCustomSymbol: Image?  = nil,
-         accessoryText: String?         = nil,
-         accessoryColor: Color          = .grayToBackground,
+         textColor: Color                   = .grayToBackground,
+         backgroundColor: Color             = .whiteToDarkGray,
+         accessorySFSymbol: Image?          = nil,
+         accessoryCustomSymbol: Image?      = nil,
+         accessoryText: String? = nil,
+         accessoryColor: Color              = .grayToBackground,
          action: @escaping () -> ()
     ) {
         self.buttonArt = buttonArt
