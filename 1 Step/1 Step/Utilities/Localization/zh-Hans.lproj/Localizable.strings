@@ -6,7 +6,84 @@
   
 */
 
-goalsScreen_header_title      = "Goals";
+// Words ------------------------------------------------------------------
 
-goalsScreen_goalsTab_active   = "Active";
-goalsScreen_goalsTab_reached  = "Reached";
+goals                   = "Goals";
+active                  = "Active";
+reached                 = "Reached";
+profile                 = "Profile";
+edit                    = "Edit";
+accomplishments         = "Accomplishments";
+app                     = "App";
+about                   = "About";
+settings                = "Settings";
+dataAndPrivacy          = "Data & Privacy";
+help                    = "Help";
+share                   = "Share";
+rateOnAppStore          = "Rate on the App Store";
+sendFeedback            = "Send your Feedback";
+website                 = "Website";
+instagram               = "Instagram";
+vfdCollective           = "The VFD Collective";
+pastelTree              = "Pastel Tree";
+premium                 = "Premium";
+language                = "Language";
+language_english        = "English";
+language_german         = "German";
+language_chinese        = "Chinese";
+appearance              = "Appearance";
+appearance_mirrorDevice = "Mirror Device";
+appearance_light        = "Light";
+appearance_dark         = "Dark";
+theme                   = "Theme";
+theme_default           = "Defaut";
+theme_pastel            = "Pastel";
+theme_fall              = "Fall";
+notifications           = "Notifications";
+downloadICloud          = "Download iCloud data";
+deleteICloud            = "Delete iCloud data";
+resetAllData            = "Reset all data";
+privacyPolicy           = "Privacy policy";
+summit                  = "Summit";
+milestone               = "Milestone";
+goal                    = "Goal";
+selectedUnit            = "Select unit";
+unit                    = "Unit";
+select                  = "Select";
+
+
+// Special ------------------------------------------------------------------
+// Step ----------------------------------------------
+
+step.category_duration  = "duration";
+step.category_distance  = "distance";
+step.category_reps      = "reps";
+
+step.unit_h             = "h";
+step.unit_min           = "min";
+step.unit_km            = "km";
+step.unit_m             = "m";
+step.unit_miles         = "miles";
+step.unit_feets         = "feets";
+step.unit_times         = "times";
+step.unit_pages         = "pages";
+step.unit_steps         = "steps";
+step.unit_decisions     = "decisions";
+step.unit_trees         = "trees";
+step.unit_books         = "books";
+step.unit_custom        = "custom";
+
+
+// Texts ------------------------------------------------------------------
+// ProfileScreen ----------------------------------------------
+
+profileScreen.made                      = "Made in Zurich, Switzerland";
+profileScreen.version                   = "Version ";
+profileScreen.accomplishment_steps      = "Steps in total";
+profileScreen.accomplishment_milestones = "Milestones reached";
+profileScreen.accomplishment_goals      = "Goals completed";
+
+
+//GoalChange ----------------------------------------------
+
+goalChange.enterCustomUnit              = "Enter your unit.";

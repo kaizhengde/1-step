@@ -17,23 +17,23 @@ struct OneSHeaderViewCustom<Content: View>: View {
     let titleText: String?                              
     let leadingButton: HeaderButton?                    
     let trailingButton: HeaderButton?                   
-    let secondaryButtonOuter: SecondaryHeaderButton?    
-    let secondaryButtonInner: SecondaryHeaderButton?    
+    let secondaryButtonBottom: SecondaryHeaderButton?    
+    let secondaryButtonTop: SecondaryHeaderButton?    
     let customView: (() -> Content)?                    
     
     
     init(_ titleText: String?                           = nil,
          leadingButton: HeaderButton?                   = nil,
          trailingButton: HeaderButton?                  = nil,
-         secondaryButtonOuter: SecondaryHeaderButton?   = nil,
-         secondaryButtonInner: SecondaryHeaderButton?   = nil,
+         secondaryButtonTop: SecondaryHeaderButton?     = nil,
+         secondaryButtonBottom: SecondaryHeaderButton?  = nil,
          customView: (() -> Content)?                   = nil
     ) {
         self.titleText = titleText
         self.leadingButton = leadingButton
         self.trailingButton = trailingButton
-        self.secondaryButtonOuter = secondaryButtonOuter
-        self.secondaryButtonInner = secondaryButtonInner
+        self.secondaryButtonTop = secondaryButtonTop
+        self.secondaryButtonBottom = secondaryButtonBottom
         self.customView = customView
     }
     
@@ -54,13 +54,19 @@ struct OneSHeaderViewCustom<Content: View>: View {
             }
             
             //Title + Secondary buttons
-            HStack {
+            HStack(alignment: .titleSecondaryButtonAlignment) {
                 if let titleText = titleText {
                     OneSHeaderText(text: titleText)
+                        .alignmentGuide(.titleSecondaryButtonAlignment) { $0[VerticalAlignment.center] }
                 }
+                
                 Spacer()
-                SecondaryHeaderButtonView(button: secondaryButtonInner)
-                SecondaryHeaderButtonView(button: secondaryButtonOuter)
+                
+                VStack(spacing: 10) {
+                    SecondaryHeaderButtonView(button: secondaryButtonTop)
+                        .alignmentGuide(.titleSecondaryButtonAlignment) { $0[VerticalAlignment.center] }
+                    SecondaryHeaderButtonView(button: secondaryButtonBottom)
+                }
             }
             .padding(.top, 16*Layout.multiplierHeight)
         }
@@ -106,4 +112,16 @@ struct OneSHeaderViewCustom<Content: View>: View {
             }
         }
     }
+}
+
+
+extension VerticalAlignment {
+    
+    enum TitleSecondaryButtonAlignment: AlignmentID {
+        static func defaultValue(in d: ViewDimensions) -> CGFloat {
+            return d[VerticalAlignment.center]
+        }
+    }
+    
+    static let titleSecondaryButtonAlignment = Self(TitleSecondaryButtonAlignment.self)
 }

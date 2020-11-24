@@ -16,9 +16,9 @@ enum StepCategory {
     
     var description: String {
         switch self {
-        case .duration: return "duration"
-        case .distance: return "distance"
-        case .reps:     return "reps"
+        case .duration: return Localized.Step.category_duration
+        case .distance: return Localized.Step.category_distance
+        case .reps:     return Localized.Step.category_reps
         }
     }
 }

@@ -23,10 +23,10 @@ struct GoalEditScreen: View {
             ScrollView(showsIndicators: false) {
                 VStack {
                     Group {
-                        OneSHeaderView("Edit", trailingButton: (.close, .grayToBackground, { sheetManager.dismiss() }), secondaryButtonOuter: (.save, {
+                        OneSHeaderView(Localized.edit, trailingButton: (.close, .grayToBackground, { sheetManager.dismiss() }), secondaryButtonTop: (.save, {
                             viewModel.trySaveEditAndDismiss(goalModel.selectedGoal)
                             goalModel.objectWillChange.send()
-                        }), secondaryButtonInner: (.delete, { viewModel.tryDelete(goalModel.selectedGoal) }))
+                        }), secondaryButtonBottom: (.delete, { viewModel.tryDelete(goalModel.selectedGoal) }))
                         
                         GoalEnterInputView(viewModel: goalEnterInputModel, selectedColor: $viewModel.selectedMountainData.color)
                         

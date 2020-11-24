@@ -39,19 +39,19 @@ enum StepUnit: Int16 {
     
     var description: String {
         switch self {
-        case .hours:        return "h"
-        case .min:          return "min"
-        case .km:           return "km"
-        case .m:            return "m"
-        case .miles:        return "miles"
-        case .feets:        return "feets"
-        case .times:        return "times"
-        case .pages:        return "pages"
-        case .steps:        return "steps"
-        case .decisions:    return "decisions"
-        case .trees:        return "trees"
-        case .books:        return "books"
-        case .custom:       return "custom"
+        case .hours:        return Localized.Step.unit_h
+        case .min:          return Localized.Step.unit_min
+        case .km:           return Localized.Step.unit_km
+        case .m:            return Localized.Step.unit_m
+        case .miles:        return Localized.Step.unit_miles
+        case .feets:        return Localized.Step.unit_feets
+        case .times:        return Localized.Step.unit_times
+        case .pages:        return Localized.Step.unit_pages
+        case .steps:        return Localized.Step.unit_steps
+        case .decisions:    return Localized.Step.unit_decisions
+        case .trees:        return Localized.Step.unit_trees
+        case .books:        return Localized.Step.unit_books
+        case .custom:       return Localized.Step.unit_custom
         case .none:         return ""
         }
     }

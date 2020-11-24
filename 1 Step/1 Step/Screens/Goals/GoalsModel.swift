@@ -14,8 +14,8 @@ enum GoalsTab {
     
     var description: String {
         switch self {
-        case .active: return Localized.GoalsScreen.goalsTab_active
-        case .reached: return Localized.GoalsScreen.goalsTab_reached
+        case .active: return Localized.active
+        case .reached: return Localized.reached
         }
     }
     

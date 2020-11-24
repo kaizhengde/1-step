@@ -14,7 +14,7 @@ struct ProfileHeaderView: View {
     
     
     var body: some View {
-        OneSHeaderView("Profile", trailingButton: (.close, .grayToBackground, { mainModel.toScreen(.goals) })) {
+        OneSHeaderView(Localized.profile, trailingButton: (.close, .grayToBackground, { mainModel.toScreen(.goals) })) {
             AnyView(
                 VStack {
                     ProfileImageView(profileModel: profileModel)

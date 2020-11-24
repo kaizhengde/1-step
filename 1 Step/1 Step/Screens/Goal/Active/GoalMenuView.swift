@@ -18,7 +18,7 @@ struct GoalMenuView: View {
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(alignment: .leading) {
-                OneSText(text: "Goals", font: .custom(.extraBold, 33), color: .grayToBackground)
+                OneSText(text: Localized.goals, font: .custom(.extraBold, 33), color: .grayToBackground)
                 
                 VStack(spacing: 5) {
                     GoalMenuItem(goal: $goalModel.selectedGoal)
@@ -33,6 +33,7 @@ struct GoalMenuView: View {
                 VStack(spacing: 20) {
                     ForEach(activeGoalsRest, id: \.self) { goal in
                         GoalMenuItem(goal: .constant(goal))
+                            .oneSItemTransition()
                     }
                 }
             }
