@@ -21,7 +21,7 @@ struct AddView: View {
                 AddButton(viewModel: viewModel)
             }
             .cornerRadius(12)
-            .oneSShadow(opacity: 0.12, x: 0, y: 2, blur: 8)
+            .oneSShadow(opacity: 0.12, blur: 8)
         }
         .padding(.horizontal, Layout.firstLayerPadding)
         .offset(x: viewModel.dragState == .show ? 0 : goalModel.selectedGoal.step.oneAddArrayEmpty ? 220 : 280)

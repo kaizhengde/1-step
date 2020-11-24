@@ -26,7 +26,7 @@ final class GoalReachedModel: TransitionObservableObject {
     
     
     func initTransition() {
-        transition = TransitionManager(fullAppearAfter: DelayAfter.mountainAppear, fullHideAfter: .never)
+        transition = TransitionManager(fullAppearAfter: Animation.Delay.mountainAppear, fullHideAfter: .never)
         transition.delegate = self
         transition.state = .firstAppear
     }

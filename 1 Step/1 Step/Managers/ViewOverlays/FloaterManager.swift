@@ -19,6 +19,8 @@ final class FloaterManager: ViewOverlayManagerProtocol {
     @Published var backgroundColor: Color!
     @Published var height: CGFloat!
     @Published var content: () -> AnyView = { AnyView(EmptyView()) }
+    
+    private let dismissAfter: DispatchTimeInterval = .milliseconds(3000)
         
 
     //MARK: - Transition
@@ -26,7 +28,7 @@ final class FloaterManager: ViewOverlayManagerProtocol {
     func initTransition() {
         defaultInitTransition()
         Feedback.haptic(type: .success)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { self.dismiss() }
+        DispatchQueue.main.asyncAfter(deadline: .now() + dismissAfter) { self.dismiss() }
     }
     
     

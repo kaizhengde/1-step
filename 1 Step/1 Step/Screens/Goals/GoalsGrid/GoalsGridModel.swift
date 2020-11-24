@@ -72,7 +72,6 @@ class GoalsGridModel: ObservableObject {
             GoalReachedModel.shared.selectedGoal = goal
             MainModel.shared.toGoalScreen(.reached)
         }
-        //DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) { self.resetTransition() }
     }
     
     

@@ -61,7 +61,7 @@ final class MainModel: ObservableObject {
     func toScreen(_ nextScreen: Screen.Active) {
         currentScreen.dismiss()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + DelayAfter.opacity) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + Animation.Delay.opacity) {
             self.currentScreen.active = nextScreen
             self.currentScreen.show()
         }
@@ -85,7 +85,7 @@ final class MainModel: ObservableObject {
         currentScreen.active = .goal(.transition)
         currentScreen.show()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + Animation.Delay.oneS) {
             self.currentScreen.dismiss()
             self.currentScreen.active = .goal(state == .active ? .showActive : .showReached)
             self.currentScreen.show()

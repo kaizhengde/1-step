@@ -14,7 +14,7 @@ extension Animation {
     }
     
     
-    static func oneSOpacityAnimation(duration: Double = AnimationDuration.opacity, delay: Double = 0.0) -> Animation {
+    static func oneSOpacityAnimation(duration: Double = Animation.Duration.opacity, delay: Double = 0.0) -> Animation {
         return Animation.easeInOut(duration: duration).delay(delay)
     }
     

@@ -63,7 +63,7 @@ struct MilestoneView: View {
             .onReceive(addStepAnimationHandler.normalAdd) { forward in
                 animateMarks = true
                 forwardAdd = forward
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) { animateMarks = false }
+                DispatchQueue.main.asyncAfter(deadline: .now() + Animation.Delay.oneS) { animateMarks = false }
             }
         }
         

@@ -163,7 +163,7 @@ struct GoalSummaryView: View {
                         Rectangle()
                             .foregroundColor(.backgroundToGray)
                             .scaleEffect(x: goalModel.showFlag ? 0 : 1, y: 1, anchor: .trailing)
-                            .animation(goalModel.mountainAnimation.delay(goalModel.showFlag ? 0.7 : 0.0))
+                            .animation(goalModel.mountainAnimation.delay(goalModel.showFlag ? 0.6 : 0.0))
                             .offset(y: -10)
                     )
                 
@@ -172,7 +172,7 @@ struct GoalSummaryView: View {
                     .foregroundColor(.white)
                     .colorMultiply(goalModel.backgroundColor)
                     .scaleEffect(x: 1, y: goalModel.showFlag ? 1 : 0, anchor: .bottom)
-                    .animation(.easeInOut(duration: 0.6))
+                    .oneSAnimation()
             }
             .alignmentGuide(.flagMountainAlignment) { $0[.leading] }
             .offset(y: -40)

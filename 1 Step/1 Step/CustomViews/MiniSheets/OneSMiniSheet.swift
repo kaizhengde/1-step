@@ -53,7 +53,7 @@ fileprivate struct OneSMiniSheet<MiniSheetContent>: ViewModifier where MiniSheet
                     )
             }
         }
-        .oneSAnimation(duration: AnimationDuration.opacity)
+        .oneSAnimation(duration: Animation.Duration.opacity)
     }
     
     

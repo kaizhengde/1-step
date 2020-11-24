@@ -57,7 +57,7 @@ class AddStepAnimationHandler: ObservableObject {
     @Published var milestoneChangeState: MilestoneChangeState = .none {
         didSet {
             if milestoneChangeState == .openNewAndScrollToCurrent {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + Animation.Delay.opacity) {
                     GoalModel.shared.setScrollPosition.send(.current)
                 }
             }
@@ -124,7 +124,7 @@ class AddStepAnimationHandler: ObservableObject {
                 self.milestoneChangeState = .none
                 GoalModel.shared.setScrollPosition.send(.top)
                 
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + Animation.Delay.oneS) {
                     self.startGoalReachedFlagAnimation()
                 }
                 

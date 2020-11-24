@@ -33,7 +33,7 @@ fileprivate struct OneSFloater<FloaterContent>: ViewModifier where FloaterConten
                     .offset(y: manager.transition.isFullAppeared ? 0 : -manager.height-SafeAreaSize.top-8)
             }
         }
-        .oneSAnimation(duration: AnimationDuration.opacity)
+        .oneSAnimation(duration: Animation.Duration.opacity)
         .frame(maxHeight: .infinity)
     }
     
@@ -56,7 +56,7 @@ fileprivate struct OneSFloater<FloaterContent>: ViewModifier where FloaterConten
                 .frame(width: Layout.floaterWidth, height: manager.height)
                 .background(manager.backgroundColor)
                 .cornerRadius(16)
-                .oneSShadow(opacity: 0.15, y: 0, blur: 10)
+                .oneSShadow(opacity: 0.15, blur: 10)
 
                 Spacer()
             }

@@ -49,6 +49,8 @@ final class PopupManager: ViewOverlayManagerProtocol {
     let dismissed = PassthroughSubject<PopupKey, Never>()
     let buttonDismissed = PassthroughSubject<PopupKey, Never>()
     
+    private let tapDismissAllowedDelay: DispatchTimeInterval = .milliseconds(1500)
+    
     
     //MARK: - Popups
     
@@ -70,7 +72,7 @@ final class PopupManager: ViewOverlayManagerProtocol {
         
         self.dismissOnTap           = false
         self.dismissOnTapOutside    = false
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + tapDismissAllowedDelay) {
             self.dismissOnTap           = dismissOnTap
             self.dismissOnTapOutside    = true
         }
@@ -119,7 +121,7 @@ final class PopupManager: ViewOverlayManagerProtocol {
         
         self.dismissOnTap           = false
         self.dismissOnTapOutside    = false
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + tapDismissAllowedDelay) {
             self.dismissOnTapOutside    = true
         }
         self.continueButton         = true
@@ -171,7 +173,7 @@ final class PopupManager: ViewOverlayManagerProtocol {
         
         self.dismissOnTap           = false
         self.dismissOnTapOutside    = false
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + tapDismissAllowedDelay) {
             self.dismissOnTapOutside    = true
         }
         self.continueButton         = false

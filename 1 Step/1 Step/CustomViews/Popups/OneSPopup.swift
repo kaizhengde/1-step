@@ -39,7 +39,7 @@ fileprivate struct OneSPopup<PopupContent>: ViewModifier where PopupContent: Vie
                 .scaleEffect(manager.transition.isFullAppeared ? 1.0 : 0.01)
             }
         }
-        .oneSAnimation(duration: AnimationDuration.opacity)
+        .oneSAnimation(duration: Animation.Duration.opacity)
     }
     
     

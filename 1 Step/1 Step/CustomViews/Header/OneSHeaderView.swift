@@ -14,12 +14,12 @@ struct OneSHeaderViewCustom<Content: View>: View {
     typealias HeaderButton = (image: HeaderButtonSymbol, color: Color, action: () -> ())
     typealias SecondaryHeaderButton = (image: SecondaryHeaderButtonSymbol, action: () ->())
     
-    let titleText: String?
-    let leadingButton: HeaderButton?
-    let trailingButton: HeaderButton?
-    let secondaryButtonOuter: SecondaryHeaderButton?
-    let secondaryButtonInner: SecondaryHeaderButton?
-    let customView: (() -> Content)?
+    let titleText: String?                              
+    let leadingButton: HeaderButton?                    
+    let trailingButton: HeaderButton?                   
+    let secondaryButtonOuter: SecondaryHeaderButton?    
+    let secondaryButtonInner: SecondaryHeaderButton?    
+    let customView: (() -> Content)?                    
     
     
     init(_ titleText: String?                           = nil,

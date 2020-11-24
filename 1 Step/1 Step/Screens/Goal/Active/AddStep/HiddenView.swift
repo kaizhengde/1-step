@@ -48,7 +48,7 @@ struct HiddenView: View {
             RoundedRectangle(cornerRadius: 5)
                 .frame(width: 10, height: 140)
                 .foregroundColor(viewModel.hiddenForegroundColor(viewModel.goal.color.light, viewModel.goal.color.dark ))
-                .oneSShadow(opacity: 0.12, x: 0, y: 2, blur: 8)
+                .oneSShadow(opacity: 0.12, blur: 8)
                 .offset(x: viewModel.animate ? -5 : 0)
                 .scaleEffect(y: viewModel.animate ? 1.05 : 1.0)
         }

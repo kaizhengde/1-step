@@ -34,7 +34,7 @@ extension ViewOverlayManagerProtocol {
     func initTransition() { defaultInitTransition() }
     func defaultInitTransition() {
         DispatchQueue.main.async {
-            self.transition = TransitionManager(fullAppearAfter: DelayAfter.halfOpacity, fullHideAfter: DelayAfter.opacity)
+            self.transition = TransitionManager(fullAppearAfter: Animation.Delay.halfOpacity, fullHideAfter: Animation.Delay.opacity)
             self.transition.delegate = self
             self.transition.state = .firstAppear
         }

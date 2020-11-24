@@ -28,7 +28,7 @@ struct MilestoneProgressView: View {
                 Circle()
                     .frame(width: 60, height: 60)
                     .foregroundColor(.backgroundToDarkGray)
-                    .oneSShadow(opacity: 0.15, y: 0, blur: 10)
+                    .oneSShadow(opacity: 0.15, blur: 10)
                     .scaleEffect(infiniteAnimationManager.slow.isOnBackward ? 1.2 : 1.0)
                     .alignmentGuide(.circleLineAlignment) { $0[VerticalAlignment.center] }
                     .animation(InfiniteAnimationManager.slowAnimation)
@@ -40,7 +40,7 @@ struct MilestoneProgressView: View {
         .onChange(of: addStepAnimationHandler.milestoneChangeState) {
             if $0 == .closeFinished { show = false }
             else if $0 == .openNewAndScrollToCurrent {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) { show = true }
+                DispatchQueue.main.asyncAfter(deadline: .now() + Animation.Delay.oneS) { show = true }
             }
         }
     }

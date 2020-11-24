@@ -40,10 +40,10 @@ final class InfiniteAnimationManager: ObservableObject {
                 self.slow.toggle()
                 self.fast.toggle()
                 
-                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1200)) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
                     self.slow.toggle()
                 }
-                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(200)) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                     self.fast.toggle()
                 }
             }

@@ -58,7 +58,7 @@ final class GoalSelectMountainModel: TransitionObservableObject {
     
         
     func initTransition() {
-        transition = TransitionManager(fullAppearAfter: DelayAfter.mountainAppear, fullHideAfter: DelayAfter.opacity)
+        transition = TransitionManager(fullAppearAfter: Animation.Delay.mountainAppear, fullHideAfter: Animation.Delay.opacity)
         transition.delegate = self
         
         transition.state = .firstAppear
@@ -66,7 +66,7 @@ final class GoalSelectMountainModel: TransitionObservableObject {
     
     
     func transitionDidFullHide() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + DelayAfter.mountainDismiss) { self.delegate?.dismissGoalSelectMountainView() }
+        DispatchQueue.main.asyncAfter(deadline: .now() + Animation.Delay.mountainDismiss) { self.delegate?.dismissGoalSelectMountainView() }
     }
     
     

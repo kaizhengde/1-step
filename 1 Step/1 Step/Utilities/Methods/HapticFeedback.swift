@@ -8,8 +8,6 @@
 import SwiftUI
 import AudioToolbox
 
-//MARK: - Haptic Feedback
-
 enum Feedback {
     
     static func impact(style: UIImpactFeedbackGenerator.FeedbackStyle) {

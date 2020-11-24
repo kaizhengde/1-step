@@ -37,7 +37,7 @@ struct ProfileHeaderView: View {
             Circle()
                 .frame(width: 165, height: 165)
                 .foregroundColor(.darkBackgroundToDarkGray)
-                .oneSShadow(opacity: 0.15, y: 2, blur: 8)
+                .oneSShadow(opacity: 0.15, blur: 8)
                 .overlay(
                     Group {
                         if let selectedImage = profileModel.currentImage {

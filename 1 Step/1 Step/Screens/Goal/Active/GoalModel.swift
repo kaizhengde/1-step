@@ -52,7 +52,7 @@ final class GoalModel: TransitionObservableObject {
     
     
     func initTransition() {
-        transition = TransitionManager(fullAppearAfter: DelayAfter.mountainAppear, fullHideAfter: .never)
+        transition = TransitionManager(fullAppearAfter: Animation.Delay.mountainAppear, fullHideAfter: .never)
         transition.delegate = self
         transition.state = .firstAppear
     }
@@ -116,7 +116,7 @@ final class GoalModel: TransitionObservableObject {
     func onDismissGoalCompletePopup() {
         if selectedGoal.currentState == .reached {
             MainModel.shared.toScreen(.goals)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) { self.showFlag = false }
+            DispatchQueue.main.asyncAfter(deadline: .now() + Animation.Delay.opacity) { self.showFlag = false }
         }
     }
     

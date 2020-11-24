@@ -145,7 +145,7 @@ struct PremiumView: View {
                     .frame(height: 140*Layout.multiplierWidth)
                     .background(backgroundColor)
                     .cornerRadius(10)
-                    .oneSShadow(opacity: 0.1, y: 2, blur: 10)
+                    .oneSShadow(opacity: 0.1, blur: 10)
                     .oneSItemTapScale()
                     .oneSItemTransition()
                 }
