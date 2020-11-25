@@ -49,7 +49,7 @@ struct OneSFillButton: View {
         
         var body: some View {
             Button(action: action) {
-                OneSText(text: text, font: textFont, color: textColor)
+                OneSText(text: text, font: textFont, color: textColor, alignment: .center)
                     .frame(height: height)
                     .frame(maxWidth: width)
                     .background(buttonColor)

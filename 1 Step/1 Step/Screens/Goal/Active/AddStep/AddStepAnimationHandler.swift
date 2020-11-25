@@ -15,6 +15,10 @@ class AddStepAnimationHandler: ObservableObject {
     
     var goal: Goal { GoalModel.shared.selectedGoal }
     
+    var currentMilestone: Milestone {
+        goal.milestones.filter { $0.state == .current }.first ?? Milestone(context: PersistenceManager.defaults.context)
+    }
+    
     
     //MARK: - Normal Add
     
@@ -83,7 +87,7 @@ class AddStepAnimationHandler: ObservableObject {
         if forward {
             FloaterManager.shared.showTextFloater(
                 titleText: "Awesome 🎉",
-                bodyText: "You have reached \(self.goal.currentStepUnits.toUI()) \(self.goal.step.unit == .custom ? self.goal.step.customUnit : self.goal.step.unit.description)!",
+                bodyText: "You have reached \(self.currentMilestone.neededStepUnits.toUI()) \(self.goal.step.unit == .custom ? self.goal.step.customUnit : self.goal.step.unit.description)!",
                 backgroundColor: self.goal.color.light
             )
             ConfettiManager.shared.showConfetti(amount: .small)

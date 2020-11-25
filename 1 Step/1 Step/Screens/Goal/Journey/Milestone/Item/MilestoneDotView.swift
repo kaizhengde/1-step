@@ -29,7 +29,7 @@ struct MilestoneDotView: View {
     var body: some View {
         VStack {
             if milestone.state == .done && showEndDate {
-                OneSText(text: milestone.endDate!.toString(), font: milestone.image == .summit ? .custom(.extraBold, 20) : .custom(.bold, 17) , color: goal.color.dark)
+                OneSText(text: milestone.endDate!.toString(), font: .custom(.extraBold, milestone.image == .summit ? 20 : 17), color: goal.color.dark)
                     .frame(width: 150)
             }
             if milestone.state != .current && !(milestone.image == .summit && milestone.state == .done && showEndDate) {

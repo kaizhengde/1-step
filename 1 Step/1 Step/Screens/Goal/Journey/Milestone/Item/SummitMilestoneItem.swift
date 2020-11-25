@@ -36,22 +36,10 @@ struct SummitMilestoneItem: View {
         
         var body: some View {
             VStack(spacing: 10) {
-                Group {
-                    if milestone.image.isCustom {
-                        milestone.image.image
-                            .renderingMode(.template)
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 50, height: 50)
-                            .foregroundColor(.white)
-                            .colorMultiply(.backgroundStatic)
-                    } else {
-                        milestone.image.image
-                            .font(.system(size: 50, weight: .thin))
-                            .foregroundColor(.backgroundStatic)
-                    }
-                }
-                .padding(.bottom, 30)
+                milestone.image.image
+                    .font(.system(size: 50, weight: .thin))
+                    .foregroundColor(.backgroundStatic)
+                    .padding(.bottom, 30)
 
                 OneSSecondaryHeaderText(text: "Summit", color: .backgroundStatic)
 

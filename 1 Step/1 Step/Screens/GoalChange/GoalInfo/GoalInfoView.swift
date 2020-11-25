@@ -19,7 +19,7 @@ struct GoalInfoView: View {
         ZStack {
             Color.backgroundToGray.edgesIgnoringSafeArea(.all)
             
-            ScrollView {
+            ScrollView(showsIndicators: viewModel.currentView == .howItWorks ? true : false) {
                 ScrollViewReader { scrollProxy in
                     Color.clear.frame(height: 0).id(0)
                     

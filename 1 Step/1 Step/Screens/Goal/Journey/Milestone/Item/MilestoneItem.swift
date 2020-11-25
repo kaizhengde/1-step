@@ -45,7 +45,7 @@ struct MilestoneItem: View {
                         .colorMultiply(.backgroundStatic)
                 } else {
                     milestone.image.image
-                        .font(.system(size: 50, weight: .thin))
+                        .font(.system(size: milestone.image == .one ? 48 : 50, weight: .thin))
                         .foregroundColor(.backgroundStatic)
                 }
 
@@ -61,6 +61,7 @@ struct MilestoneItem: View {
                     Spacer()
                 }
                 .foregroundColor(.backgroundStatic)
+                .multilineTextAlignment(.center)
             }
             .padding(8)
             .frame(width: milestone.state == .done ? 230 : 140, height: 160)

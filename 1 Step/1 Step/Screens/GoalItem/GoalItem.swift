@@ -72,17 +72,27 @@ struct GoalItem: View {
                 VStack(alignment: .leading) {
                     OneSText(text: goal.name, font: GoalItemArt.nameFont, color: .backgroundToGray)
                     
-                    HStack {
-                        Text("\(goal.neededStepUnits)")
-                        +
-                        Text(" ").font(.system(size: 5))
-                        +
-                        Text(goal.step.unit == .custom ? goal.step.customUnit : goal.step.unit.description)
-                        Spacer()
+                    if GoalItemArt.current == .grid {
+                        HStack {
+                            Text("\(goal.neededStepUnits)")
+                            +
+                            Text(" ").font(.system(size: 5))
+                            +
+                            Text(goal.step.unit == .custom ? goal.step.customUnit : goal.step.unit.description)
+                            Spacer()
+                        }
+                        .font(GoalItemArt.stepsFont.font)
+                        .foregroundColor(.backgroundToGray)
+                        .multilineTextAlignment(.leading)
+                    } else {
+                        HStack {
+                            Text(goal.step.unit == .custom ? goal.step.customUnit : goal.step.unit.description)
+                            Spacer()
+                        }
+                        .font(GoalItemArt.stepsFont.font)
+                        .foregroundColor(.backgroundToGray)
+                        .multilineTextAlignment(.leading)
                     }
-                    .font(GoalItemArt.stepsFont.font)
-                    .foregroundColor(.backgroundToGray)
-                    .multilineTextAlignment(.leading)
                 }
                 .padding(12)
                 .offset(y: goal.currentState == .reached ? 24 : GoalItemArt.textOffset)

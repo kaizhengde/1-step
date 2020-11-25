@@ -22,7 +22,6 @@ struct GoalMenuView: View {
                 
                 VStack(spacing: 5) {
                     GoalMenuItem(goal: $goalModel.selectedGoal)
-                        .oneSItemTransition()
                     
                     RoundedRectangle(cornerRadius: 2)
                         .frame(width: GoalItemArt.width/1.3, height: 4)
@@ -33,7 +32,6 @@ struct GoalMenuView: View {
                 VStack(spacing: 20) {
                     ForEach(activeGoalsRest, id: \.self) { goal in
                         GoalMenuItem(goal: .constant(goal))
-                            .oneSItemTransition()
                     }
                 }
             }
