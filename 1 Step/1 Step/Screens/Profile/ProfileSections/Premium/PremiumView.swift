@@ -46,7 +46,7 @@ struct PremiumView: View {
         
         
         var body: some View {
-            VStack(alignment: .leading, spacing: 20) {
+            VStack(alignment: .leading, spacing: 16) {
                 OneSRowButton(.shortBig, title: "Create unlimited goals") {}
                 OneSRowButton(.shortBig, title: "Support future updates") {}
                 OneSRowButton(.shortBig, title: "Plant a real tree 🌳", accessorySFSymbol: SFSymbol.info, accessoryColor: .neutralToDarkNeutral) {}

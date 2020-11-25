@@ -35,10 +35,12 @@ enum ProfileSymbol {
     static let share            = Image(systemName: "square.and.arrow.up")
     static let rate             = Image(systemName: "star")
     static let feedback         = Image(systemName: "message")
+    static let request          = Image(systemName: "flame")
     static let website          = Image(systemName: "globe")
     static let instagram        = Image(systemName: "camera.circle")
     static let vfdCollective    = Image(systemName: "light.max")
     static let pastelTree       = Image(systemName: "paintbrush")
+    static let plant            = Image(systemName: "heart")
 }
 
 

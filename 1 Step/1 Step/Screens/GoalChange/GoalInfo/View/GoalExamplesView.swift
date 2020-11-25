@@ -15,7 +15,7 @@ struct GoalExamplesView: View {
 
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 20) {
+        VStack(alignment: .leading, spacing: 16) {
             ForEach(0..<viewModel.examples.count) { i in
                 OneSDropDown(.shortBig, title: viewModel.examples[i].example) {
                     GoalExampleMapView(data: viewModel.examples[i].data, selectedColor: selectedColor, big: false)
