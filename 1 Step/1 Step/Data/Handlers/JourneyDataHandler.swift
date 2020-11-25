@@ -237,4 +237,13 @@ enum JourneyDataHandler {
         
         return journeyData
     }
+    
+    
+    //MARK: - Update Milestone Accomplishments after Edit
+    
+    static func updateMilestonesAccomplishment(_ oldDoneMilestonesAmount: Int, _ newDoneMilestonesAmount: Int) {
+        let newMilestonesReached = newDoneMilestonesAmount - oldDoneMilestonesAmount
+        print(newMilestonesReached)
+        UserDefaultsManager.shared.accomplishmentTotalMilestonesReached += newMilestonesReached
+    }
 }

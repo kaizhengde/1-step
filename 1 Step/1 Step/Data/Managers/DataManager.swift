@@ -95,6 +95,8 @@ final class DataManager {
         
         //Calculate
         
+        let oldDoneMilestonesAmount = goal.milestones.reduce(0) { $0 + ($1.state == .done ? 1 : 0) }
+        
         goal.step.unitRatio     = JourneyDataHandler.calculateRatio(from: baseData)
         goal.neededSteps        = baseData.neededStepUnits! * goal.step.unitRatio
         goal.stepsDate          = JourneyDataHandler.updateStepsDate(with: goal)
@@ -104,6 +106,10 @@ final class DataManager {
         goal.milestones         = JourneyDataHandler.generateMilestones(with: goal)
         
         guard updateSteps(goal, oldUnit) else { return false }
+        
+        let newDoneMilestonesAmount = goal.milestones.reduce(0) { $0 + ($1.state == .done ? 1 : 0) }
+        JourneyDataHandler.updateMilestonesAccomplishment(oldDoneMilestonesAmount, newDoneMilestonesAmount)
+        
         return persistenceManager.saveContext()
     }
     

@@ -16,7 +16,7 @@ struct ProfileAboutSectionView: View {
     
     var body: some View {
         OneSSectionView(title: "About") {
-            VStack(spacing: 36) {
+            VStack(spacing: 40) {
                 VStack(spacing: 16) {
                     OneSRowButton(.long, title: "Send us your Feedback", accessorySFSymbol: ProfileSymbol.feedback, accessoryColor: UserColor.user0.standard) {}
                     
