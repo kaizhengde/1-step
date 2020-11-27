@@ -14,7 +14,7 @@ struct OneSTextFieldConfirmationPopupView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
-            OneSText(text: manager.bodyText, font: .body2, color: manager.textColor)
+            OneSMultilineText(text: manager.bodyText, color: manager.textColor)
             OneSTextField(input: $manager.confirmationInput, placeholder: manager.placeholder, inputColor: manager.textColor, placeholderColor: manager.placeholderColor, inputLimit: manager.inputLimit, keyboard: .default, lowercased: false) {}
         }
     }
