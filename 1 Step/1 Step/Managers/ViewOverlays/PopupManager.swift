@@ -56,15 +56,20 @@ final class PopupManager: ViewOverlayManagerProtocol {
     
     //TextPopup
     
+    @Published var bottomButtonText: String?
+    
+    
     func showTextPopup(
         _ key: PopupKey,
         titleText: String,
         titleImage: Image?          = nil,
         bodyText: String,
         textColor: Color            = .backgroundToGray,
+        bottomButtonText: String    = "OK",
         backgroundColor: Color,
-        height: CGFloat             = 300+Layout.onlyOniPhoneXType(40),
-        dismissOnTap: Bool          = true
+        height: CGFloat             = 360*Layout.multiplierWidth,
+        dismissOnTap: Bool          = true,
+        dismissOnTapOutside: Bool   = true
     ) {
         initTransition()
         
@@ -74,7 +79,7 @@ final class PopupManager: ViewOverlayManagerProtocol {
         self.dismissOnTapOutside    = false
         DispatchQueue.main.asyncAfter(deadline: .now() + tapDismissAllowedDelay) {
             self.dismissOnTap           = dismissOnTap
-            self.dismissOnTapOutside    = true
+            self.dismissOnTapOutside    = dismissOnTapOutside
         }
         self.continueButton     	= false
         
@@ -82,6 +87,7 @@ final class PopupManager: ViewOverlayManagerProtocol {
         self.titleImage         	= titleImage
         self.bodyText           	= bodyText
         self.textColor              = textColor
+        self.bottomButtonText       = bottomButtonText
         
         self.backgroundColor    	= backgroundColor
         self.height             	= height
@@ -113,7 +119,7 @@ final class PopupManager: ViewOverlayManagerProtocol {
         keyboard: UIKeyboardType    = .default,
         lowercased: Bool            = false,
         backgroundColor: Color,
-        height: CGFloat             = 320+Layout.onlyOniPhoneXType(40)
+        height: CGFloat             = 360*Layout.multiplierWidth
     ) {
         initTransition()
         
@@ -130,6 +136,7 @@ final class PopupManager: ViewOverlayManagerProtocol {
         self.titleImage             = nil
         self.bodyText               = bodyText
         self.textColor              = textColor
+        self.bottomButtonText       = nil
         
         self.input                  = input
         self.placeholder            = placeholder
@@ -165,7 +172,7 @@ final class PopupManager: ViewOverlayManagerProtocol {
         textLimit: Int,
         confirmationText: String,
         backgroundColor: Color,
-        height: CGFloat             = 380+Layout.onlyOniPhoneXType(40)
+        height: CGFloat             = 400*Layout.multiplierWidth
     ) {
         initTransition()
         
@@ -182,6 +189,7 @@ final class PopupManager: ViewOverlayManagerProtocol {
         self.titleImage             = nil
         self.bodyText               = bodyText
         self.textColor              = textColor
+        self.bottomButtonText       = nil
         
         self.confirmationInput      = ""
         self.placeholder            = placeholder

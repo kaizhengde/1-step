@@ -166,7 +166,7 @@ class AddStepModel: ObservableObject {
     }
     
     
-    //Gesture
+    //MARK: - Gesture
     
     lazy private(set) var dragGesture = DragGesture()
         .onChanged { [weak self] value in self?.onChanged(value) }

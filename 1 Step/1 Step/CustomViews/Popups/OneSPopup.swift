@@ -66,13 +66,22 @@ fileprivate struct OneSPopup<PopupContent>: ViewModifier where PopupContent: Vie
                             Color.clear.frame(width: 0, height: 38)
                         }
                     }
+                    
                     manager.content()
+                    
                     Spacer()
+                    
+                    HStack {
+                        if let buttonText = manager.bottomButtonText {
+                            OneSBorderButton(text: buttonText, color: manager.textColor) { manager.dismiss() }
+                                .offset(y: -12)
+                        }
+                    }
+                    .frame(maxWidth: .infinity)
                 }
                 Spacer()
             }
             .padding(Layout.firstLayerPadding)
-            .padding(.vertical, 10)
             .padding(.top, manager.titleImage == nil ? 20 : 0)
             .frame(width: Layout.popoverWidth, height: manager.height)
             .background(manager.backgroundColor)

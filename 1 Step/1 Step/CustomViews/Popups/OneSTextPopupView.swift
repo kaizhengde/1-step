@@ -13,6 +13,6 @@ struct OneSTextPopupView: View {
     
     
     var body: some View {
-        OneSText(text: manager.bodyText, font: .body2, color: manager.textColor)
+        OneSMultilineText(text: manager.bodyText, color: manager.textColor)
     }
 }

@@ -161,7 +161,7 @@ class AddStepAnimationHandler: ObservableObject {
     
     
     private func startGoalReachedUIAnimations() {
-        PopupManager.shared.showTextPopup(.goalReached ,titleText: "Congrats", bodyText: "You are on the peak of the mountain. 🎊\n\nAccomplishing a total of \(self.goal.currentStepUnits.toUI()) \(self.goal.step.unit == .custom ? self.goal.step.customUnit : self.goal.step.unit.description)!", backgroundColor: goal.color.light, height: 360*Layout.multiplierHeight, dismissOnTap: false)
+        PopupManager.shared.showTextPopup(.goalReached ,titleText: "Congrats", bodyText: "You are on the peak of the mountain. 🎊\n\nAccomplishing a total of \(self.goal.currentStepUnits.toUI()) \(self.goal.step.unit == .custom ? self.goal.step.customUnit : self.goal.step.unit.description)!", bottomButtonText: "COMPLETE", backgroundColor: goal.color.standard, dismissOnTap: false, dismissOnTapOutside: false)
         Feedback.haptic(type: .success)
         ConfettiManager.shared.showConfetti(amount: .big)
     }

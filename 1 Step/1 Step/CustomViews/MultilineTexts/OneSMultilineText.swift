@@ -11,10 +11,13 @@ struct OneSMultilineText: View {
     
     let text: String
     let bold: Bool
+    let color: Color
     
-    init(text: String, bold: Bool = false) {
+    
+    init(text: String, bold: Bool = false, color: Color = .grayToBackground) {
         self.text = text
         self.bold = bold
+        self.color = color
     }
     
     
@@ -22,7 +25,7 @@ struct OneSMultilineText: View {
         HStack {
             Text(text)
                 .font(.custom(bold ? Raleway.semiBold.weight : Raleway.regular.weight, size: 17))
-                .foregroundColor(.grayToBackground)
+                .foregroundColor(color)
                 .multilineTextAlignment(.leading)
                 .fixedSize(horizontal: false, vertical: true)
                 .lineSpacing(5)
