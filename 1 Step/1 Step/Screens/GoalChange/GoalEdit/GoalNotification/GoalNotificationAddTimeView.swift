@@ -9,24 +9,24 @@ import SwiftUI
 
 struct GoalNotificationAddTimeView: View {
     
-    @State private var selectedDate = Date()
-    @State private var selectedDays: [(description: String, selected: Bool)] = [
-        ("Mo", false),
-        ("Tu", false),
-        ("We", false),
-        ("Th", false),
-        ("Fr", false),
-        ("Sa", false),
-        ("Su", false)
-    ]
-    
+    @ObservedObject var viewModel: GoalNotificationModel
     var selectedColor: UserColor
     
     
     var body: some View {
         VStack(spacing: 32) {
+            //Header
+            HStack {
+                OneSSecondaryHeaderText(text: "New Reminder", color: .backgroundToGray)
+                Spacer()
+                OneSSmallBorderButton(symbol: SFSymbol.check, color: .backgroundToGray, withScale: false) {
+                    viewModel.finishButtonPressed() 
+                }
+            }
+            
+            //Time
             OneSSectionView(title: "At time", titleColor: .backgroundToGray) {
-                DatePicker(selectedDate.toTimeString(), selection: $selectedDate, displayedComponents: .hourAndMinute)
+                DatePicker(viewModel.selectedData.time.toTimeString(), selection: $viewModel.selectedData.time, displayedComponents: .hourAndMinute)
                     .font(OneSFont.custom(.bold, 17).font)
                     .accentColor(selectedColor.light)
                     .foregroundColor(.whiteToDarkGray)
@@ -37,11 +37,12 @@ struct GoalNotificationAddTimeView: View {
                     .contentShape(Rectangle())
             }
             
+            //Weekdays
             OneSSectionView(title: "Repeat every", titleColor: .backgroundToGray) {
                 VStack(spacing: 10) {
                     LazyVGrid(columns: [GridItem(), GridItem(), GridItem(), GridItem()], spacing: 10) {
-                        ForEach(0..<selectedDays.count) { i in
-                            WeekDayButton(selectedDays: $selectedDays, i: i, selectedColor: selectedColor)
+                        ForEach(0..<viewModel.weekdaysData.count) { i in
+                            WeekDayButton(viewModel: viewModel, index: i, selectedColor: selectedColor)
                         }
                     }
                 }
@@ -52,22 +53,25 @@ struct GoalNotificationAddTimeView: View {
     
     private struct WeekDayButton: View {
         
-        @Binding var selectedDays: [(description: String, selected: Bool)]
+        @ObservedObject var viewModel: GoalNotificationModel
         
-        var i: Int
+        var index: Int
         var selectedColor: UserColor
+        
+        var selected: Bool { viewModel.selectedData.weekdays.contains(index) }
         
         
         var body: some View {
             OneSFillButton(
-                text:           selectedDays[i].description,
+                text:           viewModel.weekdaysData[index],
                 textFont:       .subtitle,
-                textColor:      selectedDays[i].selected ? .grayToBackground : .backgroundToGray,
-                buttonColor:    selectedDays[i].selected ? .backgroundToGray : selectedColor.dark,
+                textColor:      selected ? .grayToBackground : .backgroundToGray,
+                buttonColor:    selected ? .backgroundToGray : selectedColor.dark,
                 height:         55,
                 withScale:      false
             ) {
-                selectedDays[i].selected.toggle()
+                if selected { viewModel.selectedData.weekdays.removeAll { $0 == index } }
+                else { viewModel.selectedData.weekdays.append(index) }
             }
         }
     }

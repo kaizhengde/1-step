@@ -29,7 +29,7 @@ struct GoalEnterInputView: View {
                                width:       140*Layout.multiplierWidth,
                                height:      70
                 ) {
-                    miniSheetManager.showCustomMiniSheet(titleText: "Select Unit", backgroundColor: selectedColor.standard, height: 500*Layout.multiplierHeight) {
+                    miniSheetManager.showCustomMiniSheet(backgroundColor: selectedColor.standard, height: 500*Layout.multiplierHeight) {
                         GoalEnterInputSelectStepUnitView(viewModel: viewModel, selectedColor: $selectedColor)
                     }
                 }

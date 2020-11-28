@@ -14,7 +14,7 @@ final class MiniSheetManager: ViewOverlayManagerProtocol {
     
     @Published var transition: TransitionManager<MiniSheetManager> = TransitionManager()
 
-    @Published var titleText: String!
+    var titleText: String!
     @Published var backgroundColor: Color!
     @Published var height: CGFloat!
     @Published var content: () -> AnyView = { AnyView(EmptyView()) }
@@ -24,11 +24,11 @@ final class MiniSheetManager: ViewOverlayManagerProtocol {
     
     //MARK: - MiniSheets
     
-    func showCustomMiniSheet<T: View>(titleText: String, backgroundColor: Color, height: CGFloat, @ViewBuilder content: @escaping () -> T) {
+    func showCustomMiniSheet<T: View>(backgroundColor: Color, height: CGFloat, @ViewBuilder content: @escaping () -> T) {
         DispatchQueue.main.async {
             self.initTransition()
         
-            self.titleText = titleText
+            self.titleText = ""
             self.backgroundColor = backgroundColor
             self.height = height
             self.content = { AnyView(content()) }

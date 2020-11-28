@@ -15,6 +15,14 @@ struct GoalEnterInputSelectStepUnitView: View {
     
     var body: some View {
         VStack {
+            //Header
+            HStack {
+                OneSSecondaryHeaderText(text: "Select Unit", color: .backgroundToGray)
+                Spacer()
+                OneSSmallBorderButton(symbol: SFSymbol.`continue`, color: .backgroundToGray, withScale: false) { MiniSheetManager.shared.dismiss() }
+            }
+            .padding(.bottom, 20)
+            
             //StepCategory
             HStack {
                 StepCategoryButton(viewModel: viewModel, selectedColor: $selectedColor, stepCategory: .duration)
