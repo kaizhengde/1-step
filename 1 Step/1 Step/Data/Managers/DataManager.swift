@@ -74,6 +74,7 @@ final class DataManager {
         newStep.addArray            = addArrays.unit
         newStep.addArrayDual        = addArrays.dual
         newGoal.milestones          = JourneyDataHandler.generateMilestones(with: newGoal)
+        newGoal.notifications       = []
         
         return persistenceManager.saveContext()
     }
@@ -81,6 +82,7 @@ final class DataManager {
     
     //MARK: - Change
     
+    //Goal Edit
     
     func editGoal(_ goal: Goal, with baseData: Goal.BaseData) -> Bool {
         
@@ -113,12 +115,14 @@ final class DataManager {
         return persistenceManager.saveContext()
     }
     
-    
+
     private func updateSteps(_ goal: Goal, _ oldUnit: StepUnit) -> Bool {
         goal.currentStepUnits *= oldUnit.translateMultiplier(to: goal.step.unit)
         return addSteps(goal, with: 0)
     }
     
+    
+    //Goal Add Steps
     
     func addSteps(_ goal: Goal, with newStepUnits: Double) -> Bool {
         
@@ -142,6 +146,8 @@ final class DataManager {
     }
     
     
+    //Goal sort order
+    
     func changeGoalOrder(_ goal: Goal, with newOrder: Int16) -> Bool {
         goal.sortOrder      = newOrder
         return persistenceManager.saveContext()
@@ -159,10 +165,45 @@ final class DataManager {
     }
     
     
+    //Goal Percentage
+    
     func updateReachedGoalsPercentage() -> Bool {
         for goal in DataModel.shared.reachedGoals {
             goal.currentPercent = Int16(Int.random(in: 20...80))
         }
+        
+        return persistenceManager.saveContext()
+    }
+    
+    
+    //Goal Notification
+    
+    func addGoalNotification(_ goal: Goal, with notificationData: Goal.NotificationData) -> Bool {
+        
+        let newNotification = GoalNotification(context: persistenceManager.context)
+        
+        newNotification.id          = notificationData.id
+        newNotification.time        = notificationData.time
+        newNotification.weekdays    = notificationData.weekdays
+        newNotification.parentGoal  = goal
+        
+        goal.notifications.insert(newNotification)
+        
+        return persistenceManager.saveContext()
+    }
+    
+    
+    func editGoalNotification(_ notification: GoalNotification, with notificationData: Goal.NotificationData) -> Bool {
+        notification.time           = notificationData.time
+        notification.weekdays       = notificationData.weekdays
+        
+        return persistenceManager.saveContext()
+    }
+    
+    
+    func removeGoalNotification(_ notification: GoalNotification, of goal: Goal) -> Bool {
+        goal.notifications.remove(notification)
+        persistenceManager.context.delete(notification)
         
         return persistenceManager.saveContext()
     }

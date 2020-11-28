@@ -32,6 +32,7 @@ final class Goal: NSManagedObject, Identifiable {
     @NSManaged var color: UserColor
     
     @NSManaged var milestones: Set<Milestone>
+    @NSManaged var notifications: Set<GoalNotification>
 }
 
 extension Goal {
@@ -54,7 +55,11 @@ extension Goal {
         milestones:         Set<Milestone>
     )
     
-    typealias NotificationData = ()
+    typealias NotificationData = (
+        id:                 UUID,
+        time:               Date,
+        weekdays:           [Int16]
+    )
     
     
     static let nameDigitsLimit = 15

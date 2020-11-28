@@ -132,6 +132,38 @@ final class DataModel: ObservableObject {
     }
     
     
+    //Goal Notification
+    
+    func addGoalNotification(_ goal: Goal, with notificationData: Goal.NotificationData, completion: @escaping (Bool) -> ()) {
+        DispatchQueue.global().async {
+            if self.dataManager.addGoalNotification(goal, with: notificationData) {
+                DispatchQueue.main.async { completion(true) }
+            }
+            DispatchQueue.main.async { completion(false) }
+        }
+    }
+    
+    
+    func editGoalNotification(_ notification: GoalNotification, with notificationData: Goal.NotificationData, completion: @escaping (Bool) -> ()) {
+        DispatchQueue.global().async {
+            if self.dataManager.editGoalNotification(notification, with: notificationData) {
+                DispatchQueue.main.async { completion(true) }
+            }
+            DispatchQueue.main.async { completion(false) }
+        }
+    }
+    
+    
+    func removeGoalNotification(_ notification: GoalNotification, of goal: Goal, completion: @escaping (Bool) -> ()) {
+        DispatchQueue.global().async {
+            if self.dataManager.removeGoalNotification(notification, of: goal) {
+                DispatchQueue.main.async { completion(true) }
+            }
+            DispatchQueue.main.async { completion(false) }
+        }
+    }
+    
+    
     //MARK: - Delete
     
     func deleteGoal(_ goal: Goal, completion: @escaping (Bool) -> ()) {

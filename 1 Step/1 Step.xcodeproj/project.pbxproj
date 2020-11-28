@@ -86,9 +86,10 @@
 		3D68B666257223C000A183F5 /* GoalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68B665257223C000A183F5 /* GoalNotificationManager.swift */; };
 		3D68B66A2572281400A183F5 /* OneSAuthorizationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68B6692572281400A183F5 /* OneSAuthorizationStatus.swift */; };
 		3D68B66F2572437200A183F5 /* AuthorizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68B66E2572437100A183F5 /* AuthorizationManager.swift */; };
-		3D68B67A257267D100A183F5 /* GoalNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68B679257267D100A183F5 /* GoalNotificationView.swift */; };
-		3D68B67F25726BF200A183F5 /* GoalNotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68B67E25726BF200A183F5 /* GoalNotificationModel.swift */; };
-		3D68B68725726D4C00A183F5 /* GoalNotificationAddTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68B68625726D4C00A183F5 /* GoalNotificationAddTimeView.swift */; };
+		3D68B67A257267D100A183F5 /* GoalChangeNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68B679257267D100A183F5 /* GoalChangeNotificationView.swift */; };
+		3D68B67F25726BF200A183F5 /* GoalChangeNotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68B67E25726BF200A183F5 /* GoalChangeNotificationModel.swift */; };
+		3D68B68725726D4C00A183F5 /* GoalChangeNotificationAddTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68B68625726D4C00A183F5 /* GoalChangeNotificationAddTimeView.swift */; };
+		3D68B68B2572B10500A183F5 /* GoalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68B68A2572B10500A183F5 /* GoalNotification.swift */; };
 		3D6D6454254C0F2400FAA37F /* JourneyErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6D6453254C0F2400FAA37F /* JourneyErrorHandler.swift */; };
 		3D6D6458254C4D2400FAA37F /* JourneyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6D6457254C4D2400FAA37F /* JourneyModel.swift */; };
 		3D6F4399253AE19C00785586 /* GoalHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6F4398253AE19C00785586 /* GoalHeaderView.swift */; };
@@ -277,9 +278,10 @@
 		3D68B665257223C000A183F5 /* GoalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalNotificationManager.swift; sourceTree = "<group>"; };
 		3D68B6692572281400A183F5 /* OneSAuthorizationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSAuthorizationStatus.swift; sourceTree = "<group>"; };
 		3D68B66E2572437100A183F5 /* AuthorizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationManager.swift; sourceTree = "<group>"; };
-		3D68B679257267D100A183F5 /* GoalNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalNotificationView.swift; sourceTree = "<group>"; };
-		3D68B67E25726BF200A183F5 /* GoalNotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalNotificationModel.swift; sourceTree = "<group>"; };
-		3D68B68625726D4C00A183F5 /* GoalNotificationAddTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalNotificationAddTimeView.swift; sourceTree = "<group>"; };
+		3D68B679257267D100A183F5 /* GoalChangeNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalChangeNotificationView.swift; sourceTree = "<group>"; };
+		3D68B67E25726BF200A183F5 /* GoalChangeNotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalChangeNotificationModel.swift; sourceTree = "<group>"; };
+		3D68B68625726D4C00A183F5 /* GoalChangeNotificationAddTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalChangeNotificationAddTimeView.swift; sourceTree = "<group>"; };
+		3D68B68A2572B10500A183F5 /* GoalNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalNotification.swift; sourceTree = "<group>"; };
 		3D6D6453254C0F2400FAA37F /* JourneyErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyErrorHandler.swift; sourceTree = "<group>"; };
 		3D6D6457254C4D2400FAA37F /* JourneyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyModel.swift; sourceTree = "<group>"; };
 		3D6F4398253AE19C00785586 /* GoalHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalHeaderView.swift; sourceTree = "<group>"; };
@@ -800,9 +802,9 @@
 		3D68B67D25726BD900A183F5 /* GoalNotification */ = {
 			isa = PBXGroup;
 			children = (
-				3D68B67E25726BF200A183F5 /* GoalNotificationModel.swift */,
-				3D68B679257267D100A183F5 /* GoalNotificationView.swift */,
-				3D68B68625726D4C00A183F5 /* GoalNotificationAddTimeView.swift */,
+				3D68B67E25726BF200A183F5 /* GoalChangeNotificationModel.swift */,
+				3D68B679257267D100A183F5 /* GoalChangeNotificationView.swift */,
+				3D68B68625726D4C00A183F5 /* GoalChangeNotificationAddTimeView.swift */,
 			);
 			path = GoalNotification;
 			sourceTree = "<group>";
@@ -972,6 +974,7 @@
 			children = (
 				3DDF702F2531B90F00FD3011 /* Types */,
 				3DDF70302531BAA100FD3011 /* Goal.swift */,
+				3D68B68A2572B10500A183F5 /* GoalNotification.swift */,
 				3DDF70362531BAB100FD3011 /* Milestone.swift */,
 				3DDF70332531BAA900FD3011 /* Step.swift */,
 			);
@@ -1343,7 +1346,7 @@
 				3D2E7928252F6C2C00788AA2 /* GoalEnterInputModel.swift in Sources */,
 				3DC617262544145C00A1F204 /* InfiniteAnimationManager.swift in Sources */,
 				3D5156AF2531F66D00A44450 /* GoalEnterInputSelectStepUnitView.swift in Sources */,
-				3D68B67A257267D100A183F5 /* GoalNotificationView.swift in Sources */,
+				3D68B67A257267D100A183F5 /* GoalChangeNotificationView.swift in Sources */,
 				3D959AA725631320007BAA07 /* GoalExampleBackgroundText.swift in Sources */,
 				3DFD9BB6256B7CAA00CF9580 /* OneSSafariView.swift in Sources */,
 				3D0BEB112568EDB0002F74FE /* ItemTapScale.swift in Sources */,
@@ -1351,6 +1354,7 @@
 				3D4FD8632564E9E800103C73 /* Date.swift in Sources */,
 				3D2E79752530344D00788AA2 /* OneSSecondaryHeaderText.swift in Sources */,
 				3D4B78E1252CDD9200A45755 /* GoalSelectMountainItem.swift in Sources */,
+				3D68B68B2572B10500A183F5 /* GoalNotification.swift in Sources */,
 				3D47CC83252C6F9300A8CA1B /* OneSHeaderView.swift in Sources */,
 				3DE0796625340E410024E17D /* Shadow.swift in Sources */,
 				3D47CC8D252C71C100A8CA1B /* Layout.swift in Sources */,
@@ -1367,7 +1371,7 @@
 				3DCFE29625459E390012C536 /* OneSPicker.swift in Sources */,
 				3D6D6454254C0F2400FAA37F /* JourneyErrorHandler.swift in Sources */,
 				3D511EED256802C50028DB66 /* OneSTextPassage.swift in Sources */,
-				3D68B68725726D4C00A183F5 /* GoalNotificationAddTimeView.swift in Sources */,
+				3D68B68725726D4C00A183F5 /* GoalChangeNotificationAddTimeView.swift in Sources */,
 				3D2E7941253017B600788AA2 /* OneSSmallBorderButton.swift in Sources */,
 				3DFD9BBD256B864800CF9580 /* ProfileHelpView.swift in Sources */,
 				3D4FD8722564F48F00103C73 /* GoalReachedSummaryView.swift in Sources */,
@@ -1380,7 +1384,7 @@
 				3D59DE972569657700CF24D7 /* OneSSectionView.swift in Sources */,
 				3D959A8B256286AE007BAA07 /* ConfettiView.swift in Sources */,
 				3DE11C35252C681200F13719 /* __StepApp.swift in Sources */,
-				3D68B67F25726BF200A183F5 /* GoalNotificationModel.swift in Sources */,
+				3D68B67F25726BF200A183F5 /* GoalChangeNotificationModel.swift in Sources */,
 				3D2E792C252F6CAB00788AA2 /* GoalEnterInputView.swift in Sources */,
 				3D610887256D70CC00DC20BD /* Localized.swift in Sources */,
 				3D6F43A5253B268B00785586 /* GoalView.swift in Sources */,

@@ -47,6 +47,6 @@ extension ViewOverlayManagerProtocol {
     func dismiss() { defaultDismiss() }
     func defaultDismiss() {
         transition.state = .firstHide
-        objectWillChange.send()
+        DispatchQueue.main.async { self.objectWillChange.send() }
     }
 }

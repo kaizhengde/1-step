@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct GoalNotificationAddTimeView: View {
+struct GoalChangeNotificationAddTimeView: View {
     
-    @ObservedObject var viewModel: GoalNotificationModel
+    @ObservedObject var viewModel: GoalChangeNotificationModel
     var selectedColor: UserColor
     
     
@@ -53,7 +53,7 @@ struct GoalNotificationAddTimeView: View {
     
     private struct WeekDayButton: View {
         
-        @ObservedObject var viewModel: GoalNotificationModel
+        @ObservedObject var viewModel: GoalChangeNotificationModel
         
         var index: Int
         var selectedColor: UserColor

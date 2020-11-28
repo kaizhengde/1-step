@@ -15,7 +15,14 @@
         <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="stepsDate" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer"/>
         <relationship name="milestones" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Milestone" inverseName="parentGoal" inverseEntity="Milestone"/>
+        <relationship name="notifications" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GoalNotification" inverseName="parentGoal" inverseEntity="GoalNotification"/>
         <relationship name="step" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Step" inverseName="goal" inverseEntity="Step"/>
+    </entity>
+    <entity name="GoalNotification" representedClassName=".GoalNotification" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="time" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="weekdays" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer"/>
+        <relationship name="parentGoal" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Goal" inverseName="notifications" inverseEntity="Goal"/>
     </entity>
     <entity name="Milestone" representedClassName=".Milestone" syncable="YES">
         <attribute name="endDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -36,8 +43,9 @@
         <relationship name="goal" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Goal" inverseName="step" inverseEntity="Goal"/>
     </entity>
     <elements>
-        <element name="Goal" positionX="-54.56640625" positionY="-24.515625" width="128" height="254"/>
-        <element name="Milestone" positionX="170.6015625" positionY="4.609375" width="128" height="163"/>
-        <element name="Step" positionX="-55.56640625" positionY="304.453125" width="128" height="133"/>
+        <element name="Goal" positionX="-54.56640625" positionY="-24.515625" width="128" height="269"/>
+        <element name="GoalNotification" positionX="183.111572265625" positionY="44.25569152832031" width="128" height="89"/>
+        <element name="Milestone" positionX="146.9140625" positionY="366.1441650390625" width="128" height="163"/>
+        <element name="Step" positionX="-108.4058837890625" positionY="381.3737182617188" width="128" height="133"/>
     </elements>
 </model>

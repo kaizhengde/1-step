@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct GoalNotificationView: View {
+struct GoalChangeNotificationView: View {
     
-    @StateObject private var viewModel = GoalNotificationModel()
+    @StateObject private var viewModel = GoalChangeNotificationModel()
     @ObservedObject var goalEditModel: GoalEditModel
     
     var selectedColor: UserColor { goalEditModel.selectedMountainData.color }
@@ -27,7 +27,7 @@ struct GoalNotificationView: View {
     private struct TimeReminderSection: View {
         
         @StateObject private var miniSheetManager = MiniSheetManager.shared
-        @StateObject private var viewModel = GoalNotificationModel()
+        @StateObject private var viewModel = GoalChangeNotificationModel()
         
         var selectedColor: UserColor
         
@@ -35,11 +35,14 @@ struct GoalNotificationView: View {
         var body: some View {
             OneSDropDown(.long, title: "Time", accessorySFSymbol: SFSymbol.clock) {
                 VStack(alignment: .leading, spacing: 10) {
-                    //Notification Items
+                    ForEach(viewModel.notificationsUI, id: \.self) { notification in
+                        OneSRowButton(.shortSmall, title: notification.weekdays.description, textColor: .backgroundToGray, backgroundColor: selectedColor.standard, accessoryText: notification.time.toTimeString(), accessoryColor: .backgroundToGray) {
+                        }
+                    }
                     
                     AddNotificationButton() {
                         miniSheetManager.showCustomMiniSheet(backgroundColor: selectedColor.standard, height: 600*Layout.multiplierHeight) {
-                            GoalNotificationAddTimeView(viewModel: viewModel, selectedColor: selectedColor)
+                            GoalChangeNotificationAddTimeView(viewModel: viewModel, selectedColor: selectedColor)
                         }
                     }
                     .padding(.top, 20)
@@ -64,10 +67,3 @@ struct GoalNotificationView: View {
         }
     }
 }
-
-
-/*
- //                    OneSRowButton(.shortSmall, title: "Everyday", textColor: .backgroundToGray, backgroundColor: selectedColor.standard, accessoryText: "12:30", accessoryColor: .backgroundToGray) {
- //                    }
-                     
- */
