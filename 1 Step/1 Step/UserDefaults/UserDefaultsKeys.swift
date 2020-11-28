@@ -50,8 +50,13 @@ extension UserDefaultKey {
         static let language: Key                 = "setting.language"
         static let appearance: Key               = "setting.appearance"
         static let colorTheme: Key               = "setting.colorTheme"
-        static let notifications: Key            = "setting.notifications"
         static let iCloudSynch: Key              = "setting.iCloudSynch"
+    }
+    
+    
+    enum Authorization {
+        static let notifications: Key           = "authorization.notifications"
+        static let photoLibrary: Key            = "authorization.photoLibrary"
     }
 }
 

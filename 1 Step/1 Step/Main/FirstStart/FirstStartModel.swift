@@ -29,7 +29,10 @@ class FirstStartModel: ObservableObject {
         UserDefaultsManager.shared.userName = userNameInput.removeWhiteSpaces()
         
         currentStep = .done
-        DispatchQueue.main.asyncAfter(deadline: .now() + Animation.Delay.opacity) { MainModel.shared.toScreen(.goals) }
+        DispatchQueue.main.asyncAfter(deadline: .now() + Animation.Delay.opacity) {
+            MainModel.shared.toScreen(.goals)
+            LocalNotificationManager.firstStartRequestAuthorization()
+        }
     }
     
     

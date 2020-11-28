@@ -41,7 +41,7 @@ struct ProfileAppSectionView: View {
         var selectedLanguage: OneSLanguage { userDefaultsManager.settingLanguage }
         var selectedAppearance: OneSAppearance { userDefaultsManager.settingAppearance }
         var selectedColorTheme: OneSColorTheme { userDefaultsManager.settingColorTheme }
-        var notifications: Bool { userDefaultsManager.settingNotifications }
+        var notifications: Bool { userDefaultsManager.authorizationNotifications == .authorized }
         
         
         var body: some View {
@@ -126,7 +126,7 @@ struct ProfileAppSectionView: View {
                     backgroundColor: profileModel.appSelectedRowBackgroundColor(notifications),
                     accessoryText: profileModel.appSelectedRowAccessoryText(notifications, enabled: "On", disabled: "Off"),
                     accessoryColor: profileModel.appSelectedRowAccessoryColor(notifications),
-                    action: { userDefaultsManager.settingNotifications.toggle() }
+                    action: { UIApplication.shared.openOneSSettings() }
                 )
             }
         }

@@ -19,6 +19,11 @@ extension UIApplication {
         tapGesture.delegate = self
         window.addGestureRecognizer(tapGesture)
     }
+    
+    
+    func openOneSSettings() {
+        open(URL(string: UIApplication.openSettingsURLString)!)
+    }
 }
 
 

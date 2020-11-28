@@ -32,6 +32,6 @@ struct MainView: View {
         .oneSPopup()
         .oneSConfetti()
         .oneSFloater()
-        .onAppear { mainModel.updateAppearance() }
+        .onAppear { mainModel.considerUserDefaults() }
     }
 }

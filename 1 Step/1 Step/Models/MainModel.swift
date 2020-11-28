@@ -105,6 +105,14 @@ final class MainModel: ObservableObject {
     }
     
     
+    //MARK: - UserDefaults
+    
+    func considerUserDefaults() {
+        updateAppearance()
+        updateNotificationAuthorization()
+    }
+    
+    
     func updateAppearance() {
         let currentAppearance = UserDefaultsManager.shared.settingAppearance
         
@@ -113,6 +121,11 @@ final class MainModel: ObservableObject {
         case .light: window?.overrideUserInterfaceStyle = .light
         case .dark: window?.overrideUserInterfaceStyle = .dark
         }
+    }
+    
+    
+    func updateNotificationAuthorization() {
+        LocalNotificationManager.updateAuthorization()
     }
 }
 

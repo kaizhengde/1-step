@@ -29,7 +29,7 @@ struct UserDefault<T: UserDefaultType> where T: Codable {
                 UserDefaults.standard.set(encoded, forKey: key.rawValue)
                 print("Success.")
             }
-            UserDefaultsManager.shared.objectWillChange.send()
+            DispatchQueue.main.async { UserDefaultsManager.shared.objectWillChange.send() }
         }
     }
 }
@@ -69,12 +69,13 @@ class UserDefaultsManager: ObservableObject {
     @UserDefault(UserDefaultKey.Setting.language, default: .english) var settingLanguage: OneSLanguage
     @UserDefault(UserDefaultKey.Setting.appearance, default: .light) var settingAppearance: OneSAppearance 
     @UserDefault(UserDefaultKey.Setting.colorTheme, default: .default) var settingColorTheme: OneSColorTheme
-    @UserDefault(UserDefaultKey.Setting.notifications, default: false) var settingNotifications: Bool
     @UserDefault(UserDefaultKey.Setting.iCloudSynch, default: false) var settingICloudSynch: Bool
+    
+    
+    //MARK: - Authorization
+    
+    @UserDefault(UserDefaultKey.Authorization.notifications, default: .notDetermined) var authorizationNotifications: UNAuthorizationStatus
+    @UserDefault(UserDefaultKey.Authorization.photoLibrary, default: .none) var authorizationPhotoLibrary: OneSAuthorizationStatus
 }
-
-
-
-
 
 

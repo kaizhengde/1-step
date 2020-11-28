@@ -83,6 +83,9 @@
 		3D61086B256D63DE00DC20BD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3D61086D256D63DE00DC20BD /* Localizable.strings */; };
 		3D610881256D6E3A00DC20BD /* LocalizationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D610880256D6E3A00DC20BD /* LocalizationHelper.swift */; };
 		3D610887256D70CC00DC20BD /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D610886256D70CC00DC20BD /* Localized.swift */; };
+		3D68B65E25721C9000A183F5 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68B65D25721C9000A183F5 /* LocalNotificationManager.swift */; };
+		3D68B666257223C000A183F5 /* GoalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68B665257223C000A183F5 /* GoalNotificationManager.swift */; };
+		3D68B66A2572281400A183F5 /* OneSAuthorizationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68B6692572281400A183F5 /* OneSAuthorizationStatus.swift */; };
 		3D6D6454254C0F2400FAA37F /* JourneyErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6D6453254C0F2400FAA37F /* JourneyErrorHandler.swift */; };
 		3D6D6458254C4D2400FAA37F /* JourneyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6D6457254C4D2400FAA37F /* JourneyModel.swift */; };
 		3D6F4399253AE19C00785586 /* GoalHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6F4398253AE19C00785586 /* GoalHeaderView.swift */; };
@@ -268,6 +271,10 @@
 		3D610871256D63E600DC20BD /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3D610880256D6E3A00DC20BD /* LocalizationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationHelper.swift; sourceTree = "<group>"; };
 		3D610886256D70CC00DC20BD /* Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
+		3D68B65925721C3D00A183F5 /* 1 Step.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "1 Step.entitlements"; sourceTree = "<group>"; };
+		3D68B65D25721C9000A183F5 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
+		3D68B665257223C000A183F5 /* GoalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalNotificationManager.swift; sourceTree = "<group>"; };
+		3D68B6692572281400A183F5 /* OneSAuthorizationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSAuthorizationStatus.swift; sourceTree = "<group>"; };
 		3D6D6453254C0F2400FAA37F /* JourneyErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyErrorHandler.swift; sourceTree = "<group>"; };
 		3D6D6457254C4D2400FAA37F /* JourneyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyModel.swift; sourceTree = "<group>"; };
 		3D6F4398253AE19C00785586 /* GoalHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalHeaderView.swift; sourceTree = "<group>"; };
@@ -409,6 +416,7 @@
 				3D0BEAFB2568E83F002F74FE /* OneSLanguage.swift */,
 				3D0BEB032568E887002F74FE /* OneSAppearance.swift */,
 				3D0BEB062568E8B0002F74FE /* OneSColorTheme.swift */,
+				3D68B6692572281400A183F5 /* OneSAuthorizationStatus.swift */,
 			);
 			path = Types;
 			sourceTree = "<group>";
@@ -462,6 +470,7 @@
 		3D160D53252E2053008588D5 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				3D68B65C25721C7C00A183F5 /* Notifications */,
 				3D160D54252E2067008588D5 /* TransitionManager.swift */,
 				3DC617252544145C00A1F204 /* InfiniteAnimationManager.swift */,
 				3D5156B62531FB2600A44450 /* ViewOverlays */,
@@ -773,6 +782,15 @@
 			path = Localization;
 			sourceTree = "<group>";
 		};
+		3D68B65C25721C7C00A183F5 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				3D68B65D25721C9000A183F5 /* LocalNotificationManager.swift */,
+				3D68B665257223C000A183F5 /* GoalNotificationManager.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
 		3D6D6460254C4E1000FAA37F /* Milestone */ = {
 			isa = PBXGroup;
 			children = (
@@ -1008,6 +1026,7 @@
 				3DE11C38252C681600F13719 /* Assets.xcassets */,
 				3DE11C42252C681600F13719 /* Info.plist */,
 				3DE11C3F252C681600F13719 /* __Step.xcdatamodeld */,
+				3D68B65925721C3D00A183F5 /* 1 Step.entitlements */,
 				3DE11C3A252C681600F13719 /* Preview Content */,
 			);
 			name = Helper;
@@ -1260,6 +1279,7 @@
 				3DE11C3E252C681600F13719 /* PersistenceManger.swift in Sources */,
 				3D4B78D8252CD4F000A45755 /* GoalCreateModel.swift in Sources */,
 				3D996778253F57F7000CE151 /* JourneyDataHandler.swift in Sources */,
+				3D68B66A2572281400A183F5 /* OneSAuthorizationStatus.swift in Sources */,
 				3DFD9BE0256C1B8500CF9580 /* FirstStartModel.swift in Sources */,
 				3D6D6458254C4D2400FAA37F /* JourneyModel.swift in Sources */,
 				3DC6172C2544882B00A1F204 /* MilestoneStages.swift in Sources */,
@@ -1358,6 +1378,7 @@
 				3DDF70252531A57700FD3011 /* StepUnit.swift in Sources */,
 				3D61084D256D40A400DC20BD /* String.swift in Sources */,
 				3D47CCAE252C749500A8CA1B /* Fonts.swift in Sources */,
+				3D68B65E25721C9000A183F5 /* LocalNotificationManager.swift in Sources */,
 				3D407850254E83E600744652 /* MilestoneModel.swift in Sources */,
 				3DAE7AEB2530A3E600B162B1 /* OneSTextFloater.swift in Sources */,
 				3D610881256D6E3A00DC20BD /* LocalizationHelper.swift in Sources */,
@@ -1382,6 +1403,7 @@
 				3DFD9BCC256BA2A200CF9580 /* PremiumModel.swift in Sources */,
 				3D407855254E8E4E00744652 /* MilestoneProgressView.swift in Sources */,
 				3DF1E276254819FF00D65244 /* Double.swift in Sources */,
+				3D68B666257223C000A183F5 /* GoalNotificationManager.swift in Sources */,
 				3DDF70292531A5BB00FD3011 /* UserColor.swift in Sources */,
 				3D59DEAC256A59D000CF24D7 /* UserDefaultType.swift in Sources */,
 				3D160D55252E2067008588D5 /* TransitionManager.swift in Sources */,
@@ -1594,6 +1616,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "1 Step/1 Step.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"1 Step/Preview Content\"";
 				DEVELOPMENT_TEAM = M4J79LU3NC;
@@ -1616,6 +1639,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "1 Step/1 Step.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"1 Step/Preview Content\"";
 				DEVELOPMENT_TEAM = M4J79LU3NC;
