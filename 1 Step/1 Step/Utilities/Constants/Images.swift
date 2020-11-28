@@ -17,6 +17,7 @@ enum SFSymbol {
     static let plus             = Image(systemName: "plus")
     static let camera           = Image(systemName: "camera.fill")
     static let info             = Image(systemName: "info.circle.fill")
+    static let clock            = Image(systemName: "clock")
 }
 
 

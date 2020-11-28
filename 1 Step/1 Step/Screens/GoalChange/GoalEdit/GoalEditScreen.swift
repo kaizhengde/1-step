@@ -30,8 +30,7 @@ struct GoalEditScreen: View {
                         
                         GoalEnterInputView(viewModel: goalEnterInputModel, selectedColor: $viewModel.selectedMountainData.color)
                         
-                        //Notification
-                        Color.clear.frame(height: 240)
+                        GoalNotificationView(goalEditModel: viewModel)
                     }
                     .padding(.horizontal, Layout.firstLayerPadding)
                     
