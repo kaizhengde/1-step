@@ -88,6 +88,7 @@
 		3D68B66F2572437200A183F5 /* AuthorizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68B66E2572437100A183F5 /* AuthorizationManager.swift */; };
 		3D68B67A257267D100A183F5 /* GoalNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68B679257267D100A183F5 /* GoalNotificationView.swift */; };
 		3D68B67F25726BF200A183F5 /* GoalNotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68B67E25726BF200A183F5 /* GoalNotificationModel.swift */; };
+		3D68B68725726D4C00A183F5 /* GoalNotificationAddTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68B68625726D4C00A183F5 /* GoalNotificationAddTimeView.swift */; };
 		3D6D6454254C0F2400FAA37F /* JourneyErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6D6453254C0F2400FAA37F /* JourneyErrorHandler.swift */; };
 		3D6D6458254C4D2400FAA37F /* JourneyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6D6457254C4D2400FAA37F /* JourneyModel.swift */; };
 		3D6F4399253AE19C00785586 /* GoalHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6F4398253AE19C00785586 /* GoalHeaderView.swift */; };
@@ -278,6 +279,7 @@
 		3D68B66E2572437100A183F5 /* AuthorizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationManager.swift; sourceTree = "<group>"; };
 		3D68B679257267D100A183F5 /* GoalNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalNotificationView.swift; sourceTree = "<group>"; };
 		3D68B67E25726BF200A183F5 /* GoalNotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalNotificationModel.swift; sourceTree = "<group>"; };
+		3D68B68625726D4C00A183F5 /* GoalNotificationAddTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalNotificationAddTimeView.swift; sourceTree = "<group>"; };
 		3D6D6453254C0F2400FAA37F /* JourneyErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyErrorHandler.swift; sourceTree = "<group>"; };
 		3D6D6457254C4D2400FAA37F /* JourneyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyModel.swift; sourceTree = "<group>"; };
 		3D6F4398253AE19C00785586 /* GoalHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalHeaderView.swift; sourceTree = "<group>"; };
@@ -800,6 +802,7 @@
 			children = (
 				3D68B67E25726BF200A183F5 /* GoalNotificationModel.swift */,
 				3D68B679257267D100A183F5 /* GoalNotificationView.swift */,
+				3D68B68625726D4C00A183F5 /* GoalNotificationAddTimeView.swift */,
 			);
 			path = GoalNotification;
 			sourceTree = "<group>";
@@ -1364,6 +1367,7 @@
 				3DCFE29625459E390012C536 /* OneSPicker.swift in Sources */,
 				3D6D6454254C0F2400FAA37F /* JourneyErrorHandler.swift in Sources */,
 				3D511EED256802C50028DB66 /* OneSTextPassage.swift in Sources */,
+				3D68B68725726D4C00A183F5 /* GoalNotificationAddTimeView.swift in Sources */,
 				3D2E7941253017B600788AA2 /* OneSSmallBorderButton.swift in Sources */,
 				3DFD9BBD256B864800CF9580 /* ProfileHelpView.swift in Sources */,
 				3D4FD8722564F48F00103C73 /* GoalReachedSummaryView.swift in Sources */,

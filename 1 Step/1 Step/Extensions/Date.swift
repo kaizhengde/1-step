@@ -9,9 +9,17 @@ import Foundation
 
 extension Date {
     
-    func toString() -> String {
+    func toDateString() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyyMMdd", options: 0, locale: Locale.current)
+        return formatter.string(from: self)
+    }
+    
+    
+    func toTimeString() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "hhmm", options: 0, locale: Locale.current)
+        formatter.timeStyle = .short
         return formatter.string(from: self)
     }
 }
