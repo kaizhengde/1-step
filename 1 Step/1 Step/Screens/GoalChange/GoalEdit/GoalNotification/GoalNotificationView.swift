@@ -22,7 +22,7 @@ struct GoalNotificationView: View {
                     }
                     
                     AddNotificationButton() {
-                        miniSheetManager.showCustomMiniSheet(titleText: "New Reminder", backgroundColor: selectedColor.standard, height: 500*Layout.multiplierHeight) {
+                        miniSheetManager.showCustomMiniSheet(titleText: "New Reminder", backgroundColor: selectedColor.standard, height: 600*Layout.multiplierHeight) {
                             GoalNotificationAddTimeView(selectedColor: selectedColor)
                         }
                     }

@@ -55,7 +55,7 @@ struct FirstStartScreen: View {
         
         var body: some View {
             VStack(spacing: 70*Layout.multiplierHeight) {
-                OneSText(text: "Step 1 of 2", font: .custom(.semiBold, 16), color: UserColor.user1.standard)
+                OneSText(text: "Step 1 of 1", font: .custom(.semiBold, 16), color: UserColor.user1.standard)
                     .padding(.top, 10)
                 
                 VStack(alignment: .leading, spacing: 28*Layout.multiplierHeight) {
@@ -123,7 +123,7 @@ struct FirstStartScreen: View {
                     .frame(width: Layout.screenWidth, height: MountainLayout.height)
                     .foregroundColor(.darkBackgroundToDarkGray)
                     .scaleEffect(0.7)
-                    .offset(x: Layout.screenWidth/4, y: 36)
+                    .offset(x: Layout.screenWidth/4, y: Layout.onlyOniPhoneXType(36))
                     .offset(y: viewModel.currentStep == .two ? 0 : MountainLayout.height*0.7)
                     .oneSMountainAnimation(delay: 0.3)
                 
