@@ -38,7 +38,7 @@ struct ProfileAppSectionView: View {
         @ObservedObject var profileModel: ProfileModel
         
         var premium: Bool { userDefaultsManager.settingPremium }
-        var selectedLanguage: OneSLanguage { userDefaultsManager.settingLanguage }
+        var selectedLanguage: String { Locale.preferredLanguages[0] }
         var selectedAppearance: OneSAppearance { userDefaultsManager.settingAppearance }
         var selectedColorTheme: OneSColorTheme { userDefaultsManager.settingColorTheme }
         var notifications: Bool { userDefaultsManager.authorizationNotifications == .authorized }
@@ -59,23 +59,12 @@ struct ProfileAppSectionView: View {
                     }
                 )
                                 
-                OneSDropDown(
+                OneSRowButton(
                     .shortSmall,
                     title: "Language",
-                    accessoryText: selectedLanguage.rawValue,
+                    accessoryText: selectedLanguage,
                     accessoryColor: profileModel.section1Color,
-                    content: {
-                        VStack(spacing: 10) {
-                            ForEach(OneSLanguage.allCases, id: \.self) { language in
-                                OneSRowSelectButton(
-                                    Binding<Bool>(get: { selectedLanguage == language }, set: { _ in }),
-                                    title: language.rawValue,
-                                    selectedColor: profileModel.section1Color,
-                                    action: { userDefaultsManager.settingLanguage = language }
-                                )
-                            }
-                        }
-                    }
+                    action: { UIApplication.shared.openOneSSettings() }
                 )
                 
                 OneSDropDown(

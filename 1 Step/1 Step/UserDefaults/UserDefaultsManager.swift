@@ -66,8 +66,7 @@ class UserDefaultsManager: ObservableObject {
     //MARK: - Settings
     
     @UserDefault(UserDefaultKey.Setting.premium, default: false) var settingPremium: Bool
-    @UserDefault(UserDefaultKey.Setting.language, default: .english) var settingLanguage: OneSLanguage
-    @UserDefault(UserDefaultKey.Setting.appearance, default: .light) var settingAppearance: OneSAppearance 
+    @UserDefault(UserDefaultKey.Setting.appearance, default: .light) var settingAppearance: OneSAppearance
     @UserDefault(UserDefaultKey.Setting.colorTheme, default: .default) var settingColorTheme: OneSColorTheme
     @UserDefault(UserDefaultKey.Setting.iCloudSynch, default: false) var settingICloudSynch: Bool
     
