@@ -125,7 +125,7 @@ final class MainModel: ObservableObject {
     
     
     func updateNotificationAuthorization() {
-        LocalNotificationManager.updateAuthorization()
+        LocalNotificationManager.listenToAuthorizationStatus()
     }
 }
 

@@ -25,7 +25,7 @@ class LocalNotificationManager {
     static func requestAuthorization(completion: @escaping (Bool) -> () = { _ in }) {
         center.requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
                 guard error == nil else {
-                    PopupManager.shared.showTextPopup(.none, titleText: "Error", bodyText: error!.localizedDescription, backgroundColor: .grayToBackground)
+                    PopupManager.shared.showTextPopup(.none, titleText: "Error", bodyText: error!.localizedDescription, backgroundColor: .darkNeutralToNeutral)
                     return
                 }
                 
@@ -39,7 +39,7 @@ class LocalNotificationManager {
     }
     
     
-    static func updateAuthorization() {
+    static func listenToAuthorizationStatus() {
         NotificationCenter.default.addObserver(self, selector: #selector(checkAuthorizationStatus), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
     

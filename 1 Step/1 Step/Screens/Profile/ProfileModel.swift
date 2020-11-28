@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 class ProfileModel: ObservableObject {
     
@@ -30,19 +31,26 @@ class ProfileModel: ObservableObject {
     
     
     func profileImageTapped() {
-        SheetManager.shared.showSheet {
-            OneSImagePicker(deleteAction: {
-                self.userDefaultsManager.userProfileImage = Data()
-                self.currentImage = nil
-                SheetManager.shared.dismiss()
-            }) { selectedImage in
-                self.userDefaultsManager.userProfileImage = selectedImage.jpegData(compressionQuality: 0.5)!
-                self.currentImage = Image(uiImage: UIImage(data: self.userDefaultsManager.userProfileImage)!)
+        AuthorizationManager.requestPhotoLibraryAuthorizationIfNeeded { success in
+            if success {
+                SheetManager.shared.showSheet {
+                    OneSImagePicker(deleteAction: {
+                        self.userDefaultsManager.userProfileImage = Data()
+                        self.currentImage = nil
+                        SheetManager.shared.dismiss()
+                    }) { selectedImage in
+                        self.userDefaultsManager.userProfileImage = selectedImage.jpegData(compressionQuality: 0.5)!
+                        self.currentImage = Image(uiImage: UIImage(data: self.userDefaultsManager.userProfileImage)!)
+                    }
+                    .accentColor(UserColor.user0.standard)
+                }
             }
-            .accentColor(UserColor.user0.standard)
         }
     }
-    
+
+    private let photoLibraryNoAccessSubscriber = PopupManager.shared.dismissed.sink {
+        if $0 == .photoLibraryNoAccess { UIApplication.shared.openOneSSettings() }
+    }
     
 
     //MARK: - Section 0: Accomplishments

@@ -19,16 +19,18 @@ final class SheetManager: ObservableObject {
 
         
     func showSheet<T: View>(dragToHide: Bool = true, @ViewBuilder content: @escaping () -> T) {
-        self.appear = true
-        self.dragToHide = dragToHide
-        
-        self.content = { AnyView(
-            content()
-                .oneSMiniSheet()
-                .oneSPopup()
-                .oneSFloater()
-                .introspectViewController { $0.isModalInPresentation = !dragToHide }
-        ) }
+        DispatchQueue.main.async {
+            self.appear = true
+            self.dragToHide = dragToHide
+            
+            self.content = { AnyView(
+                content()
+                    .oneSMiniSheet()
+                    .oneSPopup()
+                    .oneSFloater()
+                    .introspectViewController { $0.isModalInPresentation = !dragToHide }
+            ) }
+        }
     }
     
     

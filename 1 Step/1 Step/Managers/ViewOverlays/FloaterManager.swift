@@ -35,12 +35,14 @@ final class FloaterManager: ViewOverlayManagerProtocol {
     //MARK: - Floaters
     
     func showTextFloater(titleText: String, bodyText: String, backgroundColor: Color, height: CGFloat = 100*Layout.multiplierWidth) {
-        initTransition()
-        
-        self.titleText = titleText
-        self.bodyText = bodyText
-        self.backgroundColor = backgroundColor
-        self.height = height
-        self.content = { AnyView(OneSTextFloater()) }
+        DispatchQueue.main.async {
+            self.initTransition()
+            
+            self.titleText = titleText
+            self.bodyText = bodyText
+            self.backgroundColor = backgroundColor
+            self.height = height
+            self.content = { AnyView(OneSTextFloater()) }
+        }
     }
 }

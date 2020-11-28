@@ -25,11 +25,13 @@ final class MiniSheetManager: ViewOverlayManagerProtocol {
     //MARK: - MiniSheets
     
     func showCustomMiniSheet<T: View>(titleText: String, backgroundColor: Color, height: CGFloat, @ViewBuilder content: @escaping () -> T) {
-        initTransition()
+        DispatchQueue.main.async {
+            self.initTransition()
         
-        self.titleText = titleText
-        self.backgroundColor = backgroundColor
-        self.height = height
-        self.content = { AnyView(content()) }
+            self.titleText = titleText
+            self.backgroundColor = backgroundColor
+            self.height = height
+            self.content = { AnyView(content()) }
+        }
     }
 }

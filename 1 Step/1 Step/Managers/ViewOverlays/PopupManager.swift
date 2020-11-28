@@ -22,6 +22,7 @@ enum PopupKey {
     
     //MARK: - Profile
     case changeName
+    case photoLibraryNoAccess
 }
 
 
@@ -46,7 +47,7 @@ final class PopupManager: ViewOverlayManagerProtocol {
     @Published var height: CGFloat!
     @Published var content: () -> AnyView = { AnyView(EmptyView()) }
     
-    let dismissed = PassthroughSubject<PopupKey, Never>()
+    let dismissed = PassthroughSubject<PopupKey, Never>()    
     let buttonDismissed = PassthroughSubject<PopupKey, Never>()
     
     private let tapDismissAllowedDelay: DispatchTimeInterval = .milliseconds(1500)
@@ -71,27 +72,29 @@ final class PopupManager: ViewOverlayManagerProtocol {
         dismissOnTap: Bool          = true,
         dismissOnTapOutside: Bool   = true
     ) {
-        initTransition()
-        
-        self.currentKey = key 
-        
-        self.dismissOnTap           = false
-        self.dismissOnTapOutside    = false
-        DispatchQueue.main.asyncAfter(deadline: .now() + tapDismissAllowedDelay) {
-            self.dismissOnTap           = dismissOnTap
-            self.dismissOnTapOutside    = dismissOnTapOutside
+        DispatchQueue.main.async {
+            self.initTransition()
+            
+            self.currentKey = key
+            
+            self.dismissOnTap           = false
+            self.dismissOnTapOutside    = false
+            DispatchQueue.main.asyncAfter(deadline: .now() + self.tapDismissAllowedDelay) {
+                self.dismissOnTap           = dismissOnTap
+                self.dismissOnTapOutside    = dismissOnTapOutside
+            }
+            self.continueButton         = false
+            
+            self.titleText              = titleText
+            self.titleImage             = titleImage
+            self.bodyText               = bodyText
+            self.textColor              = textColor
+            self.bottomButtonText       = bottomButtonText
+            
+            self.backgroundColor        = backgroundColor
+            self.height                 = height
+            self.content                = { AnyView(OneSTextPopupView()) }
         }
-        self.continueButton     	= false
-        
-        self.titleText          	= titleText
-        self.titleImage         	= titleImage
-        self.bodyText           	= bodyText
-        self.textColor              = textColor
-        self.bottomButtonText       = bottomButtonText
-        
-        self.backgroundColor    	= backgroundColor
-        self.height             	= height
-        self.content            	= { AnyView(OneSTextPopupView()) }
     }
     
     
@@ -121,33 +124,35 @@ final class PopupManager: ViewOverlayManagerProtocol {
         backgroundColor: Color,
         height: CGFloat             = 360*Layout.multiplierWidth
     ) {
-        initTransition()
-        
-        self.currentKey = key
-        
-        self.dismissOnTap           = false
-        self.dismissOnTapOutside    = false
-        DispatchQueue.main.asyncAfter(deadline: .now() + tapDismissAllowedDelay) {
-            self.dismissOnTapOutside    = true
+        DispatchQueue.main.async {
+            self.initTransition()
+            
+            self.currentKey = key
+            
+            self.dismissOnTap           = false
+            self.dismissOnTapOutside    = false
+                DispatchQueue.main.asyncAfter(deadline: .now() + self.tapDismissAllowedDelay) {
+                self.dismissOnTapOutside    = true
+            }
+            self.continueButton         = true
+            
+            self.titleText              = titleText
+            self.titleImage             = nil
+            self.bodyText               = bodyText
+            self.textColor              = textColor
+            self.bottomButtonText       = nil
+            
+            self.input                  = input
+            self.placeholder            = placeholder
+            self.placeholderColor       = placeholderColor
+            self.inputLimit             = textLimit
+            self.keyboard               = keyboard
+            self.lowercased             = lowercased
+            
+            self.backgroundColor        = backgroundColor
+            self.height                 = height
+            self.content                = { AnyView(OneSTextFieldPopupView()) }
         }
-        self.continueButton         = true
-        
-        self.titleText              = titleText
-        self.titleImage             = nil
-        self.bodyText               = bodyText
-        self.textColor              = textColor
-        self.bottomButtonText       = nil
-        
-        self.input                  = input
-        self.placeholder            = placeholder
-        self.placeholderColor       = placeholderColor
-        self.inputLimit             = textLimit
-        self.keyboard               = keyboard
-        self.lowercased             = lowercased
-        
-        self.backgroundColor        = backgroundColor
-        self.height                 = height
-        self.content                = { AnyView(OneSTextFieldPopupView()) }
     }
     
     
@@ -174,32 +179,34 @@ final class PopupManager: ViewOverlayManagerProtocol {
         backgroundColor: Color,
         height: CGFloat             = 400*Layout.multiplierWidth
     ) {
-        initTransition()
-        
-        self.currentKey = key
-        
-        self.dismissOnTap           = false
-        self.dismissOnTapOutside    = false
-        DispatchQueue.main.asyncAfter(deadline: .now() + tapDismissAllowedDelay) {
-            self.dismissOnTapOutside    = true
+        DispatchQueue.main.async {
+            self.initTransition()
+            
+            self.currentKey = key
+            
+            self.dismissOnTap           = false
+            self.dismissOnTapOutside    = false
+            DispatchQueue.main.asyncAfter(deadline: .now() + self.tapDismissAllowedDelay) {
+                self.dismissOnTapOutside    = true
+            }
+            self.continueButton         = false
+            
+            self.titleText              = titleText
+            self.titleImage             = nil
+            self.bodyText               = bodyText
+            self.textColor              = textColor
+            self.bottomButtonText       = nil
+            
+            self.confirmationInput      = ""
+            self.placeholder            = placeholder
+            self.placeholderColor       = placeholderColor
+            self.inputLimit             = textLimit
+            self.confirmationText       = confirmationText
+            
+            self.backgroundColor        = backgroundColor
+            self.height                 = height
+            self.content                = { AnyView(OneSTextFieldConfirmationPopupView()) }
         }
-        self.continueButton         = false
-        
-        self.titleText              = titleText
-        self.titleImage             = nil
-        self.bodyText               = bodyText
-        self.textColor              = textColor
-        self.bottomButtonText       = nil
-        
-        self.confirmationInput      = ""
-        self.placeholder            = placeholder
-        self.placeholderColor       = placeholderColor
-        self.inputLimit             = textLimit
-        self.confirmationText       = confirmationText
-        
-        self.backgroundColor        = backgroundColor
-        self.height                 = height
-        self.content                = { AnyView(OneSTextFieldConfirmationPopupView()) }
     }
     
     
