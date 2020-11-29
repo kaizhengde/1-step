@@ -38,16 +38,20 @@ class GoalChangeNotificationModel: ObservableObject {
     func finishButtonPressed() {
         let notificationData: Goal.NotificationData = (UUID(), selectedData.time, selectedData.weekdays.map { Int16($0) })
         
-        DataModel.shared.addGoalNotification(goal, with: notificationData) { success in
-            if success {
-                GoalNotificationManager.sceduleNotifications(with: notificationData, of: self.goal) { error in
-                    if error == nil {
+        GoalNotificationManager.sceduleNotifications(with: notificationData, of: self.goal) { error in
+            if error == nil {
+                DataModel.shared.addGoalNotification(self.goal, with: notificationData) { success in
+                    if success {
                         MiniSheetManager.shared.dismiss()
                         self.resetSelectedData()
                     }
                 }
             }
         }
+    }
+    
+    private let notificationsNoAccessSubscriber = PopupManager.shared.dismissed.sink {
+        if $0 == .notificationsNoAccess { UIApplication.shared.openOneSSettings() }
     }
     
     

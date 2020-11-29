@@ -39,6 +39,17 @@ class LocalNotificationManager {
     }
     
     
+    static func isAuthorized(completion: @escaping () -> ()) {
+        center.getNotificationSettings { settings in
+            if settings.authorizationStatus == .authorized {
+                completion()
+            } else {
+                PopupManager.shared.showTextPopup(.notificationsNoAccess, titleText: "Error", bodyText: "Please grant permission for notifications.", backgroundColor: .grayToBackground)
+            }
+        }
+    }
+    
+    
     static func listenToAuthorizationStatus() {
         NotificationCenter.default.addObserver(self, selector: #selector(checkAuthorizationStatus), name: UIApplication.didBecomeActiveNotification, object: nil)
     }

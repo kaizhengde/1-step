@@ -47,7 +47,7 @@ class ProfileModel: ObservableObject {
             }
         }
     }
-
+    
     private let photoLibraryNoAccessSubscriber = PopupManager.shared.dismissed.sink {
         if $0 == .photoLibraryNoAccess { UIApplication.shared.openOneSSettings() }
     }

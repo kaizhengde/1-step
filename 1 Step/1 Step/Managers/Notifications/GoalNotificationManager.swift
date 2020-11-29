@@ -15,28 +15,18 @@ enum GoalNotificationManager {
     
     static func sceduleNotifications(with notificationData: Goal.NotificationData, of goal: Goal, completion: @escaping (Error?) -> ()) {
         
-        center.getNotificationSettings { settings in
-            if settings.authorizationStatus == .authorized {
-                addNotifications(notificationData, goal) { error in
-                    DispatchQueue.main.async { completion(error) }
-                }
-            } else {
-                LocalNotificationManager.requestAuthorization() { success in
-                    if success {
-                        addNotifications(notificationData, goal) { error in
-                            DispatchQueue.main.async { completion(error) }
-                        }
-                    }
-                }
+        LocalNotificationManager.isAuthorized {
+            addNotifications(notificationData, goal) { error in
+                DispatchQueue.main.async { completion(error) }
             }
         }
     }
-    
+
     
     static private func addNotifications(_ notificationData: Goal.NotificationData, _ goal: Goal, _ completion: @escaping (Error?) -> ()) {
         
-        let notificationTitle: String = "\(goal.name) \(goal.neededStepUnits) \(goal.step.unit)"
-        let notificationBody: String = "Just one more \(goal.step.unit)!\nThis will have an exponential effect on your success."
+        let notificationTitle: String = "\(goal.name) \(goal.neededStepUnits) \(goal.step.unit.description)"
+        let notificationBody: String = "Good morning. How about one more step? 🙂"
         
         var dateComponents = DateComponents()
         dateComponents.calendar = .current
@@ -44,7 +34,8 @@ enum GoalNotificationManager {
         dateComponents.minute = Calendar.current.component(.minute, from: notificationData.time)
         
         for weekday in notificationData.weekdays {
-            dateComponents.weekday = Int(weekday+1)
+            let sundayStartWeekday = Int(weekday+1 == 7 ? 0 : weekday+1)
+            dateComponents.weekday = sundayStartWeekday+1
             
             let content = UNMutableNotificationContent()
             content.title = notificationTitle
