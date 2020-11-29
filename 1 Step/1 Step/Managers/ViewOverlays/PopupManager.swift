@@ -35,12 +35,12 @@ final class PopupManager: ViewOverlayManagerProtocol {
     private init() {}
     
     @Published var transition: TransitionManager<PopupManager> = TransitionManager()
+    @Published var currentKey: PopupKey!
 
     @Published var dismissOnTap: Bool!
     @Published var dismissOnTapOutside: Bool!
     @Published var continueButton: Bool!
-    
-    @Published var currentKey: PopupKey!
+    @Published var hapticFeedback: Bool!
     
     @Published var titleText: String!
     @Published var titleImage: Image?
@@ -59,7 +59,7 @@ final class PopupManager: ViewOverlayManagerProtocol {
     //MARK: - Transition
     
     func initTransition() {
-        Feedback.impact(style: .rigid)
+        if hapticFeedback { OneSFeedback.warning() }
         defaultInitTransition()
     }
     
@@ -84,6 +84,7 @@ final class PopupManager: ViewOverlayManagerProtocol {
         dismissOnTapOutside: Bool   = true
     ) {
         DispatchQueue.main.async {
+            self.hapticFeedback         = true
             self.initTransition()
             
             self.currentKey = key
@@ -136,6 +137,7 @@ final class PopupManager: ViewOverlayManagerProtocol {
         height: CGFloat             = 360*Layout.multiplierWidth
     ) {
         DispatchQueue.main.async {
+            self.hapticFeedback         = false
             self.initTransition()
             
             self.currentKey = key
@@ -191,6 +193,7 @@ final class PopupManager: ViewOverlayManagerProtocol {
         height: CGFloat             = 400*Layout.multiplierWidth
     ) {
         DispatchQueue.main.async {
+            self.hapticFeedback         = true
             self.initTransition()
             
             self.currentKey = key

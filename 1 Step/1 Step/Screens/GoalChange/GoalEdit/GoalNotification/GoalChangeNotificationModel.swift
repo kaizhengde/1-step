@@ -83,7 +83,7 @@ class GoalChangeNotificationModel: ObservableObject {
         }
         
         LocalNotificationManager.isAuthorized {
-            MiniSheetManager.shared.showCustomMiniSheet(backgroundColor: selectedColor.standard, height: 600*Layout.multiplierHeight) {
+            MiniSheetManager.shared.showCustomMiniSheet(backgroundColor: selectedColor.standard, height: 600*Layout.multiplierWidth) {
                 GoalChangeNotificationAddTimeView(viewModel: self, selectedColor: selectedColor, notification: notification)
             }
         }

@@ -27,7 +27,7 @@ final class FloaterManager: ViewOverlayManagerProtocol {
     
     func initTransition() {
         defaultInitTransition()
-        Feedback.haptic(type: .success)
+        OneSFeedback.achievement()
         DispatchQueue.main.asyncAfter(deadline: .now() + dismissAfter) { self.dismiss() }
     }
     

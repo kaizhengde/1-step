@@ -78,7 +78,7 @@ class GoalsGridModel: ObservableObject {
     //MARK: - Drag and Drop
     
     func onGoalDrag(_ goal: Goal) -> NSItemProvider {
-        Feedback.impact(style: .heavy)
+        OneSFeedback.heavy()
         currentDragItem = goal
         return NSItemProvider(object: String(goal.sortOrder) as NSString)
     }
@@ -107,7 +107,7 @@ class GoalsGridModel: ObservableObject {
         
         
         private func updateSortOrder(_ from: Int, _ to: Int) {
-            Feedback.impact(style: .light)
+            OneSFeedback.soft()
             
             let sortOrders = gridItems.map { $0.sortOrder }
             

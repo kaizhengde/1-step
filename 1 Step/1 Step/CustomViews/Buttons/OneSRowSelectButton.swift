@@ -25,7 +25,12 @@ struct OneSRowSelectButton: View {
     
     
     var body: some View {
-        Button(action: action) {
+        Button(
+            action: {
+                OneSFeedback.light()
+                action()
+            }
+        ) {
             HStack {
                 OneSText(text: title, font: .custom(selected ? .bold : .medium, 17), color: selected ? selectedColor : .darkNeutralToNeutral)
                 Spacer()

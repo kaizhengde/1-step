@@ -216,6 +216,7 @@ final class GoalModel: TransitionObservableObject {
     
     func updating(_ value: DragGesture.Value, _ state: inout CGFloat, _ transaction: Transaction) {
         if legalDrag(value) {
+            if noDrag { OneSFeedback.light() }
             state = value.translation.width
         }
     }

@@ -63,6 +63,7 @@ struct GoalsHeaderView: View {
             
             
             func switchIfNeeded() {
+                OneSFeedback.light()
                 if !isActive { goalsModel.currentTab.toggle() }
             }
         }

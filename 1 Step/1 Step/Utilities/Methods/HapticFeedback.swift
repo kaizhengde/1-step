@@ -8,18 +8,51 @@
 import SwiftUI
 import AudioToolbox
 
-enum Feedback {
+struct OneSFeedback {
     
-    static func impact(style: UIImpactFeedbackGenerator.FeedbackStyle) {
-        if Device.isiPhoneXType {
-            UIImpactFeedbackGenerator(style: style).impactOccurred()
-        } else {
-            AudioServicesPlaySystemSound(1519)
+    static private let feedbackSupportLevel = UIDevice.current.value(forKey: "_feedbackSupportLevel") as? Int
+    
+    static func heavy() {
+        switch feedbackSupportLevel {
+        case 2: UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+        case 1: AudioServicesPlaySystemSound(SystemSoundID(1520))
+        default: break
         }
     }
-
-
-    static func haptic(type: UINotificationFeedbackGenerator.FeedbackType) {
-        UINotificationFeedbackGenerator().notificationOccurred(.success)
+    
+    
+    static func light() {
+        switch feedbackSupportLevel {
+        case 2: UIImpactFeedbackGenerator(style: .light).impactOccurred()
+        case 1: AudioServicesPlaySystemSound(SystemSoundID(1519))
+        default: break
+        }
+    }
+    
+    
+    static func soft() {
+        switch feedbackSupportLevel {
+        case 2: UIImpactFeedbackGenerator(style: .soft).impactOccurred()
+        case 1: AudioServicesPlaySystemSound(SystemSoundID(1519))
+        default: break
+        }
+    }
+    
+    
+    static func achievement() {
+        switch feedbackSupportLevel {
+        case 2: UINotificationFeedbackGenerator().notificationOccurred(.success)
+        case 1: AudioServicesPlaySystemSound(SystemSoundID(1102))
+        default: break
+        }
+    }
+    
+    
+    static func warning() {
+        switch feedbackSupportLevel {
+        case 2: UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
+        case 1: AudioServicesPlaySystemSound(SystemSoundID(1520))
+        default: break
+        }
     }
 }
