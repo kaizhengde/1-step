@@ -24,16 +24,16 @@ class LocalNotificationManager {
     
     static func requestAuthorization(completion: @escaping (Bool) -> () = { _ in }) {
         center.requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
-                guard error == nil else {
-                    PopupManager.shared.showTextPopup(.none, titleText: "Error", bodyText: error!.localizedDescription, backgroundColor: .darkNeutralToNeutral)
-                    return
-                }
-                
-                if granted {
-                    completion(true)
-                    return
-                }
+            guard error == nil else {
+                PopupManager.shared.showTextPopup(.none, titleText: "Error", bodyText: error!.localizedDescription, backgroundColor: .darkNeutralToNeutral)
+                return
             }
+            
+            if granted {
+                completion(true)
+                return
+            }
+        }
         
         completion(false)
     }
@@ -44,7 +44,7 @@ class LocalNotificationManager {
             if settings.authorizationStatus == .authorized {
                 completion()
             } else {
-                PopupManager.shared.showTextPopup(.notificationsNoAccess, titleText: "Error", bodyText: "Please grant permission for notifications.", backgroundColor: .grayToBackground)
+                PopupManager.shared.showTextPopup(.notificationsNoAccess, titleText: "Error", bodyText: "Please grant permission for notifications.", backgroundColor: .darkNeutralToNeutral)
             }
         }
     }

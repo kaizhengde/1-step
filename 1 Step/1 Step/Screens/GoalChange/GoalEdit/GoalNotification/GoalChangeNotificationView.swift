@@ -26,34 +26,28 @@ struct GoalChangeNotificationView: View {
     
     private struct TimeReminderSection: View {
         
-        @StateObject private var miniSheetManager = MiniSheetManager.shared
+        @StateObject private var userDefaultsManager = UserDefaultsManager.shared
         @StateObject private var viewModel = GoalChangeNotificationModel()
         
         var selectedColor: UserColor
+        var notifications: Bool { userDefaultsManager.authorizationNotifications == .authorized }
         
         
         var body: some View {
             OneSDropDown(.long, title: "Time", accessorySFSymbol: SFSymbol.clock) {
                 VStack(alignment: .leading, spacing: 10) {
                     ForEach(viewModel.notificationsUI, id: \.self) { notification in
-                        OneSRowButton(.shortSmall, title: viewModel.getDescription(from: notification.weekdays), textColor: .backgroundToGray, backgroundColor: selectedColor.standard, accessoryText: notification.time.toTimeString(), accessoryColor: .backgroundToGray) {
-                            
-                            viewModel.selectedData.time = notification.time
-                            viewModel.selectedData.weekdays = notification.weekdays
-                            
-                            miniSheetManager.showCustomMiniSheet(backgroundColor: selectedColor.standard, height: 600*Layout.multiplierHeight) {
-                                GoalChangeNotificationAddTimeView(viewModel: viewModel, selectedColor: selectedColor, notification: notification)
-                            }
+                        OneSRowButton(.shortSmall, title: viewModel.getDescription(from: notification.weekdays), textColor: .backgroundToGray, backgroundColor: notifications ? selectedColor.standard : .lightNeutralToLightGray, accessoryText: notification.time.toTimeString(), accessoryColor: .backgroundToGray) {
+                            viewModel.showAddTimeView(with: notification, selectedColor)
                         }
                     }
                     
-                    AddNotificationButton() {
-                        viewModel.resetSelectedData()
-                        miniSheetManager.showCustomMiniSheet(backgroundColor: selectedColor.standard, height: 600*Layout.multiplierHeight) {
-                            GoalChangeNotificationAddTimeView(viewModel: viewModel, selectedColor: selectedColor, notification: nil)
+                    if viewModel.goal.notifications.count < Goal.maxNotifications {
+                        AddNotificationButton() {
+                            viewModel.showAddTimeView(with: nil, selectedColor)
                         }
+                        .padding(.top, 20)
                     }
-                    .padding(.top, 20)
                 }
                 .frame(maxWidth: 280*Layout.multiplierWidth, alignment: .leading)
             }

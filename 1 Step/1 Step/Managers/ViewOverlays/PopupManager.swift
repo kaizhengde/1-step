@@ -56,6 +56,14 @@ final class PopupManager: ViewOverlayManagerProtocol {
     private let tapDismissAllowedDelay: DispatchTimeInterval = .milliseconds(1500)
     
     
+    //MARK: - Transition
+    
+    func initTransition() {
+        Feedback.impact(style: .rigid)
+        defaultInitTransition()
+    }
+    
+    
     //MARK: - Popups
     
     //TextPopup

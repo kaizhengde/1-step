@@ -70,6 +70,24 @@ class GoalChangeNotificationModel: ObservableObject {
         
         return description
     }
+    
+    
+    //MARK: - UI
+    
+    func showAddTimeView(with notification: GoalNotification?, _ selectedColor: UserColor) {
+        resetSelectedData()
+        
+        if let notification = notification {
+            selectedData.time = notification.time
+            selectedData.weekdays = notification.weekdays
+        }
+        
+        LocalNotificationManager.isAuthorized {
+            MiniSheetManager.shared.showCustomMiniSheet(backgroundColor: selectedColor.standard, height: 600*Layout.multiplierHeight) {
+                GoalChangeNotificationAddTimeView(viewModel: self, selectedColor: selectedColor, notification: notification)
+            }
+        }
+    }
 
     
     //MARK: - Data

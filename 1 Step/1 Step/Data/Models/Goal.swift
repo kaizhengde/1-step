@@ -67,5 +67,7 @@ extension Goal {
     
     static let neededStepUnitsMinimum: Int16 = 10
     static let neededStepUnitsMaximum: Int16 = 1000
+    
+    static let maxNotifications: Int = 8
 }
  
