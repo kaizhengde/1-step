@@ -146,10 +146,10 @@ final class DataManager {
         if goal.currentState == .reached {
             updateResult = updateGoalsSortOrder(with: goal, state: .active)
             goal.sortOrder = fetchGoalCount(for: .reached)-1
-            goal.notifications = []
             for notification in goal.notifications {
                 GoalNotificationManager.removeNotifications(with: notification.id, of: goal)
             }
+            goal.notifications = []
         }
         
         return updateResult && persistenceManager.saveContext()
