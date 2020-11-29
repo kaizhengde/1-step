@@ -215,7 +215,10 @@ final class GoalModel: TransitionObservableObject {
     
     func updating(_ value: DragGesture.Value, _ state: inout CGFloat, _ transaction: Transaction) {
         if legalDrag(value) {
-            if noDrag { OneSFeedback.soft() }
+            if noDrag {
+                OneSFeedback.soft()
+                setScrollPosition.send(.top)
+            }
             state = value.translation.width
         }
     }
@@ -264,7 +267,6 @@ final class GoalModel: TransitionObservableObject {
     //onEnded
     
     private func onToMenu(_ value: DragGesture.Value) -> Bool {
-        setScrollPosition.send(.top)
         return value.translation.width >= 50 && dragState == .none
     }
     
