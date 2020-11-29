@@ -114,8 +114,11 @@ final class DataManager {
         
         for notification in goal.notifications {
             GoalNotificationManager.removeNotifications(with: notification.id, of: goal)
-            let notificationData: Goal.NotificationData = (notification.id, notification.time, notification.weekdays)
-            GoalNotificationManager.sceduleNotifications(with: notificationData, of: goal) { _ in }
+            
+            if goal.currentState == .active {
+                let notificationData: Goal.NotificationData = (notification.id, notification.time, notification.weekdays)
+                GoalNotificationManager.sceduleNotifications(with: notificationData, of: goal) { _ in }
+            }
         }
         
         return persistenceManager.saveContext()
