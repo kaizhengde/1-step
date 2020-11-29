@@ -26,7 +26,7 @@ enum GoalNotificationManager {
     static private func addNotifications(_ notificationData: Goal.NotificationData, _ goal: Goal, _ completion: @escaping (Error?) -> ()) {
         
         let notificationTitle: String = "\(goal.name) \(goal.neededStepUnits) \(goal.step.unit.description)"
-        let notificationBody: String = "Good morning. How about one more step? 🙂"
+        let notificationBody: String = "Good morning 🙂. It's time to take one more step."
         
         var dateComponents = DateComponents()
         dateComponents.calendar = .current
@@ -46,8 +46,8 @@ enum GoalNotificationManager {
             
             let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
             
-            let request = UNNotificationRequest(identifier: notificationData.id.uuidString, content: content, trigger: trigger)
-
+            let request = UNNotificationRequest(identifier: "\(notificationData.id.uuidString)-\(dateComponents.weekday!)", content: content, trigger: trigger)
+            
             center.add(request) { error in
                 guard error == nil else {
                     PopupManager.shared.showTextPopup(.none, titleText: "Error", bodyText: error!.localizedDescription, backgroundColor: .grayToBackground)
@@ -58,5 +58,14 @@ enum GoalNotificationManager {
         }
         
         completion(nil)
+    }
+    
+    
+    static func removeNotification(with id: UUID, of goal: Goal) {
+        var identifiers: [String] = []
+        for weekday in 1...7 {
+            identifiers.append("\(id.uuidString)-\(weekday)")
+        }
+        DispatchQueue.global().sync { center.removePendingNotificationRequests(withIdentifiers: identifiers) }
     }
 }

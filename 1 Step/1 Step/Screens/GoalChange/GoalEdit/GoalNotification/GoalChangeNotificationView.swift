@@ -37,12 +37,20 @@ struct GoalChangeNotificationView: View {
                 VStack(alignment: .leading, spacing: 10) {
                     ForEach(viewModel.notificationsUI, id: \.self) { notification in
                         OneSRowButton(.shortSmall, title: viewModel.getDescription(from: notification.weekdays), textColor: .backgroundToGray, backgroundColor: selectedColor.standard, accessoryText: notification.time.toTimeString(), accessoryColor: .backgroundToGray) {
+                            
+                            viewModel.selectedData.time = notification.time
+                            viewModel.selectedData.weekdays = notification.weekdays
+                            
+                            miniSheetManager.showCustomMiniSheet(backgroundColor: selectedColor.standard, height: 600*Layout.multiplierHeight) {
+                                GoalChangeNotificationAddTimeView(viewModel: viewModel, selectedColor: selectedColor, notification: notification)
+                            }
                         }
                     }
                     
                     AddNotificationButton() {
+                        viewModel.resetSelectedData()
                         miniSheetManager.showCustomMiniSheet(backgroundColor: selectedColor.standard, height: 600*Layout.multiplierHeight) {
-                            GoalChangeNotificationAddTimeView(viewModel: viewModel, selectedColor: selectedColor)
+                            GoalChangeNotificationAddTimeView(viewModel: viewModel, selectedColor: selectedColor, notification: nil)
                         }
                     }
                     .padding(.top, 20)

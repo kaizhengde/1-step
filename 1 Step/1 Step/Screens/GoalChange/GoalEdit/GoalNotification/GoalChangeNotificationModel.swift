@@ -10,7 +10,7 @@ import SwiftUI
 struct GoalChangeNotificationData {
     
     var time: Date
-    var weekdays: [Int]
+    var weekdays: [Int16]
 }
 
 
@@ -74,8 +74,8 @@ class GoalChangeNotificationModel: ObservableObject {
     
     //MARK: - Data
     
-    func finishButtonPressed() {
-        let notificationData: Goal.NotificationData = (UUID(), selectedData.time, selectedData.weekdays.map { Int16($0) })
+    func saveButtonPressed() {
+        let notificationData: Goal.NotificationData = (UUID(), selectedData.time, selectedData.weekdays)
         
         GoalNotificationManager.sceduleNotifications(with: notificationData, of: self.goal) { error in
             if error == nil {
@@ -88,6 +88,36 @@ class GoalChangeNotificationModel: ObservableObject {
             }
         }
     }
+    
+    
+    func editButtonPressed(with notification: GoalNotification) {
+        let notificationData: Goal.NotificationData = (notification.id, selectedData.time, selectedData.weekdays)
+        
+        GoalNotificationManager.removeNotification(with: notification.id, of: self.goal)
+        GoalNotificationManager.sceduleNotifications(with: notificationData, of: self.goal) { error in
+            if error == nil {
+                DataModel.shared.editGoalNotification(notification, with: notificationData) { success in
+                    if success {
+                        MiniSheetManager.shared.dismiss()
+                        self.resetSelectedData()
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    func deleteButtonPressed(with notification: GoalNotification) {
+        GoalNotificationManager.removeNotification(with: notification.id, of: self.goal)
+        
+        DataModel.shared.removeGoalNotification(notification, of: goal) { success in
+            if success {
+                MiniSheetManager.shared.dismiss()
+                self.resetSelectedData()
+            }
+        }
+    }
+    
     
     private let notificationsNoAccessSubscriber = PopupManager.shared.dismissed.sink {
         if $0 == .notificationsNoAccess { UIApplication.shared.openOneSSettings() }

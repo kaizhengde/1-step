@@ -11,16 +11,32 @@ struct GoalChangeNotificationAddTimeView: View {
     
     @ObservedObject var viewModel: GoalChangeNotificationModel
     var selectedColor: UserColor
+    var notification: GoalNotification?
+    
+    var editMode: Bool { notification != nil }
     
     
     var body: some View {
         VStack(spacing: 32) {
             //Header
-            HStack {
-                OneSSecondaryHeaderText(text: "New Reminder", color: .backgroundToGray)
+            HStack(alignment: .titleSecondaryButtonAlignment) {
+                OneSSecondaryHeaderText(text: (editMode ? "Edit" : "New") + " Reminder", color: .backgroundToGray)
+                    .alignmentGuide(.titleSecondaryButtonAlignment) { $0[VerticalAlignment.center] }
+                    
                 Spacer()
-                OneSSmallBorderButton(symbol: SFSymbol.check, color: .backgroundToGray, withScale: false) {
-                    viewModel.finishButtonPressed() 
+                
+                VStack(spacing: 10) {
+                    OneSSmallBorderButton(symbol: SFSymbol.check, color: .backgroundToGray, withScale: false) {
+                        if editMode { viewModel.editButtonPressed(with: notification!) }
+                        else { viewModel.saveButtonPressed() }
+                    }
+                    .alignmentGuide(.titleSecondaryButtonAlignment) { $0[VerticalAlignment.center] }
+                    
+                    if editMode {
+                        OneSSmallBorderButton(symbol: SFSymbol.delete, color: .backgroundToGray, withScale: false) {
+                            viewModel.deleteButtonPressed(with: notification!)
+                        }
+                    }
                 }
             }
             
@@ -58,7 +74,7 @@ struct GoalChangeNotificationAddTimeView: View {
         var index: Int
         var selectedColor: UserColor
         
-        var selected: Bool { viewModel.selectedData.weekdays.contains(index) }
+        var selected: Bool { viewModel.selectedData.weekdays.contains(Int16(index)) }
         
         
         var body: some View {
@@ -71,7 +87,7 @@ struct GoalChangeNotificationAddTimeView: View {
                 withScale:      false
             ) {
                 if selected { viewModel.selectedData.weekdays.removeAll { $0 == index } }
-                else { viewModel.selectedData.weekdays.append(index) }
+                else { viewModel.selectedData.weekdays.append(Int16(index)) }
             }
         }
     }
