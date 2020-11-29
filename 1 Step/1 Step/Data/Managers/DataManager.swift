@@ -114,11 +114,8 @@ final class DataManager {
         
         for notification in goal.notifications {
             GoalNotificationManager.removeNotifications(with: notification.id, of: goal)
-            
-            if goal.currentState == .active {
-                let notificationData: Goal.NotificationData = (notification.id, notification.time, notification.weekdays)
-                GoalNotificationManager.sceduleNotifications(with: notificationData, of: goal) { _ in }
-            }
+            let notificationData: Goal.NotificationData = (notification.id, notification.time, notification.weekdays)
+            GoalNotificationManager.sceduleNotifications(with: notificationData, of: goal) { _ in }
         }
         
         return persistenceManager.saveContext()
@@ -149,6 +146,10 @@ final class DataManager {
         if goal.currentState == .reached {
             updateResult = updateGoalsSortOrder(with: goal, state: .active)
             goal.sortOrder = fetchGoalCount(for: .reached)-1
+            goal.notifications = []
+            for notification in goal.notifications {
+                GoalNotificationManager.removeNotifications(with: notification.id, of: goal)
+            }
         }
         
         return updateResult && persistenceManager.saveContext()
