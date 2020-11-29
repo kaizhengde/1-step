@@ -66,6 +66,6 @@ enum GoalNotificationManager {
         for weekday in 1...7 {
             identifiers.append("\(id.uuidString)-\(weekday)")
         }
-        DispatchQueue.global().sync { center.removePendingNotificationRequests(withIdentifiers: identifiers) }
+        center.removePendingNotificationRequests(withIdentifiers: identifiers) 
     }
 }
