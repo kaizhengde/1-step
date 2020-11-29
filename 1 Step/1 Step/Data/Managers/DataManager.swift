@@ -112,6 +112,12 @@ final class DataManager {
         let newDoneMilestonesAmount = goal.milestones.reduce(0) { $0 + ($1.state == .done ? 1 : 0) }
         JourneyDataHandler.updateMilestonesAccomplishment(oldDoneMilestonesAmount, newDoneMilestonesAmount)
         
+        for notification in goal.notifications {
+            GoalNotificationManager.removeNotifications(with: notification.id, of: goal)
+            let notificationData: Goal.NotificationData = (notification.id, notification.time, notification.weekdays)
+            GoalNotificationManager.sceduleNotifications(with: notificationData, of: goal) { _ in }
+        }
+        
         return persistenceManager.saveContext()
     }
     
@@ -189,7 +195,7 @@ final class DataManager {
         newNotification.parentGoal  = goal
         
         goal.notifications.insert(newNotification)
-        
+                        
         return persistenceManager.saveContext()
     }
     
@@ -203,9 +209,21 @@ final class DataManager {
     
     
     func removeGoalNotification(_ notification: GoalNotification, of goal: Goal) -> Bool {
+        for n in goal.notifications {
+            if n.sortOrder > notification.sortOrder {
+                guard changeNotificationOrder(n, with: n.sortOrder-1) else { return false }
+            }
+        }
+        
         goal.notifications.remove(notification)
         persistenceManager.context.delete(notification)
-        
+                
+        return persistenceManager.saveContext()
+    }
+    
+    
+    func changeNotificationOrder(_ notification: GoalNotification, with newOrder: Int16) -> Bool {
+        notification.sortOrder = newOrder
         return persistenceManager.saveContext()
     }
     
@@ -217,6 +235,10 @@ final class DataManager {
         updateResult = updateGoalsSortOrder(with: goal, state: goal.currentState)
         
         GoalDeleteHandler.updateAccomplishments(with: goal)
+        
+        for notification in goal.notifications {
+            GoalNotificationManager.removeNotifications(with: notification.id, of: goal)
+        }
         persistenceManager.context.delete(goal)
         return updateResult && persistenceManager.saveContext()
     }

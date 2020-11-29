@@ -93,7 +93,7 @@ class GoalChangeNotificationModel: ObservableObject {
     func editButtonPressed(with notification: GoalNotification) {
         let notificationData: Goal.NotificationData = (notification.id, selectedData.time, selectedData.weekdays)
         
-        GoalNotificationManager.removeNotification(with: notification.id, of: self.goal)
+        GoalNotificationManager.removeNotifications(with: notification.id, of: self.goal)
         GoalNotificationManager.sceduleNotifications(with: notificationData, of: self.goal) { error in
             if error == nil {
                 DataModel.shared.editGoalNotification(notification, with: notificationData) { success in
@@ -108,7 +108,7 @@ class GoalChangeNotificationModel: ObservableObject {
     
     
     func deleteButtonPressed(with notification: GoalNotification) {
-        GoalNotificationManager.removeNotification(with: notification.id, of: self.goal)
+        GoalNotificationManager.removeNotifications(with: notification.id, of: self.goal)
         
         DataModel.shared.removeGoalNotification(notification, of: goal) { success in
             if success {

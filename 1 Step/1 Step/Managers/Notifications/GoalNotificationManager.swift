@@ -61,7 +61,7 @@ enum GoalNotificationManager {
     }
     
     
-    static func removeNotification(with id: UUID, of goal: Goal) {
+    static func removeNotifications(with id: UUID, of goal: Goal) {
         var identifiers: [String] = []
         for weekday in 1...7 {
             identifiers.append("\(id.uuidString)-\(weekday)")
