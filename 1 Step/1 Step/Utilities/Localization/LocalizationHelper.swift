@@ -15,3 +15,14 @@ extension String {
 }
 
 
+enum LocalizationHelper {
+    
+    static func languageDescription(of languageKey: String) -> String {
+        if languageKey.contains("en") { return "English" }
+        if languageKey.contains("de") { return "German" }
+        
+        return "Unknown"
+    }
+}
+
+

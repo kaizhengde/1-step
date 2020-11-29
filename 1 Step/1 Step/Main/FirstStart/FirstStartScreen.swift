@@ -121,7 +121,7 @@ struct FirstStartScreen: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: Layout.screenWidth, height: MountainLayout.height)
-                    .foregroundColor(.darkBackgroundToDarkGray)
+                    .foregroundColor(.darkBackgroundToBlack)
                     .scaleEffect(0.7)
                     .offset(x: Layout.screenWidth/4, y: Layout.onlyOniPhoneXType(36))
                     .offset(y: viewModel.currentStep == .two ? 0 : MountainLayout.height*0.7)

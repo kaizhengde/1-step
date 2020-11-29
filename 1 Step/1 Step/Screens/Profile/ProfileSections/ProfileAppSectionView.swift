@@ -38,7 +38,7 @@ struct ProfileAppSectionView: View {
         @ObservedObject var profileModel: ProfileModel
         
         var premium: Bool { userDefaultsManager.settingPremium }
-        var selectedLanguage: String { Locale.preferredLanguages[0] }
+        var selectedLanguage: String { LocalizationHelper.languageDescription(of: Locale.preferredLanguages[0]) }
         var selectedAppearance: OneSAppearance { userDefaultsManager.settingAppearance }
         var selectedColorTheme: OneSColorTheme { userDefaultsManager.settingColorTheme }
         var notifications: Bool { userDefaultsManager.authorizationNotifications == .authorized }
