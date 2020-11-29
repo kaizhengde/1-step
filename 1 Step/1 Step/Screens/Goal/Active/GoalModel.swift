@@ -20,7 +20,6 @@ final class GoalModel: TransitionObservableObject {
         case none               = -1
         case top                = 0
         case current            = 1
-        case currentMilestone   = 2
     }
     
     static let shared = GoalModel()
@@ -216,7 +215,7 @@ final class GoalModel: TransitionObservableObject {
     
     func updating(_ value: DragGesture.Value, _ state: inout CGFloat, _ transaction: Transaction) {
         if legalDrag(value) {
-            if noDrag { OneSFeedback.light() }
+            if noDrag { OneSFeedback.soft() }
             state = value.translation.width
         }
     }

@@ -27,6 +27,7 @@ struct GoalView: View {
                         
                         Group {
                             goalModel.backgroundColor.offset(y: Layout.screenHeight + 20)
+                            
                             VStack {
                                 GoalSummaryView()
                                 
@@ -34,17 +35,17 @@ struct GoalView: View {
                                     JourneyView(state: .active)
                                         .opacity(goalModel.journeyViewDragOpacity)
                                         .opacity(goalModel.showJourneyView ? 1.0 : 0.0)
-                                        .offset(y: -250)
-                                        .padding(.bottom, Layout.onlyOniPhoneXType(200*Layout.multiplierHeight))
+                                        .padding(.top, -250)
                                 } else {
                                     Spacer(minLength: 500)
                                 }
                             }
+                            .padding(.bottom, 180*Layout.multiplierHeight)
                         }
                         .offset(x: goalModel.goalContentDragOffset)
                     }
                     .onReceive(goalModel.setScrollPosition) { position in
-                        withAnimation { scrollProxy.scrollTo(position, anchor: .center) }
+                        withAnimation { scrollProxy.scrollTo(position, anchor: .bottom) }
                     }
                 }
                 .background(GoalModel.ScrollVS())

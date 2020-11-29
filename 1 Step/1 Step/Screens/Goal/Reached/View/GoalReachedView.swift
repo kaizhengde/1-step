@@ -26,16 +26,16 @@ struct GoalReachedView: View {
                         VStack {
                             GoalReachedSummaryView()
                             
-                            Group {
+                            VStack(spacing: 50) {
                                 JourneyView(state: .reached)
                                 
                                 OneSSmallBorderButton(symbol: SFSymbol.delete, color: .backgroundToDarkGray) {
                                     goalEditModel.tryDelete(goalReachedModel.selectedGoal)
                                 }
-                                .padding(.top, 50)
                             }
-                            .offset(y: -250)
+                            .padding(.top, -250)
                         }
+                        .padding(.bottom, 180*Layout.multiplierHeight)
                     }
                 }
             }

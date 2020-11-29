@@ -24,7 +24,7 @@ struct OneSFeedback {
     static func light() {
         switch feedbackSupportLevel {
         case 2: UIImpactFeedbackGenerator(style: .light).impactOccurred()
-        case 1: AudioServicesPlaySystemSound(SystemSoundID(1519))
+        case 1: break
         default: break
         }
     }
@@ -33,7 +33,7 @@ struct OneSFeedback {
     static func soft() {
         switch feedbackSupportLevel {
         case 2: UIImpactFeedbackGenerator(style: .soft).impactOccurred()
-        case 1: AudioServicesPlaySystemSound(SystemSoundID(1519))
+        case 1: break
         default: break
         }
     }
@@ -51,7 +51,7 @@ struct OneSFeedback {
     static func warning() {
         switch feedbackSupportLevel {
         case 2: UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
-        case 1: AudioServicesPlaySystemSound(SystemSoundID(1520))
+        case 1: AudioServicesPlaySystemSound(SystemSoundID(1519))
         default: break
         }
     }

@@ -34,8 +34,12 @@ struct MilestoneProgressView: View {
                     .animation(InfiniteAnimationManager.slowAnimation)
                     .opacity(show ? 1.0 : 0.0)
                     .scaleEffect(show ? 1.0 : 0.9)
+                
+                Color.clear.frame(height: 0)
+                    .padding(.top, 150)
                     .id(GoalModel.ScrollPosition.current)
             }
+            .padding(.bottom, -150)
         }
         .onChange(of: addStepAnimationHandler.milestoneChangeState) {
             if $0 == .closeFinished { show = false }
