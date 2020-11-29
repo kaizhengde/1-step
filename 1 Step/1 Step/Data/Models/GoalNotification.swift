@@ -11,6 +11,7 @@ import CoreData
 final class GoalNotification: NSManagedObject {
     
     @NSManaged var id: UUID
+    @NSManaged var sortOrder: Int16
     
     @NSManaged var time: Date
     @NSManaged var weekdays: [Int16]

@@ -183,6 +183,7 @@ final class DataManager {
         let newNotification = GoalNotification(context: persistenceManager.context)
         
         newNotification.id          = notificationData.id
+        newNotification.sortOrder   = Int16(goal.notifications.count)
         newNotification.time        = notificationData.time
         newNotification.weekdays    = notificationData.weekdays
         newNotification.parentGoal  = goal

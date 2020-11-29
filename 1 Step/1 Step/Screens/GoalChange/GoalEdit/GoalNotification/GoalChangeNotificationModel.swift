@@ -17,10 +17,12 @@ struct GoalChangeNotificationData {
 class GoalChangeNotificationModel: ObservableObject {
     
     var goal: Goal { GoalModel.shared.selectedGoal }
-    
-    var notificationsUI: [GoalNotification] { Array(goal.notifications) }
+    var notificationsUI: [GoalNotification] { Array(goal.notifications).sorted { $0.sortOrder < $1.sortOrder } }
     
     @Published var selectedData: GoalChangeNotificationData = GoalChangeNotificationData(time: Date(), weekdays: [])
+    
+    
+    //MARK: - Weekdays
     
     lazy var weekdaysData: [String] = {
         let formatter = DateFormatter()
@@ -31,6 +33,43 @@ class GoalChangeNotificationModel: ObservableObject {
         
         return weekdays
     }()
+
+    
+    func getDescription(from weekdays: [Int16]) -> String {
+        var descriptionArray: [String] = []
+        var description: String = ""
+        
+        for weekday in weekdays.sorted() {
+            var prevWeekday = weekday-1
+            
+            if !weekdays.contains(prevWeekday) {
+                descriptionArray.append("\(weekday)")
+                continue
+            }
+            
+            while weekdays.contains(prevWeekday) {
+                descriptionArray.removeAll { $0.contains("\(prevWeekday)") }
+                descriptionArray.removeAll { $0.contains("\(weekday)") }
+                descriptionArray.append("\(prevWeekday)-\(weekday)")
+                prevWeekday -= 1
+            }
+        }
+
+        if weekdays.count == 7 {
+            description = "Every day"
+        } else {
+            for weekday in descriptionArray {
+                description += "\(weekday), "
+            }
+            description.removeLast(2)
+            
+            for weekday in weekdays.sorted() {
+                description = description.replacingOccurrences(of: "\(weekday)", with: "\(weekdaysData[Int(weekday)])")
+            }
+        }
+        
+        return description
+    }
 
     
     //MARK: - Data

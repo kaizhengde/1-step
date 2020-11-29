@@ -36,7 +36,7 @@ struct GoalChangeNotificationView: View {
             OneSDropDown(.long, title: "Time", accessorySFSymbol: SFSymbol.clock) {
                 VStack(alignment: .leading, spacing: 10) {
                     ForEach(viewModel.notificationsUI, id: \.self) { notification in
-                        OneSRowButton(.shortSmall, title: notification.weekdays.description, textColor: .backgroundToGray, backgroundColor: selectedColor.standard, accessoryText: notification.time.toTimeString(), accessoryColor: .backgroundToGray) {
+                        OneSRowButton(.shortSmall, title: viewModel.getDescription(from: notification.weekdays), textColor: .backgroundToGray, backgroundColor: selectedColor.standard, accessoryText: notification.time.toTimeString(), accessoryColor: .backgroundToGray) {
                         }
                     }
                     
