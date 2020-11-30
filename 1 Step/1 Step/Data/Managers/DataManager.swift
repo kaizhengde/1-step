@@ -52,6 +52,7 @@ final class DataManager {
         newStep.customUnit          = baseData.customUnit
         newStep.goal                = newGoal
     
+        newGoal.sortOrder           = fetchGoalCount(for: .active)
         newGoal.name                = baseData.name
         newGoal.step                = newStep
         newGoal.neededStepUnits     = baseData.neededStepUnits!
@@ -63,18 +64,9 @@ final class DataManager {
         newGoal.endDate             = nil
         newGoal.mountain            = baseData.mountain!
         newGoal.color               = baseData.color!
-            
-        //Calculate
-            
-        newGoal.sortOrder           = fetchGoalCount(for: .active)
-        newStep.unitRatio           = JourneyDataHandler.calculateRatio(from: baseData)
-        newGoal.neededSteps         = baseData.neededStepUnits! * newStep.unitRatio
-        newGoal.stepsDate           = Array<Date>(repeating: .distantFuture, count: Int(newGoal.neededSteps))
-        let addArrays               = JourneyDataHandler.calculateStepAddArrays(from: baseData)
-        newStep.addArray            = addArrays.unit
-        newStep.addArrayDual        = addArrays.dual
-        newGoal.milestones          = JourneyDataHandler.generateMilestones(with: newGoal)
         newGoal.notifications       = []
+            
+        GoalBaseDataHandler.setupCalculationBaseData(with: newGoal, newStep)
         
         return persistenceManager.saveContext()
     }
@@ -86,45 +78,30 @@ final class DataManager {
     
     func editGoal(_ goal: Goal, with baseData: Goal.BaseData) -> Bool {
         
-        let oldUnit             = goal.step.unit
+        let oldUnit                 = goal.step.unit
+        let oldAmountMilestonesDone = goal.milestones.getAmountDone()
+            
+        goal.name                   = baseData.name
+        goal.step.unit              = baseData.stepUnit!
+        goal.step.customUnit        = baseData.customUnit
+        goal.neededStepUnits        = baseData.neededStepUnits!
+        goal.mountain               = baseData.mountain!
+        goal.color                  = baseData.color!
         
-        goal.name               = baseData.name
-        goal.step.unit          = baseData.stepUnit!
-        goal.step.customUnit    = baseData.customUnit
-        goal.neededStepUnits    = baseData.neededStepUnits!
-        goal.mountain           = baseData.mountain!
-        goal.color              = baseData.color!
+        GoalBaseDataHandler.setupCalculationBaseData(with: goal, goal.step)
         
-        //Calculate
         
-        let oldDoneMilestonesAmount = goal.milestones.reduce(0) { $0 + ($1.state == .done ? 1 : 0) }
+        //Update Currents
         
-        goal.step.unitRatio     = JourneyDataHandler.calculateRatio(from: baseData)
-        goal.neededSteps        = baseData.neededStepUnits! * goal.step.unitRatio
-        goal.stepsDate          = JourneyDataHandler.updateStepsDate(with: goal)
-        let addArrays           = JourneyDataHandler.calculateStepAddArrays(from: baseData)
-        goal.step.addArray      = addArrays.unit
-        goal.step.addArrayDual  = addArrays.dual
-        goal.milestones         = JourneyDataHandler.generateMilestones(with: goal)
+        goal.currentStepUnits      *= oldUnit.translateMultiplier(to: goal.step.unit)
+        guard addSteps(goal, with: 0) else { return false }
         
-        guard updateSteps(goal, oldUnit) else { return false }
+        let newAmountMilestonesDone = goal.milestones.getAmountDone()
         
-        let newDoneMilestonesAmount = goal.milestones.reduce(0) { $0 + ($1.state == .done ? 1 : 0) }
-        JourneyDataHandler.updateMilestonesAccomplishment(oldDoneMilestonesAmount, newDoneMilestonesAmount)
-        
-        for notification in goal.notifications {
-            GoalNotificationManager.removeNotifications(with: notification.id, of: goal)
-            let notificationData: Goal.NotificationData = (notification.id, notification.time, notification.weekdays)
-            GoalNotificationManager.sceduleNotifications(with: notificationData, of: goal) { _ in }
-        }
+        GoalAccomplishmentsHandler.AddSteps.updateMilestonesAccomplishment(oldAmountMilestonesDone, newAmountMilestonesDone)
+        GoalNotificationsHandler.updateAfterGoalEdit(with: goal)
         
         return persistenceManager.saveContext()
-    }
-    
-
-    private func updateSteps(_ goal: Goal, _ oldUnit: StepUnit) -> Bool {
-        goal.currentStepUnits *= oldUnit.translateMultiplier(to: goal.step.unit)
-        return addSteps(goal, with: 0)
     }
     
     
@@ -132,34 +109,45 @@ final class DataManager {
     
     func addSteps(_ goal: Goal, with newStepUnits: Double) -> Bool {
         
-        let journeyData = JourneyDataHandler.addStepsAndUpdate(with: goal, newStepUnits: newStepUnits)
+        let oldCurrentSteps         = goal.currentSteps
+        let oldAmountMilestonesDone = goal.milestones.getAmountDone()
         
-        goal.currentStepUnits   = journeyData.currentStepUnits
-        goal.currentSteps       = journeyData.currentSteps
-        goal.currentPercent     = journeyData.currentPercent
-        goal.currentState       = journeyData.currentState
-        goal.stepsDate          = journeyData.stepsDate
-        goal.milestones         = journeyData.milestones
+        let journeyData = GoalJourneyDataHandler.addStepsAndUpdate(with: goal, newStepUnits: newStepUnits)
         
-        var updateResult = true
+        goal.currentStepUnits       = journeyData.currentStepUnits
+        goal.currentSteps           = journeyData.currentSteps
+        goal.currentPercent         = journeyData.currentPercent
+        goal.currentState           = journeyData.currentState
+        goal.stepsDate              = journeyData.stepsDate
+        goal.milestones             = journeyData.milestones
         
-        if goal.currentState == .reached {
-            updateResult = updateGoalsSortOrder(with: goal, state: .active)
-            goal.sortOrder = fetchGoalCount(for: .reached)-1
-            for notification in goal.notifications {
-                GoalNotificationManager.removeNotifications(with: notification.id, of: goal)
-            }
-            goal.notifications = []
+        let newCurrentSteps         = goal.currentSteps
+        let newAmountMilestonesDone = goal.milestones.getAmountDone()
+        
+        if newStepUnits != 0 {
+            GoalAccomplishmentsHandler.AddSteps.updateStepsAccomplishment(oldCurrentSteps, newCurrentSteps)
+            GoalAccomplishmentsHandler.AddSteps.updateMilestonesAccomplishment(oldAmountMilestonesDone, newAmountMilestonesDone)
+            GoalAccomplishmentsHandler.AddSteps.updateGoalsAccomplishment(goal.currentState)
         }
         
-        return updateResult && persistenceManager.saveContext()
+        //Goal Reached
+        
+        if goal.currentState == .reached {
+            guard updateGoalsSortOrder(with: goal, state: .active) else { return false }
+            goal.sortOrder          = fetchGoalCount(for: .reached)-1
+            
+            GoalNotificationsHandler.deleteAllNotifications(with: goal)
+            goal.notifications      = []
+        }
+        
+        return persistenceManager.saveContext()
     }
     
     
     //Goal sort order
     
     func changeGoalOrder(_ goal: Goal, with newOrder: Int16) -> Bool {
-        goal.sortOrder      = newOrder
+        goal.sortOrder = newOrder
         return persistenceManager.saveContext()
     }
     
@@ -189,16 +177,13 @@ final class DataManager {
     //MARK: - Delete
     
     func deleteGoal(_ goal: Goal) -> Bool {
-        var updateResult = true
-        updateResult = updateGoalsSortOrder(with: goal, state: goal.currentState)
+        guard updateGoalsSortOrder(with: goal, state: goal.currentState) else { return false }
         
         GoalDeleteHandler.updateAccomplishments(with: goal)
+        GoalNotificationsHandler.deleteAllNotifications(with: goal)
         
-        for notification in goal.notifications {
-            GoalNotificationManager.removeNotifications(with: notification.id, of: goal)
-        }
         persistenceManager.context.delete(goal)
-        return updateResult && persistenceManager.saveContext()
+        return persistenceManager.saveContext()
     }
 }
 

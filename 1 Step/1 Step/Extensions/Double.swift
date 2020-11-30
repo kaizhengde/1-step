@@ -17,4 +17,7 @@ extension Double {
     func toUI() -> String {
         return String(Double(String(format: "%.2f", self))!.removeTrailingZerosToString())
     }
+    
+    
+    static let almostZero: Double = 0.000000001
 }

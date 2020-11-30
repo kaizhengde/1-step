@@ -71,3 +71,10 @@ extension Goal {
     static let maxNotifications: Int = 8
 }
  
+
+extension Set where Set.Element == Milestone {
+    
+    func getAmountDone() -> Int {
+        return self.reduce(0) { $0 + ($1.state == .done ? 1 : 0) }
+    }
+}

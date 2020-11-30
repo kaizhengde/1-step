@@ -127,7 +127,7 @@ class AddStepModel: ObservableObject {
         
         var newCurrentStepUnits = goal.currentStepUnits + newStepUnits
         
-        if abs(newCurrentStepUnits - newCurrentStepUnits.rounded()) < 0.000000001 {
+        if abs(newCurrentStepUnits - newCurrentStepUnits.rounded()) < Double.almostZero {
             newCurrentStepUnits.round()
         }
         
