@@ -18,8 +18,8 @@ enum GoalJourneyDataHandler {
         
         var newCurrentStepUnits = goal.currentStepUnits + newStepUnits
         
-        if abs(newCurrentStepUnits - newCurrentStepUnits.rounded(.down)) < Double.almostZero {
-            newCurrentStepUnits.round()
+        if abs(newCurrentStepUnits - newCurrentStepUnits.oneSRounded()) < Double.almostZero {
+            newCurrentStepUnits.oneSRound()
         }
                 
         if newCurrentStepUnits > Double(goal.neededStepUnits) {

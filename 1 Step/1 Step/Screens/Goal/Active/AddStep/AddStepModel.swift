@@ -127,8 +127,8 @@ class AddStepModel: ObservableObject {
         
         var newCurrentStepUnits = goal.currentStepUnits + newStepUnits
         
-        if abs(newCurrentStepUnits - newCurrentStepUnits.rounded()) < Double.almostZero {
-            newCurrentStepUnits.round()
+        if abs(newCurrentStepUnits - newCurrentStepUnits.oneSRounded()) < Double.almostZero {
+            newCurrentStepUnits.oneSRound()
         }
         
         if Int16(newCurrentStepUnits) >= goal.neededStepUnits { return .goalReached }

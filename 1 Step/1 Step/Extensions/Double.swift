@@ -19,5 +19,15 @@ extension Double {
     }
     
     
+    func oneSRounded(to place: Int = 1) -> Double {
+        return Double(String(format: "%.\(place)f", self))!
+    }
+    
+    
+    mutating func oneSRound(to place: Int = 1) {
+        self = Double(String(format: "%.\(place)f", self))!
+    }
+    
+    
     static let almostZero: Double = 0.000000001
 }
