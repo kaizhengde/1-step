@@ -175,7 +175,7 @@ final class DataManager {
     }
     
     
-    //Goal Percentage
+    //GoalReached Percentage
     
     func updateReachedGoalsPercentage() -> Bool {
         for goal in DataModel.shared.reachedGoals {
@@ -186,7 +186,26 @@ final class DataManager {
     }
     
     
-    //Goal Notification
+    //MARK: - Delete
+    
+    func deleteGoal(_ goal: Goal) -> Bool {
+        var updateResult = true
+        updateResult = updateGoalsSortOrder(with: goal, state: goal.currentState)
+        
+        GoalDeleteHandler.updateAccomplishments(with: goal)
+        
+        for notification in goal.notifications {
+            GoalNotificationManager.removeNotifications(with: notification.id, of: goal)
+        }
+        persistenceManager.context.delete(goal)
+        return updateResult && persistenceManager.saveContext()
+    }
+}
+
+
+//MARK: - GoalNotification
+
+extension DataManager {
     
     func addGoalNotification(_ goal: Goal, with notificationData: Goal.NotificationData) -> Bool {
         
@@ -231,19 +250,4 @@ final class DataManager {
         return persistenceManager.saveContext()
     }
     
-    
-    //MARK: - Delete
-    
-    func deleteGoal(_ goal: Goal) -> Bool {
-        var updateResult = true
-        updateResult = updateGoalsSortOrder(with: goal, state: goal.currentState)
-        
-        GoalDeleteHandler.updateAccomplishments(with: goal)
-        
-        for notification in goal.notifications {
-            GoalNotificationManager.removeNotifications(with: notification.id, of: goal)
-        }
-        persistenceManager.context.delete(goal)
-        return updateResult && persistenceManager.saveContext()
-    }
 }
