@@ -25,4 +25,20 @@ enum GoalAccomplishmentsHandler {
             UserDefaultsManager.shared.accomplishmentTotalGoalsReached += (currentState == .reached) ? 1 : 0
         }
     }
+    
+    
+    enum Delete {
+        static func updateAccomplishments(with goal: Goal) {
+            if goal.currentState == .active {
+                let reachedMilestones = goal.milestones.reduce(0) { $0 + ($1.state == .done ? 1 : 0) }
+                
+                UserDefaultsManager.shared.accomplishmentTotalSteps             -= Int(goal.currentSteps)
+                UserDefaultsManager.shared.accomplishmentTotalMilestonesReached -= reachedMilestones
+            } else {
+                UserDefaultsManager.shared.accomplishmentTotalSteps             -= Int(goal.neededSteps)
+                UserDefaultsManager.shared.accomplishmentTotalMilestonesReached -= Int(goal.milestones.count)
+                UserDefaultsManager.shared.accomplishmentTotalGoalsReached      -= 1
+            }
+        }
+    }
 }

@@ -134,7 +134,7 @@ final class DataManager {
         
         if goal.currentState == .reached {
             guard updateGoalsSortOrder(with: goal, state: .active) else { return false }
-            goal.sortOrder          = fetchGoalCount(for: .reached)-1
+            goal.sortOrder          = fetchGoalCount(for: .reached)
             
             GoalNotificationsHandler.deleteAllNotifications(with: goal)
             goal.notifications      = []
@@ -179,7 +179,7 @@ final class DataManager {
     func deleteGoal(_ goal: Goal) -> Bool {
         guard updateGoalsSortOrder(with: goal, state: goal.currentState) else { return false }
         
-        GoalDeleteHandler.updateAccomplishments(with: goal)
+        GoalAccomplishmentsHandler.Delete.updateAccomplishments(with: goal)
         GoalNotificationsHandler.deleteAllNotifications(with: goal)
         
         persistenceManager.context.delete(goal)
