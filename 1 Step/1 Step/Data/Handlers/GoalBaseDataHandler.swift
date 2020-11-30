@@ -10,11 +10,11 @@ import SwiftUI
 enum GoalBaseDataHandler {
     
     static func setupCalculationBaseData(with goal: Goal, _ step: Step) {
-        step.unitRatio      = goal.step.unit.getRatio(from: goal.neededStepUnits)
+        step.unitRatio      = step.unit.getRatio(from: goal.neededStepUnits)
         goal.neededSteps    = goal.neededStepUnits * step.unitRatio
         goal.stepsDate      = Array<Date>(repeating: .distantFuture, count: Int(goal.neededSteps))
         
-        let addArrays       = goal.step.unit.getStepAddArrays(from: goal.neededStepUnits)
+        let addArrays       = step.unit.getStepAddArrays(from: goal.neededStepUnits)
         step.addArray       = addArrays.unit
         step.addArrayDual   = addArrays.dual
         

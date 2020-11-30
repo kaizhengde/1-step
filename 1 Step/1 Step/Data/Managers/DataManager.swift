@@ -52,7 +52,6 @@ final class DataManager {
         newStep.customUnit          = baseData.customUnit
         newStep.goal                = newGoal
     
-        newGoal.sortOrder           = fetchGoalCount(for: .active)
         newGoal.name                = baseData.name
         newGoal.step                = newStep
         newGoal.neededStepUnits     = baseData.neededStepUnits!
@@ -65,6 +64,7 @@ final class DataManager {
         newGoal.mountain            = baseData.mountain!
         newGoal.color               = baseData.color!
         newGoal.notifications       = []
+        newGoal.sortOrder           = fetchGoalCount(for: .active)
             
         GoalBaseDataHandler.setupCalculationBaseData(with: newGoal, newStep)
         
