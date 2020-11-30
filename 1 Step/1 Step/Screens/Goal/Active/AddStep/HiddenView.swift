@@ -41,6 +41,7 @@ struct HiddenView: View {
     private struct HiddenRectangle: View {
         
         @ObservedObject var viewModel: AddStepModel
+        @StateObject private var goalModel = GoalModel.shared
         @StateObject private var infiniteAnimationManager = InfiniteAnimationManager.shared
         
         
