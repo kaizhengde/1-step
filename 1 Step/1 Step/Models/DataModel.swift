@@ -84,9 +84,16 @@ final class DataModel: ObservableObject {
             return
         }
         
+        let oldAmountMilestonesDone = goal.milestones.getAmountDone()
+        
         dataManager.editGoal(goal, with: baseData) { success in
             if success {
+                let newAmountMilestonesDone = goal.milestones.getAmountDone()
+                
+                GoalAccomplishmentsHandler.AddSteps.updateMilestonesAccomplishment(oldAmountMilestonesDone, newAmountMilestonesDone)
+                
                 self.fetchAllActiveGoals() { completion(true) }
+                
             } else { completion(false) }
         }
     }
@@ -98,9 +105,20 @@ final class DataModel: ObservableObject {
             return
         }
         
+        let oldCurrentSteps         = goal.currentSteps
+        let oldAmountMilestonesDone = goal.milestones.getAmountDone()
+        
         dataManager.addSteps(goal, with: newStepUnits) { success in
             if success {
+                let newCurrentSteps         = goal.currentSteps
+                let newAmountMilestonesDone = goal.milestones.getAmountDone()
+                
+                GoalAccomplishmentsHandler.AddSteps.updateStepsAccomplishment(oldCurrentSteps, newCurrentSteps)
+                GoalAccomplishmentsHandler.AddSteps.updateMilestonesAccomplishment(oldAmountMilestonesDone, newAmountMilestonesDone)
+                GoalAccomplishmentsHandler.AddSteps.updateGoalsAccomplishment(goal.currentState)
+                
                 self.fetchAllGoals() { completion(true) }
+                
             } else { completion(false) }
         }
     }

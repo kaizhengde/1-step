@@ -79,7 +79,6 @@ final class DataManager {
     func editGoal(_ goal: Goal, with baseData: Goal.BaseData, completion: @escaping (Bool) -> ()) {
         
         let oldUnit                 = goal.step.unit
-        let oldAmountMilestonesDone = goal.milestones.getAmountDone()
             
         goal.name                   = baseData.name
         goal.step.unit              = baseData.stepUnit!
@@ -94,12 +93,8 @@ final class DataManager {
         //Update Currents
         
         goal.currentStepUnits      *= oldUnit.translateMultiplier(to: goal.step.unit)
-        
         addSteps(goal, with: 0) { success in
             if success {
-                let newAmountMilestonesDone = goal.milestones.getAmountDone()
-                
-                GoalAccomplishmentsHandler.AddSteps.updateMilestonesAccomplishment(oldAmountMilestonesDone, newAmountMilestonesDone)
                 GoalNotificationsHandler.updateAfterGoalEdit(with: goal)
                 
                 completion(self.persistenceManager.saveContext())
@@ -111,20 +106,7 @@ final class DataManager {
     //Goal Add Steps
     
     func addSteps(_ goal: Goal, with newStepUnits: Double, completion: @escaping (Bool) -> ()) {
-        
-        let oldCurrentSteps         = goal.currentSteps
-        let oldAmountMilestonesDone = goal.milestones.getAmountDone()
-        
         GoalJourneyDataHandler.addStepsAndUpdateData(with: goal, newStepUnits: newStepUnits) {
-            let newCurrentSteps         = goal.currentSteps
-            let newAmountMilestonesDone = goal.milestones.getAmountDone()
-            
-            if newStepUnits != 0 {
-                GoalAccomplishmentsHandler.AddSteps.updateStepsAccomplishment(oldCurrentSteps, newCurrentSteps)
-                GoalAccomplishmentsHandler.AddSteps.updateMilestonesAccomplishment(oldAmountMilestonesDone, newAmountMilestonesDone)
-                GoalAccomplishmentsHandler.AddSteps.updateGoalsAccomplishment(goal.currentState)
-            }
-            
             //Goal Reached
             
             if goal.currentState == .reached {
