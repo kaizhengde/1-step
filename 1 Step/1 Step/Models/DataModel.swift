@@ -67,8 +67,7 @@ final class DataModel: ObservableObject {
                 self.fetchAllActiveGoals() {
                     DispatchQueue.main.async { completion(true) }
                 }
-            }
-            DispatchQueue.main.async { completion(false) }
+            } else { DispatchQueue.main.async { completion(false) } }
         }
     }
     
@@ -104,8 +103,7 @@ final class DataModel: ObservableObject {
                 self.fetchAllActiveGoals() {
                     DispatchQueue.main.async { completion(true) }
                 }
-            }
-            DispatchQueue.main.async { completion(false) }
+            } else { DispatchQueue.main.async { completion(false) } }
         }
     }
     
@@ -121,8 +119,7 @@ final class DataModel: ObservableObject {
                 self.fetchAllGoals() {
                     DispatchQueue.main.async { completion(true) }
                 }
-            }
-            DispatchQueue.main.async { completion(false) }
+            } else { DispatchQueue.main.async { completion(false) } }
         }
     }
     
@@ -138,8 +135,7 @@ final class DataModel: ObservableObject {
         DispatchQueue.global().async {
             if self.dataManager.addGoalNotification(goal, with: notificationData) {
                 DispatchQueue.main.async { completion(true) }
-            }
-            DispatchQueue.main.async { completion(false) }
+            } else { DispatchQueue.main.async { completion(false) } }
         }
     }
     
@@ -148,8 +144,7 @@ final class DataModel: ObservableObject {
         DispatchQueue.global().async {
             if self.dataManager.editGoalNotification(notification, with: notificationData) {
                 DispatchQueue.main.async { completion(true) }
-            }
-            DispatchQueue.main.async { completion(false) }
+            } else { DispatchQueue.main.async { completion(false) } }
         }
     }
     
@@ -158,8 +153,7 @@ final class DataModel: ObservableObject {
         DispatchQueue.global().async {
             if self.dataManager.removeGoalNotification(notification, of: goal) {
                 DispatchQueue.main.async { completion(true) }
-            }
-            DispatchQueue.main.async { completion(false) }
+            } else { DispatchQueue.main.async { completion(false) } }
         }
     }
     
@@ -172,8 +166,7 @@ final class DataModel: ObservableObject {
                 self.fetchAllGoals() {
                     DispatchQueue.main.async { completion(true) }
                 }
-            }
-            DispatchQueue.main.async { completion(false) }
+            } else { DispatchQueue.main.async { completion(false) } }
         }
     }
 }
