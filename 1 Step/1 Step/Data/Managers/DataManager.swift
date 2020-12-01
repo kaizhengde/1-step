@@ -29,15 +29,20 @@ final class DataManager {
     }
     
     
-    func fetchGoals(for state: GoalState) -> [Goal] {
-        let request = Goal.fetchRequest()
-        request.predicate = NSPredicate(format: "currentState == \(state.rawValue)")
-        request.sortDescriptors = [NSSortDescriptor(key: "sortOrder", ascending: true)]
-        
-        do {
-            let goals = try persistenceManager.context.fetch(request)
-            return goals as! [Goal]
-        } catch { return [] }
+    func fetchGoals(for state: GoalState, completion: @escaping ([Goal]) -> ()) {
+        persistenceManager.backgroundContext.perform {
+            let request = Goal.fetchRequest()
+            request.predicate = NSPredicate(format: "currentState == \(state.rawValue)")
+            request.sortDescriptors = [NSSortDescriptor(key: "sortOrder", ascending: true)]
+            
+            do {
+                let goals = try self.persistenceManager.backgroundContext.fetch(request)
+                
+                self.persistenceManager.saveContext(forContext: self.persistenceManager.backgroundContext)
+                DispatchQueue.main.async { _ = self.persistenceManager.saveContext() }
+                completion(goals as! [Goal])
+            } catch { completion([]) }
+        }
     }
     
     
