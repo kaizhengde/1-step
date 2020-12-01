@@ -23,34 +23,32 @@ final class DataModel: ObservableObject {
     
     //MARK: - Fetch
     
-    private func fetchAllGoals(completion: @escaping () -> ()) {
+    private func fetchAllGoals(completion: () -> ()) {
         fetchAllActiveGoals() {
-            self.fetchAllReachedGoals() {
-                DispatchQueue.main.async { completion() }
+            fetchAllReachedGoals() {
+                completion()
             }
         }
     }
     
     
-    private func fetchAllActiveGoals(completion: @escaping () -> ()) {
-        dataManager.fetchGoals(for: .active) { goals in
-            self.activeGoals = goals
-            DispatchQueue.main.async { completion() }
-        }
+    private func fetchAllActiveGoals(completion: () -> ()) {
+        let fetched = dataManager.fetchGoals(for: .active)
+        activeGoals = fetched
+        completion()
     }
     
     
-    private func fetchAllReachedGoals(completion: @escaping () -> ()) {
-        dataManager.fetchGoals(for: .reached) { goals in
-            self.reachedGoals = goals
-            DispatchQueue.main.async { completion() }
-        }
+    private func fetchAllReachedGoals(completion: () -> ()) {
+        let fetched = dataManager.fetchGoals(for: .reached)
+        reachedGoals = fetched
+        completion()
     }
     
     
     //MARK: - Insert
     
-    func createGoal(with baseData: Goal.BaseData, completion: @escaping (Bool) -> ()) {
+    func createGoal(with baseData: Goal.BaseData, completion: (Bool) -> ()) {
         guard !GoalErrorHandler.hasErrors(with: baseData) else {
             completion(false)
             return
@@ -66,7 +64,7 @@ final class DataModel: ObservableObject {
     
     //MARK: - Change
     
-    func moveGoals(in state: GoalState, completion: @escaping (Bool) -> ()) {
+    func moveGoals(in state: GoalState, completion: (Bool) -> ()) {
         let goals = state == .active ? activeGoals : reachedGoals
         
         for goal in goals {
@@ -153,7 +151,7 @@ final class DataModel: ObservableObject {
     
     //MARK: - Delete
     
-    func deleteGoal(_ goal: Goal, completion: @escaping (Bool) -> ()) {
+    func deleteGoal(_ goal: Goal, completion: (Bool) -> ()) {
         if dataManager.deleteGoal(goal) { fetchAllGoals() { completion(true) } }
         else { completion(false) }
     }
