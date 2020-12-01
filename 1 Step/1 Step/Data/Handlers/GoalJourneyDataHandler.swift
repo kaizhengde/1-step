@@ -9,7 +9,7 @@ import SwiftUI
 
 enum GoalJourneyDataHandler {
     
-    static func addStepsAndUpdateData(with goal: Goal, newStepUnits: Double) {
+    static func addStepsAndUpdateData(with goal: Goal, newStepUnits: Double, completion: @escaping () -> ()) {
                 
         //0. Calculate new currentStepUnits - make sure it's rounded and not more than (total)neededStepUnits
         
@@ -30,6 +30,7 @@ enum GoalJourneyDataHandler {
         goal.currentSteps       = Int16(goal.currentStepUnits*Double(goal.step.unitRatio))
         goal.currentPercent     = Int16((goal.currentStepUnits/Double(goal.neededStepUnits))*100)
         goal.currentState       = Int16(goal.currentStepUnits) >= goal.neededStepUnits ? .reached : .active
+        
         
         
         //2. Update Milestones
@@ -53,38 +54,45 @@ enum GoalJourneyDataHandler {
                 milestone.endDate = .distantFuture
             }
         }
-        
+            
         goal.milestones = Set(milestones)
-        
+
         
         //3. Update StepsDate
         
-        goal.stepsDate = Array<Date>(repeating: .distantFuture, count: Int(goal.neededSteps))
+        var stepsDate = Array<Date>(repeating: .distantFuture, count: Int(goal.neededSteps))
         
-        for i in 0..<Int(goal.currentSteps) {
-            if i < goal.stepsDate.filter({ $0 != .distantFuture }).count {
-                goal.stepsDate[i] = goal.stepsDate[i]
-            } else {
-                goal.stepsDate[i] = Date()
+        DispatchQueue.global().async {
+            for i in 0..<Int(goal.currentSteps) {
+                if i < goal.stepsDate.filter({ $0 != .distantFuture }).count {
+                    stepsDate[i] = goal.stepsDate[i]
+                } else {
+                    stepsDate[i] = Date()
+                }
+            }
+            
+            DispatchQueue.main.async {
+                goal.stepsDate = stepsDate
+                
+                for milestone in goal.milestones {
+                    if milestone.state == .done {
+                        milestone.endDate = goal.stepsDate[Int(milestone.neededSteps)-1]
+                    }
+                }
+                
+                completion()
             }
         }
         
         
-        for milestone in milestones {
-            if milestone.state == .done {
-                milestone.endDate = goal.stepsDate[Int(milestone.neededSteps)-1]
-            }
-        }
-        
-        
-        print("-------------")
-        print("Goal:        \(goal.name)")
-        print("StepUnits:   \(goal.currentStepUnits)")
-        print("Steps:       \(goal.currentSteps)")
-        print("Percent:     \(goal.currentPercent)")
-        print("State:       \(goal.currentState.rawValue)")
-        print("StepsDate:   \(goal.stepsDate.filter({ $0 != .distantFuture }))")
-        print("Milestones:  \(goal.milestones.map { "Needed Units: \($0.neededStepUnits), State: \($0.state.rawValue)" })")
-        print("-------------")
+//        print("-------------")
+//        print("Goal:        \(goal.name)")
+//        print("StepUnits:   \(goal.currentStepUnits)")
+//        print("Steps:       \(goal.currentSteps)")
+//        print("Percent:     \(goal.currentPercent)")
+//        print("State:       \(goal.currentState.rawValue)")
+//        print("StepsDate:   \(goal.stepsDate.filter({ $0 != .distantFuture }))")
+//        print("Milestones:  \(goal.milestones.map { "Needed Units: \($0.neededStepUnits), State: \($0.state.rawValue)" })")
+//        print("-------------")
     }
 }

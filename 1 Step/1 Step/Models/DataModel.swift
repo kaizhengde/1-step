@@ -84,9 +84,11 @@ final class DataModel: ObservableObject {
             return
         }
         
-        if dataManager.editGoal(goal, with: baseData) {
-            self.fetchAllActiveGoals() { completion(true) }
-        } else { completion(false) }
+        dataManager.editGoal(goal, with: baseData) { success in
+            if success {
+                self.fetchAllActiveGoals() { completion(true) }
+            } else { completion(false) }
+        }
     }
     
     
@@ -96,9 +98,11 @@ final class DataModel: ObservableObject {
             return
         }
         
-        if dataManager.addSteps(goal, with: newStepUnits) {
-            self.fetchAllGoals() { completion(true) }
-        } else { completion(false) }
+        dataManager.addSteps(goal, with: newStepUnits) { success in
+            if success {
+                self.fetchAllGoals() { completion(true) }
+            } else { completion(false) }
+        }
     }
     
     
