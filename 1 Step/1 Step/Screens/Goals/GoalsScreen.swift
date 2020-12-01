@@ -37,13 +37,5 @@ struct GoalsScreen: View {
             goalsActiveGridModel.resetTransition()
             goalsReachedGridModel.resetTransition()
         }
-        .onAppear {
-            for goal in DataModel.shared.activeGoals {
-                print("------------------")
-                print(goal.objectID)
-                print(goal.name)
-                print(goal.sortOrder)
-            }
-        }
     }
 }

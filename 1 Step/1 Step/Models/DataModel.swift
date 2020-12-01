@@ -62,13 +62,11 @@ final class DataModel: ObservableObject {
             return
         }
         
-        DispatchQueue.global().async {
-            if self.dataManager.insertGoal(with: baseData) {
-                self.fetchAllActiveGoals() {
-                    DispatchQueue.main.async { completion(true) }
-                }
-            } else { DispatchQueue.main.async { completion(false) } }
-        }
+        if dataManager.insertGoal(with: baseData) {
+            fetchAllActiveGoals() {
+                completion(true)
+            }
+        } else { completion(false) }
     }
     
     

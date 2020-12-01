@@ -47,4 +47,26 @@ struct PersistenceManager {
         }
         return true 
     }
+    
+    
+    func saveContext(forContext context: NSManagedObjectContext) {
+        if context.hasChanges {
+            context.performAndWait {
+                do {
+                    try context.save()
+                    print("Sucess!!")
+                    
+                } catch {
+                    let nserror = error as NSError
+                    print("Error when saving !!! \(nserror.localizedDescription)")
+                    print("Callstack :")
+                    for symbol: String in Thread.callStackSymbols {
+                        print(" > \(symbol)")
+                    }
+                    
+                    PopupManager.shared.showTextPopup(.none, titleText: "Unknown Error", bodyText: "There was a problem saving your data but it is not your fault. Try to do it again or restart the app.", backgroundColor: .darkNeutralToNeutral)
+                }
+            }
+        }
+    }
 }
