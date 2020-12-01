@@ -18,6 +18,12 @@ struct PersistenceManager {
     let container: NSPersistentCloudKitContainer
     var context: NSManagedObjectContext { container.viewContext }
     
+    lazy var backgroundContext: NSManagedObjectContext = {
+        let newContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        newContext.parent = context
+        return newContext
+    }()
+    
     
     init(inMemory: Bool = false) {
         container = NSPersistentCloudKitContainer(name: "__Step")

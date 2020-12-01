@@ -33,24 +33,16 @@ final class DataModel: ObservableObject {
     
     
     private func fetchAllActiveGoals(completion: @escaping () -> ()) {
-        DispatchQueue.global().async {
-            let fetched = self.dataManager.fetchGoals(for: .active)
-            DispatchQueue.main.async {
-                self.activeGoals = fetched
-                completion()
-            }
-        }
+        let fetched = dataManager.fetchGoals(for: .active)
+        activeGoals = fetched
+        completion()
     }
     
     
     private func fetchAllReachedGoals(completion: @escaping () -> ()) {
-        DispatchQueue.global().async {
-            let fetched = self.dataManager.fetchGoals(for: .reached)
-            DispatchQueue.main.async {
-                self.reachedGoals = fetched
-                completion()
-            }
-        }
+        let fetched = dataManager.fetchGoals(for: .reached)
+        reachedGoals = fetched
+        completion()
     }
     
     
@@ -75,17 +67,13 @@ final class DataModel: ObservableObject {
     func moveGoals(in state: GoalState, completion: @escaping (Bool) -> ()) {
         let goals = state == .active ? activeGoals : reachedGoals
         
-        DispatchQueue.global().async {
-            for goal in goals {
-                guard self.dataManager.changeGoalOrder(goal, with: goal.sortOrder) else {
-                    DispatchQueue.main.async { completion(false) }
-                    return
-                }
-            }
-            self.fetchAllActiveGoals() {
-                DispatchQueue.main.async { completion(true) }
+        for goal in goals {
+            guard self.dataManager.changeGoalOrder(goal, with: goal.sortOrder) else {
+                completion(false) 
+                return
             }
         }
+        self.fetchAllActiveGoals() { completion(true) }
     }
     
     
@@ -96,13 +84,9 @@ final class DataModel: ObservableObject {
             return
         }
         
-        DispatchQueue.global().async {
-            if self.dataManager.editGoal(goal, with: baseData) {
-                self.fetchAllActiveGoals() {
-                    DispatchQueue.main.async { completion(true) }
-                }
-            } else { DispatchQueue.main.async { completion(false) } }
-        }
+        if dataManager.editGoal(goal, with: baseData) {
+            self.fetchAllActiveGoals() { completion(true) }
+        } else { completion(false) }
     }
     
     
@@ -112,59 +96,41 @@ final class DataModel: ObservableObject {
             return
         }
         
-        DispatchQueue.global().async {
-            if self.dataManager.addSteps(goal, with: newStepUnits) {
-                self.fetchAllGoals() {
-                    DispatchQueue.main.async { completion(true) }
-                }
-            } else { DispatchQueue.main.async { completion(false) } }
-        }
+        if dataManager.addSteps(goal, with: newStepUnits) {
+            self.fetchAllGoals() { completion(true) }
+        } else { completion(false) }
     }
     
     
     func updateReachedGoalsPercentage() {
-        DispatchQueue.global().async { _ = self.dataManager.updateReachedGoalsPercentage() }
+        _ = dataManager.updateReachedGoalsPercentage()
     }
     
     
     //Goal Notification
     
     func addGoalNotification(_ goal: Goal, with notificationData: Goal.NotificationData, completion: @escaping (Bool) -> ()) {
-        DispatchQueue.global().async {
-            if self.dataManager.addGoalNotification(goal, with: notificationData) {
-                DispatchQueue.main.async { completion(true) }
-            } else { DispatchQueue.main.async { completion(false) } }
-        }
+        if dataManager.addGoalNotification(goal, with: notificationData) { completion(true) }
+        else { completion(false) }
     }
     
     
     func editGoalNotification(_ notification: GoalNotification, with notificationData: Goal.NotificationData, completion: @escaping (Bool) -> ()) {
-        DispatchQueue.global().async {
-            if self.dataManager.editGoalNotification(notification, with: notificationData) {
-                DispatchQueue.main.async { completion(true) }
-            } else { DispatchQueue.main.async { completion(false) } }
-        }
+        if dataManager.editGoalNotification(notification, with: notificationData) { completion(true) }
+        else { completion(false) }
     }
     
     
     func removeGoalNotification(_ notification: GoalNotification, of goal: Goal, completion: @escaping (Bool) -> ()) {
-        DispatchQueue.global().async {
-            if self.dataManager.removeGoalNotification(notification, of: goal) {
-                DispatchQueue.main.async { completion(true) }
-            } else { DispatchQueue.main.async { completion(false) } }
-        }
+        if dataManager.removeGoalNotification(notification, of: goal) { completion(true) }
+        else { completion(false) }
     }
     
     
     //MARK: - Delete
     
     func deleteGoal(_ goal: Goal, completion: @escaping (Bool) -> ()) {
-        DispatchQueue.global().async {
-            if self.dataManager.deleteGoal(goal) {
-                self.fetchAllGoals() {
-                    DispatchQueue.main.async { completion(true) }
-                }
-            } else { DispatchQueue.main.async { completion(false) } }
-        }
+        if dataManager.deleteGoal(goal) { fetchAllGoals() { completion(true) } }
+        else { completion(false) }
     }
 }

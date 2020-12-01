@@ -13,7 +13,7 @@ final class DataManager {
     static let defaults = DataManager()
     private init() {}
     
-    private let persistenceManager = PersistenceManager.defaults
+    private var persistenceManager = PersistenceManager.defaults
     
     
     //MARK: - Fetch
@@ -109,38 +109,38 @@ final class DataManager {
     
     func addSteps(_ goal: Goal, with newStepUnits: Double) -> Bool {
         
-        let oldCurrentSteps         = goal.currentSteps
-        let oldAmountMilestonesDone = goal.milestones.getAmountDone()
-        
-        let journeyData = GoalJourneyDataHandler.addStepsAndUpdate(with: goal, newStepUnits: newStepUnits)
-        
-        goal.currentStepUnits       = journeyData.currentStepUnits
-        goal.currentSteps           = journeyData.currentSteps
-        goal.currentPercent         = journeyData.currentPercent
-        goal.currentState           = journeyData.currentState
-        goal.stepsDate              = journeyData.stepsDate
-        goal.milestones             = journeyData.milestones
-        
-        let newCurrentSteps         = goal.currentSteps
-        let newAmountMilestonesDone = goal.milestones.getAmountDone()
-        
-        if newStepUnits != 0 {
-            GoalAccomplishmentsHandler.AddSteps.updateStepsAccomplishment(oldCurrentSteps, newCurrentSteps)
-            GoalAccomplishmentsHandler.AddSteps.updateMilestonesAccomplishment(oldAmountMilestonesDone, newAmountMilestonesDone)
-            GoalAccomplishmentsHandler.AddSteps.updateGoalsAccomplishment(goal.currentState)
-        }
-        
-        //Goal Reached
-        
-        if goal.currentState == .reached {
-            guard updateGoalsSortOrder(with: goal, state: .active) else { return false }
-            goal.sortOrder          = fetchGoalCount(for: .reached)
+        DispatchQueue.global().async {
             
-            GoalNotificationsHandler.deleteAllNotifications(with: goal)
-            goal.notifications      = []
+            let oldCurrentSteps         = goal.currentSteps
+            let oldAmountMilestonesDone = goal.milestones.getAmountDone()
+            
+            GoalJourneyDataHandler.addStepsAndUpdateData(with: goal, newStepUnits: newStepUnits)
+            
+            let newCurrentSteps         = goal.currentSteps
+            let newAmountMilestonesDone = goal.milestones.getAmountDone()
+            
+            if newStepUnits != 0 {
+                GoalAccomplishmentsHandler.AddSteps.updateStepsAccomplishment(oldCurrentSteps, newCurrentSteps)
+                GoalAccomplishmentsHandler.AddSteps.updateMilestonesAccomplishment(oldAmountMilestonesDone, newAmountMilestonesDone)
+                GoalAccomplishmentsHandler.AddSteps.updateGoalsAccomplishment(goal.currentState)
+            }
+            
+            self.persistenceManager.context.perform {
+                //Goal Reached
+                
+                if goal.currentState == .reached {
+                    _ = self.updateGoalsSortOrder(with: goal, state: .active)
+                    goal.sortOrder          = self.fetchGoalCount(for: .reached)
+
+                    GoalNotificationsHandler.deleteAllNotifications(with: goal)
+                    goal.notifications      = []
+                }
+                
+                _ = self.persistenceManager.saveContext()
+            }
         }
         
-        return persistenceManager.saveContext()
+        return true
     }
     
     
