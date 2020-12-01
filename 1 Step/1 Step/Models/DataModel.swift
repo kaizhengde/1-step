@@ -23,23 +23,23 @@ final class DataModel: ObservableObject {
     
     //MARK: - Fetch
     
-    private func fetchAllGoals(completion: @escaping () -> ()) {
+    private func fetchAllGoals(completion: () -> ()) {
         fetchAllActiveGoals() {
-            self.fetchAllReachedGoals() {
+            fetchAllReachedGoals() {
                 completion()
             }
         }
     }
     
     
-    private func fetchAllActiveGoals(completion: @escaping () -> ()) {
+    private func fetchAllActiveGoals(completion: () -> ()) {
         let fetched = dataManager.fetchGoals(for: .active)
         activeGoals = fetched
         completion()
     }
     
     
-    private func fetchAllReachedGoals(completion: @escaping () -> ()) {
+    private func fetchAllReachedGoals(completion: () -> ()) {
         let fetched = dataManager.fetchGoals(for: .reached)
         reachedGoals = fetched
         completion()
@@ -48,7 +48,7 @@ final class DataModel: ObservableObject {
     
     //MARK: - Insert
     
-    func createGoal(with baseData: Goal.BaseData, completion: @escaping (Bool) -> ()) {
+    func createGoal(with baseData: Goal.BaseData, completion: (Bool) -> ()) {
         guard !GoalErrorHandler.hasErrors(with: baseData) else {
             completion(false)
             return
@@ -64,7 +64,7 @@ final class DataModel: ObservableObject {
     
     //MARK: - Change
     
-    func moveGoals(in state: GoalState, completion: @escaping (Bool) -> ()) {
+    func moveGoals(in state: GoalState, completion: (Bool) -> ()) {
         let goals = state == .active ? activeGoals : reachedGoals
         
         for goal in goals {
@@ -131,19 +131,19 @@ final class DataModel: ObservableObject {
     
     //Goal Notification
     
-    func addGoalNotification(_ goal: Goal, with notificationData: Goal.NotificationData, completion: @escaping (Bool) -> ()) {
+    func addGoalNotification(_ goal: Goal, with notificationData: Goal.NotificationData, completion: (Bool) -> ()) {
         if dataManager.addGoalNotification(goal, with: notificationData) { completion(true) }
         else { completion(false) }
     }
     
     
-    func editGoalNotification(_ notification: GoalNotification, with notificationData: Goal.NotificationData, completion: @escaping (Bool) -> ()) {
+    func editGoalNotification(_ notification: GoalNotification, with notificationData: Goal.NotificationData, completion: (Bool) -> ()) {
         if dataManager.editGoalNotification(notification, with: notificationData) { completion(true) }
         else { completion(false) }
     }
     
     
-    func removeGoalNotification(_ notification: GoalNotification, of goal: Goal, completion: @escaping (Bool) -> ()) {
+    func removeGoalNotification(_ notification: GoalNotification, of goal: Goal, completion: (Bool) -> ()) {
         if dataManager.removeGoalNotification(notification, of: goal) { completion(true) }
         else { completion(false) }
     }
@@ -151,7 +151,7 @@ final class DataModel: ObservableObject {
     
     //MARK: - Delete
     
-    func deleteGoal(_ goal: Goal, completion: @escaping (Bool) -> ()) {
+    func deleteGoal(_ goal: Goal, completion: (Bool) -> ()) {
         if dataManager.deleteGoal(goal) { fetchAllGoals() { completion(true) } }
         else { completion(false) }
     }

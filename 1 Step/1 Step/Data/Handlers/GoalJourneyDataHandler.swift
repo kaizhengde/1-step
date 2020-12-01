@@ -32,7 +32,6 @@ enum GoalJourneyDataHandler {
         goal.currentState       = Int16(goal.currentStepUnits) >= goal.neededStepUnits ? .reached : .active
         
         
-        
         //2. Update Milestones
         
         let milestones = Array(goal.milestones.sorted { $0.neededStepUnits < $1.neededStepUnits })
@@ -82,17 +81,17 @@ enum GoalJourneyDataHandler {
                 
                 completion()
             }
+            
+            
+            print("-------------")
+            print("Goal:        \(goal.name)")
+            print("StepUnits:   \(goal.currentStepUnits)")
+            print("Steps:       \(goal.currentSteps)")
+            print("Percent:     \(goal.currentPercent)")
+            print("State:       \(goal.currentState.rawValue)")
+            print("StepsDate:   \(goal.stepsDate.filter({ $0 != .distantFuture }))")
+            print("Milestones:  \(goal.milestones.map { "Needed Units: \($0.neededStepUnits), State: \($0.state.rawValue)" })")
+            print("-------------")
         }
-        
-        
-//        print("-------------")
-//        print("Goal:        \(goal.name)")
-//        print("StepUnits:   \(goal.currentStepUnits)")
-//        print("Steps:       \(goal.currentSteps)")
-//        print("Percent:     \(goal.currentPercent)")
-//        print("State:       \(goal.currentState.rawValue)")
-//        print("StepsDate:   \(goal.stepsDate.filter({ $0 != .distantFuture }))")
-//        print("Milestones:  \(goal.milestones.map { "Needed Units: \($0.neededStepUnits), State: \($0.state.rawValue)" })")
-//        print("-------------")
     }
 }

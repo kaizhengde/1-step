@@ -108,7 +108,6 @@ final class DataManager {
     func addSteps(_ goal: Goal, with newStepUnits: Double, completion: @escaping (Bool) -> ()) {
         GoalJourneyDataHandler.addStepsAndUpdateData(with: goal, newStepUnits: newStepUnits) {
             //Goal Reached
-            
             if goal.currentState == .reached {
                 _ = self.updateGoalsSortOrder(with: goal, state: .active)
                 goal.sortOrder      = self.fetchGoalCount(for: .reached)
