@@ -167,6 +167,7 @@
 		3DE9C522252CB5820023C212 /* GoalCreateScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE9C521252CB5820023C212 /* GoalCreateScreen.swift */; };
 		3DE9C527252CB6FF0023C212 /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE9C526252CB6FF0023C212 /* ProfileScreen.swift */; };
 		3DEA918B2579589700C90414 /* NoticiationDefault.m4r in Resources */ = {isa = PBXBuildFile; fileRef = 3DEA918A2579589700C90414 /* NoticiationDefault.m4r */; };
+		3DEA918F25795FE600C90414 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA918E25795FE600C90414 /* AppDelegate.swift */; };
 		3DF1BFD4254C557E004E1AB6 /* MilestoneItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF1BFD3254C557E004E1AB6 /* MilestoneItem.swift */; };
 		3DF1BFD7254C67D2004E1AB6 /* SummitMilestoneItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF1BFD6254C67D2004E1AB6 /* SummitMilestoneItem.swift */; };
 		3DF1E2722547F04A00D65244 /* HiddenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF1E2712547F04A00D65244 /* HiddenView.swift */; };
@@ -365,6 +366,7 @@
 		3DE9C521252CB5820023C212 /* GoalCreateScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCreateScreen.swift; sourceTree = "<group>"; };
 		3DE9C526252CB6FF0023C212 /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
 		3DEA918A2579589700C90414 /* NoticiationDefault.m4r */ = {isa = PBXFileReference; lastKnownFileType = file; name = NoticiationDefault.m4r; path = ../../../Sounds/NoticiationDefault.m4r; sourceTree = "<group>"; };
+		3DEA918E25795FE600C90414 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3DF1BFD3254C557E004E1AB6 /* MilestoneItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneItem.swift; sourceTree = "<group>"; };
 		3DF1BFD6254C67D2004E1AB6 /* SummitMilestoneItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummitMilestoneItem.swift; sourceTree = "<group>"; };
 		3DF1E2712547F04A00D65244 /* HiddenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiddenView.swift; sourceTree = "<group>"; };
@@ -562,6 +564,7 @@
 		3D47CC79252C6C0D00A8CA1B /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				3DEA918E25795FE600C90414 /* AppDelegate.swift */,
 				3DE11C34252C681200F13719 /* __StepApp.swift */,
 				3D47CC7A252C6C1C00A8CA1B /* MainView.swift */,
 				3DFD9BDE256C1B5C00CF9580 /* FirstStart */,
@@ -1433,6 +1436,7 @@
 				3DAE7AEB2530A3E600B162B1 /* OneSTextFloater.swift in Sources */,
 				3D610881256D6E3A00DC20BD /* LocalizationHelper.swift in Sources */,
 				3D0BEB0D2568EA52002F74FE /* ProfileModel.swift in Sources */,
+				3DEA918F25795FE600C90414 /* AppDelegate.swift in Sources */,
 				3D6F439D253AE20500785586 /* GoalSummaryView.swift in Sources */,
 				3DDF70342531BAA900FD3011 /* Step.swift in Sources */,
 				3DE9C503252C8A2D0023C212 /* GoalsHeaderView.swift in Sources */,

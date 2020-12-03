@@ -26,6 +26,8 @@ struct __StepApp: App {
     let confettiManager         = ConfettiManager.shared
     
     let infinteAnimationManager = InfiniteAnimationManager.shared
+    
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
     
     var body: some Scene {

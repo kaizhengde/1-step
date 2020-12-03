@@ -22,7 +22,7 @@ struct ProfileAboutSectionView: View {
                     
                     OneSRowButton(.long, title: "Request new Features", accessorySFSymbol: ProfileSymbol.request, accessoryColor: UserColor.user0.standard) {}
                     
-                    OneSRowButton(.long, title: "Rate us on the App Store", textColor: .backgroundToGray, backgroundColor: UserColor.user0.standard, accessorySFSymbol: ProfileSymbol.rate, accessoryColor: .backgroundToGray) {}
+                    OneSRowButton(.long, title: "Rate us on the App Store", accessorySFSymbol: ProfileSymbol.rate, accessoryColor: UserColor.user0.standard) {}
                     
                     OneSRowButton(.long, title: "Share", accessorySFSymbol: ProfileSymbol.share, accessoryColor: UserColor.user0.standard) {}
                 }

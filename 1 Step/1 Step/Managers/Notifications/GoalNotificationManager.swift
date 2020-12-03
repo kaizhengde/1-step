@@ -41,7 +41,7 @@ enum GoalNotificationManager {
             content.title = notificationTitle
             content.body = notificationBody
             content.sound = UNNotificationSound.init(named: UNNotificationSoundName("NoticiationDefault.m4r"))
-            
+
             print("New Notification Time: \(dateComponents.description)")
             
             let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)

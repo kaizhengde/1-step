@@ -57,6 +57,11 @@ extension UserDefaultKey {
         static let notifications: Key           = "authorization.notifications"
         static let photoLibrary: Key            = "authorization.photoLibrary"
     }
+    
+    
+    enum Notification {
+        static let badgeCount: Key              = "notification.badgeCount"
+    }
 }
 
 

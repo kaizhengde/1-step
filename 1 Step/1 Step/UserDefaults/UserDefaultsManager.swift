@@ -75,6 +75,11 @@ class UserDefaultsManager: ObservableObject {
     
     @UserDefault(UserDefaultKey.Authorization.notifications, default: .notDetermined) var authorizationNotifications: UNAuthorizationStatus
     @UserDefault(UserDefaultKey.Authorization.photoLibrary, default: .none) var authorizationPhotoLibrary: OneSAuthorizationStatus
+    
+    
+    //MARK: - Notification
+    
+    @UserDefault(UserDefaultKey.Notification.badgeCount, default: 0) var notificationBadgeCount: Int 
 }
 
 
