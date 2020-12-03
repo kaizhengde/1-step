@@ -13,7 +13,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         
         UIApplication.shared.applicationIconBadgeNumber = 0
         UserDefaultsManager.shared.notificationBadgeCount = 0
-
+        
         return true
     }
 }
+

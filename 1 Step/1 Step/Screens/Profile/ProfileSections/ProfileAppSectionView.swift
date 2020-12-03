@@ -134,7 +134,7 @@ struct ProfileAppSectionView: View {
             VStack(spacing: 10) {
                 OneSRowButton(
                     .shortSmall,
-                    title: "iCloud Sync",
+                    title: "iCloud backup",
                     textColor: profileModel.appSelectedRowTitleColor(iCloudSynch),
                     backgroundColor: profileModel.appSelectedRowBackgroundColor(iCloudSynch),
                     accessoryText: profileModel.appSelectedRowAccessoryText(iCloudSynch, enabled: "On", disabled: "Off"),
@@ -142,11 +142,9 @@ struct ProfileAppSectionView: View {
                     action: { userDefaultsManager.settingICloudSynch.toggle() }
                 )
                 
-                OneSRowButton(.shortSmall, title: "Download iCloud data") {}
-                
-                OneSRowButton(.shortSmall, title: "Delete iCloud data") {}
-                
-                OneSRowButton(.shortSmall, title: "Reset all data") {}
+                OneSRowButton(.shortSmall, title: "Export your data") {}
+                                
+                OneSRowButton(.shortSmall, title: "Delete all data") {}
                 
                 OneSRowButton(.shortSmall, title: "Privacy Policy") {}
             }

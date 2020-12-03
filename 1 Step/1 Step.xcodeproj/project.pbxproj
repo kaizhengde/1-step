@@ -21,6 +21,7 @@
 		3D10D1CD254D2D53002D2D3E /* MilestoneDotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D10D1CC254D2D53002D2D3E /* MilestoneDotView.swift */; };
 		3D10D1D1254D3051002D2D3E /* MilestoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D10D1D0254D3051002D2D3E /* MilestoneView.swift */; };
 		3D160D55252E2067008588D5 /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D160D54252E2067008588D5 /* TransitionManager.swift */; };
+		3D23F70B2579770C000801A5 /* CreditsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D23F70A2579770C000801A5 /* CreditsModel.swift */; };
 		3D258282253C0A9300DC19E7 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D258281253C0A9300DC19E7 /* Color.swift */; };
 		3D2E7928252F6C2C00788AA2 /* GoalEnterInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2E7927252F6C2C00788AA2 /* GoalEnterInputModel.swift */; };
 		3D2E792C252F6CAB00788AA2 /* GoalEnterInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2E792B252F6CAB00788AA2 /* GoalEnterInputView.swift */; };
@@ -168,6 +169,8 @@
 		3DE9C527252CB6FF0023C212 /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE9C526252CB6FF0023C212 /* ProfileScreen.swift */; };
 		3DEA918B2579589700C90414 /* NoticiationDefault.m4r in Resources */ = {isa = PBXBuildFile; fileRef = 3DEA918A2579589700C90414 /* NoticiationDefault.m4r */; };
 		3DEA918F25795FE600C90414 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA918E25795FE600C90414 /* AppDelegate.swift */; };
+		3DEA91952579740900C90414 /* OneSFootnoteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA91942579740900C90414 /* OneSFootnoteButton.swift */; };
+		3DEA919A2579752100C90414 /* CreditsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA91992579752100C90414 /* CreditsView.swift */; };
 		3DF1BFD4254C557E004E1AB6 /* MilestoneItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF1BFD3254C557E004E1AB6 /* MilestoneItem.swift */; };
 		3DF1BFD7254C67D2004E1AB6 /* SummitMilestoneItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF1BFD6254C67D2004E1AB6 /* SummitMilestoneItem.swift */; };
 		3DF1E2722547F04A00D65244 /* HiddenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF1E2712547F04A00D65244 /* HiddenView.swift */; };
@@ -217,6 +220,7 @@
 		3D10D1CC254D2D53002D2D3E /* MilestoneDotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneDotView.swift; sourceTree = "<group>"; };
 		3D10D1D0254D3051002D2D3E /* MilestoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneView.swift; sourceTree = "<group>"; };
 		3D160D54252E2067008588D5 /* TransitionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
+		3D23F70A2579770C000801A5 /* CreditsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsModel.swift; sourceTree = "<group>"; };
 		3D258281253C0A9300DC19E7 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		3D2E7927252F6C2C00788AA2 /* GoalEnterInputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEnterInputModel.swift; sourceTree = "<group>"; };
 		3D2E792B252F6CAB00788AA2 /* GoalEnterInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEnterInputView.swift; sourceTree = "<group>"; };
@@ -367,6 +371,8 @@
 		3DE9C526252CB6FF0023C212 /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
 		3DEA918A2579589700C90414 /* NoticiationDefault.m4r */ = {isa = PBXFileReference; lastKnownFileType = file; name = NoticiationDefault.m4r; path = ../../../Sounds/NoticiationDefault.m4r; sourceTree = "<group>"; };
 		3DEA918E25795FE600C90414 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3DEA91942579740900C90414 /* OneSFootnoteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSFootnoteButton.swift; sourceTree = "<group>"; };
+		3DEA91992579752100C90414 /* CreditsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsView.swift; sourceTree = "<group>"; };
 		3DF1BFD3254C557E004E1AB6 /* MilestoneItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneItem.swift; sourceTree = "<group>"; };
 		3DF1BFD6254C67D2004E1AB6 /* SummitMilestoneItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummitMilestoneItem.swift; sourceTree = "<group>"; };
 		3DF1E2712547F04A00D65244 /* HiddenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiddenView.swift; sourceTree = "<group>"; };
@@ -684,6 +690,7 @@
 				3D2E795725301DA400788AA2 /* OneSFillButton.swift */,
 				3D6FDDB82567808B002854E6 /* OneSRowButton.swift */,
 				3D6FDDE12567C43B002854E6 /* OneSRowSelectButton.swift */,
+				3DEA91942579740900C90414 /* OneSFootnoteButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -766,6 +773,7 @@
 				3D59DEA325697A8200CF24D7 /* ProfileAppSectionView.swift */,
 				3D59DEA725697AC900CF24D7 /* ProfileAboutSectionView.swift */,
 				3DFD9BBB256B863400CF9580 /* Help */,
+				3DEA9198257974FA00C90414 /* Credits */,
 			);
 			path = ProfileSections;
 			sourceTree = "<group>";
@@ -1131,6 +1139,15 @@
 			path = Sounds;
 			sourceTree = "<group>";
 		};
+		3DEA9198257974FA00C90414 /* Credits */ = {
+			isa = PBXGroup;
+			children = (
+				3D23F70A2579770C000801A5 /* CreditsModel.swift */,
+				3DEA91992579752100C90414 /* CreditsView.swift */,
+			);
+			path = Credits;
+			sourceTree = "<group>";
+		};
 		3DFD9BB0256AEFDA00CF9580 /* ImagePickers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1319,6 +1336,7 @@
 				3DFDE055253C4678006B1A7E /* GoalEditModel.swift in Sources */,
 				3D4FD86E2564F39100103C73 /* GoalReachedView.swift in Sources */,
 				3D0B5948253319AC00079856 /* GoalErrorHandler.swift in Sources */,
+				3DEA919A2579752100C90414 /* CreditsView.swift in Sources */,
 				3DCA909A254546690030FE61 /* AddStepView.swift in Sources */,
 				3D47CCC2252C807000A8CA1B /* Colors.swift in Sources */,
 				3DE11C3E252C681600F13719 /* PersistenceManger.swift in Sources */,
@@ -1362,6 +1380,7 @@
 				3D959A9125628ED4007BAA07 /* ConfettiManager.swift in Sources */,
 				3D0B59452533123600079856 /* DataModel.swift in Sources */,
 				3D854B11253EA3F900A4F80E /* GoalDeleteHandler.swift in Sources */,
+				3DEA91952579740900C90414 /* OneSFootnoteButton.swift in Sources */,
 				3DD5C9CD2539CF6600861784 /* GoalScreen.swift in Sources */,
 				3D2E7939252F9D7A00788AA2 /* OneSScaleButtonStyle.swift in Sources */,
 				3D72B8C3252DB5B8006E660D /* Animations.swift in Sources */,
@@ -1474,6 +1493,7 @@
 				3DE9C527252CB6FF0023C212 /* ProfileScreen.swift in Sources */,
 				3D59DEA825697AC900CF24D7 /* ProfileAboutSectionView.swift in Sources */,
 				3DF1BFD4254C557E004E1AB6 /* MilestoneItem.swift in Sources */,
+				3D23F70B2579770C000801A5 /* CreditsModel.swift in Sources */,
 				3DD5C9D42539D27100861784 /* GoalTransitionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
