@@ -166,6 +166,7 @@
 		3DE9C51D252CB28D0023C212 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE9C51C252CB28D0023C212 /* MainModel.swift */; };
 		3DE9C522252CB5820023C212 /* GoalCreateScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE9C521252CB5820023C212 /* GoalCreateScreen.swift */; };
 		3DE9C527252CB6FF0023C212 /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE9C526252CB6FF0023C212 /* ProfileScreen.swift */; };
+		3DEA918B2579589700C90414 /* NoticiationDefault.m4r in Resources */ = {isa = PBXBuildFile; fileRef = 3DEA918A2579589700C90414 /* NoticiationDefault.m4r */; };
 		3DF1BFD4254C557E004E1AB6 /* MilestoneItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF1BFD3254C557E004E1AB6 /* MilestoneItem.swift */; };
 		3DF1BFD7254C67D2004E1AB6 /* SummitMilestoneItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF1BFD6254C67D2004E1AB6 /* SummitMilestoneItem.swift */; };
 		3DF1E2722547F04A00D65244 /* HiddenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF1E2712547F04A00D65244 /* HiddenView.swift */; };
@@ -363,6 +364,7 @@
 		3DE9C51C252CB28D0023C212 /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 		3DE9C521252CB5820023C212 /* GoalCreateScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCreateScreen.swift; sourceTree = "<group>"; };
 		3DE9C526252CB6FF0023C212 /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
+		3DEA918A2579589700C90414 /* NoticiationDefault.m4r */ = {isa = PBXFileReference; lastKnownFileType = file; name = NoticiationDefault.m4r; path = ../../../Sounds/NoticiationDefault.m4r; sourceTree = "<group>"; };
 		3DF1BFD3254C557E004E1AB6 /* MilestoneItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneItem.swift; sourceTree = "<group>"; };
 		3DF1BFD6254C67D2004E1AB6 /* SummitMilestoneItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummitMilestoneItem.swift; sourceTree = "<group>"; };
 		3DF1E2712547F04A00D65244 /* HiddenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiddenView.swift; sourceTree = "<group>"; };
@@ -593,7 +595,6 @@
 			isa = PBXGroup;
 			children = (
 				3D610860256D5BC200DC20BD /* Localization */,
-				3D47CC93252C738D00A8CA1B /* Fonts */,
 				3D47CC8B252C71B500A8CA1B /* Constants */,
 				3D2E795225301AC800788AA2 /* Methods */,
 				3D959A85256283C1007BAA07 /* Helpers */,
@@ -1055,6 +1056,8 @@
 			isa = PBXGroup;
 			children = (
 				3DE11C38252C681600F13719 /* Assets.xcassets */,
+				3D47CC93252C738D00A8CA1B /* Fonts */,
+				3DEA91832579580F00C90414 /* Sounds */,
 				3DE11C42252C681600F13719 /* Info.plist */,
 				3DE11C3F252C681600F13719 /* __Step.xcdatamodeld */,
 				3D68B65925721C3D00A183F5 /* 1 Step.entitlements */,
@@ -1115,6 +1118,14 @@
 				3D59DE952569656100CF24D7 /* ProfileSections */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		3DEA91832579580F00C90414 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				3DEA918A2579589700C90414 /* NoticiationDefault.m4r */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 		3DFD9BB0256AEFDA00CF9580 /* ImagePickers */ = {
@@ -1275,6 +1286,7 @@
 				3D47CCA9252C73D300A8CA1B /* Raleway-Light.ttf in Resources */,
 				3D47CC9F252C73D300A8CA1B /* Raleway-Black.ttf in Resources */,
 				3D61086B256D63DE00DC20BD /* Localizable.strings in Resources */,
+				3DEA918B2579589700C90414 /* NoticiationDefault.m4r in Resources */,
 				3D47CCA3252C73D300A8CA1B /* Raleway-ExtraBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
