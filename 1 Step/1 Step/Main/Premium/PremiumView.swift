@@ -110,9 +110,9 @@ struct PremiumView: View {
                     OneSRowButton(.shortBig, title: "Restore purchase", backgroundColor: .whiteToGray) {}
                         .padding(.top, 20)
                     
-                    HStack(spacing: 16) {
-                        OneSFootnoteButton(text: "Privacy policy", color: UserColor.user2.standard) {}
-                        OneSFootnoteButton(text: "Terms of use", color: UserColor.user2.standard) {}
+                    HStack(spacing: 24) {
+                        OneSFootnoteButton(text: "Privacy policy", color: UserColor.user0.standard) {}
+                        OneSFootnoteButton(text: "Terms of use", color: UserColor.user0.standard) {}
                         Spacer()
                     }
                 }
