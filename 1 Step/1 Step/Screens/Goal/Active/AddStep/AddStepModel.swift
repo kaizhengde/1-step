@@ -53,6 +53,8 @@ class AddStepModel: ObservableObject {
     
     
     func addButtonPressed() {
+        OneSFeedback.light()
+        
         switch tryAddStepsAndHide() {
         case .goalReached:
             dragState = .hidden

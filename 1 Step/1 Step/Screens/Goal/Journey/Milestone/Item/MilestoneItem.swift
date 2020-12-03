@@ -43,6 +43,7 @@ struct MilestoneItem: View {
                         .frame(width: 50, height: 50)
                         .foregroundColor(.white)
                         .colorMultiply(.backgroundStatic)
+                        
                 } else {
                     milestone.image.image
                         .font(.system(size: milestone.image == .one ? 48 : 50, weight: .thin))

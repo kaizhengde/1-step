@@ -29,7 +29,7 @@ struct ProfileAccomplishmentsSectionView: View {
                 }
                 .offset(x: Layout.firstLayerPadding)
                 .frame(height: 160)
-                .padding(.trailing, Layout.screenWidth-240)
+                .padding(.trailing, 2*Layout.firstLayerPadding)
             }
             .padding(.leading, -Layout.firstLayerPadding)
             .offset(y: -10)
@@ -71,7 +71,7 @@ struct ProfileAccomplishmentsSectionView: View {
         let index: Int
         
         var body: some View {
-            if index == 0 {
+            if GoalAccomplishmentsHandler.noAccomplishments() {
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(Color.lightNeutralToLightGray, lineWidth: 1)
                     .frame(width: 240, height: 140)

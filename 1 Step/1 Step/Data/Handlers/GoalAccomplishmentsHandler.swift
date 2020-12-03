@@ -12,17 +12,20 @@ enum GoalAccomplishmentsHandler {
     enum AddSteps {
         static func updateStepsAccomplishment(_ oldCurrentSteps: Int16, _ newCurrentSteps: Int16) {
             UserDefaultsManager.shared.accomplishmentTotalSteps += Int(newCurrentSteps - oldCurrentSteps)
+            avoidNegativeScores()
         }
         
         
         static func updateMilestonesAccomplishment(_ oldAmountReached: Int, _ newAmountReached: Int) {
             let newReached = newAmountReached - oldAmountReached
             UserDefaultsManager.shared.accomplishmentTotalMilestonesReached += newReached
+            avoidNegativeScores()
         }
         
         
         static func updateGoalsAccomplishment(_ currentState: GoalState) {
             UserDefaultsManager.shared.accomplishmentTotalGoalsReached += (currentState == .reached) ? 1 : 0
+            avoidNegativeScores()
         }
     }
     
@@ -39,6 +42,27 @@ enum GoalAccomplishmentsHandler {
                 UserDefaultsManager.shared.accomplishmentTotalMilestonesReached -= Int(goal.milestones.count)
                 UserDefaultsManager.shared.accomplishmentTotalGoalsReached      -= 1
             }
+            avoidNegativeScores()
         }
+    }
+    
+    
+    private static func avoidNegativeScores() {
+        if UserDefaultsManager.shared.accomplishmentTotalSteps < 0 {
+            UserDefaultsManager.shared.accomplishmentTotalSteps = 0
+        }
+        if UserDefaultsManager.shared.accomplishmentTotalMilestonesReached < 0 {
+            UserDefaultsManager.shared.accomplishmentTotalMilestonesReached = 0
+        }
+        if UserDefaultsManager.shared.accomplishmentTotalGoalsReached < 0 {
+            UserDefaultsManager.shared.accomplishmentTotalMilestonesReached = 0
+        }
+    }
+    
+    
+    static func noAccomplishments() -> Bool {
+        return UserDefaultsManager.shared.accomplishmentTotalSteps == 0
+            && UserDefaultsManager.shared.accomplishmentTotalMilestonesReached == 0
+            && UserDefaultsManager.shared.accomplishmentTotalGoalsReached == 0
     }
 }

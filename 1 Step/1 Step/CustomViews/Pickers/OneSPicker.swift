@@ -55,6 +55,8 @@ struct OneSPicker: View {
                         HStack(spacing: 1.5) {
                             OneSText(text: data.reversed()[i], font: .title2, color: .backgroundToDarkGray)
                             OneSText(text: unit, font: .custom(.semiBold, 12), color: .backgroundToGray)
+                                .onAppear { print("APPEAR" )}
+                                .onDisappear { print("DISAPPEAR" )}
                         }
                     } else {
                         OneSText(text: data.reversed()[i], font: .title2, color: .backgroundToDarkGray)

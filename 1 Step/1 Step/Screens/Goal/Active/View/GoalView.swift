@@ -51,6 +51,7 @@ struct GoalView: View {
                 .background(GoalModel.ScrollVS())
                 .onPreferenceChange(GoalModel.ScrollPK.self) { goalModel.updatePreferences($0) }                
             }
+            .disabled(!goalModel.transition.isFullAppeared)
             .opacity(goalModel.viewDragOpacity)
             .coordinateSpace(name: CoordinateSpace.goalScroll)
         }

@@ -83,17 +83,9 @@ final class DataModel: ObservableObject {
             completion(false)
             return
         }
-        
-        let oldAmountMilestonesDone = goal.milestones.getAmountDone()
-        
+                
         dataManager.editGoal(goal, with: baseData) { success in
-            if success {
-                let newAmountMilestonesDone = goal.milestones.getAmountDone()
-                
-                GoalAccomplishmentsHandler.AddSteps.updateMilestonesAccomplishment(oldAmountMilestonesDone, newAmountMilestonesDone)
-                
-                self.fetchAllActiveGoals() { completion(true) }
-                
+            if success { self.fetchAllActiveGoals() { completion(true) }
             } else { completion(false) }
         }
     }

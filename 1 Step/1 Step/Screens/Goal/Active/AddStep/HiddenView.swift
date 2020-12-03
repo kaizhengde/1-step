@@ -20,7 +20,7 @@ struct HiddenView: View {
         HiddenRectangle(viewModel: viewModel)
             .offset(x: viewModel.dragState == .show ? -50 : viewModel.dragOffset)
             .scaleEffect(y: viewModel.dragHiddenScaleEffect)
-            .offset(x: goalModel.noDrag ? (hide ? 20 : 0) : 20)
+            .offset(x: goalModel.noDrag ? (hide ? 30 : 0) : 30)
             .opacity(viewModel.dragState == .show ? 0.0 : 1.0)
             .overlay(
                 Group {
