@@ -73,7 +73,7 @@ class UIConfettiVC: UIViewController {
             view.layer.addSublayer(layer)
             addBehaviors(to: layer)
             addAnimations(to: layer)
-        }
+        }        
     }
     
     

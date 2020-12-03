@@ -900,9 +900,9 @@
 		3D959A86256283E0007BAA07 /* Confetti */ = {
 			isa = PBXGroup;
 			children = (
+				3D959A9025628ED4007BAA07 /* ConfettiManager.swift */,
 				3D959A8725628441007BAA07 /* ConfettiType.swift */,
 				3D959A8A256286AE007BAA07 /* ConfettiView.swift */,
-				3D959A9025628ED4007BAA07 /* ConfettiManager.swift */,
 				3D959A8D25628E74007BAA07 /* OneSConfetti.swift */,
 			);
 			path = Confetti;

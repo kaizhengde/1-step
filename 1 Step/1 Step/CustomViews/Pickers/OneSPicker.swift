@@ -42,11 +42,11 @@ struct OneSPicker: View {
                 ForEach(0 ..< data.count, id: \.self) { i in
                     if i == selected {
                         HStack(spacing: 1.5) {
-                            OneSText(text: data.reversed()[i], font: .title2, color: .backgroundToDarkGray)
-                            OneSText(text: unit, font: .custom(.semiBold, 12), color: .backgroundToGray)
+                            OneSText(text: data.reversed()[i], font: .title2, color: .backgroundToBlack)
+                            OneSText(text: unit, font: .custom(.semiBold, 12), color: .backgroundToBlack)
                         }
                     } else {
-                        OneSText(text: data.reversed()[i], font: .title2, color: .backgroundToDarkGray)
+                        OneSText(text: data.reversed()[i], font: .title2, color: .backgroundToBlack)
                     }
                 }
             }

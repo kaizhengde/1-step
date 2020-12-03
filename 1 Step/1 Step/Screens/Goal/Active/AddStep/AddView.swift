@@ -65,6 +65,7 @@ struct AddView: View {
             }
             .frame(width: step.oneAddArrayEmpty ? 180 : 240, height: 175)
             .background(goalModel.selectedGoal.color.light)
+            .onChange(of: viewModel.dragState) { if $0 == .hidden { viewModel.pickerStopped = true } }
         }
     }
     
