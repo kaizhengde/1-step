@@ -20,11 +20,11 @@ struct HiddenView: View {
         HiddenRectangle(viewModel: viewModel)
             .offset(x: viewModel.dragState == .show ? -50 : viewModel.dragOffset)
             .scaleEffect(y: viewModel.dragHiddenScaleEffect)
-            .offset(x: goalModel.noDrag ? (hide ? 30 : 0) : 30)
+            .offset(x: goalModel.noDrag ? (goalModel.selectedGoal.currentState == .reached ? 30 : (hide ? 30 : 0)) : 30)
             .opacity(viewModel.dragState == .show ? 0.0 : 1.0)
             .overlay(
                 Group {
-                    if goalModel.noDrag && !hide {
+                    if goalModel.noDrag && !hide && goalModel.selectedGoal.currentState == .active {
                         Color.hidden
                             .frame(width: 100, height: 300)
                             .highPriorityGesture(viewModel.dragGesture)
@@ -33,7 +33,6 @@ struct HiddenView: View {
             )
             .alignmentGuide(.addStepAlignment) { d in d[.top] }
             .padding(8)
-            .onReceive(addStepAnimationHandler.goalReached) { hide = true }
             .onChange(of: addStepAnimationHandler.milestoneChangeState) { hide = $0 != .none }
     }
     

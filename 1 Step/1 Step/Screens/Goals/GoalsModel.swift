@@ -42,8 +42,8 @@ final class GoalsModel: ObservableObject {
     //MARK: - Scroll
     
     var scrollViewBottomPadding: CGFloat {
-        let count = currentTab == .active ? DataModel.shared.activeGoals.count : DataModel.shared.reachedGoals.count
-        return count < 2 ? 0 : 260*Layout.multiplierHeight
+        let count = currentTab == .active ? DataModel.shared.activeGoals.count+1 : DataModel.shared.reachedGoals.count
+        return count <= 2 ? 0 : 180*Layout.multiplierHeight
     }
     
     

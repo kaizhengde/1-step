@@ -87,7 +87,7 @@ class AddStepAnimationHandler: ObservableObject {
         if forward {
             FloaterManager.shared.showTextFloater(
                 titleText: "Awesome 🎉",
-                bodyText: "You have reached \(self.currentMilestone.neededStepUnits.toUI()) \(self.goal.step.unit == .custom ? self.goal.step.customUnit : self.goal.step.unit.description)!",
+                bodyText: "You have reached \((self.currentMilestone.neededStepUnits - self.currentMilestone.stepUnitsFromPrev).toUI()) \(self.goal.step.unit == .custom ? self.goal.step.customUnit : self.goal.step.unit.description)!",
                 backgroundColor: self.goal.color.light
             )
             ConfettiManager.shared.showConfetti(amount: .small)
