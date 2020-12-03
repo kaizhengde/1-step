@@ -17,6 +17,7 @@ class AddStepModel: ObservableObject {
     @Published var dragOffset: CGFloat = .zero
     
     @Published var selectedStep: (unit: Int, dual: Int) = (0, 0)
+    @Published var pickerStopped: Bool = true
     
     var goal: Goal { GoalModel.shared.selectedGoal }
     var addStepAnimationHandler = AddStepAnimationHandler.shared
@@ -53,17 +54,19 @@ class AddStepModel: ObservableObject {
     
     
     func addButtonPressed() {
-        OneSFeedback.light()
-        
-        switch tryAddStepsAndHide() {
-        case .goalReached:
-            dragState = .hidden
-            addStepAnimationHandler.startGoalReached()
-        case let .milestoneChange(forward: forward):
-            addStepAnimationHandler.startMilestoneChange(forward: forward)
-        case let .normal(forward: forward):
-            addStepAnimationHandler.startNormalAdd(forward: forward)
-        case .none: return
+        if pickerStopped {
+            OneSFeedback.light()
+            
+            switch tryAddStepsAndHide() {
+            case .goalReached:
+                dragState = .hidden
+                addStepAnimationHandler.startGoalReached()
+            case let .milestoneChange(forward: forward):
+                addStepAnimationHandler.startMilestoneChange(forward: forward)
+            case let .normal(forward: forward):
+                addStepAnimationHandler.startNormalAdd(forward: forward)
+            case .none: return
+            }
         }
     }
     

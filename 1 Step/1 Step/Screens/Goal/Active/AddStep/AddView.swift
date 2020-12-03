@@ -45,6 +45,7 @@ struct AddView: View {
                         OneSPicker(
                             data: step.addArray.isEmpty ? $goalModel.selectedGoal.step.addArrayDual : $goalModel.selectedGoal.step.addArray,
                             selected: step.addArray.isEmpty ? $viewModel.selectedStep.dual : $viewModel.selectedStep.unit,
+                            stopped: $viewModel.pickerStopped,
                             unit: step.unit == .custom ? goalModel.selectedGoal.step.customUnit : (step.addArray.isEmpty ? step.unit.dualUnit!.description : step.unit.description),
                             selectedColor: goalModel.selectedGoal.color.standard
                         )
@@ -55,6 +56,7 @@ struct AddView: View {
                             dataRight: $goalModel.selectedGoal.step.addArrayDual,
                             selectedLeft: $viewModel.selectedStep.unit,
                             selectedRight: $viewModel.selectedStep.dual,
+                            stopped: $viewModel.pickerStopped,
                             unit: (step.unit.description, step.unit.dualUnit!.description),
                             selectedColor: goalModel.selectedGoal.color.standard
                         )

@@ -6,25 +6,13 @@
 //
 
 import SwiftUI
-
-//struct OneSPicker: View {
-//
-//    @State private var selections: [Int] = [0]
-//
-//    var data: [String]
-//    var selectedData: String { return data[selections[0]] }
-//
-//
-//    var body: some View {
-//        PickerView(data: [data].reversed(), selections: $selections)
-//            .frame(width: 100, height: 60)
-//    }
-//}
+import Combine
 
 struct OneSPicker: View {
     
     @Binding var data: [String]
     @Binding var selected: Int
+    @Binding var stopped: Bool
     
     var unit: String
     
@@ -34,9 +22,10 @@ struct OneSPicker: View {
     private var multiplier: CGFloat = 150/90
     
     
-    init(data: Binding<[String]>, selected: Binding<Int>, unit: String, selectedColor: Color, width: CGFloat = 90) {
+    init(data: Binding<[String]>, selected: Binding<Int>, stopped: Binding<Bool>, unit: String, selectedColor: Color, width: CGFloat = 90) {
         self._data = data
         self._selected = selected
+        self._stopped = stopped
         self.unit = unit
         self.selectedColor = selectedColor
         self.width = width
@@ -55,20 +44,22 @@ struct OneSPicker: View {
                         HStack(spacing: 1.5) {
                             OneSText(text: data.reversed()[i], font: .title2, color: .backgroundToDarkGray)
                             OneSText(text: unit, font: .custom(.semiBold, 12), color: .backgroundToGray)
-                                .onAppear { print("APPEAR" )}
-                                .onDisappear { print("DISAPPEAR" )}
                         }
                     } else {
                         OneSText(text: data.reversed()[i], font: .title2, color: .backgroundToDarkGray)
                     }
                 }
             }
+            .simultaneousGesture(
+                DragGesture().onChanged { _ in stopped = false }
+            )
         }
         .frame(width: width*multiplier, height: 150)
         .scaleEffect(1.7)
         .clipped()
         .contentShape(Rectangle())
         .onChange(of: data) { selected = $0.count-1 }
+        .onChange(of: selected) { _ in stopped = true }
     }
 }
 

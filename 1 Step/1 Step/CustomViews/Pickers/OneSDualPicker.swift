@@ -15,9 +15,14 @@ struct OneSDualPicker: View {
     @Binding var selectedLeft: Int
     @Binding var selectedRight: Int
     
+    @Binding var stopped: Bool
+    @State var stoppedLeft: Bool = true
+    @State var stoppedRight: Bool = true
+    
     var unit: (left: String, right: String)
     var selectedColor: Color
 
+    
     var body: some View {
         HStack {
             OneSPicker(
@@ -29,6 +34,13 @@ struct OneSDualPicker: View {
                     set: { dataLeft = $0 }
                 ),
                 selected: $selectedLeft,
+                stopped: Binding<Bool>(
+                    get: { stoppedLeft },
+                    set: {
+                        stoppedLeft = $0
+                        stopped = $0
+                    }
+                ),
                 unit: unit.left,
                 selectedColor: selectedColor,
                 width: 60
@@ -43,6 +55,13 @@ struct OneSDualPicker: View {
                     set: { dataRight = $0 }
                 ),
                 selected: $selectedRight,
+                stopped: Binding<Bool>(
+                    get: { stoppedRight },
+                    set: {
+                        stoppedRight = $0
+                        stopped = $0
+                    }
+                ),
                 unit: unit.right,
                 selectedColor: selectedColor,
                 width: 60
