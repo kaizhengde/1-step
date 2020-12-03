@@ -7,5 +7,16 @@
 
 import SwiftUI
 
-class PremiumModel: ObservableObject {
+final class PremiumModel: TransitionObservableObject {
+    
+    @Published var transition = TransitionManager<PremiumModel>()
+    
+    
+    //MARK: - Transition
+    
+    func initTransition() {
+        transition = TransitionManager(fullAppearAfter: Animation.Delay.mountainAppear, fullHideAfter: .never)
+        transition.delegate = self
+        transition.state = .firstAppear
+    }
 }

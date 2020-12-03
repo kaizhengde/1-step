@@ -20,6 +20,7 @@ extension Color {
     static let darkBackgroundToGray = Color("DarkBackgroundToGray")
     static let backgroundToDarkGray = Color("BackgroundToDarkGray")
     static let backgroundToBlack = Color("BackgroundToBlack")
+    static let whiteToGray = Color("WhiteToGray")
     
     static let backgroundStatic = Color("BackgroundStatic")
     static let darkBackgroundStatic = Color("DarkBackgroundStatic")

@@ -161,10 +161,6 @@ final class GoalModel: TransitionObservableObject {
         return viewDragColor(standard: standardColor, menu: menuColor)
     }
     
-    var goalUnitText: String {
-        return selectedGoal.step.unit == .custom ? selectedGoal.step.customUnit : selectedGoal.step.unit.description
-    }
-    
     var showDownArrow: Bool { return noDrag ? true : false }
     
     

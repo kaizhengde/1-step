@@ -89,8 +89,8 @@ enum GoalJourneyDataHandler {
             print("Steps:       \(goal.currentSteps)")
             print("Percent:     \(goal.currentPercent)")
             print("State:       \(goal.currentState.rawValue)")
-            print("StepsDate:   \(goal.stepsDate.filter({ $0 != .distantFuture }))")
-            print("Milestones:  \(goal.milestones.map { "Needed Units: \($0.neededStepUnits), State: \($0.state.rawValue)" })")
+            print("StepsDate:   \(goal.stepsDate.filter({ $0 != .distantFuture }).count)")
+            print("Milestones:  \(goal.milestones.count)")
             print("-------------")
         }
     }

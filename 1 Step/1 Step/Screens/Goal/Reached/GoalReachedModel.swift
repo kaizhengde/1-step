@@ -41,11 +41,4 @@ final class GoalReachedModel: TransitionObservableObject {
     var mountainAnimation: Animation {
         return transition.isFullAppeared ? .oneSAnimation() : .oneSMountainAnimation()
     }
-    
-    
-    //MARK: - Summary
-    
-    var goalUnitText: String {
-        return selectedGoal.step.unit == .custom ? selectedGoal.step.customUnit : selectedGoal.step.unit.description
-    }
 }

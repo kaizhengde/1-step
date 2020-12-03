@@ -37,6 +37,7 @@ struct PremiumView: View {
             }
         }
         .oneSAnimation()
+        .onAppear { viewModel.initTransition() }
     }
     
     
@@ -106,7 +107,7 @@ struct PremiumView: View {
                         OneSMultilineText(text: "This purchase will give you access to all current and future functionality. No subscription, you only pay once and it’s forever yours.")
                     }
                     
-                    OneSRowButton(.shortBig, title: "Restore purchase") {}
+                    OneSRowButton(.shortBig, title: "Restore purchase", backgroundColor: .whiteToGray) {}
                         .padding(.top, 20)
                     
                     HStack(spacing: 40) {
@@ -129,8 +130,8 @@ struct PremiumView: View {
                     VStack {
                         HStack {
                             VStack(alignment: .leading, spacing: 3) {
-                                OneSText(text: "Lifetime", font: .custom(.semiBold, 21), color: .whiteToDarkGray)
-                                OneSText(text: "PREMIUM", font: .custom(.extraBold, 10), color: .whiteToDarkGray)
+                                OneSText(text: "Premium", font: .custom(.semiBold, 22), color: .whiteToDarkGray)
+                                OneSText(text: "LIFETIME", font: .custom(.extraBold, 10), color: .whiteToDarkGray)
                             }
                             Spacer()
                         }

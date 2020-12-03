@@ -86,9 +86,9 @@ class AddStepAnimationHandler: ObservableObject {
     private func startMilestoneChangeUIAnimations(_ forward: Bool) {
         if forward {
             FloaterManager.shared.showTextFloater(
-                titleText: "Awesome 🎉",
-                bodyText: "You have reached \((self.currentMilestone.neededStepUnits - self.currentMilestone.stepUnitsFromPrev).toUI()) \(self.goal.step.unit == .custom ? self.goal.step.customUnit : self.goal.step.unit.description)!",
-                backgroundColor: self.goal.color.light
+                titleText:          "Awesome 🎉",
+                bodyText:           "You have reached \((currentMilestone.neededStepUnits - currentMilestone.stepUnitsFromPrev).toUI()) \(Step.unitDescription(of: goal))!",
+                backgroundColor:    goal.color.light
             )
             ConfettiManager.shared.showConfetti(amount: .small)
         }
@@ -161,7 +161,17 @@ class AddStepAnimationHandler: ObservableObject {
     
     
     private func startGoalReachedUIAnimations() {
-        PopupManager.shared.showTextPopup(.goalReached ,titleText: "Congrats", bodyText: "You are on the peak of the mountain. 🎊\n\nAccomplishing a total of \(self.goal.currentStepUnits.toUI()) \(self.goal.step.unit == .custom ? self.goal.step.customUnit : self.goal.step.unit.description)!", bottomButtonText: "COMPLETE", backgroundColor: goal.color.standard, height: 400*Layout.multiplierWidth, dismissOnTap: false, dismissOnTapOutside: false)
+        PopupManager.shared.showTextPopup(
+            .goalReached ,
+            titleText:              "Congrats",
+            bodyText:               "You are on the peak of the mountain. 🎊\n\nAccomplishing a total of \(goal.currentStepUnits.toUI()) \(Step.unitDescription(of: goal))!",
+            bottomButtonText:       "COMPLETE",
+            backgroundColor:        goal.color.standard,
+            height:                 400*Layout.multiplierWidth,
+            dismissOnTap:           false,
+            dismissOnTapOutside:    false
+        )
+        
         OneSFeedback.achievement()
         ConfettiManager.shared.showConfetti(amount: .big)
     }
