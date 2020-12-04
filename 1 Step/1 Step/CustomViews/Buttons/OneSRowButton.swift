@@ -54,7 +54,7 @@ struct OneSRowButton: View {
         Button(action: action) {
             HStack {
                 OneSText(text: title, font: .body, color: textColor)
-                    .padding(.vertical, Layout.firstLayerPadding)
+                    .padding(.vertical, buttonArt != .shortSmall ? Layout.firstLayerPadding : 0)
                 Spacer()
                 AccessoryView(sFSymbol: accessorySFSymbol, customSymbol: accessoryCustomSymbol, title: accessoryText, color: accessoryColor)
             }
