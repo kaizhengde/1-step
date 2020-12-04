@@ -23,7 +23,7 @@ enum GoalTestsModel {
 //                color:              UserColor(rawValue: Int16.random(in: 0...2))
 //            )
 //            
-//            _ = DataModel.shared.createGoal(with: baseData)
+//            DataModel.shared.createGoal(with: baseData) {}
 //        }
 //    }
     

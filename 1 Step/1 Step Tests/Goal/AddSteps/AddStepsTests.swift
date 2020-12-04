@@ -35,7 +35,7 @@ class AddStepsTests: XCTestCase {
 //            
 //            let randomStepsBeforeMilestone: Double = sortedMilestones[Int.random(in: 0..<goal.milestones.count-1)].neededStepUnits-1
 //            
-//            _ = DataManager.defaults.addSteps(goal, with: randomStepsBeforeMilestone)
+//            DataManager.defaults.addSteps(goal, with: randomStepsBeforeMilestone) {}
 //            
 //            let addStepModel = AddStepModel()
 //            let result = addStepModel.getAddStepsResult(with: Double(Int.random(in: 1...3)))
