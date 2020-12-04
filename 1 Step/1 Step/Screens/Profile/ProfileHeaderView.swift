@@ -16,7 +16,7 @@ struct ProfileHeaderView: View {
     var body: some View {
         OneSHeaderView(Localized.profile, trailingButton: (.close, .grayToBackground, { mainModel.toScreen(.goals) })) {
             AnyView(
-                VStack {
+                VStack(spacing: 16) {
                     ProfileImageView(profileModel: profileModel)
                     ProfileNameView()
                 }
@@ -73,8 +73,7 @@ struct ProfileHeaderView: View {
         var body: some View {
             OneSText(text: name, font: .custom(.medium, 28), color: .grayToBackground)
                 .onTapGesture {
-
-                    popupManager.showPopup(.changeName, backgroundColor: UserColor.user0.standard, dismissOnTap: true) {
+                    popupManager.showPopup(.changeName, backgroundColor: UserColor.user0.standard) {
                         OneSTextFieldPopupView(titleText: "Name", bodyText: "Enter a new name.", initialInput: userDefaultsManager.userName, placeholder: "Your name", placeholderColor: UserColor.user0.dark, inputLimit: 20)
                     }
                 }

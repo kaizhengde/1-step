@@ -46,7 +46,6 @@ class UserDefaultsManager: ObservableObject {
     @UserDefault(UserDefaultKey.First.start, default: true) var firstStart: Bool
     @UserDefault(UserDefaultKey.First.selectMountain, default: true) var firstSelectMountain: Bool
     @UserDefault(UserDefaultKey.First.selectColor, default: true) var firstSelectColor: Bool
-    @UserDefault(UserDefaultKey.First.enterInput, default: true) var firstEnterInput: Bool
     @UserDefault(UserDefaultKey.First.openGoal, default: true) var firstOpenGoal: Bool
     
     

@@ -37,7 +37,6 @@ final class PopupManager: ViewOverlayManagerProtocol {
     @Published var transition: TransitionManager<PopupManager> = TransitionManager()
     @Published var currentKey: PopupKey!
 
-    @Published var dismissOnTap: Bool!
     @Published var dismissOnTapOutside: Bool!
     @Published var hapticFeedback: Bool!
     
@@ -67,7 +66,6 @@ final class PopupManager: ViewOverlayManagerProtocol {
         backgroundColor: Color,
         height: CGFloat             = 360*Layout.multiplierWidth,
         withPadding: Bool           = true,
-        dismissOnTap: Bool          = false,
         dismissOnTapOutside: Bool   = true,
         hapticFeedback: Bool        = false,
         content: @escaping () -> T
@@ -78,10 +76,8 @@ final class PopupManager: ViewOverlayManagerProtocol {
             
             self.currentKey = key
             
-            self.dismissOnTap           = false
             self.dismissOnTapOutside    = false
             DispatchQueue.main.asyncAfter(deadline: .now() + self.tapDismissableDelay) {
-                self.dismissOnTap           = dismissOnTap
                 self.dismissOnTapOutside    = dismissOnTapOutside
             }
   

@@ -30,7 +30,14 @@ struct GoalExampleData {
 
 class GoalInfoModel: ObservableObject {
     
-    @Published var currentView: GoalInfoCurrent = .howItWorks
+    @Published var currentView: GoalInfoCurrent
+    let initialView: GoalInfoCurrent
+    
+    
+    init(initialView: GoalInfoCurrent) {
+        self.initialView = initialView
+        self.currentView = initialView
+    }
     
     
     //MARK: - How it works

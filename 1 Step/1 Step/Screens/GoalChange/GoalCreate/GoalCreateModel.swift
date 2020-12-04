@@ -46,6 +46,11 @@ final class GoalCreateModel: ObservableObject, GoalSelectMountainDelegate, GoalE
             if $0 { MainModel.shared.toScreen(.goals) }
         }
     }
+    
+    
+    //MARK: - GoalInfo
+    
+    var goalInfoCurrent: GoalInfoCurrent = DataModel.shared.goals.count > 0 ? .examples : .howItWorks
 }
 
 

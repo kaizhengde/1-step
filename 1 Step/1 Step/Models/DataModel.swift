@@ -20,6 +20,8 @@ final class DataModel: ObservableObject {
     @Published var activeGoals: [Goal] = []
     @Published var reachedGoals: [Goal] = []
     
+    var goals: [Goal] { Array(Set(activeGoals + reachedGoals)) }
+    
     
     //MARK: - Fetch
     

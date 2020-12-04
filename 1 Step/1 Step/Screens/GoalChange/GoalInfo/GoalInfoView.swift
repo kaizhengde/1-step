@@ -10,10 +10,9 @@ import SwiftUI
 struct GoalInfoView: View {
     
     @StateObject private var sheetManager = SheetManager.shared
-    @StateObject private var viewModel = GoalInfoModel()
+    @ObservedObject var viewModel: GoalInfoModel
     
     let selectedColor: UserColor
-    
     
     var body: some View {
         ZStack {
@@ -24,7 +23,18 @@ struct GoalInfoView: View {
                     Color.clear.frame(height: 0).id(0)
                     
                     VStack(spacing: 32) {
-                        OneSHeaderView(viewModel.currentView.title, leadingButton: viewModel.currentView == .examples ? (.back, .grayToBackground, { viewModel.currentView = .howItWorks }) : nil, trailingButton: (.close, .grayToBackground, { sheetManager.dismiss() }))
+                        OneSHeaderView(
+                            viewModel.currentView.title,
+                            leadingButton:
+                                viewModel.currentView == .examples ? (
+                                    viewModel.initialView == .howItWorks ?
+                                        .back : .custom(AnyView(SFSymbol.info.font(.system(size: 28)))),
+                                    .grayToBackground,
+                                    { viewModel.currentView = .howItWorks }
+                                )
+                                : nil,
+                            trailingButton: (.close, .grayToBackground, { sheetManager.dismiss() })
+                        )
                         
                         if viewModel.currentView == .howItWorks {
                             Group {

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProfileHelpView: View {
     
-    @StateObject private var sheetManager = SheetManager.shared
+    @StateObject private var fullSheetManager = FullSheetManager.shared
     @ObservedObject var profileModel: ProfileModel
     @StateObject private var viewModel = ProfileHelpModel()
     
@@ -20,23 +20,53 @@ struct ProfileHelpView: View {
             
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 32) {
-                    OneSHeaderView("Help", trailingButton: (.close, .grayToBackground, { sheetManager.dismiss() }))
+                    OneSHeaderView("Help", trailingButton: (.close, .grayToBackground, { fullSheetManager.dismiss() }))
+                    
+                    HelpGeneralView()
                     
                     HStack {
                         OneSSecondaryHeaderText(text: "Frequently asked", color: profileModel.section1Color)
                         Spacer()
                     }
+                    .padding(.top, 30)
                     
                     HelpContentView(viewModel: viewModel)
                     
                     BottomView(profileModel: profileModel, viewModel: viewModel)
                 }
                 .padding(.horizontal, Layout.firstLayerPadding)
-                .padding(.top, 12)
                 .padding(.bottom, 80*Layout.multiplierHeight)
             }
         }
         .oneSAnimation()
+    }
+    
+    
+    private struct HelpGeneralView: View {
+        
+        @StateObject private var sheetManager = SheetManager.shared
+        
+        
+        var body: some View {
+            VStack(alignment: .leading, spacing: 20) {
+                OneSRowButton(.shortBig, title: GoalInfoCurrent.howItWorks.title) {
+                    sheetManager.showSheet {
+                        GoalInfoView(viewModel: GoalInfoModel(initialView: .howItWorks), selectedColor: UserColor.user0)
+                    }
+                }
+                OneSRowButton(.shortBig, title: GoalInfoCurrent.examples.title) {
+                    sheetManager.showSheet {
+                        GoalInfoView(viewModel: GoalInfoModel(initialView: .examples), selectedColor: UserColor.user0)
+                    }
+                }
+                OneSRowButton(.shortBig, title: "Basics") {
+                    sheetManager.showSheet {
+                        EmptyView()
+                    }
+                }
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+        }
     }
     
     

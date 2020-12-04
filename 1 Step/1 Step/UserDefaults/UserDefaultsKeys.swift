@@ -24,6 +24,8 @@ extension UserDefaultKey {
     typealias Key = UserDefaultKey
     
     enum App {
+        static let logInCount                    = "app.logIn"
+        static let ratedOnAppStore               = "app.ratedOnAppStore"
     }
     
     
@@ -31,8 +33,10 @@ extension UserDefaultKey {
         static let start: Key                    = "first.start"
         static let selectMountain: Key           = "first.selectMountain"
         static let selectColor: Key              = "first.selectColor"
-        static let enterInput: Key               = "first.enterInput"
+        static let createGoal: Key               = "first.createGoal"
         static let openGoal: Key                 = "first.openGoal"
+        static let openJourney: Key              = "first.openMenu"
+        static let menuToGoals: Key              = "first.menuToGoals"
     }
     
     
