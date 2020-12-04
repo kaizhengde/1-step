@@ -13,14 +13,14 @@ enum OneSColorTheme: String, Codable, CaseIterable {
     
     case `default`  = "Default"
     case pastel     = "Pastel"
-    case fall       = "Fall"
+    case garden     = "Garden"
     
     
     var color0: OneSColorThemeType {
         switch self {
         case .default:  return Default.color0
         case .pastel:   return Pastel.color0
-        case .fall:     return Fall.color0
+        case .garden:   return Garden.color0
         }
     }
     
@@ -28,7 +28,7 @@ enum OneSColorTheme: String, Codable, CaseIterable {
         switch self {
         case .default:  return Default.color1
         case .pastel:   return Pastel.color1
-        case .fall:     return Fall.color1
+        case .garden:   return Garden.color1
         }
     }
     
@@ -36,7 +36,7 @@ enum OneSColorTheme: String, Codable, CaseIterable {
         switch self {
         case .default:  return Default.color2
         case .pastel:   return Pastel.color2
-        case .fall:     return Fall.color2
+        case .garden:   return Garden.color2
         }
     }
 }

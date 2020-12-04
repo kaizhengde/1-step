@@ -126,7 +126,7 @@ extension MountainImage {
             switch UserDefaultsManager.shared.settingColorTheme {
             case .default:          return defaultLight
             case .pastel:           return pastelLight
-            case .fall:             return fallLight
+            case .garden:             return fallLight
             }
         }
         
@@ -134,7 +134,7 @@ extension MountainImage {
             switch UserDefaultsManager.shared.settingColorTheme {
             case .default:          return defaultDark
             case .pastel:           return pastelDark
-            case .fall:             return fallDark
+            case .garden:             return fallDark
             }
         }
     }

@@ -51,10 +51,10 @@ extension OneSColorTheme {
     }
     
     
-    enum Fall {
-        static let color0 = (standard: Color("Fall0"), light: Color("Fall0Light"), dark: Color("Fall0Dark"))
-        static let color1 = (standard: Color("Fall1"), light: Color("Fall1Light"), dark: Color("Fall1Dark"))
-        static let color2 = (standard: Color("Fall2"), light: Color("Fall2Light"), dark: Color("Fall2Dark"))
+    enum Garden {
+        static let color0 = (standard: Color("Garden0"), light: Color("Garden0Light"), dark: Color("Garden0Dark"))
+        static let color1 = (standard: Color("Garden1"), light: Color("Garden1Light"), dark: Color("Garden1Dark"))
+        static let color2 = (standard: Color("Garden2"), light: Color("Garden2Light"), dark: Color("Garden2Dark"))
     }
 }
 
