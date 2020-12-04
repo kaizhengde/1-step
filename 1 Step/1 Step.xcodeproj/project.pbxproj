@@ -89,6 +89,7 @@
 		3D610881256D6E3A00DC20BD /* LocalizationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D610880256D6E3A00DC20BD /* LocalizationHelper.swift */; };
 		3D610887256D70CC00DC20BD /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D610886256D70CC00DC20BD /* Localized.swift */; };
 		3D6373C4257A8F1B001C3585 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 3D6373C3257A8F1B001C3585 /* Introspect */; };
+		3D6373D2257AA17C001C3585 /* ShowTime in Frameworks */ = {isa = PBXBuildFile; productRef = 3D6373D1257AA17C001C3585 /* ShowTime */; };
 		3D68B65E25721C9000A183F5 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68B65D25721C9000A183F5 /* LocalNotificationManager.swift */; };
 		3D68B666257223C000A183F5 /* GoalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68B665257223C000A183F5 /* GoalNotificationManager.swift */; };
 		3D68B66A2572281400A183F5 /* OneSAuthorizationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68B6692572281400A183F5 /* OneSAuthorizationStatus.swift */; };
@@ -409,6 +410,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D6373D2257AA17C001C3585 /* ShowTime in Frameworks */,
 				3D6373C4257A8F1B001C3585 /* Introspect in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1239,6 +1241,7 @@
 			name = "1 Step";
 			packageProductDependencies = (
 				3D6373C3257A8F1B001C3585 /* Introspect */,
+				3D6373D1257AA17C001C3585 /* ShowTime */,
 			);
 			productName = "1 Step";
 			productReference = 3DE11C31252C681200F13719 /* 1 Step.app */;
@@ -1275,6 +1278,7 @@
 			mainGroup = 3DE11C28252C681200F13719;
 			packageReferences = (
 				3D6373C2257A8F1B001C3585 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
+				3D6373D0257AA17C001C3585 /* XCRemoteSwiftPackageReference "ShowTime" */,
 			);
 			productRefGroup = 3DE11C32252C681200F13719 /* Products */;
 			projectDirPath = "";
@@ -1775,6 +1779,14 @@
 				minimumVersion = 0.1.1;
 			};
 		};
+		3D6373D0257AA17C001C3585 /* XCRemoteSwiftPackageReference "ShowTime" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/KaneCheshire/ShowTime.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.5.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1782,6 +1794,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3D6373C2257A8F1B001C3585 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
 			productName = Introspect;
+		};
+		3D6373D1257AA17C001C3585 /* ShowTime */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3D6373D0257AA17C001C3585 /* XCRemoteSwiftPackageReference "ShowTime" */;
+			productName = ShowTime;
 		};
 /* End XCSwiftPackageProductDependency section */
 

@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "ShowTime",
+        "repositoryURL": "https://github.com/KaneCheshire/ShowTime.git",
+        "state": {
+          "branch": null,
+          "revision": "f173b9b7bbc556c09708455022c6087a6916e507",
+          "version": "2.5.2"
+        }
+      },
+      {
         "package": "Introspect",
         "repositoryURL": "https://github.com/siteline/SwiftUI-Introspect.git",
         "state": {
