@@ -16,15 +16,19 @@ struct ProfileAccomplishmentsSectionView: View {
         OneSSectionView(title: "Accomplishments") {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 12) {
-                    ForEach(0..<profileModel.accomplishmentsData.count) { i in
-                        Group {
-                            if profileModel.accomplishmentsData[i].value != 0 {
-                                Item(profileModel: profileModel, index: i)
-                            } else {
-                                EmptyItem(index: i)
+                    if !GoalAccomplishmentsHandler.noAccomplishments() {
+                        ForEach(0..<profileModel.accomplishmentsData.count) { i in
+                            Group {
+                                if profileModel.accomplishmentsData[i].value != 0 {
+                                    Item(profileModel: profileModel, index: i)
+                                } else {
+                                    EmptyView()
+                                }
                             }
+                            .oneSItemTransition(after: profileModel.accomplishmentsData[i].appearDelay)
                         }
-                        .oneSItemTransition(after: profileModel.accomplishmentsData[i].appearDelay)
+                    } else {
+                        EmptyItem()
                     }
                 }
                 .offset(x: Layout.firstLayerPadding)
@@ -68,14 +72,10 @@ struct ProfileAccomplishmentsSectionView: View {
     
     struct EmptyItem: View {
         
-        let index: Int
-        
         var body: some View {
-            if GoalAccomplishmentsHandler.noAccomplishments() {
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color.lightNeutralToLightGray, lineWidth: 1)
-                    .frame(width: 240, height: 140)
-            } else { EmptyView() }
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(Color.lightNeutralToLightGray, lineWidth: 1)
+                .frame(width: 240, height: 140)
         }
     }
 }

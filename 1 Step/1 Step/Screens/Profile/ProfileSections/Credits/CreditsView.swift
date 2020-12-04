@@ -21,7 +21,7 @@ struct CreditsView: View {
                     OneSHeaderView("Credits", trailingButton: (.close, .grayToBackground, { SheetManager.shared.dismiss() }))
                     
                     HStack {
-                        OneSSecondaryHeaderText(text: "Thanks to", color: viewModel.color)
+                        OneSSecondaryHeaderText(text: "Gratitude towards", color: viewModel.color)
                         Spacer()
                     }
                     
