@@ -54,12 +54,13 @@ struct OneSRowButton: View {
         Button(action: action) {
             HStack {
                 OneSText(text: title, font: .body, color: textColor)
+                    .padding(.vertical, Layout.firstLayerPadding)
                 Spacer()
                 AccessoryView(sFSymbol: accessorySFSymbol, customSymbol: accessoryCustomSymbol, title: accessoryText, color: accessoryColor)
             }
             .padding(.horizontal, Layout.firstLayerPadding)
             .frame(maxWidth: buttonArt == .long ? .infinity : 280*Layout.multiplierWidth)
-            .frame(height: buttonArt == .shortSmall ? 56 : 72)
+            .frame(minHeight: buttonArt == .shortSmall ? 56 : 72)
             .background(backgroundColor)
             .cornerRadius(10)
             .oneSShadow(opacity: 0.05, blur: 10)
