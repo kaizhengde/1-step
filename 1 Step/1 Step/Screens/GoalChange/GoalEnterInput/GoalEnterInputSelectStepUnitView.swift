@@ -115,14 +115,24 @@ struct GoalEnterInputSelectStepUnitView: View {
                     withScale:      false
                 ) {
                     if stepUnit.isCustom {
-                        popupManager.showTextFieldPopup(.goalCustomUnit ,titleText: "Custom", bodyText: "Enter your unit.", input: viewModel.selectedData.customUnit, placeholder: "unit", placeholderColor: selectedColor.dark, textLimit: Step.customUnitDigitsLimit, lowercased: true, backgroundColor: selectedColor.standard)
+                        popupManager.showPopup(.goalCustomUnit, backgroundColor: selectedColor.standard) {
+                            OneSTextFieldPopupView(
+                                titleText: "Custom",
+                                bodyText: "Enter your unit.",
+                                initialInput: viewModel.selectedData.customUnit,
+                                placeholder: "unit",
+                                placeholderColor: selectedColor.dark,
+                                inputLimit: Step.customUnitDigitsLimit,
+                                lowercased: true
+                            )
+                        }
                     }
                     viewModel.selectedData.stepUnit = stepUnit
                 }
-                .onReceive(popupManager.buttonDismissed) { key in
-                    if key == .goalCustomUnit {
+                .onReceive(popupManager.confirmBtnDismissed) { confirmData in
+                    if confirmData.key == .goalCustomUnit {
                         DispatchQueue.main.async {
-                            viewModel.selectedData.customUnit = popupManager.input.trimmingCharacters(in: .whitespaces)
+                            viewModel.selectedData.customUnit = confirmData.input.trimmingCharacters(in: .whitespaces)
                         }
                     }
                 }

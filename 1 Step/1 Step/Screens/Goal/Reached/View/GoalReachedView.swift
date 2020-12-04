@@ -41,6 +41,6 @@ struct GoalReachedView: View {
             }
             .disabled(!goalReachedModel.transition.isFullAppeared)
         }
-        .onReceive(PopupManager.shared.buttonDismissed) { if $0 == .goalDelete { goalEditModel.deleteGoalAndDismiss(goalReachedModel.selectedGoal) } }
+        .onReceive(PopupManager.shared.confirmBtnDismissed) { if $0.key == .goalDelete { goalEditModel.deleteGoalAndDismiss(goalReachedModel.selectedGoal) } }
     }
 }

@@ -40,7 +40,7 @@ struct GoalEditScreen: View {
             }
         }
         .onAppear { setUpChangeViews() }
-        .onReceive(PopupManager.shared.buttonDismissed) { if $0 == .goalDelete { viewModel.deleteGoalAndDismiss(goalModel.selectedGoal) } }
+        .onReceive(PopupManager.shared.confirmBtnDismissed) { if $0.key == .goalDelete { viewModel.deleteGoalAndDismiss(goalModel.selectedGoal) } }
     }
     
     

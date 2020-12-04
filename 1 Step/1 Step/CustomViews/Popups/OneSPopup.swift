@@ -49,43 +49,11 @@ fileprivate struct OneSPopup<PopupContent>: ViewModifier where PopupContent: Vie
         
         
         var body: some View {
-            HStack {
-                VStack(alignment: .leading, spacing: 30) {
-                    HStack(alignment: .bottom) {
-                        OneSSecondaryHeaderText(text: manager.titleText, color: manager.textColor)
-                        if let titleImage = manager.titleImage {
-                            titleImage
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 60, height: 60)
-                        }
-                        if manager.continueButton {
-                            Spacer()
-                            OneSSmallBorderButton(symbol: SFSymbol.`continue`, color: manager.textColor, withScale: false) { manager.buttonDismiss() }
-                        } else {
-                            Color.clear.frame(width: 0, height: 38)
-                        }
-                    }
-                    
-                    manager.content()
-                    
-                    Spacer()
-                    
-                    HStack {
-                        if let buttonText = manager.bottomButtonText {
-                            OneSBorderButton(text: buttonText, color: manager.textColor) { manager.dismiss() }
-                                .offset(y: -12)
-                        }
-                    }
-                    .frame(maxWidth: .infinity)
-                }
-                Spacer()
-            }
-            .padding(Layout.firstLayerPadding)
-            .padding(.top, manager.titleImage == nil ? 20 : 0)
-            .frame(width: Layout.popoverWidth, height: manager.height)
-            .background(manager.backgroundColor)
-            .cornerRadius(15)
+            manager.content()
+                .padding(manager.withPadding ? Layout.firstLayerPadding : 0)
+                .frame(width: Layout.popoverWidth, height: manager.height)
+                .background(manager.backgroundColor)
+                .cornerRadius(15)
         }
     }
 }

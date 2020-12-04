@@ -11,11 +11,60 @@ struct OneSTextFieldPopupView: View {
 
     @StateObject private var manager = PopupManager.shared
     
+    let titleText: String
+    let bodyText: String
+    let textColor: Color
+    
+    let initialInput: String
+    let placeholder: String
+    let placeholderColor: Color
+    let inputLimit: Int
+    let keyboard: UIKeyboardType
+    let lowercased: Bool
+    
+    @State private var input: String = ""
+    
+    
+    init(titleText: String,
+         bodyText: String,
+         textColor: Color           = .backgroundToGray,
+         initialInput: String,
+         placeholder: String,
+         placeholderColor: Color,
+         inputLimit: Int,
+         keyboard: UIKeyboardType   = .default,
+         lowercased: Bool           = false
+    ) {
+        self.titleText          = titleText
+        self.bodyText           = bodyText
+        self.textColor          = textColor
+        
+        self.initialInput       = initialInput
+        self.placeholder        = placeholder
+        self.placeholderColor   = placeholderColor
+        self.inputLimit         = inputLimit
+        self.keyboard           = keyboard
+        self.lowercased         = lowercased
+    }
+    
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 20) {
-            OneSMultilineText(text: manager.bodyText, color: manager.textColor)
-            OneSTextField(input: $manager.input, placeholder: manager.placeholder, inputColor: manager.textColor, placeholderColor: manager.placeholderColor, inputLimit: manager.inputLimit, keyboard: manager.keyboard, lowercased: manager.lowercased) { manager.buttonDismiss() }
+        HStack {
+            VStack(alignment: .leading, spacing: 30) {
+                HStack {
+                    OneSSecondaryHeaderText(text: titleText, color: textColor)
+                    Spacer()
+                    OneSSmallBorderButton(symbol: SFSymbol.`continue`, color: textColor, withScale: false) { manager.confirmBtnDismiss(with: input) }
+                }
+                
+                OneSMultilineText(text: bodyText, color: textColor)
+                OneSTextField(input: $input, placeholder: placeholder, inputColor: textColor, placeholderColor: placeholderColor, inputLimit: inputLimit, keyboard: keyboard, lowercased: lowercased) { manager.confirmBtnDismiss(with: input) }
+                
+                Spacer()
+            }
+            Spacer()
         }
+        .padding(.top, 20)
+        .onAppear { input = initialInput }
     }
 }

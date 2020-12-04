@@ -21,7 +21,10 @@ enum AuthorizationManager {
                 completion(status == .authorized)
             }
         } else {
-            PopupManager.shared.showTextPopup(.photoLibraryNoAccess, titleText: "Error", bodyText: "Please grant permission to access the photo library.", backgroundColor: .darkNeutralToNeutral)
+            PopupManager.shared.showPopup(.photoLibraryNoAccess, backgroundColor: .darkNeutralToNeutral) {
+                OneSTextPopupView(titleText: "Error", bodyText: "Please grant permission to access the photo library.")
+            }
+            
             completion(false)
         }
     }

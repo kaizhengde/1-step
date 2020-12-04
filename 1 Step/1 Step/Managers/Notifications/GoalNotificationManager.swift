@@ -50,7 +50,9 @@ enum GoalNotificationManager {
             
             center.add(request) { error in
                 guard error == nil else {
-                    PopupManager.shared.showTextPopup(.none, titleText: "Error", bodyText: error!.localizedDescription, backgroundColor: .grayToBackground)
+                    PopupManager.shared.showPopup(backgroundColor: .darkNeutralToNeutral) {
+                        OneSTextPopupView(titleText: "Error", bodyText: error!.localizedDescription)
+                    }
                     completion(error)
                     return
                 }

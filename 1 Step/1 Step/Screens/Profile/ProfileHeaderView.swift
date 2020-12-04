@@ -73,10 +73,13 @@ struct ProfileHeaderView: View {
         var body: some View {
             OneSText(text: name, font: .custom(.medium, 28), color: .grayToBackground)
                 .onTapGesture {
-                    popupManager.showTextFieldPopup(.changeName, titleText: "Name", bodyText: "Enter a new name.", input: userDefaultsManager.userName, placeholder: "Your name", placeholderColor: UserColor.user0.dark, textLimit: 20, backgroundColor: UserColor.user0.standard)
+
+                    popupManager.showPopup(.changeName, backgroundColor: UserColor.user0.standard, dismissOnTap: true) {
+                        OneSTextFieldPopupView(titleText: "Name", bodyText: "Enter a new name.", initialInput: userDefaultsManager.userName, placeholder: "Your name", placeholderColor: UserColor.user0.dark, inputLimit: 20)
+                    }
                 }
-                .onReceive(popupManager.buttonDismissed) {
-                    if $0 == .changeName { userDefaultsManager.userName = popupManager.input.removeWhiteSpaces() }
+                .onReceive(popupManager.confirmBtnDismissed) {
+                    if $0.key == .changeName { userDefaultsManager.userName = $0.input.removeWhiteSpaces() }
                 }
         }
     }

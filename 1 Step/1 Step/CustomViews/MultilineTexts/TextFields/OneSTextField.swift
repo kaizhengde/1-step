@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Combine
 
 struct OneSTextField: View {
     
@@ -32,7 +31,7 @@ struct OneSTextField: View {
                 }
                 
                 TextField("", text: lowercased ? Binding(get: { input }, set: { input = $0.lowercased() }) : $input, onCommit: { action() })
-                .onReceive(Just(input)) { _ in limitInput(inputLimit) }
+                .onChange(of: input) { _ in limitInput() }
                 .font(OneSFont.header2.font)
                 .foregroundColor(inputColor)
                 .accentColor(inputColor)
@@ -51,9 +50,9 @@ struct OneSTextField: View {
     }
     
     
-    func limitInput(_ upper: Int) {
-        if input.count > upper {
-            input = String(input.prefix(upper))
+    func limitInput() {
+        if input.count > inputLimit {
+            input = String(input.prefix(inputLimit))
         }
     }
 }
