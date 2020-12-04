@@ -22,6 +22,7 @@
 		3D10D1D1254D3051002D2D3E /* MilestoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D10D1D0254D3051002D2D3E /* MilestoneView.swift */; };
 		3D160D55252E2067008588D5 /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D160D54252E2067008588D5 /* TransitionManager.swift */; };
 		3D23F70B2579770C000801A5 /* CreditsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D23F70A2579770C000801A5 /* CreditsModel.swift */; };
+		3D23F711257A041F000801A5 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D23F710257A041F000801A5 /* AppModel.swift */; };
 		3D258282253C0A9300DC19E7 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D258281253C0A9300DC19E7 /* Color.swift */; };
 		3D2E7928252F6C2C00788AA2 /* GoalEnterInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2E7927252F6C2C00788AA2 /* GoalEnterInputModel.swift */; };
 		3D2E792C252F6CAB00788AA2 /* GoalEnterInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2E792B252F6CAB00788AA2 /* GoalEnterInputView.swift */; };
@@ -221,6 +222,7 @@
 		3D10D1D0254D3051002D2D3E /* MilestoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneView.swift; sourceTree = "<group>"; };
 		3D160D54252E2067008588D5 /* TransitionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
 		3D23F70A2579770C000801A5 /* CreditsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsModel.swift; sourceTree = "<group>"; };
+		3D23F710257A041F000801A5 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		3D258281253C0A9300DC19E7 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		3D2E7927252F6C2C00788AA2 /* GoalEnterInputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEnterInputModel.swift; sourceTree = "<group>"; };
 		3D2E792B252F6CAB00788AA2 /* GoalEnterInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEnterInputView.swift; sourceTree = "<group>"; };
@@ -637,6 +639,7 @@
 		3D47CC81252C6C6900A8CA1B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3D23F710257A041F000801A5 /* AppModel.swift */,
 				3DE9C51C252CB28D0023C212 /* MainModel.swift */,
 				3D0B59442533123600079856 /* DataModel.swift */,
 			);
@@ -1420,6 +1423,7 @@
 				3D511EED256802C50028DB66 /* OneSTextPassage.swift in Sources */,
 				3D68B68725726D4C00A183F5 /* GoalChangeNotificationAddTimeView.swift in Sources */,
 				3D2E7941253017B600788AA2 /* OneSSmallBorderButton.swift in Sources */,
+				3D23F711257A041F000801A5 /* AppModel.swift in Sources */,
 				3DFD9BBD256B864800CF9580 /* ProfileHelpView.swift in Sources */,
 				3D4FD8722564F48F00103C73 /* GoalReachedSummaryView.swift in Sources */,
 				3D78FD3A2566FD1D00C1D0D2 /* GoalInfoModel.swift in Sources */,

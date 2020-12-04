@@ -85,7 +85,7 @@ fileprivate struct OneSPopup<PopupContent>: ViewModifier where PopupContent: Vie
             .padding(.top, manager.titleImage == nil ? 20 : 0)
             .frame(width: Layout.popoverWidth, height: manager.height)
             .background(manager.backgroundColor)
-            .cornerRadius(20)
+            .cornerRadius(15)
         }
     }
 }

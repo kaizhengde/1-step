@@ -23,6 +23,10 @@ extension UserDefaultKey {
     
     typealias Key = UserDefaultKey
     
+    enum App {
+    }
+    
+    
     enum First {
         static let start: Key                    = "first.start"
         static let selectMountain: Key           = "first.selectMountain"

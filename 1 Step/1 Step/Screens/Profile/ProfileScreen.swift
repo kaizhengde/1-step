@@ -42,7 +42,7 @@ struct ProfileScreen: View {
         var body: some View {
             VStack(spacing: 3) {
                 OneSText(text: "Made in Zurich, Switzerland", font: .footnote2, color: .grayToBackground)
-                OneSText(text: "Version 1.0", font: .footnote2, color: .grayToBackground)
+                OneSText(text: "Version \(AppModel.version)", font: .footnote2, color: .grayToBackground)
                 
                 HStack(spacing: 16) {
                     OneSFootnoteButton(text: "Credits", color: UserColor.user2.standard) {
