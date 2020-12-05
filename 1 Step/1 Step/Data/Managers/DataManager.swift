@@ -162,6 +162,24 @@ final class DataManager {
         persistenceManager.context.delete(goal)
         return persistenceManager.saveContext()
     }
+    
+    
+    func deleteAllGoals() -> Bool {
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Goal")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+
+        do {
+            try persistenceManager.container.persistentStoreCoordinator.execute(deleteRequest, with: persistenceManager.context)
+            return true
+            
+        } catch let error as NSError {
+            PopupManager.shared.showPopup(backgroundColor: .darkNeutralToNeutral) {
+                OneSTextPopupView(titleText: "Error", bodyText: error.localizedDescription)
+            }
+        }
+        
+        return false
+    }
 }
 
 

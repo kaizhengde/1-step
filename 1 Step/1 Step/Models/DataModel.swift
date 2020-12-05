@@ -149,4 +149,9 @@ final class DataModel: ObservableObject {
         if dataManager.deleteGoal(goal) { fetchAllGoals() { completion(true) } }
         else { completion(false) }
     }
+    
+    
+    func deleteAllGoals() -> Bool {
+        return dataManager.deleteAllGoals()
+    }
 }

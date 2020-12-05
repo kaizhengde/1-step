@@ -141,6 +141,7 @@ enum StepUnit: Int16 {
     
     
     //MARK: - AddArrays
+    //One can take less stepUnits than one step. 
     
     func getStepAddArrays(from neededStepUnits: Int16) -> (unit: [String], dual: [String]) {
         
@@ -178,7 +179,7 @@ enum StepUnit: Int16 {
             default: break
             }
             
-            array.dual = [100, 200, 300, 400, 500, -100]
+            array.dual = [10, 50, 100, 200, 300, 400, 500, -100]
             
             if 20...1000 ~= neededStepUnits {
                 array.unit.append(-1)
