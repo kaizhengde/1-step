@@ -89,6 +89,7 @@
 		3D6373C4257A8F1B001C3585 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 3D6373C3257A8F1B001C3585 /* Introspect */; };
 		3D6373D2257AA17C001C3585 /* ShowTime in Frameworks */ = {isa = PBXBuildFile; productRef = 3D6373D1257AA17C001C3585 /* ShowTime */; };
 		3D6373E5257B570B001C3585 /* GoalCreateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6373E4257B570B001C3585 /* GoalCreateTests.swift */; };
+		3D6373FF257B9A8B001C3585 /* AddEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6373FE257B9A8B001C3585 /* AddEntry.swift */; };
 		3D68B65E25721C9000A183F5 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68B65D25721C9000A183F5 /* LocalNotificationManager.swift */; };
 		3D68B666257223C000A183F5 /* GoalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68B665257223C000A183F5 /* GoalNotificationManager.swift */; };
 		3D68B66A2572281400A183F5 /* OneSAuthorizationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68B6692572281400A183F5 /* OneSAuthorizationStatus.swift */; };
@@ -288,6 +289,7 @@
 		3D610880256D6E3A00DC20BD /* LocalizationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationHelper.swift; sourceTree = "<group>"; };
 		3D610886256D70CC00DC20BD /* Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
 		3D6373E4257B570B001C3585 /* GoalCreateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCreateTests.swift; sourceTree = "<group>"; };
+		3D6373FE257B9A8B001C3585 /* AddEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEntry.swift; sourceTree = "<group>"; };
 		3D68B65925721C3D00A183F5 /* 1 Step.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "1 Step.entitlements"; sourceTree = "<group>"; };
 		3D68B65D25721C9000A183F5 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
 		3D68B665257223C000A183F5 /* GoalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalNotificationManager.swift; sourceTree = "<group>"; };
@@ -994,6 +996,7 @@
 				3DDF70302531BAA100FD3011 /* Goal.swift */,
 				3D68B68A2572B10500A183F5 /* GoalNotification.swift */,
 				3DDF70362531BAB100FD3011 /* Milestone.swift */,
+				3D6373FE257B9A8B001C3585 /* AddEntry.swift */,
 				3DDF70332531BAA900FD3011 /* Step.swift */,
 			);
 			path = Models;
@@ -1334,6 +1337,7 @@
 				3DEA919A2579752100C90414 /* CreditsView.swift in Sources */,
 				3DCA909A254546690030FE61 /* AddStepView.swift in Sources */,
 				3D47CCC2252C807000A8CA1B /* Colors.swift in Sources */,
+				3D6373FF257B9A8B001C3585 /* AddEntry.swift in Sources */,
 				3DE11C3E252C681600F13719 /* PersistenceManger.swift in Sources */,
 				3D4B78D8252CD4F000A45755 /* GoalCreateModel.swift in Sources */,
 				3D68B66A2572281400A183F5 /* OneSAuthorizationStatus.swift in Sources */,

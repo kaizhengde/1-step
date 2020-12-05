@@ -52,6 +52,7 @@ final class DataManager {
         newStep.customUnit          = baseData.customUnit
         newStep.goal                = newGoal
     
+        newGoal.sortOrder           = fetchGoalCount(for: .active)
         newGoal.name                = baseData.name
         newGoal.step                = newStep
         newGoal.neededStepUnits     = baseData.neededStepUnits!
@@ -64,7 +65,7 @@ final class DataManager {
         newGoal.mountain            = baseData.mountain!
         newGoal.color               = baseData.color!
         newGoal.notifications       = []
-        newGoal.sortOrder           = fetchGoalCount(for: .active)
+        newGoal.addEntries          = []
             
         GoalBaseDataHandler.setupCalculationBaseData(with: newGoal, newStep)
         
@@ -76,7 +77,7 @@ final class DataManager {
     
     //Goal Edit
     
-    func editGoal(_ goal: Goal, with baseData: Goal.BaseData, completion: @escaping (Bool) -> ()) {
+    func editGoal(_ goal: Goal, with baseData: Goal.BaseData) -> Bool {
         
         let oldUnit                 = goal.step.unit
             
@@ -93,31 +94,28 @@ final class DataManager {
         //Update Currents
         
         goal.currentStepUnits      *= oldUnit.translateMultiplier(to: goal.step.unit)
-        addSteps(goal, with: 0) { success in
-            if success {
-                GoalNotificationsHandler.updateAfterGoalEdit(with: goal)
-                
-                completion(self.persistenceManager.saveContext())
-            }
-        }
+        guard addSteps(goal, with: 0) else { return false }
+        
+        GoalNotificationsHandler.updateAfterGoalEdit(with: goal)
+        return persistenceManager.saveContext()
     }
     
     
     //Goal Add Steps
     
-    func addSteps(_ goal: Goal, with newStepUnits: Double, completion: @escaping (Bool) -> ()) {
-        GoalJourneyDataHandler.addStepsAndUpdateData(with: goal, newStepUnits: newStepUnits) {
-            //Goal Reached
-            if goal.currentState == .reached {
-                _ = self.updateGoalsSortOrder(with: goal, state: .active)
-                goal.sortOrder      = self.fetchGoalCount(for: .reached)
+    func addSteps(_ goal: Goal, with newStepUnits: Double) -> Bool {
+        GoalJourneyDataHandler.addStepsAndUpdateData(with: goal, newStepUnits: newStepUnits)
+        
+        //Goal Reached
+        if goal.currentState == .reached {
+            _ = updateGoalsSortOrder(with: goal, state: .active)
+            goal.sortOrder      = fetchGoalCount(for: .reached)
 
-                GoalNotificationsHandler.deleteAllNotifications(with: goal)
-                goal.notifications  = []
-            }
-            
-            completion(self.persistenceManager.saveContext())
+            GoalNotificationsHandler.deleteAllNotifications(with: goal)
+            goal.notifications  = []
         }
+        
+        return persistenceManager.saveContext()
     }
     
     

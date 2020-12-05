@@ -9,7 +9,7 @@ import SwiftUI
 
 enum GoalJourneyDataHandler {
     
-    static func addStepsAndUpdateData(with goal: Goal, newStepUnits: Double, completion: @escaping () -> ()) {
+    static func addStepsAndUpdateData(with goal: Goal, newStepUnits: Double) {
                 
         //0. Calculate new currentStepUnits - make sure it's rounded and not more than (total)neededStepUnits
         
@@ -22,7 +22,7 @@ enum GoalJourneyDataHandler {
         if newCurrentStepUnits > Double(goal.neededStepUnits) {
             newCurrentStepUnits = Double(goal.neededStepUnits)
         }
-        
+                    
         
         //1. Update Currents
         
@@ -50,48 +50,59 @@ enum GoalJourneyDataHandler {
             }
             if currentStepUnits >= milestone.neededStepUnits {
                 milestone.state = .done
-                milestone.endDate = .distantFuture
             }
         }
             
         goal.milestones = Set(milestones)
 
         
-        //3. Update StepsDate
+        //3. Update StepEntries (only if no edit) and Milestone endDate accordingly
         
-        var stepsDate = Array<Date>(repeating: .distantFuture, count: Int(goal.neededSteps))
-        
-        DispatchQueue.global().async {
-            for i in 0..<Int(goal.currentSteps) {
-                if i < goal.stepsDate.filter({ $0 != .distantFuture }).count {
-                    stepsDate[i] = goal.stepsDate[i]
-                } else {
-                    stepsDate[i] = Date()
-                }
+        if newStepUnits < 0 {
+            let entriesToBeDeleted = goal.addEntries.filter { newCurrentStepUnits < $0.neededStepUnits }
+            
+            for entry in entriesToBeDeleted {
+                goal.addEntries.remove(entry)
+                PersistenceManager.defaults.context.delete(entry)
             }
-            
-            DispatchQueue.main.async {
-                goal.stepsDate = stepsDate
-                
-                for milestone in goal.milestones {
-                    if milestone.state == .done {
-                        milestone.endDate = goal.stepsDate[Int(milestone.neededSteps)-1]
-                    }
-                }
-                
-                completion()
-            }
-            
-            
-            print("-------------")
-            print("Goal:        \(goal.name)")
-            print("StepUnits:   \(goal.currentStepUnits)")
-            print("Steps:       \(goal.currentSteps)")
-            print("Percent:     \(goal.currentPercent)")
-            print("State:       \(goal.currentState.rawValue)")
-            print("StepsDate:   \(goal.stepsDate.filter({ $0 != .distantFuture }).count)")
-            print("Milestones:  \(goal.milestones.count)")
-            print("-------------")
         }
+        if newStepUnits != 0 && !goal.addEntries.contains(where: { $0.neededStepUnits == newCurrentStepUnits }) {
+            let newAddEntry = AddEntry(context: PersistenceManager.defaults.context)
+            
+            newAddEntry.newStepUnits    = newStepUnits
+            newAddEntry.newSteps        = Int16(newStepUnits*Double(goal.step.unitRatio))
+            newAddEntry.neededStepUnits = newCurrentStepUnits
+            newAddEntry.date            = Date()
+            
+            goal.addEntries.insert(newAddEntry)
+        }
+        
+        
+        for milestone in goal.milestones {
+            if milestone.state == .done && milestone.endDate == nil {
+                let matchingStepEntry = goal.addEntries
+                    .filter { milestone.neededStepUnits <= $0.neededStepUnits }
+                    .sorted { $0.neededStepUnits < $1.neededStepUnits }
+                    .first!
+                
+                milestone.endDate = matchingStepEntry.date
+                
+            } else if milestone.endDate != nil {
+                if newCurrentStepUnits < milestone.neededStepUnits {
+                    milestone.endDate = nil
+                }
+            }
+        }
+        
+        
+        print("-------------")
+        print("Goal:        \(goal.name)")
+        print("StepUnits:   \(goal.currentStepUnits)")
+        print("Steps:       \(goal.currentSteps)")
+        print("Percent:     \(goal.currentPercent)")
+        print("State:       \(goal.currentState.rawValue)")
+        print("StepEntries: \(goal.addEntries.map { $0.neededStepUnits }.sorted())")
+        print("Milestones:  \(goal.milestones.count)")
+        print("-------------")
     }
 }

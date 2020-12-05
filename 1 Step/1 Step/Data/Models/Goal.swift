@@ -24,7 +24,6 @@ final class Goal: NSManagedObject, Identifiable {
     @NSManaged var currentPercent: Int16
     @NSManaged var currentState: GoalState
 
-    @NSManaged var stepsDate: [Date]
     @NSManaged var startDate: Date
     @NSManaged var endDate: Date?
     
@@ -32,6 +31,7 @@ final class Goal: NSManagedObject, Identifiable {
     @NSManaged var color: UserColor
     
     @NSManaged var milestones: Set<Milestone>
+    @NSManaged var addEntries: Set<AddEntry>
     @NSManaged var notifications: Set<GoalNotification>
 }
 
@@ -51,7 +51,7 @@ extension Goal {
         currentSteps:       Int16,
         currentPercent:     Int16,
         currentState:       GoalState,
-        stepsDate:          [Date],
+        addEntries:         Set<AddEntry>,
         milestones:         Set<Milestone>
     )
     

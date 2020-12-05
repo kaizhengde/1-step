@@ -86,10 +86,8 @@ final class DataModel: ObservableObject {
             return
         }
                 
-        dataManager.editGoal(goal, with: baseData) { success in
-            if success { self.fetchAllActiveGoals() { completion(true) }
-            } else { completion(false) }
-        }
+        if dataManager.editGoal(goal, with: baseData) { fetchAllActiveGoals() { completion(true) } }
+        else { completion(false) }
     }
     
     
@@ -102,19 +100,16 @@ final class DataModel: ObservableObject {
         let oldCurrentSteps         = goal.currentSteps
         let oldAmountMilestonesDone = goal.milestones.getAmountDone()
         
-        dataManager.addSteps(goal, with: newStepUnits) { success in
-            if success {
-                let newCurrentSteps         = goal.currentSteps
-                let newAmountMilestonesDone = goal.milestones.getAmountDone()
+        if dataManager.addSteps(goal, with: newStepUnits) {
+            let newCurrentSteps         = goal.currentSteps
+            let newAmountMilestonesDone = goal.milestones.getAmountDone()
                 
-                GoalAccomplishmentsHandler.AddSteps.updateStepsAccomplishment(oldCurrentSteps, newCurrentSteps)
-                GoalAccomplishmentsHandler.AddSteps.updateMilestonesAccomplishment(oldAmountMilestonesDone, newAmountMilestonesDone)
-                GoalAccomplishmentsHandler.AddSteps.updateGoalsAccomplishment(goal.currentState)
+            GoalAccomplishmentsHandler.AddSteps.updateStepsAccomplishment(oldCurrentSteps, newCurrentSteps)
+            GoalAccomplishmentsHandler.AddSteps.updateMilestonesAccomplishment(oldAmountMilestonesDone, newAmountMilestonesDone)
+            GoalAccomplishmentsHandler.AddSteps.updateGoalsAccomplishment(goal.currentState)
                 
-                self.fetchAllGoals() { completion(true) }
-                
-            } else { completion(false) }
-        }
+            self.fetchAllGoals() { completion(true) }
+        } else { completion(false) }
     }
     
     
