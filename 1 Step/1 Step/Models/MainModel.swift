@@ -52,10 +52,12 @@ final class MainModel: ObservableObject {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             let initialScreen: Screen.Active = UserDefaultsManager.shared.firstStart ? .firstStart : .goals
             self.currentScreen.active = initialScreen
+            self.initialScreenAppeared = true
         }
     }
     
     @Published private(set) var currentScreen: Screen = Screen()
+    @Published private(set) var initialScreenAppeared = false
     
     
     func toScreen(_ nextScreen: Screen.Active) {

@@ -12,6 +12,8 @@ enum GoalNotificationManager {
     
     static private let center = UNUserNotificationCenter.current()
     
+    static let userInfoGoalObjectIDKey = "GoalObjectIDKey"
+    
     
     static func sceduleNotifications(with notificationData: Goal.NotificationData, of goal: Goal, completion: @escaping (Error?) -> ()) {
         
@@ -40,7 +42,8 @@ enum GoalNotificationManager {
             let content = UNMutableNotificationContent()
             content.title = notificationTitle
             content.body = notificationBody
-            content.sound = UNNotificationSound.init(named: UNNotificationSoundName("NoticiationDefault.m4r"))
+            content.sound = UNNotificationSound.init(named: UNNotificationSoundName(NotificationSound.default))
+            content.userInfo[userInfoGoalObjectIDKey] = goal.objectID.uriRepresentation().absoluteString
 
             print("New Notification Time: \(dateComponents.description)")
             

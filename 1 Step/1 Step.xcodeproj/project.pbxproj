@@ -90,6 +90,7 @@
 		3D6373D2257AA17C001C3585 /* ShowTime in Frameworks */ = {isa = PBXBuildFile; productRef = 3D6373D1257AA17C001C3585 /* ShowTime */; };
 		3D6373E5257B570B001C3585 /* GoalCreateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6373E4257B570B001C3585 /* GoalCreateTests.swift */; };
 		3D6373FF257B9A8B001C3585 /* AddEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6373FE257B9A8B001C3585 /* AddEntry.swift */; };
+		3D637407257BE643001C3585 /* Sounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D637406257BE643001C3585 /* Sounds.swift */; };
 		3D68B65E25721C9000A183F5 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68B65D25721C9000A183F5 /* LocalNotificationManager.swift */; };
 		3D68B666257223C000A183F5 /* GoalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68B665257223C000A183F5 /* GoalNotificationManager.swift */; };
 		3D68B66A2572281400A183F5 /* OneSAuthorizationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68B6692572281400A183F5 /* OneSAuthorizationStatus.swift */; };
@@ -290,6 +291,7 @@
 		3D610886256D70CC00DC20BD /* Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
 		3D6373E4257B570B001C3585 /* GoalCreateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCreateTests.swift; sourceTree = "<group>"; };
 		3D6373FE257B9A8B001C3585 /* AddEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEntry.swift; sourceTree = "<group>"; };
+		3D637406257BE643001C3585 /* Sounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sounds.swift; sourceTree = "<group>"; };
 		3D68B65925721C3D00A183F5 /* 1 Step.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "1 Step.entitlements"; sourceTree = "<group>"; };
 		3D68B65D25721C9000A183F5 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
 		3D68B665257223C000A183F5 /* GoalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalNotificationManager.swift; sourceTree = "<group>"; };
@@ -648,6 +650,7 @@
 				3D47CCC1252C807000A8CA1B /* Colors.swift */,
 				3D2E7932252F9CFA00788AA2 /* Duration.swift */,
 				3D47CC90252C71EA00A8CA1B /* CoordinateSpace.swift */,
+				3D637406257BE643001C3585 /* Sounds.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -1331,6 +1334,7 @@
 				3DCA909D25454A080030FE61 /* AddStepModel.swift in Sources */,
 				3D959A9625630913007BAA07 /* GoalHowItWorksView.swift in Sources */,
 				3DE9C522252CB5820023C212 /* GoalCreateScreen.swift in Sources */,
+				3D637407257BE643001C3585 /* Sounds.swift in Sources */,
 				3DFDE055253C4678006B1A7E /* GoalEditModel.swift in Sources */,
 				3D4FD86E2564F39100103C73 /* GoalReachedView.swift in Sources */,
 				3D0B5948253319AC00079856 /* GoalErrorHandler.swift in Sources */,
