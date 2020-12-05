@@ -59,7 +59,7 @@ struct ProfileHelpView: View {
                         GoalInfoView(viewModel: GoalInfoModel(initialView: .examples), selectedColor: UserColor.user0)
                     }
                 }
-                OneSRowButton(.shortBig, title: "Basics") {
+                OneSRowButton(.shortBig, title: "Tutorial") {
                     sheetManager.showSheet {
                         EmptyView()
                     }
