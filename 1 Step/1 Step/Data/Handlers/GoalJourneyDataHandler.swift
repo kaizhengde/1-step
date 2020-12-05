@@ -34,7 +34,7 @@ enum GoalJourneyDataHandler {
         
         //2. Update Milestones
         
-        let milestones = Array(goal.milestones.sorted { $0.neededStepUnits < $1.neededStepUnits })
+        let milestones = goal.sortedMilestones
         
         for i in 0..<milestones.count {
 

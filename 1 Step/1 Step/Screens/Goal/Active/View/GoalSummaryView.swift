@@ -43,7 +43,7 @@ struct GoalSummaryView: View {
                     HStack(spacing: 3) {
                         OneSText(text: "\(goalModel.selectedGoal.neededStepUnits)", font: .custom(.bold, 52*Layout.multiplierWidth), color: goalModel.topTextColor)
                         
-                        OneSText(text: Step.unitDescription(of: goalModel.selectedGoal), font: .custom(.bold, 40*Layout.multiplierWidth), color: goalModel.topTextColor)
+                        OneSText(text: goalModel.selectedGoal.step.unitDescription, font: .custom(.bold, 40*Layout.multiplierWidth), color: goalModel.topTextColor)
                     }
                 }
                 .frame(height: 80)

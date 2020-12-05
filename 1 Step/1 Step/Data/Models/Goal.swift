@@ -69,6 +69,8 @@ extension Goal {
     static let neededStepUnitsMaximum: Int16 = 1000
     
     static let maxNotifications: Int = 8
+    
+    var sortedMilestones: [Milestone] { Array(milestones.sorted { $0.neededStepUnits < $1.neededStepUnits }) }
 }
  
 

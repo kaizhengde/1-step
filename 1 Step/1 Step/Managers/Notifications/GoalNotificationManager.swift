@@ -25,7 +25,7 @@ enum GoalNotificationManager {
     
     static private func addNotifications(_ notificationData: Goal.NotificationData, _ goal: Goal, _ completion: @escaping (Error?) -> ()) {
         
-        let notificationTitle: String = "\(goal.name) \(goal.neededStepUnits) \(Step.unitDescription(of: goal))"
+        let notificationTitle: String = "\(goal.name) \(goal.neededStepUnits) \(goal.step.unitDescription)"
         let notificationBody: String = "Hey 🙂. It's time to take one more step."
         
         var dateComponents = DateComponents()

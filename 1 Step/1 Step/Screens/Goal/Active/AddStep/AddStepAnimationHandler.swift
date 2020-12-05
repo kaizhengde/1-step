@@ -87,7 +87,7 @@ class AddStepAnimationHandler: ObservableObject {
         if forward {
             FloaterManager.shared.showTextFloater(
                 titleText:          "Awesome 🎉",
-                bodyText:           "You have reached \((currentMilestone.neededStepUnits - currentMilestone.stepUnitsFromPrev).toUI()) \(Step.unitDescription(of: goal))!",
+                bodyText:           "You have reached \((currentMilestone.neededStepUnits - currentMilestone.stepUnitsFromPrev).toUI()) \(goal.step.unitDescription)!",
                 backgroundColor:    goal.color.light
             )
             ConfettiManager.shared.showConfetti(amount: .small)
@@ -164,7 +164,7 @@ class AddStepAnimationHandler: ObservableObject {
         PopupManager.shared.showPopup(.goalReached, backgroundColor: goal.color.standard, height: 400*Layout.multiplierWidth, dismissOnTapOutside: false) {
             OneSTextPopupView(
                 titleText: "Congrats",
-                bodyText: "You are on the peak of the mountain. 🎊\n\nAccomplishing a total of \(self.goal.currentStepUnits.toUI()) \(Step.unitDescription(of: self.goal))!",
+                bodyText: "You are on the peak of the mountain. 🎊\n\nAccomplishing a total of \(self.goal.currentStepUnits.toUI()) \(self.goal.step.unitDescription)!",
                 bottomBtnTitle: "COMPLETE"
             )
         }

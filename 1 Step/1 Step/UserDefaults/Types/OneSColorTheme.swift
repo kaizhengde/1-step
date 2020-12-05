@@ -12,7 +12,7 @@ typealias OneSColorThemeType = (standard: Color, light: Color, dark: Color)
 enum OneSColorTheme: String, Codable, CaseIterable {
     
     case `default`  = "Default"
-    case pastel     = "Pastel"
+    case pastel     = "Mountain lake"
     case garden     = "Garden"
     
     

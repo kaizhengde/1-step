@@ -30,7 +30,5 @@ extension Step {
     var oneAddArrayEmpty: Bool      { addArray.isEmpty || addArrayDual.isEmpty }
     
     
-    static func unitDescription(of goal: Goal) -> String {
-        return goal.step.unit == .custom ? goal.step.customUnit : goal.step.unit.description
-    }
+    var unitDescription: String     { unit == .custom ? customUnit : unit.description }
 }

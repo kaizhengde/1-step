@@ -78,7 +78,7 @@ struct GoalItem: View {
                             +
                             Text(" ").font(.system(size: 5))
                             +
-                            Text(Step.unitDescription(of: goal))
+                            Text(goal.step.unitDescription)
                             Spacer()
                         }
                         .font(GoalItemArt.stepsFont.font)
@@ -86,7 +86,7 @@ struct GoalItem: View {
                         .multilineTextAlignment(.leading)
                     } else {
                         HStack {
-                            Text(Step.unitDescription(of: goal))
+                            Text(goal.step.unitDescription)
                             Spacer()
                         }
                         .font(GoalItemArt.stepsFont.font)
