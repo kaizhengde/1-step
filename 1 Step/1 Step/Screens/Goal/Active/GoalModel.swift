@@ -36,6 +36,7 @@ final class GoalModel: TransitionObservableObject {
     let setScrollPosition = PassthroughSubject<ScrollPosition, Never>()
     
     @Published var showJourneyView: Bool = false
+    @Published var journeyViewDisappeared = true
     @Published var showFlag: Bool = false
     
     private var userdefaultsManager: UserDefaultsManager { UserDefaultsManager.shared }
@@ -233,8 +234,6 @@ final class GoalModel: TransitionObservableObject {
     }
     
     //onChanged
-    
-    @Published var journeyViewDisappeared = true
     
     private func legalDrag(_ value: DragGesture.Value) -> Bool {
         return (onDragBackward(value) || onDragForward(value)) && transition.isFullAppeared
