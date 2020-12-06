@@ -223,9 +223,9 @@ final class GoalModel: TransitionObservableObject {
         if !legalDrag(value) { return }
         
         //Forward drag
-        if onToMenu(value) { toMenu() }
-        else if onToGoalsFromMenu(value) { toGoals() }
         if onToGoals(value) { toGoals() }
+        else if onToMenu(value) { toMenu() }
+        else if onToGoalsFromMenu(value) { toGoals() }
         
         //Backward drag
         if onBackFromMenu(value) { backFromMenu() }
