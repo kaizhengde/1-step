@@ -32,6 +32,29 @@ class GoalCreateTests: XCTestCase {
     
     //MARK: - setupCalculationBaseData(with goal: Goal, _ step: Step)
     
+    //Basics
+    
+    func test_no_notifications() {
+        for goal in DataModel.shared.activeGoals {
+            XCTAssertEqual(goal.notifications, [])
+        }
+    }
+    
+    
+    func test_no_addEntries() {
+        for goal in DataModel.shared.activeGoals {
+            XCTAssertEqual(goal.addEntries, [])
+        }
+    }
+    
+    
+    func test_milestones_not_empty() {
+        for goal in DataModel.shared.activeGoals {
+            XCTAssertGreaterThan(goal.milestones.count, 0)
+        }
+    }
+    
+    
     //NeededSteps Invariants
     
     func test_neededSteps_greaterThanOrEqual_neededStepUnits() {

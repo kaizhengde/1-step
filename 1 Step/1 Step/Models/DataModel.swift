@@ -10,6 +10,7 @@ import SwiftUI
 final class DataModel: ObservableObject {
     
     static let shared = DataModel()
+    private let persistenceManager = PersistenceManager.defaults
     private let dataManager = DataManager.defaults
     
     private init() { fetchAllGoals() {} }
@@ -25,128 +26,138 @@ final class DataModel: ObservableObject {
     
     //MARK: - Fetch
     
-    private func fetchAllGoals(completion: () -> ()) {
+    private func fetchAllGoals(success: @escaping () -> ()) {
         fetchAllActiveGoals() {
-            fetchAllReachedGoals() {
-                completion()
+            self.fetchAllReachedGoals() {
+                success()
             }
         }
     }
     
     
-    private func fetchAllActiveGoals(completion: () -> ()) {
-        let fetched = dataManager.fetchGoals(for: .active)
-        activeGoals = fetched
-        completion()
+    private func fetchAllActiveGoals(success: @escaping () -> ()) {
+        persistenceManager.context.perform {
+            let fetched = self.dataManager.fetchGoals(for: .active)
+            self.activeGoals = fetched
+            success()
+        }
     }
     
     
-    private func fetchAllReachedGoals(completion: () -> ()) {
-        let fetched = dataManager.fetchGoals(for: .reached)
-        reachedGoals = fetched
-        completion()
+    private func fetchAllReachedGoals(success: @escaping () -> ()) {
+        persistenceManager.context.perform {
+            let fetched = self.dataManager.fetchGoals(for: .reached)
+            self.reachedGoals = fetched
+            success()
+        }
     }
     
     
     //MARK: - Insert
     
-    func createGoal(with baseData: Goal.BaseData, completion: (Bool) -> ()) {
-        guard !GoalErrorHandler.hasErrors(with: baseData) else {
-            completion(false)
-            return
-        }
+    func createGoal(with baseData: Goal.BaseData, success: @escaping () -> ()) {
+        guard !GoalErrorHandler.hasErrors(with: baseData) else { return }
         
-        if dataManager.insertGoal(with: baseData) {
-            fetchAllActiveGoals() {
-                completion(true)
+        persistenceManager.context.perform {
+            if self.dataManager.insertGoal(with: baseData) {
+                self.fetchAllActiveGoals() { success() }
             }
-        } else { completion(false) }
+        }
     }
     
     
     //MARK: - Change
     
-    func moveGoals(in state: GoalState, completion: (Bool) -> ()) {
+    func moveGoals(in state: GoalState, success: @escaping () -> ()) {
         let goals = state == .active ? activeGoals : reachedGoals
         
-        for goal in goals {
-            guard self.dataManager.changeGoalOrder(goal, with: goal.sortOrder) else {
-                completion(false) 
-                return
+        persistenceManager.context.perform {
+            for goal in goals {
+                guard self.dataManager.changeGoalOrder(goal, with: goal.sortOrder) else { return }
+            }
+            self.fetchAllActiveGoals() { success() }
+        }
+    }
+    
+    
+    func editGoal(_ goal: Goal, with baseData: Goal.BaseData, success: @escaping () -> ()) {
+        guard !GoalErrorHandler.hasErrors(with: baseData),
+              !GoalErrorHandler.editGoalHasErrors(with: goal, baseData: baseData)
+        else { return }
+                
+        persistenceManager.context.perform {
+            if self.dataManager.editGoal(goal, with: baseData) {
+                self.fetchAllActiveGoals() { success() }
             }
         }
-        self.fetchAllActiveGoals() { completion(true) }
     }
     
     
-    func editGoal(_ goal: Goal, with baseData: Goal.BaseData, completion: @escaping (Bool) -> ()) {
-        guard !GoalErrorHandler.hasErrors(with: baseData),
-              !GoalErrorHandler.editGoalHasErrors(with: goal, baseData: baseData) else {
-            completion(false)
-            return
-        }
-                
-        if dataManager.editGoal(goal, with: baseData) { fetchAllActiveGoals() { completion(true) } }
-        else { completion(false) }
-    }
-    
-    
-    func addSteps(_ goal: Goal, with newStepUnits: Double, completion: @escaping ((Bool) -> Void)) {
-        guard !JourneyErrorHandler.addHasErrors(with: goal, newStepUnits: newStepUnits) else {
-            completion(false)
-            return
-        }
+    func addSteps(_ goal: Goal, with newStepUnits: Double, success: @escaping () -> ()) {
+        guard !JourneyErrorHandler.addHasErrors(with: goal, newStepUnits: newStepUnits) else { return }
         
         let oldCurrentSteps         = goal.currentSteps
         let oldAmountMilestonesDone = goal.milestones.getAmountDone()
         
-        if dataManager.addSteps(goal, with: newStepUnits) {
-            let newCurrentSteps         = goal.currentSteps
-            let newAmountMilestonesDone = goal.milestones.getAmountDone()
+        persistenceManager.context.perform {
+            if self.dataManager.addSteps(goal, with: newStepUnits) {
+                let newCurrentSteps         = goal.currentSteps
+                let newAmountMilestonesDone = goal.milestones.getAmountDone()
                 
-            GoalAccomplishmentsHandler.AddSteps.updateStepsAccomplishment(oldCurrentSteps, newCurrentSteps)
-            GoalAccomplishmentsHandler.AddSteps.updateMilestonesAccomplishment(oldAmountMilestonesDone, newAmountMilestonesDone)
-            GoalAccomplishmentsHandler.AddSteps.updateGoalsAccomplishment(goal.currentState)
-                
-            self.fetchAllGoals() { completion(true) }
-        } else { completion(false) }
+                self.fetchAllGoals() { success() }
+                    
+                DispatchQueue.global().async {
+                    GoalAccomplishmentsHandler.AddSteps.updateStepsAccomplishment(oldCurrentSteps, newCurrentSteps)
+                    GoalAccomplishmentsHandler.AddSteps.updateMilestonesAccomplishment(oldAmountMilestonesDone, newAmountMilestonesDone)
+                    GoalAccomplishmentsHandler.AddSteps.updateGoalsAccomplishment(goal.currentState)
+                }
+            }
+        }
     }
     
     
     func updateReachedGoalsPercentage() {
-        _ = dataManager.updateReachedGoalsPercentage()
+        persistenceManager.context.perform {
+            _ = self.dataManager.updateReachedGoalsPercentage()
+        }
     }
     
     
     //Goal Notification
     
-    func addGoalNotification(_ goal: Goal, with notificationData: Goal.NotificationData, completion: (Bool) -> ()) {
-        if dataManager.addGoalNotification(goal, with: notificationData) { completion(true) }
-        else { completion(false) }
+    func addGoalNotification(_ goal: Goal, with notificationData: Goal.NotificationData, success: @escaping () -> ()) {
+        persistenceManager.context.perform {
+            if self.dataManager.addGoalNotification(goal, with: notificationData) { success() }
+        }
     }
     
     
-    func editGoalNotification(_ notification: GoalNotification, with notificationData: Goal.NotificationData, completion: (Bool) -> ()) {
-        if dataManager.editGoalNotification(notification, with: notificationData) { completion(true) }
-        else { completion(false) }
+    func editGoalNotification(_ notification: GoalNotification, with notificationData: Goal.NotificationData, success: @escaping () -> ()) {
+        persistenceManager.context.perform {
+            if self.dataManager.editGoalNotification(notification, with: notificationData) { success() }
+        }
     }
     
     
-    func removeGoalNotification(_ notification: GoalNotification, of goal: Goal, completion: (Bool) -> ()) {
-        if dataManager.removeGoalNotification(notification, of: goal) { completion(true) }
-        else { completion(false) }
+    func removeGoalNotification(_ notification: GoalNotification, of goal: Goal, success: @escaping () -> ()) {
+        persistenceManager.context.perform {
+            if self.dataManager.removeGoalNotification(notification, of: goal) { success() }
+        }
     }
     
     
     //MARK: - Delete
     
-    func deleteGoal(_ goal: Goal, completion: (Bool) -> ()) {
-        if dataManager.deleteGoal(goal) { fetchAllGoals() { completion(true) } }
-        else { completion(false) }
+    func deleteGoal(_ goal: Goal, success: @escaping () -> ()) {
+        persistenceManager.context.perform {
+            if self.dataManager.deleteGoal(goal) { self.fetchAllGoals() { success() } }
+        }
     }
     
     
-    func deleteAllGoals() -> Bool {
-        return dataManager.deleteAllGoals()
+    func deleteAllGoals(success: @escaping () -> ()) {
+        persistenceManager.context.perform {
+            if self.dataManager.deleteAllGoals() { success() }
+        }
     }
 }

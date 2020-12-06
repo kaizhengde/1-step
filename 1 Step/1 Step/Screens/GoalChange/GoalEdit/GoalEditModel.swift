@@ -26,7 +26,7 @@ final class GoalEditModel: ObservableObject, GoalSelectMountainDelegate, GoalEnt
         )
         
         DataModel.shared.editGoal(goal, with: baseData) {
-            if $0 { SheetManager.shared.dismiss() }
+            SheetManager.shared.dismiss()
         }
     }
     
@@ -38,10 +38,8 @@ final class GoalEditModel: ObservableObject, GoalSelectMountainDelegate, GoalEnt
     
     func deleteGoalAndDismiss(_ goal: Goal) {
         DataModel.shared.deleteGoal(goal) {
-            if $0 {
-                MainModel.shared.toScreen(.goals)
-                SheetManager.shared.dismiss()
-            }
+            MainModel.shared.toScreen(.goals)
+            SheetManager.shared.dismiss()
         }
     }
 }

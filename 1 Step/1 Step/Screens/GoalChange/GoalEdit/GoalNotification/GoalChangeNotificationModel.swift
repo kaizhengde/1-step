@@ -97,11 +97,10 @@ class GoalChangeNotificationModel: ObservableObject {
         
         GoalNotificationManager.sceduleNotifications(with: notificationData, of: self.goal) { error in
             if error == nil {
-                DataModel.shared.addGoalNotification(self.goal, with: notificationData) { success in
-                    if success {
-                        MiniSheetManager.shared.dismiss()
-                        self.resetSelectedData()
-                    }
+                DataModel.shared.addGoalNotification(self.goal, with: notificationData) {
+                    MiniSheetManager.shared.dismiss()
+                    self.resetSelectedData()
+                    
                 }
             }
         }
@@ -114,11 +113,9 @@ class GoalChangeNotificationModel: ObservableObject {
         GoalNotificationManager.removeNotifications(with: notification.id, of: self.goal)
         GoalNotificationManager.sceduleNotifications(with: notificationData, of: self.goal) { error in
             if error == nil {
-                DataModel.shared.editGoalNotification(notification, with: notificationData) { success in
-                    if success {
-                        MiniSheetManager.shared.dismiss()
-                        self.resetSelectedData()
-                    }
+                DataModel.shared.editGoalNotification(notification, with: notificationData) {
+                    MiniSheetManager.shared.dismiss()
+                    self.resetSelectedData()
                 }
             }
         }
@@ -128,11 +125,9 @@ class GoalChangeNotificationModel: ObservableObject {
     func deleteButtonPressed(with notification: GoalNotification) {
         GoalNotificationManager.removeNotifications(with: notification.id, of: self.goal)
         
-        DataModel.shared.removeGoalNotification(notification, of: goal) { success in
-            if success {
-                MiniSheetManager.shared.dismiss()
-                self.resetSelectedData()
-            }
+        DataModel.shared.removeGoalNotification(notification, of: goal) {
+            MiniSheetManager.shared.dismiss()
+            self.resetSelectedData()
         }
     }
     

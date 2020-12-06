@@ -91,6 +91,7 @@
 		3D6373E5257B570B001C3585 /* GoalCreateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6373E4257B570B001C3585 /* GoalCreateTests.swift */; };
 		3D6373FF257B9A8B001C3585 /* AddEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6373FE257B9A8B001C3585 /* AddEntry.swift */; };
 		3D637407257BE643001C3585 /* Sounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D637406257BE643001C3585 /* Sounds.swift */; };
+		3D63742B257C9C43001C3585 /* GoalEditTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D63742A257C9C43001C3585 /* GoalEditTests.swift */; };
 		3D68B65E25721C9000A183F5 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68B65D25721C9000A183F5 /* LocalNotificationManager.swift */; };
 		3D68B666257223C000A183F5 /* GoalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68B665257223C000A183F5 /* GoalNotificationManager.swift */; };
 		3D68B66A2572281400A183F5 /* OneSAuthorizationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D68B6692572281400A183F5 /* OneSAuthorizationStatus.swift */; };
@@ -292,6 +293,7 @@
 		3D6373E4257B570B001C3585 /* GoalCreateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCreateTests.swift; sourceTree = "<group>"; };
 		3D6373FE257B9A8B001C3585 /* AddEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEntry.swift; sourceTree = "<group>"; };
 		3D637406257BE643001C3585 /* Sounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sounds.swift; sourceTree = "<group>"; };
+		3D63742A257C9C43001C3585 /* GoalEditTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEditTests.swift; sourceTree = "<group>"; };
 		3D68B65925721C3D00A183F5 /* 1 Step.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "1 Step.entitlements"; sourceTree = "<group>"; };
 		3D68B65D25721C9000A183F5 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
 		3D68B665257223C000A183F5 /* GoalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalNotificationManager.swift; sourceTree = "<group>"; };
@@ -809,6 +811,7 @@
 			isa = PBXGroup;
 			children = (
 				3D6373E4257B570B001C3585 /* GoalCreateTests.swift */,
+				3D63742A257C9C43001C3585 /* GoalEditTests.swift */,
 			);
 			path = BaseData;
 			sourceTree = "<group>";
@@ -1322,6 +1325,7 @@
 			files = (
 				3D6373E5257B570B001C3585 /* GoalCreateTests.swift in Sources */,
 				3D59DE8625694F0C00CF24D7 /* GoalTestsModel.swift in Sources */,
+				3D63742B257C9C43001C3585 /* GoalEditTests.swift in Sources */,
 				3D59DE8C2569510500CF24D7 /* TestsHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1622,7 +1626,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1678,7 +1682,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

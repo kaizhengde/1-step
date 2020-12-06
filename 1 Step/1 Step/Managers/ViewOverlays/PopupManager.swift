@@ -93,7 +93,9 @@ final class PopupManager: ViewOverlayManagerProtocol {
     //MARK: - Dismiss
     
     func dismiss() {
-        dismissed.send(currentKey)
+        if let key = currentKey {
+            dismissed.send(key)
+        }
         defaultDismiss()
     }
     

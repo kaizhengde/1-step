@@ -43,7 +43,7 @@ final class GoalCreateModel: ObservableObject, GoalSelectMountainDelegate, GoalE
         )
         
         DataModel.shared.createGoal(with: baseData) {
-            if $0 { MainModel.shared.toScreen(.goals) }
+            MainModel.shared.toScreen(.goals)
         }
     }
     
