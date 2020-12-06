@@ -78,11 +78,6 @@ enum GoalBaseDataHandler {
                 milestone.endDate           = nil
                 milestone.parentGoal        = goal
                 
-                print("---------------------------")
-                print("Title: \(milestone.neededStepUnits) \(goal.step.unit)")
-                print("Steps: \(milestone.neededSteps)")
-                print("Ratio: \(goal.step.unitRatio)")
-                
                 milestones.insert(milestone)
             }
         }
@@ -100,12 +95,7 @@ enum GoalBaseDataHandler {
         summitMilestone.parentGoal      = goal
         
         milestones.insert(summitMilestone)
-        
-        print("-----------Summit-----------")
-        print("Title: \(summitMilestone.neededStepUnits) \(goal.step.unit)")
-        print("Steps: \(summitMilestone.neededSteps)")
-        print("Ratio: \(goal.step.unitRatio)")
-        
+
         
         //6. Assign images and stepsFromPrev to all milestones
         

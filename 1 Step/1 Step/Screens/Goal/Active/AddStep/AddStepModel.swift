@@ -56,25 +56,46 @@ class AddStepModel: ObservableObject {
     func addButtonPressed() {
         if pickerStopped {
             OneSFeedback.light()
+            dragState = .hidden
             
-            switch tryAddStepsAndHide() {
-            case .goalReached:
-                dragState = .hidden
-                addStepAnimationHandler.startGoalReached()
-            case let .milestoneChange(forward: forward):
-                addStepAnimationHandler.startMilestoneChange(forward: forward)
-            case let .normal(forward: forward):
-                addStepAnimationHandler.startNormalAdd(forward: forward)
+            let addStepsResult = addStepsAndCalculateResult()
+            
+            switch addStepsResult {
+            case .goalReached:                              addStepAnimationHandler.startGoalReached()
+            case let .milestoneChange(forward: forward):    addStepAnimationHandler.startMilestoneChange(forward: forward)
+            case let .normal(forward: forward):             addStepAnimationHandler.startNormalAdd(forward: forward)
             case .none: return
             }
         }
     }
     
     
-    private func tryAddStepsAndHide() -> AddStepsResult {
+    private func addStepsAndCalculateResult() -> AddStepsResult {
         
         //Calculate stepUnits to be added
+        let newStepUnits = calculateStepUnitsToBeAdded()
         
+        //Determine AddStepsResult
+        let addStepsResult = getAddStepsResult(with: newStepUnits)
+        
+        //Save changed to CoreData
+        if addStepsResult.isMilestoneChange {
+            DispatchQueue.main.asyncAfter(deadline: .now() + addStepAnimationHandler.after(milestoneChangeState: .closeFinished)) {
+                DataModel.shared.addSteps(self.goal, with: newStepUnits) { 
+                    GoalModel.shared.objectWillChange.send()
+                }
+            }
+        } else {
+            DataModel.shared.addSteps(self.goal, with: newStepUnits) {
+                GoalModel.shared.objectWillChange.send()
+            }
+        }
+        
+        return addStepsResult
+    }
+    
+    
+    private func calculateStepUnitsToBeAdded() -> Double {
         var stepAddArray        = goal.step.addArray
         var stepAddArrayDual    = goal.step.addArrayDual
         
@@ -90,60 +111,36 @@ class AddStepModel: ObservableObject {
             selectedStepDual = 0
         }
         
-        let newStepUnits = calculateStepUnitsToBeAdded(Double(stepAddArray.reversed()[selectedStepUnit])!, Double(stepAddArrayDual.reversed()[selectedStepDual])!)
+        let newStepUnitsUnit = Double(stepAddArray.reversed()[selectedStepUnit])!
+        let newStepUnitsDual = Double(stepAddArrayDual.reversed()[selectedStepDual])!
         
-        //Determine AddStepsResult
+        var newStepUnits = newStepUnitsUnit
         
-        let addStepsResult = getAddStepsResult(with: newStepUnits)
-        
-        //Save changed to CoreData
-        
-        if addStepsResult.isMilestoneChange {
-            DispatchQueue.main.asyncAfter(deadline: .now() + addStepAnimationHandler.after(milestoneChangeState: .closeFinished)) {
-                DataModel.shared.addSteps(self.goal, with: newStepUnits) { 
-                    GoalModel.shared.objectWillChange.send()
-                }
-            }
-        } else {
-            DataModel.shared.addSteps(self.goal, with: newStepUnits) {
-                GoalModel.shared.objectWillChange.send()
-            }
+        if goal.step.unit.isDual {
+            newStepUnits += newStepUnitsDual/goal.step.unit.dualRatio
         }
-        
-        //Hide
-        
-        dragState = .hidden
-        
-        return addStepsResult
-    }
-    
-    
-    private func calculateStepUnitsToBeAdded(_ stepUnits: Double, _ stepUnitsDual: Double) -> Double {
-        var newStepUnits = stepUnits
-        if goal.step.unit.isDual { newStepUnits += stepUnitsDual/goal.step.unit.dualRatio }
         
         return newStepUnits
     }
     
     
-    func getAddStepsResult(with newStepUnits: Double) -> AddStepsResult {
+    private func getAddStepsResult(with newStepUnits: Double) -> AddStepsResult {
+        let newCurrentStepUnits = GoalJourneyDataHandler.calculateNewCurrentStepUnits(with: goal, newStepUnits: newStepUnits)
+        
         let currentMilestone = goal.milestones.filter { $0.state == .current }.first!
         let prevMilestoneNeededStepUnits = currentMilestone.neededStepUnits - currentMilestone.stepUnitsFromPrev
         
-        var newCurrentStepUnits = goal.currentStepUnits + newStepUnits
-        
-        if abs(newCurrentStepUnits - newCurrentStepUnits.oneSRounded()) < Double.almostZero {
-            newCurrentStepUnits.oneSRound()
-        }
-        
+        //Goal Reached
         if Int16(newCurrentStepUnits) >= goal.neededStepUnits { return .goalReached }
         
+        //Milestone Change
         if currentMilestone.neededStepUnits <= newCurrentStepUnits {
             return .milestoneChange(forward: true)
         } else if prevMilestoneNeededStepUnits > newCurrentStepUnits && goal.currentStepUnits > 0 {
             return .milestoneChange(forward: false)
         }
         
+        //Steps
         return newStepUnits == 0 ? .none : (newStepUnits > 0 ? .normal(forward: true) : .normal(forward: false))
     }
     

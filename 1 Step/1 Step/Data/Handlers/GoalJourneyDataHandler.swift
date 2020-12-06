@@ -13,15 +13,7 @@ enum GoalJourneyDataHandler {
                 
         //0. Calculate new currentStepUnits - make sure it's rounded and not more than (total)neededStepUnits
         
-        var newCurrentStepUnits = goal.currentStepUnits + newStepUnits
-        
-        if abs(newCurrentStepUnits - newCurrentStepUnits.oneSRounded()) < Double.almostZero {
-            newCurrentStepUnits.oneSRound()
-        }
-                
-        if newCurrentStepUnits > Double(goal.neededStepUnits) {
-            newCurrentStepUnits = Double(goal.neededStepUnits)
-        }
+        let newCurrentStepUnits = calculateNewCurrentStepUnits(with: goal, newStepUnits: newStepUnits)
                     
         
         //1. Update Currents
@@ -66,7 +58,7 @@ enum GoalJourneyDataHandler {
                 PersistenceManager.defaults.context.delete(entry)
             }
         }
-        if newStepUnits != 0 && !goal.addEntries.contains(where: { $0.neededStepUnits == newCurrentStepUnits }) {
+        if newStepUnits != 0 && !goal.addEntries.contains(where: { $0.neededStepUnits == newCurrentStepUnits }) && newCurrentStepUnits > 0 {
             let newAddEntry = AddEntry(context: PersistenceManager.defaults.context)
             
             newAddEntry.newStepUnits    = newStepUnits
@@ -94,15 +86,21 @@ enum GoalJourneyDataHandler {
             }
         }
         
+        print(goal.addEntries.map { $0.neededStepUnits }.sorted())
+    }
+    
+    
+    static func calculateNewCurrentStepUnits(with goal: Goal, newStepUnits: Double) -> Double {
+        var newCurrentStepUnits = goal.currentStepUnits + newStepUnits
         
-        print("-------------")
-        print("Goal:        \(goal.name)")
-        print("StepUnits:   \(goal.currentStepUnits)")
-        print("Steps:       \(goal.currentSteps)")
-        print("Percent:     \(goal.currentPercent)")
-        print("State:       \(goal.currentState.rawValue)")
-        print("StepEntries: \(goal.addEntries.map { $0.neededStepUnits }.sorted())")
-        print("Milestones:  \(goal.milestones.count)")
-        print("-------------")
+        if abs(newCurrentStepUnits - newCurrentStepUnits.oneSRounded()) < Double.almostZero {
+            newCurrentStepUnits.oneSRound()
+        }
+        
+        if newCurrentStepUnits > Double(goal.neededStepUnits) {
+            newCurrentStepUnits = Double(goal.neededStepUnits)
+        }
+        
+        return newCurrentStepUnits
     }
 }
