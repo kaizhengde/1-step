@@ -14,7 +14,7 @@ final class GoalCreateTests: XCTestCase {
         let expectationGeneral  = XCTestExpectation(description: "TestGeneral")
         let expectationHard     = XCTestExpectation(description: "TestHard")
         let expectationBig      = XCTestExpectation(description: "TestBig")
-
+        
         //General
         GoalTestsModel.generateRandomGoals(amount: 100) {
             expectationGeneral.fulfill()
@@ -34,11 +34,11 @@ final class GoalCreateTests: XCTestCase {
         
         
         //Big
-        GoalTestsModel.generateRandomGoals(amount: 300) {
+        GoalTestsModel.generateRandomGoals(amount: 500) {
             expectationBig.fulfill()
         }
         wait(for: [expectationBig], timeout: 60.0)
-        XCTAssertEqual(DataModel.shared.activeGoals.count, 300)
+        XCTAssertEqual(DataModel.shared.activeGoals.count, 500)
         super.invokeTest()
     }
     
