@@ -36,6 +36,9 @@ struct GoalView: View {
                                         .opacity(goalModel.journeyViewDragOpacity)
                                         .opacity(goalModel.showJourneyView ? 1.0 : 0.0)
                                         .padding(.top, -250)
+                                        .onAppear { goalModel.journeyViewDisappeared = false }
+                                        .onDisappear { goalModel.journeyViewDisappeared = true }
+                                    
                                 } else {
                                     Spacer(minLength: 500)
                                 }

@@ -234,6 +234,8 @@ final class GoalModel: TransitionObservableObject {
     
     //onChanged
     
+    @Published var journeyViewDisappeared = true
+    
     private func legalDrag(_ value: DragGesture.Value) -> Bool {
         return (onDragBackward(value) || onDragForward(value)) && transition.isFullAppeared
     }
@@ -245,6 +247,7 @@ final class GoalModel: TransitionObservableObject {
     
     
     private func onDragForward(_ value: DragGesture.Value) -> Bool {
+        if !journeyViewDisappeared && dragState == .menu { return false }
         return value.translation.width >= 0 && leadingEdgeDrag(value)
     }
     
@@ -261,6 +264,7 @@ final class GoalModel: TransitionObservableObject {
     
     private func onToMenu(_ value: DragGesture.Value) -> Bool {
         setScrollPosition.send(.top)
+        showJourneyView = false
         return value.translation.width >= 50 && dragState == .none
     }
     
