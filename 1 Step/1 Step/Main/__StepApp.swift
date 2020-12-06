@@ -31,15 +31,15 @@ struct __StepApp: App {
 
     
     var body: some Scene {
-        WindowGroup {
-            MainView()
-                .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
-                .environment(\.managedObjectContext, persistenceManager.context)
-        }
+//        WindowGroup {
+//            MainView()
+//                .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
+//                .environment(\.managedObjectContext, persistenceManager.context)
+//        }
         
         //Unit Test
-//        WindowGroup {
-//            EmptyView()
-//        }
+        WindowGroup {
+            EmptyView()
+        }
     }
 }

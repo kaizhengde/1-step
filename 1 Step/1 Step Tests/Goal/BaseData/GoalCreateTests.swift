@@ -7,26 +7,52 @@
 
 @testable import __Step
 import XCTest
-import Foundation
 
-class GoalCreateTests: XCTestCase {
+final class GoalCreateTests: XCTestCase {
+    
+    override func invokeTest() {
+        let expectationGeneral  = XCTestExpectation(description: "TestGeneral")
+        let expectationHard     = XCTestExpectation(description: "TestHard")
+        let expectationBig      = XCTestExpectation(description: "TestBig")
+
+        //General
+        GoalTestsModel.generateRandomGoals(amount: 100) {
+            expectationGeneral.fulfill()
+        }
+        wait(for: [expectationGeneral], timeout: 60.0)
+        XCTAssertEqual(DataModel.shared.activeGoals.count, 100)
+        super.invokeTest()
+        
+        
+        //Only Dual Goals (Hard)
+        GoalTestsModel.generateRandomDualGoals(amount: 100) {
+            expectationHard.fulfill()
+        }
+        wait(for: [expectationHard], timeout: 60.0)
+        XCTAssertEqual(DataModel.shared.activeGoals.count, 100)
+        super.invokeTest()
+        
+        
+        //Big
+        GoalTestsModel.generateRandomGoals(amount: 300) {
+            expectationBig.fulfill()
+        }
+        wait(for: [expectationBig], timeout: 60.0)
+        XCTAssertEqual(DataModel.shared.activeGoals.count, 300)
+        super.invokeTest()
+    }
+    
     
     override func setUp() {
-        GoalTestsModel.generateRandomGoals(amount: 100)
         super.setUp()
     }
 
 
     override func tearDown() {
-        GoalTestsModel.deleteAllGoals()
+        let expectationDelete  = XCTestExpectation(description: "Delete")
+        GoalTestsModel.deleteAllGoals { expectationDelete.fulfill() }
+        wait(for: [expectationDelete], timeout: 60.0)
         super.tearDown()
-    }
-    
-    
-    override func invokeTest() {
-        for _ in 0...2 {
-            super.invokeTest()
-        }
     }
     
     
