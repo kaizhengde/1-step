@@ -74,8 +74,11 @@
 			<key>1StepIconEarth</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
-				<array>
-					<string>1StepIconEarth</string>
+                <array>
+                    <string>1StepIconEarth20</string>
+                    <string>1StepIconEarth29</string>
+                    <string>1StepIconEarth40</string>
+                    <string>1StepIconEarth60</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<false/>
@@ -84,7 +87,10 @@
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>1StepIconFire</string>
+					<string>1StepIconFire20</string>
+					<string>1StepIconFire29</string>
+					<string>1StepIconFire40</string>
+					<string>1StepIconFire60</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<false/>
@@ -93,7 +99,10 @@
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>1StepIconAir</string>
+					<string>1StepIconAir20</string>
+					<string>1StepIconAir29</string>
+					<string>1StepIconAir40</string>
+					<string>1StepIconAir60</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<false/>
