@@ -19,25 +19,27 @@ struct PremiumView: View {
             
             ScrollView(showsIndicators: false) {
                 ScrollViewReader { scrollProxy in
-                    VStack(spacing: 32) {
+                    VStack(spacing: 0) {
                         Color.clear.frame(height: 0).id(0)
                         
-                        Group {
-                            OneSHeaderView("Premium", trailingButton: (.close, .grayToBackground, { fullSheetManager.dismiss() }))
-                            
-                            HStack {
-                                OneSSecondaryHeaderText(text: "Achieve every goal", color: UserColor.user0.standard)
-                                Spacer()
+                        VStack(spacing: 32) {
+                            Group {
+                                OneSHeaderView("Premium", trailingButton: (.close, .grayToBackground, { fullSheetManager.dismiss() }))
+                                
+                                HStack {
+                                    OneSSecondaryHeaderText(text: "Achieve every goal", color: UserColor.user0.standard)
+                                    Spacer()
+                                }
+                                
+                                PremiumFeaturesView(viewModel: viewModel)
                             }
+                            .padding(.horizontal, Layout.firstLayerPadding)
                             
-                            PremiumFeaturesView(viewModel: viewModel)
+                            PremiumMountainView(viewModel: viewModel)
                         }
-                        .padding(.horizontal, Layout.firstLayerPadding)
-                        
-                        PremiumMountainView(viewModel: viewModel)
+                        .padding(.bottom, 80*Layout.multiplierHeight)
+                        .onReceive(viewModel.scrollToTop) { withAnimation { scrollProxy.scrollTo(0) } }
                     }
-                    .padding(.bottom, 80*Layout.multiplierHeight)
-                    .onReceive(viewModel.scrollToTop) { withAnimation { scrollProxy.scrollTo(0) } }
                 }
             }
         }
@@ -57,7 +59,9 @@ struct PremiumView: View {
                     .shortBig,
                     title:              "Create unlimited goals",
                     textColor:          viewModel.premiumFeatureRowTextColor(with: viewModel.changeRow.first),
-                    backgroundColor:    viewModel.premiumFeatureRowBackgroundColor(with: viewModel.changeRow.first)
+                    backgroundColor:    viewModel.premiumFeatureRowBackgroundColor(with: viewModel.changeRow.first),
+                    accessorySFSymbol:  viewModel.changeRow.first ? SFSymbol.checkmark : nil,
+                    accessoryColor:     viewModel.premiumFeatureRowAccessoryColor(with: viewModel.changeRow.first)
                 ) {}
                 .oneSAnimation()
                 
@@ -65,7 +69,9 @@ struct PremiumView: View {
                     .shortBig,
                     title:              "Support future updates",
                     textColor:          viewModel.premiumFeatureRowTextColor(with: viewModel.changeRow.second),
-                    backgroundColor:    viewModel.premiumFeatureRowBackgroundColor(with: viewModel.changeRow.second)
+                    backgroundColor:    viewModel.premiumFeatureRowBackgroundColor(with: viewModel.changeRow.second),
+                    accessorySFSymbol:  viewModel.changeRow.second ? SFSymbol.checkmark : nil,
+                    accessoryColor:     viewModel.premiumFeatureRowAccessoryColor(with: viewModel.changeRow.second)
                 ) {}
                 .oneSAnimation(delay: 0.15)
                     
@@ -74,7 +80,7 @@ struct PremiumView: View {
                     title:              "Plant a real tree 🌳",
                     textColor:          viewModel.premiumFeatureRowTextColor(with: viewModel.changeRow.third),
                     backgroundColor:    viewModel.premiumFeatureRowBackgroundColor(with: viewModel.changeRow.third),
-                    accessorySFSymbol:  SFSymbol.info,
+                    accessorySFSymbol:  viewModel.changeRow.third ? SFSymbol.checkmark : SFSymbol.info,
                     accessoryColor:     viewModel.premiumFeatureRowAccessoryColor(with: viewModel.changeRow.third)
                 ) { SheetManager.shared.showSheet { EmptyView() } }
                 .oneSAnimation(delay: 0.3)

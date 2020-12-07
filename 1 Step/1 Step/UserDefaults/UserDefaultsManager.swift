@@ -66,7 +66,7 @@ class UserDefaultsManager: ObservableObject {
     
     @UserDefault(UserDefaultKey.Setting.premium, default: false) var settingPremium: Bool
     @UserDefault(UserDefaultKey.Setting.appearance, default: .mirrorDevice) var settingAppearance: OneSAppearance
-    @UserDefault(UserDefaultKey.Setting.colorTheme, default: .default) var settingColorTheme: OneSColorTheme
+    @UserDefault(UserDefaultKey.Setting.colorTheme, default: .water) var settingColorTheme: OneSColorTheme
     @UserDefault(UserDefaultKey.Setting.iCloudSynch, default: false) var settingICloudSynch: Bool
     
     

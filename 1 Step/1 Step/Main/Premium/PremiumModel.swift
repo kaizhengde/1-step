@@ -51,8 +51,8 @@ final class PremiumModel: ObservableObject {
     
     typealias PremiumItemData = (price: String, color: Color)
     
-    let firstPremiumItem: PremiumItemData  = ("€ 7.99", UserColor.user0.standard)
-    let secondPremiumItem: PremiumItemData = ("€ 10.49", UserColor.user1.standard)
+    let firstPremiumItem: PremiumItemData  = ("€ 7.99", UserColor.user1.standard)
+    let secondPremiumItem: PremiumItemData = ("€ 10.49", UserColor.user0.standard)
     
     
     func premiumItemTapped(with item: PremiumItemData) {

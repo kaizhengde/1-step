@@ -11,32 +11,36 @@ typealias OneSColorThemeType = (standard: Color, light: Color, dark: Color)
 
 enum OneSColorTheme: String, Codable, CaseIterable {
     
-    case `default`  = "Default"
-    case pastel     = "Mountain lake"
-    case garden     = "Garden"
+    case water  = "Water"
+    case earth  = "Earth"
+    case fire   = "Fire"
+    case air    = "Air"
     
     
     var color0: OneSColorThemeType {
         switch self {
-        case .default:  return Default.color0
-        case .pastel:   return Pastel.color0
-        case .garden:   return Garden.color0
+        case .water: return Water.color0
+        case .earth: return Earth.color0
+        case .fire:  return Fire.color0
+        case .air:   return Air.color0
         }
     }
     
     var color1: OneSColorThemeType {
         switch self {
-        case .default:  return Default.color1
-        case .pastel:   return Pastel.color1
-        case .garden:   return Garden.color1
+        case .water: return Water.color1
+        case .earth: return Earth.color1
+        case .fire:  return Fire.color1
+        case .air:   return Air.color1
         }
     }
     
     var color2: OneSColorThemeType {
         switch self {
-        case .default:  return Default.color2
-        case .pastel:   return Pastel.color2
-        case .garden:   return Garden.color2
+        case .water: return Water.color2
+        case .earth: return Earth.color2
+        case .fire:  return Fire.color2
+        case .air:   return Air.color2
         }
     }
 }

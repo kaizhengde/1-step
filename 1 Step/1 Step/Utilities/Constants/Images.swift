@@ -97,44 +97,50 @@ extension MountainImage {
     
     enum Goal {
         
-        static let mountain0        = Image("Mountain0")
-        static let mountain1        = Image("Mountain1")
-        static let mountain2        = Image("Mountain2")
+        static let mountain0    = Image("Mountain0")
+        static let mountain1    = Image("Mountain1")
+        static let mountain2    = Image("Mountain2")
     }
     
     
     enum Flag {
         
-        static let whole            = Image("Flag")
-        static let line             = Image("FlagLine")
-        static let top              = Image("FlagFlag")
+        static let whole        = Image("Flag")
+        static let line         = Image("FlagLine")
+        static let top          = Image("FlagFlag")
     }
     
     
     enum Premium {
         
-        static let defaultLight     = Image("MountainPremiumDefaultLight")
-        static let defaultDark      = Image("MountainPremiumDefaultDark")
+        static let waterLight   = Image("MountainPremiumWaterLight")
+        static let waterDark    = Image("MountainPremiumWaterDark")
             
-        static let pastelLight      = Image("MountainPremiumPastelLight")
-        static let pastelDark       = Image("MountainPremiumPastelDark")
+        static let earthLight   = Image("MountainPremiumEarthLight")
+        static let earthDark    = Image("MountainPremiumEarthDark")
+           
+        static let fireLight    = Image("MountainPremiumFireLight")
+        static let fireDark     = Image("MountainPremiumFireDark")
+        
+        static let airLight     = Image("MountainPremiumAirLight")
+        static let airDark      = Image("MountainPremiumAirDark")
             
-        static let fallLight        = Image("MountainPremiumFallLight")
-        static let fallDark         = Image("MountainPremiumFallDark")
         
         static var currentLight: Image {
             switch UserDefaultsManager.shared.settingColorTheme {
-            case .default:          return defaultLight
-            case .pastel:           return pastelLight
-            case .garden:             return fallLight
+            case .water:    return waterLight
+            case .earth:    return earthLight
+            case .fire:     return fireLight
+            case .air:      return airLight
             }
         }
         
         static var currentDark: Image {
             switch UserDefaultsManager.shared.settingColorTheme {
-            case .default:          return defaultDark
-            case .pastel:           return pastelDark
-            case .garden:             return fallDark
+            case .water:    return waterDark
+            case .earth:    return earthDark
+            case .fire:     return fireDark
+            case .air:      return airDark
             }
         }
     }

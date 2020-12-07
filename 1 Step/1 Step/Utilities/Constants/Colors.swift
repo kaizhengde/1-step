@@ -37,24 +37,31 @@ extension Color {
 
 extension OneSColorTheme {
     
-    enum Default {
-        static let color0 = (standard: Color("Default0"), light: Color("Default0Light"), dark: Color("Default0Dark"))
-        static let color1 = (standard: Color("Default1"), light: Color("Default1Light"), dark: Color("Default1Dark"))
-        static let color2 = (standard: Color("Default2"), light: Color("Default2Light"), dark: Color("Default2Dark"))
+    enum Water {
+        static let color0 = (standard: Color("Water0"), light: Color("Water0Light"), dark: Color("Water0Dark"))
+        static let color1 = (standard: Color("Water1"), light: Color("Water1Light"), dark: Color("Water1Dark"))
+        static let color2 = (standard: Color("Water2"), light: Color("Water2Light"), dark: Color("Water2Dark"))
     }
 
     
-    enum Pastel {
-        static let color0 = (standard: Color("Pastel0"), light: Color("Pastel0Light"), dark: Color("Pastel0Dark"))
-        static let color1 = (standard: Color("Pastel1"), light: Color("Pastel1Light"), dark: Color("Pastel1Dark"))
-        static let color2 = (standard: Color("Pastel2"), light: Color("Pastel2Light"), dark: Color("Pastel2Dark"))
+    enum Earth {
+        static let color0 = (standard: Color("Earth0"), light: Color("Earth0Light"), dark: Color("Earth0Dark"))
+        static let color1 = (standard: Color("Earth1"), light: Color("Earth1Light"), dark: Color("Earth1Dark"))
+        static let color2 = (standard: Color("Earth2"), light: Color("Earth2Light"), dark: Color("Earth2Dark"))
     }
     
     
-    enum Garden {
-        static let color0 = (standard: Color("Garden0"), light: Color("Garden0Light"), dark: Color("Garden0Dark"))
-        static let color1 = (standard: Color("Garden1"), light: Color("Garden1Light"), dark: Color("Garden1Dark"))
-        static let color2 = (standard: Color("Garden2"), light: Color("Garden2Light"), dark: Color("Garden2Dark"))
+    enum Fire {
+        static let color0 = (standard: Color("Fire0"), light: Color("Fire0Light"), dark: Color("Fire0Dark"))
+        static let color1 = (standard: Color("Fire1"), light: Color("Fire1Light"), dark: Color("Fire1Dark"))
+        static let color2 = (standard: Color("Fire2"), light: Color("Fire2Light"), dark: Color("Fire2Dark"))
+    }
+    
+    
+    enum Air {
+        static let color0 = (standard: Color("Air0"), light: Color("Air0Light"), dark: Color("Air0Dark"))
+        static let color1 = (standard: Color("Air1"), light: Color("Air1Light"), dark: Color("Air1Dark"))
+        static let color2 = (standard: Color("Air2"), light: Color("Air2Light"), dark: Color("Air2Dark"))
     }
 }
 
