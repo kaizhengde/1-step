@@ -130,7 +130,7 @@ extension MountainImage {
             switch UserDefaultsManager.shared.settingColorTheme {
             case .water:    return waterLight
             case .earth:    return earthLight
-            case .fire:     return fireLight
+            //case .fire:     return fireLight
             case .air:      return airLight
             }
         }
@@ -139,7 +139,7 @@ extension MountainImage {
             switch UserDefaultsManager.shared.settingColorTheme {
             case .water:    return waterDark
             case .earth:    return earthDark
-            case .fire:     return fireDark
+            //case .fire:     return fireDark
             case .air:      return airDark
             }
         }
