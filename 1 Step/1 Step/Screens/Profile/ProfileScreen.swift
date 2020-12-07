@@ -48,7 +48,11 @@ struct ProfileScreen: View {
                     OneSFootnoteButton(text: "Credits", color: UserColor.user2.standard) {
                         SheetManager.shared.showSheet { CreditsView() }
                     }
-                    OneSFootnoteButton(text: "Terms of use", color: UserColor.user2.standard) {}
+                    OneSFootnoteButton(text: "Terms of use", color: UserColor.user2.standard) {
+                        SheetManager.shared.showSheet {
+                            OneSSafariView(urlString: "https://www.kaizheng.de/terms-of-use/", tintColor: UserColor.user2.standard)
+                        }
+                    }
                 }
                 .padding(.top, 20)
             }

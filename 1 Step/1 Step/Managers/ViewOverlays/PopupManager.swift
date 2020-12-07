@@ -26,6 +26,9 @@ enum PopupKey {
     //MARK: - Authorization
     case photoLibraryNoAccess
     case notificationsNoAccess
+    
+    //MARK: - Premium
+    case premiumPurchased
 }
 
 

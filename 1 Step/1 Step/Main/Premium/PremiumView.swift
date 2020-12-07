@@ -18,26 +18,31 @@ struct PremiumView: View {
             Color.backgroundToGray.edgesIgnoringSafeArea(.all)
             
             ScrollView(showsIndicators: false) {
-                VStack(spacing: 32) {
-                    Group {
-                        OneSHeaderView("Premium", trailingButton: (.close, .grayToBackground, { fullSheetManager.dismiss() }))
+                ScrollViewReader { scrollProxy in
+                    VStack(spacing: 32) {
+                        Color.clear.frame(height: 0).id(0)
                         
-                        HStack {
-                            OneSSecondaryHeaderText(text: "Achieve every goal", color: UserColor.user0.standard)
-                            Spacer()
+                        Group {
+                            OneSHeaderView("Premium", trailingButton: (.close, .grayToBackground, { fullSheetManager.dismiss() }))
+                            
+                            HStack {
+                                OneSSecondaryHeaderText(text: "Achieve every goal", color: UserColor.user0.standard)
+                                Spacer()
+                            }
+                            
+                            PremiumFeaturesView(viewModel: viewModel)
                         }
+                        .padding(.horizontal, Layout.firstLayerPadding)
                         
-                        PremiumFeaturesView(viewModel: viewModel)
+                        PremiumMountainView(viewModel: viewModel)
                     }
-                    .padding(.horizontal, Layout.firstLayerPadding)
-                    
-                    PremiumMountainView(viewModel: viewModel)
+                    .padding(.bottom, 80*Layout.multiplierHeight)
+                    .onReceive(viewModel.scrollToTop) { withAnimation { scrollProxy.scrollTo(0) } }
                 }
-                .padding(.bottom, 80*Layout.multiplierHeight)
             }
         }
         .oneSAnimation()
-        .onAppear { viewModel.initTransition() }
+        .onReceive(PopupManager.shared.dismissed) { viewModel.dismiss(with: $0) }
     }
     
     
@@ -48,9 +53,31 @@ struct PremiumView: View {
         
         var body: some View {
             VStack(alignment: .leading, spacing: 16) {
-                OneSRowButton(.shortBig, title: "Create unlimited goals") {}
-                OneSRowButton(.shortBig, title: "Support future updates") {}
-                OneSRowButton(.shortBig, title: "Plant a real tree 🌳", accessorySFSymbol: SFSymbol.info, accessoryColor: .neutralToDarkNeutral) {}
+                OneSRowButton(
+                    .shortBig,
+                    title:              "Create unlimited goals",
+                    textColor:          viewModel.premiumFeatureRowTextColor(with: viewModel.changeRow.first),
+                    backgroundColor:    viewModel.premiumFeatureRowBackgroundColor(with: viewModel.changeRow.first)
+                ) {}
+                .oneSAnimation()
+                
+                OneSRowButton(
+                    .shortBig,
+                    title:              "Support future updates",
+                    textColor:          viewModel.premiumFeatureRowTextColor(with: viewModel.changeRow.second),
+                    backgroundColor:    viewModel.premiumFeatureRowBackgroundColor(with: viewModel.changeRow.second)
+                ) {}
+                .oneSAnimation(delay: 0.15)
+                    
+                OneSRowButton(
+                    .shortBig,
+                    title:              "Plant a real tree 🌳",
+                    textColor:          viewModel.premiumFeatureRowTextColor(with: viewModel.changeRow.third),
+                    backgroundColor:    viewModel.premiumFeatureRowBackgroundColor(with: viewModel.changeRow.third),
+                    accessorySFSymbol:  SFSymbol.info,
+                    accessoryColor:     viewModel.premiumFeatureRowAccessoryColor(with: viewModel.changeRow.third)
+                ) { SheetManager.shared.showSheet { EmptyView() } }
+                .oneSAnimation(delay: 0.3)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
         }
@@ -76,6 +103,8 @@ struct PremiumView: View {
                     .resizable()
                     .frame(width: Layout.screenWidth, height: MountainLayout.premiumHeight)
                     .aspectRatio(contentMode: .fit)
+                    .oneSItemTransition()
+                    .oneSAnimation(delay: 0.3)
                 
                 MountainContentView(viewModel: viewModel)
                     .padding(.top, MountainLayout.premiumHeight-100*Layout.multiplierWidth)
@@ -88,6 +117,7 @@ struct PremiumView: View {
         
         private struct MountainContentView: View {
             
+            @StateObject private var sheetManager = SheetManager.shared
             @ObservedObject var viewModel: PremiumModel
             
             
@@ -96,8 +126,8 @@ struct PremiumView: View {
                     OneSText(text: "You choose the price", font: .custom(.bold, 24), color: .grayToBackground)
                     
                     HStack(spacing: 12) {
-                        PremiumItem(price: "€ 7.99", backgroundColor: UserColor.user1.standard)
-                        PremiumItem(price: "€ 10.49", backgroundColor: UserColor.user0.standard)
+                        PremiumItem(viewModel: viewModel, item: viewModel.firstPremiumItem)
+                        PremiumItem(viewModel: viewModel, item: viewModel.secondPremiumItem)
                     }
                     .padding(.bottom, 40)
                     
@@ -111,8 +141,16 @@ struct PremiumView: View {
                         .padding(.top, 20)
                     
                     HStack(spacing: 24) {
-                        OneSFootnoteButton(text: "Privacy policy", color: UserColor.user0.standard) {}
-                        OneSFootnoteButton(text: "Terms of use", color: UserColor.user0.standard) {}
+                        OneSFootnoteButton(text: "Privacy policy", color: UserColor.user0.standard) {
+                            sheetManager.showSheet {
+                                OneSSafariView(urlString: WebsiteURLString.privacyPolicy, tintColor: UserColor.user2.standard)
+                            }
+                        }
+                        OneSFootnoteButton(text: "Terms of use", color: UserColor.user0.standard) {
+                            sheetManager.showSheet {
+                                OneSSafariView(urlString: WebsiteURLString.termsOfUse, tintColor: UserColor.user2.standard)
+                            }
+                        }
                         Spacer()
                     }
                 }
@@ -122,33 +160,36 @@ struct PremiumView: View {
             
             private struct PremiumItem: View {
                 
-                let price: String
-                let backgroundColor: Color
+                @ObservedObject var viewModel: PremiumModel
+                
+                let item: PremiumModel.PremiumItemData
                 
                 
                 var body: some View {
-                    VStack {
-                        HStack {
-                            VStack(alignment: .leading, spacing: 3) {
-                                OneSText(text: "Premium", font: .custom(.semiBold, 22), color: .whiteToDarkGray)
-                                OneSText(text: "LIFETIME", font: .custom(.extraBold, 10), color: .whiteToDarkGray)
+                    Button(action: { viewModel.premiumItemTapped(with: item) }) {
+                        VStack {
+                            HStack {
+                                VStack(alignment: .leading, spacing: 3) {
+                                    OneSText(text: "Premium", font: .custom(.semiBold, 22), color: .whiteToDarkGray)
+                                    OneSText(text: "LIFETIME", font: .custom(.extraBold, 10), color: .whiteToDarkGray)
+                                }
+                                Spacer()
                             }
+                            
                             Spacer()
+                            
+                            OneSText(text: item.price, font: .custom(.extraBold, 28), color: .whiteToDarkGray)
                         }
-                        
-                        Spacer()
-                        
-                        OneSText(text: price, font: .custom(.extraBold, 28), color: .whiteToDarkGray)
+                        .padding(.vertical, 20)
+                        .padding(.horizontal, 16)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 140*Layout.multiplierWidth)
+                        .background(item.color)
+                        .cornerRadius(10)
+                        .oneSShadow(opacity: 0.1, blur: 10)
+                        .oneSItemTransition()
                     }
-                    .padding(.vertical, 20)
-                    .padding(.horizontal, 16)
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 140*Layout.multiplierWidth)
-                    .background(backgroundColor)
-                    .cornerRadius(10)
-                    .oneSShadow(opacity: 0.1, blur: 10)
-                    .oneSItemTapScale()
-                    .oneSItemTransition()
+                    .oneSButtonScaleStyle()
                 }
             }
         }

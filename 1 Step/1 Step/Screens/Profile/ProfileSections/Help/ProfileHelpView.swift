@@ -98,7 +98,9 @@ struct ProfileHelpView: View {
             VStack(alignment: .leading, spacing: 20) {
                 OneSMultilineText(text: "You didn’t find the answer to your question or would like to make a suggestion? Feel free to contact me!")
                 
-                OneSRowButton(.shortBig, title: "Contact me", textColor: .backgroundToGray, backgroundColor: profileModel.section1Color) {}
+                OneSRowButton(.shortBig, title: "Contact me", textColor: .backgroundToGray, backgroundColor: profileModel.section1Color) {
+                    
+                }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.top, 30)

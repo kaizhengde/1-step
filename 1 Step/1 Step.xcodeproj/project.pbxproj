@@ -134,6 +134,7 @@
 		3DAE7AE425309D0F00B162B1 /* FloaterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE7AE325309D0F00B162B1 /* FloaterManager.swift */; };
 		3DAE7AE725309DBB00B162B1 /* OneSFloater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE7AE625309DBB00B162B1 /* OneSFloater.swift */; };
 		3DAE7AEB2530A3E600B162B1 /* OneSTextFloater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE7AEA2530A3E600B162B1 /* OneSTextFloater.swift */; };
+		3DBCC6B5257DF61C00924652 /* URLStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBCC6B4257DF61C00924652 /* URLStrings.swift */; };
 		3DC617262544145C00A1F204 /* InfiniteAnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC617252544145C00A1F204 /* InfiniteAnimationManager.swift */; };
 		3DC6172C2544882B00A1F204 /* MilestoneStages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC6172B2544882B00A1F204 /* MilestoneStages.swift */; };
 		3DCA909A254546690030FE61 /* AddStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA9099254546690030FE61 /* AddStepView.swift */; };
@@ -337,6 +338,7 @@
 		3DAE7AE325309D0F00B162B1 /* FloaterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloaterManager.swift; sourceTree = "<group>"; };
 		3DAE7AE625309DBB00B162B1 /* OneSFloater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSFloater.swift; sourceTree = "<group>"; };
 		3DAE7AEA2530A3E600B162B1 /* OneSTextFloater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSTextFloater.swift; sourceTree = "<group>"; };
+		3DBCC6B4257DF61C00924652 /* URLStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLStrings.swift; sourceTree = "<group>"; };
 		3DC617252544145C00A1F204 /* InfiniteAnimationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfiniteAnimationManager.swift; sourceTree = "<group>"; };
 		3DC6172B2544882B00A1F204 /* MilestoneStages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneStages.swift; sourceTree = "<group>"; };
 		3DCA9099254546690030FE61 /* AddStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStepView.swift; sourceTree = "<group>"; };
@@ -653,6 +655,7 @@
 				3D2E7932252F9CFA00788AA2 /* Duration.swift */,
 				3D47CC90252C71EA00A8CA1B /* CoordinateSpace.swift */,
 				3D637406257BE643001C3585 /* Sounds.swift */,
+				3DBCC6B4257DF61C00924652 /* URLStrings.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -1414,6 +1417,7 @@
 				3D5156BC2531FB7E00A44450 /* MiniSheetManager.swift in Sources */,
 				3D959AA325631199007BAA07 /* OneSBackgroundMultilineText.swift in Sources */,
 				3D6FDDB92567808B002854E6 /* OneSRowButton.swift in Sources */,
+				3DBCC6B5257DF61C00924652 /* URLStrings.swift in Sources */,
 				3DFDE07A253C8800006B1A7E /* SheetManager.swift in Sources */,
 				3DA7BD3A2532F6A600171360 /* DataManager.swift in Sources */,
 				3D6FDDDF2567B6E2002854E6 /* ItemTransition.swift in Sources */,

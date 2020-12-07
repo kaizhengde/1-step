@@ -13,7 +13,7 @@ struct GoalCreateItem: View {
     
     
     var body: some View {
-        Button(action: { mainModel.toScreen(.goalAdd) }) {
+        Button(action: createItemTapped) {
             SFSymbol.plus
                 .font(OneSFont.custom(.light, 40).font)
                 .foregroundColor(.lightNeutralToLightGray)
@@ -23,6 +23,17 @@ struct GoalCreateItem: View {
                     RoundedRectangle(cornerRadius: 12)
                         .stroke(Color.lightNeutralToLightGray.opacity(0.5), lineWidth: 1)
                 )
+        }
+    }
+    
+    
+    private func createItemTapped() {
+        if UserDefaultsManager.shared.settingPremium || DataModel.shared.activeGoals.count <= 1 {
+            mainModel.toScreen(.goalAdd)
+        } else {
+            FullSheetManager.shared.showFullSheet {
+                PremiumView()
+            }
         }
     }
 }

@@ -53,10 +53,7 @@ struct ProfileAppSectionView: View {
                     backgroundColor: profileModel.appSelectedRowBackgroundColor(premium),
                     accessoryText: profileModel.appSelectedRowAccessoryText(premium, enabled: "Yes!", disabled: "No"),
                     accessoryColor: profileModel.appSelectedRowAccessoryColor(premium),
-                    action: {
-                        if premium { ConfettiManager.shared.showConfetti(amount: .small) }
-                        else { FullSheetManager.shared.showFullSheet { PremiumView() } }
-                    }
+                    action: { FullSheetManager.shared.showFullSheet { PremiumView() } }
                 )
                                 
                 OneSRowButton(
@@ -146,7 +143,11 @@ struct ProfileAppSectionView: View {
                                 
                 OneSRowButton(.shortSmall, title: "Delete all data") {}
                 
-                OneSRowButton(.shortSmall, title: "Privacy Policy") {}
+                OneSRowButton(.shortSmall, title: "Privacy Policy") {
+                    SheetManager.shared.showSheet {
+                        OneSSafariView(urlString: WebsiteURLString.privacyPolicy, tintColor: profileModel.section1Color)
+                    }
+                }
             }
         }
     }
