@@ -98,7 +98,10 @@ struct ProfileAppSectionView: View {
                                     Binding<Bool>(get: { selectedColorTheme == colorTheme }, set: { _ in }),
                                     title: colorTheme.rawValue,
                                     selectedColor: profileModel.section1Color,
-                                    action: { userDefaultsManager.settingColorTheme = colorTheme }
+                                    action: {
+                                        userDefaultsManager.settingColorTheme = colorTheme
+                                        AppModel.setAppIcon(with: colorTheme.appIcon)
+                                    }
                                 )
                             }
                         }
@@ -152,3 +155,6 @@ struct ProfileAppSectionView: View {
         }
     }
 }
+
+
+

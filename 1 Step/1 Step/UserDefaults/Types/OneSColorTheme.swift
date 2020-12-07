@@ -43,6 +43,15 @@ enum OneSColorTheme: String, Codable, CaseIterable {
         case .air:   return Air.color2
         }
     }
+    
+    var appIcon: String? {
+        switch self {
+        case .water: return nil
+        case .earth: return "1StepIconEarth"
+        case .fire:  return "1StepIconFire"
+        case .air:   return "1StepIconAir"
+        }
+    }
 }
 
 extension OneSColorTheme: UserDefaultType {}

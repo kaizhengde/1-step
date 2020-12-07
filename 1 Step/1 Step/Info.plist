@@ -58,5 +58,47 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>CFBundleIcons</key>
+	<dict>
+		<key>CFBundlePrimaryIcon</key>
+		<dict>
+			<key>CFBundleIconFiles</key>
+			<array>
+				<string>1StepIcon</string>
+			</array>
+			<key>UIPrerenderedIcon</key>
+			<false/>
+		</dict>
+		<key>CFBundleAlternateIcons</key>
+		<dict>
+			<key>1StepIconEarth</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>1StepIconEarth</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>1StepIconFire</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>1StepIconFire</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>1StepIconAir</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>1StepIconAir</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+		</dict>
+	</dict>
 </dict>
 </plist>

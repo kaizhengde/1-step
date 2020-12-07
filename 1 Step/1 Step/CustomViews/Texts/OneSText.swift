@@ -27,7 +27,6 @@ struct OneSText: View {
             .font(font.font)
             .foregroundColor(color)
             .multilineTextAlignment(alignment)
-        
     }
 }
 

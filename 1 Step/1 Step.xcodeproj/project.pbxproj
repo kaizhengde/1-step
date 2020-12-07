@@ -135,6 +135,12 @@
 		3DAE7AE725309DBB00B162B1 /* OneSFloater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE7AE625309DBB00B162B1 /* OneSFloater.swift */; };
 		3DAE7AEB2530A3E600B162B1 /* OneSTextFloater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE7AEA2530A3E600B162B1 /* OneSTextFloater.swift */; };
 		3DBCC6B5257DF61C00924652 /* URLStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBCC6B4257DF61C00924652 /* URLStrings.swift */; };
+		3DBCC72C257E912200924652 /* 1StepIconEarth@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DBCC726257E912200924652 /* 1StepIconEarth@2x.png */; };
+		3DBCC72D257E912200924652 /* 1StepIconEarth@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DBCC727257E912200924652 /* 1StepIconEarth@3x.png */; };
+		3DBCC72E257E912200924652 /* 1StepIconAir@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DBCC728257E912200924652 /* 1StepIconAir@2x.png */; };
+		3DBCC72F257E912200924652 /* 1StepIconAir@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DBCC729257E912200924652 /* 1StepIconAir@3x.png */; };
+		3DBCC730257E912200924652 /* 1StepIconFire@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DBCC72A257E912200924652 /* 1StepIconFire@2x.png */; };
+		3DBCC731257E912200924652 /* 1StepIconFire@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DBCC72B257E912200924652 /* 1StepIconFire@3x.png */; };
 		3DC617262544145C00A1F204 /* InfiniteAnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC617252544145C00A1F204 /* InfiniteAnimationManager.swift */; };
 		3DC6172C2544882B00A1F204 /* MilestoneStages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC6172B2544882B00A1F204 /* MilestoneStages.swift */; };
 		3DCA909A254546690030FE61 /* AddStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCA9099254546690030FE61 /* AddStepView.swift */; };
@@ -339,6 +345,12 @@
 		3DAE7AE625309DBB00B162B1 /* OneSFloater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSFloater.swift; sourceTree = "<group>"; };
 		3DAE7AEA2530A3E600B162B1 /* OneSTextFloater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSTextFloater.swift; sourceTree = "<group>"; };
 		3DBCC6B4257DF61C00924652 /* URLStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLStrings.swift; sourceTree = "<group>"; };
+		3DBCC726257E912200924652 /* 1StepIconEarth@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "1StepIconEarth@2x.png"; path = "../../../Design/Assets/Icons/1StepIconEarth@2x.png"; sourceTree = "<group>"; };
+		3DBCC727257E912200924652 /* 1StepIconEarth@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "1StepIconEarth@3x.png"; path = "../../../Design/Assets/Icons/1StepIconEarth@3x.png"; sourceTree = "<group>"; };
+		3DBCC728257E912200924652 /* 1StepIconAir@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "1StepIconAir@2x.png"; path = "../../../Design/Assets/Icons/1StepIconAir@2x.png"; sourceTree = "<group>"; };
+		3DBCC729257E912200924652 /* 1StepIconAir@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "1StepIconAir@3x.png"; path = "../../../Design/Assets/Icons/1StepIconAir@3x.png"; sourceTree = "<group>"; };
+		3DBCC72A257E912200924652 /* 1StepIconFire@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "1StepIconFire@2x.png"; path = "../../../Design/Assets/Icons/1StepIconFire@2x.png"; sourceTree = "<group>"; };
+		3DBCC72B257E912200924652 /* 1StepIconFire@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "1StepIconFire@3x.png"; path = "../../../Design/Assets/Icons/1StepIconFire@3x.png"; sourceTree = "<group>"; };
 		3DC617252544145C00A1F204 /* InfiniteAnimationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfiniteAnimationManager.swift; sourceTree = "<group>"; };
 		3DC6172B2544882B00A1F204 /* MilestoneStages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneStages.swift; sourceTree = "<group>"; };
 		3DCA9099254546690030FE61 /* AddStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStepView.swift; sourceTree = "<group>"; };
@@ -977,6 +989,19 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		3DBCC725257E910A00924652 /* Alternative Icons */ = {
+			isa = PBXGroup;
+			children = (
+				3DBCC728257E912200924652 /* 1StepIconAir@2x.png */,
+				3DBCC729257E912200924652 /* 1StepIconAir@3x.png */,
+				3DBCC726257E912200924652 /* 1StepIconEarth@2x.png */,
+				3DBCC727257E912200924652 /* 1StepIconEarth@3x.png */,
+				3DBCC72A257E912200924652 /* 1StepIconFire@2x.png */,
+				3DBCC72B257E912200924652 /* 1StepIconFire@3x.png */,
+			);
+			path = "Alternative Icons";
+			sourceTree = "<group>";
+		};
 		3DCA9097254540E90030FE61 /* AddStep */ = {
 			isa = PBXGroup;
 			children = (
@@ -1073,6 +1098,7 @@
 			isa = PBXGroup;
 			children = (
 				3DE11C38252C681600F13719 /* Assets.xcassets */,
+				3DBCC725257E910A00924652 /* Alternative Icons */,
 				3D47CC93252C738D00A8CA1B /* Fonts */,
 				3DEA91832579580F00C90414 /* Sounds */,
 				3DE11C42252C681600F13719 /* Info.plist */,
@@ -1303,13 +1329,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DBCC72F257E912200924652 /* 1StepIconAir@3x.png in Resources */,
 				3D47CCA5252C73D300A8CA1B /* Raleway-SemiBold.ttf in Resources */,
 				3D47CCA1252C73D300A8CA1B /* Raleway-Thin.ttf in Resources */,
+				3DBCC72E257E912200924652 /* 1StepIconAir@2x.png in Resources */,
 				3D47CCA2252C73D300A8CA1B /* Raleway-Bold.ttf in Resources */,
 				3DE11C3C252C681600F13719 /* Preview Assets.xcassets in Resources */,
+				3DBCC72C257E912200924652 /* 1StepIconEarth@2x.png in Resources */,
+				3DBCC731257E912200924652 /* 1StepIconFire@3x.png in Resources */,
 				3D47CCA4252C73D300A8CA1B /* Raleway-Regular.ttf in Resources */,
+				3DBCC72D257E912200924652 /* 1StepIconEarth@3x.png in Resources */,
 				3D47CCA0252C73D300A8CA1B /* Raleway-Medium.ttf in Resources */,
 				3DE11C39252C681600F13719 /* Assets.xcassets in Resources */,
+				3DBCC730257E912200924652 /* 1StepIconFire@2x.png in Resources */,
 				3D47CCA7252C73D300A8CA1B /* Raleway-ExtraLight.ttf in Resources */,
 				3D47CCA9252C73D300A8CA1B /* Raleway-Light.ttf in Resources */,
 				3D47CC9F252C73D300A8CA1B /* Raleway-Black.ttf in Resources */,

@@ -33,5 +33,6 @@ struct MainView: View {
         .oneSConfetti()
         .oneSFloater()
         .onAppear { mainModel.considerUserDefaults() }
+        //.statusBar(hidden: true)
     }
 }
