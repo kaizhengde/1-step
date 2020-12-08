@@ -33,7 +33,10 @@ struct GoalSelectMountainView: View {
         .oneSAnimation()
         .onAppear {
             viewModel.initTransition()
-            viewModel.considerFirstCreate(with: appAppearance)
+            viewModel.considerFirstSelectMountain(with: appAppearance)
+        }
+        .onChange(of: viewModel.currentMountain) { _ in
+            viewModel.considerFirstSelectColor(with: appAppearance)
         }
     }
 }

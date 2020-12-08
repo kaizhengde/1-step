@@ -36,6 +36,7 @@ fileprivate struct OneSPopup<PopupContent>: ViewModifier where PopupContent: Vie
             OneSPopupView()
                 .opacity(manager.transition.isFullAppeared ? 1.0 : 0.0)
                 .scaleEffect(manager.transition.isFullAppeared ? 1.0 : 0.01)
+                .onTapGesture { if manager.dismissOnTapInside { manager.dismiss() } }
             }
         }
         .oneSAnimation(duration: Animation.Duration.opacity)

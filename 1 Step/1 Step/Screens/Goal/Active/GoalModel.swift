@@ -58,6 +58,24 @@ final class GoalModel: TransitionObservableObject {
     }
     
     
+    //MARK: - First Open
+    
+    func considerFirstOpenGoal(with appAppearance: ColorScheme) {
+        if UserDefaultsManager.shared.firstOpenGoal {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+                OneSTutorialGIF.showPopup(for: .firstOpenGoal, appAppearance: appAppearance)
+            }
+        }
+    }
+    
+    
+    let firstDismissListener = PopupManager.shared.dismissed.sink {
+        if $0 == .firstOpenGoal {
+            UserDefaultsManager.shared.firstOpenGoal = false
+        }
+    }
+    
+    
     //MARK: - Global
     
     var goalDragOffset: CGFloat {

@@ -31,11 +31,27 @@ enum OneSTutorialGIF {
             case .firstOpenGoal:        return "TutorialGoalViewDark"
             }
         }
-        
-        var dismissableDelay: DispatchTimeInterval {
+    
+        var popupKey: PopupKey {
             switch self {
-            case .firstSelectMountain:  return .milliseconds(2_500)
-            case .firstSelectColor:     return .milliseconds(2_000)
+            case .firstSelectMountain:  return .firstSelectMountain
+            case .firstSelectColor:     return .firstSelectColor
+            case .firstOpenGoal:        return .firstOpenGoal
+            }
+        }
+        
+        var popupHeight: CGFloat {
+            switch self {
+            case .firstSelectMountain:  return 420*Layout.multiplierWidth
+            case .firstSelectColor:     return 420*Layout.multiplierWidth
+            case .firstOpenGoal:        return 500*Layout.multiplierWidth
+            }
+        }
+        
+        var popupDismissableDelay: DispatchTimeInterval {
+            switch self {
+            case .firstSelectMountain:  return .milliseconds(3_000)
+            case .firstSelectColor:     return .milliseconds(3_000)
             case .firstOpenGoal:        return .milliseconds(12_000)
             }
         }
@@ -43,22 +59,15 @@ enum OneSTutorialGIF {
     
     
     static func showPopup(for tutorial: OneSTutorial, appAppearance: ColorScheme) {
-        
-        
-        PopupManager.shared.showPopup(.firstSelectMountain, blurColor: .opacityDarker, backgroundColor: .backgroundToGray, height: 450*Layout.multiplierWidth, withPadding: false, tapDismissableDelay: tutorial.dismissableDelay, hapticFeedback: true) {
-            content(for: tutorial, appAppearance: appAppearance)
-        }
-    }
-    
-    
-    static func content(for tutorial: OneSTutorial, appAppearance: ColorScheme) -> some View {
         let gif = appAppearance == .light ? tutorial.gifLight : tutorial.gifDark
         let imageData = try? Data(contentsOf: Bundle.main.url(forResource: gif, withExtension: "gif")!)
-        
-        return
+                
+        PopupManager.shared.showPopup(tutorial.popupKey, blurColor: .opacityDarker, backgroundColor: .backgroundToGray, height: tutorial.popupHeight, withPadding: false, dismissOnTapInside: true, tapDismissableDelay: tutorial.popupDismissableDelay, hapticFeedback: true) {
             AnimatedImage(data: imageData!)
                 .resizable()
-                .frame(width: Layout.popoverWidth, height: 450*Layout.multiplierWidth)
+                .frame(width: TutorialGIFLayout.width, height: TutorialGIFLayout.height)
+                .clipped()
+        }
     }
 }
 

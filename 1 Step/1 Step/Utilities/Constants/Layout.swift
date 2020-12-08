@@ -76,6 +76,6 @@ enum MountainLayout {
 
 enum TutorialGIFLayout {
     
-    static let width: CGFloat = Layout.popoverWidth
-    static let height: CGFloat = 0
+    static let width: CGFloat   = Layout.popoverWidth
+    static let height: CGFloat  = 1297.0*(width/600.0)
 }

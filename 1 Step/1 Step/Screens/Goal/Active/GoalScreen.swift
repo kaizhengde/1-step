@@ -9,6 +9,7 @@ import SwiftUI
 
 struct GoalScreen: View {
     
+    @Environment(\.colorScheme) var appAppearance: ColorScheme
     @StateObject private var goalModel = GoalModel.shared
     @StateObject private var addStepModel = AddStepModel()
     @GestureState private var dragOffset: CGFloat = .zero
@@ -32,7 +33,10 @@ struct GoalScreen: View {
             
             AddStepView(viewModel: addStepModel)
         }
-        .onAppear { goalModel.initTransition() }
+        .onAppear {
+            goalModel.initTransition()
+            goalModel.considerFirstOpenGoal(with: appAppearance)
+        }
         .oneSAnimation()
         .transition(.identity)
         .onReceive(PopupManager.shared.dismissed) { if $0 == .goalReached { goalModel.onDismissGoalCompletePopup() } }

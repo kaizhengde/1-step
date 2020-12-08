@@ -46,6 +46,8 @@ final class PopupManager: ViewOverlayManagerProtocol {
     @Published var currentKey: PopupKey!
 
     @Published var dismissOnTapOutside: Bool!
+    @Published var dismissOnTapInside: Bool!
+    @Published var tapDismissableDelay: DispatchTimeInterval!
     @Published var hapticFeedback: Bool!
     
     @Published var blurColor: Color!
@@ -57,7 +59,6 @@ final class PopupManager: ViewOverlayManagerProtocol {
     let dismissed = PassthroughSubject<PopupKey, Never>()    
     let confirmBtnDismissed = PassthroughSubject<(key: PopupKey, input: String), Never>()
     
-    private var tapDismissableDelay: DispatchTimeInterval!
     
     
     //MARK: - Transition
@@ -77,7 +78,8 @@ final class PopupManager: ViewOverlayManagerProtocol {
         height: CGFloat                             = 360*Layout.multiplierWidth,
         withPadding: Bool                           = true,
         dismissOnTapOutside: Bool                   = true,
-        tapDismissableDelay: DispatchTimeInterval   = .milliseconds(1500),
+        dismissOnTapInside: Bool                    = false,
+        tapDismissableDelay: DispatchTimeInterval   = .milliseconds(1_500),
         hapticFeedback: Bool                        = false,
         content: @escaping () -> T
     ) {
@@ -88,9 +90,11 @@ final class PopupManager: ViewOverlayManagerProtocol {
             self.currentKey = key
             
             self.dismissOnTapOutside    = false
+            self.dismissOnTapInside     = false
             self.tapDismissableDelay    = tapDismissableDelay
             DispatchQueue.main.asyncAfter(deadline: .now() + self.tapDismissableDelay) {
                 self.dismissOnTapOutside    = dismissOnTapOutside
+                self.dismissOnTapInside     = dismissOnTapInside
             }
   
             self.blurColor              = blurColor
