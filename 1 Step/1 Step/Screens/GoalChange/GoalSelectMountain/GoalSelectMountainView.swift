@@ -9,6 +9,7 @@ import SwiftUI
 
 struct GoalSelectMountainView: View {
     
+    @Environment(\.colorScheme) var appAppearance: ColorScheme
     @ObservedObject var viewModel: GoalSelectMountainModel
     @GestureState private var dragOffset: CGFloat = .zero
     
@@ -30,6 +31,9 @@ struct GoalSelectMountainView: View {
         .onPreferenceChange(GoalSelectMountainModel.MountainPK.self) { viewModel.updatePreferences($0) }
         .coordinateSpace(name: CoordinateSpace.selectMountain.hashValue)
         .oneSAnimation()
-        .onAppear { viewModel.initTransition() }
+        .onAppear {
+            viewModel.initTransition()
+            viewModel.considerFirstCreate(with: appAppearance)
+        }
     }
 }

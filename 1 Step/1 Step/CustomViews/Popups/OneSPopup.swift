@@ -28,7 +28,7 @@ fileprivate struct OneSPopup<PopupContent>: ViewModifier where PopupContent: Vie
     func sheet() -> some View {
         ZStack {
             if manager.transition.didAppear {
-            Color.opacityBlur.edgesIgnoringSafeArea(.all)
+            manager.blurColor.edgesIgnoringSafeArea(.all)
                 .onTapGesture { if manager.dismissOnTapOutside { manager.dismiss() } }
             }
             

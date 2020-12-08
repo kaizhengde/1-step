@@ -29,6 +29,11 @@ enum PopupKey {
     
     //MARK: - Premium
     case premiumPurchased
+    
+    //MARK: - First
+    case firstSelectMountain
+    case firstSelectColor
+    case firstOpenGoal
 }
 
 
@@ -43,6 +48,7 @@ final class PopupManager: ViewOverlayManagerProtocol {
     @Published var dismissOnTapOutside: Bool!
     @Published var hapticFeedback: Bool!
     
+    @Published var blurColor: Color!
     @Published var backgroundColor: Color!
     @Published var height: CGFloat!
     @Published var withPadding: Bool!
@@ -51,7 +57,7 @@ final class PopupManager: ViewOverlayManagerProtocol {
     let dismissed = PassthroughSubject<PopupKey, Never>()    
     let confirmBtnDismissed = PassthroughSubject<(key: PopupKey, input: String), Never>()
     
-    private let tapDismissableDelay: DispatchTimeInterval = .milliseconds(1500)
+    private var tapDismissableDelay: DispatchTimeInterval!
     
     
     //MARK: - Transition
@@ -65,12 +71,14 @@ final class PopupManager: ViewOverlayManagerProtocol {
     //MARK: - Show
     
     func showPopup<T: View>(
-        _ key: PopupKey             = .none,
+        _ key: PopupKey                             = .none,
+        blurColor: Color                            = .opacityBlur,
         backgroundColor: Color,
-        height: CGFloat             = 360*Layout.multiplierWidth,
-        withPadding: Bool           = true,
-        dismissOnTapOutside: Bool   = true,
-        hapticFeedback: Bool        = false,
+        height: CGFloat                             = 360*Layout.multiplierWidth,
+        withPadding: Bool                           = true,
+        dismissOnTapOutside: Bool                   = true,
+        tapDismissableDelay: DispatchTimeInterval   = .milliseconds(1500),
+        hapticFeedback: Bool                        = false,
         content: @escaping () -> T
     ) {
         DispatchQueue.main.async {
@@ -80,10 +88,12 @@ final class PopupManager: ViewOverlayManagerProtocol {
             self.currentKey = key
             
             self.dismissOnTapOutside    = false
+            self.tapDismissableDelay    = tapDismissableDelay
             DispatchQueue.main.asyncAfter(deadline: .now() + self.tapDismissableDelay) {
                 self.dismissOnTapOutside    = dismissOnTapOutside
             }
   
+            self.blurColor              = blurColor
             self.backgroundColor        = backgroundColor
             self.height                 = height
             self.withPadding            = withPadding

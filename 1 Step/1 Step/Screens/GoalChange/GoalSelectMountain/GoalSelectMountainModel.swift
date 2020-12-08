@@ -70,6 +70,15 @@ final class GoalSelectMountainModel: TransitionObservableObject {
     }
     
     
+    //MARK: - First Create
+    
+    func considerFirstCreate(with appAppearance: ColorScheme) {
+        if UserDefaultsManager.shared.firstSelectMountain {
+            OneSTutorialGIF.showPopup(for: .firstSelectMountain, appAppearance: appAppearance)
+        }
+    }
+    
+    
     //MARK: - MountainItem
     
     func mountainItemScale(_ mountain: MountainImage) -> CGFloat {
