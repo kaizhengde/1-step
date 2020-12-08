@@ -120,8 +120,8 @@ final class MainModel: ObservableObject {
         
         switch currentAppearance {
         case .mirrorDevice: window?.overrideUserInterfaceStyle = .unspecified
-        case .light: window?.overrideUserInterfaceStyle = .light
-        case .dark: window?.overrideUserInterfaceStyle = .dark
+        case .light:        window?.overrideUserInterfaceStyle = .light
+        case .dark:         window?.overrideUserInterfaceStyle = .dark
         }
     }
     

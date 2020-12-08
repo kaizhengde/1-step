@@ -44,12 +44,12 @@ enum OneSColorTheme: String, Codable, CaseIterable {
         }
     }
     
-    var appIcon: String? {
+    var appIcon: (light: String?, dark: String) {
         switch self {
-        case .water: return nil
-        case .earth: return "1StepIconEarth"
-        //case .fire:  return "1StepIconFire"
-        case .air:   return "1StepIconAir"
+        case .water: return (nil,               "1StepIconDark")
+        case .earth: return ("1StepIconEarth",  "1StepIconEarthDark")
+        //case .fire:  return ("1StepIconFire",  "1StepIconFireDark")
+        case .air:   return ("1StepIconAir",    "1StepIconAirDark")
         }
     }
 }

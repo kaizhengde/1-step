@@ -34,6 +34,7 @@ struct ProfileAppSectionView: View {
     
     private struct SettingsContentView: View {
         
+        @Environment(\.colorScheme) var appAppearance: ColorScheme
         @StateObject private var userDefaultsManager = UserDefaultsManager.shared
         @ObservedObject var profileModel: ProfileModel
         
@@ -100,7 +101,7 @@ struct ProfileAppSectionView: View {
                                     selectedColor: profileModel.section1Color,
                                     action: {
                                         userDefaultsManager.settingColorTheme = colorTheme
-                                        AppModel.setAppIcon(with: colorTheme.appIcon)
+                                        AppModel.updateAppIconAppearance(with: appAppearance, themeChange: true)
                                     }
                                 )
                             }

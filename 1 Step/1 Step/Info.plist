@@ -58,6 +58,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+    
 	<key>CFBundleIcons</key>
 	<dict>
 		<key>CFBundlePrimaryIcon</key>
@@ -71,30 +72,20 @@
 		</dict>
 		<key>CFBundleAlternateIcons</key>
 		<dict>
+            
 			<key>1StepIconEarth</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
-                <array>
-                    <string>1StepIconEarth20</string>
-                    <string>1StepIconEarth29</string>
-                    <string>1StepIconEarth40</string>
-                    <string>1StepIconEarth60</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<false/>
-			</dict>
-			<key>1StepIconFire</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
 				<array>
-					<string>1StepIconFire20</string>
-					<string>1StepIconFire29</string>
-					<string>1StepIconFire40</string>
-					<string>1StepIconFire60</string>
+					<string>1StepIconEarth20</string>
+					<string>1StepIconEarth29</string>
+					<string>1StepIconEarth40</string>
+					<string>1StepIconEarth60</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<false/>
 			</dict>
+            
 			<key>1StepIconAir</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
@@ -107,6 +98,46 @@
 				<key>UIPrerenderedIcon</key>
 				<false/>
 			</dict>
+            
+            <key>1StepIconDark</key>
+            <dict>
+                <key>CFBundleIconFiles</key>
+                <array>
+                    <string>1StepIconDark20</string>
+                    <string>1StepIconDark29</string>
+                    <string>1StepIconDark40</string>
+                    <string>1StepIconDark60</string>
+                </array>
+                <key>UIPrerenderedIcon</key>
+                <false/>
+            </dict>
+            
+            <key>1StepIconEarthDark</key>
+            <dict>
+                <key>CFBundleIconFiles</key>
+                <array>
+                    <string>1StepIconEarthDark20</string>
+                    <string>1StepIconEarthDark29</string>
+                    <string>1StepIconEarthDark40</string>
+                    <string>1StepIconEarthDark60</string>
+                </array>
+                <key>UIPrerenderedIcon</key>
+                <false/>
+            </dict>
+            
+            <key>1StepIconAirDark</key>
+            <dict>
+                <key>CFBundleIconFiles</key>
+                <array>
+                    <string>1StepIconAirDark20</string>
+                    <string>1StepIconAirDark29</string>
+                    <string>1StepIconAirDark40</string>
+                    <string>1StepIconAirDark60</string>
+                </array>
+                <key>UIPrerenderedIcon</key>
+                <false/>
+            </dict>
+            
 		</dict>
 	</dict>
 </dict>
