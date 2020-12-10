@@ -13,7 +13,12 @@ class CreditsModel: ObservableObject {
     
     lazy var rows: [(title: String, view: AnyView)] = [
         (title: "Notification Sounds", view: AnyView(EmptyView())),
-        (title: "Introspect", view: AnyView(EmptyView()))
+        (title: "Introspect", view: AnyView(EmptyView())),
+        (title: "Gifu", view: AnyView(EmptyView())),
+        (title: "Google Firebase", view: AnyView(EmptyView())),
+        (title: "ShowTime", view: AnyView(EmptyView())),
+        (title: "Apple", view: AnyView(EmptyView()))
+        
     ]
 }
 

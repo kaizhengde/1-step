@@ -204,6 +204,7 @@
 		3DE11C3C252C681600F13719 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DE11C3B252C681600F13719 /* Preview Assets.xcassets */; };
 		3DE11C3E252C681600F13719 /* PersistenceManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE11C3D252C681600F13719 /* PersistenceManger.swift */; };
 		3DE11C41252C681600F13719 /* __Step.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3DE11C3F252C681600F13719 /* __Step.xcdatamodeld */; };
+		3DE303AA2582AC9700158A40 /* Gifu in Frameworks */ = {isa = PBXBuildFile; productRef = 3DE303A92582AC9700158A40 /* Gifu */; };
 		3DE9C503252C8A2D0023C212 /* GoalsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE9C502252C8A2D0023C212 /* GoalsHeaderView.swift */; };
 		3DE9C507252C8B8C0023C212 /* OneSHeaderText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE9C506252C8B8C0023C212 /* OneSHeaderText.swift */; };
 		3DE9C50B252C8F500023C212 /* OneSText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE9C50A252C8F500023C212 /* OneSText.swift */; };
@@ -216,7 +217,6 @@
 		3DEA918F25795FE600C90414 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA918E25795FE600C90414 /* AppDelegate.swift */; };
 		3DEA91952579740900C90414 /* OneSFootnoteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA91942579740900C90414 /* OneSFootnoteButton.swift */; };
 		3DEA919A2579752100C90414 /* CreditsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA91992579752100C90414 /* CreditsView.swift */; };
-		3DEBC0CB257FCB9D0008360D /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 3DEBC0CA257FCB9D0008360D /* SDWebImageSwiftUI */; };
 		3DEBC10E257FF0B70008360D /* OneSTutorialGIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEBC10D257FF0B70008360D /* OneSTutorialGIF.swift */; };
 		3DEBC159258016CB0008360D /* TutorialGoalViewDark.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3DEBC153258016CB0008360D /* TutorialGoalViewDark.gif */; };
 		3DEBC15A258016CC0008360D /* TutorialSelectMountainLight.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3DEBC154258016CB0008360D /* TutorialSelectMountainLight.gif */; };
@@ -511,9 +511,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3DEBC0CB257FCB9D0008360D /* SDWebImageSwiftUI in Frameworks */,
 				3D6373D2257AA17C001C3585 /* ShowTime in Frameworks */,
 				3D6373C4257A8F1B001C3585 /* Introspect in Frameworks */,
+				3DE303AA2582AC9700158A40 /* Gifu in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1450,7 +1450,7 @@
 			packageProductDependencies = (
 				3D6373C3257A8F1B001C3585 /* Introspect */,
 				3D6373D1257AA17C001C3585 /* ShowTime */,
-				3DEBC0CA257FCB9D0008360D /* SDWebImageSwiftUI */,
+				3DE303A92582AC9700158A40 /* Gifu */,
 			);
 			productName = "1 Step";
 			productReference = 3DE11C31252C681200F13719 /* 1 Step.app */;
@@ -1488,7 +1488,7 @@
 			packageReferences = (
 				3D6373C2257A8F1B001C3585 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 				3D6373D0257AA17C001C3585 /* XCRemoteSwiftPackageReference "ShowTime" */,
-				3DEBC0C9257FCB9C0008360D /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				3DE303A82582AC9700158A40 /* XCRemoteSwiftPackageReference "Gifu" */,
 			);
 			productRefGroup = 3DE11C32252C681200F13719 /* Products */;
 			projectDirPath = "";
@@ -2047,12 +2047,12 @@
 				minimumVersion = 2.5.2;
 			};
 		};
-		3DEBC0C9257FCB9C0008360D /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+		3DE303A82582AC9700158A40 /* XCRemoteSwiftPackageReference "Gifu" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			repositoryURL = "https://github.com/kaishin/Gifu.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.5.0;
+				minimumVersion = 3.3.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -2068,10 +2068,10 @@
 			package = 3D6373D0257AA17C001C3585 /* XCRemoteSwiftPackageReference "ShowTime" */;
 			productName = ShowTime;
 		};
-		3DEBC0CA257FCB9D0008360D /* SDWebImageSwiftUI */ = {
+		3DE303A92582AC9700158A40 /* Gifu */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3DEBC0C9257FCB9C0008360D /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
-			productName = SDWebImageSwiftUI;
+			package = 3DE303A82582AC9700158A40 /* XCRemoteSwiftPackageReference "Gifu" */;
+			productName = Gifu;
 		};
 /* End XCSwiftPackageProductDependency section */
 

@@ -20,6 +20,9 @@ enum Layout {
     static let firstLayerWidth              = screenWidth - (2.0 * firstLayerPadding)
     static let secondLayerWidth             = screenWidth - (2.0 * secondLayerPadding)
     
+    static let screenTopPadding: CGFloat    = 20.0 + onlyOniPhoneXType(-20.0)
+    static let sheetTopPadding: CGFloat     = onlyOniPhoneXType(16.0)
+    
     static let popoverWidth: CGFloat = 260*multiplierWidth
     static let floaterWidth: CGFloat = secondLayerWidth
     
@@ -76,6 +79,6 @@ enum MountainLayout {
 
 enum TutorialGIFLayout {
     
-    static let width: CGFloat   = Layout.popoverWidth
+    static let width: CGFloat   = Layout.popoverWidth+1
     static let height: CGFloat  = 1297.0*(width/600.0)
 }

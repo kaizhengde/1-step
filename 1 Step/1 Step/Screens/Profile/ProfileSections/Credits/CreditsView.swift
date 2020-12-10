@@ -28,7 +28,7 @@ struct CreditsView: View {
                     CreditsContentView(viewModel: viewModel)
                 }
                 .padding(.horizontal, Layout.firstLayerPadding)
-                .padding(.top, 12)
+                .padding(.top, Layout.sheetTopPadding)
                 .padding(.bottom, 80*Layout.multiplierHeight)
             }
         }

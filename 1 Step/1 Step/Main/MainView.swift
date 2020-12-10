@@ -26,6 +26,7 @@ struct MainView: View {
             mainModel.screen(.goal(.showReached)) { GoalReachedScreen() }
             mainModel.screen(.profile) { ProfileScreen() }
         }
+        .statusBar(hidden: true)
         .oneSOpacityAnimation()
         .oneSFullSheet()
         .sheet(isPresented: $sheetManager.appear, content: sheetManager.content)

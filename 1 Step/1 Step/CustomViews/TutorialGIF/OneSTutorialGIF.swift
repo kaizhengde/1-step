@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import SDWebImageSwiftUI
+import Gifu
 
 enum OneSTutorialGIF {
     
@@ -60,14 +60,31 @@ enum OneSTutorialGIF {
     
     static func showPopup(for tutorial: OneSTutorial, appAppearance: ColorScheme) {
         let gif = appAppearance == .light ? tutorial.gifLight : tutorial.gifDark
-        let imageData = try? Data(contentsOf: Bundle.main.url(forResource: gif, withExtension: "gif")!)
                 
         PopupManager.shared.showPopup(tutorial.popupKey, blurColor: .opacityDarker, backgroundColor: .backgroundToGray, height: tutorial.popupHeight, withPadding: false, dismissOnTapInside: true, tapDismissableDelay: tutorial.popupDismissableDelay, hapticFeedback: true) {
-            AnimatedImage(data: imageData!)
-                .resizable()
+            OneSTutorialGIFView(gif: gif)
                 .frame(width: TutorialGIFLayout.width, height: TutorialGIFLayout.height)
-                .clipped()
         }
     }
 }
 
+
+struct OneSTutorialGIFView: UIViewRepresentable {
+    
+    let gif: String
+    
+    
+    func makeUIView(context: Context) -> UIView {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: TutorialGIFLayout.width, height: TutorialGIFLayout.height))
+        
+        let imageView = GIFImageView(frame: CGRect(x: 0, y: 0, width: TutorialGIFLayout.width, height: TutorialGIFLayout.height))
+        imageView.animate(withGIFNamed: gif)
+        
+        view.addSubview(imageView)
+        
+        return view
+    }
+    
+    
+    func updateUIView(_ uiView: UIView, context: Context) {}
+}

@@ -46,7 +46,7 @@ struct OneSHeaderViewCustom<Content: View>: View {
                 Spacer()
                 HeaderButtonView(button: trailingButton)
             }
-            .padding(.vertical, 16*Layout.multiplierHeight)
+            .padding(.vertical, 16*Layout.multiplierWidth)
             
             //Custom View
             if let customView = customView {
@@ -68,8 +68,9 @@ struct OneSHeaderViewCustom<Content: View>: View {
                     SecondaryHeaderButtonView(button: secondaryButtonBottom)
                 }
             }
-            .padding(.top, 16*Layout.multiplierHeight)
+            .padding(.top, 16*Layout.multiplierWidth)
         }
+        .padding(.top, 12 + Layout.onlyOniPhoneXType(-12))
     }
     
     

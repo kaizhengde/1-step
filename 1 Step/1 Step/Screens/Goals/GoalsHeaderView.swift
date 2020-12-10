@@ -14,7 +14,7 @@ struct GoalsHeaderView: View {
     
     
     var body: some View {
-        VStack(spacing: Device.isiPhoneXType ? 8 : 3) {
+        VStack(spacing: Device.isiPhoneXType ? 8 : 5) {
             OneSHeaderView(Localized.goals, trailingButton: (.profile, .grayToBackground, { mainModel.toScreen(.profile) }))
             TabBarView(goalsModel: goalsModel)
         }

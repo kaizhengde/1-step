@@ -20,43 +20,45 @@ struct GoalInfoView: View {
             
             ScrollView(showsIndicators: viewModel.currentView == .howItWorks ? true : false) {
                 ScrollViewReader { scrollProxy in
-                    Color.clear.frame(height: 0).id(0)
-                    
-                    VStack(spacing: 32) {
-                        OneSHeaderView(
-                            viewModel.currentView.title,
-                            leadingButton:
-                                viewModel.currentView == .examples ? (
-                                    viewModel.initialView == .howItWorks ?
-                                        .back : .custom(AnyView(SFSymbol.info.font(.system(size: 28)))),
-                                    .grayToBackground,
-                                    { viewModel.currentView = .howItWorks }
-                                )
-                                : nil,
-                            trailingButton: (.close, .grayToBackground, { sheetManager.dismiss() })
-                        )
+                    VStack(spacing: 0) {
+                        Color.clear.frame(height: 0).id(0)
                         
-                        if viewModel.currentView == .howItWorks {
-                            Group {
-                                GoalHowItWorksView(viewModel: viewModel, selectedColor: selectedColor)
-                                
-                                HStack {
-                                    Spacer()
-                                    OneSSmallBorderButton(symbol: SFSymbol.`continue`, color: .grayToBackground) {
-                                        withAnimation { scrollProxy.scrollTo(0) }
-                                        viewModel.currentView = .examples
+                        VStack(spacing: 32) {
+                            OneSHeaderView(
+                                viewModel.currentView.title,
+                                leadingButton:
+                                    viewModel.currentView == .examples ? (
+                                        viewModel.initialView == .howItWorks ?
+                                            .back : .custom(AnyView(SFSymbol.info.font(.system(size: 28)))),
+                                        .grayToBackground,
+                                        { viewModel.currentView = .howItWorks }
+                                    )
+                                    : nil,
+                                trailingButton: (.close, .grayToBackground, { sheetManager.dismiss() })
+                            )
+                            
+                            if viewModel.currentView == .howItWorks {
+                                Group {
+                                    GoalHowItWorksView(viewModel: viewModel, selectedColor: selectedColor)
+                                    
+                                    HStack {
+                                        Spacer()
+                                        OneSSmallBorderButton(symbol: SFSymbol.`continue`, color: .grayToBackground) {
+                                            withAnimation { scrollProxy.scrollTo(0) }
+                                            viewModel.currentView = .examples
+                                        }
                                     }
                                 }
+                                .opacity(viewModel.currentView == .howItWorks ? 1.0 : 0.0)
+                                
+                            } else if viewModel.currentView == .examples {
+                                GoalExamplesView(viewModel: viewModel, selectedColor: selectedColor)
+                                    .opacity(viewModel.currentView == .examples ? 1.0 : 0.0)
                             }
-                            .opacity(viewModel.currentView == .howItWorks ? 1.0 : 0.0)
-                            
-                        } else if viewModel.currentView == .examples {
-                            GoalExamplesView(viewModel: viewModel, selectedColor: selectedColor)
-                                .opacity(viewModel.currentView == .examples ? 1.0 : 0.0)
                         }
                     }
                     .padding(.horizontal, Layout.firstLayerPadding)
-                    .padding(.top, 12)
+                    .padding(.top, Layout.sheetTopPadding)
                     .padding(.bottom, 80*Layout.multiplierHeight)
                 }
             }

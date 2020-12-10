@@ -2,21 +2,12 @@
   "object": {
     "pins": [
       {
-        "package": "SDWebImage",
-        "repositoryURL": "https://github.com/SDWebImage/SDWebImage.git",
+        "package": "Gifu",
+        "repositoryURL": "https://github.com/kaishin/Gifu.git",
         "state": {
           "branch": null,
-          "revision": "e857b78ca4c8afe616b794aeb090d40f4e348072",
-          "version": "5.10.0"
-        }
-      },
-      {
-        "package": "SDWebImageSwiftUI",
-        "repositoryURL": "https://github.com/SDWebImage/SDWebImageSwiftUI.git",
-        "state": {
-          "branch": null,
-          "revision": "4c7f169e39bc35d6b80d42b8eb8301bee9cd0907",
-          "version": "1.5.0"
+          "revision": "0ffe24744cc3d82ab9edece53670d0352c6d5507",
+          "version": "3.3.0"
         }
       },
       {

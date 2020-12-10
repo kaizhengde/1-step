@@ -36,7 +36,7 @@ struct GoalEditScreen: View {
                     
                     GoalSelectMountainView(viewModel: goalSelectMountainModel)
                 }
-                .padding(.top, 12)
+                .padding(.top, Layout.sheetTopPadding)
             }
         }
         .onAppear { setUpChangeViews() }
