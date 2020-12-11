@@ -20,7 +20,7 @@ enum GoalJourneyDataHandler {
         
         goal.currentStepUnits   = newCurrentStepUnits
         goal.currentSteps       = Int16(goal.currentStepUnits*Double(goal.step.unitRatio))
-        goal.currentPercent     = Int16((goal.currentStepUnits/Double(goal.neededStepUnits))*100)
+        goal.currentPercent     = Int16((goal.currentStepUnits/Double(goal.neededStepUnits)).oneSRounded()*100)
         goal.currentState       = Int16(goal.currentStepUnits) >= goal.neededStepUnits ? .reached : .active
         
         

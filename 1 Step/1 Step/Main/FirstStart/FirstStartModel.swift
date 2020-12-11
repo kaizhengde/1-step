@@ -31,7 +31,6 @@ class FirstStartModel: ObservableObject {
         currentStep = .done
         DispatchQueue.main.asyncAfter(deadline: .now() + Animation.Delay.opacity) {
             MainModel.shared.toScreen(.goals)
-            LocalNotificationManager.firstStartRequestAuthorization()
         }
     }
     

@@ -155,6 +155,7 @@
 		3DA350FB257F77F0002CD41A /* 1StepIconDark40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DA350F3257F77F0002CD41A /* 1StepIconDark40@3x.png */; };
 		3DA7BD362532D41400171360 /* OneSTextFieldPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA7BD352532D41400171360 /* OneSTextFieldPopupView.swift */; };
 		3DA7BD3A2532F6A600171360 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA7BD392532F6A600171360 /* DataManager.swift */; };
+		3DAE424D258362D700335963 /* NotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE424C258362D700335963 /* NotificationHelper.swift */; };
 		3DAE7AE425309D0F00B162B1 /* FloaterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE7AE325309D0F00B162B1 /* FloaterManager.swift */; };
 		3DAE7AE725309DBB00B162B1 /* OneSFloater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE7AE625309DBB00B162B1 /* OneSFloater.swift */; };
 		3DAE7AEB2530A3E600B162B1 /* OneSTextFloater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE7AEA2530A3E600B162B1 /* OneSTextFloater.swift */; };
@@ -407,6 +408,7 @@
 		3DA350F3257F77F0002CD41A /* 1StepIconDark40@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "1StepIconDark40@3x.png"; path = "../../../../Design/Assets/AppIcons/WaterDark/1StepIconDark40@3x.png"; sourceTree = "<group>"; };
 		3DA7BD352532D41400171360 /* OneSTextFieldPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSTextFieldPopupView.swift; sourceTree = "<group>"; };
 		3DA7BD392532F6A600171360 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		3DAE424C258362D700335963 /* NotificationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHelper.swift; sourceTree = "<group>"; };
 		3DAE7AE325309D0F00B162B1 /* FloaterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloaterManager.swift; sourceTree = "<group>"; };
 		3DAE7AE625309DBB00B162B1 /* OneSFloater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSFloater.swift; sourceTree = "<group>"; };
 		3DAE7AEA2530A3E600B162B1 /* OneSTextFloater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSTextFloater.swift; sourceTree = "<group>"; };
@@ -921,6 +923,7 @@
 			children = (
 				3D68B65D25721C9000A183F5 /* LocalNotificationManager.swift */,
 				3D68B665257223C000A183F5 /* GoalNotificationManager.swift */,
+				3DAE424C258362D700335963 /* NotificationHelper.swift */,
 			);
 			path = Notifications;
 			sourceTree = "<group>";
@@ -1762,6 +1765,7 @@
 				3D59DEA825697AC900CF24D7 /* ProfileAboutSectionView.swift in Sources */,
 				3DF1BFD4254C557E004E1AB6 /* MilestoneItem.swift in Sources */,
 				3D23F70B2579770C000801A5 /* CreditsModel.swift in Sources */,
+				3DAE424D258362D700335963 /* NotificationHelper.swift in Sources */,
 				3DD5C9D42539D27100861784 /* GoalTransitionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

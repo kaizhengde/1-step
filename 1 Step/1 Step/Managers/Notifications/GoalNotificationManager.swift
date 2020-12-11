@@ -26,30 +26,16 @@ enum GoalNotificationManager {
 
     
     static private func addNotifications(_ notificationData: Goal.NotificationData, _ goal: Goal, _ completion: @escaping (Error?) -> ()) {
-        
-        let notificationTitle: String = "\(goal.name) \(goal.neededStepUnits) \(goal.step.unitDescription)"
-        let notificationBody: String = "Hey 🙂. It's time to take one more step."
-        
-        var dateComponents = DateComponents()
-        dateComponents.calendar = .current
-        dateComponents.hour = Calendar.current.component(.hour, from: notificationData.time)
-        dateComponents.minute = Calendar.current.component(.minute, from: notificationData.time)
+        let dateComponents  = setupNotificationsDateComponents(with: notificationData)
+        let content         = setupNotificationContent(of: goal, with: dateComponents)
         
         for weekday in notificationData.weekdays {
-            let sundayStartWeekday = Int(weekday+1 == 7 ? 0 : weekday+1)
-            dateComponents.weekday = sundayStartWeekday+1
             
-            let content = UNMutableNotificationContent()
-            content.title = notificationTitle
-            content.body = notificationBody
-            content.sound = UNNotificationSound.init(named: UNNotificationSoundName(NotificationSound.default))
-            content.userInfo[userInfoGoalObjectIDKey] = goal.objectID.uriRepresentation().absoluteString
-
-            print("New Notification Time: \(dateComponents.description)")
+            let weekdayDateComponents   = getNotificationDateComponents(of: weekday, with: dateComponents)
+            let trigger                 = UNCalendarNotificationTrigger(dateMatching: weekdayDateComponents, repeats: true)
+            let identifier              = "\(notificationData.id.uuidString)-\(weekdayDateComponents.weekday!)"
             
-            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-            
-            let request = UNNotificationRequest(identifier: "\(notificationData.id.uuidString)-\(dateComponents.weekday!)", content: content, trigger: trigger)
+            let request                 = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
             
             center.add(request) { error in
                 guard error == nil else {
@@ -72,5 +58,52 @@ enum GoalNotificationManager {
             identifiers.append("\(id.uuidString)-\(weekday)")
         }
         center.removePendingNotificationRequests(withIdentifiers: identifiers) 
+    }
+}
+
+
+//MARK: - Notification Content
+
+extension GoalNotificationManager {
+    
+    //MARK: - DateComponents
+    
+    static private func setupNotificationsDateComponents(with notificationData: Goal.NotificationData) -> DateComponents {
+        var dateComponents      = DateComponents()
+        dateComponents.calendar = .current
+        dateComponents.hour     = Calendar.current.component(.hour, from: notificationData.time)
+        dateComponents.minute   = Calendar.current.component(.minute, from: notificationData.time)
+        
+        return dateComponents
+    }
+    
+    
+    static private func getNotificationDateComponents(of weekday: Int16, with datecomponents: DateComponents) -> DateComponents {
+        var dateComponents = datecomponents
+        
+        let sundayStartWeekday  = Int(weekday+1 == 7 ? 0 : weekday+1)
+        dateComponents.weekday  = sundayStartWeekday+1
+        
+        print("New Notification Time: \(dateComponents.description)")
+        
+        return dateComponents
+    }
+    
+    
+    //MARK: - Content
+    
+    static private func setupNotificationContent(of goal: Goal, with dateComponents: DateComponents) -> UNNotificationContent {
+        let notificationTitle: String   = "\(goal.name) \(goal.neededStepUnits) \(goal.step.unitDescription)"
+        var notificationBody: String    = NotificationHelper.generateNotificationGreeting(from: dateComponents)
+        
+        notificationBody.append(" It's time to take one more step.")
+        
+        let content     = UNMutableNotificationContent()
+        content.title   = notificationTitle
+        content.body    = notificationBody
+        content.sound   = UNNotificationSound.init(named: UNNotificationSoundName(NotificationSound.default))
+        content.userInfo[userInfoGoalObjectIDKey] = goal.objectID.uriRepresentation().absoluteString
+        
+        return content
     }
 }

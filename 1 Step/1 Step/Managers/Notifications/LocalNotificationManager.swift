@@ -13,15 +13,6 @@ class LocalNotificationManager {
     static private let center = UNUserNotificationCenter.current()
     
     
-    static func firstStartRequestAuthorization() {
-        center.getNotificationSettings { settings in
-            if settings.authorizationStatus == .notDetermined {
-                requestAuthorization()
-            }
-        }
-    }
-    
-    
     static func requestAuthorization(completion: @escaping (Bool) -> () = { _ in }) {
         center.requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
             guard error == nil else {
@@ -45,6 +36,8 @@ class LocalNotificationManager {
         center.getNotificationSettings { settings in
             if settings.authorizationStatus == .authorized {
                 completion()
+            } else if settings.authorizationStatus == .notDetermined {
+                requestAuthorization()
             } else {
                 PopupManager.shared.showPopup(.notificationsNoAccess, backgroundColor: .darkNeutralToNeutral) {
                     OneSTextPopupView(titleText: "Error", bodyText: "Please grant permission for notifications.")
