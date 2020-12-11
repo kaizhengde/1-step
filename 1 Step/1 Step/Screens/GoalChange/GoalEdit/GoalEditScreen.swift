@@ -23,10 +23,13 @@ struct GoalEditScreen: View {
             ScrollView(showsIndicators: false) {
                 VStack {
                     Group {
-                        OneSHeaderView(Localized.edit, trailingButton: (.close, .grayToBackground, { sheetManager.dismiss() }), secondaryButtonTop: (.save, {
-                            viewModel.trySaveEditAndDismiss(goalModel.selectedGoal)
-                            goalModel.objectWillChange.send()
-                        }), secondaryButtonBottom: (.delete, { viewModel.tryDelete(goalModel.selectedGoal) }))
+                        OneSHeaderView(
+                            Localized.edit,
+                            trailingButton:         (.close, .grayToBackground, { sheetManager.dismiss() }),
+                            secondaryButtonTop:     (.save, { viewModel.trySaveEditAndDismiss(goalModel.selectedGoal) }),
+                            secondaryButtonBottom:  (.delete, { viewModel.tryDelete(goalModel.selectedGoal) }),
+                            isInsideSheet:          true
+                        )
                         
                         GoalEnterInputView(viewModel: goalEnterInputModel, selectedColor: $viewModel.selectedMountainData.color)
                         
@@ -36,7 +39,6 @@ struct GoalEditScreen: View {
                     
                     GoalSelectMountainView(viewModel: goalSelectMountainModel)
                 }
-                .padding(.top, Layout.sheetTopPadding)
             }
         }
         .onAppear { setUpChangeViews() }
@@ -45,19 +47,19 @@ struct GoalEditScreen: View {
     
     
     private func setUpChangeViews() {
-        goalSelectMountainModel.delegate = viewModel
-        goalEnterInputModel.delegate = viewModel
+        goalSelectMountainModel.delegate                    = viewModel
+        goalEnterInputModel.delegate                        = viewModel
         
-        let goal = goalModel.selectedGoal!
+        let goal                                            = goalModel.selectedGoal!
         
-        goalEnterInputModel.selectedData.goalName = goal.name
-        goalEnterInputModel.selectedData.neededStepUnits = String(goal.neededStepUnits)
-        goalEnterInputModel.selectedData.stepUnit = goal.step.unit
-        goalEnterInputModel.selectedData.customUnit = goal.step.customUnit
+        goalEnterInputModel.selectedData.goalName           = goal.name
+        goalEnterInputModel.selectedData.neededStepUnits    = String(goal.neededStepUnits)
+        goalEnterInputModel.selectedData.stepUnit           = goal.step.unit
+        goalEnterInputModel.selectedData.customUnit         = goal.step.customUnit
         
-        goalSelectMountainModel.currentMountain = goal.mountain
+        goalSelectMountainModel.currentMountain             = goal.mountain
         
-        goalSelectMountainModel.selectedData.mountain = goal.mountain
-        goalSelectMountainModel.selectedData.color = goal.color
+        goalSelectMountainModel.selectedData.mountain       = goal.mountain
+        goalSelectMountainModel.selectedData.color          = goal.color
     }
 }

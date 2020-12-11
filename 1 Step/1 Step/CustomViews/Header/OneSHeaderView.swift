@@ -18,7 +18,8 @@ struct OneSHeaderViewCustom<Content: View>: View {
     let leadingButton: HeaderButton?                    
     let trailingButton: HeaderButton?                   
     let secondaryButtonBottom: SecondaryHeaderButton?    
-    let secondaryButtonTop: SecondaryHeaderButton?    
+    let secondaryButtonTop: SecondaryHeaderButton?
+    let isInsideSheet: Bool
     let customView: (() -> Content)?                    
     
     
@@ -27,14 +28,16 @@ struct OneSHeaderViewCustom<Content: View>: View {
          trailingButton: HeaderButton?                  = nil,
          secondaryButtonTop: SecondaryHeaderButton?     = nil,
          secondaryButtonBottom: SecondaryHeaderButton?  = nil,
+         isInsideSheet: Bool                            = false,
          customView: (() -> Content)?                   = nil
     ) {
-        self.titleText = titleText
-        self.leadingButton = leadingButton
-        self.trailingButton = trailingButton
-        self.secondaryButtonTop = secondaryButtonTop
-        self.secondaryButtonBottom = secondaryButtonBottom
-        self.customView = customView
+        self.titleText              = titleText
+        self.leadingButton          = leadingButton
+        self.trailingButton         = trailingButton
+        self.secondaryButtonTop     = secondaryButtonTop
+        self.secondaryButtonBottom  = secondaryButtonBottom
+        self.isInsideSheet          = isInsideSheet
+        self.customView             = customView
     }
     
     
@@ -71,6 +74,7 @@ struct OneSHeaderViewCustom<Content: View>: View {
             .padding(.top, 16*Layout.multiplierWidth)
         }
         .padding(.top, 12 + Layout.onlyOniPhoneXType(-12))
+        .padding(.top, isInsideSheet ? Layout.sheetTopPadding : 0)
     }
     
     

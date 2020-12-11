@@ -35,7 +35,6 @@ struct ProfileHelpView: View {
                     BottomView(profileModel: profileModel, viewModel: viewModel)
                 }
                 .padding(.horizontal, Layout.firstLayerPadding)
-                .padding(.top, Layout.sheetTopPadding)
                 .padding(.bottom, 80*Layout.multiplierHeight)
             }
         }

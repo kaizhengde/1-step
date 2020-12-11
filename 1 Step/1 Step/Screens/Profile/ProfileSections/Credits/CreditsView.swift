@@ -18,7 +18,7 @@ struct CreditsView: View {
             
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 32) {
-                    OneSHeaderView("Credits", trailingButton: (.close, .grayToBackground, { SheetManager.shared.dismiss() }))
+                    OneSHeaderView("Credits", trailingButton: (.close, .grayToBackground, { SheetManager.shared.dismiss() }), isInsideSheet: true)
                     
                     HStack {
                         OneSSecondaryHeaderText(text: "Gratitude towards", color: viewModel.color)
@@ -28,7 +28,6 @@ struct CreditsView: View {
                     CreditsContentView(viewModel: viewModel)
                 }
                 .padding(.horizontal, Layout.firstLayerPadding)
-                .padding(.top, Layout.sheetTopPadding)
                 .padding(.bottom, 80*Layout.multiplierHeight)
             }
         }

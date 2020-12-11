@@ -27,6 +27,7 @@ final class GoalEditModel: ObservableObject, GoalSelectMountainDelegate, GoalEnt
         
         DataModel.shared.editGoal(goal, with: baseData) {
             SheetManager.shared.dismiss()
+            GoalModel.shared.objectWillChange.send()
         }
     }
     

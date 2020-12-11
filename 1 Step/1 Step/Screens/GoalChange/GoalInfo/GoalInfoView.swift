@@ -34,7 +34,8 @@ struct GoalInfoView: View {
                                         { viewModel.currentView = .howItWorks }
                                     )
                                     : nil,
-                                trailingButton: (.close, .grayToBackground, { sheetManager.dismiss() })
+                                trailingButton: (.close, .grayToBackground, { sheetManager.dismiss() }),
+                                isInsideSheet: true
                             )
                             
                             if viewModel.currentView == .howItWorks {
@@ -58,7 +59,6 @@ struct GoalInfoView: View {
                         }
                     }
                     .padding(.horizontal, Layout.firstLayerPadding)
-                    .padding(.top, Layout.sheetTopPadding)
                     .padding(.bottom, 80*Layout.multiplierHeight)
                 }
             }
