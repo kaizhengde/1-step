@@ -45,6 +45,7 @@ struct GoalSummaryView: View {
                         
                         OneSText(text: goalModel.selectedGoal.step.unitDescription, font: .custom(.bold, 40*Layout.multiplierWidth), color: goalModel.topTextColor)
                     }
+                    .minimumScaleFactor(0.9)
                 }
                 .frame(height: 80)
                 .padding(.horizontal, Layout.firstLayerPadding)
