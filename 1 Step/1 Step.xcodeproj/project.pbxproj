@@ -156,6 +156,7 @@
 		3DA7BD362532D41400171360 /* OneSTextFieldPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA7BD352532D41400171360 /* OneSTextFieldPopupView.swift */; };
 		3DA7BD3A2532F6A600171360 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA7BD392532F6A600171360 /* DataManager.swift */; };
 		3DAE424D258362D700335963 /* NotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE424C258362D700335963 /* NotificationHelper.swift */; };
+		3DAE42512583745900335963 /* OneSHyphenatedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE42502583745900335963 /* OneSHyphenatedText.swift */; };
 		3DAE7AE425309D0F00B162B1 /* FloaterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE7AE325309D0F00B162B1 /* FloaterManager.swift */; };
 		3DAE7AE725309DBB00B162B1 /* OneSFloater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE7AE625309DBB00B162B1 /* OneSFloater.swift */; };
 		3DAE7AEB2530A3E600B162B1 /* OneSTextFloater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE7AEA2530A3E600B162B1 /* OneSTextFloater.swift */; };
@@ -409,6 +410,7 @@
 		3DA7BD352532D41400171360 /* OneSTextFieldPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSTextFieldPopupView.swift; sourceTree = "<group>"; };
 		3DA7BD392532F6A600171360 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		3DAE424C258362D700335963 /* NotificationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHelper.swift; sourceTree = "<group>"; };
+		3DAE42502583745900335963 /* OneSHyphenatedText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSHyphenatedText.swift; sourceTree = "<group>"; };
 		3DAE7AE325309D0F00B162B1 /* FloaterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloaterManager.swift; sourceTree = "<group>"; };
 		3DAE7AE625309DBB00B162B1 /* OneSFloater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSFloater.swift; sourceTree = "<group>"; };
 		3DAE7AEA2530A3E600B162B1 /* OneSTextFloater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSTextFloater.swift; sourceTree = "<group>"; };
@@ -676,6 +678,7 @@
 				3D47CC85252C6F9900A8CA1B /* Header */,
 				3DE9C505252C8B6F0023C212 /* Texts */,
 				3D959A9825630F74007BAA07 /* MultilineTexts */,
+				3D2E79432530186700788AA2 /* TextFields */,
 				3D47CCB2252C77A300A8CA1B /* Buttons */,
 				3D6FDDAE25670801002854E6 /* DropDowns */,
 				3D59DE9E256965BD00CF24D7 /* Sections */,
@@ -1041,7 +1044,6 @@
 				3D959AA225631199007BAA07 /* OneSBackgroundMultilineText.swift */,
 				3D959A9925630F90007BAA07 /* OneSMultilineText.swift */,
 				3D511EEC256802C50028DB66 /* OneSTextPassage.swift */,
-				3D2E79432530186700788AA2 /* TextFields */,
 			);
 			path = MultilineTexts;
 			sourceTree = "<group>";
@@ -1278,6 +1280,7 @@
 				3DE9C506252C8B8C0023C212 /* OneSHeaderText.swift */,
 				3D2E79742530344D00788AA2 /* OneSSecondaryHeaderText.swift */,
 				3DE9C50A252C8F500023C212 /* OneSText.swift */,
+				3DAE42502583745900335963 /* OneSHyphenatedText.swift */,
 			);
 			path = Texts;
 			sourceTree = "<group>";
@@ -1663,6 +1666,7 @@
 				3D68B67A257267D100A183F5 /* GoalChangeNotificationView.swift in Sources */,
 				3D959AA725631320007BAA07 /* GoalExampleBackgroundText.swift in Sources */,
 				3DFD9BB6256B7CAA00CF9580 /* OneSSafariView.swift in Sources */,
+				3DAE42512583745900335963 /* OneSHyphenatedText.swift in Sources */,
 				3D0BEB112568EDB0002F74FE /* ItemTapScale.swift in Sources */,
 				3D0BEB042568E887002F74FE /* OneSAppearance.swift in Sources */,
 				3D4FD8632564E9E800103C73 /* Date.swift in Sources */,

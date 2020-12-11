@@ -34,6 +34,9 @@ enum GoalItemArt {
     }
     
     
+    static let padding: CGFloat = 12
+    
+    
     static var shape = RoundedRectangle(cornerRadius: 12, style: .continuous)
     
     
@@ -64,6 +67,11 @@ enum GoalItemArt {
         case .grid: return 36
         case .menu: return 8
         }
+    }
+    
+    
+    static var textWidth: CGFloat {
+        return width-padding*2
     }
     
 

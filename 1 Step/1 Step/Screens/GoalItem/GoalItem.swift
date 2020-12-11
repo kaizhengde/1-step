@@ -55,7 +55,7 @@ struct GoalItem: View {
                 }
                 Spacer()
             }
-            .padding([.horizontal, .top], 12)
+            .padding([.horizontal, .top], GoalItemArt.padding)
             .onReceive(goalsGridModel.$currentDragItem) { isCurrentDrag = $0 == goal }
             : nil
         }
@@ -69,8 +69,8 @@ struct GoalItem: View {
         
         var body: some View {
             VStack {
-                VStack(alignment: .leading) {
-                    OneSText(text: goal.name, font: GoalItemArt.nameFont, color: .backgroundToGray)
+                VStack(alignment: .leading, spacing: 0) {
+                    OneSHyphenatedText(text: goal.name, font: GoalItemArt.nameFont, color: .backgroundToGray, width: GoalItemArt.textWidth)
                     
                     if GoalItemArt.current == .grid {
                         HStack {
@@ -94,8 +94,9 @@ struct GoalItem: View {
                         .multilineTextAlignment(.leading)
                     }
                 }
-                .padding(12)
+                .padding(GoalItemArt.padding)
                 .offset(y: goal.currentState == .reached ? 24 : GoalItemArt.textOffset)
+                .animation(nil)
                 
                 Spacer()
             }

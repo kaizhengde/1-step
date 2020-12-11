@@ -26,6 +26,22 @@ enum OneSFont {
             return Font.custom(weight.weight, size: size)
         }
     }
+    
+    var uiFont: UIFont {
+        switch self {
+        case .header:       return UIFont(name: Raleway.extraBold.weight,    size: 40)!
+        case .header2:      return UIFont(name: Raleway.extraBold.weight,    size: 30)!
+        case .title:        return UIFont(name: Raleway.bold.weight,         size: 32)!
+        case .title2:       return UIFont(name: Raleway.extraBold.weight,    size: 22)!
+        case .subtitle:     return UIFont(name: Raleway.bold.weight,         size: 16)!
+        case .body:         return UIFont(name: Raleway.medium.weight,       size: 17)!
+        case .body2:        return UIFont(name: Raleway.regular.weight,      size: 17)!
+        case .footnote:     return UIFont(name: Raleway.regular.weight,      size: 16)!
+        case .footnote2:    return UIFont(name: Raleway.regular.weight,      size: 13)!
+        case let .custom(weight, size):
+            return UIFont(name: weight.weight, size: size)!
+        }
+    }
 }
 
 
