@@ -47,7 +47,7 @@ struct GoalSummaryView: View {
                     }
                 }
                 .frame(height: 80)
-                .padding(.horizontal, Layout.secondLayerPadding)
+                .padding(.horizontal, Layout.firstLayerPadding)
                 .padding(.top, MountainLayout.offsetYText)
                 .offset(y: goalModel.showFlag ? MountainLayout.offsetYFlag : 0)
             }

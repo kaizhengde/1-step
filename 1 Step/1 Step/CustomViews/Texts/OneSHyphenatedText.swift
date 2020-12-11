@@ -31,6 +31,7 @@ private struct HyphenatedText: UIViewRepresentable {
     let font: UIFont
     let color: UIColor
     let width: CGFloat
+    
     @Binding var height: CGFloat
     
     
