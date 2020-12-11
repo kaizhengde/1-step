@@ -19,6 +19,10 @@ struct ProfileHeaderView: View {
                 VStack(spacing: 16) {
                     ProfileImageView(profileModel: profileModel)
                     ProfileNameView()
+                    
+                    if UserDefaultsManager.shared.settingPremium {
+                        PremiumMarkView()
+                    }
                 }
                 .oneSItemTransition()
             )
@@ -80,6 +84,23 @@ struct ProfileHeaderView: View {
                 .onReceive(popupManager.confirmBtnDismissed) {
                     if $0.key == .changeName { userDefaultsManager.userName = $0.input.removeWhiteSpaces() }
                 }
+        }
+    }
+    
+    
+    private struct PremiumMarkView: View {
+        
+        var body: some View {
+            VStack {
+                OneSText(text: "Premium", font: .custom(.extraBold, 13), color: .grayToBackground)
+            }
+            .padding(.vertical, 8)
+            .padding(.horizontal, 15)
+            .overlay(
+                RoundedRectangle(cornerRadius: 20)
+                    .stroke(Color.darkNeutralToNeutral, lineWidth: 1.2)
+            )
+            .padding(.top, -6)
         }
     }
 }
