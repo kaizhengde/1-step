@@ -35,8 +35,10 @@ struct GoalScreen: View {
         }
         .onAppear {
             goalModel.initTransition()
-            goalModel.considerFirstOpenGoal(with: appAppearance)
+            goalModel.appAppearance = appAppearance
+            goalModel.considerFirstOpenGoal()
         }
+        .onChange(of: appAppearance) { goalModel.updateAppearance(with: $0) }
         .oneSAnimation()
         .transition(.identity)
         .onReceive(PopupManager.shared.dismissed) { if $0 == .goalReached { goalModel.onDismissGoalCompletePopup() } }

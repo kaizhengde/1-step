@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ProfileHeaderView: View {
     
+    @StateObject private var userDefaultsManager = UserDefaultsManager.shared
     @StateObject private var mainModel = MainModel.shared
     @ObservedObject var profileModel: ProfileModel
     
@@ -20,7 +21,7 @@ struct ProfileHeaderView: View {
                     ProfileImageView(profileModel: profileModel)
                     ProfileNameView()
                     
-                    if UserDefaultsManager.shared.settingPremium {
+                    if userDefaultsManager.settingPremium {
                         PremiumMarkView()
                     }
                 }

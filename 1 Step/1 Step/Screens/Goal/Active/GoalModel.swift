@@ -17,9 +17,9 @@ final class GoalModel: TransitionObservableObject {
     }
     
     enum ScrollPosition: Int {
-        case none               = -1
-        case top                = 0
-        case current            = 1
+        case none       = -1
+        case top        = 0
+        case current    = 1
     }
     
     static let shared = GoalModel()
@@ -39,8 +39,7 @@ final class GoalModel: TransitionObservableObject {
     @Published var journeyViewDisappeared = true
     @Published var showFlag: Bool = false
     
-    private var userdefaultsManager: UserDefaultsManager { UserDefaultsManager.shared }
-    private var selectedAppearance: OneSAppearance { userdefaultsManager.settingAppearance }
+    @Published var appAppearance: ColorScheme = .light
     
     
     //MARK: - Transition
@@ -60,10 +59,10 @@ final class GoalModel: TransitionObservableObject {
     
     //MARK: - First Open
     
-    func considerFirstOpenGoal(with appAppearance: ColorScheme) {
+    func considerFirstOpenGoal() {
         if UserDefaultsManager.shared.firstOpenGoal {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
-                OneSTutorialGIF.showPopup(for: .firstOpenGoal, appAppearance: appAppearance)
+                OneSTutorialGIF.showPopup(for: .firstOpenGoal, appAppearance: self.appAppearance)
             }
         }
     }
@@ -77,6 +76,13 @@ final class GoalModel: TransitionObservableObject {
     
     
     //MARK: - Global
+    
+    func updateAppearance(with newAppearance: ColorScheme) {
+        if UserDefaultsManager.shared.settingAppearance == .mirrorDevice {
+            appAppearance = newAppearance
+        }
+    }
+    
     
     var goalDragOffset: CGFloat {
         switch dragState {
@@ -105,10 +111,10 @@ final class GoalModel: TransitionObservableObject {
     var headerButtonColor: Color {
         var menuColor: Color!
         
-        switch selectedAppearance {
-        case .mirrorDevice: menuColor = .darkNeutralToNeutral
-        case .light: menuColor = .darkNeutralStatic
-        case .dark: menuColor = .neutralStatic
+        switch appAppearance {
+        case .light:        menuColor = .darkNeutralStatic
+        case .dark:         menuColor = .neutralStatic
+        @unknown default:   menuColor = .white
         }
         
         return viewDragColor(standard: selectedGoal.color.standard, menu: menuColor)
@@ -152,12 +158,12 @@ final class GoalModel: TransitionObservableObject {
     var backgroundColor: Color {
         var menuColor: Color!
         
-        switch selectedAppearance {
-        case .mirrorDevice: menuColor = .darkBackgroundToDarkGray
-        case .light: menuColor = .darkBackgroundStatic
-        case .dark: menuColor = .darkGrayStatic
+        switch appAppearance {
+        case .light:        menuColor = .darkBackgroundStatic
+        case .dark:         menuColor = .darkGrayStatic
+        @unknown default:   menuColor = .white
         }
-        
+                
         return viewDragColor(standard: selectedGoal.color.standard, menu: menuColor)
     }
     
@@ -165,16 +171,16 @@ final class GoalModel: TransitionObservableObject {
         var standardColor: Color!
         var menuColor: Color!
         
-        switch selectedAppearance {
-        case .mirrorDevice: standardColor = .grayToBackground
-        case .light: standardColor = .grayStatic
-        case .dark: standardColor = .backgroundStatic
+        switch appAppearance {
+        case .light:        standardColor = .grayStatic
+        case .dark:         standardColor = .backgroundStatic
+        @unknown default:   menuColor = .white
         }
         
-        switch selectedAppearance {
-        case .mirrorDevice: menuColor = .darkNeutralToNeutral
-        case .light: menuColor = .darkNeutralStatic
-        case .dark: menuColor = .neutralStatic
+        switch appAppearance {
+        case .light:        menuColor = .darkNeutralStatic
+        case .dark:         menuColor = .neutralStatic
+        @unknown default:   menuColor = .white
         }
         
         return viewDragColor(standard: standardColor, menu: menuColor)

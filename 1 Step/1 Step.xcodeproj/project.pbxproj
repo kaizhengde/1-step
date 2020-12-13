@@ -185,6 +185,12 @@
 		3DCFE29625459E390012C536 /* OneSPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCFE29525459E390012C536 /* OneSPicker.swift */; };
 		3DCFE29F2545A2B30012C536 /* OneSDualPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCFE29E2545A2B30012C536 /* OneSDualPicker.swift */; };
 		3DCFE2C025469DFB0012C536 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCFE2BF25469DFB0012C536 /* AddView.swift */; };
+		3DD5C0672585D7FD00D8AC7D /* TutorialSelectColorLight.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3DD5C0612585D7FD00D8AC7D /* TutorialSelectColorLight.gif */; };
+		3DD5C0682585D7FD00D8AC7D /* TutorialGoalViewDark.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3DD5C0622585D7FD00D8AC7D /* TutorialGoalViewDark.gif */; };
+		3DD5C0692585D7FD00D8AC7D /* TutorialSelectMountainDark.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3DD5C0632585D7FD00D8AC7D /* TutorialSelectMountainDark.gif */; };
+		3DD5C06A2585D7FD00D8AC7D /* TutorialGoalViewLight.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3DD5C0642585D7FD00D8AC7D /* TutorialGoalViewLight.gif */; };
+		3DD5C06B2585D7FD00D8AC7D /* TutorialSelectMountainLight.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3DD5C0652585D7FD00D8AC7D /* TutorialSelectMountainLight.gif */; };
+		3DD5C06C2585D7FD00D8AC7D /* TutorialSelectColorDark.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3DD5C0662585D7FD00D8AC7D /* TutorialSelectColorDark.gif */; };
 		3DD5C9CD2539CF6600861784 /* GoalScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD5C9CC2539CF6600861784 /* GoalScreen.swift */; };
 		3DD5C9D02539CF7B00861784 /* GoalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD5C9CF2539CF7B00861784 /* GoalModel.swift */; };
 		3DD5C9D42539D27100861784 /* GoalTransitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD5C9D32539D27100861784 /* GoalTransitionView.swift */; };
@@ -220,12 +226,6 @@
 		3DEA91952579740900C90414 /* OneSFootnoteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA91942579740900C90414 /* OneSFootnoteButton.swift */; };
 		3DEA919A2579752100C90414 /* CreditsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA91992579752100C90414 /* CreditsView.swift */; };
 		3DEBC10E257FF0B70008360D /* OneSTutorialGIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEBC10D257FF0B70008360D /* OneSTutorialGIF.swift */; };
-		3DEBC159258016CB0008360D /* TutorialGoalViewDark.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3DEBC153258016CB0008360D /* TutorialGoalViewDark.gif */; };
-		3DEBC15A258016CC0008360D /* TutorialSelectMountainLight.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3DEBC154258016CB0008360D /* TutorialSelectMountainLight.gif */; };
-		3DEBC15B258016CC0008360D /* TutorialSelectColorLight.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3DEBC155258016CB0008360D /* TutorialSelectColorLight.gif */; };
-		3DEBC15C258016CC0008360D /* TutorialSelectMountainDark.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3DEBC156258016CB0008360D /* TutorialSelectMountainDark.gif */; };
-		3DEBC15D258016CC0008360D /* TutorialSelectColorDark.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3DEBC157258016CB0008360D /* TutorialSelectColorDark.gif */; };
-		3DEBC15E258016CC0008360D /* TutorialGoalViewLight.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3DEBC158258016CB0008360D /* TutorialGoalViewLight.gif */; };
 		3DF1BFD4254C557E004E1AB6 /* MilestoneItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF1BFD3254C557E004E1AB6 /* MilestoneItem.swift */; };
 		3DF1BFD7254C67D2004E1AB6 /* SummitMilestoneItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF1BFD6254C67D2004E1AB6 /* SummitMilestoneItem.swift */; };
 		3DF1E2722547F04A00D65244 /* HiddenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF1E2712547F04A00D65244 /* HiddenView.swift */; };
@@ -439,6 +439,12 @@
 		3DCFE29525459E390012C536 /* OneSPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSPicker.swift; sourceTree = "<group>"; };
 		3DCFE29E2545A2B30012C536 /* OneSDualPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSDualPicker.swift; sourceTree = "<group>"; };
 		3DCFE2BF25469DFB0012C536 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
+		3DD5C0612585D7FD00D8AC7D /* TutorialSelectColorLight.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = TutorialSelectColorLight.gif; path = ../../../Design/Assets/TutorialGIFs/TutorialSelectColorLight.gif; sourceTree = "<group>"; };
+		3DD5C0622585D7FD00D8AC7D /* TutorialGoalViewDark.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = TutorialGoalViewDark.gif; path = ../../../Design/Assets/TutorialGIFs/TutorialGoalViewDark.gif; sourceTree = "<group>"; };
+		3DD5C0632585D7FD00D8AC7D /* TutorialSelectMountainDark.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = TutorialSelectMountainDark.gif; path = ../../../Design/Assets/TutorialGIFs/TutorialSelectMountainDark.gif; sourceTree = "<group>"; };
+		3DD5C0642585D7FD00D8AC7D /* TutorialGoalViewLight.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = TutorialGoalViewLight.gif; path = ../../../Design/Assets/TutorialGIFs/TutorialGoalViewLight.gif; sourceTree = "<group>"; };
+		3DD5C0652585D7FD00D8AC7D /* TutorialSelectMountainLight.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = TutorialSelectMountainLight.gif; path = ../../../Design/Assets/TutorialGIFs/TutorialSelectMountainLight.gif; sourceTree = "<group>"; };
+		3DD5C0662585D7FD00D8AC7D /* TutorialSelectColorDark.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = TutorialSelectColorDark.gif; path = ../../../Design/Assets/TutorialGIFs/TutorialSelectColorDark.gif; sourceTree = "<group>"; };
 		3DD5C9CC2539CF6600861784 /* GoalScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalScreen.swift; sourceTree = "<group>"; };
 		3DD5C9CF2539CF7B00861784 /* GoalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalModel.swift; sourceTree = "<group>"; };
 		3DD5C9D32539D27100861784 /* GoalTransitionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTransitionView.swift; sourceTree = "<group>"; };
@@ -475,12 +481,6 @@
 		3DEA91942579740900C90414 /* OneSFootnoteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSFootnoteButton.swift; sourceTree = "<group>"; };
 		3DEA91992579752100C90414 /* CreditsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsView.swift; sourceTree = "<group>"; };
 		3DEBC10D257FF0B70008360D /* OneSTutorialGIF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSTutorialGIF.swift; sourceTree = "<group>"; };
-		3DEBC153258016CB0008360D /* TutorialGoalViewDark.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = TutorialGoalViewDark.gif; path = ../../../../../Downloads/600/TutorialGoalViewDark.gif; sourceTree = "<group>"; };
-		3DEBC154258016CB0008360D /* TutorialSelectMountainLight.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = TutorialSelectMountainLight.gif; path = ../../../../../Downloads/600/TutorialSelectMountainLight.gif; sourceTree = "<group>"; };
-		3DEBC155258016CB0008360D /* TutorialSelectColorLight.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = TutorialSelectColorLight.gif; path = ../../../../../Downloads/600/TutorialSelectColorLight.gif; sourceTree = "<group>"; };
-		3DEBC156258016CB0008360D /* TutorialSelectMountainDark.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = TutorialSelectMountainDark.gif; path = ../../../../../Downloads/600/TutorialSelectMountainDark.gif; sourceTree = "<group>"; };
-		3DEBC157258016CB0008360D /* TutorialSelectColorDark.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = TutorialSelectColorDark.gif; path = ../../../../../Downloads/600/TutorialSelectColorDark.gif; sourceTree = "<group>"; };
-		3DEBC158258016CB0008360D /* TutorialGoalViewLight.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = TutorialGoalViewLight.gif; path = ../../../../../Downloads/600/TutorialGoalViewLight.gif; sourceTree = "<group>"; };
 		3DF1BFD3254C557E004E1AB6 /* MilestoneItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneItem.swift; sourceTree = "<group>"; };
 		3DF1BFD6254C67D2004E1AB6 /* SummitMilestoneItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummitMilestoneItem.swift; sourceTree = "<group>"; };
 		3DF1E2712547F04A00D65244 /* HiddenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiddenView.swift; sourceTree = "<group>"; };
@@ -1349,12 +1349,12 @@
 		3DEBC0D5257FCE810008360D /* TutorialGIFs */ = {
 			isa = PBXGroup;
 			children = (
-				3DEBC153258016CB0008360D /* TutorialGoalViewDark.gif */,
-				3DEBC158258016CB0008360D /* TutorialGoalViewLight.gif */,
-				3DEBC157258016CB0008360D /* TutorialSelectColorDark.gif */,
-				3DEBC155258016CB0008360D /* TutorialSelectColorLight.gif */,
-				3DEBC156258016CB0008360D /* TutorialSelectMountainDark.gif */,
-				3DEBC154258016CB0008360D /* TutorialSelectMountainLight.gif */,
+				3DD5C0622585D7FD00D8AC7D /* TutorialGoalViewDark.gif */,
+				3DD5C0642585D7FD00D8AC7D /* TutorialGoalViewLight.gif */,
+				3DD5C0662585D7FD00D8AC7D /* TutorialSelectColorDark.gif */,
+				3DD5C0612585D7FD00D8AC7D /* TutorialSelectColorLight.gif */,
+				3DD5C0632585D7FD00D8AC7D /* TutorialSelectMountainDark.gif */,
+				3DD5C0652585D7FD00D8AC7D /* TutorialSelectMountainLight.gif */,
 			);
 			path = TutorialGIFs;
 			sourceTree = "<group>";
@@ -1521,6 +1521,7 @@
 				3DA350BB257F76D1002CD41A /* 1StepIconEarthDark29@3x.png in Resources */,
 				3DA350D0257F778C002CD41A /* 1StepIconAirDark60@3x.png in Resources */,
 				3DA350BD257F76D1002CD41A /* 1StepIconEarthDark40@3x.png in Resources */,
+				3DD5C06A2585D7FD00D8AC7D /* TutorialGoalViewLight.gif in Resources */,
 				3DA350F4257F77F0002CD41A /* 1StepIconDark60@2x.png in Resources */,
 				3D47CCA5252C73D300A8CA1B /* Raleway-SemiBold.ttf in Resources */,
 				3DA350BA257F76D1002CD41A /* 1StepIconEarthDark60@3x.png in Resources */,
@@ -1529,11 +1530,9 @@
 				3DBCC759257EA1F900924652 /* 1StepIconEarth40@3x.png in Resources */,
 				3D47CCA1252C73D300A8CA1B /* Raleway-Thin.ttf in Resources */,
 				3DA350FA257F77F0002CD41A /* 1StepIconDark29@2x.png in Resources */,
-				3DEBC15A258016CC0008360D /* TutorialSelectMountainLight.gif in Resources */,
-				3DEBC15E258016CC0008360D /* TutorialGoalViewLight.gif in Resources */,
+				3DD5C0692585D7FD00D8AC7D /* TutorialSelectMountainDark.gif in Resources */,
 				3D47CCA2252C73D300A8CA1B /* Raleway-Bold.ttf in Resources */,
 				3DBCC79F257EA3FA00924652 /* 1StepIconAir40@2x.png in Resources */,
-				3DEBC15D258016CC0008360D /* TutorialSelectColorDark.gif in Resources */,
 				3DBCC75A257EA1F900924652 /* 1StepIconEarth40@2x.png in Resources */,
 				3DBCC7A3257EA3FA00924652 /* 1StepIconAir20@2x.png in Resources */,
 				3DA350F7257F77F0002CD41A /* 1StepIconDark20@3x.png in Resources */,
@@ -1541,6 +1540,7 @@
 				3DBCC75C257EA1F900924652 /* 1StepIconEarth29@2x.png in Resources */,
 				3DBCC7A6257EA3FA00924652 /* 1StepIconAir60@3x.png in Resources */,
 				3D47CCA4252C73D300A8CA1B /* Raleway-Regular.ttf in Resources */,
+				3DD5C06B2585D7FD00D8AC7D /* TutorialSelectMountainLight.gif in Resources */,
 				3DA350BC257F76D1002CD41A /* 1StepIconEarthDark60@2x.png in Resources */,
 				3DBCC79E257EA3FA00924652 /* 1StepIconAir40@3x.png in Resources */,
 				3DA350D4257F778C002CD41A /* 1StepIconAirDark40@2x.png in Resources */,
@@ -1548,6 +1548,7 @@
 				3DA350F8257F77F0002CD41A /* 1StepIconDark20@2x.png in Resources */,
 				3DBCC760257EA1F900924652 /* 1StepIconEarth29@3x.png in Resources */,
 				3DA350F9257F77F0002CD41A /* 1StepIconDark29@3x.png in Resources */,
+				3DD5C0672585D7FD00D8AC7D /* TutorialSelectColorLight.gif in Resources */,
 				3DA350D3257F778C002CD41A /* 1StepIconAirDark29@2x.png in Resources */,
 				3DA350BF257F76D1002CD41A /* 1StepIconEarthDark40@2x.png in Resources */,
 				3D47CCA0252C73D300A8CA1B /* Raleway-Medium.ttf in Resources */,
@@ -1561,13 +1562,11 @@
 				3DA350F5257F77F0002CD41A /* 1StepIconDark60@3x.png in Resources */,
 				3D47CCA9252C73D300A8CA1B /* Raleway-Light.ttf in Resources */,
 				3DA350D2257F778C002CD41A /* 1StepIconAirDark29@3x.png in Resources */,
+				3DD5C06C2585D7FD00D8AC7D /* TutorialSelectColorDark.gif in Resources */,
 				3DBCC7A2257EA3FA00924652 /* 1StepIconAir29@3x.png in Resources */,
 				3D47CC9F252C73D300A8CA1B /* Raleway-Black.ttf in Resources */,
-				3DEBC15B258016CC0008360D /* TutorialSelectColorLight.gif in Resources */,
 				3D61086B256D63DE00DC20BD /* Localizable.strings in Resources */,
 				3DEA918B2579589700C90414 /* NoticiationDefault.m4r in Resources */,
-				3DEBC15C258016CC0008360D /* TutorialSelectMountainDark.gif in Resources */,
-				3DEBC159258016CB0008360D /* TutorialGoalViewDark.gif in Resources */,
 				3DA350C0257F76D1002CD41A /* 1StepIconEarthDark29@2x.png in Resources */,
 				3DA350CF257F778C002CD41A /* 1StepIconAirDark20@2x.png in Resources */,
 				3DBCC75D257EA1F900924652 /* 1StepIconEarth20@2x.png in Resources */,
@@ -1575,6 +1574,7 @@
 				3DA350FB257F77F0002CD41A /* 1StepIconDark40@3x.png in Resources */,
 				3DBCC7A4257EA3FA00924652 /* 1StepIconAir60@2x.png in Resources */,
 				3DA350C1257F76D1002CD41A /* 1StepIconEarthDark20@3x.png in Resources */,
+				3DD5C0682585D7FD00D8AC7D /* TutorialGoalViewDark.gif in Resources */,
 				3D47CCA3252C73D300A8CA1B /* Raleway-ExtraBold.ttf in Resources */,
 				3DA350F6257F77F0002CD41A /* 1StepIconDark40@2x.png in Resources */,
 			);
