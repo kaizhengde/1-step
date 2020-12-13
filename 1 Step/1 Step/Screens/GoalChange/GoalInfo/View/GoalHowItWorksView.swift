@@ -21,6 +21,10 @@ struct GoalHowItWorksView: View {
             OneSTextPassage(passageData: viewModel.howItWorksTextPassageTwoData)
             GoalExampleMapView(data: viewModel.howItWorksExampleTwoData, selectedColor: selectedColor, big: true)
             OneSTextPassage(passageData: viewModel.howItWorksTextPassageThreeData)
+            GoalExampleMapView(data: viewModel.howItWorksExampleThreeData, selectedColor: selectedColor, big: true)
+            OneSTextPassage(passageData: viewModel.howItWorksTextPassageFourData)
+            GoalExampleMapView(data: viewModel.howItWorksExampleFourData, selectedColor: selectedColor, big: true)
+            OneSTextPassage(passageData: viewModel.howItWorksTextPassageFiveData)
         }
         .padding(.bottom, 20)
     }

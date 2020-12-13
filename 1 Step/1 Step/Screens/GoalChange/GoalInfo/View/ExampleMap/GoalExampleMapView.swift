@@ -25,6 +25,6 @@ struct GoalExampleMapView: View {
                 }
             }
         }
-        .padding(.bottom, 20)
+        .padding(.bottom, 12)
     }
 }

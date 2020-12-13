@@ -23,12 +23,12 @@ struct GoalExampleArrowText: View {
             Symbol.longArrowDown
                 .renderingMode(.template)
                 .resizable()
-                .frame(width: 24, height: big ? 60 : 40)
                 .aspectRatio(contentMode: .fit)
+                .frame(width: 24, height: big ? 42 : 36)
                 .foregroundColor(.white)
-                .colorMultiply(.neutralToDarkNeutral)
+                .colorMultiply(.darkNeutralToNeutral)
             
-            OneSText(text: text, font: .custom(.medium, 17), color: .grayToBackground)
+            OneSText(text: text, font: .custom(.medium, big ? 17 : 15), color: .grayToBackground)
             
             Spacer()
         }
