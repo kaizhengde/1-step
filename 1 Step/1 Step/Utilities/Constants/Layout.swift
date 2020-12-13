@@ -65,7 +65,7 @@ enum SafeAreaSize {
 
 enum MountainLayout {
     
-    static let offsetY: CGFloat             = Layout.screenHeight/3.2
+    static let offsetY: CGFloat             = Layout.screenHeight/3.2 + Layout.screenTopPadding
     static let offsetYNoScrollView          = offsetY - Layout.onlyOniPhoneXType(SafeAreaSize.top) - 10
     static let offsetYText                  = offsetY - 80 - 20*Layout.multiplierHeight
     static let offsetYTextNoScrollView      = offsetYNoScrollView - 80 - 20*Layout.multiplierHeight

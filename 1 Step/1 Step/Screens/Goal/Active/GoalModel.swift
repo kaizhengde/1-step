@@ -42,6 +42,13 @@ final class GoalModel: TransitionObservableObject {
     @Published var appAppearance: ColorScheme = .light
     
     
+    func appear(with appearance: ColorScheme) {
+        initTransition()
+        appAppearance = appearance
+        considerFirstOpenGoal()
+    }
+    
+    
     //MARK: - Transition
     
     func initAppear() {
@@ -182,6 +189,8 @@ final class GoalModel: TransitionObservableObject {
         case .dark:         menuColor = .neutralStatic
         @unknown default:   menuColor = .white
         }
+        
+        print("!!!!")
         
         return viewDragColor(standard: standardColor, menu: menuColor)
     }

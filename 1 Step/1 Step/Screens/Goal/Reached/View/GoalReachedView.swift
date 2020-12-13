@@ -28,7 +28,7 @@ struct GoalReachedView: View {
                             
                             VStack(spacing: 50) {
                                 JourneyView(state: .reached)
-                                
+
                                 OneSSmallBorderButton(symbol: SFSymbol.delete, color: .backgroundToDarkGray) {
                                     goalEditModel.tryDelete(goalReachedModel.selectedGoal)
                                 }

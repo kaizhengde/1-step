@@ -33,11 +33,7 @@ struct GoalScreen: View {
             
             AddStepView(viewModel: addStepModel)
         }
-        .onAppear {
-            goalModel.initTransition()
-            goalModel.appAppearance = appAppearance
-            goalModel.considerFirstOpenGoal()
-        }
+        .onAppear { goalModel.appear(with: appAppearance) }
         .onChange(of: appAppearance) { goalModel.updateAppearance(with: $0) }
         .oneSAnimation()
         .transition(.identity)

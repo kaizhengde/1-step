@@ -73,7 +73,7 @@ struct GoalSummaryView: View {
                 .onTapGesture { goalModel.downArrowTapped() }
                 .frame(height: 120)
                 .padding(.horizontal, Layout.secondLayerPadding)
-                .padding(.top, Layout.screenHeight - 200 - SafeAreaSize.bottom)
+                .padding(.top, Layout.screenHeight - 200*Layout.multiplierHeight - SafeAreaSize.bottom)
             }
             
             
