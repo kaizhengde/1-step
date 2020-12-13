@@ -181,7 +181,7 @@ final class GoalModel: TransitionObservableObject {
         switch appAppearance {
         case .light:        standardColor = .grayStatic
         case .dark:         standardColor = .backgroundStatic
-        @unknown default:   menuColor = .white
+        @unknown default:   standardColor = .white
         }
         
         switch appAppearance {
@@ -189,9 +189,7 @@ final class GoalModel: TransitionObservableObject {
         case .dark:         menuColor = .neutralStatic
         @unknown default:   menuColor = .white
         }
-        
-        print("!!!!")
-        
+                
         return viewDragColor(standard: standardColor, menu: menuColor)
     }
     

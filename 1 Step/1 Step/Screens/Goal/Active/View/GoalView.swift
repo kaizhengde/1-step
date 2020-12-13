@@ -36,6 +36,8 @@ struct GoalView: View {
                                         .opacity(goalModel.journeyViewDragOpacity)
                                         .padding(.top, -250)
                                         .padding(.bottom, 180*Layout.multiplierHeight)
+                                        .onAppear { goalModel.journeyViewDisappeared = false }
+                                        .onDisappear { goalModel.journeyViewDisappeared = true }
                                 }
                             }
                         }
