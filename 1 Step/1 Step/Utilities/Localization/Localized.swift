@@ -75,12 +75,19 @@ enum Localized {
     static let note             = "note".localized()
     static let thankYou         = "thankYou".localized()
     static let start            = "start".localized()
-    static let gratitude        = "gratitude".localized()
+    static let howItWorks       = "howItWorks".localized()
+    static let examples         = "examples".localized()
     static let tutorial         = "tutorial".localized()
     static let selectMountain   = "selectMountain".localized()
     static let selectColor      = "selectColor".localized()
     static let goalBasics       = "goalBasics".localized()
-    
+    static let error            = "error".localized()
+    static let unknownError     = "unknownError".localized()
+    static let hey              = "hey".localized()
+    static let hi               = "hi".localized()
+    static let goodMorning      = "goodMorning".localized()
+    static let goodEvening      = "goodEvening".localized()
+        
     
     enum Step {
         
@@ -145,6 +152,20 @@ enum Localized {
         static let restore              = "premium.restore".localized()
         static let noteTextPassage      = "premium.noteTextPassage".localized()
         static let thankYouText         = "premium.thankYouText".localized()
+    }
+    
+    
+    enum Error {
+        
+        static let mocSave              = "error.mocSave".localized()
+        static let noAccessPhotoLibrary = "error.noAccessPhotoLibrary".localized()
+        static let noAccessNotification = "error.noAccessNotification".localized()
+    }
+    
+    
+    enum Notification {
+        
+        static let goal_bodyText        = "notification.goal_bodyText".localized()
     }
 }
 

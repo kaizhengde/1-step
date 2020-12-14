@@ -13,8 +13,8 @@ enum GoalInfoCurrent {
     
     var title: String {
         switch self {
-        case .howItWorks:   return "How it works"
-        case .examples:     return "Examples"
+        case .howItWorks:   return Localized.howItWorks
+        case .examples:     return Localized.examples
         }
     }
 }

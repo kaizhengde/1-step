@@ -74,13 +74,19 @@ lifetime        = "Lebenszeit";
 note            = "Hinweis";
 thankYou        = "Danke";
 start           = "Start";
-gratitude       = "Dankbarkeit an";
-tutorial        = "Tutorial";
+howItWorks      = "Wie es funktioniert";
+examples        = "Beispiele";
+tutorial        = "Anleitung";
 selectMountain  = "Berg auswählen";
 selectColor     = "Farbe auswählen";
 goalBasics      = "Ziel Grundlagen";
 error           = "Error";
 unknownError    = "Unbekannter Error";
+hey             = "Hey";
+hi              = "Hi";
+goodMorning     = "Guten Morgen";
+goodEvening     = "Guten Abend";
+
 
 
 // Special ------------------------------------------------------------------
@@ -151,6 +157,16 @@ premium.thankYouText        = "wir wünschen dir ein wundervolle Zeit mit 1 Step
 
 //Error ----------------------------------------------
 
-error.mocSave               = "Es gab ein Problem, deine Änderungen zu sichern, es ist nicht deine Schuld. Versuche es bitte erneut. Erwäge sonst einen Neustart."
-error.noAccessPhotoLibrary  = "Bitte genehmige das Zugreifen deiner Foto-Bibliothek."
-error.noAccessNotification  = "Bitte genehmige das Senden von Erinnerungen."
+error.mocSave               = "Es gab ein Problem, deine Änderungen zu sichern, es ist nicht deine Schuld. Versuche es bitte erneut. Erwäge sonst einen Neustart.";
+error.noAccessPhotoLibrary  = "Bitte genehmige den Zugang zu deiner Foto-Bibliothek.";
+error.noAccessNotification  = "Bitte genehmige das Senden von Benachrichtigungen.";
+
+
+//Notification ----------------------------------------------
+
+notification.goal_bodyText  = "Zeit für einen weiteren Schritt.";
+
+
+//Help ----------------------------------------------
+
+

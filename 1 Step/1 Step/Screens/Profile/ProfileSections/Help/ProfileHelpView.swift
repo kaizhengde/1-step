@@ -20,7 +20,7 @@ struct ProfileHelpView: View {
             
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 32) {
-                    OneSHeaderView("Help", trailingButton: (.close, .grayToBackground, { fullSheetManager.dismiss() }))
+                    OneSHeaderView(Localized.help, trailingButton: (.close, .grayToBackground, { fullSheetManager.dismiss() }))
                     
                     HelpGeneralView()
                     
@@ -59,7 +59,7 @@ struct ProfileHelpView: View {
                         GoalInfoView(viewModel: GoalInfoModel(initialView: .examples), selectedColor: UserColor.user0)
                     }
                 }
-                OneSRowButton(.shortBig, title: "Tutorial") {
+                OneSRowButton(.shortBig, title: Localized.tutorial) {
                     sheetManager.showSheet {
                         ProfileTutorialView()
                     }

@@ -16,11 +16,9 @@ enum NotificationHelper {
         var greeting: (text: String, withComma: Bool) = ("", false)
         
         switch dateComponents.hour! {
-        case 4...10:    greeting = getRandomGreeting("Good morning")
-        case 11...13:   greeting = getRandomGreeting()
-        case 14...17:   greeting = getRandomGreeting("Good afternoon")
-        case 18...21:   greeting = getRandomGreeting("Good evening")
-        default:        greeting = getRandomGreeting()
+        case 4...9:     greeting = (Localized.goodMorning, true)
+        case 18...21:   greeting = (Localized.goodEvening, true)
+        default:        greeting.text = getRandomGreeting()
         }
         
         let userName    = UserDefaultsManager.shared.userName
@@ -40,24 +38,11 @@ enum NotificationHelper {
     }
     
     
-    static func getRandomGreeting(_ dayTime: String? = nil) -> (String, Bool) {
-        var greeting: (text: String, withComma: Bool) = ("", false)
-        
-        switch Int.random(in: 0...2) {
-        case 0: greeting.text = "Hey"
-        case 1: greeting.text = "Hi"
-        case 2: greeting = ("Greetings", true)
-        default: break
+    static func getRandomGreeting() -> String {
+        switch Int.random(in: 0...1) {
+        case 0:     return Localized.hey
+        default:    return Localized.hi
         }
-        
-        if let dayTime = dayTime {
-            switch Int.random(in: 0...1) {
-            case 0: greeting = (dayTime, true)
-            default: break
-            }
-        }
-        
-        return greeting
     }
     
     

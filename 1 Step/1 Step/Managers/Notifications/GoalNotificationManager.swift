@@ -84,7 +84,7 @@ extension GoalNotificationManager {
         let sundayStartWeekday  = Int(weekday+1 == 7 ? 0 : weekday+1)
         dateComponents.weekday  = sundayStartWeekday+1
         
-        print("New Notification Time: \(dateComponents.description)")
+        print("New Notification: \(dateComponents.description)")
         
         return dateComponents
     }
@@ -96,7 +96,7 @@ extension GoalNotificationManager {
         let notificationTitle: String   = "\(goal.name) \(goal.neededStepUnits) \(goal.step.unitDescription)"
         var notificationBody: String    = NotificationHelper.generateNotificationGreeting(from: dateComponents)
         
-        notificationBody.append(" It's time to take one more step.")
+        notificationBody.append(" \(Localized.Notification.goal_bodyText)")
         
         let content     = UNMutableNotificationContent()
         content.title   = notificationTitle

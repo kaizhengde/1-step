@@ -17,7 +17,7 @@ class LocalNotificationManager {
         center.requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
             guard error == nil else {
                 PopupManager.shared.showPopup(backgroundColor: .darkNeutralToNeutral) {
-                    OneSTextPopupView(titleText: "Error", bodyText: error!.localizedDescription)
+                    OneSTextPopupView(titleText: Localized.error, bodyText: error!.localizedDescription)
                 }
                 return
             }
@@ -40,7 +40,7 @@ class LocalNotificationManager {
                 requestAuthorization()
             } else {
                 PopupManager.shared.showPopup(.notificationsNoAccess, backgroundColor: .darkNeutralToNeutral) {
-                    OneSTextPopupView(titleText: "Error", bodyText: "Please grant permission for notifications.")
+                    OneSTextPopupView(titleText: Localized.error, bodyText: Localized.Error.noAccessNotification)
                 }
             }
         }

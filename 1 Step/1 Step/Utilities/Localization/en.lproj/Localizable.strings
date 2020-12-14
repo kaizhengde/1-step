@@ -74,13 +74,19 @@ lifetime        = "Lifetime";
 note            = "Note";
 thankYou        = "Thank you";
 start           = "Start";
-gratitude       = "Gratitude towards";
+howItWorks      = "How it works";
+examples        = "Examples";
 tutorial        = "Tutorial";
 selectMountain  = "Select mountain";
 selectColor     = "Select color";
 goalBasics      = "Goal basics";
 error           = "Error";
 unknownError    = "Unknown Error";
+hey             = "Hey";
+hi              = "Hi";
+goodMorning     = "Good morning";
+goodAfternoon   = "Good afternoon";
+goodEvening     = "Good evening";
 
 
 // Special ------------------------------------------------------------------
@@ -154,3 +160,8 @@ premium.thankYouText        = "we wish you a wonderful experience with 1 Step Pr
 error.mocSave               = "There was a problem saving your data but it is not your fault. Try to do it again or restart the app.";
 error.noAccessPhotoLibrary  = "Please grant permission to access the photo library.";
 error.noAccessNotification  = "Please grant permission for notifications.";
+
+
+//Notification ----------------------------------------------
+
+notification.goal_bodyText  = "It's time to take one more step.";
