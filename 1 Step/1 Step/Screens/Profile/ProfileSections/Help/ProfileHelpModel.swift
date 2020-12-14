@@ -23,9 +23,9 @@ class ProfileHelpModel: ObservableObject {
          text: "A delete button is placed at the bottom of the mountain.\nYou would have to scroll all the way down to see it."
         ),
         (title: "How are steps calculated?",
-         text: "In short: Depending on the amount of units you choose to take for your goal (plant 30 trees -> 30), each single step has a unique ratio.\n\nLong version:\nInternally, we are distinguishing between stepUnits and steps. StepUnits are equal to what ever the user has chosen for his/her goal.\nSteps on the other hand, are calculated from stepUnits with a specific ratio. This makes sure that independent from your stepUnits, every goal you create will have at least ten steps to take and at most thousand.\n\nExample:\nMeditate 3 hours.\nThis goal would have a ratio of 60, leading to 180 steps to take in total.\nEach step would correspond to 1 minute."
+         text: "Internally, we are distinguishing between stepUnits and steps. StepUnits are equal to whatever the user has chosen for his/her goal.\nSteps on the other hand, are calculated from stepUnits with a specific ratio. This makes sure that independent from your stepUnits, every goal you create will have at least ten steps to take and at most thousand.\n\nExample:\nMeditate 3 hours.\nThis goal would have a ratio of 60, leading to 180 steps to take in total.\nEach step would correspond to 1 minute."
         ),
-        (title: "Are there any statistics of my progress besides accomplishments?",
+        (title: "Are there any statistics of my progress?",
          text: "Soon.\nEvery step you take already saves all necessary information to display statistics.\nHence when the update arrives, your current progress will also be considered and displayed."
         ),
         (title: "Is my data safe?",

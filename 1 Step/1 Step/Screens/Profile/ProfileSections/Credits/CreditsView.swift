@@ -42,9 +42,9 @@ struct CreditsView: View {
         
         var body: some View {
             VStack(alignment: .leading, spacing: 20) {
-                ForEach(0..<viewModel.rows.count) { i in
-                    OneSDropDown(.shortBig, title: viewModel.rows[i].title) {
-                        viewModel.rows[i].view
+                ForEach(0..<viewModel.credits.count) { i in
+                    OneSDropDown(.shortBig, title: viewModel.credits[i].title) {
+                        OneSBackgroundMultilineText(text: viewModel.credits[i].text, big: false)
                     }
                 }
             }
