@@ -47,6 +47,17 @@ class LocalNotificationManager {
     }
     
     
+    static func settingsNotificationBtnPressed() {
+        center.getNotificationSettings { settings in
+            if settings.authorizationStatus == .notDetermined {
+                requestAuthorization()
+            } else {
+                UIApplication.shared.openOneSSettings()
+            }
+        }
+    }
+    
+    
     static func listenToAuthorizationStatus() {
         NotificationCenter.default.addObserver(self, selector: #selector(checkAuthorizationStatus), name: UIApplication.didBecomeActiveNotification, object: nil)
     }

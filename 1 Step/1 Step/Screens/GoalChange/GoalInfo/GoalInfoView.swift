@@ -59,7 +59,7 @@ struct GoalInfoView: View {
                         }
                     }
                     .padding(.horizontal, Layout.firstLayerPadding)
-                    .padding(.bottom, 80*Layout.multiplierHeight)
+                    .padding(.bottom, (viewModel.currentView == .howItWorks ? 100 : 200)*Layout.multiplierHeight)
                 }
             }
         }

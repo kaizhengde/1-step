@@ -116,7 +116,7 @@ struct ProfileAppSectionView: View {
                     backgroundColor: profileModel.appSelectedRowBackgroundColor(notifications),
                     accessoryText: profileModel.appSelectedRowAccessoryText(notifications, enabled: "On", disabled: "Off"),
                     accessoryColor: profileModel.appSelectedRowAccessoryColor(notifications),
-                    action: { UIApplication.shared.openOneSSettings() }
+                    action: { LocalNotificationManager.settingsNotificationBtnPressed() }
                 )
             }
         }

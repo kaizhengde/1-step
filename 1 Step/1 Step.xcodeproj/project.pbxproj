@@ -87,7 +87,6 @@
 		3D610881256D6E3A00DC20BD /* LocalizationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D610880256D6E3A00DC20BD /* LocalizationHelper.swift */; };
 		3D610887256D70CC00DC20BD /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D610886256D70CC00DC20BD /* Localized.swift */; };
 		3D6373C4257A8F1B001C3585 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 3D6373C3257A8F1B001C3585 /* Introspect */; };
-		3D6373D2257AA17C001C3585 /* ShowTime in Frameworks */ = {isa = PBXBuildFile; productRef = 3D6373D1257AA17C001C3585 /* ShowTime */; };
 		3D6373E5257B570B001C3585 /* GoalCreateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6373E4257B570B001C3585 /* GoalCreateTests.swift */; };
 		3D6373FF257B9A8B001C3585 /* AddEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6373FE257B9A8B001C3585 /* AddEntry.swift */; };
 		3D637407257BE643001C3585 /* Sounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D637406257BE643001C3585 /* Sounds.swift */; };
@@ -191,6 +190,8 @@
 		3DD5C06A2585D7FD00D8AC7D /* TutorialGoalViewLight.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3DD5C0642585D7FD00D8AC7D /* TutorialGoalViewLight.gif */; };
 		3DD5C06B2585D7FD00D8AC7D /* TutorialSelectMountainLight.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3DD5C0652585D7FD00D8AC7D /* TutorialSelectMountainLight.gif */; };
 		3DD5C06C2585D7FD00D8AC7D /* TutorialSelectColorDark.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3DD5C0662585D7FD00D8AC7D /* TutorialSelectColorDark.gif */; };
+		3DD5C07525876A9000D8AC7D /* ProfileTutorialModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD5C07425876A9000D8AC7D /* ProfileTutorialModel.swift */; };
+		3DD5C07925876AA500D8AC7D /* ProfileTutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD5C07825876AA500D8AC7D /* ProfileTutorialView.swift */; };
 		3DD5C9CD2539CF6600861784 /* GoalScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD5C9CC2539CF6600861784 /* GoalScreen.swift */; };
 		3DD5C9D02539CF7B00861784 /* GoalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD5C9CF2539CF7B00861784 /* GoalModel.swift */; };
 		3DD5C9D42539D27100861784 /* GoalTransitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD5C9D32539D27100861784 /* GoalTransitionView.swift */; };
@@ -445,6 +446,8 @@
 		3DD5C0642585D7FD00D8AC7D /* TutorialGoalViewLight.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = TutorialGoalViewLight.gif; path = ../../../Design/Assets/TutorialGIFs/TutorialGoalViewLight.gif; sourceTree = "<group>"; };
 		3DD5C0652585D7FD00D8AC7D /* TutorialSelectMountainLight.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = TutorialSelectMountainLight.gif; path = ../../../Design/Assets/TutorialGIFs/TutorialSelectMountainLight.gif; sourceTree = "<group>"; };
 		3DD5C0662585D7FD00D8AC7D /* TutorialSelectColorDark.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = TutorialSelectColorDark.gif; path = ../../../Design/Assets/TutorialGIFs/TutorialSelectColorDark.gif; sourceTree = "<group>"; };
+		3DD5C07425876A9000D8AC7D /* ProfileTutorialModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTutorialModel.swift; sourceTree = "<group>"; };
+		3DD5C07825876AA500D8AC7D /* ProfileTutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTutorialView.swift; sourceTree = "<group>"; };
 		3DD5C9CC2539CF6600861784 /* GoalScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalScreen.swift; sourceTree = "<group>"; };
 		3DD5C9CF2539CF7B00861784 /* GoalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalModel.swift; sourceTree = "<group>"; };
 		3DD5C9D32539D27100861784 /* GoalTransitionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTransitionView.swift; sourceTree = "<group>"; };
@@ -515,7 +518,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D6373D2257AA17C001C3585 /* ShowTime in Frameworks */,
 				3D6373C4257A8F1B001C3585 /* Introspect in Frameworks */,
 				3DE303AA2582AC9700158A40 /* Gifu in Frameworks */,
 			);
@@ -1187,6 +1189,15 @@
 			path = Pickers;
 			sourceTree = "<group>";
 		};
+		3DD5C06F2587641C00D8AC7D /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				3DD5C07425876A9000D8AC7D /* ProfileTutorialModel.swift */,
+				3DD5C07825876AA500D8AC7D /* ProfileTutorialView.swift */,
+			);
+			path = Tutorial;
+			sourceTree = "<group>";
+		};
 		3DDF70272531A5AE00FD3011 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -1389,6 +1400,7 @@
 			children = (
 				3DFD9BC5256B868700CF9580 /* ProfileHelpModel.swift */,
 				3DFD9BBC256B864800CF9580 /* ProfileHelpView.swift */,
+				3DD5C06F2587641C00D8AC7D /* Tutorial */,
 			);
 			path = Help;
 			sourceTree = "<group>";
@@ -1455,7 +1467,6 @@
 			name = "1 Step";
 			packageProductDependencies = (
 				3D6373C3257A8F1B001C3585 /* Introspect */,
-				3D6373D1257AA17C001C3585 /* ShowTime */,
 				3DE303A92582AC9700158A40 /* Gifu */,
 			);
 			productName = "1 Step";
@@ -1493,7 +1504,6 @@
 			mainGroup = 3DE11C28252C681200F13719;
 			packageReferences = (
 				3D6373C2257A8F1B001C3585 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
-				3D6373D0257AA17C001C3585 /* XCRemoteSwiftPackageReference "ShowTime" */,
 				3DE303A82582AC9700158A40 /* XCRemoteSwiftPackageReference "Gifu" */,
 			);
 			productRefGroup = 3DE11C32252C681200F13719 /* Products */;
@@ -1693,6 +1703,7 @@
 				3D511EED256802C50028DB66 /* OneSTextPassage.swift in Sources */,
 				3D68B68725726D4C00A183F5 /* GoalChangeNotificationAddTimeView.swift in Sources */,
 				3D2E7941253017B600788AA2 /* OneSSmallBorderButton.swift in Sources */,
+				3DD5C07525876A9000D8AC7D /* ProfileTutorialModel.swift in Sources */,
 				3D23F711257A041F000801A5 /* AppModel.swift in Sources */,
 				3DFD9BBD256B864800CF9580 /* ProfileHelpView.swift in Sources */,
 				3D4FD8722564F48F00103C73 /* GoalReachedSummaryView.swift in Sources */,
@@ -1756,6 +1767,7 @@
 				3DDF70292531A5BB00FD3011 /* UserColor.swift in Sources */,
 				3D59DEAC256A59D000CF24D7 /* UserDefaultType.swift in Sources */,
 				3D160D55252E2067008588D5 /* TransitionManager.swift in Sources */,
+				3DD5C07925876AA500D8AC7D /* ProfileTutorialView.swift in Sources */,
 				3D959A8E25628E74007BAA07 /* OneSConfetti.swift in Sources */,
 				3DE0796C25340F550024E17D /* GoalItemArt.swift in Sources */,
 				3DFD9BD9256BBCFD00CF9580 /* FullSheetManager.swift in Sources */,
@@ -2047,14 +2059,6 @@
 				minimumVersion = 0.1.1;
 			};
 		};
-		3D6373D0257AA17C001C3585 /* XCRemoteSwiftPackageReference "ShowTime" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/KaneCheshire/ShowTime.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.5.2;
-			};
-		};
 		3DE303A82582AC9700158A40 /* XCRemoteSwiftPackageReference "Gifu" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kaishin/Gifu.git";
@@ -2070,11 +2074,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3D6373C2257A8F1B001C3585 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
 			productName = Introspect;
-		};
-		3D6373D1257AA17C001C3585 /* ShowTime */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3D6373D0257AA17C001C3585 /* XCRemoteSwiftPackageReference "ShowTime" */;
-			productName = ShowTime;
 		};
 		3DE303A92582AC9700158A40 /* Gifu */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -22,7 +22,9 @@ extension UIApplication {
     
     
     func openOneSSettings() {
-        open(URL(string: UIApplication.openSettingsURLString)!)
+        DispatchQueue.main.async {
+            self.open(URL(string: UIApplication.openSettingsURLString)!)
+        }
     }
 }
 

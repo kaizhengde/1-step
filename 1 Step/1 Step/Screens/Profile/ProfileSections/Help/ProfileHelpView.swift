@@ -35,7 +35,7 @@ struct ProfileHelpView: View {
                     BottomView(profileModel: profileModel, viewModel: viewModel)
                 }
                 .padding(.horizontal, Layout.firstLayerPadding)
-                .padding(.bottom, 80*Layout.multiplierHeight)
+                .padding(.bottom, 100*Layout.multiplierHeight)
             }
         }
         .oneSAnimation()
@@ -61,7 +61,7 @@ struct ProfileHelpView: View {
                 }
                 OneSRowButton(.shortBig, title: "Tutorial") {
                     sheetManager.showSheet {
-                        EmptyView()
+                        ProfileTutorialView()
                     }
                 }
             }
@@ -77,9 +77,9 @@ struct ProfileHelpView: View {
         
         var body: some View {
             VStack(alignment: .leading, spacing: 20) {
-                ForEach(0..<viewModel.rows.count) { i in
-                    OneSDropDown(.shortBig, title: viewModel.rows[i].title) {
-                        viewModel.rows[i].view
+                ForEach(0..<viewModel.frequentlyAsked.count) { i in
+                    OneSDropDown(.shortBig, title: viewModel.frequentlyAsked[i].title) {
+                        OneSBackgroundMultilineText(text: viewModel.frequentlyAsked[i].text, big: false)
                     }
                 }
             }

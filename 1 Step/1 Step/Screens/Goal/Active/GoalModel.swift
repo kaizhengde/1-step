@@ -69,7 +69,7 @@ final class GoalModel: TransitionObservableObject {
     func considerFirstOpenGoal() {
         if UserDefaultsManager.shared.firstOpenGoal {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
-                OneSTutorialGIF.showPopup(for: .firstOpenGoal, appAppearance: self.appAppearance)
+                OneSTutorialGIF.showPopup(for: .firstOpenGoal)
             }
         }
     }

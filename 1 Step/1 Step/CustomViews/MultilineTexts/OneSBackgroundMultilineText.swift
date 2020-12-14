@@ -10,19 +10,27 @@ import SwiftUI
 struct OneSBackgroundMultilineText: View {
     
     let text: String
+    let big: Bool
+    
+    init(text: String, big: Bool = true) {
+        self.text = text
+        self.big = big
+    }
     
     
     var body: some View {
         HStack {
             Text(text)
-                .font(.custom(Raleway.regular.weight, size: 20))
+                .font(.custom(Raleway.regular.weight, size: big ? 20 : 17))
                 .foregroundColor(.grayToBackground)
                 .multilineTextAlignment(.leading)
                 .fixedSize(horizontal: false, vertical: true)
                 .lineSpacing(5)
+            
+            Spacer()
         }
         .padding(Layout.firstLayerPadding)
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .frame(maxWidth: big ? .infinity : 250*Layout.multiplierWidth, maxHeight: .infinity)
         .background(Color.darkBackgroundToDarkGray)
         .cornerRadius(12)
     }

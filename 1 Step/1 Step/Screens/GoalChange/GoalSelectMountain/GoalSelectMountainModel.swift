@@ -72,21 +72,21 @@ final class GoalSelectMountainModel: TransitionObservableObject {
     
     //MARK: - First Create
     
-    func considerFirstSelectMountain(with appAppearance: ColorScheme) {
+    func considerFirstSelectMountain() {
         if UserDefaultsManager.shared.firstSelectMountain {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
-                OneSTutorialGIF.showPopup(for: .firstSelectMountain, appAppearance: appAppearance)
+                OneSTutorialGIF.showPopup(for: .firstSelectMountain)
             }
         }
     }
     
     var onFirstSelectColor = false
     
-    func considerFirstSelectColor(with appAppearance: ColorScheme) {
+    func considerFirstSelectColor() {
         if UserDefaultsManager.shared.firstSelectColor && !onFirstSelectColor {
             onFirstSelectColor = true
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
-                OneSTutorialGIF.showPopup(for: .firstSelectColor, appAppearance: appAppearance)
+                OneSTutorialGIF.showPopup(for: .firstSelectColor)
             }
         }
     }

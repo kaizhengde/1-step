@@ -58,23 +58,35 @@ enum OneSTutorialGIF {
     }
     
     
-    static func showPopup(for tutorial: OneSTutorial, appAppearance: ColorScheme) {
-        let gif = appAppearance == .light ? tutorial.gifLight : tutorial.gifDark
-                
+    static func showPopup(for tutorial: OneSTutorial) {
         PopupManager.shared.showPopup(tutorial.popupKey, blurColor: .opacityDarker, backgroundColor: .backgroundToGray, height: tutorial.popupHeight, withPadding: false, dismissOnTapInside: true, tapDismissableDelay: tutorial.popupDismissableDelay, hapticFeedback: true) {
-            OneSTutorialGIFView(gif: gif)
-                .frame(width: TutorialGIFLayout.width, height: TutorialGIFLayout.height)
+            OneSTutorialGIFView(tutorial: tutorial)
         }
     }
 }
 
 
-struct OneSTutorialGIFView: UIViewRepresentable {
+struct OneSTutorialGIFView: View {
     
-    let gif: String
+    let tutorial: OneSTutorialGIF.OneSTutorial
+
+    
+    var body: some View {
+        TutorialGIFView(tutorial: tutorial)
+            .frame(width: TutorialGIFLayout.width, height: TutorialGIFLayout.height)
+    }
+}
+
+
+private struct TutorialGIFView: UIViewRepresentable {
+    
+    @Environment(\.colorScheme) var appAppearance: ColorScheme
+    let tutorial: OneSTutorialGIF.OneSTutorial
     
     
     func makeUIView(context: Context) -> UIView {
+        let gif = appAppearance == .light ? tutorial.gifLight : tutorial.gifDark
+        
         let view = UIView(frame: CGRect(x: 0, y: 0, width: TutorialGIFLayout.width, height: TutorialGIFLayout.height))
         
         let imageView = GIFImageView(frame: CGRect(x: 0, y: 0, width: TutorialGIFLayout.width, height: TutorialGIFLayout.height))

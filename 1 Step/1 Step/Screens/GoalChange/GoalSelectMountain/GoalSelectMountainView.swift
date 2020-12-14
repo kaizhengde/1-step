@@ -9,7 +9,6 @@ import SwiftUI
 
 struct GoalSelectMountainView: View {
     
-    @Environment(\.colorScheme) var appAppearance: ColorScheme
     @ObservedObject var viewModel: GoalSelectMountainModel
     @GestureState private var dragOffset: CGFloat = .zero
     
@@ -33,10 +32,10 @@ struct GoalSelectMountainView: View {
         .oneSAnimation()
         .onAppear {
             viewModel.initTransition()
-            viewModel.considerFirstSelectMountain(with: appAppearance)
+            viewModel.considerFirstSelectMountain()
         }
         .onChange(of: viewModel.currentMountain) { _ in
-            viewModel.considerFirstSelectColor(with: appAppearance)
+            viewModel.considerFirstSelectColor()
         }
     }
 }
