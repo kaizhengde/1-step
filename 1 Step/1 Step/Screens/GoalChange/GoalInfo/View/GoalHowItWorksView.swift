@@ -12,19 +12,16 @@ struct GoalHowItWorksView: View {
     @ObservedObject var viewModel: GoalInfoModel
     
     let selectedColor: UserColor
+    let data = GoalInfoModel.HowItWorksData.self
     
     
     var body: some View {
         VStack(spacing: 26) {            
-            OneSTextPassage(passageData: viewModel.howItWorksTextPassageOneData)
-            GoalExampleMapView(data: viewModel.howItWorksExampleOneData, selectedColor: selectedColor, big: true)
-            OneSTextPassage(passageData: viewModel.howItWorksTextPassageTwoData)
-            GoalExampleMapView(data: viewModel.howItWorksExampleTwoData, selectedColor: selectedColor, big: true)
-            OneSTextPassage(passageData: viewModel.howItWorksTextPassageThreeData)
-            GoalExampleMapView(data: viewModel.howItWorksExampleThreeData, selectedColor: selectedColor, big: true)
-            OneSTextPassage(passageData: viewModel.howItWorksTextPassageFourData)
-            GoalExampleMapView(data: viewModel.howItWorksExampleFourData, selectedColor: selectedColor, big: true)
-            OneSTextPassage(passageData: viewModel.howItWorksTextPassageFiveData)
+            OneSTextPassage(passageData: data.textPassageOne)
+            GoalExampleMapView(data: data.exampleOne, selectedColor: selectedColor, big: true)
+            OneSTextPassage(passageData: data.textPassageTwo)
+            GoalExampleMapView(data: data.exampleTwo, selectedColor: selectedColor, big: true)
+            OneSTextPassage(passageData: data.textPassageThree)
         }
         .padding(.bottom, 20)
     }

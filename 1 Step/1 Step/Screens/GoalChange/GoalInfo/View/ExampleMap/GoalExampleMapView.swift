@@ -18,9 +18,9 @@ struct GoalExampleMapView: View {
         VStack(spacing: 10) {
             ForEach(0..<data.count, id: \.self) { i in
                 if data[i].final {
-                    GoalExampleBackgroundText(text: data[i].backgroundText, backgroundColor: selectedColor.standard, big: big)
+                    GoalExampleBackgroundText(text: data[i].text, backgroundColor: selectedColor.standard, big: big)
                 } else {
-                    GoalExampleBackgroundText(text: data[i].backgroundText, backgroundColor: selectedColor.light, big: big)
+                    GoalExampleBackgroundText(text: data[i].text, backgroundColor: selectedColor.light, big: big)
                     GoalExampleArrowText(text: data[i].arrowText, big: big)
                 }
             }

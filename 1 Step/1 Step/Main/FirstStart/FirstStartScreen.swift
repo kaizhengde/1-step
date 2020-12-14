@@ -19,6 +19,8 @@ struct FirstStartScreen: View {
                 if viewModel.currentStep == .two {
                     OneSHeaderView(leadingButton: (.back, .grayToBackground, { viewModel.currentStep = .oneConfirm }))
                         .padding(.bottom, -20 + Layout.onlyOniPhoneXType(20))
+                } else {
+                    Color.clear.frame(height: Layout.screenTopPadding)
                 }
                 
                 switch viewModel.currentStep {

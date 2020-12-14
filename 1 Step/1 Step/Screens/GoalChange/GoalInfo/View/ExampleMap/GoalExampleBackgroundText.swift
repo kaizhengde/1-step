@@ -32,7 +32,7 @@ struct GoalExampleBackgroundText: View {
                 Spacer()
             }
             .padding(.horizontal, Layout.firstLayerPadding)
-            .padding(.vertical, big ? 20 : 15)
+            .padding(.vertical, big ? 18 : 15)
             .frame(width: 250*Layout.multiplierWidth)
             .frame(maxHeight: .infinity)
             .background(backgroundColor)
