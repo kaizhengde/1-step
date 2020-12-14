@@ -86,7 +86,7 @@ hey             = "Hey";
 hi              = "Hi";
 goodMorning     = "Guten Morgen";
 goodEvening     = "Guten Abend";
-
+contactMe       = "Kontakt aufnehmen";
 
 
 // Special ------------------------------------------------------------------
@@ -169,4 +169,65 @@ notification.goal_bodyText  = "Zeit für einen weiteren Schritt.";
 
 //Help ----------------------------------------------
 
+help.frequentlyAsked    = "Oft gefragt";
+help.question1_title    = "Kann ich Schritte rückgängig machen?";
+help.question1_text     =
+"Ja, aber nicht direkt. Du müsstest die gleiche Anzahl an negativen Schritten nehmen.
+Negative Schritte findet man ganz oben am Drehrad, wo man gewöhnlich Schritte hinzufügt.
+Scrolle also ganz nach oben, ich bin mir sicher du wirst sie finden.";
+help.question2_title    = "Kann ich meinen Fortschritt bei einem Ziel zurücksetzen?";
+help.question2_text     =
+"Das wäre nicht direkt möglich.
+Du müsstest dein Ziel löschen und erneut erstellen.";
+help.question3_title    = "Kann ich die Reihenfolge meiner Ziele ändern?";
+help.question3_text     =
+"Klar. Wenn du einwenig länger auf ein Ziel drücks, so aktiviert sich ein Drag und Drop.
+Das gilt sowohl für aktive, als auch erreichte Ziele.";
+help.question4_title    = "Wie werden Schritte calculiert?";
+help.question4_text     =
+"Intern unterscheiden wir zwischen sogenannten StepUnits und Steps. StepUnits entsprechen genau der Schritte des Ziels - was auch immer der Nutzer eingegeben hat.
+Steps hingegen, werden von StepUnits und einem Verhältnis errechnet. Die stellen sicher, dass unabhängig von der gewählten Anzahl Schritte, es immer mindestens zen und maximal tausend Steps braucht, um ein Ziel zu erreichen.
+        
+Beispiel:
+Meditieren 3 Stunden.
+Das Ziel hätte ein Verhältnis von 60. Folglich muss man 180 Steps gehen.
+Jeder Step würde einer Minute entsprechen.";
+help.question5_title    = "Gibt es Statistiken?";
+help.question5_text     =
+"Bald. Mit jedem Schritt, den du zur Zeit nimmst, speicherst du bereits alle nötigen Informationen, um Statistiken darzustellen.";
+help.question6_title    = "Sind meine Daten sicher?";
+help.question6_text     =
+"Standardmäßig werden deine Daten bloß lokal auf deinem Gerät gespeichert.
 
+Für mehr Sicherheit, kannst du unter dem Abschnitt Daten & Datenschutz, die iCloud Synchronisation aktivieren.
+Dann werden deine Daten automatisch parallel in der Cloud gespeichert.";
+help.bottomText         = "Du hast keine Antwort zu deiner Frage gefunden, oder möchtest gerne einen Vorschlag machen?\nKontaktiere mich gerne!";
+
+
+//How it works ----------------------------------------------
+
+howItWorks.textPassageOne1      = "1 Step ermöglicht es dir, deine Ziele mit Intelligenz und Leichtigkeit zu erreichen.";
+howItWorks.textPassageOne2      = "Im Prinzip geht es darum, ein Ziel in winzig kleine Schritte herunterzubrechen, wobei jeder einzelne Schritt nur minale Überwindung zum Handeln für dich benötigt.";
+howItWorks.textPassageOne3      = "Es geht darum, die benötigte Disziplin und Motivation, damit man zum Handeln kommt, auf ein Mindestmaß zu reduzieren.";
+howItWorks.textPassageOne4      = "Zum Beispiel könnte man statt storh Abnehmen, sich das ein Ziel setzen, insgesamt 100 Kilometer zu laufen.";
+howItWorks.textPassageOne5      = "Jeder Schritt würde so wenige Kilometer entsprechen.";
+    
+howItWorks.exampleOne1          = "Abnehmen";
+howItWorks.exampleOne2          = "100 Kilometer insgesamt laufen";
+    
+howItWorks.textPassageTwo1      = "Natürlich kannst du deiner Kreativität freien Lauf lassen. Wähle was auch immer dich am meisten motiviert";
+    
+howItWorks.exampleTwo1          = "Abnehmen";
+howItWorks.exampleTwo2          = "100 Kilometer laufen";
+howItWorks.exampleTwo3          = "300 Mal laufen";
+howItWorks.exampleTwo4          = "50 Parks besuchen";
+howItWorks.exampleTwo5          = "12 Berge in den schweizer Alpen besteigen";
+
+howItWorks.textPassageThree1    = "1 Step is about reaching your goals with simplicity and intelligence.";
+howItWorks.textPassageThree2    = "No need for your goals to be always in the foreground of your daily life.";
+howItWorks.textPassageThree3    = "You take tiny steps whenever you want and track them using 1 Step.";
+howItWorks.textPassageThree4    = "These steps will have an compound effect over time. You will be surprised by their effectiveness.";
+
+
+
+//Examples ----------------------------------------------

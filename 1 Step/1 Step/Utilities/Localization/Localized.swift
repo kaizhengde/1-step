@@ -87,6 +87,7 @@ enum Localized {
     static let hi               = "hi".localized()
     static let goodMorning      = "goodMorning".localized()
     static let goodEvening      = "goodEvening".localized()
+    static let contactMe        = "contactMe".localized()
         
     
     enum Step {
@@ -166,6 +167,47 @@ enum Localized {
     enum Notification {
         
         static let goal_bodyText        = "notification.goal_bodyText".localized()
+    }
+    
+    
+    enum Help {
+        
+        static let frequentlyAsked      = "help.frequentlyAsked".localized()
+        static let question1_title      = "help.question1_title".localized()
+        static let question1_text       = "help.question1_text".localized()
+        static let question2_title      = "help.question2_title".localized()
+        static let question2_text       = "help.question2_text".localized()
+        static let question3_title      = "help.question3_title".localized()
+        static let question3_text       = "help.question3_text".localized()
+        static let question4_title      = "help.question4_title".localized()
+        static let question4_text       = "help.question4_text".localized()
+        static let question5_title      = "help.question5_title".localized()
+        static let question5_text       = "help.question5_text".localized()
+        static let question6_title      = "help.question6_title".localized()
+        static let question6_text       = "help.question6_text".localized()
+        static let bottomText           = "help.bottomText".localized()
+    }
+    
+    
+    enum HowItWorks {
+        
+        static let textPassageOne1      = "howItWorks.textPassageOne1".localized()
+        static let textPassageOne2      = "howItWorks.textPassageOne2".localized()
+        static let textPassageOne3      = "howItWorks.textPassageOne3".localized()
+        static let textPassageOne4      = "howItWorks.textPassageOne4".localized()
+        static let textPassageOne5      = "howItWorks.textPassageOne5".localized()
+        static let exampleOne1          = "howItWorks.exampleOne1".localized()
+        static let exampleOne2          = "howItWorks.exampleOne2".localized()
+        static let textPassageTwo1      = "howItWorks.textPassageTwo1".localized()
+        static let exampleTwo1          = "howItWorks.exampleTwo1".localized()
+        static let exampleTwo2          = "howItWorks.exampleTwo2".localized()
+        static let exampleTwo3          = "howItWorks.exampleTwo3".localized()
+        static let exampleTwo4          = "howItWorks.exampleTwo4".localized()
+        static let exampleTwo5          = "howItWorks.exampleTwo5".localized()
+        static let textPassageThree1    = "howItWorks.textPassageThree1".localized()
+        static let textPassageThree2    = "howItWorks.textPassageThree2".localized()
+        static let textPassageThree3    = "howItWorks.textPassageThree3".localized()
+        static let textPassageThree4    = "howItWorks.textPassageThree4".localized()
     }
 }
 

@@ -45,39 +45,39 @@ class GoalInfoModel: ObservableObject {
     struct HowItWorksData {
                 
         static let textPassageOne: [OneSTextPassageData] = [
-            OneSTextPassageData(text: "1 Step is about reaching your goals with simplicity and intelligence.", textArt: .standard),
-            OneSTextPassageData(text: "The main idea is to break your goals into tiny steps, with each step requiring minimal willpower for you to act on.", textArt: .standard),
-            OneSTextPassageData(text: "It's about minimizing the amount of disciplin and motivation that is needed to take actions towards your goal. ", textArt: .background),
-            OneSTextPassageData(text: "For instance, losing weight could become running 100 miles in total.", textArt: .bold),
-            OneSTextPassageData(text: "Each step would be equivalent to running just a few miles.", textArt: .standard)
+            OneSTextPassageData(text: Localized.HowItWorks.textPassageOne1, textArt: .standard),
+            OneSTextPassageData(text: Localized.HowItWorks.textPassageOne2, textArt: .standard),
+            OneSTextPassageData(text: Localized.HowItWorks.textPassageOne3, textArt: .background),
+            OneSTextPassageData(text: Localized.HowItWorks.textPassageOne4, textArt: .bold),
+            OneSTextPassageData(text: Localized.HowItWorks.textPassageOne5, textArt: .standard)
         ]
         
         
         static let exampleOne: [GoalExampleData] = [
-            GoalExampleData(text: "Lose weight",              arrowText: "", final: false),
-            GoalExampleData(text: "Run 100 miles in total",   arrowText: "", final: true)
+            GoalExampleData(text: Localized.HowItWorks.exampleOne1, arrowText: "", final: false),
+            GoalExampleData(text: Localized.HowItWorks.exampleOne2, arrowText: "", final: true)
         ]
         
         
         static let textPassageTwo: [OneSTextPassageData] = [
-            OneSTextPassageData(text: "Sure, you can be as creative as you want. Choose whatever motivates you the most!", textArt: .standard)
+            OneSTextPassageData(text: Localized.HowItWorks.textPassageTwo1, textArt: .standard)
         ]
         
         
         static let exampleTwo: [GoalExampleData] = [
-            GoalExampleData(text: "Lose weight",                          arrowText: "", final: false),
-            GoalExampleData(text: "Run 100 miles",                        arrowText: "", final: true),
-            GoalExampleData(text: "Run 300 times",                        arrowText: "", final: true),
-            GoalExampleData(text: "Walk to 50 parks",                     arrowText: "", final: true),
-            GoalExampleData(text: "Hike 12 mountains in the swiss alps",  arrowText: "", final: true)
+            GoalExampleData(text: Localized.HowItWorks.exampleTwo1, arrowText: "", final: false),
+            GoalExampleData(text: Localized.HowItWorks.exampleTwo2, arrowText: "", final: true),
+            GoalExampleData(text: Localized.HowItWorks.exampleTwo3, arrowText: "", final: true),
+            GoalExampleData(text: Localized.HowItWorks.exampleTwo4, arrowText: "", final: true),
+            GoalExampleData(text: Localized.HowItWorks.exampleTwo5, arrowText: "", final: true)
         ]
         
         
         static let textPassageThree: [OneSTextPassageData] = [
-            OneSTextPassageData(text: "As you have achieved these indirect goals, you will certainly have lost some weight.", textArt: .standard),
-            OneSTextPassageData(text: "No need for your goals to be always in the foreground of your daily life.", textArt: .background),
-            OneSTextPassageData(text: "You take tiny steps whenever you want and track them using 1 Step.", textArt: .bold),
-            OneSTextPassageData(text: "These steps will have an compound effect over time. You will be surprised by their effectiveness.", textArt: .standard)
+            OneSTextPassageData(text: Localized.HowItWorks.textPassageThree1, textArt: .standard),
+            OneSTextPassageData(text: Localized.HowItWorks.textPassageThree2, textArt: .background),
+            OneSTextPassageData(text: Localized.HowItWorks.textPassageThree3, textArt: .bold),
+            OneSTextPassageData(text: Localized.HowItWorks.textPassageThree4, textArt: .standard)
         ]
     }
     

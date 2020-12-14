@@ -25,7 +25,7 @@ struct ProfileHelpView: View {
                     HelpGeneralView()
                     
                     HStack {
-                        OneSSecondaryHeaderText(text: "Frequently asked", color: profileModel.section1Color)
+                        OneSSecondaryHeaderText(text: Localized.Help.frequentlyAsked, color: profileModel.section1Color)
                         Spacer()
                     }
                     .padding(.top, 30)
@@ -96,9 +96,9 @@ struct ProfileHelpView: View {
         
         var body: some View {
             VStack(alignment: .leading, spacing: 20) {
-                OneSMultilineText(text: "You didn’t find the answer to your question or would like to make a suggestion? Feel free to contact me!")
+                OneSMultilineText(text: Localized.Help.bottomText)
                 
-                OneSRowButton(.shortBig, title: "Contact me", textColor: .backgroundToGray, backgroundColor: profileModel.section1Color) {
+                OneSRowButton(.shortBig, title: Localized.contactMe, textColor: .backgroundToGray, backgroundColor: profileModel.section1Color) {
                     
                 }
             }

@@ -87,6 +87,7 @@ hi              = "Hi";
 goodMorning     = "Good morning";
 goodAfternoon   = "Good afternoon";
 goodEvening     = "Good evening";
+contactMe       = "Contact me";
 
 
 // Special ------------------------------------------------------------------
@@ -165,3 +166,68 @@ error.noAccessNotification  = "Please grant permission for notifications.";
 //Notification ----------------------------------------------
 
 notification.goal_bodyText  = "It's time to take one more step.";
+
+
+//Help ----------------------------------------------
+
+help.frequentlyAsked    = "Frequently asked";
+help.question1_title    = "Can I redo adding steps?";
+help.question1_text     =
+"Yes, but not directly. You would have to take the same amount of negative steps.
+Negative steps are on the top of the wheel you use to add steps.
+By scrolling all the way to the top, I am sure you will find them.";
+help.question2_title    = "Can I reset my goal?";
+help.question2_text     =
+"It is not possible to reset a goal immediately.
+You would have to delete your goal and create it again.";
+help.question3_title    = "Can I change the order of my goals?";
+help.question3_text     =
+"Sure. You can change the order of active and reached goals by long pressing on any goal item.
+This will activate drag and drop.";
+help.question4_title    = "How are steps calculated?";
+help.question4_text     =
+"Internally, we are distinguishing between stepUnits and steps. StepUnits are equal to whatever the user has chosen for his/her goal.
+Steps on the other hand, are calculated from stepUnits with a specific ratio. This makes sure that independent from your stepUnits, every goal you create will have at least ten steps to take and at most thousand.
+
+Example:
+Meditate 3 hours.
+This goal would have a ratio of 60, leading to 180 steps to take in total.
+Each step would correspond to 1 minute.";
+help.question5_title    = "Are there any statistics of my progress?";
+help.question5_text     =
+"Soon. Every step you take already saves all necessary information to display statistics.";
+help.question6_title    = "Is my data safe?";
+help.question6_text     =
+"Your data is by default only saved locally on your device.
+
+For extra safety, you could activate iCloud synchronization inside Data & Privacy.
+This will automatically synchronize and store all your data inside iCloud as well.";
+help.bottomText         = "You didn’t find the answer to your question or would like to make a suggestion?\nFeel free to contact me!";
+
+
+//How it works ----------------------------------------------
+
+howItWorks.textPassageOne1      = "1 Step is about reaching your goals with simplicity and intelligence.";
+howItWorks.textPassageOne2      = "The main idea is to break your goals into tiny steps, with each step requiring minimal willpower for you to act on.";
+howItWorks.textPassageOne3      = "It's about minimizing the amount of disciplin and motivation that is needed to take actions towards your goal.";
+howItWorks.textPassageOne4      = "For instance, losing weight could become running 100 miles in total.";
+howItWorks.textPassageOne5      = "Each step would be equivalent to running just a few miles.";
+    
+howItWorks.exampleOne1          = "Lose weight";
+howItWorks.exampleOne2          = "Run 100 miles in total";
+    
+howItWorks.textPassageTwo1      = "Sure, you can be as creative as you want. Choose whatever motivates you the most!";
+    
+howItWorks.exampleTwo1          = "Lose weight";
+howItWorks.exampleTwo2          = "Run 100 miles";
+howItWorks.exampleTwo3          = "Run 300 times";
+howItWorks.exampleTwo4          = "Walk to 50 parks";
+howItWorks.exampleTwo5          = "Hike 12 mountains in the swiss alps";
+
+howItWorks.textPassageThree1    = "1 Step is about reaching your goals with simplicity and intelligence.";
+howItWorks.textPassageThree2    = "No need for your goals to be always in the foreground of your daily life.";
+howItWorks.textPassageThree3    = "You take tiny steps whenever you want and track them using 1 Step.";
+howItWorks.textPassageThree4    = "These steps will have an compound effect over time. You will be surprised by their effectiveness.";
+
+
+//Examples ----------------------------------------------
