@@ -18,7 +18,7 @@ struct ProfileTutorialView: View {
             
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 32) {
-                    OneSHeaderView("Tutorial", trailingButton: (.close, .grayToBackground, { SheetManager.shared.dismiss() }), isInsideSheet: true)
+                    OneSHeaderView(Localized.tutorial, trailingButton: (.close, .grayToBackground, { SheetManager.shared.dismiss() }), isInsideSheet: true)
                     
                     TutorialContentView(viewModel: viewModel)
                 }

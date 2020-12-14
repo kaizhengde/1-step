@@ -101,7 +101,7 @@ enum GoalErrorHandler {
             errorText = Localized.GoalError.currentBelowNeededStepUnits
         }
         catch let GoalEditError.changeOfCategory(from: fromCategory, to: toCategory) {
-            errorText = "\(Localized.GoalError.changeOfCategory)\n\n\(fromCategory) -> \(toCategory)"
+            errorText = "\(Localized.GoalError.changeOfCategory)\n\(fromCategory.description) -> \(toCategory.description)"
         }
         catch GoalEditError.changeOfDistanceUnitsSystem {
             errorText = Localized.GoalError.changeOfDistanceUnitsSystem

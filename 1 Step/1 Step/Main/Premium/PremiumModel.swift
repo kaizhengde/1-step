@@ -73,9 +73,9 @@ final class PremiumModel: ObservableObject {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
                 PopupManager.shared.showPopup(.premiumPurchased, backgroundColor: item.color, height: 400*Layout.multiplierWidth, dismissOnTapOutside: false) {
                     OneSTextPopupView(
-                        titleText: "Thank you",
-                        bodyText: "\(UserDefaultsManager.shared.userName), this is our gratitude towards you.\n\nWe wish you a wonderful experience with 1 Step Premium.",
-                        bottomBtnTitle: "START"
+                        titleText: Localized.thankYou,
+                        bodyText: "\(UserDefaultsManager.shared.userName), \(Localized.Premium.thankYouText)",
+                        bottomBtnTitle: Localized.start.uppercased()
                     )
                 }
                 

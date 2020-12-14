@@ -59,7 +59,7 @@ credits         = "Anerkennungen";
 terms           = "Nutzungsbedingungen";
 current         = "Aktuell";
 reminders       = "Erinnerungen";
-newReminder     = "Neue Erinnerung";
+newReminder     = "Neu";
 editReminder    = "Bearbeiten";
 atTime          = "Um Uhrzeit";
 repeatEvery     = "Wiederholen, jeden";
@@ -70,6 +70,17 @@ everyDay        = "Jeden Tag";
 time            = "Zeit";
 ohDeer          = "Oh Deer";
 delete          = "Löschen";
+lifetime        = "Lebenszeit";
+note            = "Hinweis";
+thankYou        = "Danke";
+start           = "Start";
+gratitude       = "Dankbarkeit an";
+tutorial        = "Tutorial";
+selectMountain  = "Berg auswählen";
+selectColor     = "Farbe auswählen";
+goalBasics      = "Ziel Grundlagen";
+error           = "Error";
+unknownError    = "Unbekannter Error";
 
 
 // Special ------------------------------------------------------------------
@@ -120,7 +131,26 @@ goalError.stepsNeededTooLittle          = "Zu wenige Schritte.\n\nMinimum:";
 goalError.stepsNeededTooMany            = "Zu viele Schritte.\n\nMaximum:";
 
 goalError.currentBelowNeededStepUnits   = "Du kannst kein Ziel haben, das weniger Schritte benötigt, als dein momentaner Stand.";
-goalError.changeOfCategory              = "Du kannst die Kategorie nicht wechseln.\nErstelle dafür ein neues Ziel.";
-goalError.changeOfDistanceUnitsSystem   = "Ein Wechsel zwischen Metrisch und Imperisch ist nicht möglich.\n\nErstelle dafür ein neues Ziel.";
+goalError.changeOfCategory              = "Die Kategorie ist nicht wechselbar.\nErstelle dafür ein neues Ziel.";
+goalError.changeOfDistanceUnitsSystem   = "Ein Wechsel zwischen Metrisch und Imperisch ist nicht möglich.\nErstelle dafür ein neues Ziel.";
 
 goalError.unknown                       = "An einem unbekannten Fehler gescheitert.\n\nZiehe einen Neutart der App in Betracht.";
+
+
+//Premium ----------------------------------------------
+
+premium.achieveEveryGoal    = "Erreiche jedes Ziel";
+premium.unlimitedGoals      = "Unlimitiert viele Ziele erstellen";
+premium.futureUpdates       = "Zukünftige Updates unterstützen";
+premium.realTree            = "Pflanze einen echten Baum";
+premium.youChoose           = "Du wählst den Preis";
+premium.restore             = "Kauf wiederherstellen";
+premium.noteTextPassage     = "Mit diesem Kauf wird dir der volle Zugang zu allen gegenwärtigen und zukünftigen Funktionalitäten gewährt. Kein Abonnement, zu zahlst nur einmal und es ist für immer deins.";
+premium.thankYouText        = "wir wünschen dir ein wundervolle Zeit mit 1 Step Premium.";
+
+
+//Error ----------------------------------------------
+
+error.mocSave               = "Es gab ein Problem, deine Änderungen zu sichern, es ist nicht deine Schuld. Versuche es bitte erneut. Erwäge sonst einen Neustart."
+error.noAccessPhotoLibrary  = "Bitte genehmige das Zugreifen deiner Foto-Bibliothek."
+error.noAccessNotification  = "Bitte genehmige das Senden von Erinnerungen."

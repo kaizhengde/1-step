@@ -71,6 +71,15 @@ enum Localized {
     static let time             = "time".localized()
     static let ohDeer           = "ohDeer".localized()
     static let delete           = "delete".localized()
+    static let lifetime         = "lifetime".localized()
+    static let note             = "note".localized()
+    static let thankYou         = "thankYou".localized()
+    static let start            = "start".localized()
+    static let gratitude        = "gratitude".localized()
+    static let tutorial         = "tutorial".localized()
+    static let selectMountain   = "selectMountain".localized()
+    static let selectColor      = "selectColor".localized()
+    static let goalBasics       = "goalBasics".localized()
     
     
     enum Step {
@@ -123,6 +132,19 @@ enum Localized {
         static let changeOfCategory             = "goalError.changeOfCategory".localized()
         static let changeOfDistanceUnitsSystem  = "goalError.changeOfDistanceUnitsSystem".localized()
         static let unknown                      = "goalError.unknown".localized()
+    }
+    
+    
+    enum Premium {
+        
+        static let achieveEveryGoal     = "premium.achieveEveryGoal".localized()
+        static let unlimitedGoals       = "premium.unlimitedGoals".localized()
+        static let futureUpdates        = "premium.futureUpdates".localized()
+        static let realTree             = "premium.realTree".localized()
+        static let youChoose            = "premium.youChoose".localized()
+        static let restore              = "premium.restore".localized()
+        static let noteTextPassage      = "premium.noteTextPassage".localized()
+        static let thankYouText         = "premium.thankYouText".localized()
     }
 }
 

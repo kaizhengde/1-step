@@ -24,10 +24,10 @@ struct PremiumView: View {
                         
                         VStack(spacing: 32) {
                             Group {
-                                OneSHeaderView("Premium", trailingButton: (.close, .grayToBackground, { fullSheetManager.dismiss() }))
+                                OneSHeaderView(Localized.premium, trailingButton: (.close, .grayToBackground, { fullSheetManager.dismiss() }))
                                 
                                 HStack {
-                                    OneSSecondaryHeaderText(text: "Achieve every goal", color: UserColor.user0.standard)
+                                    OneSSecondaryHeaderText(text: Localized.Premium.achieveEveryGoal, color: UserColor.user0.standard)
                                     Spacer()
                                 }
                                 
@@ -57,7 +57,7 @@ struct PremiumView: View {
             VStack(alignment: .leading, spacing: 16) {
                 OneSRowButton(
                     .shortBig,
-                    title:              "Create unlimited goals",
+                    title:              Localized.Premium.unlimitedGoals,
                     textColor:          viewModel.premiumFeatureRowTextColor(with: viewModel.changeRow.first),
                     backgroundColor:    viewModel.premiumFeatureRowBackgroundColor(with: viewModel.changeRow.first),
                     accessorySFSymbol:  viewModel.changeRow.first ? SFSymbol.checkmark : nil,
@@ -67,7 +67,7 @@ struct PremiumView: View {
                 
                 OneSRowButton(
                     .shortBig,
-                    title:              "Support future updates",
+                    title:              Localized.Premium.futureUpdates,
                     textColor:          viewModel.premiumFeatureRowTextColor(with: viewModel.changeRow.second),
                     backgroundColor:    viewModel.premiumFeatureRowBackgroundColor(with: viewModel.changeRow.second),
                     accessorySFSymbol:  viewModel.changeRow.second ? SFSymbol.checkmark : nil,
@@ -77,7 +77,7 @@ struct PremiumView: View {
                     
                 OneSRowButton(
                     .shortBig,
-                    title:              "Plant a real tree 🌳",
+                    title:              "\(Localized.Premium.realTree) 🌳",
                     textColor:          viewModel.premiumFeatureRowTextColor(with: viewModel.changeRow.third),
                     backgroundColor:    viewModel.premiumFeatureRowBackgroundColor(with: viewModel.changeRow.third),
                     accessorySFSymbol:  viewModel.changeRow.third ? SFSymbol.checkmark : SFSymbol.info,
@@ -129,7 +129,7 @@ struct PremiumView: View {
             
             var body: some View {
                 VStack(alignment: .leading, spacing: 20) {
-                    OneSText(text: "You choose the price", font: .custom(.bold, 24), color: .grayToBackground)
+                    OneSText(text: Localized.Premium.youChoose, font: .custom(.bold, 24), color: .grayToBackground)
                     
                     HStack(spacing: 12) {
                         PremiumItem(viewModel: viewModel, item: viewModel.firstPremiumItem)
@@ -138,21 +138,21 @@ struct PremiumView: View {
                     .padding(.bottom, 40)
                     
                     Group {
-                        OneSText(text: "Note", font: .custom(.bold, 20), color: .grayToBackground)
+                        OneSText(text: Localized.note, font: .custom(.bold, 20), color: .grayToBackground)
                         
-                        OneSMultilineText(text: "This purchase will give you access to all current and future functionality. No subscription, you only pay once and it’s forever yours.")
+                        OneSMultilineText(text: Localized.Premium.noteTextPassage)
                     }
                     
-                    OneSRowButton(.shortBig, title: "Restore purchase", backgroundColor: .whiteToGray) {}
+                    OneSRowButton(.shortBig, title: Localized.Premium.restore, backgroundColor: .whiteToGray) {}
                         .padding(.top, 20)
                     
                     HStack(spacing: 24) {
-                        OneSFootnoteButton(text: "Privacy policy", color: UserColor.user0.standard) {
+                        OneSFootnoteButton(text: Localized.privacyPolicy, color: UserColor.user0.standard) {
                             sheetManager.showSheet {
                                 OneSSafariView(urlString: WebsiteURLString.privacyPolicy, tintColor: UserColor.user2.standard)
                             }
                         }
-                        OneSFootnoteButton(text: "Terms of use", color: UserColor.user0.standard) {
+                        OneSFootnoteButton(text: Localized.terms, color: UserColor.user0.standard) {
                             sheetManager.showSheet {
                                 OneSSafariView(urlString: WebsiteURLString.termsOfUse, tintColor: UserColor.user2.standard)
                             }
@@ -176,8 +176,8 @@ struct PremiumView: View {
                         VStack {
                             HStack {
                                 VStack(alignment: .leading, spacing: 3) {
-                                    OneSText(text: "Premium", font: .custom(.semiBold, 22), color: .whiteToDarkGray)
-                                    OneSText(text: "LIFETIME", font: .custom(.extraBold, 10), color: .whiteToDarkGray)
+                                    OneSText(text: Localized.premium, font: .custom(.semiBold, 22), color: .whiteToDarkGray)
+                                    OneSText(text: Localized.lifetime.uppercased(), font: .custom(.extraBold, 10), color: .whiteToDarkGray)
                                 }
                                 Spacer()
                             }

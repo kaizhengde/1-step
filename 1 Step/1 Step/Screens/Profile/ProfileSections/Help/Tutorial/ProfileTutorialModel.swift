@@ -12,9 +12,9 @@ class ProfileTutorialModel: ObservableObject {
     let color = UserColor.user0.standard
     
     lazy var tutorials: [(title: String, tutorial: OneSTutorialGIF.OneSTutorial)] = [
-        (title: "Select mountain",  tutorial: .firstSelectMountain),
-        (title: "Select color",     tutorial: .firstSelectColor),
-        (title: "Goal basics",      tutorial: .firstOpenGoal)
+        (title: Localized.selectMountain,  tutorial: .firstSelectMountain),
+        (title: Localized.selectColor,     tutorial: .firstSelectColor),
+        (title: Localized.goalBasics,      tutorial: .firstOpenGoal)
     ]
 }
 

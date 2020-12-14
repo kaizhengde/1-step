@@ -18,10 +18,10 @@ struct CreditsView: View {
             
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 32) {
-                    OneSHeaderView("Credits", trailingButton: (.close, .grayToBackground, { SheetManager.shared.dismiss() }), isInsideSheet: true)
+                    OneSHeaderView(Localized.credits, trailingButton: (.close, .grayToBackground, { SheetManager.shared.dismiss() }), isInsideSheet: true)
                     
                     HStack {
-                        OneSSecondaryHeaderText(text: "Gratitude towards", color: viewModel.color)
+                        OneSSecondaryHeaderText(text: Localized.gratitude, color: viewModel.color)
                         Spacer()
                     }
                     

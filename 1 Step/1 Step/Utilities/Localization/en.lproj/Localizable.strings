@@ -70,7 +70,17 @@ everyDay        = "Every day";
 time            = "Time";
 ohDeer          = "Oh Deer";
 delete          = "Delete";
-
+lifetime        = "Lifetime";
+note            = "Note";
+thankYou        = "Thank you";
+start           = "Start";
+gratitude       = "Gratitude towards";
+tutorial        = "Tutorial";
+selectMountain  = "Select mountain";
+selectColor     = "Select color";
+goalBasics      = "Goal basics";
+error           = "Error";
+unknownError    = "Unknown Error";
 
 
 // Special ------------------------------------------------------------------
@@ -122,7 +132,25 @@ goalError.stepsNeededTooMany            = "Too many steps to take.\n\nMaximum st
 
 goalError.currentBelowNeededStepUnits   = "You can't have a goal with steps to take lower than or equal to your current steps.";
 goalError.changeOfCategory              = "You can't change your step category.\nCreate a new goal instead.";
-goalError.changeOfDistanceUnitsSystem   = "You can't change between metric and imperial units.\n\nCreate a new goal instead.";
+goalError.changeOfDistanceUnitsSystem   = "You can't change between metric and imperial units.\nCreate a new goal instead.";
 
 goalError.unknown                       = "Failed with an unknown error.\n\nConsider restarting the app.";
 
+
+//Premium ----------------------------------------------
+
+premium.achieveEveryGoal    = "Achieve every goal";
+premium.unlimitedGoals      = "Create unlimited goals";
+premium.futureUpdates       = "Support future updates";
+premium.realTree            = "Plant a real tree";
+premium.youChoose           = "You choose the price";
+premium.restore             = "Restore purchase";
+premium.noteTextPassage     = "This purchase will give you access to all current and future functionality. No subscription, you only pay once and it’s forever yours.";
+premium.thankYouText        = "we wish you a wonderful experience with 1 Step Premium.";
+
+
+//Error ----------------------------------------------
+
+error.mocSave               = "There was a problem saving your data but it is not your fault. Try to do it again or restart the app.";
+error.noAccessPhotoLibrary  = "Please grant permission to access the photo library.";
+error.noAccessNotification  = "Please grant permission for notifications.";
