@@ -8,48 +8,68 @@
 
 // Words ------------------------------------------------------------------
 
-goals                   = "Ziele";
-active                  = "Aktiv";
-reached                 = "Erreicht";
-profile                 = "Profil";
-edit                    = "Bearbeiten";
-accomplishments         = "Errungenschaften";
-app                     = "App";
-about                   = "Über";
-settings                = "Einstellungen";
-dataAndPrivacy          = "Daten & Datenschutz";
-help                    = "Hilfe";
-share                   = "Teilen";
-rateOnAppStore          = "Im App Store bewerten";
-sendFeedback            = "Feedback geben";
-website                 = "Webseite";
-instagram               = "Instagram";
-vfdCollective           = "The VFD Collective";
-pastelTree              = "Pastell Baum";
-premium                 = "Premium";
-language                = "Sprache";
-language_english        = "Englisch";
-language_german         = "Deutsch";
-language_chinese        = "Chinesisch";
-appearance              = "Erscheinung";
-appearance_mirrorDevice = "Automatisch";
-appearance_light        = "Hell";
-appearance_dark         = "Dunkel";
-theme                   = "Schema";
-theme_default           = "Standard";
-theme_pastel            = "Pastell";
-theme_fall              = "Herbst";
-notifications           = "Benachrichtigungen";
-downloadICloud          = "iCloud Daten downloaden";
-deleteICloud            = "iCloud Daten löschen";
-resetAllData            = "Alle Daten zurücksetzen";
-privacyPolicy           = "Datenschutz";
-summit                  = "Gipfel";
-milestone               = "Meilenstein";
-goal                    = "Ziel";
-selectedUnit            = "Einheit auswählen";
-unit                    = "Einheit";
-select                  = "Auswählen";
+goals           = "Ziele";
+active          = "Aktiv";
+reached         = "Erreicht";
+profile         = "Profil";
+edit            = "Bearbeiten";
+accomplishments = "Errungenschaften";
+app             = "App";
+about           = "Über";
+settings        = "Einstellungen";
+dataAndPrivacy  = "Daten & Datenschutz";
+help            = "Hilfe";
+share           = "Teilen";
+requestFeatures = "Neue Funktionen anfragen";
+rateOnAppStore  = "Im App Store bewerten";
+sendFeedback    = "Feedback geben";
+website         = "Webseite";
+instagram       = "Instagram";
+vfdCollective   = "The VFD Collective";
+pastelTree      = "Pastell Baum";
+plantTree       = "Einen Baum pflanzen";
+premium         = "Premium";
+language        = "Sprache";
+english         = "Englisch";
+german          = "Deutsch";
+appearance      = "Erscheinung";
+mirrorDevice    = "Automatisch";
+light           = "Hell";
+dark            = "Dunkel";
+theme           = "Farbschema";
+water           = "Wasser";
+earth           = "Erde";
+air             = "Luft";
+notifications   = "Benachrichtigungen";
+iCloudSync      = "iCloud sync";
+exportData      = "Daten exportieren";
+resetAllData    = "Alle Daten zurücksetzen";
+privacyPolicy   = "Datenschutz";
+summit          = "Gipfel";
+milestone       = "Meilenstein";
+goal            = "Ziel";
+selectUnit      = "Einheit wählen";
+unit            = "Einheit";
+select          = "Wählen";
+on              = "Ein";
+off             = "Aus";
+yes             = "Ja";
+no              = "Nein";
+credits         = "Anerkennungen";
+terms           = "Nutzungsbedingungen";
+current         = "Aktuell";
+reminders       = "Erinnerungen";
+newReminder     = "Neue Erinnerung";
+editReminder    = "Bearbeiten";
+atTime          = "Um Uhrzeit";
+repeatEvery     = "Wiederholen, jeden";
+custom          = "Eigenes";
+plant           = "Pflanzen";
+create          = "Erstellen";
+everyDay        = "Jeden Tag";
+time            = "Zeit";
+ohDeer          = "Oh Deer";
+delete          = "Löschen";
 
 
 // Special ------------------------------------------------------------------
@@ -78,7 +98,7 @@ step.unit_custom        = "Eigenes";
 // ProfileScreen ----------------------------------------------
 
 profileScreen.made                      = "Made in Zürich, Schweiz";
-profileScreen.version                   = "Version ";
+profileScreen.version                   = "Version";
 profileScreen.accomplishment_steps      = "Schritte insgesamt";
 profileScreen.accomplishment_milestones = "Meilensteine erreicht";
 profileScreen.accomplishment_goals      = "Ziele erreicht";
@@ -86,4 +106,21 @@ profileScreen.accomplishment_goals      = "Ziele erreicht";
 
 //GoalChange ----------------------------------------------
 
-goalChange.enterCustomUnit              = "Gebe eine Einheit ein.";
+goalChange.enterCustomUnit  = "Gebe eine Einheit ein.";
+goalChange.confirmDelete    = "Bist du dir sicher?\n\nDieser Schritt kann nicht rückgängig gemacht werden.\nBestätige mit deinem Ziel.";
+
+
+//GoalError ----------------------------------------------
+
+goalError.goalNameEmpty                 = "Was möchtest du erreichen?\n\nBitte gebe ein Ziel ein.";
+goalError.stepsNeededEmpty              = "Wie viele Schritte benötigt es, um dein Ziel zu erreichen?\n\nBitte gebe eine Zahl ein.";
+goalError.stepUnitEmpty                 = "Was möchtest du tracken?\n\nBitte gebe eine Einheit ein.";
+goalError.stepCustomUnitEmpty           = "Du hast keine eigene Einheit eingegeben.\n\nVersuch es bitte noch einmal.";
+goalError.stepsNeededTooLittle          = "Zu wenige Schritte.\n\nMinimum:";
+goalError.stepsNeededTooMany            = "Zu viele Schritte.\n\nMaximum:";
+
+goalError.currentBelowNeededStepUnits   = "Du kannst kein Ziel haben, das weniger Schritte benötigt, als dein momentaner Stand.";
+goalError.changeOfCategory              = "Du kannst die Kategorie nicht wechseln.\nErstelle dafür ein neues Ziel.";
+goalError.changeOfDistanceUnitsSystem   = "Ein Wechsel zwischen Metrisch und Imperisch ist nicht möglich.\n\nErstelle dafür ein neues Ziel.";
+
+goalError.unknown                       = "An einem unbekannten Fehler gescheitert.\n\nZiehe einen Neutart der App in Betracht.";

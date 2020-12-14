@@ -17,7 +17,7 @@ struct GoalEnterInputSelectStepUnitView: View {
         VStack {
             //Header
             HStack {
-                OneSSecondaryHeaderText(text: "Select Unit", color: .backgroundToGray)
+                OneSSecondaryHeaderText(text: Localized.selectUnit, color: .backgroundToGray)
                 Spacer()
                 OneSSmallBorderButton(symbol: SFSymbol.`continue`, color: .backgroundToGray, withScale: false) { MiniSheetManager.shared.dismiss() }
             }
@@ -117,13 +117,12 @@ struct GoalEnterInputSelectStepUnitView: View {
                     if stepUnit.isCustom {
                         popupManager.showPopup(.goalCustomUnit, backgroundColor: selectedColor.standard) {
                             OneSTextFieldPopupView(
-                                titleText: "Custom",
-                                bodyText: "Enter your unit.",
+                                titleText: Localized.custom,
+                                bodyText: Localized.GoalChange.enterCustomUnit,
                                 initialInput: viewModel.selectedData.customUnit,
-                                placeholder: "unit",
+                                placeholder: Localized.Step.unit_custom,
                                 placeholderColor: selectedColor.dark,
-                                inputLimit: Step.customUnitDigitsLimit,
-                                lowercased: true
+                                inputLimit: Step.customUnitDigitsLimit
                             )
                         }
                     }

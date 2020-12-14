@@ -16,7 +16,7 @@ struct GoalChangeNotificationView: View {
     
     
     var body: some View {
-        OneSSectionView(title: "Reminders") {
+        OneSSectionView(title: Localized.reminders) {
             TimeReminderSection(selectedColor: selectedColor)
         }
         .padding(.top, 32*Layout.multiplierWidth)
@@ -34,7 +34,7 @@ struct GoalChangeNotificationView: View {
         
         
         var body: some View {
-            OneSDropDown(.long, title: "Time", accessorySFSymbol: SFSymbol.clock) {
+            OneSDropDown(.long, title: Localized.time, accessorySFSymbol: SFSymbol.clock) {
                 VStack(alignment: .leading, spacing: 10) {
                     ForEach(viewModel.notificationsUI, id: \.self) { notification in
                         OneSRowButton(.shortSmall, title: viewModel.getDescription(from: notification.weekdays), textColor: .backgroundToGray, backgroundColor: notifications ? selectedColor.standard : .lightNeutralToLightGray, accessoryText: notification.time.toTimeString(), accessoryColor: .backgroundToGray) {

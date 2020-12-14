@@ -43,37 +43,37 @@ class UserDefaultsManager: ObservableObject {
     
     //MARK: - First
     
-    @UserDefault(UserDefaultKey.First.start, default: true) var firstStart: Bool
-    @UserDefault(UserDefaultKey.First.selectMountain, default: true) var firstSelectMountain: Bool
-    @UserDefault(UserDefaultKey.First.selectColor, default: true) var firstSelectColor: Bool
-    @UserDefault(UserDefaultKey.First.openGoal, default: true) var firstOpenGoal: Bool
+    @UserDefault(UserDefaultKey.First.start,            default: true) var firstStart: Bool
+    @UserDefault(UserDefaultKey.First.selectMountain,   default: true) var firstSelectMountain: Bool
+    @UserDefault(UserDefaultKey.First.selectColor,      default: true) var firstSelectColor: Bool
+    @UserDefault(UserDefaultKey.First.openGoal,         default: true) var firstOpenGoal: Bool
     
     
     //MARK: - User
     
-    @UserDefault(UserDefaultKey.User.name, default: "") var userName: String
-    @UserDefault(UserDefaultKey.User.profileImage, default: Data()) var userProfileImage: Data
+    @UserDefault(UserDefaultKey.User.name,          default: "")        var userName: String
+    @UserDefault(UserDefaultKey.User.profileImage,  default: Data())    var userProfileImage: Data
     
     
     //MARK: - Accomplishments
     
-    @UserDefault(UserDefaultKey.Accomplishment.totalSteps, default: 0) var accomplishmentTotalSteps: Int
-    @UserDefault(UserDefaultKey.Accomplishment.totalMilestonesReached, default: 0) var accomplishmentTotalMilestonesReached: Int
-    @UserDefault(UserDefaultKey.Accomplishment.totalGoalsReached, default: 0) var accomplishmentTotalGoalsReached: Int
+    @UserDefault(UserDefaultKey.Accomplishment.totalSteps,              default: 0) var accomplishmentTotalSteps: Int
+    @UserDefault(UserDefaultKey.Accomplishment.totalMilestonesReached,  default: 0) var accomplishmentTotalMilestonesReached: Int
+    @UserDefault(UserDefaultKey.Accomplishment.totalGoalsReached,       default: 0) var accomplishmentTotalGoalsReached: Int
     
     
     //MARK: - Settings
     
-    @UserDefault(UserDefaultKey.Setting.premium, default: false) var settingPremium: Bool
-    @UserDefault(UserDefaultKey.Setting.appearance, default: .mirrorDevice) var settingAppearance: OneSAppearance
-    @UserDefault(UserDefaultKey.Setting.colorTheme, default: .water) var settingColorTheme: OneSColorTheme
-    @UserDefault(UserDefaultKey.Setting.iCloudSynch, default: false) var settingICloudSynch: Bool
+    @UserDefault(UserDefaultKey.Setting.premium,        default: false)         var settingPremium: Bool
+    @UserDefault(UserDefaultKey.Setting.appearance,     default: .mirrorDevice) var settingAppearance: OneSAppearance
+    @UserDefault(UserDefaultKey.Setting.colorTheme,     default: .water)        var settingColorTheme: OneSColorTheme
+    @UserDefault(UserDefaultKey.Setting.iCloudSynch,    default: false)         var settingICloudSynch: Bool
     
     
     //MARK: - Authorization
     
-    @UserDefault(UserDefaultKey.Authorization.notifications, default: .notDetermined) var authorizationNotifications: UNAuthorizationStatus
-    @UserDefault(UserDefaultKey.Authorization.photoLibrary, default: .none) var authorizationPhotoLibrary: OneSAuthorizationStatus
+    @UserDefault(UserDefaultKey.Authorization.notifications,    default: .notDetermined) var authorizationNotifications: UNAuthorizationStatus
+    @UserDefault(UserDefaultKey.Authorization.photoLibrary,     default: .none)          var authorizationPhotoLibrary: OneSAuthorizationStatus
     
     
     //MARK: - Notification

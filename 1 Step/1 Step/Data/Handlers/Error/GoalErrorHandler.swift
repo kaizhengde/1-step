@@ -32,29 +32,29 @@ enum GoalErrorHandler {
             return false
         }
         catch GoalError.goalNameEmpty {
-            errorText = "What do you want to achieve?\n\nPlease enter a goal."
+            errorText = Localized.GoalError.goalNameEmpty
         }
         catch GoalError.stepsNeededEmpty {
-            errorText = "How many steps does it take to reach your goal?\n\nPlease enter a number."
+            errorText = Localized.GoalError.stepsNeededEmpty
         }
         catch GoalError.stepUnitEmpty {
-            errorText = "What do you want to track?\n\nPlease select a unit."
+            errorText = Localized.GoalError.stepUnitEmpty
         }
         catch GoalError.stepCustomUnitEmpty {
-            errorText = "You have entered nothing.\n\nPlease again enter a custom unit."
+            errorText = Localized.GoalError.stepCustomUnitEmpty
         }
         catch GoalError.stepsNeededTooLittle {
-            errorText = "Too little steps to take.\n\nMinimum steps: \(Goal.neededStepUnitsMinimum)."
+            errorText = "\(Localized.GoalError.stepsNeededTooLittle) \(Goal.neededStepUnitsMinimum)."
         }
         catch GoalError.stepsNeededTooMany {
-            errorText = "Too many steps to take.\n\nMaximum steps: \(Goal.neededStepUnitsMaximum)."
+            errorText = "\(Localized.GoalError.stepsNeededTooMany) \(Goal.neededStepUnitsMaximum)."
         }
         catch {
-            errorText = "Failed with an unknown error.\n\nConsider restarting the app."
+            errorText = Localized.GoalError.unknown
         }
         
         PopupManager.shared.showPopup(backgroundColor: baseData.color!.standard, hapticFeedback: true) {
-            OneSTextPopupView(titleText: "Oh Deer", titleImage: Symbol.deer, bodyText: errorText)
+            OneSTextPopupView(titleText: Localized.ohDeer, titleImage: Symbol.deer, bodyText: errorText)
         }
         
         return true
@@ -98,20 +98,20 @@ enum GoalErrorHandler {
             return false
         }
         catch GoalEditError.currentBelowNeededStepUnits {
-            errorText = "You can't have a goal with steps to take lower than or equal to your current steps."
+            errorText = Localized.GoalError.currentBelowNeededStepUnits
         }
         catch let GoalEditError.changeOfCategory(from: fromCategory, to: toCategory) {
-            errorText = "You can't change your step category.\n\(fromCategory) -> \(toCategory)\n\nCreate a new goal instead."
+            errorText = "\(Localized.GoalError.changeOfCategory)\n\n\(fromCategory) -> \(toCategory)"
         }
         catch GoalEditError.changeOfDistanceUnitsSystem {
-            errorText = "You can't change between metric and imperial units.\n\nCreate a new goal instead."
+            errorText = Localized.GoalError.changeOfDistanceUnitsSystem
         }
         catch {
-            errorText = "Failed with an unknown error.\n\nConsider restarting the app."
+            errorText = Localized.GoalError.unknown
         }
         
         PopupManager.shared.showPopup(backgroundColor: goal.color.standard, hapticFeedback: true) {
-            OneSTextPopupView(titleText: "Oh Deer", titleImage: Symbol.deer, bodyText: errorText)
+            OneSTextPopupView(titleText: Localized.ohDeer, titleImage: Symbol.deer, bodyText: errorText)
         }
         
         return true

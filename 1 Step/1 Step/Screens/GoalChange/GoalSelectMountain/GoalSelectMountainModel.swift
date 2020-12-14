@@ -159,7 +159,7 @@ final class GoalSelectMountainModel: TransitionObservableObject {
     
     
     func selectButtonText(_ mountain: MountainImage) -> String {
-        return selectedData.mountain == mountain ? "CURRENT" : "SELECT"
+        return selectedData.mountain == mountain ? Localized.current.uppercased() : Localized.select.uppercased()
     }
     
     

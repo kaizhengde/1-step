@@ -20,7 +20,7 @@ struct GoalChangeNotificationAddTimeView: View {
         VStack(spacing: 32) {
             //Header
             HStack(alignment: .titleSecondaryButtonAlignment) {
-                OneSSecondaryHeaderText(text: (editMode ? "Edit" : "New") + " Reminder", color: .backgroundToGray)
+                OneSSecondaryHeaderText(text: editMode ? Localized.editReminder : Localized.newReminder, color: .backgroundToGray)
                     .alignmentGuide(.titleSecondaryButtonAlignment) { $0[VerticalAlignment.center] }
                     
                 Spacer()
@@ -48,7 +48,7 @@ struct GoalChangeNotificationAddTimeView: View {
             }
             
             //Time
-            OneSSectionView(title: "At time", titleColor: .backgroundToGray) {
+            OneSSectionView(title: Localized.atTime, titleColor: .backgroundToGray) {
                 DatePicker(viewModel.selectedData.time.toTimeString(), selection: $viewModel.selectedData.time, displayedComponents: .hourAndMinute)
                     .font(OneSFont.custom(.bold, 17).font)
                     .accentColor(selectedColor.light)
@@ -61,7 +61,7 @@ struct GoalChangeNotificationAddTimeView: View {
             }
             
             //Weekdays
-            OneSSectionView(title: "Repeat every", titleColor: .backgroundToGray) {
+            OneSSectionView(title: Localized.repeatEvery, titleColor: .backgroundToGray) {
                 VStack(spacing: 10) {
                     LazyVGrid(columns: [GridItem(), GridItem(), GridItem(), GridItem()], spacing: 10) {
                         ForEach(0..<viewModel.weekdaysData.count) { i in

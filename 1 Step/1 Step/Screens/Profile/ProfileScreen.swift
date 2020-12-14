@@ -41,14 +41,14 @@ struct ProfileScreen: View {
         
         var body: some View {
             VStack(spacing: 3) {
-                OneSText(text: "Made in Zurich, Switzerland", font: .footnote2, color: .grayToBackground)
-                OneSText(text: "Version \(AppModel.version)", font: .footnote2, color: .grayToBackground)
+                OneSText(text: Localized.ProfileScreen.made, font: .footnote2, color: .grayToBackground)
+                OneSText(text: "\(Localized.ProfileScreen.version) \(AppModel.version)", font: .footnote2, color: .grayToBackground)
                 
                 HStack(spacing: 16) {
-                    OneSFootnoteButton(text: "Credits", color: UserColor.user2.standard) {
+                    OneSFootnoteButton(text: Localized.credits, color: UserColor.user2.standard) {
                         SheetManager.shared.showSheet { CreditsView() }
                     }
-                    OneSFootnoteButton(text: "Terms of use", color: UserColor.user2.standard) {
+                    OneSFootnoteButton(text: Localized.terms, color: UserColor.user2.standard) {
                         SheetManager.shared.showSheet {
                             OneSSafariView(urlString: "https://www.kaizheng.de/terms-of-use/", tintColor: UserColor.user2.standard)
                         }

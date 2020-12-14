@@ -56,7 +56,7 @@ class GoalChangeNotificationModel: ObservableObject {
         }
 
         if weekdays.count == 7 {
-            description = "Every day"
+            description = Localized.everyDay
         } else {
             for weekday in descriptionArray {
                 description += "\(weekday), "

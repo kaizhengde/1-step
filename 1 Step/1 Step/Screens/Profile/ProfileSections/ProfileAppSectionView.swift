@@ -14,17 +14,17 @@ struct ProfileAppSectionView: View {
     
     
     var body: some View {
-        OneSSectionView(title: "App") {
+        OneSSectionView(title: Localized.app) {
             VStack(spacing: 16) {
-                OneSDropDown(.long, title: "Settings", accessoryCustomSymbol: ProfileSymbol.settings) {
+                OneSDropDown(.long, title: Localized.settings, accessoryCustomSymbol: ProfileSymbol.settings) {
                     SettingsContentView(profileModel: profileModel)
                 }
                 
-                OneSDropDown(.long, title: "Data & Privacy", accessorySFSymbol: ProfileSymbol.dataAndPrivacy) {
+                OneSDropDown(.long, title: Localized.dataAndPrivacy, accessorySFSymbol: ProfileSymbol.dataAndPrivacy) {
                     DataAndPrivacyContentView(profileModel: profileModel)
                 }
                 
-                OneSRowButton(.long, title: "Help", accessorySFSymbol: ProfileSymbol.help) {
+                OneSRowButton(.long, title: Localized.help, accessorySFSymbol: ProfileSymbol.help) {
                     fullSheetManager.showFullSheet { ProfileHelpView(profileModel: profileModel) }
                 }
             }
@@ -49,17 +49,17 @@ struct ProfileAppSectionView: View {
             VStack(spacing: 10) {
                 OneSRowButton(
                     .shortSmall,
-                    title: "Premium",
+                    title: Localized.premium,
                     textColor: profileModel.appSelectedRowTitleColor(premium),
                     backgroundColor: profileModel.appSelectedRowBackgroundColor(premium),
-                    accessoryText: profileModel.appSelectedRowAccessoryText(premium, enabled: "Yes!", disabled: "No"),
+                    accessoryText: profileModel.appSelectedRowAccessoryText(premium, enabled: "\(Localized.yes)!", disabled: Localized.no),
                     accessoryColor: profileModel.appSelectedRowAccessoryColor(premium),
                     action: { FullSheetManager.shared.showFullSheet { PremiumView() } }
                 )
                                 
                 OneSRowButton(
                     .shortSmall,
-                    title: "Language",
+                    title: Localized.language,
                     accessoryText: selectedLanguage,
                     accessoryColor: profileModel.section1Color,
                     action: { UIApplication.shared.openOneSSettings() }
@@ -67,15 +67,15 @@ struct ProfileAppSectionView: View {
                 
                 OneSDropDown(
                     .shortSmall,
-                    title: "Appearance",
-                    accessoryText: selectedAppearance.rawValue,
+                    title: Localized.appearance,
+                    accessoryText: selectedAppearance.description,
                     accessoryColor: profileModel.section1Color,
                     content: {
                         VStack(spacing: 10) {
                             ForEach(OneSAppearance.allCases, id: \.self) { appearance in
                                 OneSRowSelectButton(
                                     Binding<Bool>(get: { selectedAppearance == appearance }, set: { _ in }),
-                                    title: appearance.rawValue,
+                                    title: appearance.description,
                                     selectedColor: profileModel.section1Color,
                                     action: {
                                         userDefaultsManager.settingAppearance = appearance
@@ -89,15 +89,15 @@ struct ProfileAppSectionView: View {
                 
                 OneSDropDown(
                     .shortSmall,
-                    title: "Theme",
-                    accessoryText: selectedColorTheme.rawValue,
+                    title: Localized.theme,
+                    accessoryText: selectedColorTheme.description,
                     accessoryColor: profileModel.section1Color,
                     content: {
                         VStack(spacing: 10) {
                             ForEach(OneSColorTheme.allCases, id: \.self) { colorTheme in
                                 OneSRowSelectButton(
                                     Binding<Bool>(get: { selectedColorTheme == colorTheme }, set: { _ in }),
-                                    title: colorTheme.rawValue,
+                                    title: colorTheme.description,
                                     selectedColor: profileModel.section1Color,
                                     action: {
                                         userDefaultsManager.settingColorTheme = colorTheme
@@ -111,10 +111,10 @@ struct ProfileAppSectionView: View {
                 
                 OneSRowButton(
                     .shortSmall,
-                    title: "Notifications",
+                    title: Localized.notifications,
                     textColor: profileModel.appSelectedRowTitleColor(notifications),
                     backgroundColor: profileModel.appSelectedRowBackgroundColor(notifications),
-                    accessoryText: profileModel.appSelectedRowAccessoryText(notifications, enabled: "On", disabled: "Off"),
+                    accessoryText: profileModel.appSelectedRowAccessoryText(notifications, enabled: Localized.on, disabled: Localized.off),
                     accessoryColor: profileModel.appSelectedRowAccessoryColor(notifications),
                     action: { LocalNotificationManager.settingsNotificationBtnPressed() }
                 )
@@ -135,19 +135,19 @@ struct ProfileAppSectionView: View {
             VStack(spacing: 10) {
                 OneSRowButton(
                     .shortSmall,
-                    title: "iCloud backup",
+                    title: Localized.iCloudSync,
                     textColor: profileModel.appSelectedRowTitleColor(iCloudSynch),
                     backgroundColor: profileModel.appSelectedRowBackgroundColor(iCloudSynch),
-                    accessoryText: profileModel.appSelectedRowAccessoryText(iCloudSynch, enabled: "On", disabled: "Off"),
+                    accessoryText: profileModel.appSelectedRowAccessoryText(iCloudSynch, enabled: Localized.on, disabled: Localized.off),
                     accessoryColor: profileModel.appSelectedRowAccessoryColor(iCloudSynch),
                     action: { userDefaultsManager.settingICloudSynch.toggle() }
                 )
                 
-                OneSRowButton(.shortSmall, title: "Export your data") {}
+                OneSRowButton(.shortSmall, title: Localized.exportData) {}
                                 
-                OneSRowButton(.shortSmall, title: "Delete all data") {}
+                OneSRowButton(.shortSmall, title: Localized.resetAllData) {}
                 
-                OneSRowButton(.shortSmall, title: "Privacy Policy") {
+                OneSRowButton(.shortSmall, title: Localized.privacyPolicy) {
                     SheetManager.shared.showSheet {
                         OneSSafariView(urlString: WebsiteURLString.privacyPolicy, tintColor: profileModel.section1Color)
                     }

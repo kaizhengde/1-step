@@ -18,8 +18,8 @@ extension String {
 enum LocalizationHelper {
     
     static func languageDescription(of languageKey: String) -> String {
-        if languageKey.contains("en") { return "English" }
-        if languageKey.contains("de") { return "German" }
+        if languageKey.contains("en") { return Localized.english }
+        if languageKey.contains("de") { return Localized.german }
         
         return "Unknown"
     }

@@ -8,9 +8,17 @@
 import Foundation
 
 enum OneSAppearance: String, Codable, CaseIterable {
-    case mirrorDevice   = "Mirror device"
-    case light          = "Light"
-    case dark           = "Dark"
+    case mirrorDevice
+    case light
+    case dark
+    
+    var description: String {
+        switch self {
+        case .mirrorDevice: return Localized.mirrorDevice
+        case .light:        return Localized.light
+        case .dark:         return Localized.dark
+        }
+    }
 }
 
 extension OneSAppearance: UserDefaultType {}

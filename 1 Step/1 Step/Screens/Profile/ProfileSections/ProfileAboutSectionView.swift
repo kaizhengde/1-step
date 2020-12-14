@@ -15,34 +15,34 @@ struct ProfileAboutSectionView: View {
     
     
     var body: some View {
-        OneSSectionView(title: "About") {
+        OneSSectionView(title: Localized.about) {
             VStack(spacing: 40) {
                 VStack(spacing: 16) {
-                    OneSRowButton(.long, title: "Send us your Feedback", accessorySFSymbol: ProfileSymbol.feedback, accessoryColor: UserColor.user0.standard) {
+                    OneSRowButton(.long, title: Localized.sendFeedback, accessorySFSymbol: ProfileSymbol.feedback, accessoryColor: UserColor.user0.standard) {
                         
                     }
                     
-                    OneSRowButton(.long, title: "Request new Features", accessorySFSymbol: ProfileSymbol.request, accessoryColor: UserColor.user0.standard) {
+                    OneSRowButton(.long, title: Localized.requestFeatures, accessorySFSymbol: ProfileSymbol.request, accessoryColor: UserColor.user0.standard) {
                         
                     }
                     
-                    OneSRowButton(.long, title: "Rate us on the App Store", accessorySFSymbol: ProfileSymbol.rate, accessoryColor: UserColor.user0.standard) {
+                    OneSRowButton(.long, title: Localized.rateOnAppStore, accessorySFSymbol: ProfileSymbol.rate, accessoryColor: UserColor.user0.standard) {
                         
                     }
                     
-                    OneSRowButton(.long, title: "Share", accessorySFSymbol: ProfileSymbol.share, accessoryColor: UserColor.user0.standard) {
+                    OneSRowButton(.long, title: Localized.share, accessorySFSymbol: ProfileSymbol.share, accessoryColor: UserColor.user0.standard) {
                         
                     }
                 }
                 
                 VStack(spacing: 16) {
-                    OneSRowButton(.long, title: "Website", accessorySFSymbol: ProfileSymbol.website, accessoryColor: UserColor.user1.standard) {
+                    OneSRowButton(.long, title: Localized.website, accessorySFSymbol: ProfileSymbol.website, accessoryColor: UserColor.user1.standard) {
                         sheetManager.showSheet {
                             OneSSafariView(urlString: WebsiteURLString.kaiZheng, tintColor: UserColor.user1.standard)
                         }
                     }
                     
-                    OneSRowButton(.long, title: "Instagram", accessorySFSymbol: ProfileSymbol.instagram, accessoryColor: UserColor.user1.standard) {
+                    OneSRowButton(.long, title: Localized.instagram, accessorySFSymbol: ProfileSymbol.instagram, accessoryColor: UserColor.user1.standard) {
                         sheetManager.showSheet {
                             OneSSafariView(urlString: WebsiteURLString.instagram, tintColor: UserColor.user2.standard)
                         }
@@ -50,19 +50,19 @@ struct ProfileAboutSectionView: View {
                 }
                 
                 VStack(spacing: 16) {
-                    OneSRowButton(.long, title: "The VFD Collective", accessorySFSymbol: ProfileSymbol.vfdCollective, accessoryColor: UserColor.user2.standard) {
+                    OneSRowButton(.long, title: Localized.vfdCollective, accessorySFSymbol: ProfileSymbol.vfdCollective, accessoryColor: UserColor.user2.standard) {
                         sheetManager.showSheet {
                             OneSSafariView(urlString: WebsiteURLString.vfdCollective, tintColor: UserColor.user2.standard)
                         }
                     }
                     
-                    OneSRowButton(.long, title: "Pastel Tree", accessorySFSymbol: ProfileSymbol.pastelTree, accessoryColor: UserColor.user2.standard) {
+                    OneSRowButton(.long, title: Localized.pastelTree, accessorySFSymbol: ProfileSymbol.pastelTree, accessoryColor: UserColor.user2.standard) {
                         sheetManager.showSheet {
                             OneSSafariView(urlString: WebsiteURLString.pastelTree, tintColor: UserColor.user2.standard)
                         }
                     }
                     
-                    OneSRowButton(.long, title: "Plant a Tree", accessorySFSymbol: ProfileSymbol.plant, accessoryColor: UserColor.user2.standard) {
+                    OneSRowButton(.long, title: Localized.plantTree, accessorySFSymbol: ProfileSymbol.plant, accessoryColor: UserColor.user2.standard) {
                         sheetManager.showSheet {
                             OneSSafariView(urlString: WebsiteURLString.plantATree, tintColor: UserColor.user2.standard)
                         }

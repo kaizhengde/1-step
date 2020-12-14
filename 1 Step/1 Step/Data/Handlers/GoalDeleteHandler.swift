@@ -12,13 +12,13 @@ struct GoalDeleteHandler {
     static func confirmDelete(with goal: Goal) {
         PopupManager.shared.showPopup(.goalDelete, backgroundColor: .grayStatic, height: 400*Layout.multiplierWidth, hapticFeedback: true) {
             OneSTextFieldConfirmationPopupView(
-                titleText: "Delete",
-                bodyText: "Are you sure?\n\nThis action cannot be undone.\nConfirm with your Goal.",
-                textColor: .backgroundStatic,
-                confirmationText: goal.name,
-                placeholder: goal.name,
-                placeholderColor: .blackStatic,
-                inputLimit: Goal.nameDigitsLimit
+                titleText:          Localized.delete,
+                bodyText:           Localized.GoalChange.confirmDelete,
+                textColor:          .backgroundStatic,
+                confirmationText:   goal.name,
+                placeholder:        goal.name,
+                placeholderColor:   .blackStatic,
+                inputLimit:         Goal.nameDigitsLimit
             )
         }
     }

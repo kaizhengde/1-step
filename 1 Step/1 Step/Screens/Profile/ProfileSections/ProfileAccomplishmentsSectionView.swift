@@ -13,7 +13,7 @@ struct ProfileAccomplishmentsSectionView: View {
     
     
     var body: some View {
-        OneSSectionView(title: "Accomplishments") {
+        OneSSectionView(title: Localized.accomplishments) {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 12) {
                     if !GoalAccomplishmentsHandler.noAccomplishments() {
