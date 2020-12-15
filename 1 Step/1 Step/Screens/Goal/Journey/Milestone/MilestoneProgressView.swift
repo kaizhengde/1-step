@@ -32,8 +32,8 @@ struct MilestoneProgressView: View {
                     .scaleEffect(infiniteAnimationManager.slow.isOnBackward ? 1.2 : 1.0)
                     .alignmentGuide(.circleLineAlignment) { $0[VerticalAlignment.center] }
                     .animation(InfiniteAnimationManager.slowAnimation)
-                    .opacity(show ? 1.0 : 0.0)
-                    .scaleEffect(show ? 1.0 : 0.9)
+                    .oneSItemTransition($show)
+                    .oneSItemScaleTapGesture(amount: 1.2) { MilestoneModel.progressCircleTapped.send() }
                 
                 Color.clear.frame(height: 0)
                     .padding(.top, 150)

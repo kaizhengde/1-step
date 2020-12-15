@@ -40,7 +40,7 @@ theme           = "Farbschema";
 water           = "Wasser";
 earth           = "Erde";
 air             = "Luft";
-notifications   = "Benachrichtigungen";
+notifications   = "Mitteilungen";
 iCloudSync      = "iCloud sync";
 exportData      = "Daten exportieren";
 resetAllData    = "Alle Daten zurücksetzen";
@@ -174,14 +174,14 @@ premium.realTree            = "Pflanze einen echten Baum";
 premium.youChoose           = "Du wählst den Preis";
 premium.restore             = "Kauf wiederherstellen";
 premium.noteTextPassage     = "Mit diesem Kauf wird dir der volle Zugang zu allen gegenwärtigen und zukünftigen Funktionalitäten gewährt. Kein Abonnement, zu zahlst nur einmal und es ist für immer deins.";
-premium.thankYouText        = "du hast 1 Step Premium freigeschaltet.\n\nWir wünschen eine wundervolle Zeit.";
+premium.thankYouText        = "du hast 1 Step Premium erfolgreich freigeschaltet.\n\nWir wünschen eine wundervolle Zeit.";
 
 
 //Error ----------------------------------------------
 
 error.mocSave               = "Deine Änderungen konnten nicht gesichert werden, es ist nicht deine Schuld. Versuche es bitte erneut. Erwäge sonst einen Neustart.";
 error.noAccessPhotoLibrary  = "Bitte genehmige den Zugang zu deiner Foto-Bibliothek.";
-error.noAccessNotification  = "Bitte genehmige das Senden von Benachrichtigungen.";
+error.noAccessNotification  = "Bitte genehmige das Senden von Mitteilungen.";
 
 
 //Notification ----------------------------------------------
@@ -270,14 +270,14 @@ examples.twoText2    = "Achtsamkeit praktizieren";
 examples.twoText3    = "Regelmäßig meditieren";
 examples.twoText4    = "50 Stunden meditieren";
 examples.twoText5    = "100 Stunden meditieren";
-examples.twoText6    = "10.000 mal tief einatmen";
-examples.twoText7    = "10.000 mal den gegenwärtigen Moment wahrnehmen";
+examples.twoText6    = "1000 mal tief einatmen";
+examples.twoText7    = "500 mal den gegenwärtigen Moment wahrnehmen";
 
 examples.threeTitle  = "Mehr für die Umwelt tun";
 examples.threeText1  = "Mehr für die Umwelt tun";
 examples.threeText2  = "100 Bäume pflanzen";
 examples.threeText3  = "10 Quadratkilometer Regenwald schützen";
-examples.threeText4  = "1.000 Mal Müll aufsammeln";
+examples.threeText4  = "800 Mal Müll aufsammeln";
 examples.threeText5  = "100 Mal vegan essen";
 
 examples.fourTitle   = "Auf der Gitarre besser werden";
@@ -289,28 +289,28 @@ examples.fourText4   = "10 informative Youtube Video schauen";
 examples.fiveTitle   = "Glücklicher werden";
 examples.fiveText1   = "Glücklicher werden";
 examples.fiveText2   = "Anfangen mehr zu geben und anderen helfen";
-examples.fiveText3   = "1.000 Mal Müll aufsammeln";
-examples.fiveText4   = "1.000 Mal einen Insekten retten";
+examples.fiveText3   = "800 Mal Müll aufsammeln";
+examples.fiveText4   = "300 Mal einen Insekten retten";
 examples.fiveText5   = "100 Mal einem Freund, einer Freundin helfen";
 
 examples.sixTitle    = "Aufhören zu prokrastinieren";
 examples.sixText1    = "Aufhören zu prokrastinieren";
 examples.sixText2    = "Anfangen, das Richtige sofort zu tun";
 examples.sixText3    = "Meinen Sofort-Handeln Muskel trainieren";
-examples.sixText4    = "10.0000 Entscheidungen treffen";
+examples.sixText4    = "1000 Entscheidungen treffen";
 examples.sixText5    = "Journal on progress 100 times";
 
 examples.sevenTitle  = "Eine neue Spache lernen";
 examples.sevenText1  = "Eine neue Spache lernen";
 examples.sevenText2  = "Öfter mit [Sprache] interagieren";
 examples.sevenText3  = "100 Filme auf [Sprache] anschauen";
-examples.sevenText4  = "1.000 Mal Podcasts auf [Sprache] hören";
+examples.sevenText4  = "500 Mal Podcasts auf [Sprache] hören";
 
 examples.eightTitle  = "Wissenshorizont erweitern";
 examples.eightText1  = "Wissenshorizont erweitern";
 examples.eightText2  = "Mehr Bücher lesen";
-examples.eightText3  = "10.000 Seiten lesen";
-examples.eightText4  = "1.000 Mal lesen";
+examples.eightText3  = "500 Seiten lesen";
+examples.eightText4  = "200 Mal lesen";
 
 
 //First Start ----------------------------------------------

@@ -174,7 +174,7 @@ premium.realTree            = "Plant a real tree";
 premium.youChoose           = "You choose the price";
 premium.restore             = "Restore purchase";
 premium.noteTextPassage     = "This purchase will give you access to all current and future functionality. No subscription, you only pay once and it’s forever yours.";
-premium.thankYouText        = "you have unlocked 1 Step Premium.\n\nWe wish a wonderful experience!";
+premium.thankYouText        = "you have successfully unlocked 1 Step Premium.\n\nWe wish a wonderful experience!";
 
 
 //Error ----------------------------------------------
@@ -270,14 +270,14 @@ examples.twoText2    = "Practise mindfulness";
 examples.twoText3    = "Start meditating regularly";
 examples.twoText4    = "Meditate 50 hours";
 examples.twoText5    = "Meditate 100 times";
-examples.twoText6    = "Breathe in deeply 10.000 times";
-examples.twoText7    = "Acknowledge the now 10.000 times";
+examples.twoText6    = "Breathe in deeply 1000 times";
+examples.twoText7    = "Acknowledge the now 500 times";
 
 examples.threeTitle  = "Help the environment";
 examples.threeText1  = "Help the environment";
 examples.threeText2  = "Plant 100 trees";
 examples.threeText3  = "Save rainforest 10 square miles";
-examples.threeText4  = "Collect trash 1.000 times";
+examples.threeText4  = "Collect trash 800 times";
 examples.threeText5  = "Eat a vegan meal 100 times";
 
 examples.fourTitle   = "Get better at guitar";
@@ -289,28 +289,28 @@ examples.fourText4   = "Watch 10 Youtube videos";
 examples.fiveTitle   = "Be more happy";
 examples.fiveText1   = "Be more happy";
 examples.fiveText2   = "Give back and help others";
-examples.fiveText3   = "Collect trash 1.000 times";
-examples.fiveText4   = "Rescue an insect 1.000 times";
+examples.fiveText3   = "Collect trash 800 times";
+examples.fiveText4   = "Rescue an insect 300 times";
 examples.fiveText5   = "Help a friend 100 times";
 
 examples.sixTitle    = "Stop procrastination";
 examples.sixText1    = "Stop procrastination";
 examples.sixText2    = "Start doing the right thing instantly";
 examples.sixText3    = "Train my instant decision making muscle";
-examples.sixText4    = "Make 10.000 instant descisions";
+examples.sixText4    = "Make 1000 instant descisions";
 examples.sixText5    = "Journal on progress 100 times";
 
 examples.sevenTitle  = "Learn a new language";
 examples.sevenText1  = "Learn a new language";
 examples.sevenText2  = "Interact more frequently with [language]";
 examples.sevenText3  = "Watch 100 movies in [language]";
-examples.sevenText4  = "Listen to [language] podcasts 1.000 times";
+examples.sevenText4  = "Listen to [language] podcasts 500 times";
 
 examples.eightTitle  = "Increase my knowledge";
 examples.eightText1  = "Increase my knowledge";
 examples.eightText2  = "Read more books";
-examples.eightText3  = "Read 10.000 pages";
-examples.eightText4  = "Read 1.000 times";
+examples.eightText3  = "Read 500 pages";
+examples.eightText4  = "Read 200 times";
 
 
 //First Start ----------------------------------------------

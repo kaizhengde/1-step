@@ -30,7 +30,7 @@ struct OneSBackgroundMultilineText: View {
             Spacer()
         }
         .padding(Layout.firstLayerPadding)
-        .frame(maxWidth: big ? .infinity : 250*Layout.multiplierWidth, maxHeight: .infinity)
+        .frame(maxWidth: big ? .infinity : 280*Layout.multiplierWidth, maxHeight: .infinity)
         .background(big ? Color.darkBackgroundToDarkGray : Color.darkBackgroundToBlack)
         .cornerRadius(12)
     }

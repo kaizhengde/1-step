@@ -18,7 +18,7 @@ struct SummitMilestoneItem: View {
     var body: some View {
         VStack(spacing: 40) {
             ItemView(goal: goal, milestone: milestone)
-                .oneSItemTapScale()
+                .oneSItemScaleTapGesture()
             
             VStack(spacing: 20) {
                 MilestoneDotView(milestoneAppear: $appear, milestone: milestone, appearAfter: .milliseconds(400))

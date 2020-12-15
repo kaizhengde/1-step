@@ -65,7 +65,7 @@ struct ProfileAccomplishmentsSectionView: View {
             .background(profileModel.accomplishmentsData[index].color)
             .cornerRadius(10)
             .oneSShadow(opacity: 0.1, blur: 10)
-            .oneSItemTapScale()
+            .oneSItemScaleTapGesture()
         }
     }
     

@@ -9,21 +9,22 @@ import SwiftUI
 
 extension View {
     
-    func oneSItemTapScale(with onTapBlock: @escaping () -> () = {}) -> some View {
-        return modifier(OneSItemTapScale(onTapBlock: onTapBlock))
+    func oneSItemScaleTapGesture(amount scale: CGFloat = 1.05, with onTapBlock: @escaping () -> () = {}) -> some View {
+        return modifier(OneSItemSclaeTapGesture(scale: scale, onTapBlock: onTapBlock))
     }
 }
 
 
-fileprivate struct OneSItemTapScale: ViewModifier {
+fileprivate struct OneSItemSclaeTapGesture: ViewModifier {
     
     @State private var tapAnimation = false
+    let scale: CGFloat
     let onTapBlock: () -> ()
     
     
     func body(content: Content) -> some View {
         content
-            .scaleEffect(tapAnimation ? 1.05 : 1.0)
+            .scaleEffect(tapAnimation ? scale : 1.0)
             .onTapGesture {
                 onTapBlock()
                 tapAnimation = true

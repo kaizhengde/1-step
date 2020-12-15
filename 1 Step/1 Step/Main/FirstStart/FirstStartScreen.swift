@@ -125,7 +125,7 @@ struct FirstStartScreen: View {
                     .frame(width: Layout.screenWidth, height: MountainLayout.height)
                     .foregroundColor(.darkBackgroundToBlack)
                     .scaleEffect(0.7)
-                    .offset(x: Layout.screenWidth/4, y: Layout.onlyOniPhoneXType(36))
+                    .offset(x: Layout.screenWidth/4, y: Layout.onlyOniPhoneXType(20))
                     .offset(y: viewModel.currentStep == .two ? 0 : MountainLayout.height*0.7)
                     .oneSMountainAnimation(delay: 0.3)
                 

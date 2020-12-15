@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 class MilestoneModel: ObservableObject {
     
@@ -17,8 +18,10 @@ class MilestoneModel: ObservableObject {
     
     init() { updateMarkViewsAmount() }
     
+    static let progressCircleTapped = PassthroughSubject<Void, Never>()
     
-    //MARK: - layout
+    
+    //MARK: - Layout
     
     @Published var markViewsAmount: Int = 0
     

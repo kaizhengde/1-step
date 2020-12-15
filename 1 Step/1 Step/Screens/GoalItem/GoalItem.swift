@@ -28,7 +28,7 @@ struct GoalItem: View {
         .contentShape(GoalItemArt.shape)
         .oneSShadow(opacity: 0.15, y: 3, blur: 10)
         .onReceive(goalsGridModel.$currentDragItem) { isCurrentDrag = $0 == goal }
-        .oneSItemTapScale(with: onTap)
+        .oneSItemScaleTapGesture(with: onTap)
     }
     
     

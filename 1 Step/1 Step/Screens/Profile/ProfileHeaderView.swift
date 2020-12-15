@@ -62,7 +62,7 @@ struct ProfileHeaderView: View {
                     }
                     .onTapGesture { profileModel.profileImageTapped() }
                 )
-                .oneSItemTapScale()
+                .oneSItemScaleTapGesture()
                 .onAppear { profileModel.profileImageViewAppear() }
         }
     }

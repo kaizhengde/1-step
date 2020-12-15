@@ -34,6 +34,7 @@ struct HiddenView: View {
             .alignmentGuide(.addStepAlignment) { d in d[.top] }
             .padding(8)
             .onChange(of: addStepAnimationHandler.milestoneChangeState) { hide = $0 != .none }
+            .onReceive(MilestoneModel.progressCircleTapped) { viewModel.dragState = .show }
     }
     
     
