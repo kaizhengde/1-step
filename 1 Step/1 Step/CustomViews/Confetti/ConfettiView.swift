@@ -68,12 +68,12 @@ class UIConfettiVC: UIViewController {
             
             return emitterLayer
         }()
-        
+                
         for layer in [foregroundConfettiLayer, backgroundConfettiLayer] {
             view.layer.addSublayer(layer)
             addBehaviors(to: layer)
             addAnimations(to: layer)
-        }        
+        }
     }
     
     
@@ -198,25 +198,6 @@ class UIConfettiVC: UIViewController {
         addBirthrateAnimation(to: layer)
         addGravityAnimation(to: layer)
     }
-    
-    
-    func dragBehavior() -> Any {
-        let behavior = createBehavior(type: "drag")
-        behavior.setValue("drag", forKey: "name")
-        behavior.setValue(2, forKey: "drag")
-
-        return behavior
-    }
-
-    
-    func addDragAnimation(to layer: CALayer) {
-        let animation = CABasicAnimation()
-        animation.duration = 0.35
-        animation.fromValue = 0
-        animation.toValue = 2
-
-        layer.add(animation, forKey:  "emitterBehaviors.drag.drag")
-    }
 
     
     func addGravityAnimation(to layer: CALayer) {
@@ -242,6 +223,7 @@ class UIConfettiVC: UIViewController {
         emitterLayer.frame = view.bounds
 
         emitterLayer.beginTime = CACurrentMediaTime()
+        
         return emitterLayer
     }
 }

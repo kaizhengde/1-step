@@ -25,6 +25,7 @@ fileprivate struct OneSConfetti: ViewModifier {
             Group {
                 if manager.show {
                     ConfettiView(amount: manager.amount)
+                        .allowsHitTesting(false)
                 }
             }
         )

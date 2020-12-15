@@ -35,7 +35,6 @@ class ConfettiType {
     
     lazy var name = UUID().uuidString
     
-    
     lazy var image: UIImage = {
         let imageRect: CGRect = {
             switch shape {
