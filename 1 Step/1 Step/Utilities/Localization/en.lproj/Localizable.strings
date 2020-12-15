@@ -152,15 +152,15 @@ goalChange.confirmDelete    = "Are you sure?\n\nThis action cannot be undone.\nC
 goalError.goalNameEmpty                 = "What do you want to achieve?\n\nPlease enter a goal.";
 goalError.stepsNeededEmpty              = "How many steps does it take to reach your goal?\n\nPlease enter a number.";
 goalError.stepUnitEmpty                 = "What do you want to track?\n\nPlease select a unit.";
-goalError.stepCustomUnitEmpty           = "You have entered no custom unit.\n\nPlease again enter your custom unit.";
-goalError.stepsNeededTooLittle          = "Too little steps to take.\n\nMinimum steps:";
-goalError.stepsNeededTooMany            = "Too many steps to take.\n\nMaximum steps:";
+goalError.stepCustomUnitEmpty           = "You have entered no custom unit.\n\nMake sure you have entered something.";
+goalError.stepsNeededTooLittle          = "Your goal has too little steps to take.\n\nMinimum steps:";
+goalError.stepsNeededTooMany            = "Your goal has too many steps to take.\n\nMaximum steps:";
 
-goalError.currentBelowNeededStepUnits   = "You can't have a goal with steps to take lower than or equal to your current steps.";
-goalError.changeOfCategory              = "You can't change your step category.\nCreate a new goal instead.";
+goalError.currentBelowNeededStepUnits   = "You can't go below your current progress.";
+goalError.changeOfCategory              = "Changing step category is not possible.\nCreate a new goal instead.";
 goalError.changeOfDistanceUnitsSystem   = "You can't change between metric and imperial units.\nCreate a new goal instead.";
 
-goalError.negativeSteps                 = "You can't have negative steps.";
+goalError.negativeSteps                 = "You can't have a negative progress.";
 
 goalError.unknown                       = "Failed with an unknown error.\n\nConsider restarting the app.";
 
@@ -169,12 +169,12 @@ goalError.unknown                       = "Failed with an unknown error.\n\nCons
 
 premium.achieveEveryGoal    = "Achieve every goal";
 premium.unlimitedGoals      = "Create unlimited goals";
-premium.futureUpdates       = "Support future updates";
+premium.futureUpdates       = "Support new updates";
 premium.realTree            = "Plant a real tree";
 premium.youChoose           = "You choose the price";
 premium.restore             = "Restore purchase";
 premium.noteTextPassage     = "This purchase will give you access to all current and future functionality. No subscription, you only pay once and it’s forever yours.";
-premium.thankYouText        = "we wish you a wonderful experience with 1 Step Premium.";
+premium.thankYouText        = "you have unlocked 1 Step Premium.\n\nWe wish a wonderful experience!";
 
 
 //Error ----------------------------------------------
@@ -193,14 +193,14 @@ notification.goal_errorNoDaySelected    = "Please select at least one repeating 
 //Help ----------------------------------------------
 
 help.frequentlyAsked    = "Frequently asked";
-help.question1_title    = "Can I redo adding steps?";
+help.question1_title    = "Can I redo added steps?";
 help.question1_text     =
 "Yes, but not directly. You would have to take the same amount of negative steps.
 Negative steps are on the top of the wheel you use to add steps.
 By scrolling all the way to the top, I am sure you will find them.";
-help.question2_title    = "Can I reset my goal?";
+help.question2_title    = "Can I restart my goal?";
 help.question2_text     =
-"It is not possible to reset a goal immediately.
+"Not directly.
 You would have to delete your goal and create it again.";
 help.question3_title    = "Can I change the order of my goals?";
 help.question3_text     =
@@ -208,14 +208,15 @@ help.question3_text     =
 This will activate drag and drop.";
 help.question4_title    = "How are steps calculated?";
 help.question4_text     =
-"Internally, we are distinguishing between stepUnits and steps. StepUnits are equal to whatever the user has chosen for his/her goal.
-Steps on the other hand, are calculated from stepUnits with a specific ratio. This makes sure that independent from your stepUnits, every goal you create will have at least ten steps to take and at most thousand.
+"Internally, we are distinguishing between stepUnits and steps.
+The amount of stepUnits correspond to the amount of steps you have to take in order to reach your goal. It is defined by the user.
+Steps on the other hand are calculated from stepUnits with a specific ratio. This makes sure that independent from your stepUnits, every goal you create will have at least ten steps to take and at most thousand to take.
 
 Example:
 Meditate 3 hours.
-This goal would have a ratio of 60, leading to 180 steps to take in total.
+This goal would have 3 stepUnits and a ratio of 60, leading to 180 steps to take in total.
 Each step would correspond to 1 minute.";
-help.question5_title    = "Are there any statistics of my progress?";
+help.question5_title    = "Are there any statistics?";
 help.question5_text     =
 "Soon. Every step you take already saves all necessary information to display statistics.";
 help.question6_title    = "Is my data safe?";
@@ -224,7 +225,7 @@ help.question6_text     =
 
 For extra safety, you could activate iCloud synchronization inside Data & Privacy.
 This will automatically synchronize and store all your data inside iCloud as well.";
-help.bottomText         = "You didn’t find the answer to your question or would like to make a suggestion?\nFeel free to contact me!";
+help.bottomText         = "You didn’t find the answer to your question?\nFeel free to contact me!";
 
 
 //How it works ----------------------------------------------
@@ -246,7 +247,7 @@ howItWorks.exampleTwo3          = "Run 300 times";
 howItWorks.exampleTwo4          = "Walk to 50 parks";
 howItWorks.exampleTwo5          = "Hike 12 mountains in the swiss alps";
 
-howItWorks.textPassageThree1    = "1 Step is about reaching your goals with simplicity and intelligence.";
+howItWorks.textPassageThree1    = "As you have achieved these indirect goals, you will certainly have lost some weight.";
 howItWorks.textPassageThree2    = "No need for your goals to be always in the foreground of your daily life.";
 howItWorks.textPassageThree3    = "You take tiny steps whenever you want and track them using 1 Step.";
 howItWorks.textPassageThree4    = "These steps will have an compound effect over time. You will be surprised by their effectiveness.";

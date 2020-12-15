@@ -153,8 +153,8 @@ goalError.goalNameEmpty                 = "Was möchtest du erreichen?\n\nBitte 
 goalError.stepsNeededEmpty              = "Wie viele Schritte benötigt es, um dein Ziel zu erreichen?\n\nBitte gebe eine Zahl ein.";
 goalError.stepUnitEmpty                 = "Was möchtest du tracken?\n\nBitte gebe eine Einheit ein.";
 goalError.stepCustomUnitEmpty           = "Du hast keine eigene Einheit eingegeben.\n\nVersuch es bitte noch einmal.";
-goalError.stepsNeededTooLittle          = "Zu wenige Schritte.\n\nMinimum:";
-goalError.stepsNeededTooMany            = "Zu viele Schritte.\n\nMaximum:";
+goalError.stepsNeededTooLittle          = "Dein Ziel benötigt zu wenige Schritte.\n\nMinimum:";
+goalError.stepsNeededTooMany            = "Dein Ziel benötigt zu viele Schritte.\n\nMaximum:";
 
 goalError.currentBelowNeededStepUnits   = "Du kannst kein Ziel haben, das weniger Schritte benötigt, als dein momentaner Stand.";
 goalError.changeOfCategory              = "Die Kategorie ist nicht wechselbar.\nErstelle dafür ein neues Ziel.";
@@ -174,12 +174,12 @@ premium.realTree            = "Pflanze einen echten Baum";
 premium.youChoose           = "Du wählst den Preis";
 premium.restore             = "Kauf wiederherstellen";
 premium.noteTextPassage     = "Mit diesem Kauf wird dir der volle Zugang zu allen gegenwärtigen und zukünftigen Funktionalitäten gewährt. Kein Abonnement, zu zahlst nur einmal und es ist für immer deins.";
-premium.thankYouText        = "wir wünschen dir ein wundervolle Zeit mit 1 Step Premium.";
+premium.thankYouText        = "du hast 1 Step Premium freigeschaltet.\n\nWir wünschen eine wundervolle Zeit.";
 
 
 //Error ----------------------------------------------
 
-error.mocSave               = "Es gab ein Problem, deine Änderungen zu sichern, es ist nicht deine Schuld. Versuche es bitte erneut. Erwäge sonst einen Neustart.";
+error.mocSave               = "Deine Änderungen konnten nicht gesichert werden, es ist nicht deine Schuld. Versuche es bitte erneut. Erwäge sonst einen Neustart.";
 error.noAccessPhotoLibrary  = "Bitte genehmige den Zugang zu deiner Foto-Bibliothek.";
 error.noAccessNotification  = "Bitte genehmige das Senden von Benachrichtigungen.";
 
@@ -193,52 +193,53 @@ notification.goal_errorNoDaySelected    = "An welchen Tagen möchtest du erinner
 //Help ----------------------------------------------
 
 help.frequentlyAsked    = "Oft gefragt";
-help.question1_title    = "Kann ich Schritte rückgängig machen?";
+help.question1_title    = "Kann ich erfasste Schritte rückgängig machen?";
 help.question1_text     =
 "Ja, aber nicht direkt. Du müsstest die gleiche Anzahl an negativen Schritten nehmen.
-Negative Schritte findet man ganz oben am Drehrad, wo man gewöhnlich Schritte hinzufügt.
+Negative Schritte findest du ganz oben am Drehrad, wo du gewöhnlich Schritte hinzufügt.
 Scrolle also ganz nach oben, ich bin mir sicher du wirst sie finden.";
-help.question2_title    = "Kann ich meinen Fortschritt bei einem Ziel zurücksetzen?";
+help.question2_title    = "Kann ich mein Ziel neu anfangen?";
 help.question2_text     =
 "Das wäre nicht direkt möglich.
 Du müsstest dein Ziel löschen und erneut erstellen.";
 help.question3_title    = "Kann ich die Reihenfolge meiner Ziele ändern?";
 help.question3_text     =
-"Klar. Wenn du einwenig länger auf ein Ziel drücks, so aktiviert sich ein Drag und Drop.
-Das gilt sowohl für aktive, als auch erreichte Ziele.";
+"Klar. Wenn du länger auf ein Ziel drücks, so aktiviert sich ein Drag und Drop.
+Das gilt sowohl für aktive, als auch für erreichte Ziele.";
 help.question4_title    = "Wie werden Schritte calculiert?";
 help.question4_text     =
-"Intern unterscheiden wir zwischen sogenannten StepUnits und Steps. StepUnits entsprechen genau der Schritte des Ziels - was auch immer der Nutzer eingegeben hat.
-Steps hingegen, werden von StepUnits und einem Verhältnis errechnet. Die stellen sicher, dass unabhängig von der gewählten Anzahl Schritte, es immer mindestens zen und maximal tausend Steps braucht, um ein Ziel zu erreichen.
+"Intern unterscheiden wir zwischen sogenannten StepUnits und Steps.
+Die Anzahl der StepUnits entspricht genau der Anzahl an Schritte, die es braucht, um dein Ziel zu erreichen. Es wird also vom User bestimmt.
+Steps hingegen, werden von StepUnits und einem Verhältnis berrechnet. So kann sicher gestellt werden, dass unabhängig vom Ziel, man immer mindestens zen und maximal tausend Steps braucht, um ein Ziel zu erreichen.
         
 Beispiel:
-Meditieren 3 Stunden.
-Das Ziel hätte ein Verhältnis von 60. Folglich muss man 180 Steps gehen.
+3 Stunden meditieren.
+Das Ziel hätte 3 StepUnits und ein Verhältnis von 60. Folglich braucht es 180 Steps, um am Gipfel anzukommen.
 Jeder Step würde einer Minute entsprechen.";
 help.question5_title    = "Gibt es Statistiken?";
 help.question5_text     =
-"Bald. Mit jedem Schritt, den du zur Zeit nimmst, speicherst du bereits alle nötigen Informationen, um Statistiken darzustellen.";
+"Bald. Mit jedem erfassten Schritt, speicherst du bereits alle nötigen Daten für die Darstellung von Statistiken.";
 help.question6_title    = "Sind meine Daten sicher?";
 help.question6_text     =
 "Standardmäßig werden deine Daten bloß lokal auf deinem Gerät gespeichert.
 
 Für mehr Sicherheit, kannst du unter dem Abschnitt Daten & Datenschutz, die iCloud Synchronisation aktivieren.
-Dann werden deine Daten automatisch parallel in der Cloud gespeichert.";
-help.bottomText         = "Du hast keine Antwort zu deiner Frage gefunden, oder möchtest gerne einen Vorschlag machen?\nKontaktiere mich gerne!";
+Dann werden deine Daten automatisch zusätzlich im iCloud gespeichert.";
+help.bottomText         = "Du hast keine Antwort zu deiner Frage gefunden?\nKontaktiere mich gerne!";
 
 
 //How it works ----------------------------------------------
 
 howItWorks.textPassageOne1      = "1 Step ermöglicht es dir, deine Ziele mit Intelligenz und Leichtigkeit zu erreichen.";
 howItWorks.textPassageOne2      = "Im Prinzip geht es darum, ein Ziel in winzig kleine Schritte herunterzubrechen, wobei jeder einzelne Schritt nur minale Überwindung zum Handeln für dich benötigt.";
-howItWorks.textPassageOne3      = "Es geht darum, die benötigte Disziplin und Motivation, damit man zum Handeln kommt, auf ein Mindestmaß zu reduzieren.";
-howItWorks.textPassageOne4      = "Zum Beispiel könnte man statt storh Abnehmen, sich das ein Ziel setzen, insgesamt 100 Kilometer zu laufen.";
+howItWorks.textPassageOne3      = "Es geht darum, die benötigte Disziplin und Motivation zum Handlen, auf ein Mindestmaß zu reduzieren.";
+howItWorks.textPassageOne4      = "Zum Beispiel wäre ein Alternativ-Ziel zum Abnehmen, insgesamt 100 Kilometer zu laufen.";
 howItWorks.textPassageOne5      = "Jeder Schritt würde so wenige Kilometer entsprechen.";
     
 howItWorks.exampleOne1          = "Abnehmen";
 howItWorks.exampleOne2          = "100 Kilometer insgesamt laufen";
     
-howItWorks.textPassageTwo1      = "Natürlich kannst du deiner Kreativität freien Lauf lassen. Wähle was auch immer dich am meisten motiviert";
+howItWorks.textPassageTwo1      = "Natürlich kannst du deiner Kreativität freien Lauf lassen. Wähle was auch immer dich am meisten motiviert!";
     
 howItWorks.exampleTwo1          = "Abnehmen";
 howItWorks.exampleTwo2          = "100 Kilometer laufen";
@@ -246,49 +247,49 @@ howItWorks.exampleTwo3          = "300 Mal laufen";
 howItWorks.exampleTwo4          = "50 Parks besuchen";
 howItWorks.exampleTwo5          = "12 Berge in den schweizer Alpen besteigen";
 
-howItWorks.textPassageThree1    = "1 Step is about reaching your goals with simplicity and intelligence.";
-howItWorks.textPassageThree2    = "No need for your goals to be always in the foreground of your daily life.";
-howItWorks.textPassageThree3    = "You take tiny steps whenever you want and track them using 1 Step.";
-howItWorks.textPassageThree4    = "These steps will have an compound effect over time. You will be surprised by their effectiveness.";
+howItWorks.textPassageThree1    = "Hast du eines der indirekten Ziele erreicht, so wirst du sicherlich abgenommen haben.";
+howItWorks.textPassageThree2    = "Deine Ziele müssen nicht ständig im Vordergrund deines täglichen Alltags stehen.";
+howItWorks.textPassageThree3    = "Du nimmst winzige Schritte, wann immer du möchtest und erfasst sie in 1 Step";
+howItWorks.textPassageThree4    = "Der Effekt dieser Schritte wird sich bemerkbar machen. Du wirst erstaunt sein, wie effektiv das Vorgehen ist.";
 
 
 //Examples ----------------------------------------------
 
 examples.oneTitle    = "Abnehmen";
 examples.oneText1    = "Abnehmen";
-examples.oneText2    = "Lose 20 pounds";
-examples.oneText3    = "Exercise more often";
-examples.oneText4    = "Go for a run regularly";
-examples.oneText5    = "Run 100 miles";
-examples.oneText6    = "Run 300 times";
-examples.oneText7    = "Run to 50 parks";
-examples.oneText8    = "Hike 12 mountains";
+examples.oneText2    = "20 Kilo verlieren";
+examples.oneText3    = "Mehr Sport treiben";
+examples.oneText4    = "Regelmäßig laufen gehen";
+examples.oneText5    = "100 Kilometer laufen";
+examples.oneText6    = "300 Mal laufen";
+examples.oneText7    = "50 Parks besuchen";
+examples.oneText8    = "12 Berge in den schweizer Alpen besteigen";
 
-examples.twoTitle    = "Become more self-aware";
-examples.twoText1    = "Become more self-aware";
-examples.twoText2    = "Practise mindfulness";
-examples.twoText3    = "Start meditating regularly";
-examples.twoText4    = "Meditate 50 hours";
-examples.twoText5    = "Meditate 100 times";
-examples.twoText6    = "Breathe in deeply 10.000 times";
-examples.twoText7    = "Acknowledge the now 10.000 times";
+examples.twoTitle    = "Bewusster werden";
+examples.twoText1    = "Bewusster werden";
+examples.twoText2    = "Achtsamkeit praktizieren";
+examples.twoText3    = "Regelmäßig meditieren";
+examples.twoText4    = "50 Stunden meditieren";
+examples.twoText5    = "100 Stunden meditieren";
+examples.twoText6    = "10.000 mal tief einatmen";
+examples.twoText7    = "10.000 mal den gegenwärtigen Moment wahrnehmen";
 
-examples.threeTitle  = "Help the environment";
-examples.threeText1  = "Help the environment";
-examples.threeText2  = "Plant 100 trees";
-examples.threeText3  = "Save rainforest 10 square miles";
-examples.threeText4  = "Collect trash 1.000 times";
-examples.threeText5  = "Eat a vegan meal 100 times";
+examples.threeTitle  = "Mehr für die Umwelt tun";
+examples.threeText1  = "Mehr für die Umwelt tun";
+examples.threeText2  = "100 Bäume pflanzen";
+examples.threeText3  = "10 Quadratkilometer Regenwald schützen";
+examples.threeText4  = "1.000 Mal Müll aufsammeln";
+examples.threeText5  = "100 Mal vegan essen";
 
-examples.fourTitle   = "Get better at guitar";
-examples.fourText1   = "Get better at guitar";
-examples.fourText2   = "Play 100 new songs";
-examples.fourText3   = "Play 100 hours";
-examples.fourText4   = "Watch 10 Youtube videos";
+examples.fourTitle   = "Gitarren-Skills verbessern";
+examples.fourText1   = "Gitarren-Skills verbessern";
+examples.fourText2   = "100 neue Lieder spielen";
+examples.fourText3   = "100 Stunden spielen";
+examples.fourText4   = "10 informative Youtube Video schauen";
 
-examples.fiveTitle   = "Be more happy";
-examples.fiveText1   = "Be more happy";
-examples.fiveText2   = "Give back and help others";
+examples.fiveTitle   = "Glücklicher werden";
+examples.fiveText1   = "Glücklicher werden";
+examples.fiveText2   = "Anfangen zu geben";
 examples.fiveText3   = "Collect trash 1.000 times";
 examples.fiveText4   = "Rescue an insect 1.000 times";
 examples.fiveText5   = "Help a friend 100 times";
