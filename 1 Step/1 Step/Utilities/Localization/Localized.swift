@@ -88,7 +88,15 @@ enum Localized {
     static let goodMorning      = "goodMorning".localized()
     static let goodEvening      = "goodEvening".localized()
     static let contactMe        = "contactMe".localized()
-        
+    static let how              = "how".localized()
+    static let what             = "what".localized()
+    static let you              = "you".localized()
+    static let yourName         = "yourName".localized()
+    static let name             = "name".localized()
+    static let welcome          = "welcome".localized()
+    static let step             = "step".localized()
+    static let of               = "of".localized()
+    
     
     enum Step {
         
@@ -111,13 +119,14 @@ enum Localized {
     }
     
     
-    enum ProfileScreen {
+    enum Profile {
         
-        static let made                         = "profileScreen.made".localized()
-        static let version                      = "profileScreen.version".localized()
-        static let accomplishment_steps         = "profileScreen.accomplishment_steps".localized()
-        static let accomplishment_milestones    = "profileScreen.accomplishment_milestones".localized()
-        static let accomplishment_goals         = "profileScreen.accomplishment_goals".localized()
+        static let enterNewName                 = "profile.enterNewName".localized()
+        static let made                         = "profile.made".localized()
+        static let version                      = "profile.version".localized()
+        static let accomplishment_steps         = "profile.accomplishment_steps".localized()
+        static let accomplishment_milestones    = "profile.accomplishment_milestones".localized()
+        static let accomplishment_goals         = "profile.accomplishment_goals".localized()
     }
     
     
@@ -208,6 +217,72 @@ enum Localized {
         static let textPassageThree2    = "howItWorks.textPassageThree2".localized()
         static let textPassageThree3    = "howItWorks.textPassageThree3".localized()
         static let textPassageThree4    = "howItWorks.textPassageThree4".localized()
+    }
+    
+    
+    enum Examples {
+        
+        static let oneTitle     = "examples.oneTitle".localized()
+        static let oneText1     = "examples.oneText1".localized()
+        static let oneText2     = "examples.oneText2".localized()
+        static let oneText3     = "examples.oneText3".localized()
+        static let oneText4     = "examples.oneText4".localized()
+        static let oneText5     = "examples.oneText5".localized()
+        static let oneText6     = "examples.oneText6".localized()
+        static let oneText7     = "examples.oneText7".localized()
+        static let oneText8     = "examples.oneText8".localized()
+        static let twoTitle     = "examples.twoTitle".localized()
+        static let twoText1     = "examples.twoText1".localized()
+        static let twoText2     = "examples.twoText2".localized()
+        static let twoText3     = "examples.twoText3".localized()
+        static let twoText4     = "examples.twoText4".localized()
+        static let twoText5     = "examples.twoText5".localized()
+        static let twoText6     = "examples.twoText6".localized()
+        static let twoText7     = "examples.twoText7".localized()
+        static let threeTitle   = "examples.threeTitle".localized()
+        static let threeText1   = "examples.threeText1".localized()
+        static let threeText2   = "examples.threeText2".localized()
+        static let threeText3   = "examples.threeText3".localized()
+        static let threeText4   = "examples.threeText4".localized()
+        static let threeText5   = "examples.threeText5".localized()
+        static let fourTitle    = "examples.fourTitle".localized()
+        static let fourText1    = "examples.fourText1".localized()
+        static let fourText2    = "examples.fourText2".localized()
+        static let fourText3    = "examples.fourText3".localized()
+        static let fourText4    = "examples.fourText4".localized()
+        static let fiveTitle    = "examples.fiveTitle".localized()
+        static let fiveText1    = "examples.fiveText1".localized()
+        static let fiveText2    = "examples.fiveText2".localized()
+        static let fiveText3    = "examples.fiveText3".localized()
+        static let fiveText4    = "examples.fiveText4".localized()
+        static let fiveText5    = "examples.fiveText5".localized()
+        static let fiveText6    = "examples.fiveText6".localized()
+        static let sixTitle     = "examples.sixTitle".localized()
+        static let sixText1     = "examples.sixText1".localized()
+        static let sixText2     = "examples.sixText2".localized()
+        static let sixText3     = "examples.sixText3".localized()
+        static let sixText4     = "examples.sixText4".localized()
+        static let sixText5     = "examples.sixText5".localized()
+        static let sevenTitle   = "examples.sevenTitle".localized()
+        static let sevenText1   = "examples.sevenText1".localized()
+        static let sevenText2   = "examples.sevenText2".localized()
+        static let sevenText3   = "examples.sevenText3".localized()
+        static let sevenText4   = "examples.sevenText4".localized()
+        static let sevenText5   = "examples.sevenText5".localized()
+        static let eightTitle   = "examples.eightTitle".localized()
+        static let eightText1   = "examples.eightText1".localized()
+        static let eightText2   = "examples.eightText2".localized()
+        static let eightText3   = "examples.eightText3".localized()
+        static let eightText4   = "examples.eightText4".localized()
+    }
+    
+    
+    enum FirstStart {
+        
+        static let whatsYourName    = "firstStart.whatsYourName".localized()
+        static let howShould        = "firstStart.howShould".localized()
+        static let excited          = "firstStart.excited".localized()
+        
     }
 }
 

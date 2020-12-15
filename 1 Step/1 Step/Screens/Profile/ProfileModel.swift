@@ -57,9 +57,9 @@ class ProfileModel: ObservableObject {
     
     var accomplishmentsData: [(description: String, value: Int, color: Color, appearDelay: DispatchTimeInterval)] {
         [
-            (Localized.ProfileScreen.accomplishment_steps, userDefaultsManager.accomplishmentTotalSteps, UserColor.user0.standard, Animation.Delay.none),
-            (Localized.ProfileScreen.accomplishment_milestones, userDefaultsManager.accomplishmentTotalMilestonesReached, UserColor.user1.standard, Animation.Delay.halfOpacity),
-            (Localized.ProfileScreen.accomplishment_goals, userDefaultsManager.accomplishmentTotalGoalsReached, UserColor.user2.standard, Animation.Delay.halfOpacity)
+            (Localized.Profile.accomplishment_steps, userDefaultsManager.accomplishmentTotalSteps, UserColor.user0.standard, Animation.Delay.none),
+            (Localized.Profile.accomplishment_milestones, userDefaultsManager.accomplishmentTotalMilestonesReached, UserColor.user1.standard, Animation.Delay.halfOpacity),
+            (Localized.Profile.accomplishment_goals, userDefaultsManager.accomplishmentTotalGoalsReached, UserColor.user2.standard, Animation.Delay.halfOpacity)
         ]
     }
     

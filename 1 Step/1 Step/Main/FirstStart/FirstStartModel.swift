@@ -20,6 +20,7 @@ class FirstStartModel: ObservableObject {
     func toStepOneConfirm() {
         if !userNameInput.isEmpty && currentStep == .one {
             currentStep = .oneConfirm
+            userNameInput = userNameInput.removeWhiteSpaces()
         }
     }
     

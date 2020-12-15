@@ -73,13 +73,13 @@ struct ProfileHeaderView: View {
         @StateObject private var userDefaultsManager = UserDefaultsManager.shared
         @StateObject private var popupManager = PopupManager.shared
         
-        var name: String { userDefaultsManager.userName.isEmpty ? "You" : userDefaultsManager.userName }
+        var name: String { userDefaultsManager.userName.isEmpty ? Localized.you : userDefaultsManager.userName }
         
         var body: some View {
             OneSText(text: name, font: .custom(.medium, 28), color: .grayToBackground)
                 .onTapGesture {
                     popupManager.showPopup(.changeName, backgroundColor: UserColor.user0.standard) {
-                        OneSTextFieldPopupView(titleText: "Name", bodyText: "Enter a new name.", initialInput: userDefaultsManager.userName, placeholder: "Your name", placeholderColor: UserColor.user0.dark, inputLimit: 20)
+                        OneSTextFieldPopupView(titleText: Localized.name, bodyText: Localized.Profile.enterNewName, initialInput: userDefaultsManager.userName, placeholder: Localized.yourName, placeholderColor: UserColor.user0.dark, inputLimit: 20)
                     }
                 }
                 .onReceive(popupManager.confirmBtnDismissed) {

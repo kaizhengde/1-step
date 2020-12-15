@@ -57,6 +57,7 @@ fileprivate struct OneSFloater<FloaterContent>: ViewModifier where FloaterConten
                 .background(manager.backgroundColor)
                 .cornerRadius(16)
                 .oneSShadow(opacity: 0.15, blur: 10)
+                .padding(.top, Layout.screenTopPadding)
 
                 Spacer()
             }

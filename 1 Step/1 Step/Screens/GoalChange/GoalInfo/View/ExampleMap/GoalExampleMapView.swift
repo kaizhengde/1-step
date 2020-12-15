@@ -21,7 +21,7 @@ struct GoalExampleMapView: View {
                     GoalExampleBackgroundText(text: data[i].text, backgroundColor: selectedColor.standard, big: big)
                 } else {
                     GoalExampleBackgroundText(text: data[i].text, backgroundColor: selectedColor.light, big: big)
-                    GoalExampleArrowText(text: data[i].arrowText, big: big)
+                    GoalExampleArrowText(text: data[i].arrowText.description, big: big)
                 }
             }
         }

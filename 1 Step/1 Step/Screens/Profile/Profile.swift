@@ -41,8 +41,8 @@ struct ProfileScreen: View {
         
         var body: some View {
             VStack(spacing: 3) {
-                OneSText(text: Localized.ProfileScreen.made, font: .footnote2, color: .grayToBackground)
-                OneSText(text: "\(Localized.ProfileScreen.version) \(AppModel.version)", font: .footnote2, color: .grayToBackground)
+                OneSText(text: Localized.Profile.made, font: .footnote2, color: .grayToBackground)
+                OneSText(text: "\(Localized.Profile.version) \(AppModel.version)", font: .footnote2, color: .grayToBackground)
                 
                 HStack(spacing: 16) {
                     OneSFootnoteButton(text: Localized.credits, color: UserColor.user2.standard) {

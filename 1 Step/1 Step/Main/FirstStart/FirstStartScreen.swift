@@ -57,13 +57,13 @@ struct FirstStartScreen: View {
         
         var body: some View {
             VStack(spacing: 70*Layout.multiplierHeight) {
-                OneSText(text: "Step 1 of 1", font: .custom(.semiBold, 16), color: UserColor.user2.standard)
+                OneSText(text: "\(Localized.step) 1 \(Localized.of.lowercased()) 1", font: .custom(.semiBold, 16), color: UserColor.user2.standard)
                     .padding(.top, 10)
                 
                 VStack(alignment: .leading, spacing: 28*Layout.multiplierHeight) {
-                    OneSText(text: "Hi 🙂\nWhat’s your name?", font: .custom(.bold, 30), color: UserColor.user2.standard)
-                    OneSText(text: "How should we call you?", font: .custom(.regular, 20), color: .grayToBackground)
-                    OneSTextField(input: $viewModel.userNameInput, placeholder: "Your name", inputColor: UserColor.user0.standard, inputLimit: 20) { viewModel.toStepOneConfirm() }
+                    OneSText(text: Localized.FirstStart.whatsYourName, font: .custom(.bold, 30), color: UserColor.user2.standard)
+                    OneSText(text: Localized.FirstStart.howShould, font: .custom(.regular, 20), color: .grayToBackground)
+                    OneSTextField(input: $viewModel.userNameInput, placeholder: Localized.yourName, inputColor: UserColor.user0.standard, inputLimit: 20) { viewModel.toStepOneConfirm() }
                         .padding(.top, 20)
                     
                     if viewModel.currentStep == .oneConfirm {
@@ -96,12 +96,12 @@ struct FirstStartScreen: View {
         
         var body: some View {
             VStack(spacing: 20*Layout.multiplierHeight) {
-                OneSHeaderText(text: "Welcome")
-                OneSText(text: "\(viewModel.userNameInput), we are excited to support you on your journey", font: .custom(.semiBold, 30), color: UserColor.user2.standard, alignment: .center)
+                OneSHeaderText(text: Localized.welcome)
+                OneSText(text: "\(viewModel.userNameInput), \(Localized.FirstStart.excited)", font: .custom(.semiBold, 30), color: UserColor.user2.standard, alignment: .center, minimumScale: 0.7)
                 
                 Spacer()
                 
-                OneSBorderButton(text: "START", color: .backgroundToGray) { viewModel.finishFirstStart() }
+                OneSBorderButton(text: Localized.start.uppercased(), color: .backgroundToGray) { viewModel.finishFirstStart() }
             }
             .padding(.bottom, 50*Layout.multiplierHeight)
             .padding(.horizontal, Layout.firstLayerPadding)
