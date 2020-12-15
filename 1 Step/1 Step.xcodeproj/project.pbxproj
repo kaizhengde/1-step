@@ -192,6 +192,7 @@
 		3DD5C06C2585D7FD00D8AC7D /* TutorialSelectColorDark.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3DD5C0662585D7FD00D8AC7D /* TutorialSelectColorDark.gif */; };
 		3DD5C07525876A9000D8AC7D /* ProfileTutorialModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD5C07425876A9000D8AC7D /* ProfileTutorialModel.swift */; };
 		3DD5C07925876AA500D8AC7D /* ProfileTutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD5C07825876AA500D8AC7D /* ProfileTutorialView.swift */; };
+		3DD5C07F2588A98200D8AC7D /* RandomTextGenerators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD5C07E2588A98200D8AC7D /* RandomTextGenerators.swift */; };
 		3DD5C9CD2539CF6600861784 /* GoalScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD5C9CC2539CF6600861784 /* GoalScreen.swift */; };
 		3DD5C9D02539CF7B00861784 /* GoalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD5C9CF2539CF7B00861784 /* GoalModel.swift */; };
 		3DD5C9D42539D27100861784 /* GoalTransitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD5C9D32539D27100861784 /* GoalTransitionView.swift */; };
@@ -448,6 +449,7 @@
 		3DD5C0662585D7FD00D8AC7D /* TutorialSelectColorDark.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = TutorialSelectColorDark.gif; path = ../../../Design/Assets/TutorialGIFs/TutorialSelectColorDark.gif; sourceTree = "<group>"; };
 		3DD5C07425876A9000D8AC7D /* ProfileTutorialModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTutorialModel.swift; sourceTree = "<group>"; };
 		3DD5C07825876AA500D8AC7D /* ProfileTutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTutorialView.swift; sourceTree = "<group>"; };
+		3DD5C07E2588A98200D8AC7D /* RandomTextGenerators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomTextGenerators.swift; sourceTree = "<group>"; };
 		3DD5C9CC2539CF6600861784 /* GoalScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalScreen.swift; sourceTree = "<group>"; };
 		3DD5C9CF2539CF7B00861784 /* GoalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalModel.swift; sourceTree = "<group>"; };
 		3DD5C9D32539D27100861784 /* GoalTransitionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTransitionView.swift; sourceTree = "<group>"; };
@@ -624,6 +626,7 @@
 			isa = PBXGroup;
 			children = (
 				3D2E795325301ADD00788AA2 /* HapticFeedback.swift */,
+				3DD5C07E2588A98200D8AC7D /* RandomTextGenerators.swift */,
 			);
 			path = Methods;
 			sourceTree = "<group>";
@@ -1661,6 +1664,7 @@
 				3D959A9125628ED4007BAA07 /* ConfettiManager.swift in Sources */,
 				3D0B59452533123600079856 /* DataModel.swift in Sources */,
 				3D854B11253EA3F900A4F80E /* GoalDeleteHandler.swift in Sources */,
+				3DD5C07F2588A98200D8AC7D /* RandomTextGenerators.swift in Sources */,
 				3DEA91952579740900C90414 /* OneSFootnoteButton.swift in Sources */,
 				3DD5C9CD2539CF6600861784 /* GoalScreen.swift in Sources */,
 				3D2E7939252F9D7A00788AA2 /* OneSScaleButtonStyle.swift in Sources */,

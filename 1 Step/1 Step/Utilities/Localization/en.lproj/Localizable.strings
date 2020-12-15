@@ -96,6 +96,13 @@ name            = "Name";
 welcome         = "Welcome";
 step            = "Step";
 of              = "Of";
+ok              = "Ok";
+congrats        = "Congrats";
+complete        = "Complete";
+awesome         = "Awesome";
+great           = "Great";
+amazing         = "Amazing";
+incredible      = "Incredible";
 
 
 // Special ------------------------------------------------------------------
@@ -150,6 +157,8 @@ goalError.currentBelowNeededStepUnits   = "You can't have a goal with steps to t
 goalError.changeOfCategory              = "You can't change your step category.\nCreate a new goal instead.";
 goalError.changeOfDistanceUnitsSystem   = "You can't change between metric and imperial units.\nCreate a new goal instead.";
 
+goalError.negativeSteps                 = "You can't have negative steps.";
+
 goalError.unknown                       = "Failed with an unknown error.\n\nConsider restarting the app.";
 
 
@@ -174,7 +183,8 @@ error.noAccessNotification  = "Please grant permission for notifications.";
 
 //Notification ----------------------------------------------
 
-notification.goal_bodyText  = "It's time to take one more step.";
+notification.goal_bodyText              = "It's time to take one more step.";
+notification.goal_errorNoDaySelected    = "Please select at least one repeating day.";
 
 
 //Help ----------------------------------------------
@@ -308,3 +318,8 @@ firstStart.whatsYourName    = "Hi 🙂\nWhat’s your name?";
 firstStart.howShould        = "How should we call you?";
 firstStart.excited          = "we wich you a wonderful experience with 1 Step.";
 
+
+//AddStepsAccomplishment ----------------------------------------------
+
+addStepsAccomplishment.completedText    = "You are on the peak of the mountain. 🎊\n\nAccomplishing a total of";
+addStepsAccomplishment.milestoneText    = "You have reached";

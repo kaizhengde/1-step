@@ -172,7 +172,7 @@ final class DataManager {
             
         } catch let error as NSError {
             PopupManager.shared.showPopup(backgroundColor: .darkNeutralToNeutral) {
-                OneSTextPopupView(titleText: "Error", bodyText: error.localizedDescription)
+                OneSTextPopupView(titleText: Localized.error, bodyText: error.localizedDescription)
             }
         }
         

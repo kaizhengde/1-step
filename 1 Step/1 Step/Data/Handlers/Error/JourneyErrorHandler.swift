@@ -21,7 +21,7 @@ enum JourneyErrorHandler {
         
         if newCurrentUnits < 0 {
             PopupManager.shared.showPopup(backgroundColor: goal.color.standard, hapticFeedback: true) {
-                OneSTextPopupView(titleText: "Oh Deer", titleImage: Symbol.deer, bodyText: "You can't have negative steps.")
+                OneSTextPopupView(titleText: Localized.ohDeer, titleImage: Symbol.deer, bodyText: Localized.GoalError.negativeSteps)
             }
             
             return true

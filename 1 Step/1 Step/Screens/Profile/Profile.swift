@@ -50,7 +50,7 @@ struct ProfileScreen: View {
                     }
                     OneSFootnoteButton(text: Localized.terms, color: UserColor.user2.standard) {
                         SheetManager.shared.showSheet {
-                            OneSSafariView(urlString: "https://www.kaizheng.de/terms-of-use/", tintColor: UserColor.user2.standard)
+                            OneSSafariView(urlString: WebsiteURLString.termsOfUse, tintColor: UserColor.user2.standard)
                         }
                     }
                 }

@@ -96,6 +96,13 @@ enum Localized {
     static let welcome          = "welcome".localized()
     static let step             = "step".localized()
     static let of               = "of".localized()
+    static let ok               = "ok".localized()
+    static let congrats         = "congrats".localized()
+    static let complete         = "complete".localized()
+    static let awesome          = "awesome".localized()
+    static let great            = "great".localized()
+    static let amazing          = "amazing".localized()
+    static let incredible       = "incredible".localized()
     
     
     enum Step {
@@ -148,6 +155,7 @@ enum Localized {
         static let currentBelowNeededStepUnits  = "goalError.currentBelowNeededStepUnits".localized()
         static let changeOfCategory             = "goalError.changeOfCategory".localized()
         static let changeOfDistanceUnitsSystem  = "goalError.changeOfDistanceUnitsSystem".localized()
+        static let negativeSteps                = "goalError.negativeSteps".localized()
         static let unknown                      = "goalError.unknown".localized()
     }
     
@@ -175,7 +183,8 @@ enum Localized {
     
     enum Notification {
         
-        static let goal_bodyText        = "notification.goal_bodyText".localized()
+        static let goal_bodyText            = "notification.goal_bodyText".localized()
+        static let goal_errorNoDaySelected  = "notification.goal_errorNoDaySelected".localized()
     }
     
     
@@ -282,7 +291,13 @@ enum Localized {
         static let whatsYourName    = "firstStart.whatsYourName".localized()
         static let howShould        = "firstStart.howShould".localized()
         static let excited          = "firstStart.excited".localized()
+    }
+    
+    
+    enum AddStepsAccomplishment {
         
+        static let completedText    = "addStepsAccomplishment.completedText".localized()
+        static let milestoneText    = "addStepsAccomplishment.milestoneText".localized()
     }
 }
 

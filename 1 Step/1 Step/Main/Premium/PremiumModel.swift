@@ -75,7 +75,7 @@ final class PremiumModel: ObservableObject {
                     OneSTextPopupView(
                         titleText: Localized.thankYou,
                         bodyText: "\(UserDefaultsManager.shared.userName), \(Localized.Premium.thankYouText)",
-                        bottomBtnTitle: Localized.start.uppercased()
+                        bottomBtnTitle: Localized.start
                     )
                 }
                 

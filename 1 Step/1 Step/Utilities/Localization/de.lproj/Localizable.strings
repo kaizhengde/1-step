@@ -95,6 +95,13 @@ name            = "Name";
 welcome         = "Willkommen";
 step            = "Schritt";
 of              = "Von";
+ok              = "Ok";
+congrats        = "Glückwunsch";
+complete        = "Vollenden";
+awesome         = "Super";
+great           = "Großartig";
+amazing         = "Toll";
+incredible      = "Unglaublich";
 
 
 // Special ------------------------------------------------------------------
@@ -149,14 +156,16 @@ goalError.currentBelowNeededStepUnits   = "Du kannst kein Ziel haben, das wenige
 goalError.changeOfCategory              = "Die Kategorie ist nicht wechselbar.\nErstelle dafür ein neues Ziel.";
 goalError.changeOfDistanceUnitsSystem   = "Ein Wechsel zwischen Metrisch und Imperisch ist nicht möglich.\nErstelle dafür ein neues Ziel.";
 
+goalError.negativeSteps                 = "Du kannst keinen negativen Fortschritt haben.";
+
 goalError.unknown                       = "An einem unbekannten Fehler gescheitert.\n\nZiehe einen Neutart der App in Betracht.";
 
 
 //Premium ----------------------------------------------
 
 premium.achieveEveryGoal    = "Erreiche jedes Ziel";
-premium.unlimitedGoals      = "Unlimitiert viele Ziele erstellen";
-premium.futureUpdates       = "Zukünftige Updates unterstützen";
+premium.unlimitedGoals      = "Erstelle unlimitiert viele Ziele";
+premium.futureUpdates       = "Unterstütze neue Updates";
 premium.realTree            = "Pflanze einen echten Baum";
 premium.youChoose           = "Du wählst den Preis";
 premium.restore             = "Kauf wiederherstellen";
@@ -173,7 +182,8 @@ error.noAccessNotification  = "Bitte genehmige das Senden von Benachrichtigungen
 
 //Notification ----------------------------------------------
 
-notification.goal_bodyText  = "Zeit für einen weiteren Schritt.";
+notification.goal_bodyText              = "Zeit für einen weiteren Schritt.";
+notification.goal_errorNoDaySelected    = "An welchen Tagen möchtest du erinnert werden?\nBitte wähle zumindest einen Tag aus.";
 
 
 //Help ----------------------------------------------
@@ -306,3 +316,9 @@ examples.eightText4  = "Read 1.000 times";
 firstStart.whatsYourName    = "Hi 🙂\nWie ist dein Name?";
 firstStart.howShould        = "Wie sollen wir dich nennen?";
 firstStart.excited          = "wir wünschen dir eine wundervolle Zeit mit 1 Step.";
+
+
+//AddStepsAccomplishment ----------------------------------------------
+
+addStepsAccomplishment.completedText    = "Du stehst auf dem Gipfel des Berges. 🎊\n\Mit insgesamt";
+addStepsAccomplishment.milestoneText    = "Erreicht";

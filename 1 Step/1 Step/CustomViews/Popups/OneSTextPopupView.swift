@@ -22,7 +22,7 @@ struct OneSTextPopupView: View {
          titleImage: Image?     = nil,
          bodyText: String,
          textColor: Color       = .backgroundToGray,
-         bottomBtnTitle: String = "OK"
+         bottomBtnTitle: String = Localized.ok
     ) {
         self.titleText      = titleText
         self.titleImage     = titleImage

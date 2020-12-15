@@ -57,7 +57,7 @@ struct PersistenceManager {
                 }
                 
                 PopupManager.shared.showPopup(backgroundColor: .darkNeutralToNeutral) {
-                    OneSTextPopupView(titleText: "Unknown Error", bodyText: "There was a problem saving your data but it is not your fault. Try to do it again or restart the app.")
+                    OneSTextPopupView(titleText: Localized.unknownError, bodyText: Localized.Error.mocSave)
                 }
                 
                 return false

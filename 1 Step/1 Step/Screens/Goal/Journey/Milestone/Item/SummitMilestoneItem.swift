@@ -41,7 +41,7 @@ struct SummitMilestoneItem: View {
                     .foregroundColor(.backgroundStatic)
                     .padding(.bottom, 30)
 
-                OneSSecondaryHeaderText(text: "Summit", color: .backgroundStatic)
+                OneSSecondaryHeaderText(text: Localized.summit, color: .backgroundStatic)
 
                 HStack {
                     Spacer()

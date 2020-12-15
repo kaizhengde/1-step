@@ -93,7 +93,7 @@ struct ProfileHeaderView: View {
         
         var body: some View {
             VStack {
-                OneSText(text: "Premium", font: .custom(.extraBold, 13), color: .grayToBackground)
+                OneSText(text: Localized.premium, font: .custom(.extraBold, 13), color: .grayToBackground)
             }
             .padding(.vertical, 8)
             .padding(.horizontal, 15)

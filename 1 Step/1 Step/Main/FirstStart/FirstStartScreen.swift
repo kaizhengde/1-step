@@ -101,7 +101,7 @@ struct FirstStartScreen: View {
                 
                 Spacer()
                 
-                OneSBorderButton(text: Localized.start.uppercased(), color: .backgroundToGray) { viewModel.finishFirstStart() }
+                OneSBorderButton(text: Localized.start, color: .backgroundToGray) { viewModel.finishFirstStart() }
             }
             .padding(.bottom, 50*Layout.multiplierHeight)
             .padding(.horizontal, Layout.firstLayerPadding)

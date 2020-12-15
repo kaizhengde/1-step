@@ -52,13 +52,6 @@ extension OneSColorTheme {
     }
     
     
-    enum Fire {
-        static let color0 = (standard: Color("Fire0"), light: Color("Fire0Light"), dark: Color("Fire0Dark"))
-        static let color1 = (standard: Color("Fire1"), light: Color("Fire1Light"), dark: Color("Fire1Dark"))
-        static let color2 = (standard: Color("Fire2"), light: Color("Fire2Light"), dark: Color("Fire2Dark"))
-    }
-    
-    
     enum Air {
         static let color0 = (standard: Color("Air0"), light: Color("Air0Light"), dark: Color("Air0Dark"))
         static let color1 = (standard: Color("Air1"), light: Color("Air1Light"), dark: Color("Air1Dark"))

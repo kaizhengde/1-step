@@ -24,7 +24,7 @@ enum NotificationHelper {
         let userName    = UserDefaultsManager.shared.userName
         let emoji       = getRandomEmoji()
         
-        switch Int.random(in: 0...3) {
+        switch Int.random(in: (!userName.isEmpty ? 0 : 3)...5) {
         case 0: greeting.text.append((greeting.withComma ? "," : "") + " \(userName) \(emoji).")
         case 1: greeting.text.append((greeting.withComma ? "," : "") + " \(userName)!")
         case 2: greeting.text.append((greeting.withComma ? "," : "") + " \(userName).")

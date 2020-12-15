@@ -86,8 +86,8 @@ class AddStepAnimationHandler: ObservableObject {
     private func startMilestoneChangeUIAnimations(_ forward: Bool) {
         if forward {
             FloaterManager.shared.showTextFloater(
-                titleText:          "Awesome 🎉",
-                bodyText:           "You have reached \(currentMilestone.neededStepUnits.toUI()) \(goal.step.unitDescription)!",
+                titleText:          "\(RandomText.congrats()) 🎉",
+                bodyText:           "\(Localized.AddStepsAccomplishment.milestoneText) \(currentMilestone.neededStepUnits.toUI()) \(goal.step.unitDescription)!",
                 backgroundColor:    goal.color.light
             )
             ConfettiManager.shared.showConfetti(amount: .small)
@@ -163,9 +163,9 @@ class AddStepAnimationHandler: ObservableObject {
     private func startGoalReachedUIAnimations() {
         PopupManager.shared.showPopup(.goalReached, backgroundColor: goal.color.standard, height: 400*Layout.multiplierWidth, dismissOnTapOutside: false) {
             OneSTextPopupView(
-                titleText: "Congrats",
-                bodyText: "You are on the peak of the mountain. 🎊\n\nAccomplishing a total of \(self.goal.currentStepUnits.toUI()) \(self.goal.step.unitDescription)!",
-                bottomBtnTitle: "COMPLETE"
+                titleText: Localized.congrats,
+                bodyText: "\(Localized.AddStepsAccomplishment.completedText) \(self.goal.currentStepUnits.toUI()) \(self.goal.step.unitDescription)!",
+                bottomBtnTitle: Localized.complete
             )
         }
         

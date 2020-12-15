@@ -29,7 +29,7 @@ struct GoalChangeNotificationAddTimeView: View {
                     OneSSmallBorderButton(symbol: SFSymbol.check, color: .backgroundToGray, withScale: false) {
                         guard !viewModel.selectedData.weekdays.isEmpty else {
                             PopupManager.shared.showPopup(backgroundColor: viewModel.goal.color.standard, hapticFeedback: true) {
-                                OneSTextPopupView(titleText: "Oh Deer", titleImage: Symbol.deer, bodyText: "Please select at least one repeating day.")
+                                OneSTextPopupView(titleText: Localized.ohDeer, titleImage: Symbol.deer, bodyText: Localized.Notification.goal_errorNoDaySelected)
                             }
                             return
                         }
