@@ -10,6 +10,7 @@ import SwiftUI
 enum GoalAccomplishmentsHandler {
     
     enum AddSteps {
+        
         static func updateStepsAccomplishment(_ oldCurrentSteps: Int16, _ newCurrentSteps: Int16) {
             UserDefaultsManager.shared.accomplishmentTotalSteps += Int(newCurrentSteps - oldCurrentSteps)
             avoidNegativeScores()
@@ -31,6 +32,7 @@ enum GoalAccomplishmentsHandler {
     
     
     enum Delete {
+        
         static func updateAccomplishments(with goal: Goal) {
             if goal.currentState == .active {
                 let reachedMilestones = goal.milestones.reduce(0) { $0 + ($1.state == .done ? 1 : 0) }
@@ -64,5 +66,12 @@ enum GoalAccomplishmentsHandler {
         return UserDefaultsManager.shared.accomplishmentTotalSteps == 0
             && UserDefaultsManager.shared.accomplishmentTotalMilestonesReached == 0
             && UserDefaultsManager.shared.accomplishmentTotalGoalsReached == 0
+    }
+    
+    
+    static func resetAllAccomplishments() {
+        UserDefaultsManager.shared.accomplishmentTotalSteps             = 0
+        UserDefaultsManager.shared.accomplishmentTotalMilestonesReached = 0
+        UserDefaultsManager.shared.accomplishmentTotalGoalsReached      = 0
     }
 }

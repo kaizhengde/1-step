@@ -157,7 +157,12 @@ final class DataModel: ObservableObject {
     
     func deleteAllGoals(success: @escaping () -> ()) {
         persistenceManager.context.perform {
-            if self.dataManager.deleteAllGoals() { success() }
+            if self.dataManager.deleteAllGoals() {
+                self.fetchAllGoals() {
+                    GoalAccomplishmentsHandler.resetAllAccomplishments()
+                    success()
+                }
+            }
         }
     }
 }

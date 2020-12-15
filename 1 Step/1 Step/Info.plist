@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSFaceIDUsageDescription</key>
+	<string>Privacy reasons</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Allows user to upload a profile picture</string>
 	<key>CFBundleDevelopmentRegion</key>
@@ -58,7 +60,6 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-    
 	<key>CFBundleIcons</key>
 	<dict>
 		<key>CFBundlePrimaryIcon</key>
@@ -72,7 +73,6 @@
 		</dict>
 		<key>CFBundleAlternateIcons</key>
 		<dict>
-            
 			<key>1StepIconEarth</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
@@ -85,7 +85,6 @@
 				<key>UIPrerenderedIcon</key>
 				<false/>
 			</dict>
-            
 			<key>1StepIconAir</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
@@ -98,46 +97,42 @@
 				<key>UIPrerenderedIcon</key>
 				<false/>
 			</dict>
-            
-            <key>1StepIconDark</key>
-            <dict>
-                <key>CFBundleIconFiles</key>
-                <array>
-                    <string>1StepIconDark20</string>
-                    <string>1StepIconDark29</string>
-                    <string>1StepIconDark40</string>
-                    <string>1StepIconDark60</string>
-                </array>
-                <key>UIPrerenderedIcon</key>
-                <false/>
-            </dict>
-            
-            <key>1StepIconEarthDark</key>
-            <dict>
-                <key>CFBundleIconFiles</key>
-                <array>
-                    <string>1StepIconEarthDark20</string>
-                    <string>1StepIconEarthDark29</string>
-                    <string>1StepIconEarthDark40</string>
-                    <string>1StepIconEarthDark60</string>
-                </array>
-                <key>UIPrerenderedIcon</key>
-                <false/>
-            </dict>
-            
-            <key>1StepIconAirDark</key>
-            <dict>
-                <key>CFBundleIconFiles</key>
-                <array>
-                    <string>1StepIconAirDark20</string>
-                    <string>1StepIconAirDark29</string>
-                    <string>1StepIconAirDark40</string>
-                    <string>1StepIconAirDark60</string>
-                </array>
-                <key>UIPrerenderedIcon</key>
-                <false/>
-            </dict>
-            
+			<key>1StepIconDark</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>1StepIconDark20</string>
+					<string>1StepIconDark29</string>
+					<string>1StepIconDark40</string>
+					<string>1StepIconDark60</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>1StepIconEarthDark</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>1StepIconEarthDark20</string>
+					<string>1StepIconEarthDark29</string>
+					<string>1StepIconEarthDark40</string>
+					<string>1StepIconEarthDark60</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>1StepIconAirDark</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>1StepIconAirDark20</string>
+					<string>1StepIconAirDark29</string>
+					<string>1StepIconAirDark40</string>
+					<string>1StepIconAirDark60</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
 		</dict>
 	</dict>
 </dict>

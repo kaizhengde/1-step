@@ -103,6 +103,8 @@ awesome         = "Awesome";
 great           = "Great";
 amazing         = "Amazing";
 incredible      = "Incredible";
+reset           = "Reset";
+dangerZone      = "Danger zone";
 
 
 // Special ------------------------------------------------------------------
@@ -136,7 +138,8 @@ profile.version                     = "Version";
 profile.accomplishment_steps        = "Steps in total";
 profile.accomplishment_milestones   = "Milestones reached";
 profile.accomplishment_goals        = "Goals completed";
-
+profile.reset_confirmMessage        = "Are you sure?\n\nThis action cannot be undone.\nConfirm with typing in: Irreversible.";
+profile.reset_confirmInput          = "Irreversible";
 
 //GoalChange ----------------------------------------------
 

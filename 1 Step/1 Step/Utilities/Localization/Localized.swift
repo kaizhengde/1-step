@@ -103,6 +103,8 @@ enum Localized {
     static let great            = "great".localized()
     static let amazing          = "amazing".localized()
     static let incredible       = "incredible".localized()
+    static let reset            = "reset".localized()
+    static let dangerZone       = "dangerZone".localized()
     
     
     enum Step {
@@ -134,6 +136,8 @@ enum Localized {
         static let accomplishment_steps         = "profile.accomplishment_steps".localized()
         static let accomplishment_milestones    = "profile.accomplishment_milestones".localized()
         static let accomplishment_goals         = "profile.accomplishment_goals".localized()
+        static let reset_confirmMessage         = "profile.reset_confirmMessage".localized()
+        static let reset_confirmInput           = "profile.reset_confirmInput".localized()
     }
     
     

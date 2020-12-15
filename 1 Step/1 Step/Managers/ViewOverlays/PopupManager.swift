@@ -22,6 +22,7 @@ enum PopupKey {
     
     //MARK: - Profile
     case changeName
+    case resetAllData
     
     //MARK: - Authorization
     case photoLibraryNoAccess

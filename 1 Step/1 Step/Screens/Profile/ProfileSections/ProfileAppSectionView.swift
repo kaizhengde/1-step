@@ -126,6 +126,7 @@ struct ProfileAppSectionView: View {
     private struct DataAndPrivacyContentView: View {
         
         @StateObject private var userDefaultsManager = UserDefaultsManager.shared
+        @StateObject private var popupManager = PopupManager.shared
         @ObservedObject var profileModel: ProfileModel
         
         var iCloudSynch: Bool { userDefaultsManager.settingICloudSynch }
@@ -145,12 +146,33 @@ struct ProfileAppSectionView: View {
                 
                 OneSRowButton(.shortSmall, title: Localized.exportData) {}
                                 
-                OneSRowButton(.shortSmall, title: Localized.resetAllData) {}
+                OneSRowButton(.shortSmall, title: Localized.resetAllData) {
+                    popupManager.showPopup(.resetAllData, backgroundColor: .grayStatic, height: 420*Layout.multiplierWidth, hapticFeedback: true) {
+                        OneSTextFieldConfirmationPopupView(
+                            titleText:          Localized.reset,
+                            bodyText:           Localized.Profile.reset_confirmMessage,
+                            textColor:          .backgroundStatic,
+                            confirmationText:   Localized.Profile.reset_confirmInput,
+                            placeholder:        Localized.Profile.reset_confirmInput,
+                            placeholderColor:   .blackStatic,
+                            inputLimit:         Localized.Profile.reset_confirmInput.count
+                        )
+                    }
+                }
                 
                 OneSRowButton(.shortSmall, title: Localized.privacyPolicy) {
                     SheetManager.shared.showSheet {
                         OneSSafariView(urlString: WebsiteURLString.privacyPolicy, tintColor: profileModel.section1Color)
                     }
+                }
+            }
+            .onReceive(popupManager.confirmBtnDismissed) {
+                if $0.key == .resetAllData {
+                    //AuthorizationManager.requestFaceTouchIDAuthorization {
+                        DataModel.shared.deleteAllGoals {
+                            MainModel.shared.toScreen(.goals)
+                        }
+                    //}
                 }
             }
         }

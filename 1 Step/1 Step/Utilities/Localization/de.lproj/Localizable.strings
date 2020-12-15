@@ -102,6 +102,8 @@ awesome         = "Super";
 great           = "Großartig";
 amazing         = "Toll";
 incredible      = "Unglaublich";
+reset           = "Zurücksetzen";
+dangerZone      = "Gefahrenzone";
 
 
 // Special ------------------------------------------------------------------
@@ -135,6 +137,8 @@ profile.version                     = "Version";
 profile.accomplishment_steps        = "Schritte insgesamt";
 profile.accomplishment_milestones   = "Meilensteine erreicht";
 profile.accomplishment_goals        = "Ziele erreicht";
+profile.reset_confirmMessage        = "Bist du dir sicher?\n\nDieser Schritt kann nicht rückgängig gemacht werden.\nBestätige mit der Eingabe: Unwiderruflich";
+profile.reset_confirmInput          = "Unwiderruflich";
 
 
 //GoalChange ----------------------------------------------
