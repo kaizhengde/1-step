@@ -243,14 +243,14 @@ howItWorks.textPassageTwo1      = "Sure, you can be as creative as you want. Cho
     
 howItWorks.exampleTwo1          = "Lose weight";
 howItWorks.exampleTwo2          = "Run 100 miles";
-howItWorks.exampleTwo3          = "Run 300 times";
+howItWorks.exampleTwo3          = "Swim 30 times";
 howItWorks.exampleTwo4          = "Walk to 50 parks";
 howItWorks.exampleTwo5          = "Hike 12 mountains in the swiss alps";
 
 howItWorks.textPassageThree1    = "As you have achieved these indirect goals, you will certainly have lost some weight.";
 howItWorks.textPassageThree2    = "No need for your goals to be always in the foreground of your daily life.";
 howItWorks.textPassageThree3    = "You take tiny steps whenever you want and track them using 1 Step.";
-howItWorks.textPassageThree4    = "These steps will have an compound effect over time. You will be surprised by their effectiveness.";
+howItWorks.textPassageThree4    = "These steps will have an compound effect over time. You will be surprised by the effectiveness of this method.";
 
 
 //Examples ----------------------------------------------
@@ -259,11 +259,10 @@ examples.oneTitle    = "Lose weight";
 examples.oneText1    = "Lose weight";
 examples.oneText2    = "Lose 20 pounds";
 examples.oneText3    = "Exercise more often";
-examples.oneText4    = "Go for a run regularly";
-examples.oneText5    = "Run 100 miles";
-examples.oneText6    = "Run 300 times";
-examples.oneText7    = "Run to 50 parks";
-examples.oneText8    = "Hike 12 mountains";
+examples.oneText4    = "Run 100 miles";
+examples.oneText5    = "Swim 30 times";
+examples.oneText6    = "Run to 50 parks";
+examples.oneText7    = "Hike 12 mountains";
 
 examples.twoTitle    = "Become more self-aware";
 examples.twoText1    = "Become more self-aware";
@@ -293,7 +292,6 @@ examples.fiveText2   = "Give back and help others";
 examples.fiveText3   = "Collect trash 1.000 times";
 examples.fiveText4   = "Rescue an insect 1.000 times";
 examples.fiveText5   = "Help a friend 100 times";
-examples.fiveText6   = "Say thank you 10.000 times";
 
 examples.sixTitle    = "Stop procrastination";
 examples.sixText1    = "Stop procrastination";
@@ -307,7 +305,6 @@ examples.sevenText1  = "Learn a new language";
 examples.sevenText2  = "Interact more frequently with [language]";
 examples.sevenText3  = "Watch 100 movies in [language]";
 examples.sevenText4  = "Listen to [language] podcasts 1.000 times";
-examples.sevenText5  = "Speak to 100 [language] people";
 
 examples.eightTitle  = "Increase my knowledge";
 examples.eightText1  = "Increase my knowledge";
@@ -325,5 +322,6 @@ firstStart.excited          = "we wich you a wonderful experience with 1 Step.";
 
 //AddStepsAccomplishment ----------------------------------------------
 
-addStepsAccomplishment.completedText    = "You are on the peak of the mountain. 🎊\n\nAccomplishing a total of";
-addStepsAccomplishment.milestoneText    = "You have reached";
+addStepsAccomplishment.completedText        = "You are on the peak of the mountain. 🎊\n\nAccomplishing a total of";
+addStepsAccomplishment.milestoneTextPre     = "You have reached";
+addStepsAccomplishment.milestoneTextPost    = "";

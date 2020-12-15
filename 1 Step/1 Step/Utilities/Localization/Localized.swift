@@ -243,7 +243,6 @@ enum Localized {
         static let oneText5     = "examples.oneText5".localized()
         static let oneText6     = "examples.oneText6".localized()
         static let oneText7     = "examples.oneText7".localized()
-        static let oneText8     = "examples.oneText8".localized()
         static let twoTitle     = "examples.twoTitle".localized()
         static let twoText1     = "examples.twoText1".localized()
         static let twoText2     = "examples.twoText2".localized()
@@ -269,7 +268,6 @@ enum Localized {
         static let fiveText3    = "examples.fiveText3".localized()
         static let fiveText4    = "examples.fiveText4".localized()
         static let fiveText5    = "examples.fiveText5".localized()
-        static let fiveText6    = "examples.fiveText6".localized()
         static let sixTitle     = "examples.sixTitle".localized()
         static let sixText1     = "examples.sixText1".localized()
         static let sixText2     = "examples.sixText2".localized()
@@ -281,7 +279,6 @@ enum Localized {
         static let sevenText2   = "examples.sevenText2".localized()
         static let sevenText3   = "examples.sevenText3".localized()
         static let sevenText4   = "examples.sevenText4".localized()
-        static let sevenText5   = "examples.sevenText5".localized()
         static let eightTitle   = "examples.eightTitle".localized()
         static let eightText1   = "examples.eightText1".localized()
         static let eightText2   = "examples.eightText2".localized()
@@ -300,8 +297,9 @@ enum Localized {
     
     enum AddStepsAccomplishment {
         
-        static let completedText    = "addStepsAccomplishment.completedText".localized()
-        static let milestoneText    = "addStepsAccomplishment.milestoneText".localized()
+        static let completedText        = "addStepsAccomplishment.completedText".localized()
+        static let milestoneTextPre     = "addStepsAccomplishment.milestoneTextPre".localized()
+        static let milestoneTextPost    = "addStepsAccomplishment.milestoneTextPost".localized()
     }
 }
 

@@ -231,10 +231,10 @@ help.bottomText         = "Du hast keine Antwort zu deiner Frage gefunden?\nKont
 //How it works ----------------------------------------------
 
 howItWorks.textPassageOne1      = "1 Step ermöglicht es dir, deine Ziele mit Intelligenz und Leichtigkeit zu erreichen.";
-howItWorks.textPassageOne2      = "Im Prinzip geht es darum, ein Ziel in winzig kleine Schritte herunterzubrechen, wobei jeder einzelne Schritt nur minale Überwindung zum Handeln für dich benötigt.";
+howItWorks.textPassageOne2      = "Im Prinzip geht es darum, ein Ziel in winzig kleine Schritte herunterzubrechen, wobei jeder einzelne Schritt für dich nur minimale Überwindung benötigt.";
 howItWorks.textPassageOne3      = "Es geht darum, die benötigte Disziplin und Motivation zum Handlen, auf ein Mindestmaß zu reduzieren.";
-howItWorks.textPassageOne4      = "Zum Beispiel wäre ein Alternativ-Ziel zum Abnehmen, insgesamt 100 Kilometer zu laufen.";
-howItWorks.textPassageOne5      = "Jeder Schritt würde so wenige Kilometer entsprechen.";
+howItWorks.textPassageOne4      = "Zum Beispiel wäre ein Alternativ-Ziel fürs Abnehmen, insgesamt 100 Kilometer zu laufen.";
+howItWorks.textPassageOne5      = "Jeder Schritt würde so bloß wenige Kilometer entsprechen.";
     
 howItWorks.exampleOne1          = "Abnehmen";
 howItWorks.exampleOne2          = "100 Kilometer insgesamt laufen";
@@ -243,13 +243,13 @@ howItWorks.textPassageTwo1      = "Natürlich kannst du deiner Kreativität frei
     
 howItWorks.exampleTwo1          = "Abnehmen";
 howItWorks.exampleTwo2          = "100 Kilometer laufen";
-howItWorks.exampleTwo3          = "300 Mal laufen";
+howItWorks.exampleTwo3          = "30 Mal schwimmen";
 howItWorks.exampleTwo4          = "50 Parks besuchen";
-howItWorks.exampleTwo5          = "12 Berge in den schweizer Alpen besteigen";
+howItWorks.exampleTwo5          = "12 Berge in den Alpen besteigen";
 
 howItWorks.textPassageThree1    = "Hast du eines der indirekten Ziele erreicht, so wirst du sicherlich abgenommen haben.";
-howItWorks.textPassageThree2    = "Deine Ziele müssen nicht ständig im Vordergrund deines täglichen Alltags stehen.";
-howItWorks.textPassageThree3    = "Du nimmst winzige Schritte, wann immer du möchtest und erfasst sie in 1 Step";
+howItWorks.textPassageThree2    = "Die Ziele müssen nicht ständig im Vordergrund deines täglichen Alltags stehen.";
+howItWorks.textPassageThree3    = "Du nimmst winzige Schritte, wann immer du möchtest und notierst sie hier in 1 Step.";
 howItWorks.textPassageThree4    = "Der Effekt dieser Schritte wird sich bemerkbar machen. Du wirst erstaunt sein, wie effektiv das Vorgehen ist.";
 
 
@@ -259,11 +259,10 @@ examples.oneTitle    = "Abnehmen";
 examples.oneText1    = "Abnehmen";
 examples.oneText2    = "20 Kilo verlieren";
 examples.oneText3    = "Mehr Sport treiben";
-examples.oneText4    = "Regelmäßig laufen gehen";
-examples.oneText5    = "100 Kilometer laufen";
-examples.oneText6    = "300 Mal laufen";
-examples.oneText7    = "50 Parks besuchen";
-examples.oneText8    = "12 Berge in den schweizer Alpen besteigen";
+examples.oneText4    = "100 Kilometer laufen";
+examples.oneText5    = "30 Mal schwimmen";
+examples.oneText6    = "50 Parks besuchen";
+examples.oneText7    = "12 Berge in den Alpen besteigen";
 
 examples.twoTitle    = "Bewusster werden";
 examples.twoText1    = "Bewusster werden";
@@ -281,39 +280,37 @@ examples.threeText3  = "10 Quadratkilometer Regenwald schützen";
 examples.threeText4  = "1.000 Mal Müll aufsammeln";
 examples.threeText5  = "100 Mal vegan essen";
 
-examples.fourTitle   = "Gitarren-Skills verbessern";
-examples.fourText1   = "Gitarren-Skills verbessern";
+examples.fourTitle   = "Auf der Gitarre besser werden";
+examples.fourText1   = "Auf der Gitarre besser werden";
 examples.fourText2   = "100 neue Lieder spielen";
 examples.fourText3   = "100 Stunden spielen";
 examples.fourText4   = "10 informative Youtube Video schauen";
 
 examples.fiveTitle   = "Glücklicher werden";
 examples.fiveText1   = "Glücklicher werden";
-examples.fiveText2   = "Anfangen zu geben";
-examples.fiveText3   = "Collect trash 1.000 times";
-examples.fiveText4   = "Rescue an insect 1.000 times";
-examples.fiveText5   = "Help a friend 100 times";
-examples.fiveText6   = "Say thank you 10.000 times";
+examples.fiveText2   = "Anfangen mehr zu geben und anderen helfen";
+examples.fiveText3   = "1.000 Mal Müll aufsammeln";
+examples.fiveText4   = "1.000 Mal einen Insekten retten";
+examples.fiveText5   = "100 Mal einem Freund, einer Freundin helfen";
 
-examples.sixTitle    = "Stop procrastination";
-examples.sixText1    = "Stop procrastination";
-examples.sixText2    = "Start doing the right thing instantly";
-examples.sixText3    = "Train my instant decision making muscle";
-examples.sixText4    = "Make 10.000 instant descisions";
+examples.sixTitle    = "Aufhören zu prokrastinieren";
+examples.sixText1    = "Aufhören zu prokrastinieren";
+examples.sixText2    = "Anfangen, das Richtige sofort zu tun";
+examples.sixText3    = "Meinen Sofort-Handeln Muskel trainieren";
+examples.sixText4    = "10.0000 Entscheidungen treffen";
 examples.sixText5    = "Journal on progress 100 times";
 
-examples.sevenTitle  = "Learn a new language";
-examples.sevenText1  = "Learn a new language";
-examples.sevenText2  = "Interact more frequently with [language]";
-examples.sevenText3  = "Watch 100 movies in [language]";
-examples.sevenText4  = "Listen to [language] podcasts 1.000 times";
-examples.sevenText5  = "Speak to 100 [language] people";
+examples.sevenTitle  = "Eine neue Spache lernen";
+examples.sevenText1  = "Eine neue Spache lernen";
+examples.sevenText2  = "Öfter mit [Sprache] interagieren";
+examples.sevenText3  = "100 Filme auf [Sprache] anschauen";
+examples.sevenText4  = "1.000 Mal Podcasts auf [Sprache] hören";
 
-examples.eightTitle  = "Increase my knowledge";
-examples.eightText1  = "Increase my knowledge";
-examples.eightText2  = "Read more books";
-examples.eightText3  = "Read 10.000 pages";
-examples.eightText4  = "Read 1.000 times";
+examples.eightTitle  = "Wissenshorizont erweitern";
+examples.eightText1  = "Wissenshorizont erweitern";
+examples.eightText2  = "Mehr Bücher lesen";
+examples.eightText3  = "10.000 Seiten lesen";
+examples.eightText4  = "1.000 Mal lesen";
 
 
 //First Start ----------------------------------------------
@@ -325,5 +322,6 @@ firstStart.excited          = "wir wünschen dir eine wundervolle Zeit mit 1 Ste
 
 //AddStepsAccomplishment ----------------------------------------------
 
-addStepsAccomplishment.completedText    = "Du stehst auf dem Gipfel des Berges. 🎊\n\Mit insgesamt";
-addStepsAccomplishment.milestoneText    = "Erreicht";
+addStepsAccomplishment.completedText        = "Du stehst auf dem Gipfel des Berges. 🎊\n\Mit insgesamt";
+addStepsAccomplishment.milestoneTextPre     = "";
+addStepsAccomplishment.milestoneTextPost    = "erreicht";

@@ -48,7 +48,7 @@ struct ProfileHelpView: View {
         
         
         var body: some View {
-            VStack(alignment: .leading, spacing: 20) {
+            VStack(alignment: .leading, spacing: 16) {
                 OneSRowButton(.shortBig, title: GoalInfoCurrent.howItWorks.title) {
                     sheetManager.showSheet {
                         GoalInfoView(viewModel: GoalInfoModel(initialView: .howItWorks), selectedColor: UserColor.user0)
@@ -76,7 +76,7 @@ struct ProfileHelpView: View {
         
         
         var body: some View {
-            VStack(alignment: .leading, spacing: 20) {
+            VStack(alignment: .leading, spacing: 16) {
                 ForEach(0..<viewModel.frequentlyAsked.count) { i in
                     OneSDropDown(.shortBig, title: viewModel.frequentlyAsked[i].title) {
                         OneSBackgroundMultilineText(text: viewModel.frequentlyAsked[i].text, big: false)

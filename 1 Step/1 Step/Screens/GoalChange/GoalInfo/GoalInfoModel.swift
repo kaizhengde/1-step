@@ -122,11 +122,10 @@ class GoalInfoModel: ObservableObject {
             GoalExampleData(text: Localized.Examples.oneText1, arrowText: .what),
             GoalExampleData(text: Localized.Examples.oneText2, arrowText: .how),
             GoalExampleData(text: Localized.Examples.oneText3, arrowText: .what),
-            GoalExampleData(text: Localized.Examples.oneText4, arrowText: .what),
+            GoalExampleData(text: Localized.Examples.oneText4, final: true),
             GoalExampleData(text: Localized.Examples.oneText5, final: true),
             GoalExampleData(text: Localized.Examples.oneText6, final: true),
             GoalExampleData(text: Localized.Examples.oneText7, final: true),
-            GoalExampleData(text: Localized.Examples.oneText8, final: true)
         ]
         
         
@@ -164,7 +163,6 @@ class GoalInfoModel: ObservableObject {
             GoalExampleData(text: Localized.Examples.fiveText3, final: true),
             GoalExampleData(text: Localized.Examples.fiveText4, final: true),
             GoalExampleData(text: Localized.Examples.fiveText5, final: true),
-            GoalExampleData(text: Localized.Examples.fiveText6, final: true)
         ]
         
         
@@ -182,7 +180,6 @@ class GoalInfoModel: ObservableObject {
             GoalExampleData(text: Localized.Examples.sevenText2, arrowText: .how),
             GoalExampleData(text: Localized.Examples.sevenText3, final: true),
             GoalExampleData(text: Localized.Examples.sevenText4, final: true),
-            GoalExampleData(text: Localized.Examples.sevenText5, final: true)
         ]
         
         

@@ -22,7 +22,7 @@ final class Step: NSManagedObject {
 
 extension Step {
     
-    static let customUnitDigitsLimit = 10
+    static let customUnitDigitsLimit = 12
     
     var addArrayLastIndex: Int      { addArray.count-1 }
     var addArrayDualLastIndex: Int  { addArrayDual.count-1 }
