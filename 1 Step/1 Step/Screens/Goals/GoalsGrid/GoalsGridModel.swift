@@ -21,6 +21,10 @@ class GoalsGridModel: ObservableObject {
     
     init(tab: GoalsTab) {
         self.tab = tab
+        updateItemsAppear()
+    }
+    
+    func updateItemsAppear() {
         itemsAppear = Array(repeating: false, count: goals.count+1)
     }
         
@@ -28,19 +32,19 @@ class GoalsGridModel: ObservableObject {
     //MARK: - Transition
         
     func resetTransition() {
-        itemsAppear = Array(repeating: false, count: goals.count+1)
+        updateItemsAppear()
     }
     
     
     func initItemTransition(of sortOrder: Int) {
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds((sortOrder+1-itemsAppeared)*120)) {
-            self.itemsAppear[sortOrder] = true
+            self.itemsAppear[sortOrder-1] = true
         }
     }
     
     
     func itemsTransition(of goal: Goal) -> Binding<Bool> {
-        return Binding<Bool>(get: { self.itemsAppear[Int(goal.sortOrder)] }, set: { _ in })
+        return Binding<Bool>(get: { self.itemsAppear[Int(goal.sortOrder)-1] }, set: { _ in })
     }
     
     

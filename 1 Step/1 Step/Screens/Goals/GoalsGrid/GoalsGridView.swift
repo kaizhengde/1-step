@@ -26,7 +26,7 @@ struct GoalsGridView: View {
             if viewModel.tab.isActive {
                 VStack {
                     GoalCreateItem()
-                        .onAppear { viewModel.initItemTransition(of: dataModel.activeGoals.count) }
+                        .onAppear { viewModel.initItemTransition(of: dataModel.activeGoals.count+1) }
                         .oneSItemTransition(viewModel.createItemTransition())
                     Spacer()
                 }

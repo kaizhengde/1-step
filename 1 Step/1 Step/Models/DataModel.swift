@@ -26,7 +26,7 @@ final class DataModel: ObservableObject {
     
     //MARK: - Fetch
     
-    private func fetchAllGoals(success: @escaping () -> ()) {
+    func fetchAllGoals(success: @escaping () -> ()) {
         fetchAllActiveGoals() {
             self.fetchAllReachedGoals() {
                 success()

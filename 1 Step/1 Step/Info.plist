@@ -14,9 +14,6 @@
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>1StepIconAir20</string>
-					<string>1StepIconAir29</string>
-					<string>1StepIconAir40</string>
 					<string>1StepIconAir60</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
@@ -26,9 +23,6 @@
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>1StepIconAirDark20</string>
-					<string>1StepIconAirDark29</string>
-					<string>1StepIconAirDark40</string>
 					<string>1StepIconAirDark60</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
@@ -38,9 +32,6 @@
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>1StepIconDark20</string>
-					<string>1StepIconDark29</string>
-					<string>1StepIconDark40</string>
 					<string>1StepIconDark60</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
@@ -50,9 +41,6 @@
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>1StepIconEarth20</string>
-					<string>1StepIconEarth29</string>
-					<string>1StepIconEarth40</string>
 					<string>1StepIconEarth60</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
@@ -62,9 +50,6 @@
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>1StepIconEarthDark20</string>
-					<string>1StepIconEarthDark29</string>
-					<string>1StepIconEarthDark40</string>
 					<string>1StepIconEarthDark60</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
@@ -118,6 +103,10 @@
 	</dict>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+	</array>
 	<key>UILaunchScreen</key>
 	<dict/>
 	<key>UIRequiredDeviceCapabilities</key>

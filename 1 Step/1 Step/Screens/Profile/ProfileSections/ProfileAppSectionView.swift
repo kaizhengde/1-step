@@ -141,11 +141,12 @@ struct ProfileAppSectionView: View {
                     backgroundColor: profileModel.appSelectedRowBackgroundColor(iCloudSynch),
                     accessoryText: profileModel.appSelectedRowAccessoryText(iCloudSynch, enabled: Localized.on, disabled: Localized.off),
                     accessoryColor: profileModel.appSelectedRowAccessoryColor(iCloudSynch),
-                    action: { userDefaultsManager.settingICloudSynch.toggle() }
+                    action: {
+                        userDefaultsManager.settingICloudSynch.toggle()
+                        PersistenceManager.defaults.updateContainer()
+                    }
                 )
-                
-                OneSRowButton(.shortSmall, title: Localized.exportData) {}
-                                
+                                                
                 OneSRowButton(.shortSmall, title: Localized.resetAllData) {
                     popupManager.showPopup(.resetAllData, backgroundColor: .grayStatic, height: 420*Layout.multiplierWidth, hapticFeedback: true) {
                         OneSTextFieldConfirmationPopupView(
