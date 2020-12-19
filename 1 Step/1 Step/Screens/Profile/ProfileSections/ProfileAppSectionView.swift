@@ -129,7 +129,7 @@ struct ProfileAppSectionView: View {
         @StateObject private var popupManager = PopupManager.shared
         @ObservedObject var profileModel: ProfileModel
         
-        var iCloudSynch: Bool { userDefaultsManager.settingICloudSynch }
+        @State private var iCloudSynch = UserDefaultsManager.shared.settingICloudSynch
         
         
         var body: some View {
@@ -173,6 +173,7 @@ struct ProfileAppSectionView: View {
                     //}
                 }
             }
+            .onReceive(CloudKitHandler.finished) { iCloudSynch = userDefaultsManager.settingICloudSynch } 
         }
     }
 }

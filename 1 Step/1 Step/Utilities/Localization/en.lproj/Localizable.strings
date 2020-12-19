@@ -182,6 +182,7 @@ premium.thankYouText        = "you have successfully unlocked 1 Step Premium.\n\
 error.mocSave               = "There was a problem saving your data but it is not your fault. Try to do it again or restart the app.";
 error.noAccessPhotoLibrary  = "Please grant permission to access the photo library.";
 error.noAccessNotification  = "Please grant permission for notifications.";
+error.iCloudNotAvailable    = "Make sure that you have an active internet connection and iCloud turned on for 1 Step inside your device settings.";
 
 
 //Notification ----------------------------------------------

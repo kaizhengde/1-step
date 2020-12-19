@@ -7,8 +7,11 @@
 
 import SwiftUI
 import CloudKit
+import Combine
 
 enum CloudKitHandler {
+    
+    static let finished = PassthroughSubject<Void, Never>()
     
     static func cloudKitButtonToggled() {
         let isOn = UserDefaultsManager.shared.settingICloudSynch
@@ -19,16 +22,19 @@ enum CloudKitHandler {
             CKContainer.default().accountStatus { (accountStatus, error) in
                 DispatchQueue.main.async {
                     if case .available = accountStatus {
-                        UserDefaultsManager.shared.settingICloudSynch.toggle()
-                        PersistenceManager.defaults.updateContainer()
-                        UserDefaultsManager.shared.syncAllICloudDefaults()
-                        
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                            LoadingViewManager.shared.dismiss()
+                        checkForInternetConnection {
+                            UserDefaultsManager.shared.settingICloudSynch.toggle()
+                            PersistenceManager.defaults.updateContainer()
+                            UserDefaultsManager.shared.syncAllICloudDefaults()
+                            
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                                LoadingViewManager.shared.dismiss()
+                                finished.send()
+                            }
                         }
                     } else {
                         PopupManager.shared.showPopup(backgroundColor: .darkNeutralToNeutral, hapticFeedback: true) {
-                            OneSTextPopupView(titleText: "Error", bodyText: "Make sure that you have an active internet connection and iCloud turned on for 1 Step inside your device settings.")
+                            OneSTextPopupView(titleText: Localized.error, bodyText: Localized.Error.iCloudNotAvailable)
                         }
                         
                         LoadingViewManager.shared.dismiss()
@@ -38,6 +44,25 @@ enum CloudKitHandler {
         } else {
             UserDefaultsManager.shared.settingICloudSynch.toggle()
             PersistenceManager.defaults.updateContainer()
+            finished.send()
+        }
+    }
+    
+    
+    private static func checkForInternetConnection(success: @escaping () -> ()) {
+        NetworkManager.startNotifier()
+        
+        NetworkManager.isUnreachable { _ in
+            PopupManager.shared.showPopup(backgroundColor: .darkNeutralToNeutral, hapticFeedback: true) {
+                OneSTextPopupView(titleText: Localized.error, bodyText: "Seems like you are not connected to the internet.\nMake sure that you have an active internet connection.")
+            }
+            
+            LoadingViewManager.shared.dismiss()
+            NetworkManager.stopNotifier()
+        }
+        
+        NetworkManager.isReachable { _ in
+            success()
         }
     }
 }

@@ -111,6 +111,9 @@
 		3D6F43A5253B268B00785586 /* GoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6F43A4253B268B00785586 /* GoalView.swift */; };
 		3D6FA04E258E5804006DFAA3 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6FA04D258E5804006DFAA3 /* UserDefault.swift */; };
 		3D6FA052258E5817006DFAA3 /* UserDefaultICloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6FA051258E5817006DFAA3 /* UserDefaultICloud.swift */; };
+		3D6FA05B258E9045006DFAA3 /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = 3D6FA05A258E9045006DFAA3 /* Reachability */; };
+		3D6FA05F258E9572006DFAA3 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6FA05E258E9572006DFAA3 /* NetworkManager.swift */; };
+		3D6FA065258E977F006DFAA3 /* PersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6FA064258E977F006DFAA3 /* PersistentContainer.swift */; };
 		3D6FDDB425670868002854E6 /* OneSDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6FDDB325670868002854E6 /* OneSDropDown.swift */; };
 		3D6FDDB92567808B002854E6 /* OneSRowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6FDDB82567808B002854E6 /* OneSRowButton.swift */; };
 		3D6FDDDF2567B6E2002854E6 /* ItemTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6FDDDE2567B6E2002854E6 /* ItemTransition.swift */; };
@@ -357,6 +360,8 @@
 		3D6F43A4253B268B00785586 /* GoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalView.swift; sourceTree = "<group>"; };
 		3D6FA04D258E5804006DFAA3 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		3D6FA051258E5817006DFAA3 /* UserDefaultICloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultICloud.swift; sourceTree = "<group>"; };
+		3D6FA05E258E9572006DFAA3 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		3D6FA064258E977F006DFAA3 /* PersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentContainer.swift; sourceTree = "<group>"; };
 		3D6FDDB325670868002854E6 /* OneSDropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSDropDown.swift; sourceTree = "<group>"; };
 		3D6FDDB82567808B002854E6 /* OneSRowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSRowButton.swift; sourceTree = "<group>"; };
 		3D6FDDDE2567B6E2002854E6 /* ItemTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTransition.swift; sourceTree = "<group>"; };
@@ -488,6 +493,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D7A5A87258C992800F3BE6E /* CloudKit.framework in Frameworks */,
+				3D6FA05B258E9045006DFAA3 /* Reachability in Frameworks */,
 				3D6373C4257A8F1B001C3585 /* Introspect in Frameworks */,
 				3DE303AA2582AC9700158A40 /* Gifu in Frameworks */,
 			);
@@ -565,6 +571,7 @@
 		3D160D53252E2053008588D5 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				3D6FA05E258E9572006DFAA3 /* NetworkManager.swift */,
 				3D68B66E2572437100A183F5 /* AuthorizationManager.swift */,
 				3D68B65C25721C7C00A183F5 /* Notifications */,
 				3D160D54252E2067008588D5 /* TransitionManager.swift */,
@@ -1095,9 +1102,10 @@
 		3DA7BD3C2532F72B00171360 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				3D6FA064258E977F006DFAA3 /* PersistentContainer.swift */,
 				3DE11C3D252C681600F13719 /* PersistenceManger.swift */,
-				3DA7BD392532F6A600171360 /* DataManager.swift */,
 				3D179F53258E059D00A6A7BE /* CloudKitHandler.swift */,
+				3DA7BD392532F6A600171360 /* DataManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -1434,6 +1442,7 @@
 			packageProductDependencies = (
 				3D6373C3257A8F1B001C3585 /* Introspect */,
 				3DE303A92582AC9700158A40 /* Gifu */,
+				3D6FA05A258E9045006DFAA3 /* Reachability */,
 			);
 			productName = "1 Step";
 			productReference = 3DE11C31252C681200F13719 /* 1 Step.app */;
@@ -1471,6 +1480,7 @@
 			packageReferences = (
 				3D6373C2257A8F1B001C3585 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 				3DE303A82582AC9700158A40 /* XCRemoteSwiftPackageReference "Gifu" */,
+				3D6FA059258E9045006DFAA3 /* XCRemoteSwiftPackageReference "Reachability" */,
 			);
 			productRefGroup = 3DE11C32252C681200F13719 /* Products */;
 			projectDirPath = "";
@@ -1603,6 +1613,7 @@
 				3DD5C9CD2539CF6600861784 /* GoalScreen.swift in Sources */,
 				3D2E7939252F9D7A00788AA2 /* OneSScaleButtonStyle.swift in Sources */,
 				3D72B8C3252DB5B8006E660D /* Animations.swift in Sources */,
+				3D6FA065258E977F006DFAA3 /* PersistentContainer.swift in Sources */,
 				3DCFE2C025469DFB0012C536 /* AddView.swift in Sources */,
 				3DDF70452531BC1200FD3011 /* MilestoneImage.swift in Sources */,
 				3DF1BFD7254C67D2004E1AB6 /* SummitMilestoneItem.swift in Sources */,
@@ -1638,6 +1649,7 @@
 				3D6907AF2579129D00AD0DE4 /* OneSAccomplishment.swift in Sources */,
 				3D10D1CD254D2D53002D2D3E /* MilestoneDotView.swift in Sources */,
 				3DFD9BD0256BA2AB00CF9580 /* PremiumView.swift in Sources */,
+				3D6FA05F258E9572006DFAA3 /* NetworkManager.swift in Sources */,
 				3DCFE29625459E390012C536 /* OneSPicker.swift in Sources */,
 				3D6D6454254C0F2400FAA37F /* JourneyErrorHandler.swift in Sources */,
 				3D511EED256802C50028DB66 /* OneSTextPassage.swift in Sources */,
@@ -2005,6 +2017,14 @@
 				minimumVersion = 0.1.1;
 			};
 		};
+		3D6FA059258E9045006DFAA3 /* XCRemoteSwiftPackageReference "Reachability" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ashleymills/Reachability.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.0;
+			};
+		};
 		3DE303A82582AC9700158A40 /* XCRemoteSwiftPackageReference "Gifu" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kaishin/Gifu.git";
@@ -2020,6 +2040,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3D6373C2257A8F1B001C3585 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
 			productName = Introspect;
+		};
+		3D6FA05A258E9045006DFAA3 /* Reachability */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3D6FA059258E9045006DFAA3 /* XCRemoteSwiftPackageReference "Reachability" */;
+			productName = Reachability;
 		};
 		3DE303A92582AC9700158A40 /* Gifu */ = {
 			isa = XCSwiftPackageProductDependency;

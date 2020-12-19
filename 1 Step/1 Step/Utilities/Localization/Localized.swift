@@ -182,6 +182,7 @@ enum Localized {
         static let mocSave              = "error.mocSave".localized()
         static let noAccessPhotoLibrary = "error.noAccessPhotoLibrary".localized()
         static let noAccessNotification = "error.noAccessNotification".localized()
+        static let iCloudNotAvailable   = "error.iCloudNotAvailable".localized()
     }
     
     
