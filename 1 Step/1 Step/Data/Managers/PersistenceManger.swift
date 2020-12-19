@@ -23,10 +23,13 @@ final class PersistenceManager {
     }
     
     
-    func updateContainer() {
-        _ = saveContext()
-        container = setupContainer()
-        DataModel.shared.fetchAllGoals {}
+    func updateContainer() {        
+        DispatchQueue.main.async {
+            _ = self.saveContext()
+            self.container = self.setupContainer()
+            
+            DataModel.shared.fetchAllGoals {}
+        }
     }
     
     
@@ -37,10 +40,7 @@ final class PersistenceManager {
             let newContainer = try PersistentContainer.getContainer(iCloud: iCloud)
             guard let description = newContainer.persistentStoreDescriptions.first else { fatalError("No description found") }
             
-            if iCloud {
-                newContainer.viewContext.automaticallyMergesChangesFromParent = true
-                newContainer.viewContext.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
-            } else {
+            if !iCloud {
                 description.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
             }
 
@@ -48,12 +48,17 @@ final class PersistenceManager {
 
             newContainer.loadPersistentStores { (storeDescription, error) in
                 if let error = error as NSError? { fatalError("Unresolved error \(error), \(error.userInfo)") }
+                
+                if iCloud {
+                    newContainer.viewContext.automaticallyMergesChangesFromParent = true
+                    newContainer.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+                }
             }
             
             return newContainer
             
         } catch {
-            print(error)
+            print("Could not setup Container with Error: \(error)")
         }
         
         fatalError("Could not setup Container")
@@ -77,7 +82,7 @@ final class PersistenceManager {
                 
             } catch {
                 let nserror = error as NSError
-                print("Error when saving !!! \(nserror.localizedDescription)")
+                print("Error when saving !!! \(nserror)")
                 print("Callstack :")
                 for symbol: String in Thread.callStackSymbols {
                     print(" > \(symbol)")

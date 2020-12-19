@@ -19,6 +19,9 @@
 		3D10D1CD254D2D53002D2D3E /* MilestoneDotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D10D1CC254D2D53002D2D3E /* MilestoneDotView.swift */; };
 		3D10D1D1254D3051002D2D3E /* MilestoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D10D1D0254D3051002D2D3E /* MilestoneView.swift */; };
 		3D160D55252E2067008588D5 /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D160D54252E2067008588D5 /* TransitionManager.swift */; };
+		3D179F46258DF56B00A6A7BE /* OneSLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D179F45258DF56B00A6A7BE /* OneSLoadingView.swift */; };
+		3D179F4A258DF64700A6A7BE /* LoadingViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D179F49258DF64700A6A7BE /* LoadingViewManager.swift */; };
+		3D179F54258E059D00A6A7BE /* CloudKitHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D179F53258E059D00A6A7BE /* CloudKitHandler.swift */; };
 		3D23F70B2579770C000801A5 /* CreditsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D23F70A2579770C000801A5 /* CreditsModel.swift */; };
 		3D23F711257A041F000801A5 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D23F710257A041F000801A5 /* AppModel.swift */; };
 		3D258282253C0A9300DC19E7 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D258281253C0A9300DC19E7 /* Color.swift */; };
@@ -259,6 +262,9 @@
 		3D10D1CC254D2D53002D2D3E /* MilestoneDotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneDotView.swift; sourceTree = "<group>"; };
 		3D10D1D0254D3051002D2D3E /* MilestoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneView.swift; sourceTree = "<group>"; };
 		3D160D54252E2067008588D5 /* TransitionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
+		3D179F45258DF56B00A6A7BE /* OneSLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSLoadingView.swift; sourceTree = "<group>"; };
+		3D179F49258DF64700A6A7BE /* LoadingViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewManager.swift; sourceTree = "<group>"; };
+		3D179F53258E059D00A6A7BE /* CloudKitHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitHandler.swift; sourceTree = "<group>"; };
 		3D23F70A2579770C000801A5 /* CreditsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsModel.swift; sourceTree = "<group>"; };
 		3D23F710257A041F000801A5 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		3D258281253C0A9300DC19E7 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -562,6 +568,14 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		3D179F44258DF53900A6A7BE /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				3D179F45258DF56B00A6A7BE /* OneSLoadingView.swift */,
+			);
+			path = Loading;
+			sourceTree = "<group>";
+		};
 		3D2E7926252F6BBC00788AA2 /* GoalEnterInput */ = {
 			isa = PBXGroup;
 			children = (
@@ -651,6 +665,7 @@
 				3DFD9BD3256BBC7D00CF9580 /* FullSheets */,
 				3D2E795A25301E8E00788AA2 /* Popups */,
 				3D5ACAF22530663A00E1FABE /* Floaters */,
+				3D179F44258DF53900A6A7BE /* Loading */,
 				3DFD9BB3256B7B4300CF9580 /* SafariView */,
 				3D959A86256283E0007BAA07 /* Confetti */,
 				3DEBC0FA257FE77A0008360D /* TutorialGIF */,
@@ -823,6 +838,7 @@
 				3D5156BB2531FB7E00A44450 /* MiniSheetManager.swift */,
 				3D2E7967253021A900788AA2 /* PopupManager.swift */,
 				3DAE7AE325309D0F00B162B1 /* FloaterManager.swift */,
+				3D179F49258DF64700A6A7BE /* LoadingViewManager.swift */,
 			);
 			path = ViewOverlays;
 			sourceTree = "<group>";
@@ -1075,6 +1091,7 @@
 			children = (
 				3DE11C3D252C681600F13719 /* PersistenceManger.swift */,
 				3DA7BD392532F6A600171360 /* DataManager.swift */,
+				3D179F53258E059D00A6A7BE /* CloudKitHandler.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -1583,6 +1600,7 @@
 				3DDF70452531BC1200FD3011 /* MilestoneImage.swift in Sources */,
 				3DF1BFD7254C67D2004E1AB6 /* SummitMilestoneItem.swift in Sources */,
 				3D5156B32531F83700A44450 /* OneSMiniSheet.swift in Sources */,
+				3D179F46258DF56B00A6A7BE /* OneSLoadingView.swift in Sources */,
 				3D4FD8662564EDD200103C73 /* GoalReachedScreen.swift in Sources */,
 				3D2E7928252F6C2C00788AA2 /* GoalEnterInputModel.swift in Sources */,
 				3DC617262544145C00A1F204 /* InfiniteAnimationManager.swift in Sources */,
@@ -1597,6 +1615,7 @@
 				3D2E79752530344D00788AA2 /* OneSSecondaryHeaderText.swift in Sources */,
 				3D4B78E1252CDD9200A45755 /* GoalSelectMountainItem.swift in Sources */,
 				3D68B68B2572B10500A183F5 /* GoalNotification.swift in Sources */,
+				3D179F54258E059D00A6A7BE /* CloudKitHandler.swift in Sources */,
 				3D47CC83252C6F9300A8CA1B /* OneSHeaderView.swift in Sources */,
 				3DE0796625340E410024E17D /* Shadow.swift in Sources */,
 				3D47CC8D252C71C100A8CA1B /* Layout.swift in Sources */,
@@ -1681,6 +1700,7 @@
 				3DDF70292531A5BB00FD3011 /* UserColor.swift in Sources */,
 				3D59DEAC256A59D000CF24D7 /* UserDefaultType.swift in Sources */,
 				3D160D55252E2067008588D5 /* TransitionManager.swift in Sources */,
+				3D179F4A258DF64700A6A7BE /* LoadingViewManager.swift in Sources */,
 				3DD5C07925876AA500D8AC7D /* ProfileTutorialView.swift in Sources */,
 				3D959A8E25628E74007BAA07 /* OneSConfetti.swift in Sources */,
 				3DE0796C25340F550024E17D /* GoalItemArt.swift in Sources */,

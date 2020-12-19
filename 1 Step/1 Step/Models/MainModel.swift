@@ -112,6 +112,7 @@ final class MainModel: ObservableObject {
     func considerUserDefaults() {
         updateAppearance()
         updateNotificationAuthorization()
+        updateICloudSettings()
     }
     
     
@@ -126,8 +127,17 @@ final class MainModel: ObservableObject {
     }
     
     
-    func updateNotificationAuthorization() {
+    private func updateNotificationAuthorization() {
         LocalNotificationManager.listenToAuthorizationStatus()
+    }
+    
+    
+    private func updateICloudSettings() {
+        let iCloudToken = FileManager.default.ubiquityIdentityToken
+        
+        if iCloudToken == nil {
+            UserDefaultsManager.shared.settingICloudSynch = false
+        }
     }
 }
 

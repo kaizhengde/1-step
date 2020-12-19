@@ -141,10 +141,7 @@ struct ProfileAppSectionView: View {
                     backgroundColor: profileModel.appSelectedRowBackgroundColor(iCloudSynch),
                     accessoryText: profileModel.appSelectedRowAccessoryText(iCloudSynch, enabled: Localized.on, disabled: Localized.off),
                     accessoryColor: profileModel.appSelectedRowAccessoryColor(iCloudSynch),
-                    action: {
-                        userDefaultsManager.settingICloudSynch.toggle()
-                        PersistenceManager.defaults.updateContainer()
-                    }
+                    action: { CloudKitHandler.cloudKitButtonToggled() }
                 )
                                                 
                 OneSRowButton(.shortSmall, title: Localized.resetAllData) {

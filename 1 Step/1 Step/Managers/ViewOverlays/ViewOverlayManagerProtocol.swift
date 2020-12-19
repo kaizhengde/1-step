@@ -15,8 +15,6 @@ protocol ViewOverlayManagerProtocol: TransitionObservableObject {
     
     static var shared: Self { get }
     
-    var backgroundColor: Color! { get set }
-    var height: CGFloat! { get set }
     var content: () -> AnyView { get set }
     
     func dismiss()

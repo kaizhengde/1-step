@@ -34,6 +34,7 @@ struct MainView: View {
         .oneSPopup()
         .oneSConfetti()
         .oneSFloater()
+        .oneSLoadingView()
         .onAppear {
             mainModel.considerUserDefaults()
             AppModel.updateAppIconAppearance(with: appAppearance)
