@@ -54,7 +54,7 @@ enum CloudKitHandler {
         
         NetworkManager.isUnreachable { _ in
             PopupManager.shared.showPopup(backgroundColor: .darkNeutralToNeutral, hapticFeedback: true) {
-                OneSTextPopupView(titleText: Localized.error, bodyText: "Seems like you are not connected to the internet.\nMake sure that you have an active internet connection.")
+                OneSTextPopupView(titleText: Localized.error, bodyText: Localized.Error.noInternetConnection)
             }
             
             LoadingViewManager.shared.dismiss()

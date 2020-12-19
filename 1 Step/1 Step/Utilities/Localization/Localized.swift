@@ -183,6 +183,7 @@ enum Localized {
         static let noAccessPhotoLibrary = "error.noAccessPhotoLibrary".localized()
         static let noAccessNotification = "error.noAccessNotification".localized()
         static let iCloudNotAvailable   = "error.iCloudNotAvailable".localized()
+        static let noInternetConnection = "error.noInternetConnection".localized()
     }
     
     
