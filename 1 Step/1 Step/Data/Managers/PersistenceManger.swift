@@ -13,7 +13,7 @@ final class PersistenceManager {
     static let defaults = PersistenceManager()
     
     lazy var container: NSPersistentContainer = {
-        setupContainer()
+        initialSetupContainer()
     }()
     
     var context: NSManagedObjectContext { container.viewContext }
@@ -30,6 +30,24 @@ final class PersistenceManager {
             self.container = self.setupContainer()
             
             DataModel.shared.fetchAllGoals {}
+        }
+    }
+    
+    
+    private func initialSetupContainer() -> NSPersistentContainer {
+        do {
+            let newContainer = try PersistentContainer.getContainer(iCloud: false)
+            guard let description = newContainer.persistentStoreDescriptions.first else { fatalError("No description found") }
+
+            description.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
+            description.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
+
+            newContainer.loadPersistentStores { (storeDescription, error) in
+                if let error = error as NSError? { fatalError("Unresolved error \(error), \(error.userInfo)") }
+            }
+            return newContainer
+        } catch {
+            fatalError("Could not setup Container with error \(error)")
         }
     }
     
@@ -55,14 +73,10 @@ final class PersistenceManager {
                     newContainer.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
                 }
             }
-            
             return newContainer
-            
         } catch {
-            print("Could not setup Container with Error: \(error)")
+            fatalError("Could not setup Container with error \(error)")
         }
-        
-        fatalError("Could not setup Container")
     }
     
     

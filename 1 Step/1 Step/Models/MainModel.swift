@@ -138,6 +138,10 @@ final class MainModel: ObservableObject {
         
         if iCloudToken == nil {
             UserDefaultsManager.shared.settingICloudSynch = false
+        } else {
+            if UserDefaultsManager.shared.settingICloudSynch {
+                PersistenceManager.defaults.updateContainer()
+            }
         }
     }
     
