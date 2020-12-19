@@ -6,60 +6,41 @@
 //
 
 import SwiftUI
-
-@propertyWrapper
-struct UserDefault<T: UserDefaultType> where T: Codable {
-    let key: UserDefaultKey
-    let defaultValue: T
-    
-    init(_ key: UserDefaultKey, default: T) {
-        self.key = key
-        self.defaultValue = `default`
-    }
-
-    var wrappedValue: T {
-        get {
-            guard let data = (UserDefaults.standard.value(forKey: key.rawValue) ?? defaultValue) as? Data,
-                let decodedData = try? JSONDecoder().decode(T.self, from: data)
-                else { return defaultValue }
-            return decodedData
-        }
-        set {
-            if let encoded = try? JSONEncoder().encode(newValue) {
-                UserDefaults.standard.set(encoded, forKey: key.rawValue)
-                print("Success.")
-            }
-            DispatchQueue.main.async { UserDefaultsManager.shared.objectWillChange.send() }
-        }
-    }
-}
-
+import Combine
 
 class UserDefaultsManager: ObservableObject {
     
     static let shared = UserDefaultsManager()
     private init() {}
     
+    static let syncICloudDefaults = PassthroughSubject<Void, Never>()
+    
+    func syncAllICloudDefaults() {
+        if settingICloudSynch {
+            UserDefaultsManager.syncICloudDefaults.send()
+        }
+    }
+    
     
     //MARK: - First
     
-    @UserDefault(UserDefaultKey.First.start,            default: true) var firstStart: Bool
-    @UserDefault(UserDefaultKey.First.selectMountain,   default: true) var firstSelectMountain: Bool
-    @UserDefault(UserDefaultKey.First.selectColor,      default: true) var firstSelectColor: Bool
-    @UserDefault(UserDefaultKey.First.openGoal,         default: true) var firstOpenGoal: Bool
+    @UserDefaultICloud(UserDefaultKey.First.start,            default: true) var firstStart: Bool
+    @UserDefaultICloud(UserDefaultKey.First.selectMountain,   default: true) var firstSelectMountain: Bool
+    @UserDefaultICloud(UserDefaultKey.First.selectColor,      default: true) var firstSelectColor: Bool
+    @UserDefaultICloud(UserDefaultKey.First.openGoal,         default: true) var firstOpenGoal: Bool
     
     
     //MARK: - User
     
-    @UserDefault(UserDefaultKey.User.name,          default: "")        var userName: String
-    @UserDefault(UserDefaultKey.User.profileImage,  default: Data())    var userProfileImage: Data
+    @UserDefaultICloud(UserDefaultKey.User.name,          default: "")        var userName: String
+    @UserDefaultICloud(UserDefaultKey.User.profileImage,  default: Data())    var userProfileImage: Data
     
     
     //MARK: - Accomplishments
     
-    @UserDefault(UserDefaultKey.Accomplishment.totalSteps,              default: 0) var accomplishmentTotalSteps: Int
-    @UserDefault(UserDefaultKey.Accomplishment.totalMilestonesReached,  default: 0) var accomplishmentTotalMilestonesReached: Int
-    @UserDefault(UserDefaultKey.Accomplishment.totalGoalsReached,       default: 0) var accomplishmentTotalGoalsReached: Int
+    @UserDefaultICloud(UserDefaultKey.Accomplishment.totalSteps,              default: 0) var accomplishmentTotalSteps: Int
+    @UserDefaultICloud(UserDefaultKey.Accomplishment.totalMilestonesReached,  default: 0) var accomplishmentTotalMilestonesReached: Int
+    @UserDefaultICloud(UserDefaultKey.Accomplishment.totalGoalsReached,       default: 0) var accomplishmentTotalGoalsReached: Int
     
     
     //MARK: - Settings
@@ -78,7 +59,5 @@ class UserDefaultsManager: ObservableObject {
     
     //MARK: - Notification
     
-    @UserDefault(UserDefaultKey.Notification.badgeCount, default: 0) var notificationBadgeCount: Int 
+    @UserDefault(UserDefaultKey.Notification.badgeCount, default: 0) var notificationBadgeCount: Int
 }
-
-

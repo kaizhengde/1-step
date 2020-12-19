@@ -9,6 +9,10 @@ import Foundation
 
 struct UserDefaultKey: RawRepresentable {
     let rawValue: String
+    
+    var dateValue: String {
+        return rawValue+".date"
+    }
 }
 
 

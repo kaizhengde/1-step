@@ -109,6 +109,8 @@
 		3D6F439D253AE20500785586 /* GoalSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6F439C253AE20500785586 /* GoalSummaryView.swift */; };
 		3D6F43A2253B266F00785586 /* GoalMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6F43A1253B266F00785586 /* GoalMenuView.swift */; };
 		3D6F43A5253B268B00785586 /* GoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6F43A4253B268B00785586 /* GoalView.swift */; };
+		3D6FA04E258E5804006DFAA3 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6FA04D258E5804006DFAA3 /* UserDefault.swift */; };
+		3D6FA052258E5817006DFAA3 /* UserDefaultICloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6FA051258E5817006DFAA3 /* UserDefaultICloud.swift */; };
 		3D6FDDB425670868002854E6 /* OneSDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6FDDB325670868002854E6 /* OneSDropDown.swift */; };
 		3D6FDDB92567808B002854E6 /* OneSRowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6FDDB82567808B002854E6 /* OneSRowButton.swift */; };
 		3D6FDDDF2567B6E2002854E6 /* ItemTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6FDDDE2567B6E2002854E6 /* ItemTransition.swift */; };
@@ -353,6 +355,8 @@
 		3D6F439C253AE20500785586 /* GoalSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSummaryView.swift; sourceTree = "<group>"; };
 		3D6F43A1253B266F00785586 /* GoalMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalMenuView.swift; sourceTree = "<group>"; };
 		3D6F43A4253B268B00785586 /* GoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalView.swift; sourceTree = "<group>"; };
+		3D6FA04D258E5804006DFAA3 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
+		3D6FA051258E5817006DFAA3 /* UserDefaultICloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultICloud.swift; sourceTree = "<group>"; };
 		3D6FDDB325670868002854E6 /* OneSDropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSDropDown.swift; sourceTree = "<group>"; };
 		3D6FDDB82567808B002854E6 /* OneSRowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSRowButton.swift; sourceTree = "<group>"; };
 		3D6FDDDE2567B6E2002854E6 /* ItemTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTransition.swift; sourceTree = "<group>"; };
@@ -510,6 +514,8 @@
 			children = (
 				3D0BEAF22568D4DC002F74FE /* UserDefaultsKeys.swift */,
 				3D59DEAB256A59D000CF24D7 /* UserDefaultType.swift */,
+				3D6FA04D258E5804006DFAA3 /* UserDefault.swift */,
+				3D6FA051258E5817006DFAA3 /* UserDefaultICloud.swift */,
 				3D0BEAEF2568D3E7002F74FE /* UserDefaultsManager.swift */,
 				3D0BEAF92568E82B002F74FE /* Types */,
 			);
@@ -1570,6 +1576,7 @@
 				3DAE7AE425309D0F00B162B1 /* FloaterManager.swift in Sources */,
 				3DD5C9D02539CF7B00861784 /* GoalModel.swift in Sources */,
 				3D10D1D1254D3051002D2D3E /* MilestoneView.swift in Sources */,
+				3D6FA04E258E5804006DFAA3 /* UserDefault.swift in Sources */,
 				3D599FF32574EBA800A00EE4 /* GoalJourneyDataHandler.swift in Sources */,
 				3D47CC7B252C6C1C00A8CA1B /* MainView.swift in Sources */,
 				3D2E794A253019A200788AA2 /* UIApplication.swift in Sources */,
@@ -1678,6 +1685,7 @@
 				3D6F439D253AE20500785586 /* GoalSummaryView.swift in Sources */,
 				3DDF70342531BAA900FD3011 /* Step.swift in Sources */,
 				3DE9C503252C8A2D0023C212 /* GoalsHeaderView.swift in Sources */,
+				3D6FA052258E5817006DFAA3 /* UserDefaultICloud.swift in Sources */,
 				3D959A9A25630F90007BAA07 /* OneSMultilineText.swift in Sources */,
 				3D0BEAF32568D4DC002F74FE /* UserDefaultsKeys.swift in Sources */,
 				3DE9C51D252CB28D0023C212 /* MainModel.swift in Sources */,

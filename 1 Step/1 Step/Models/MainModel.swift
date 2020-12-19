@@ -113,6 +113,7 @@ final class MainModel: ObservableObject {
         updateAppearance()
         updateNotificationAuthorization()
         updateICloudSettings()
+        updateICloudDefaults()
     }
     
     
@@ -138,6 +139,11 @@ final class MainModel: ObservableObject {
         if iCloudToken == nil {
             UserDefaultsManager.shared.settingICloudSynch = false
         }
+    }
+    
+    
+    private func updateICloudDefaults() {
+        UserDefaultsManager.shared.syncAllICloudDefaults()
     }
 }
 

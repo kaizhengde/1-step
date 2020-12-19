@@ -6,6 +6,7 @@
 //
 
 import CoreData
+import CloudKit
 
 final class PersistenceManager {
     

@@ -21,6 +21,7 @@ enum CloudKitHandler {
                     if case .available = accountStatus {
                         UserDefaultsManager.shared.settingICloudSynch.toggle()
                         PersistenceManager.defaults.updateContainer()
+                        UserDefaultsManager.shared.syncAllICloudDefaults()
                         
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                             LoadingViewManager.shared.dismiss()
