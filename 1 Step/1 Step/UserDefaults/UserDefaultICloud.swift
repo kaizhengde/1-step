@@ -21,44 +21,35 @@ struct UserDefaultICloud<T: UserDefaultType> where T: Codable {
         self.defaultValue = `default`
         
         listenToInitialSync = UserDefaultsManager.syncICloudDefaults.sink {
-            let updateDefaultsData = {
+            let updateDefaultsEntry = {
                 if let iCloudData = iCloudDefaults().data(forKey: key.rawValue) {
                     UserDefaults.standard.set(iCloudData, forKey: key.rawValue)
                 }
             }
             
-            let updateICloudData = {
+            let updateICloudEntry = {
                 if let defaultsData = UserDefaults.standard.data(forKey: key.rawValue) {
                     iCloudDefaults().set(defaultsData, forKey: key.rawValue)
                 }
             }
             
-            print("----------------------------------")
-            print(key.rawValue)
-            
-            if let lastICloudSaveDate = iCloudDefaults().object(forKey: key.dateValue) as? Date {
-                print("iCLOUD: something is saved")
-                if let lastDefaultsSaveDate = UserDefaults.standard.object(forKey: key.dateValue) as? Date {
-                    print("DEFAULTS: something is saved")
-                    if lastICloudSaveDate > lastDefaultsSaveDate {
-                        updateDefaultsData()
-                        print("iCLOUD: more up to date")
-                    } else if lastDefaultsSaveDate > lastICloudSaveDate {
-                        updateICloudData()
-                        print("DEFAULTS: more up to date")
-                    } else {
-                        print("iCLOUD+DEFAULTS: same date")
+            if let lastICloudEntryDate = iCloudDefaults().object(forKey: key.dateValue) as? Date {
+                if let lastDefaultsEntryDate = UserDefaults.standard.object(forKey: key.dateValue) as? Date {
+                    if lastICloudEntryDate > lastDefaultsEntryDate {
+                        //iCloud entry more up to date
+                        updateDefaultsEntry()
+                    } else if lastDefaultsEntryDate > lastICloudEntryDate {
+                        //UserDefault entry more up to date
+                        updateICloudEntry()
                     }
                 } else {
-                    updateDefaultsData()
-                    print("DEFAULTS: nothing is saved")
+                    //No UserDefaults entry
+                    updateDefaultsEntry()
                 }
             } else {
-                updateICloudData()
-                print("ICLOUD: nothing is saved")
+                //No iCloud entry
+                updateICloudEntry()
             }
-            
-            print("----------------------------------")
         }
     }
 
