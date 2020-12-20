@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ProfileAccomplishmentsSectionView: View {
     
+    @StateObject private var userDefaultsManager = UserDefaultsManager.shared
     @ObservedObject var profileModel: ProfileModel
     
     
