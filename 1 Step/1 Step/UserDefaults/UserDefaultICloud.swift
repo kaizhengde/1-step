@@ -14,16 +14,17 @@ fileprivate typealias iCloudDefaults = NSUbiquitousKeyValueStore
 struct UserDefaultICloud<T: UserDefaultType> where T: Codable {
     let key: UserDefaultKey
     let defaultValue: T
-    let listenToInitialSync: AnyCancellable?
+    let listenToICloudChanges: AnyCancellable?
     
     init(_ key: UserDefaultKey, default: T) {
         self.key = key
         self.defaultValue = `default`
         
-        listenToInitialSync = UserDefaultsManager.syncICloudDefaults.sink {
+        listenToICloudChanges = UserDefaultsManager.syncICloudDefaults.sink {
             let updateDefaultsEntry = {
                 if let iCloudData = iCloudDefaults().data(forKey: key.rawValue) {
                     UserDefaults.standard.set(iCloudData, forKey: key.rawValue)
+                    DispatchQueue.main.async { UserDefaultsManager.shared.objectWillChange.send() }
                 }
             }
             
@@ -71,9 +72,11 @@ struct UserDefaultICloud<T: UserDefaultType> where T: Codable {
                     iCloudDefaults().set(encoded, forKey: key.rawValue)
                     iCloudDefaults().set(saveDate, forKey: key.dateValue)
                     iCloudDefaults().synchronize()
+                    
+                    print("Success iCloud.")
                 }
                 
-                print("Success.")
+                print("Success UserDefault.")
             }
             DispatchQueue.main.async { UserDefaultsManager.shared.objectWillChange.send() }
         }

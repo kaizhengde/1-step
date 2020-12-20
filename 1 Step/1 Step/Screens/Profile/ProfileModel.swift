@@ -17,7 +17,7 @@ class ProfileModel: ObservableObject {
     
     @Published var currentImage: Image?
     
-    func profileImageViewAppear() {
+    func updateProfileImage() {
         DispatchQueue.global().async {
             var savedImage: Image? = nil
             let savedUIImage = UIImage(data: self.userDefaultsManager.userProfileImage)
@@ -36,11 +36,9 @@ class ProfileModel: ObservableObject {
                 SheetManager.shared.showSheet {
                     OneSImagePicker(deleteAction: {
                         self.userDefaultsManager.userProfileImage = Data()
-                        self.currentImage = nil
                         SheetManager.shared.dismiss()
                     }) { selectedImage in
                         self.userDefaultsManager.userProfileImage = selectedImage.jpegData(compressionQuality: 0.5)!
-                        self.currentImage = Image(uiImage: UIImage(data: self.userDefaultsManager.userProfileImage)!)
                     }
                     .accentColor(UserColor.user0.standard)
                 }
