@@ -76,6 +76,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
                             MainModel.shared.toGoalScreen(.active)
                         }
                     } else {
+                        MainModel.shared.appLaunched = true
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                             MainModel.shared.toGoalScreen(.active)
                         }

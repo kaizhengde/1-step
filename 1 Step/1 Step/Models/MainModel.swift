@@ -50,7 +50,7 @@ final class MainModel: ObservableObject {
     static let shared = MainModel()
     
     @Published private(set) var currentScreen: Screen = Screen()
-    @Published private(set) var appLaunched = false
+    @Published var appLaunched = false
     
     private init() {
         if UserDefaultsManager.shared.settingFaceTouchID {

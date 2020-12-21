@@ -12,7 +12,7 @@ struct GoalMenuView: View {
     @StateObject private var dataModel = DataModel.shared
     @StateObject private var goalModel = GoalModel.shared
     
-    var activeGoalsRest: [Goal] { dataModel.activeGoals.filter { $0 != goalModel.selectedGoal }}
+    var activeGoalsRest: [Goal] { dataModel.activeGoals.filter { $0 != goalModel.selectedGoal } }
     
     
     var body: some View {
