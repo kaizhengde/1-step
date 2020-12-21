@@ -69,6 +69,11 @@ extension PurchaseManager: SKProductsRequestDelegate {
             if !invalidProducts.isEmpty {
                 print("Invalid Products found: \(invalidProducts)")
             }
+            
+            PopupManager.shared.showPopup(backgroundColor: .darkNeutralToNeutral, hapticFeedback: true) {
+                OneSTextPopupView(titleText: Localized.error, bodyText: Localized.unknownError)
+            }
+            
             return
         }
         
@@ -128,4 +133,7 @@ extension PurchaseManager: SKPaymentTransactionObserver {
             OneSTextPopupView(titleText: Localized.error, bodyText: error.localizedDescription)
         }
     }
+    
+    
+    
 }
