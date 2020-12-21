@@ -45,6 +45,7 @@ struct PremiumView: View {
         }
         .oneSAnimation()
         .onReceive(PopupManager.shared.dismissed) { viewModel.dismiss(with: $0) }
+        .onReceive(viewModel.purchaseManager.purchaseSuccessful) { viewModel.finishPurchase(with: $0) }
     }
     
     
@@ -132,8 +133,8 @@ struct PremiumView: View {
                     OneSText(text: Localized.Premium.youChoose, font: .custom(.bold, 24), color: .grayToBackground)
                     
                     HStack(spacing: 12) {
-                        PremiumItem(viewModel: viewModel, item: viewModel.firstPremiumItem)
-                        PremiumItem(viewModel: viewModel, item: viewModel.secondPremiumItem)
+                        PremiumItem(viewModel: viewModel, item: viewModel.premiumItems[0])
+                        PremiumItem(viewModel: viewModel, item: viewModel.premiumItems[1])
                     }
                     .padding(.bottom, 40)
                     
@@ -143,8 +144,10 @@ struct PremiumView: View {
                         OneSMultilineText(text: Localized.Premium.noteTextPassage)
                     }
                     
-                    OneSRowButton(.shortBig, title: Localized.Premium.restore, backgroundColor: .whiteToGray) {}
-                        .padding(.top, 20)
+                    OneSRowButton(.shortBig, title: Localized.Premium.restore, backgroundColor: .whiteToGray) {
+                        viewModel.purchaseManager.restore()
+                    }
+                    .padding(.top, 20)
                     
                     HStack(spacing: 24) {
                         OneSFootnoteButton(text: Localized.privacyPolicy, color: UserColor.user0.standard) {
@@ -168,7 +171,7 @@ struct PremiumView: View {
                 
                 @ObservedObject var viewModel: PremiumModel
                 
-                let item: PremiumModel.PremiumItemData
+                let item: PremiumProductItem
                 
                 
                 var body: some View {
@@ -184,7 +187,7 @@ struct PremiumView: View {
                             
                             Spacer()
                             
-                            OneSText(text: item.price, font: .custom(.extraBold, 28), color: .whiteToDarkGray)
+                            OneSText(text: item.product?.price ?? "-", font: .custom(.extraBold, 28), color: .whiteToDarkGray)
                         }
                         .padding(.vertical, 20)
                         .padding(.horizontal, 16)

@@ -42,7 +42,10 @@ fileprivate struct OneSLockView: ViewModifier {
                         .offset(y: -16)
                         .opacity(manager.transition.isFullAppeared && showLock ? 1.0 : 0.0)
                         .oneSItemTransition()
-                        .oneSItemScaleTapGesture(amount: 1.2) { tryAuthorize() }
+                        .oneSItemScaleTapGesture(amount: 1.2) {
+                            OneSFeedback.light()
+                            tryAuthorize()
+                        }
                     
                     if let text = errorText {
                         OneSBackgroundMultilineText(text: text)
@@ -58,11 +61,10 @@ fileprivate struct OneSLockView: ViewModifier {
         
     private func tryAuthorize() {
         showLock = false
-        OneSFeedback.light()
-        AuthenticationManager.authorize(
-            notPossible: {
+        BiometricsManager.authorize(
+            unavailable: {
                 showLock = true
-                errorText = "Biometric authentication failed. Make sure that you have your biometrics setup inside settings and turned on for 1 Step."
+                errorText = "\(BiometricsManager.getBiometricType().description!) \(Localized.Biometrics.error_unavailable)"
             },
             completion: { success in
                 if success {

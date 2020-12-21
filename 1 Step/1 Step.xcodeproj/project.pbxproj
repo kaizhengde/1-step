@@ -150,9 +150,12 @@
 		3DAE7AE425309D0F00B162B1 /* FloaterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE7AE325309D0F00B162B1 /* FloaterManager.swift */; };
 		3DAE7AE725309DBB00B162B1 /* OneSFloater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE7AE625309DBB00B162B1 /* OneSFloater.swift */; };
 		3DAE7AEB2530A3E600B162B1 /* OneSTextFloater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE7AEA2530A3E600B162B1 /* OneSTextFloater.swift */; };
-		3DB0C83D259082C500553F7F /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB0C83C259082C500553F7F /* AuthenticationManager.swift */; };
+		3DB0C83D259082C500553F7F /* BiometricsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB0C83C259082C500553F7F /* BiometricsManager.swift */; };
 		3DB0C8442590976A00553F7F /* OneSLockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB0C8432590976A00553F7F /* OneSLockView.swift */; };
 		3DB0C8482590A3D900553F7F /* LockViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB0C8472590A3D900553F7F /* LockViewManager.swift */; };
+		3DB0C84E2590DF1E00553F7F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DB0C84D2590DF1E00553F7F /* StoreKit.framework */; };
+		3DB0C8522590E42B00553F7F /* PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB0C8512590E42B00553F7F /* PurchaseManager.swift */; };
+		3DB0C858259102F100553F7F /* PremiumProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB0C857259102F100553F7F /* PremiumProduct.swift */; };
 		3DBCC6B5257DF61C00924652 /* URLStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBCC6B4257DF61C00924652 /* URLStrings.swift */; };
 		3DBCC75E257EA1F900924652 /* 1StepIconEarth60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DBCC756257EA1F900924652 /* 1StepIconEarth60@2x.png */; };
 		3DBCC75F257EA1F900924652 /* 1StepIconEarth60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DBCC757257EA1F900924652 /* 1StepIconEarth60@3x.png */; };
@@ -403,9 +406,12 @@
 		3DAE7AE325309D0F00B162B1 /* FloaterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloaterManager.swift; sourceTree = "<group>"; };
 		3DAE7AE625309DBB00B162B1 /* OneSFloater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSFloater.swift; sourceTree = "<group>"; };
 		3DAE7AEA2530A3E600B162B1 /* OneSTextFloater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSTextFloater.swift; sourceTree = "<group>"; };
-		3DB0C83C259082C500553F7F /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
+		3DB0C83C259082C500553F7F /* BiometricsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricsManager.swift; sourceTree = "<group>"; };
 		3DB0C8432590976A00553F7F /* OneSLockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSLockView.swift; sourceTree = "<group>"; };
 		3DB0C8472590A3D900553F7F /* LockViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockViewManager.swift; sourceTree = "<group>"; };
+		3DB0C84D2590DF1E00553F7F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		3DB0C8512590E42B00553F7F /* PurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseManager.swift; sourceTree = "<group>"; };
+		3DB0C857259102F100553F7F /* PremiumProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumProduct.swift; sourceTree = "<group>"; };
 		3DBCC6B4257DF61C00924652 /* URLStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLStrings.swift; sourceTree = "<group>"; };
 		3DBCC756257EA1F900924652 /* 1StepIconEarth60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "1StepIconEarth60@2x.png"; path = "../../../../Design/Assets/AppIcons/Earth/1StepIconEarth60@2x.png"; sourceTree = "<group>"; };
 		3DBCC757257EA1F900924652 /* 1StepIconEarth60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "1StepIconEarth60@3x.png"; path = "../../../../Design/Assets/AppIcons/Earth/1StepIconEarth60@3x.png"; sourceTree = "<group>"; };
@@ -500,6 +506,7 @@
 			files = (
 				3D7A5A87258C992800F3BE6E /* CloudKit.framework in Frameworks */,
 				3D6FA05B258E9045006DFAA3 /* Reachability in Frameworks */,
+				3DB0C84E2590DF1E00553F7F /* StoreKit.framework in Frameworks */,
 				3D6373C4257A8F1B001C3585 /* Introspect in Frameworks */,
 				3DE303AA2582AC9700158A40 /* Gifu in Frameworks */,
 			);
@@ -579,10 +586,10 @@
 			children = (
 				3D6FA05E258E9572006DFAA3 /* NetworkManager.swift */,
 				3D68B66E2572437100A183F5 /* AuthorizationManager.swift */,
-				3DB0C83C259082C500553F7F /* AuthenticationManager.swift */,
+				3DB0C83C259082C500553F7F /* BiometricsManager.swift */,
+				3DB0C84F2590E3E200553F7F /* StoreKit */,
 				3D68B65C25721C7C00A183F5 /* Notifications */,
-				3D160D54252E2067008588D5 /* TransitionManager.swift */,
-				3DC617252544145C00A1F204 /* InfiniteAnimationManager.swift */,
+				3DB0C8502590E3FB00553F7F /* Animation */,
 				3D5156B62531FB2600A44450 /* ViewOverlays */,
 			);
 			path = Managers;
@@ -1013,6 +1020,7 @@
 		3D7A5A1A258B8CF700F3BE6E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3DB0C84D2590DF1E00553F7F /* StoreKit.framework */,
 				3D7A5A86258C992800F3BE6E /* CloudKit.framework */,
 				3D7A5A1B258B8CF700F3BE6E /* WidgetKit.framework */,
 				3D7A5A1D258B8CF700F3BE6E /* SwiftUI.framework */,
@@ -1125,6 +1133,23 @@
 				3DB0C8432590976A00553F7F /* OneSLockView.swift */,
 			);
 			path = LockView;
+			sourceTree = "<group>";
+		};
+		3DB0C84F2590E3E200553F7F /* StoreKit */ = {
+			isa = PBXGroup;
+			children = (
+				3DB0C8512590E42B00553F7F /* PurchaseManager.swift */,
+			);
+			path = StoreKit;
+			sourceTree = "<group>";
+		};
+		3DB0C8502590E3FB00553F7F /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				3D160D54252E2067008588D5 /* TransitionManager.swift */,
+				3DC617252544145C00A1F204 /* InfiniteAnimationManager.swift */,
+			);
+			path = Animation;
 			sourceTree = "<group>";
 		};
 		3DBCC725257E910A00924652 /* Alternative Icons */ = {
@@ -1398,6 +1423,7 @@
 		3DFD9BC4256B865200CF9580 /* Premium */ = {
 			isa = PBXGroup;
 			children = (
+				3DB0C857259102F100553F7F /* PremiumProduct.swift */,
 				3DFD9BCB256BA2A200CF9580 /* PremiumModel.swift */,
 				3DFD9BCF256BA2AB00CF9580 /* PremiumView.swift */,
 			);
@@ -1571,6 +1597,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DB0C8522590E42B00553F7F /* PurchaseManager.swift in Sources */,
 				3D47CCBD252C7EF900A8CA1B /* GoalsScreen.swift in Sources */,
 				3DCA909D25454A080030FE61 /* AddStepModel.swift in Sources */,
 				3D959A9625630913007BAA07 /* GoalHowItWorksView.swift in Sources */,
@@ -1622,6 +1649,7 @@
 				3D47CC91252C71EA00A8CA1B /* CoordinateSpace.swift in Sources */,
 				3D0BEB072568E8B0002F74FE /* OneSColorTheme.swift in Sources */,
 				3DE9C50B252C8F500023C212 /* OneSText.swift in Sources */,
+				3DB0C858259102F100553F7F /* PremiumProduct.swift in Sources */,
 				3D959A9125628ED4007BAA07 /* ConfettiManager.swift in Sources */,
 				3D0B59452533123600079856 /* DataModel.swift in Sources */,
 				3D854B11253EA3F900A4F80E /* GoalDeleteHandler.swift in Sources */,
@@ -1685,7 +1713,7 @@
 				3D599FFB2574EBCA00A00EE4 /* GoalNotificationsHandler.swift in Sources */,
 				3DDF70372531BAB100FD3011 /* Milestone.swift in Sources */,
 				3D59DE972569657700CF24D7 /* OneSSectionView.swift in Sources */,
-				3DB0C83D259082C500553F7F /* AuthenticationManager.swift in Sources */,
+				3DB0C83D259082C500553F7F /* BiometricsManager.swift in Sources */,
 				3D959A8B256286AE007BAA07 /* ConfettiView.swift in Sources */,
 				3DE11C35252C681200F13719 /* __StepApp.swift in Sources */,
 				3D68B67F25726BF200A183F5 /* GoalChangeNotificationModel.swift in Sources */,

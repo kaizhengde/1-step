@@ -55,4 +55,13 @@ struct OneSFeedback {
         default: break
         }
     }
+    
+    
+    static func failed() {
+        switch feedbackSupportLevel {
+        case 2: UINotificationFeedbackGenerator().notificationOccurred(.error)
+        case 1: AudioServicesPlaySystemSound(SystemSoundID(1053))
+        default: break
+        }
+    }
 }

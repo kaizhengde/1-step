@@ -159,7 +159,7 @@ struct ProfileAppSectionView: View {
                     }
                 }
                 
-                if let authenticationType = AuthenticationManager.getBiometricType().description {
+                if let authenticationType = BiometricsManager.getBiometricType().description {
                     OneSRowButton(
                         .shortSmall,
                         title: authenticationType,
@@ -169,11 +169,11 @@ struct ProfileAppSectionView: View {
                         accessoryColor: profileModel.appSelectedRowAccessoryColor(faceTouchID),
                         action: {
                             if faceTouchID {
-                                AuthenticationManager.authorize {
+                                BiometricsManager.authorize {
                                     if $0 { userDefaultsManager.settingFaceTouchID = false }
                                 }
                             } else {
-                                AuthenticationManager.requestPermissionForFaceTouchID {
+                                BiometricsManager.requestPermission {
                                     userDefaultsManager.settingFaceTouchID = true
                                 }
                             }
@@ -195,7 +195,7 @@ struct ProfileAppSectionView: View {
                         }
                     }
                     
-                    if faceTouchID { AuthenticationManager.authorize { if $0 { proceedReset() } } }
+                    if faceTouchID { BiometricsManager.authorize { if $0 { proceedReset() } } }
                     else { proceedReset() }
                 }
             }

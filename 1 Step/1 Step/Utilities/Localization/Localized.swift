@@ -105,6 +105,8 @@ enum Localized {
     static let incredible       = "incredible".localized()
     static let reset            = "reset".localized()
     static let dangerZone       = "dangerZone".localized()
+    static let touchID          = "touchID".localized()
+    static let faceID           = "faceID".localized()
     
     
     enum Step {
@@ -302,6 +304,15 @@ enum Localized {
         static let completedText        = "addStepsAccomplishment.completedText".localized()
         static let milestoneTextPre     = "addStepsAccomplishment.milestoneTextPre".localized()
         static let milestoneTextPost    = "addStepsAccomplishment.milestoneTextPost".localized()
+    }
+    
+    
+    enum Biometrics {
+        
+        static let reason_authorizing       = "biometrics.reason_authorizing".localized()
+        static let reason_requestPermission = "biometrics.reason_requestPermission".localized()
+        static let error_invalid            = "biometrics.error_invalid".localized()
+        static let error_unavailable        = "biometrics.error_unavailable".localized()
     }
 }
 

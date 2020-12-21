@@ -1,5 +1,5 @@
 //
-//  AuthenticationManager.swift
+//  BiometricsManager.swift
 //  1 Step
 //
 //  Created by Kai Zheng on 21.12.20.
@@ -9,7 +9,7 @@ import Foundation
 import LocalAuthentication
 import Combine
 
-enum AuthenticationManager {
+enum BiometricsManager {
     
     enum BiometricType {
         case none
@@ -19,8 +19,8 @@ enum AuthenticationManager {
         var description: String? {
             switch self {
             case .none:     return nil
-            case .touch:    return "TouchID"
-            case .face:     return "FaceID"
+            case .touch:    return Localized.touchID
+            case .face:     return Localized.faceID
             }
         }
     }
@@ -38,13 +38,13 @@ enum AuthenticationManager {
     }
     
     
-    static func authorize(notPossible: @escaping () -> () = {}, completion: @escaping (Bool) -> ()) {
-        guard biometricAuthenticationIsPossible() else {
-            notPossible()
+    static func authorize(unavailable: @escaping () -> () = {}, completion: @escaping (Bool) -> ()) {
+        guard biometricAuthenticationIsAvailable() else {
+            unavailable()
             return
         }
         
-        let reason = "To continue, you need to authorize yourself."
+        let reason = Localized.Biometrics.reason_authorizing
 
         LAContext().evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { valid, _ in
             DispatchQueue.main.async {
@@ -58,16 +58,16 @@ enum AuthenticationManager {
     }
     
     
-    static func requestPermissionForFaceTouchID(success: @escaping () -> ()) {
-        guard biometricAuthenticationIsPossible() else { return }
+    static func requestPermission(success: @escaping () -> ()) {
+        guard biometricAuthenticationIsAvailable() else { return }
         
-        let reason = "To activate biometric authentication, we need to authorize you."
+        let reason = Localized.Biometrics.reason_requestPermission
 
         LAContext().evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { valid, error in
             DispatchQueue.main.async {
                 if error != nil {
                     PopupManager.shared.showPopup(backgroundColor: .darkNeutralToNeutral, hapticFeedback: true) {
-                        OneSTextPopupView(titleText: "Error", bodyText: "Could not enable biometric authentication.")
+                        OneSTextPopupView(titleText: Localized.error, bodyText: Localized.Biometrics.error_invalid)
                     }
                 }
                 
@@ -79,13 +79,13 @@ enum AuthenticationManager {
     }
     
     
-    private static func biometricAuthenticationIsPossible() -> Bool {
+    private static func biometricAuthenticationIsAvailable() -> Bool {
         if LAContext().canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil) {
             return true
         }
         
         PopupManager.shared.showPopup(backgroundColor: .darkNeutralToNeutral, hapticFeedback: true) {
-            OneSTextPopupView(titleText: "Error", bodyText: "Biometric authentication failed. Make sure that you have your biometrics setup inside settings and turned on for 1 Step.")
+            OneSTextPopupView(titleText: Localized.error, bodyText: "\(BiometricsManager.getBiometricType().description!) \(Localized.Biometrics.error_unavailable)")
         }
         return false
     }

@@ -105,6 +105,8 @@ amazing         = "Amazing";
 incredible      = "Incredible";
 reset           = "Reset";
 dangerZone      = "Danger zone";
+touchID         = "Touch ID";
+faceID          = "Face ID";
 
 
 // Special ------------------------------------------------------------------
@@ -327,3 +329,11 @@ firstStart.excited          = "we wich you a wonderful experience with 1 Step.";
 addStepsAccomplishment.completedText        = "You are on the peak of the mountain. 🎊\n\nAccomplishing a total of";
 addStepsAccomplishment.milestoneTextPre     = "You have reached";
 addStepsAccomplishment.milestoneTextPost    = "";
+
+
+//Biometrics ----------------------------------------------
+
+biometrics.reason_authorizing       = "To continue, you need to authorize yourself.";
+biometrics.reason_requestPermission = "To activate biometric authentication, we need to authorize you.";
+biometrics.error_invalid            = "Could not enable biometric authentication.";
+biometrics.error_unavailable        = "failed. Make sure that you have your biometrics setup inside settings and turned on for 1 Step.";

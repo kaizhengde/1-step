@@ -46,7 +46,7 @@ final class GoalEditModel: ObservableObject, GoalSelectMountainDelegate, GoalEnt
         }
         
         if UserDefaultsManager.shared.settingFaceTouchID {
-            AuthenticationManager.authorize {
+            BiometricsManager.authorize {
                 if $0 { proceedDelete() }
             }
         } else {

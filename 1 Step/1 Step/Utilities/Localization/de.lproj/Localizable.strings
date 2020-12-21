@@ -104,6 +104,8 @@ amazing         = "Toll";
 incredible      = "Unglaublich";
 reset           = "Zurücksetzen";
 dangerZone      = "Gefahrenzone";
+touchID         = "Touch ID";
+faceID          = "Face ID";
 
 
 // Special ------------------------------------------------------------------
@@ -327,3 +329,11 @@ firstStart.excited          = "wir wünschen dir eine wundervolle Zeit mit 1 Ste
 addStepsAccomplishment.completedText        = "Du stehst auf dem Gipfel des Berges. 🎊\n\Mit insgesamt";
 addStepsAccomplishment.milestoneTextPre     = "";
 addStepsAccomplishment.milestoneTextPost    = "erreicht";
+
+
+//Biometrics ----------------------------------------------
+
+biometrics.reason_authorizing       = "Bitte authentifiziere dich, um fortzufahren.";
+biometrics.reason_requestPermission = "Um die biometrische Authentifizierung zu aktivieren, müssen wir dich authentifizieren.";
+biometrics.error_invalid            = "Die biometrische Authentifizierung konnte nicht aktiviert werden.";
+biometrics.error_unavailable        = "fehlgeschlafen. Bitte stell sicher, dass eine biometrische Authentifizierung konfiguriert und für 1 Step aktiviert ist.";

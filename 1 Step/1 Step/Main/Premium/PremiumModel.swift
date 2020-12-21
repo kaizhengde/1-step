@@ -11,12 +11,30 @@ import Combine
 final class PremiumModel: ObservableObject {
     
     var purchased: Bool { UserDefaultsManager.shared.settingPremium }
-    let scrollToTop = PassthroughSubject<Void, Never>()
+    
+    @Published var purchaseManager = PurchaseManager()
+    var cancellable: AnyCancellable?
+    
+    var premiumItems: [PremiumProductItem] {
+        var items = Array<PremiumProductItem>(repeating: PremiumProductItem(product: nil, color: .neutralToDarkNeutral), count: 2)
+        
+        if !purchaseManager.premiumProducts.isEmpty {
+            items[0] = PremiumProductItem(product: purchaseManager.premiumProducts[0], color: UserColor.user0.standard)
+            items[1] = PremiumProductItem(product: purchaseManager.premiumProducts[1], color: UserColor.user1.standard)
+        }
+        
+        return items
+    }
     
     @Published var changeRow: (first: Bool, second: Bool, third: Bool) = (false, false ,false)
-    
+    let scrollToTop = PassthroughSubject<Void, Never>()
+       
     
     init() {
+        cancellable = purchaseManager.objectWillChange.sink { [weak self] in
+            self?.objectWillChange.send()
+        }
+        
         if purchased {
             changeRow = (true, true ,true)
         }
@@ -49,18 +67,20 @@ final class PremiumModel: ObservableObject {
     
     //MARK: - Premium Item
     
-    typealias PremiumItemData = (price: String, color: Color)
-    
-    let firstPremiumItem: PremiumItemData  = ("€ 7.99", UserColor.user1.standard)
-    let secondPremiumItem: PremiumItemData = ("€ 10.49", UserColor.user0.standard)
-    
-    
-    func premiumItemTapped(with item: PremiumItemData) {
+    func premiumItemTapped(with item: PremiumProductItem) {
+        OneSFeedback.light()
+        
+        guard let product = item.product else { return }
         guard !purchased else {
             ConfettiManager.shared.showConfetti(amount: .small)
             return
         }
-     
+        
+        purchaseManager.purchase(product: product.product)
+    }
+    
+    
+    func finishPurchase(with product: PremiumProduct) {
         scrollToTop.send()
             
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
@@ -71,6 +91,8 @@ final class PremiumModel: ObservableObject {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { self.changeRow.third = true }
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+                let item = self.premiumItems.first(where: { $0.product == product })!
+                
                 PopupManager.shared.showPopup(.premiumPurchased, backgroundColor: item.color, height: 400*Layout.multiplierWidth, dismissOnTapOutside: false) {
                     OneSTextPopupView(
                         titleText: Localized.thankYou,
