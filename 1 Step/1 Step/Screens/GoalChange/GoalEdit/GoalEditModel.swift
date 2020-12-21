@@ -38,9 +38,19 @@ final class GoalEditModel: ObservableObject, GoalSelectMountainDelegate, GoalEnt
     
     
     func deleteGoalAndDismiss(_ goal: Goal) {
-        DataModel.shared.deleteGoal(goal) {
-            MainModel.shared.toScreen(.goals)
-            SheetManager.shared.dismiss()
+        let proceedDelete = {
+            DataModel.shared.deleteGoal(goal) {
+                MainModel.shared.toScreen(.goals)
+                SheetManager.shared.dismiss()
+            }
+        }
+        
+        if UserDefaultsManager.shared.settingFaceTouchID {
+            AuthenticationManager.authorize {
+                if $0 { proceedDelete() }
+            }
+        } else {
+            proceedDelete()
         }
     }
 }

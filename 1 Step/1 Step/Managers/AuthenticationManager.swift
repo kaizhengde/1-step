@@ -39,7 +39,10 @@ enum AuthenticationManager {
     
     
     static func authorize(completion: @escaping (Bool) -> ()) {
-        guard biometricAuthenticationIsPossible() else { return }
+        guard biometricAuthenticationIsPossible() else {
+            completion(false)
+            return
+        }
         
         let reason = "To continue, you need to authorize yourself."
 

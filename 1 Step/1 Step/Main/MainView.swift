@@ -28,7 +28,6 @@ struct MainView: View {
         }
         .statusBar(hidden: true)
         .oneSOpacityAnimation()
-        .oneSLockView()
         .oneSFullSheet()
         .sheet(isPresented: $sheetManager.appear, content: sheetManager.content)
         .oneSMiniSheet()
@@ -36,6 +35,7 @@ struct MainView: View {
         .oneSConfetti()
         .oneSFloater()
         .oneSLoadingView()
+        .oneSLockView()
         .onAppear {
             mainModel.considerUserDefaults()
             AppModel.updateAppIconAppearance(with: appAppearance)

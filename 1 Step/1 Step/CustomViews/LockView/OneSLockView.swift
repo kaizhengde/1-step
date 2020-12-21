@@ -18,7 +18,9 @@ extension View {
 fileprivate struct OneSLockView: ViewModifier {
     
     @StateObject private var manager = LockViewManager.shared
-    @State private var showLock = false 
+    @State private var showLock = false
+    @State private var errorText: String? = nil
+    
     
     func body(content: Content) -> some View {
         content.overlay(sheet())
@@ -28,18 +30,26 @@ fileprivate struct OneSLockView: ViewModifier {
     func sheet() -> some View {
         ZStack {
             if manager.transition.didAppear {
-            Color.whiteToDarkGray.edgesIgnoringSafeArea(.all)
-                .onAppear { tryAuthorize() }
+                Color.whiteToDarkGray.edgesIgnoringSafeArea(.all)
+                    .onAppear { tryAuthorize() }
             }
             
             if !manager.transition.isFullHidden {
-            SFSymbol.lock
-                .font(.system(size: 40, weight: .light))
-                .foregroundColor(UserColor.user0.standard)
-                .offset(y: -16)
-                .opacity(manager.transition.isFullAppeared && showLock ? 1.0 : 0.0)
-                .oneSItemTransition()
-                .oneSItemScaleTapGesture(amount: 1.2) { tryAuthorize() }
+                VStack {
+                    SFSymbol.lock
+                        .font(.system(size: 40, weight: .light))
+                        .foregroundColor(UserColor.user0.standard)
+                        .offset(y: -16)
+                        .opacity(manager.transition.isFullAppeared && showLock ? 1.0 : 0.0)
+                        .oneSItemTransition()
+                        .oneSItemScaleTapGesture(amount: 1.2) { tryAuthorize() }
+                    
+                    if let text = errorText {
+                        OneSBackgroundMultilineText(text: text)
+                            .frame(height: 200)
+                            .padding(Layout.secondLayerPadding)
+                    }
+                }
             }
         }
         .oneSAnimation()
@@ -48,6 +58,7 @@ fileprivate struct OneSLockView: ViewModifier {
         
     private func tryAuthorize() {
         showLock = false
+        OneSFeedback.light()
         AuthenticationManager.authorize() { success in
             if success {
                 manager.dismiss()
@@ -56,6 +67,7 @@ fileprivate struct OneSLockView: ViewModifier {
                 }
             } else {
                 showLock = true
+                errorText = "Biometric authentication failed. Make sure that you have your biometrics setup inside settings and turned on for 1 Step."
             }
         }
     }

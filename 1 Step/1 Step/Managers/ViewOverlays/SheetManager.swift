@@ -28,6 +28,9 @@ final class SheetManager: ObservableObject {
                     .oneSMiniSheet()
                     .oneSPopup()
                     .oneSFloater()
+                    .oneSConfetti()
+                    .oneSLoadingView()
+                    .oneSLockView()
                     .introspectViewController { $0.isModalInPresentation = !dragToHide }
             ) }
         }
