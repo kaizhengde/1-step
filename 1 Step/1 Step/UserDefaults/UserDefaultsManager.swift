@@ -49,6 +49,7 @@ class UserDefaultsManager: ObservableObject {
     @UserDefault(UserDefaultKey.Setting.appearance,     default: .mirrorDevice) var settingAppearance: OneSAppearance
     @UserDefault(UserDefaultKey.Setting.colorTheme,     default: .water)        var settingColorTheme: OneSColorTheme
     @UserDefault(UserDefaultKey.Setting.iCloudSynch,    default: false)         var settingICloudSynch: Bool
+    @UserDefault(UserDefaultKey.Setting.faceTouchID,    default: false)         var settingFaceTouchID: Bool
     
     
     //MARK: - Authorization

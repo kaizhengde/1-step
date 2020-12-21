@@ -12,14 +12,33 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
+        setupNotifications()
+        appWillEnterForeground()
+        
+        return true
+    }
+    
+    
+    private func setupNotifications() {
         UNUserNotificationCenter.current().delegate = self
         
         UIApplication.shared.applicationIconBadgeNumber = 0
         UserDefaultsManager.shared.notificationBadgeCount = 0
-                        
-        return true
     }
     
+    
+    private func appWillEnterForeground() {
+        NotificationCenter.default.addObserver(forName: UIApplication.willEnterForegroundNotification, object: nil, queue: .main) { _ in
+            self.setupBiometricAuthentication()
+        }
+    }
+    
+    
+    private func setupBiometricAuthentication() {
+        if UserDefaultsManager.shared.settingFaceTouchID {
+            LockViewManager.shared.showLockView()
+        }
+    }
 }
 
 
@@ -47,7 +66,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
                     GoalModel.shared.selectedGoal = goal
                     GoalModel.shared.objectWillChange.send()
                     
-                    if MainModel.shared.initialScreenAppeared {
+                    if MainModel.shared.appLaunched {
                         FullSheetManager.shared.dismiss()
                         SheetManager.shared.dismiss()
                         MiniSheetManager.shared.dismiss()

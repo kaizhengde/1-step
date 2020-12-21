@@ -18,8 +18,6 @@ final class LoadingViewManager: ViewOverlayManagerProtocol {
     @Published var content: () -> AnyView = { AnyView(EmptyView()) }
     
     
-    //MARK: - Floaters
-    
     func showLoadingView(wheelColor: Color) {
         DispatchQueue.main.async {
             self.initTransition()

@@ -130,6 +130,7 @@ struct ProfileAppSectionView: View {
         @ObservedObject var profileModel: ProfileModel
         
         @State private var iCloudSynch = UserDefaultsManager.shared.settingICloudSynch
+        var faceTouchID: Bool { UserDefaultsManager.shared.settingFaceTouchID }
         
         
         var body: some View {
@@ -158,6 +159,28 @@ struct ProfileAppSectionView: View {
                     }
                 }
                 
+                if let authenticationType = AuthenticationManager.getBiometricType().description {
+                    OneSRowButton(
+                        .shortSmall,
+                        title: authenticationType,
+                        textColor: profileModel.appSelectedRowTitleColor(faceTouchID),
+                        backgroundColor: profileModel.appSelectedRowBackgroundColor(faceTouchID),
+                        accessoryText: profileModel.appSelectedRowAccessoryText(faceTouchID, enabled: Localized.on, disabled: Localized.off),
+                        accessoryColor: profileModel.appSelectedRowAccessoryColor(faceTouchID),
+                        action: {
+                            if faceTouchID {
+                                AuthenticationManager.authorize {
+                                    if $0 { userDefaultsManager.settingFaceTouchID = false }
+                                }
+                            } else {
+                                AuthenticationManager.requestPermissionForFaceTouchID {
+                                    userDefaultsManager.settingFaceTouchID = true
+                                }
+                            }
+                        }
+                    )
+                }
+                
                 OneSRowButton(.shortSmall, title: Localized.privacyPolicy) {
                     SheetManager.shared.showSheet {
                         OneSSafariView(urlString: WebsiteURLString.privacyPolicy, tintColor: profileModel.section1Color)
@@ -166,11 +189,14 @@ struct ProfileAppSectionView: View {
             }
             .onReceive(popupManager.confirmBtnDismissed) {
                 if $0.key == .resetAllData {
-                    //AuthorizationManager.requestFaceTouchIDAuthorization {
+                    let proceedReset = {
                         DataModel.shared.deleteAllGoals {
                             MainModel.shared.toScreen(.goals)
                         }
-                    //}
+                    }
+                    
+                    if faceTouchID { AuthenticationManager.authorize { if $0 { proceedReset() } } }
+                    else { proceedReset() }
                 }
             }
             .onReceive(CloudKitHandler.finished) { iCloudSynch = userDefaultsManager.settingICloudSynch } 

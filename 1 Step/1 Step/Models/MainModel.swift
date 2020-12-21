@@ -48,16 +48,26 @@ struct Screen {
 final class MainModel: ObservableObject {
     
     static let shared = MainModel()
-    private init() {        
+    
+    @Published private(set) var currentScreen: Screen = Screen()
+    @Published private(set) var appLaunched = false
+    
+    private init() {
+        if UserDefaultsManager.shared.settingFaceTouchID {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                LockViewManager.shared.showLockView()
+            }
+        }
+        else { launchApp() }
+    }
+    
+    func launchApp() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             let initialScreen: Screen.Active = UserDefaultsManager.shared.firstStart ? .firstStart : .goals
             self.currentScreen.active = initialScreen
-            self.initialScreenAppeared = true
+            self.appLaunched = true
         }
     }
-    
-    @Published private(set) var currentScreen: Screen = Screen()
-    @Published private(set) var initialScreenAppeared = false
     
     
     func toScreen(_ nextScreen: Screen.Active) {

@@ -28,6 +28,7 @@ struct MainView: View {
         }
         .statusBar(hidden: true)
         .oneSOpacityAnimation()
+        .oneSLockView()
         .oneSFullSheet()
         .sheet(isPresented: $sheetManager.appear, content: sheetManager.content)
         .oneSMiniSheet()

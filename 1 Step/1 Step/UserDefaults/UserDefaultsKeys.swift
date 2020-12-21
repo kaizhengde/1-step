@@ -62,6 +62,7 @@ extension UserDefaultKey {
         static let appearance: Key               = "setting.appearance"
         static let colorTheme: Key               = "setting.colorTheme"
         static let iCloudSynch: Key              = "setting.iCloudSynch"
+        static let faceTouchID: Key              = "setting.faceTouchID"
     }
     
     

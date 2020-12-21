@@ -29,23 +29,4 @@ enum AuthorizationManager {
             completion(false)
         }
     }
-    
-    
-    static func requestFaceTouchIDAuthorization(success: @escaping () -> ()) {
-        let context = LAContext()
-        var error: NSError?
-
-        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-            let reason = "We need to unlock your data."
-
-            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { valid, _ in
-                DispatchQueue.main.async {
-                    if valid {
-                        success()
-                        return
-                    }
-                }
-            }
-        }
-    }
 }

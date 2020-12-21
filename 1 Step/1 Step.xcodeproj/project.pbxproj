@@ -150,6 +150,9 @@
 		3DAE7AE425309D0F00B162B1 /* FloaterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE7AE325309D0F00B162B1 /* FloaterManager.swift */; };
 		3DAE7AE725309DBB00B162B1 /* OneSFloater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE7AE625309DBB00B162B1 /* OneSFloater.swift */; };
 		3DAE7AEB2530A3E600B162B1 /* OneSTextFloater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE7AEA2530A3E600B162B1 /* OneSTextFloater.swift */; };
+		3DB0C83D259082C500553F7F /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB0C83C259082C500553F7F /* AuthenticationManager.swift */; };
+		3DB0C8442590976A00553F7F /* OneSLockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB0C8432590976A00553F7F /* OneSLockView.swift */; };
+		3DB0C8482590A3D900553F7F /* LockViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB0C8472590A3D900553F7F /* LockViewManager.swift */; };
 		3DBCC6B5257DF61C00924652 /* URLStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBCC6B4257DF61C00924652 /* URLStrings.swift */; };
 		3DBCC75E257EA1F900924652 /* 1StepIconEarth60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DBCC756257EA1F900924652 /* 1StepIconEarth60@2x.png */; };
 		3DBCC75F257EA1F900924652 /* 1StepIconEarth60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DBCC757257EA1F900924652 /* 1StepIconEarth60@3x.png */; };
@@ -400,6 +403,9 @@
 		3DAE7AE325309D0F00B162B1 /* FloaterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloaterManager.swift; sourceTree = "<group>"; };
 		3DAE7AE625309DBB00B162B1 /* OneSFloater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSFloater.swift; sourceTree = "<group>"; };
 		3DAE7AEA2530A3E600B162B1 /* OneSTextFloater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSTextFloater.swift; sourceTree = "<group>"; };
+		3DB0C83C259082C500553F7F /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
+		3DB0C8432590976A00553F7F /* OneSLockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSLockView.swift; sourceTree = "<group>"; };
+		3DB0C8472590A3D900553F7F /* LockViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockViewManager.swift; sourceTree = "<group>"; };
 		3DBCC6B4257DF61C00924652 /* URLStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLStrings.swift; sourceTree = "<group>"; };
 		3DBCC756257EA1F900924652 /* 1StepIconEarth60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "1StepIconEarth60@2x.png"; path = "../../../../Design/Assets/AppIcons/Earth/1StepIconEarth60@2x.png"; sourceTree = "<group>"; };
 		3DBCC757257EA1F900924652 /* 1StepIconEarth60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "1StepIconEarth60@3x.png"; path = "../../../../Design/Assets/AppIcons/Earth/1StepIconEarth60@3x.png"; sourceTree = "<group>"; };
@@ -573,6 +579,7 @@
 			children = (
 				3D6FA05E258E9572006DFAA3 /* NetworkManager.swift */,
 				3D68B66E2572437100A183F5 /* AuthorizationManager.swift */,
+				3DB0C83C259082C500553F7F /* AuthenticationManager.swift */,
 				3D68B65C25721C7C00A183F5 /* Notifications */,
 				3D160D54252E2067008588D5 /* TransitionManager.swift */,
 				3DC617252544145C00A1F204 /* InfiniteAnimationManager.swift */,
@@ -682,6 +689,7 @@
 				3DFD9BB3256B7B4300CF9580 /* SafariView */,
 				3D959A86256283E0007BAA07 /* Confetti */,
 				3DEBC0FA257FE77A0008360D /* TutorialGIF */,
+				3DB0C8422590975B00553F7F /* LockView */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -852,6 +860,7 @@
 				3D2E7967253021A900788AA2 /* PopupManager.swift */,
 				3DAE7AE325309D0F00B162B1 /* FloaterManager.swift */,
 				3D179F49258DF64700A6A7BE /* LoadingViewManager.swift */,
+				3DB0C8472590A3D900553F7F /* LockViewManager.swift */,
 			);
 			path = ViewOverlays;
 			sourceTree = "<group>";
@@ -1108,6 +1117,14 @@
 				3DA7BD392532F6A600171360 /* DataManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		3DB0C8422590975B00553F7F /* LockView */ = {
+			isa = PBXGroup;
+			children = (
+				3DB0C8432590976A00553F7F /* OneSLockView.swift */,
+			);
+			path = LockView;
 			sourceTree = "<group>";
 		};
 		3DBCC725257E910A00924652 /* Alternative Icons */ = {
@@ -1612,6 +1629,7 @@
 				3DEA91952579740900C90414 /* OneSFootnoteButton.swift in Sources */,
 				3DD5C9CD2539CF6600861784 /* GoalScreen.swift in Sources */,
 				3D2E7939252F9D7A00788AA2 /* OneSScaleButtonStyle.swift in Sources */,
+				3DB0C8442590976A00553F7F /* OneSLockView.swift in Sources */,
 				3D72B8C3252DB5B8006E660D /* Animations.swift in Sources */,
 				3D6FA065258E977F006DFAA3 /* PersistentContainer.swift in Sources */,
 				3DCFE2C025469DFB0012C536 /* AddView.swift in Sources */,
@@ -1667,6 +1685,7 @@
 				3D599FFB2574EBCA00A00EE4 /* GoalNotificationsHandler.swift in Sources */,
 				3DDF70372531BAB100FD3011 /* Milestone.swift in Sources */,
 				3D59DE972569657700CF24D7 /* OneSSectionView.swift in Sources */,
+				3DB0C83D259082C500553F7F /* AuthenticationManager.swift in Sources */,
 				3D959A8B256286AE007BAA07 /* ConfettiView.swift in Sources */,
 				3DE11C35252C681200F13719 /* __StepApp.swift in Sources */,
 				3D68B67F25726BF200A183F5 /* GoalChangeNotificationModel.swift in Sources */,
@@ -1705,6 +1724,7 @@
 				3D2E795425301ADD00788AA2 /* HapticFeedback.swift in Sources */,
 				3D78FD332566FB6F00C1D0D2 /* GoalExamplesView.swift in Sources */,
 				3DAE7AE725309DBB00B162B1 /* OneSFloater.swift in Sources */,
+				3DB0C8482590A3D900553F7F /* LockViewManager.swift in Sources */,
 				3D2E79452530187800788AA2 /* OneSTextField.swift in Sources */,
 				3D2E7936252F9D3E00788AA2 /* OneSHintButton.swift in Sources */,
 				3D4FD8762564F4C900103C73 /* GoalReachedHeaderView.swift in Sources */,
