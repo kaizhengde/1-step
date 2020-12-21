@@ -59,16 +59,21 @@ fileprivate struct OneSLockView: ViewModifier {
     private func tryAuthorize() {
         showLock = false
         OneSFeedback.light()
-        AuthenticationManager.authorize() { success in
-            if success {
-                manager.dismiss()
-                if !MainModel.shared.appLaunched {
-                    MainModel.shared.launchApp()
-                }
-            } else {
+        AuthenticationManager.authorize(
+            notPossible: {
                 showLock = true
                 errorText = "Biometric authentication failed. Make sure that you have your biometrics setup inside settings and turned on for 1 Step."
+            },
+            completion: { success in
+                if success {
+                    manager.dismiss()
+                    if !MainModel.shared.appLaunched {
+                        MainModel.shared.launchApp()
+                    }
+                } else {
+                    showLock = true
+                }
             }
-        }
+        )
     }
 }

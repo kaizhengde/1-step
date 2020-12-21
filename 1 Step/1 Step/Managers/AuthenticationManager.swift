@@ -38,9 +38,9 @@ enum AuthenticationManager {
     }
     
     
-    static func authorize(completion: @escaping (Bool) -> ()) {
+    static func authorize(notPossible: @escaping () -> () = {}, completion: @escaping (Bool) -> ()) {
         guard biometricAuthenticationIsPossible() else {
-            completion(false)
+            notPossible()
             return
         }
         
