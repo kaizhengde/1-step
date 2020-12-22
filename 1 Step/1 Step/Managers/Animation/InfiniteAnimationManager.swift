@@ -34,7 +34,7 @@ final class InfiniteAnimationManager: ObservableObject {
     
     
     private init() {
-        timer = Timer.publish(every: 3.6, on: .main, in: .common)
+        timer = Timer.publish(every: 4.8, on: .main, in: .common)
             .autoconnect()
             .sink { _ in
                 self.slow.toggle()

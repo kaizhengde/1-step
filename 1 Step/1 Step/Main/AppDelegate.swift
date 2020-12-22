@@ -61,12 +61,12 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
                 let coordinator = PersistenceManager.defaults.container.persistentStoreCoordinator
                 
                 if let objectID = coordinator.managedObjectID(forURIRepresentation: objectIDURL) {
-                    let goal = PersistenceManager.defaults.context.object(with: objectID) as! Goal
-                    
-                    GoalModel.shared.selectedGoal = goal
-                    GoalModel.shared.objectWillChange.send()
-                    
                     if MainModel.shared.appLaunched {
+                        let goal = PersistenceManager.defaults.context.object(with: objectID) as! Goal
+                        
+                        GoalModel.shared.selectedGoal = goal
+                        GoalModel.shared.objectWillChange.send()
+                        
                         FullSheetManager.shared.dismiss()
                         SheetManager.shared.dismiss()
                         MiniSheetManager.shared.dismiss()
@@ -78,6 +78,11 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
                     } else {
                         MainModel.shared.appLaunched = true
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                            let goal = PersistenceManager.defaults.context.object(with: objectID) as! Goal
+                            
+                            GoalModel.shared.selectedGoal = goal
+                            GoalModel.shared.objectWillChange.send()
+                            
                             MainModel.shared.toGoalScreen(.active)
                         }
                     }

@@ -18,6 +18,7 @@ extension View {
 fileprivate struct OneSLockView: ViewModifier {
     
     @StateObject private var manager = LockViewManager.shared
+    @StateObject private var infiniteAnimationManager = InfiniteAnimationManager.shared
     @State private var showLock = false
     @State private var errorText: String? = nil
     
@@ -37,12 +38,21 @@ fileprivate struct OneSLockView: ViewModifier {
             if !manager.transition.isFullHidden {
                 VStack {
                     SFSymbol.lock
-                        .font(.system(size: 40, weight: .light))
+                        .font(.system(size: 36, weight: .light))
                         .foregroundColor(UserColor.user0.standard)
-                        .offset(y: -16)
+                        .scaleEffect(infiniteAnimationManager.fast.isOnBackward ? 1.1 : 1.0)
+                        .animation(InfiniteAnimationManager.fastAnimation)
+                        .background(
+                            Circle()
+                                .foregroundColor(.backgroundToGray)
+                                .frame(width: 100, height: 100)
+                                .scaleEffect(infiniteAnimationManager.slow.isOnBackward ? 1.5: 1.0)
+                                .animation(InfiniteAnimationManager.slowAnimation)
+                        )
+                        .offset(y: -20)
                         .opacity(manager.transition.isFullAppeared && showLock ? 1.0 : 0.0)
                         .oneSItemTransition()
-                        .oneSItemScaleTapGesture(amount: 1.2) {
+                        .oneSItemScaleTapGesture(amount: 1.1) {
                             OneSFeedback.light()
                             tryAuthorize()
                         }
