@@ -775,7 +775,6 @@
 				3D47CC90252C71EA00A8CA1B /* CoordinateSpace.swift */,
 				3D637406257BE643001C3585 /* Sounds.swift */,
 				3DBCC6B4257DF61C00924652 /* URLStrings.swift */,
-				3D85CC5925924D5000A9F23B /* FirebaseAnalyticsEvents.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -1048,6 +1047,14 @@
 			path = MailView;
 			sourceTree = "<group>";
 		};
+		3D85CC6B2592833700A9F23B /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				3D85CC5925924D5000A9F23B /* FirebaseAnalyticsEvents.swift */,
+			);
+			path = Analytics;
+			sourceTree = "<group>";
+		};
 		3D959A85256283C1007BAA07 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1284,6 +1291,7 @@
 			children = (
 				3D47CC7E252C6C4700A8CA1B /* Utilities */,
 				3D47CC7F252C6C5100A8CA1B /* Extensions */,
+				3D85CC6B2592833700A9F23B /* Analytics */,
 				3D0BEAEE2568D110002F74FE /* UserDefaults */,
 				3D47CC80252C6C5700A8CA1B /* Data */,
 				3D160D53252E2053008588D5 /* Managers */,
