@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct Screen {
     
@@ -72,6 +73,8 @@ final class MainModel: ObservableObject {
     
     func toScreen(_ nextScreen: Screen.Active) {
         currentScreen.dismiss()
+        
+        Analytics.logEvent("change_screen", parameters: nil)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + Animation.Delay.opacity) {
             self.currentScreen.active = nextScreen

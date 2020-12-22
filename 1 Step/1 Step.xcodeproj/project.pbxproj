@@ -128,6 +128,7 @@
 		3D7A5A87258C992800F3BE6E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D7A5A86258C992800F3BE6E /* CloudKit.framework */; };
 		3D854B11253EA3F900A4F80E /* GoalDeleteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D854B10253EA3F900A4F80E /* GoalDeleteHandler.swift */; };
 		3D854B14253EAC2500A4F80E /* OneSTextFieldConfirmationPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D854B13253EAC2500A4F80E /* OneSTextFieldConfirmationPopup.swift */; };
+		3D8A3D09259216520068F6B4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D8A3D08259216520068F6B4 /* GoogleService-Info.plist */; };
 		3D959A8825628441007BAA07 /* ConfettiType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D959A8725628441007BAA07 /* ConfettiType.swift */; };
 		3D959A8B256286AE007BAA07 /* ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D959A8A256286AE007BAA07 /* ConfettiView.swift */; };
 		3D959A8E25628E74007BAA07 /* OneSConfetti.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D959A8D25628E74007BAA07 /* OneSConfetti.swift */; };
@@ -181,6 +182,8 @@
 		3DD5C9CD2539CF6600861784 /* GoalScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD5C9CC2539CF6600861784 /* GoalScreen.swift */; };
 		3DD5C9D02539CF7B00861784 /* GoalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD5C9CF2539CF7B00861784 /* GoalModel.swift */; };
 		3DD5C9D42539D27100861784 /* GoalTransitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD5C9D32539D27100861784 /* GoalTransitionView.swift */; };
+		3DD6CDE925920868008A4218 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 3DD6CDE825920868008A4218 /* FirebaseAnalytics */; };
+		3DD6CDEB25920868008A4218 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 3DD6CDEA25920868008A4218 /* FirebaseCrashlytics */; };
 		3DDF70252531A57700FD3011 /* StepUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDF70242531A57700FD3011 /* StepUnit.swift */; };
 		3DDF70292531A5BB00FD3011 /* UserColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDF70282531A5BB00FD3011 /* UserColor.swift */; };
 		3DDF702C2531A5D800FD3011 /* MountainImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDF702B2531A5D800FD3011 /* MountainImage.swift */; };
@@ -384,6 +387,7 @@
 		3D7A5A86258C992800F3BE6E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		3D854B10253EA3F900A4F80E /* GoalDeleteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDeleteHandler.swift; sourceTree = "<group>"; };
 		3D854B13253EAC2500A4F80E /* OneSTextFieldConfirmationPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSTextFieldConfirmationPopup.swift; sourceTree = "<group>"; };
+		3D8A3D08259216520068F6B4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3D959A8725628441007BAA07 /* ConfettiType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfettiType.swift; sourceTree = "<group>"; };
 		3D959A8A256286AE007BAA07 /* ConfettiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfettiView.swift; sourceTree = "<group>"; };
 		3D959A8D25628E74007BAA07 /* OneSConfetti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSConfetti.swift; sourceTree = "<group>"; };
@@ -506,6 +510,8 @@
 			files = (
 				3D7A5A87258C992800F3BE6E /* CloudKit.framework in Frameworks */,
 				3D6FA05B258E9045006DFAA3 /* Reachability in Frameworks */,
+				3DD6CDE925920868008A4218 /* FirebaseAnalytics in Frameworks */,
+				3DD6CDEB25920868008A4218 /* FirebaseCrashlytics in Frameworks */,
 				3DB0C84E2590DF1E00553F7F /* StoreKit.framework in Frameworks */,
 				3D6373C4257A8F1B001C3585 /* Introspect in Frameworks */,
 				3DE303AA2582AC9700158A40 /* Gifu in Frameworks */,
@@ -1293,6 +1299,7 @@
 				3D47CC93252C738D00A8CA1B /* Fonts */,
 				3DEA91832579580F00C90414 /* Sounds */,
 				3DE11C42252C681600F13719 /* Info.plist */,
+				3D8A3D08259216520068F6B4 /* GoogleService-Info.plist */,
 				3DE11C3F252C681600F13719 /* __Step.xcdatamodeld */,
 				3D68B65925721C3D00A183F5 /* 1 Step.entitlements */,
 				3DE11C3A252C681600F13719 /* Preview Content */,
@@ -1476,6 +1483,7 @@
 				3DE11C2E252C681200F13719 /* Frameworks */,
 				3DE11C2F252C681200F13719 /* Resources */,
 				3D7A5A2B258B8CFA00F3BE6E /* Embed App Extensions */,
+				3DD6CDF625920BFC008A4218 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1486,6 +1494,8 @@
 				3D6373C3257A8F1B001C3585 /* Introspect */,
 				3DE303A92582AC9700158A40 /* Gifu */,
 				3D6FA05A258E9045006DFAA3 /* Reachability */,
+				3DD6CDE825920868008A4218 /* FirebaseAnalytics */,
+				3DD6CDEA25920868008A4218 /* FirebaseCrashlytics */,
 			);
 			productName = "1 Step";
 			productReference = 3DE11C31252C681200F13719 /* 1 Step.app */;
@@ -1524,6 +1534,7 @@
 				3D6373C2257A8F1B001C3585 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 				3DE303A82582AC9700158A40 /* XCRemoteSwiftPackageReference "Gifu" */,
 				3D6FA059258E9045006DFAA3 /* XCRemoteSwiftPackageReference "Reachability" */,
+				3DD6CDE725920868008A4218 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 3DE11C32252C681200F13719 /* Products */;
 			projectDirPath = "";
@@ -1564,6 +1575,7 @@
 				3DD5C0672585D7FD00D8AC7D /* TutorialSelectColorLight.gif in Resources */,
 				3D47CCA0252C73D300A8CA1B /* Raleway-Medium.ttf in Resources */,
 				3DE11C39252C681600F13719 /* Assets.xcassets in Resources */,
+				3D8A3D09259216520068F6B4 /* GoogleService-Info.plist in Resources */,
 				3DBCC75E257EA1F900924652 /* 1StepIconEarth60@2x.png in Resources */,
 				3D47CCA7252C73D300A8CA1B /* Raleway-ExtraLight.ttf in Resources */,
 				3DBCC75F257EA1F900924652 /* 1StepIconEarth60@3x.png in Resources */,
@@ -1580,6 +1592,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3DD6CDF625920BFC008A4218 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}\n",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)\n",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${BUILD_DIR%Build/*}SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3D0BEB13256908CA002F74FE /* Sources */ = {
@@ -1982,6 +2016,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "1 Step/1 Step.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"1 Step/Preview Content\"";
 				DEVELOPMENT_TEAM = M4J79LU3NC;
 				ENABLE_PREVIEWS = YES;
@@ -1992,6 +2027,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.01;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kaizheng.--Step";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -2017,6 +2053,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.01;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kaizheng.--Step";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -2073,6 +2110,14 @@
 				minimumVersion = 5.1.0;
 			};
 		};
+		3DD6CDE725920868008A4218 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.3.1;
+			};
+		};
 		3DE303A82582AC9700158A40 /* XCRemoteSwiftPackageReference "Gifu" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kaishin/Gifu.git";
@@ -2093,6 +2138,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3D6FA059258E9045006DFAA3 /* XCRemoteSwiftPackageReference "Reachability" */;
 			productName = Reachability;
+		};
+		3DD6CDE825920868008A4218 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3DD6CDE725920868008A4218 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		3DD6CDEA25920868008A4218 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3DD6CDE725920868008A4218 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
 		};
 		3DE303A92582AC9700158A40 /* Gifu */ = {
 			isa = XCSwiftPackageProductDependency;

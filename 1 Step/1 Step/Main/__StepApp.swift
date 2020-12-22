@@ -28,7 +28,7 @@ struct __StepApp: App {
     let infinteAnimationManager = InfiniteAnimationManager.shared
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-
+    
     
     var body: some Scene {
         WindowGroup {
