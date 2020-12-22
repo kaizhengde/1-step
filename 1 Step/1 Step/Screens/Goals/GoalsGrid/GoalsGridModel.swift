@@ -7,6 +7,7 @@
 
 import SwiftUI
 import UniformTypeIdentifiers
+import Firebase
 
 class GoalsGridModel: ObservableObject {
     
