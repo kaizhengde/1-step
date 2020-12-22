@@ -128,6 +128,7 @@
 		3D7A5A87258C992800F3BE6E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D7A5A86258C992800F3BE6E /* CloudKit.framework */; };
 		3D854B11253EA3F900A4F80E /* GoalDeleteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D854B10253EA3F900A4F80E /* GoalDeleteHandler.swift */; };
 		3D854B14253EAC2500A4F80E /* OneSTextFieldConfirmationPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D854B13253EAC2500A4F80E /* OneSTextFieldConfirmationPopup.swift */; };
+		3D85CC5A25924D5000A9F23B /* FirebaseAnalyticsEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D85CC5925924D5000A9F23B /* FirebaseAnalyticsEvents.swift */; };
 		3D8A3D09259216520068F6B4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D8A3D08259216520068F6B4 /* GoogleService-Info.plist */; };
 		3D959A8825628441007BAA07 /* ConfettiType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D959A8725628441007BAA07 /* ConfettiType.swift */; };
 		3D959A8B256286AE007BAA07 /* ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D959A8A256286AE007BAA07 /* ConfettiView.swift */; };
@@ -387,6 +388,7 @@
 		3D7A5A86258C992800F3BE6E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		3D854B10253EA3F900A4F80E /* GoalDeleteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDeleteHandler.swift; sourceTree = "<group>"; };
 		3D854B13253EAC2500A4F80E /* OneSTextFieldConfirmationPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSTextFieldConfirmationPopup.swift; sourceTree = "<group>"; };
+		3D85CC5925924D5000A9F23B /* FirebaseAnalyticsEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAnalyticsEvents.swift; sourceTree = "<group>"; };
 		3D8A3D08259216520068F6B4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3D959A8725628441007BAA07 /* ConfettiType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfettiType.swift; sourceTree = "<group>"; };
 		3D959A8A256286AE007BAA07 /* ConfettiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfettiView.swift; sourceTree = "<group>"; };
@@ -770,6 +772,7 @@
 				3D47CC90252C71EA00A8CA1B /* CoordinateSpace.swift */,
 				3D637406257BE643001C3585 /* Sounds.swift */,
 				3DBCC6B4257DF61C00924652 /* URLStrings.swift */,
+				3D85CC5925924D5000A9F23B /* FirebaseAnalyticsEvents.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -1760,6 +1763,7 @@
 				3D68B66F2572437200A183F5 /* AuthorizationManager.swift in Sources */,
 				3DCFE29F2545A2B30012C536 /* OneSDualPicker.swift in Sources */,
 				3DDF703A2531BB5200FD3011 /* GoalState.swift in Sources */,
+				3D85CC5A25924D5000A9F23B /* FirebaseAnalyticsEvents.swift in Sources */,
 				3D854B14253EAC2500A4F80E /* OneSTextFieldConfirmationPopup.swift in Sources */,
 				3D2E7972253033B400788AA2 /* OneSTextPopupView.swift in Sources */,
 				3D599FF72574EBBC00A00EE4 /* GoalAccomplishmentsHandler.swift in Sources */,

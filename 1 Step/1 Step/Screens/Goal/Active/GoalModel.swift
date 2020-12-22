@@ -129,7 +129,7 @@ final class GoalModel: TransitionObservableObject {
     
     
     func toggleMenuButton() {
-        if dragState == .none { dragState = .menu } else { dragState = .none }
+        if dragState == .none { toMenu() } else { toGoals() }
     }
     
     
