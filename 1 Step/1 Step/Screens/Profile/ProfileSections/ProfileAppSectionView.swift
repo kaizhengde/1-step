@@ -144,20 +144,6 @@ struct ProfileAppSectionView: View {
                     accessoryColor: profileModel.appSelectedRowAccessoryColor(iCloudSynch),
                     action: { CloudKitHandler.cloudKitButtonToggled() }
                 )
-                                                
-                OneSRowButton(.shortSmall, title: Localized.resetAllData) {
-                    popupManager.showPopup(.resetAllData, backgroundColor: .grayStatic, height: 420*Layout.multiplierWidth, hapticFeedback: true) {
-                        OneSTextFieldConfirmationPopupView(
-                            titleText:          Localized.reset,
-                            bodyText:           Localized.Profile.reset_confirmMessage,
-                            textColor:          .backgroundStatic,
-                            confirmationText:   Localized.Profile.reset_confirmInput,
-                            placeholder:        Localized.Profile.reset_confirmInput,
-                            placeholderColor:   .blackStatic,
-                            inputLimit:         Localized.Profile.reset_confirmInput.count
-                        )
-                    }
-                }
                 
                 if let authenticationType = BiometricsManager.getBiometricType().description {
                     OneSRowButton(
@@ -179,6 +165,20 @@ struct ProfileAppSectionView: View {
                             }
                         }
                     )
+                }
+                
+                OneSRowButton(.shortSmall, title: Localized.resetAllData) {
+                    popupManager.showPopup(.resetAllData, backgroundColor: .grayStatic, height: 420*Layout.multiplierWidth, hapticFeedback: true) {
+                        OneSTextFieldConfirmationPopupView(
+                            titleText:          Localized.reset,
+                            bodyText:           Localized.Profile.reset_confirmMessage,
+                            textColor:          .backgroundStatic,
+                            confirmationText:   Localized.Profile.reset_confirmInput,
+                            placeholder:        Localized.Profile.reset_confirmInput,
+                            placeholderColor:   .blackStatic,
+                            inputLimit:         Localized.Profile.reset_confirmInput.count
+                        )
+                    }
                 }
                 
                 OneSRowButton(.shortSmall, title: Localized.privacyPolicy) {

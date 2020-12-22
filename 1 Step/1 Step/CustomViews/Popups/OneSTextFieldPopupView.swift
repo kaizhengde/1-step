@@ -21,6 +21,7 @@ struct OneSTextFieldPopupView: View {
     let inputLimit: Int
     let keyboard: UIKeyboardType
     let lowercased: Bool
+    let firstResponder: Bool
     
     @State private var input: String = ""
     
@@ -33,7 +34,8 @@ struct OneSTextFieldPopupView: View {
          placeholderColor: Color,
          inputLimit: Int,
          keyboard: UIKeyboardType   = .default,
-         lowercased: Bool           = false
+         lowercased: Bool           = false,
+         firstResponder: Bool       = false
     ) {
         self.titleText          = titleText
         self.bodyText           = bodyText
@@ -45,6 +47,7 @@ struct OneSTextFieldPopupView: View {
         self.inputLimit         = inputLimit
         self.keyboard           = keyboard
         self.lowercased         = lowercased
+        self.firstResponder     = firstResponder
     }
     
     
@@ -58,7 +61,7 @@ struct OneSTextFieldPopupView: View {
                 }
                 
                 OneSMultilineText(text: bodyText, color: textColor)
-                OneSTextField(input: $input, placeholder: placeholder, inputColor: textColor, placeholderColor: placeholderColor, inputLimit: inputLimit, keyboard: keyboard, lowercased: lowercased) { manager.confirmBtnDismiss(with: input) }
+                OneSTextField(input: $input, placeholder: placeholder, inputColor: textColor, placeholderColor: placeholderColor, inputLimit: inputLimit, keyboard: keyboard, lowercased: lowercased, firstResponder: firstResponder) { manager.confirmBtnDismiss(with: input) }
                 
                 Spacer()
             }

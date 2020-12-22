@@ -20,6 +20,8 @@ struct OneSTextField: View {
     var keyboard: UIKeyboardType = .default
     var lowercased: Bool = false
     
+    var firstResponder: Bool = false
+    
     var action: () -> () = {}
     
     
@@ -38,6 +40,11 @@ struct OneSTextField: View {
                 .multilineTextAlignment(.leading)
                 .keyboardType(keyboard)
                 .disableAutocorrection(true)
+                .introspectTextField { textField in
+                    if firstResponder {
+                        textField.becomeFirstResponder()
+                    }
+                }
             }
             .frame(height: 40)
             

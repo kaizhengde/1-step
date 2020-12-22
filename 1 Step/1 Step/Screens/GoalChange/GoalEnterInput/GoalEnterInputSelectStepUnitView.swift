@@ -122,7 +122,8 @@ struct GoalEnterInputSelectStepUnitView: View {
                                 initialInput: viewModel.selectedData.customUnit,
                                 placeholder: Localized.Step.unit_custom,
                                 placeholderColor: selectedColor.dark,
-                                inputLimit: Step.customUnitDigitsLimit
+                                inputLimit: Step.customUnitDigitsLimit,
+                                firstResponder: true
                             )
                         }
                     }
