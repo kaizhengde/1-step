@@ -129,6 +129,7 @@
 		3D854B11253EA3F900A4F80E /* GoalDeleteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D854B10253EA3F900A4F80E /* GoalDeleteHandler.swift */; };
 		3D854B14253EAC2500A4F80E /* OneSTextFieldConfirmationPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D854B13253EAC2500A4F80E /* OneSTextFieldConfirmationPopup.swift */; };
 		3D85CC5A25924D5000A9F23B /* FirebaseAnalyticsEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D85CC5925924D5000A9F23B /* FirebaseAnalyticsEvents.swift */; };
+		3D85CC682592639B00A9F23B /* OneSMailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D85CC672592639B00A9F23B /* OneSMailView.swift */; };
 		3D8A3D09259216520068F6B4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D8A3D08259216520068F6B4 /* GoogleService-Info.plist */; };
 		3D959A8825628441007BAA07 /* ConfettiType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D959A8725628441007BAA07 /* ConfettiType.swift */; };
 		3D959A8B256286AE007BAA07 /* ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D959A8A256286AE007BAA07 /* ConfettiView.swift */; };
@@ -389,6 +390,7 @@
 		3D854B10253EA3F900A4F80E /* GoalDeleteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDeleteHandler.swift; sourceTree = "<group>"; };
 		3D854B13253EAC2500A4F80E /* OneSTextFieldConfirmationPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSTextFieldConfirmationPopup.swift; sourceTree = "<group>"; };
 		3D85CC5925924D5000A9F23B /* FirebaseAnalyticsEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAnalyticsEvents.swift; sourceTree = "<group>"; };
+		3D85CC672592639B00A9F23B /* OneSMailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSMailView.swift; sourceTree = "<group>"; };
 		3D8A3D08259216520068F6B4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3D959A8725628441007BAA07 /* ConfettiType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfettiType.swift; sourceTree = "<group>"; };
 		3D959A8A256286AE007BAA07 /* ConfettiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfettiView.swift; sourceTree = "<group>"; };
@@ -702,6 +704,7 @@
 				3D5ACAF22530663A00E1FABE /* Floaters */,
 				3D179F44258DF53900A6A7BE /* Loading */,
 				3DFD9BB3256B7B4300CF9580 /* SafariView */,
+				3D85CC64259262CA00A9F23B /* MailView */,
 				3D959A86256283E0007BAA07 /* Confetti */,
 				3DEBC0FA257FE77A0008360D /* TutorialGIF */,
 				3DB0C8422590975B00553F7F /* LockView */,
@@ -1035,6 +1038,14 @@
 				3D7A5A1D258B8CF700F3BE6E /* SwiftUI.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3D85CC64259262CA00A9F23B /* MailView */ = {
+			isa = PBXGroup;
+			children = (
+				3D85CC672592639B00A9F23B /* OneSMailView.swift */,
+			);
+			path = MailView;
 			sourceTree = "<group>";
 		};
 		3D959A85256283C1007BAA07 /* Helpers */ = {
@@ -1776,6 +1787,7 @@
 				3D407850254E83E600744652 /* MilestoneModel.swift in Sources */,
 				3DAE7AEB2530A3E600B162B1 /* OneSTextFloater.swift in Sources */,
 				3D610881256D6E3A00DC20BD /* LocalizationHelper.swift in Sources */,
+				3D85CC682592639B00A9F23B /* OneSMailView.swift in Sources */,
 				3D0BEB0D2568EA52002F74FE /* ProfileModel.swift in Sources */,
 				3DEBC10E257FF0B70008360D /* OneSTutorialGIF.swift in Sources */,
 				3DEA918F25795FE600C90414 /* AppDelegate.swift in Sources */,

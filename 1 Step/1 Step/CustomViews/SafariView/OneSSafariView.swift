@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit 
 import SafariServices
 
 struct OneSSafariView: View {
@@ -22,7 +23,7 @@ struct OneSSafariView: View {
 }
 
 
-struct SafariView: UIViewControllerRepresentable {
+fileprivate struct SafariView: UIViewControllerRepresentable {
 
     let url: URL
     let tintColor: UIColor
