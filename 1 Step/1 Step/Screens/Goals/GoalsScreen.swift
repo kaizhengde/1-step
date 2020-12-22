@@ -14,7 +14,7 @@ struct GoalsScreen: View {
     @StateObject private var goalsActiveGridModel = GoalsGridModel(tab: .active)
     @StateObject private var goalsReachedGridModel = GoalsGridModel(tab: .reached)
     
-    
+ 
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack {

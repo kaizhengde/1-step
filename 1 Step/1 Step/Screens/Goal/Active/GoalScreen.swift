@@ -13,7 +13,7 @@ struct GoalScreen: View {
     @StateObject private var goalModel = GoalModel.shared
     @StateObject private var addStepModel = AddStepModel()
     @GestureState private var dragOffset: CGFloat = .zero
-    
+
     
     var body: some View {
         ZStack(alignment: .leading) {

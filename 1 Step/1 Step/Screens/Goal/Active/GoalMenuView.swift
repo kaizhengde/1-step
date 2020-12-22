@@ -14,7 +14,7 @@ struct GoalMenuView: View {
     
     var activeGoalsRest: [Goal] { dataModel.activeGoals.filter { $0 != goalModel.selectedGoal } }
     
-    
+
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(alignment: .leading) {

@@ -19,7 +19,6 @@ final class LockViewManager: ViewOverlayManagerProtocol {
     func showLockView() {
         DispatchQueue.main.async {
             self.initTransition()
-
         }
     }
 }
