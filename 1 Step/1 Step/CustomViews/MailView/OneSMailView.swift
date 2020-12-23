@@ -51,9 +51,11 @@ fileprivate struct MailView: UIViewControllerRepresentable {
     class Coordinator: NSObject, MFMailComposeViewControllerDelegate {
 
         @Binding var presentation: PresentationMode
-
-        init(presentation: Binding<PresentationMode>) {
+        let tintColor: UIColor
+        
+        init(presentation: Binding<PresentationMode>, tintColor: UIColor) {
             self._presentation = presentation
+            self.tintColor = tintColor
         }
 
         
@@ -70,9 +72,10 @@ fileprivate struct MailView: UIViewControllerRepresentable {
             switch result {
             case .cancelled, .saved: break
             case .sent:
-                PopupManager.shared.showPopup(backgroundColor: .darkNeutralToNeutral, hapticFeedback: true) {
-                    OneSTextPopupView(titleText: Localized.thankYou, bodyText: "1 Step was made with the help of all of your feedback.\n\nYou are awesome!", bottomBtnTitle: "Done")
+                PopupManager.shared.showPopup(backgroundColor: Color(tintColor), hapticFeedback: true) {
+                    OneSTextPopupView(titleText: Localized.thankYou, bodyText: "1 Step was made with the help of all of your feedback.\n\nYou are awesome!", bottomBtnTitle: "Continue")
                 }
+                ConfettiManager.shared.showConfetti(amount: .small)
             case .failed:
                 PopupManager.shared.showPopup(backgroundColor: .darkNeutralToNeutral, hapticFeedback: true) {
                     OneSTextPopupView(titleText: Localized.error, bodyText: "Something went wrong. Unable to send mail.")
@@ -84,7 +87,7 @@ fileprivate struct MailView: UIViewControllerRepresentable {
 
     
     func makeCoordinator() -> Coordinator {
-        return Coordinator(presentation: presentation)
+        return Coordinator(presentation: presentation, tintColor: tintColor)
     }
     
     

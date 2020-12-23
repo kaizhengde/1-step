@@ -19,19 +19,23 @@ struct ProfileAboutSectionView: View {
             VStack(spacing: 40) {
                 VStack(spacing: 16) {
                     OneSRowButton(.long, title: Localized.sendFeedback, accessorySFSymbol: ProfileSymbol.feedback, accessoryColor: UserColor.user0.standard) {
-                        
+                        sheetManager.showSheet {
+                            OneSMailView(subject: "Feedback", tintColor: UserColor.user0.standard)
+                        }
                     }
                     
                     OneSRowButton(.long, title: Localized.requestFeatures, accessorySFSymbol: ProfileSymbol.request, accessoryColor: UserColor.user0.standard) {
-                        
+                        sheetManager.showSheet {
+                            OneSMailView(subject: "Request Features", tintColor: UserColor.user0.standard)
+                        }
                     }
                     
                     OneSRowButton(.long, title: Localized.rateOnAppStore, accessorySFSymbol: ProfileSymbol.rate, accessoryColor: UserColor.user0.standard) {
-                        
+                        AppStoreManager.rateApp()
                     }
                     
                     OneSRowButton(.long, title: Localized.share, accessorySFSymbol: ProfileSymbol.share, accessoryColor: UserColor.user0.standard) {
-                        
+                        AppStoreManager.shareApp()
                     }
                 }
                 

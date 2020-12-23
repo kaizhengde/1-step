@@ -20,6 +20,7 @@ enum GoalAccomplishmentsHandler {
         static func updateMilestonesAccomplishment(_ oldAmountReached: Int, _ newAmountReached: Int) {
             let newReached = newAmountReached - oldAmountReached
             UserDefaultsManager.shared.accomplishmentTotalMilestonesReached += newReached
+            AppStoreManager.askToRateAfterReachingThreeMilestones()
             avoidNegativeScores()
         }
         

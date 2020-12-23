@@ -41,6 +41,7 @@
 		3D2E79752530344D00788AA2 /* OneSSecondaryHeaderText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2E79742530344D00788AA2 /* OneSSecondaryHeaderText.swift */; };
 		3D407850254E83E600744652 /* MilestoneModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D40784F254E83E600744652 /* MilestoneModel.swift */; };
 		3D407855254E8E4E00744652 /* MilestoneProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D407854254E8E4E00744652 /* MilestoneProgressView.swift */; };
+		3D456EFF25930D7D00A87077 /* AppStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D456EFE25930D7D00A87077 /* AppStoreManager.swift */; };
 		3D47CC7B252C6C1C00A8CA1B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D47CC7A252C6C1C00A8CA1B /* MainView.swift */; };
 		3D47CC83252C6F9300A8CA1B /* OneSHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D47CC82252C6F9300A8CA1B /* OneSHeaderView.swift */; };
 		3D47CC89252C70B700A8CA1B /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D47CC88252C70B700A8CA1B /* Images.swift */; };
@@ -300,6 +301,7 @@
 		3D2E79742530344D00788AA2 /* OneSSecondaryHeaderText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSSecondaryHeaderText.swift; sourceTree = "<group>"; };
 		3D40784F254E83E600744652 /* MilestoneModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneModel.swift; sourceTree = "<group>"; };
 		3D407854254E8E4E00744652 /* MilestoneProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneProgressView.swift; sourceTree = "<group>"; };
+		3D456EFE25930D7D00A87077 /* AppStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreManager.swift; sourceTree = "<group>"; };
 		3D47CC7A252C6C1C00A8CA1B /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		3D47CC82252C6F9300A8CA1B /* OneSHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSHeaderView.swift; sourceTree = "<group>"; };
 		3D47CC88252C70B700A8CA1B /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
@@ -1165,6 +1167,7 @@
 		3DB0C84F2590E3E200553F7F /* StoreKit */ = {
 			isa = PBXGroup;
 			children = (
+				3D456EFE25930D7D00A87077 /* AppStoreManager.swift */,
 				3DB0C8512590E42B00553F7F /* PurchaseManager.swift */,
 			);
 			path = StoreKit;
@@ -1670,6 +1673,7 @@
 				3D4B78D8252CD4F000A45755 /* GoalCreateModel.swift in Sources */,
 				3D68B66A2572281400A183F5 /* OneSAuthorizationStatus.swift in Sources */,
 				3DFD9BE0256C1B8500CF9580 /* FirstStartModel.swift in Sources */,
+				3D456EFF25930D7D00A87077 /* AppStoreManager.swift in Sources */,
 				3D6D6458254C4D2400FAA37F /* JourneyModel.swift in Sources */,
 				3DC6172C2544882B00A1F204 /* MilestoneStages.swift in Sources */,
 				3DE9C519252CB0520023C212 /* GoalCreateItem.swift in Sources */,

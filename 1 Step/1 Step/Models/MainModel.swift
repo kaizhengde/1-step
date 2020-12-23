@@ -117,7 +117,7 @@ final class MainModel: ObservableObject {
     }
     
     
-    //MARK: - UserDefaults
+    //MARK: - Updates
     
     func considerUserDefaults() {
         updateAppearance()

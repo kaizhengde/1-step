@@ -35,7 +35,7 @@ struct GoalView: View {
                                     JourneyView(state: .active)
                                         .opacity(goalModel.journeyViewDragOpacity)
                                         .padding(.top, -250)
-                                        .padding(.bottom, 180*Layout.multiplierHeight)
+                                        .padding(.bottom, 250*Layout.multiplierHeight)
                                         .onAppear { goalModel.journeyViewDisappeared = false }
                                         .onDisappear { goalModel.journeyViewDisappeared = true }
                                 }

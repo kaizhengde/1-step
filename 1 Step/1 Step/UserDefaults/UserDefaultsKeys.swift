@@ -28,8 +28,6 @@ extension UserDefaultKey {
     typealias Key = UserDefaultKey
     
     enum App {
-        static let logInCount                    = "app.logIn"
-        static let ratedOnAppStore               = "app.ratedOnAppStore"
     }
     
     

@@ -21,6 +21,9 @@ class UserDefaultsManager: ObservableObject {
         }
     }
     
+    //MARK: - App
+    
+    
     
     //MARK: - First
     
@@ -39,7 +42,7 @@ class UserDefaultsManager: ObservableObject {
     //MARK: - Accomplishments
     
     @UserDefaultICloud(UserDefaultKey.Accomplishment.totalSteps,              default: 0) var accomplishmentTotalSteps: Int
-    @UserDefaultICloud(UserDefaultKey.Accomplishment.totalMilestonesReached,  default: 0) var accomplishmentTotalMilestonesReached: Int
+    @UserDefaultICloud(UserDefaultKey.Accomplishment.totalMilestonesReached,  default: 0) var accomplishmentTotalMilestonesReached: Int 
     @UserDefaultICloud(UserDefaultKey.Accomplishment.totalGoalsReached,       default: 0) var accomplishmentTotalGoalsReached: Int
     
     

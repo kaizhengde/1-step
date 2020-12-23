@@ -7,9 +7,13 @@
 
 import SwiftUI
 
-final class AppModel {
+enum AppModel {
     
-    static let version = "1.0"
+    enum General {
+        
+        static let appleID = "1542645142"
+        static let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
+    }
     
     
     //MARK: - AppIcon
