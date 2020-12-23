@@ -7,11 +7,11 @@
 
 import Foundation
 
-enum StepCategory {
+enum StepCategory: Int16 {
     
-    case duration
-    case distance
-    case reps
+    case duration   = 0
+    case distance   = 1
+    case reps       = 2
     
     
     var description: String {

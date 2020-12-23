@@ -46,9 +46,13 @@ struct ProfileScreen: View {
                 
                 HStack(spacing: 16) {
                     OneSFootnoteButton(text: Localized.credits, color: UserColor.user2.standard) {
-                        SheetManager.shared.showSheet { CreditsView() }
+                        FirebaseAnalyticsEvent.Profile.openCredits()
+                        SheetManager.shared.showSheet {
+                            CreditsView()
+                        }
                     }
                     OneSFootnoteButton(text: Localized.terms, color: UserColor.user2.standard) {
+                        FirebaseAnalyticsEvent.Profile.openTermsOfUse()
                         SheetManager.shared.showSheet {
                             OneSSafariView(urlString: WebsiteURLString.termsOfUse, tintColor: UserColor.user2.standard)
                         }

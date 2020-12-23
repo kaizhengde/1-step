@@ -143,7 +143,10 @@ struct ProfileAppSectionView: View {
                     backgroundColor: profileModel.appSelectedRowBackgroundColor(iCloudSynch),
                     accessoryText: profileModel.appSelectedRowAccessoryText(iCloudSynch, enabled: Localized.on, disabled: Localized.off),
                     accessoryColor: profileModel.appSelectedRowAccessoryColor(iCloudSynch),
-                    action: { CloudKitHandler.cloudKitButtonToggled() }
+                    action: {
+                        CloudKitHandler.cloudKitButtonToggled()
+                        FirebaseAnalyticsEvent.Profile.toggleICloud(to: iCloudSynch)
+                    }
                 )
                 
                 if let authenticationType = BiometricsManager.getBiometricType().description {
@@ -183,6 +186,7 @@ struct ProfileAppSectionView: View {
                 }
                 
                 OneSRowButton(.shortSmall, title: Localized.privacyPolicy) {
+                    FirebaseAnalyticsEvent.Profile.openPrivacyPolicy()
                     SheetManager.shared.showSheet {
                         OneSSafariView(urlString: WebsiteURLString.privacyPolicy, tintColor: profileModel.section1Color)
                     }

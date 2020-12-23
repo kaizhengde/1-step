@@ -155,11 +155,13 @@ struct PremiumView: View {
                     
                     HStack(spacing: 24) {
                         OneSFootnoteButton(text: Localized.privacyPolicy, color: UserColor.user0.standard) {
+                            FirebaseAnalyticsEvent.Profile.openPrivacyPolicy()
                             sheetManager.showSheet {
                                 OneSSafariView(urlString: WebsiteURLString.privacyPolicy, tintColor: UserColor.user2.standard)
                             }
                         }
                         OneSFootnoteButton(text: Localized.terms, color: UserColor.user0.standard) {
+                            FirebaseAnalyticsEvent.Profile.openTermsOfUse()
                             sheetManager.showSheet {
                                 OneSSafariView(urlString: WebsiteURLString.termsOfUse, tintColor: UserColor.user2.standard)
                             }

@@ -109,8 +109,9 @@ final class DataModel: ObservableObject {
     
     
     private func sendGoalChangeFirebaseAnalyticsEvents(with baseData: Goal.BaseData) {
-        FirebaseAnalyticsEvent.Goal.neededStepUnits(baseData.neededStepUnits!)
         FirebaseAnalyticsEvent.Goal.nameLength(baseData.name.count)
+        FirebaseAnalyticsEvent.Goal.neededStepUnits(baseData.neededStepUnits!)
+        FirebaseAnalyticsEvent.Goal.stepCategory(baseData.stepUnit!.category)
         FirebaseAnalyticsEvent.Goal.selectMountain(baseData.mountain!)
         FirebaseAnalyticsEvent.Goal.selectColor(baseData.color!)
         

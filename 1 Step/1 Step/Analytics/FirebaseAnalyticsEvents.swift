@@ -45,6 +45,7 @@ enum FirebaseAnalyticsEvent {
         }
         
         static let addProfilePicture: () -> ()  = { Analytics.logEvent("profile_add_profilePicture", parameters: nil) }
+        
         static let openHelp: () -> ()           = { Analytics.logEvent("profile_open_help", parameters: nil) }
         static let openTutorial: () -> ()       = { Analytics.logEvent("profile_open_tutorial", parameters: nil) }
         static let openRateOnAppStore: () -> () = { Analytics.logEvent("profile_open_rateOnAppStore", parameters: nil)}
@@ -54,6 +55,9 @@ enum FirebaseAnalyticsEvent {
         static let openVfdCollective: () -> ()  = { Analytics.logEvent("profile_open_vfdCollective", parameters: nil) }
         static let openPastelTree: () -> ()     = { Analytics.logEvent("profile_open_pastelTree", parameters: nil) }
         static let openPlantTree: () -> ()      = { Analytics.logEvent("profile_open_plantTree", parameters: nil) }
+        static let openPrivacyPolicy: () -> ()  = { Analytics.logEvent("profile_open_privacyPolicy", parameters: nil) }
+        static let openTermsOfUse: () -> ()     = { Analytics.logEvent("profile_open_termsOfUse", parameters: nil) }
+        static let openCredits: () -> ()        = { Analytics.logEvent("profile_open_credits", parameters: nil) }
     }
 
     
@@ -92,12 +96,16 @@ enum FirebaseAnalyticsEvent {
             Analytics.logEvent("goal_select_color", parameters: ["value": color.rawValue])
         }
         
-        static func neededStepUnits(_ value: Int16) {
-            Analytics.logEvent("goal_neededStepUnits", parameters: ["value": Int(value)])
-        }
         static func nameLength(_ value: Int) {
             Analytics.logEvent("goal_name_length", parameters: ["value": value])
         }
+        static func neededStepUnits(_ value: Int16) {
+            Analytics.logEvent("goal_neededStepUnits", parameters: ["value": Int(value)])
+        }
+        static func stepCategory(_ category: StepCategory) {
+            Analytics.logEvent("goal_step_unit_category", parameters: ["value": category.rawValue])
+        }
+        
         static func customUnitLength(_ value: Int) {
             Analytics.logEvent("goal_custom_unit_length", parameters: ["value": value])
         }
