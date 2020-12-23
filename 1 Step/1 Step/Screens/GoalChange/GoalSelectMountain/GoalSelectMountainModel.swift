@@ -137,7 +137,7 @@ final class GoalSelectMountainModel: TransitionObservableObject {
     }
     
     
-    func newMountainColor() {
+    func selectMountainColor() {
         let colorID = selectedData.color.rawValue
         
         //Next color if there is one, else go back to the first one

@@ -21,6 +21,9 @@ struct GoalExamplesView: View {
                 OneSDropDown(.shortBig, title: examples[i].example) {
                     GoalExampleMapView(data: examples[i].data, selectedColor: selectedColor, big: false)
                 }
+                .simultaneousGesture(
+                    TapGesture().onEnded { FirebaseAnalyticsEvent.GoalInfo.tapOnParticularExample() }
+                )
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)

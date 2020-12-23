@@ -28,6 +28,7 @@ extension UserDefaultKey {
     typealias Key = UserDefaultKey
     
     enum App {
+        static let askedForReview: Key           = "app.askedForReview"
     }
     
     

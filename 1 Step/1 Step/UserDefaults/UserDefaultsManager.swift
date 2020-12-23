@@ -23,8 +23,9 @@ class UserDefaultsManager: ObservableObject {
     
     //MARK: - App
     
+    @UserDefault(UserDefaultKey.App.askedForReview, default: false) var appAskedForReview: Bool 
     
-    
+     
     //MARK: - First
     
     @UserDefaultICloud(UserDefaultKey.First.start,            default: true) var firstStart: Bool

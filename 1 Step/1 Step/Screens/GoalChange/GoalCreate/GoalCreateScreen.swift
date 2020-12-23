@@ -41,6 +41,7 @@ struct GoalCreateScreen: View {
         .onAppear {
             goalSelectMountainModel.delegate = viewModel
             goalEnterInputModel.delegate = viewModel
+            FirebaseAnalyticsEvent.Goal.openCreate()
         }
     }
     

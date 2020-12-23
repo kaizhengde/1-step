@@ -36,6 +36,7 @@ final class GoalModel: TransitionObservableObject {
     let setScrollPosition = PassthroughSubject<ScrollPosition, Never>()
     
     @Published var showJourneyView: Bool = false
+    var onScrollToJourneyView = false
     @Published var journeyViewDisappeared = true
     @Published var showFlag: Bool = false
     
@@ -129,7 +130,15 @@ final class GoalModel: TransitionObservableObject {
     
     
     func toggleMenuButton() {
-        if dragState == .none { toMenu() } else { toGoals() }
+        if dragState == .none {
+            FirebaseAnalyticsEvent.GoalScreen.buttonToMenu()
+            FirebaseAnalyticsEvent.GoalScreen.toMenu()
+            toMenu()
+        } else {
+            FirebaseAnalyticsEvent.GoalScreen.buttonToGoals()
+            FirebaseAnalyticsEvent.GoalScreen.toGoals()
+            toGoals()
+        }
     }
     
     
@@ -295,11 +304,15 @@ final class GoalModel: TransitionObservableObject {
     private func onToMenu(_ value: DragGesture.Value) -> Bool {
         setScrollPosition.send(.top)
         showJourneyView = false
+        FirebaseAnalyticsEvent.GoalScreen.dragToMenu()
+        FirebaseAnalyticsEvent.GoalScreen.toMenu()
         return value.translation.width >= 50 && dragState == .none
     }
     
     
     private func onToGoalsFromMenu(_ value: DragGesture.Value) -> Bool {
+        FirebaseAnalyticsEvent.GoalScreen.dragToGoalsFromMenu()
+        FirebaseAnalyticsEvent.GoalScreen.toGoals()
         return value.translation.width > 50 && dragState == .menu
     }
     
@@ -310,6 +323,8 @@ final class GoalModel: TransitionObservableObject {
     
     
     private func onToGoals(_ value: DragGesture.Value) -> Bool {
+        FirebaseAnalyticsEvent.GoalScreen.dragToGoalsDirectly()
+        FirebaseAnalyticsEvent.GoalScreen.toGoals()
         return value.translation.width >= 240*Layout.multiplierWidth
     }
     
@@ -341,8 +356,13 @@ final class GoalModel: TransitionObservableObject {
             setScrollPosition.send(.top)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { self.showJourneyView = false }
         } else {
+            onScrollToJourneyView = true
             showJourneyView = true
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) { self.setScrollPosition.send(.current) }
+            FirebaseAnalyticsEvent.GoalScreen.downArrowToJourneyView()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+                self.setScrollPosition.send(.current)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { self.onScrollToJourneyView = false }
+            }
         }
     }
     
@@ -351,7 +371,14 @@ final class GoalModel: TransitionObservableObject {
     
     func updatePreferences(_ value: ScrollPK.Value) {
         scrollOffset = value
-        showJourneyView = value >= 30
+        if value >= 30 {
+            if !showJourneyView && !onScrollToJourneyView {
+                FirebaseAnalyticsEvent.GoalScreen.scrollToJourneyView()
+            }
+            showJourneyView = true
+        } else {
+            showJourneyView = false
+        }
     }
     
     

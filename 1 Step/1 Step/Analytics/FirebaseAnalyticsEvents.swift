@@ -44,6 +44,7 @@ enum FirebaseAnalyticsEvent {
             Analytics.logEvent("profile_toggle_biometrics", parameters: ["value": String(value)])
         }
         
+        static let addProfilePicture: () -> ()  = { Analytics.logEvent("profile_add_profilePicture", parameters: nil) }
         static let openHelp: () -> ()           = { Analytics.logEvent("profile_open_help", parameters: nil) }
         static let openTutorial: () -> ()       = { Analytics.logEvent("profile_open_tutorial", parameters: nil) }
         static let openRateOnAppStore: () -> () = { Analytics.logEvent("profile_open_rateOnAppStore", parameters: nil)}
@@ -60,45 +61,68 @@ enum FirebaseAnalyticsEvent {
         
         static let openHowItWorks: () -> ()         = { Analytics.logEvent("profile_open_howItWorks", parameters: nil) }
         static let openExamples: () -> ()           = { Analytics.logEvent("profile_open_examples", parameters: nil) }
-        static let openParticularExample: () -> ()  = { Analytics.logEvent("profile_open_particular_example", parameters: nil) }
+        static let tapOnParticularExample: () -> () = { Analytics.logEvent("profile_tapOn_particular_example", parameters: nil) }
     }
     
     
     enum Goal {
         
-        static let create: () -> ()                 = { Analytics.logEvent("goal_create", parameters: nil) }
-        static let created: () -> ()                = { Analytics.logEvent("goal_created", parameters: nil) }
-        static let createError: () -> ()            = { Analytics.logEvent("goal_create_error", parameters: nil) }
-        static let deleted: () -> ()                = { Analytics.logEvent("goal_delete", parameters: nil) }
-        static let edited: () -> ()                 = { Analytics.logEvent("goal_edited", parameters: nil) }
-        
-        static func selectedMountain(mountain: MountainImage) {
-            Analytics.logEvent("goal_selected_mountain", parameters: ["value": mountain.rawValue])
+        static let openCreate: () -> ()             = { Analytics.logEvent("goal_openCreate", parameters: nil) }
+        static let insert: () -> ()                 = { Analytics.logEvent("goal_insert", parameters: nil) }
+        static let delete: () -> ()                 = { Analytics.logEvent("goal_delete", parameters: nil) }
+        static let edit: () -> ()                   = { Analytics.logEvent("goal_edit", parameters: nil) }
+        static let createFailed: () -> ()           = { Analytics.logEvent("goal_create_failed", parameters: nil) }
+        static let editFailed: () -> ()             = { Analytics.logEvent("goal_edit_failed", parameters: nil) }
+
+        static func goalsCount(_ count: Int) {
+            Analytics.logEvent("goal_goals_count", parameters: ["value": count])
+        }
+        static func activeGoalsCount(_ count: Int) {
+            Analytics.logEvent("goal_activeGoals_count", parameters: ["value": count])
+        }
+        static func reachedGoalsCount(_ count: Int) {
+            Analytics.logEvent("goal_reachedGoals_count", parameters: ["value": count])
         }
         
-        static func selectedColor(color: UserColor) {
-            Analytics.logEvent("goal_selected_color", parameters: ["value": color.rawValue])
+        static func selectMountain(_ mountain: MountainImage) {
+            Analytics.logEvent("goal_select_mountain", parameters: ["value": mountain.rawValue])
+        }
+        static func selectColor(_ color: UserColor) {
+            Analytics.logEvent("goal_select_color", parameters: ["value": color.rawValue])
         }
         
-        static let neededStepUnits: () -> ()        = { Analytics.logEvent("goal_neededStepUnits", parameters: nil) }
+        static func neededStepUnits(_ value: Int16) {
+            Analytics.logEvent("goal_neededStepUnits", parameters: ["value": Int(value)])
+        }
+        static func nameLength(_ value: Int) {
+            Analytics.logEvent("goal_name_length", parameters: ["value": value])
+        }
+        static func customUnitLength(_ value: Int) {
+            Analytics.logEvent("goal_customUnit_length", parameters: ["value": value])
+        }
         static let customUnit: () -> ()             = { Analytics.logEvent("goal_custom_unit", parameters: nil) }
-        static let nameLength: () -> ()             = { Analytics.logEvent("goal_name_length", parameters: nil) }
-        static let customUnitLength: () -> ()       = { Analytics.logEvent("goal_custom_unit_length", parameters: nil) }
         
         static let addSteps: () -> ()               = { Analytics.logEvent("goal_add_steps", parameters: nil) }
         static let addNegativeSteps: () -> ()       = { Analytics.logEvent("goal_add_negative_steps", parameters: nil) }
         static let addTimeReminder: () -> ()        = { Analytics.logEvent("goal_add_time_reminder", parameters: nil) }
-        
-        static let reorderSortOrder: () -> ()       = { Analytics.logEvent("goal_reorderSortOrder", parameters: nil) }
+        static let moveGoal: () -> ()               = { Analytics.logEvent("goal_moveGoal", parameters: nil) }
     }
     
     
-    enum GoalView {
+    enum GoalScreen {
         
-        static let buttonToMenu: () -> ()           = { Analytics.logEvent("goalView_button_to_menu", parameters: nil) }
-        static let buttonToGoals: () -> ()          = { Analytics.logEvent("goalView_button_to_goals", parameters: nil) }
-        static let dragToMenu: () -> ()             = { Analytics.logEvent("goalView_drag_to_menu", parameters: nil) }
-        static let dragToGoalsDirectly: () -> ()    = { Analytics.logEvent("goalView_drag_to_goals_directly", parameters: nil) }
-        static let dragToGoalsFromMenu: () -> ()    = { Analytics.logEvent("goalView_drag_to_goals_from_menu", parameters: nil) }
+        static let toMenu: () -> ()                     = { Analytics.logEvent("goalScreen_to_menu", parameters: nil) }
+        static let toGoals: () -> ()                    = { Analytics.logEvent("goalScreen_to_goals", parameters: nil) }
+        static let buttonToMenu: () -> ()               = { Analytics.logEvent("goalScreen_button_to_menu", parameters: nil) }
+        static let buttonToGoals: () -> ()              = { Analytics.logEvent("goalScreen_button_to_goals", parameters: nil) }
+        static let dragToMenu: () -> ()                 = { Analytics.logEvent("goalScreen_drag_to_menu", parameters: nil) }
+        static let dragToGoalsDirectly: () -> ()        = { Analytics.logEvent("goalScreen_drag_to_goals_directly", parameters: nil) }
+        static let dragToGoalsFromMenu: () -> ()        = { Analytics.logEvent("goalScreen_drag_to_goals_from_menu", parameters: nil) }
+        
+        static let scrollToJourneyView: () -> ()        = { Analytics.logEvent("goalScreen_scroll_to_journeyView", parameters: nil) }
+        static let downArrowToJourneyView: () -> ()     = { Analytics.logEvent("goalScreen_downArrow_to_journeyView", parameters: nil) }
+        
+        static let addStepsFromSummaryView: () -> ()    = { Analytics.logEvent("goalScreen_addSteps_from_summaryView", parameters: nil) }
+        static let addStepsFromJourneyView: () -> ()    = { Analytics.logEvent("goalScreen_addSteps_from_journeyView", parameters: nil) }
     }
 }

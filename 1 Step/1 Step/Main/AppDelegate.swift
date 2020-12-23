@@ -25,7 +25,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         UNUserNotificationCenter.current().delegate = self
         
         UIApplication.shared.applicationIconBadgeNumber = 0
-        UserDefaultsManager.shared.notificationBadgeCount = 0
+        //UserDefaultsManager.shared.notificationBadgeCount = 0
     }
     
     

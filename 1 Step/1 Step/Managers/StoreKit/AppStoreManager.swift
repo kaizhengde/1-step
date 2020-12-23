@@ -40,10 +40,12 @@ struct AppStoreManager {
     
     
     static func askToRateAfterReachingThreeMilestones() {
+        guard !UserDefaultsManager.shared.appAskedForReview else { return }
         guard MainModel.shared.currentScreen.active.isScreen(.goal(.showActive)) else { return }
 
         if UserDefaultsManager.shared.accomplishmentTotalMilestonesReached >= 3 {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { rateApp() }
+            UserDefaultsManager.shared.appAskedForReview = true 
         }
     }
     

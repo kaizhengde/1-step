@@ -39,6 +39,7 @@ class ProfileModel: ObservableObject {
                         SheetManager.shared.dismiss()
                     }) { selectedImage in
                         self.userDefaultsManager.userProfileImage = selectedImage.jpegData(compressionQuality: 0.5)!
+                        FirebaseAnalyticsEvent.Profile.addProfilePicture()
                     }
                     .accentColor(UserColor.user0.standard)
                 }

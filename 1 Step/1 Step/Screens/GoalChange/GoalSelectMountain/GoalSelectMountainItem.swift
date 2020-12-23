@@ -68,7 +68,7 @@ struct GoalSelectMountainItem: View {
                 .offset(y: viewModel.mountainTransistionOffset())
                 .oneSMountainAnimation()
                 .background(GoalSelectMountainModel.MountainVS(mountainID: mountain.rawValue))
-                .onTapGesture { viewModel.newMountainColor() }
+                .onTapGesture { viewModel.selectMountainColor() }
         }
     }
     

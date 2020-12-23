@@ -66,6 +66,12 @@ class AddStepModel: ObservableObject {
             case let .normal(forward: forward):             addStepAnimationHandler.startNormalAdd(forward: forward)
             case .none: return
             }
+            
+            if GoalModel.shared.showJourneyView {
+                FirebaseAnalyticsEvent.GoalScreen.addStepsFromJourneyView()
+            } else {
+                FirebaseAnalyticsEvent.GoalScreen.addStepsFromSummaryView()
+            }
         }
     }
     
