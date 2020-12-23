@@ -107,6 +107,12 @@ enum Localized {
     static let dangerZone       = "dangerZone".localized()
     static let touchID          = "touchID".localized()
     static let faceID           = "faceID".localized()
+    static let meditate         = "meditate".localized()
+    static let `continue`       = "continue".localized()
+    static let youAreAwesome    = "youAreAwesome".localized()
+    static let feedback         = "feedback".localized()
+    static let featuresRequest  = "featuresRequest".localized()
+    static let contactRequest   = "contactRequest".localized()
     
     
     enum Step {
@@ -313,6 +319,20 @@ enum Localized {
         static let reason_requestPermission = "biometrics.reason_requestPermission".localized()
         static let error_invalid            = "biometrics.error_invalid".localized()
         static let error_unavailable        = "biometrics.error_unavailable".localized()
+    }
+    
+    
+    enum Mail {
+        
+        static let sent_thankYouText        = "mail.sent_thankYouText".localized()
+        static let error_unableToSendMails  = "mail.error_unableToSendMails".localized()
+        static let error_failedToSend       = "mail.error_failedToSend".localized()
+    }
+    
+    
+    enum Share {
+        
+        static let message = "share.message".localized()
     }
 }
 

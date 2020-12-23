@@ -20,7 +20,7 @@ settings        = "Einstellungen";
 dataAndPrivacy  = "Daten & Datenschutz";
 help            = "Hilfe";
 share           = "Teilen";
-requestFeatures = "Neue Funktionen anfragen";
+requestFeatures = "Ideen für neue Updates";
 rateOnAppStore  = "Im App Store bewerten";
 sendFeedback    = "Feedback geben";
 website         = "Webseite";
@@ -106,6 +106,12 @@ reset           = "Zurücksetzen";
 dangerZone      = "Gefahrenzone";
 touchID         = "Touch ID";
 faceID          = "Face ID";
+meditate        = "Meditieren";
+continue        = "Weiter";
+youAreAwesome   = "Du bist toll";
+feedback        = "Feedback";
+featuresRequest = "Update Ideen";
+contactRequest  = "Kontakt";
 
 
 // Special ------------------------------------------------------------------
@@ -337,3 +343,17 @@ biometrics.reason_authorizing       = "Bitte authentifiziere dich, um fortzufahr
 biometrics.reason_requestPermission = "Um die biometrische Authentifizierung zu aktivieren, müssen wir dich authentifizieren.";
 biometrics.error_invalid            = "Die biometrische Authentifizierung konnte nicht aktiviert werden.";
 biometrics.error_unavailable        = "fehlgeschlafen. Bitte stell sicher, dass eine biometrische Authentifizierung konfiguriert und für 1 Step aktiviert ist.";
+
+
+//Mail ----------------------------------------------
+
+mail.sent_thankYouText          = "1 Step wurde mithilfe von eurem Feedback entwickelt.\n\nDu bist toll!";
+mail.error_unableToSendMails    = "Nicht imstande, Mails zu senden.\n\nBitte stell sicher, dass du eine aktive Internet verbindungen hast.";
+mail.error_failedToSend         = "Etwas ist schiefgelaufen. Deine Mail konnte nicht versendet werden.";
+
+
+
+//Share ----------------------------------------------
+
+share.message                   = "Hi, hast du schon von 1 Step gehört?";
+

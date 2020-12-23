@@ -17,7 +17,7 @@ struct GoalEnterInputView: View {
     
     var body: some View {
         VStack {
-            OneSTextField(input: $viewModel.selectedData.goalName, placeholder: Localized.plant, inputColor: selectedColor.standard, inputLimit: Goal.nameDigitsLimit)
+            OneSTextField(input: $viewModel.selectedData.goalName, placeholder: Localized.meditate, inputColor: selectedColor.standard, inputLimit: Goal.nameDigitsLimit)
             
             HStack {
                 OneSTextField(input: $viewModel.selectedData.neededStepUnits, placeholder: "30", inputColor: selectedColor.standard, inputLimit: Goal.neededStepUnitsDigitsLimit, keyboard: .numberPad)

@@ -37,7 +37,7 @@ final class GoalEnterInputModel: ObservableObject {
     //Button
     
     func stepEnterUnitButtonText() -> String {
-        guard let stepUnit = selectedData.stepUnit else { return Localized.Step.unit_trees }
+        guard let stepUnit = selectedData.stepUnit else { return Localized.Step.unit_times }
 
         if stepUnit == .custom {
             return selectedData.customUnit.isEmpty ? Localized.Step.unit_custom : selectedData.customUnit

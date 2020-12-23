@@ -20,7 +20,7 @@ settings        = "Settings";
 dataAndPrivacy  = "Data & Privacy";
 help            = "Help";
 share           = "Share";
-requestFeatures = "Request new Features";
+requestFeatures = "Ideas for new updates";
 rateOnAppStore  = "Rate on the App Store";
 sendFeedback    = "Send your Feedback";
 website         = "Website";
@@ -107,6 +107,12 @@ reset           = "Reset";
 dangerZone      = "Danger zone";
 touchID         = "Touch ID";
 faceID          = "Face ID";
+meditate        = "Meditate";
+continue        = "Continue";
+youAreAwesome   = "You are awesome";
+feedback        = "Feedback";
+featuresRequest = "Update ideas";
+contactRequest  = "Contact";
 
 
 // Special ------------------------------------------------------------------
@@ -337,3 +343,17 @@ biometrics.reason_authorizing       = "To continue, you need to authorize yourse
 biometrics.reason_requestPermission = "To activate biometric authentication, we need to authorize you.";
 biometrics.error_invalid            = "Could not enable biometric authentication.";
 biometrics.error_unavailable        = "failed. Make sure that you have your biometrics setup inside settings and turned on for 1 Step.";
+
+
+//Mail ----------------------------------------------
+
+mail.sent_thankYouText          = "1 Step was made with the help of your feedback.\n\nYou are awesome!";
+mail.error_unableToSendMails    = "Unable to send mails.\n\nPlease make sure that you have an active internet connection.";
+mail.error_failedToSend         = "Something went wrong. Your mail could not be sent.";
+
+
+
+//Share ----------------------------------------------
+
+share.message                   = "Hi, I just wanted to tell you about 1 Step.";
+

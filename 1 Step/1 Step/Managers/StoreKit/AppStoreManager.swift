@@ -15,8 +15,10 @@ struct AppStoreManager {
     
     
     static func openAppStore() {
-        let urlStr = appStoreURL
-        UIApplication.shared.open(URL(string: urlStr)!, options: [:], completionHandler: nil)
+        let urlString = appStoreURL
+        if let url = URL(string: urlString) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
     }
     
     
@@ -25,6 +27,14 @@ struct AppStoreManager {
             if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
                 SKStoreReviewController.requestReview(in: scene)
             }
+        }
+    }
+    
+    
+    static func rateAppInsideAppStore() {
+        let urlString = "https://itunes.apple.com/app/id\(AppModel.General.appleID)?action=write-review"
+        if let url = URL(string: urlString) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
     
@@ -42,7 +52,7 @@ struct AppStoreManager {
     
     static func shareApp() {
         guard let link = URL(string: appStoreURL) else { return }
-        let message = "Hi, I just wanted to tell you about a new app. It's called 1 Step."
+        let message = Localized.Share.message
         let items: [Any] = [link, message]
         
         shareAppObserver = PopupManager.shared.dismissed.sink {
@@ -55,7 +65,7 @@ struct AppStoreManager {
         viewController.completionWithItemsHandler = { (_, completed, _, _) in
             if completed {
                 PopupManager.shared.showPopup(.shareApp, backgroundColor: UserColor.user0.standard, hapticFeedback: true) {
-                    OneSTextPopupView(titleText: Localized.thankYou, bodyText: "You are awesome!", bottomBtnTitle: "Continue")
+                    OneSTextPopupView(titleText: Localized.thankYou, bodyText: "\(Localized.youAreAwesome)!", bottomBtnTitle: Localized.continue)
                 }
                 ConfettiManager.shared.showConfetti(amount: .small)
             }

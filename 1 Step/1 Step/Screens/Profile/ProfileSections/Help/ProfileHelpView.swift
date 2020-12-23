@@ -99,7 +99,11 @@ struct ProfileHelpView: View {
                 OneSMultilineText(text: Localized.Help.bottomText)
                 
                 OneSRowButton(.shortBig, title: Localized.contactMe, textColor: .backgroundToGray, backgroundColor: profileModel.section1Color) {
-                    
+                    OneSMailHandler.handleShowMailView(success: {
+                        SheetManager.shared.showSheet {
+                            OneSMailView(email: OneSMailHandler.Mail.hello, subject: Localized.contactRequest, tintColor: UserColor.user0.standard)
+                        }
+                    })
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)

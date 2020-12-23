@@ -11,11 +11,20 @@ import MessageUI
 
 enum OneSMailHandler {
     
-    static let canSendMails = MFMailComposeViewController.canSendMail()
+    enum Mail {
+        
+        static let hello = "hello@kaizheng.de"
+        static let support = "support@kaizheng.de"
+    }
     
-    static func showUnableToSendPopup() {
-        PopupManager.shared.showPopup(backgroundColor: .darkNeutralToNeutral, hapticFeedback: true) {
-            OneSTextPopupView(titleText: Localized.error, bodyText: "Unable to send mails.\nPlease make sure that you have an active internet connection.\n\nAlso consider having valid e-mail accounts set up.")
+
+    static func handleShowMailView(success: @escaping () -> ()) {
+        if MFMailComposeViewController.canSendMail() {
+            success()
+        } else {
+            PopupManager.shared.showPopup(backgroundColor: .darkNeutralToNeutral, hapticFeedback: true) {
+                OneSTextPopupView(titleText: Localized.error, bodyText: Localized.Mail.error_unableToSendMails)
+            }
         }
     }
 }
@@ -23,12 +32,13 @@ enum OneSMailHandler {
 
 struct OneSMailView: View {
     
+    let email: String
     let subject: String
     let tintColor: Color
     
         
     var body: some View {
-        MailView(subject: subject, tintColor: UIColor(tintColor))
+        MailView(email: email, subject: subject, tintColor: UIColor(tintColor))
             .foregroundColor(.grayToBackground)
             .accentColor(tintColor)
             .edgesIgnoringSafeArea(.all)
@@ -39,10 +49,12 @@ struct OneSMailView: View {
 fileprivate struct MailView: UIViewControllerRepresentable {
 
     @Environment(\.presentationMode) var presentation
+    let email: String
     let subject: String
     let tintColor: UIColor
     
-    init(subject: String, tintColor: UIColor) {
+    init(email: String, subject: String, tintColor: UIColor) {
+        self.email = email
         self.subject = subject
         self.tintColor = tintColor
     }
@@ -73,12 +85,12 @@ fileprivate struct MailView: UIViewControllerRepresentable {
             case .cancelled, .saved: break
             case .sent:
                 PopupManager.shared.showPopup(backgroundColor: Color(tintColor), hapticFeedback: true) {
-                    OneSTextPopupView(titleText: Localized.thankYou, bodyText: "1 Step was made with the help of all of your feedback.\n\nYou are awesome!", bottomBtnTitle: "Continue")
+                    OneSTextPopupView(titleText: Localized.thankYou, bodyText: Localized.Mail.sent_thankYouText, bottomBtnTitle: Localized.continue)
                 }
                 ConfettiManager.shared.showConfetti(amount: .small)
             case .failed:
                 PopupManager.shared.showPopup(backgroundColor: .darkNeutralToNeutral, hapticFeedback: true) {
-                    OneSTextPopupView(titleText: Localized.error, bodyText: "Something went wrong. Unable to send mail.")
+                    OneSTextPopupView(titleText: Localized.error, bodyText: Localized.Mail.error_failedToSend)
                 }
             @unknown default: break
             }
@@ -95,7 +107,7 @@ fileprivate struct MailView: UIViewControllerRepresentable {
         let viewController = MFMailComposeViewController()
         viewController.view.tintColor = tintColor
         
-        viewController.setToRecipients(["support@kaizheng.de"])
+        viewController.setToRecipients([email])
         viewController.setSubject(subject)
         viewController.mailComposeDelegate = context.coordinator
         
