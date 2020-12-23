@@ -49,10 +49,18 @@ class UserDefaultsManager: ObservableObject {
     //MARK: - Settings
     
     @UserDefault(UserDefaultKey.Setting.premium,        default: false)         var settingPremium: Bool
-    @UserDefault(UserDefaultKey.Setting.appearance,     default: .mirrorDevice) var settingAppearance: OneSAppearance
-    @UserDefault(UserDefaultKey.Setting.colorTheme,     default: .water)        var settingColorTheme: OneSColorTheme
-    @UserDefault(UserDefaultKey.Setting.iCloudSynch,    default: false)         var settingICloudSynch: Bool
-    @UserDefault(UserDefaultKey.Setting.faceTouchID,    default: false)         var settingFaceTouchID: Bool
+    @UserDefault(UserDefaultKey.Setting.appearance,     default: .mirrorDevice) var settingAppearance: OneSAppearance {
+        didSet { FirebaseAnalyticsEvent.Profile.toggleAppearance(to: settingAppearance) }
+    }
+    @UserDefault(UserDefaultKey.Setting.colorTheme,     default: .water)        var settingColorTheme: OneSColorTheme {
+        didSet { FirebaseAnalyticsEvent.Profile.toggleTheme(to: settingColorTheme) }
+    }
+    @UserDefault(UserDefaultKey.Setting.iCloudSynch,    default: false)         var settingICloudSynch: Bool {
+        didSet { FirebaseAnalyticsEvent.Profile.toggleICloud(to: settingICloudSynch) }
+    }
+    @UserDefault(UserDefaultKey.Setting.faceTouchID,    default: false)         var settingFaceTouchID: Bool {
+        didSet { FirebaseAnalyticsEvent.Profile.toggleBiometrics(to: settingFaceTouchID )}
+    }
     
     
     //MARK: - Authorization

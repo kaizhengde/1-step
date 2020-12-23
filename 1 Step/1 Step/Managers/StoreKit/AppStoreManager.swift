@@ -31,7 +31,7 @@ struct AppStoreManager {
     }
     
     
-    static func rateAppInsideAppStore() {
+    static func rateAppOnAppStore() {
         let urlString = "https://itunes.apple.com/app/id\(AppModel.General.appleID)?action=write-review"
         if let url = URL(string: urlString) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)

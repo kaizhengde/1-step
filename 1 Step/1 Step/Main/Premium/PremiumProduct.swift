@@ -17,10 +17,10 @@ struct PremiumProduct: Hashable {
     
     
     init(product: SKProduct) {
-        self.id             = product.productIdentifier
-        self.product        = product
-        self.locale         = product.priceLocale
-        self.price          = priceFormatter.string(from: product.price)
+        self.id         = product.productIdentifier
+        self.product    = product
+        self.locale     = product.priceLocale
+        self.price      = priceFormatter.string(from: product.price)
     }
     
     

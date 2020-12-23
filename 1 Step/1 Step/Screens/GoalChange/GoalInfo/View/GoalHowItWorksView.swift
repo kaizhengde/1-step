@@ -24,5 +24,6 @@ struct GoalHowItWorksView: View {
             OneSTextPassage(passageData: data.textPassageThree)
         }
         .padding(.bottom, 20)
+        .onAppear { FirebaseAnalyticsEvent.GoalInfo.openHowItWorks() }
     }
 }

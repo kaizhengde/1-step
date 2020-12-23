@@ -60,6 +60,7 @@ struct ProfileHelpView: View {
                     }
                 }
                 OneSRowButton(.shortBig, title: Localized.tutorial) {
+                    FirebaseAnalyticsEvent.Profile.openTutorial()
                     sheetManager.showSheet {
                         ProfileTutorialView()
                     }

@@ -46,6 +46,7 @@ struct PremiumView: View {
         .oneSAnimation()
         .onReceive(PopupManager.shared.dismissed) { viewModel.dismiss(with: $0) }
         .onReceive(viewModel.purchaseManager.purchaseSuccessful) { viewModel.finishPurchase(with: $0) }
+        .onAppear { FirebaseAnalyticsEvent.Premium.openView() }
     }
     
     
@@ -83,7 +84,10 @@ struct PremiumView: View {
                     backgroundColor:    viewModel.premiumFeatureRowBackgroundColor(with: viewModel.changeRow.third),
                     accessorySFSymbol:  viewModel.changeRow.third ? SFSymbol.checkmark : SFSymbol.info,
                     accessoryColor:     viewModel.premiumFeatureRowAccessoryColor(with: viewModel.changeRow.third)
-                ) { SheetManager.shared.showSheet { EmptyView() } }
+                ) {
+                    FirebaseAnalyticsEvent.Premium.openRealTreeInfo()
+                    SheetManager.shared.showSheet { EmptyView() }
+                }
                 .oneSAnimation(delay: 0.3)
             }
             .frame(maxWidth: .infinity, alignment: .leading)

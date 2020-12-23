@@ -35,22 +35,26 @@ struct ProfileAboutSectionView: View {
                     }
                     
                     OneSRowButton(.long, title: Localized.rateOnAppStore, accessorySFSymbol: ProfileSymbol.rate, accessoryColor: UserColor.user0.standard) {
-                        AppStoreManager.rateAppInsideAppStore()
+                        FirebaseAnalyticsEvent.Profile.openRateOnAppStore()
+                        AppStoreManager.rateAppOnAppStore()
                     }
                     
                     OneSRowButton(.long, title: Localized.share, accessorySFSymbol: ProfileSymbol.share, accessoryColor: UserColor.user0.standard) {
+                        FirebaseAnalyticsEvent.Profile.openShare()
                         AppStoreManager.shareApp()
                     }
                 }
                 
                 VStack(spacing: 16) {
                     OneSRowButton(.long, title: Localized.website, accessorySFSymbol: ProfileSymbol.website, accessoryColor: UserColor.user1.standard) {
+                        FirebaseAnalyticsEvent.Profile.openWebsite()
                         sheetManager.showSheet {
                             OneSSafariView(urlString: WebsiteURLString.kaiZheng, tintColor: UserColor.user1.standard)
                         }
                     }
                     
                     OneSRowButton(.long, title: Localized.instagram, accessorySFSymbol: ProfileSymbol.instagram, accessoryColor: UserColor.user1.standard) {
+                        FirebaseAnalyticsEvent.Profile.openInstagram()
                         sheetManager.showSheet {
                             OneSSafariView(urlString: WebsiteURLString.instagram, tintColor: UserColor.user2.standard)
                         }
@@ -59,18 +63,21 @@ struct ProfileAboutSectionView: View {
                 
                 VStack(spacing: 16) {
                     OneSRowButton(.long, title: Localized.vfdCollective, accessorySFSymbol: ProfileSymbol.vfdCollective, accessoryColor: UserColor.user2.standard) {
+                        FirebaseAnalyticsEvent.Profile.openVfdCollective()
                         sheetManager.showSheet {
                             OneSSafariView(urlString: WebsiteURLString.vfdCollective, tintColor: UserColor.user2.standard)
                         }
                     }
                     
                     OneSRowButton(.long, title: Localized.pastelTree, accessorySFSymbol: ProfileSymbol.pastelTree, accessoryColor: UserColor.user2.standard) {
+                        FirebaseAnalyticsEvent.Profile.openPastelTree()
                         sheetManager.showSheet {
                             OneSSafariView(urlString: WebsiteURLString.pastelTree, tintColor: UserColor.user2.standard)
                         }
                     }
                     
                     OneSRowButton(.long, title: Localized.plantTree, accessorySFSymbol: ProfileSymbol.plant, accessoryColor: UserColor.user2.standard) {
+                        FirebaseAnalyticsEvent.Profile.openPlantTree()
                         sheetManager.showSheet {
                             OneSSafariView(urlString: WebsiteURLString.plantATree, tintColor: UserColor.user2.standard)
                         }

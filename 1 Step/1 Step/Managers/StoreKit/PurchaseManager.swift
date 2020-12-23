@@ -94,25 +94,49 @@ extension PurchaseManager: SKPaymentTransactionObserver {
         print("Received Payment Transaction Response from Apple")
         
         for transaction in transactions {
+            let productID = transaction.payment.productIdentifier
+            
             switch transaction.transactionState {
             case .purchasing, .deferred:
-                break
+                if productID.contains("1") {
+                    FirebaseAnalyticsEvent.Premium.purchasingPremium1()
+                } else {
+                    FirebaseAnalyticsEvent.Premium.purchasingPremium2()
+                }
                                 
-            case .purchased, .restored:
-                let productID = transaction.payment.productIdentifier
+            case .purchased:
                 purchaseSuccessful.send(getPremiumProduct(from: productID))
                 
                 SKPaymentQueue.default().finishTransaction(transaction)
                 SKPaymentQueue.default().remove(self)
                 
+                if productID.contains("1") {
+                    FirebaseAnalyticsEvent.Premium.purchasedPremium1()
+                } else {
+                    FirebaseAnalyticsEvent.Premium.purchasedPremium2()
+                }
                 print("Purchased: \(productID)")
+                
+            case .restored:
+                purchaseSuccessful.send(getPremiumProduct(from: productID))
+                
+                SKPaymentQueue.default().finishTransaction(transaction)
+                SKPaymentQueue.default().remove(self)
+                
+                FirebaseAnalyticsEvent.Premium.refundSuccessful()
+                print("Restored: \(productID)")
                 
             case .failed:
                 OneSFeedback.failed()
                 SKPaymentQueue.default().finishTransaction(transaction)
                 SKPaymentQueue.default().remove(self)
                 
-                print("Failed: \(transaction.payment.productIdentifier)")
+                if productID.contains("1") {
+                    FirebaseAnalyticsEvent.Premium.canceledPremium1()
+                } else {
+                    FirebaseAnalyticsEvent.Premium.canceledPremium2()
+                }
+                print("Failed: \(productID)")
             
             @unknown default: break
             }
@@ -124,6 +148,7 @@ extension PurchaseManager: SKPaymentTransactionObserver {
         let transactionCount = queue.transactions.count
         if transactionCount == 0 {
             OneSFeedback.failed()
+            FirebaseAnalyticsEvent.Premium.refundFailed()
         }
     }
 
@@ -133,7 +158,4 @@ extension PurchaseManager: SKPaymentTransactionObserver {
             OneSTextPopupView(titleText: Localized.error, bodyText: error.localizedDescription)
         }
     }
-    
-    
-    
 }

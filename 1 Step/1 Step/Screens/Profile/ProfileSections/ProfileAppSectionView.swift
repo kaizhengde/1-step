@@ -25,6 +25,7 @@ struct ProfileAppSectionView: View {
                 }
                 
                 OneSRowButton(.long, title: Localized.help, accessorySFSymbol: ProfileSymbol.help) {
+                    FirebaseAnalyticsEvent.Profile.openHelp()
                     fullSheetManager.showFullSheet { ProfileHelpView(profileModel: profileModel) }
                 }
             }

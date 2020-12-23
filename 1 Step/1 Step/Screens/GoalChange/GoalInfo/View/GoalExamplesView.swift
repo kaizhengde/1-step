@@ -24,5 +24,6 @@ struct GoalExamplesView: View {
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
+        .onAppear { FirebaseAnalyticsEvent.GoalInfo.openExamples() }
     }
 }
