@@ -14,6 +14,6 @@ enum WebsiteURLString {
     static let termsOfUse       = "https://www.kaizheng.de/terms-of-use/"
     static let pastelTree       = "https://www.etsy.com/shop/pastellbaum/"
     static let vfdCollective    = "https://www.thevfdcollective.com/"
-    static let instagram        = "https://www.instagram.com/1_step"
+    static let instagram        = "https://www.instagram.com/1stepapp/"
     static let plantATree       = "https://www.plant-for-the-planet.org/en/home"
 }
