@@ -146,6 +146,7 @@ final class DataModel: ObservableObject {
                 }
                 
                 if goal.currentState == .reached {
+                    FirebaseAnalyticsEvent.Goal.reached()
                     FirebaseAnalyticsEvent.Goal.reachedGoalsCount(self.reachedGoals.count)
                 }
             }
@@ -167,6 +168,7 @@ final class DataModel: ObservableObject {
             if self.dataManager.addGoalNotification(goal, with: notificationData) {
                 success()
                 FirebaseAnalyticsEvent.Goal.addTimeReminder()
+                FirebaseAnalyticsEvent.Goal.timeRemindersCount(goal.notifications.count)
             }
         }
     }

@@ -73,6 +73,7 @@ enum FirebaseAnalyticsEvent {
         static let edit: () -> ()                   = { Analytics.logEvent("goal_edit", parameters: nil) }
         static let createFailed: () -> ()           = { Analytics.logEvent("goal_create_failed", parameters: nil) }
         static let editFailed: () -> ()             = { Analytics.logEvent("goal_edit_failed", parameters: nil) }
+        static let reached: () -> ()                = { Analytics.logEvent("goal_reached", parameters: nil)}
 
         static func goalsCount(_ count: Int) {
             Analytics.logEvent("goal_goals_count", parameters: ["value": count])
@@ -98,7 +99,7 @@ enum FirebaseAnalyticsEvent {
             Analytics.logEvent("goal_name_length", parameters: ["value": value])
         }
         static func customUnitLength(_ value: Int) {
-            Analytics.logEvent("goal_customUnit_length", parameters: ["value": value])
+            Analytics.logEvent("goal_custom_unit_length", parameters: ["value": value])
         }
         static let customUnit: () -> ()             = { Analytics.logEvent("goal_custom_unit", parameters: nil) }
         
@@ -106,6 +107,13 @@ enum FirebaseAnalyticsEvent {
         static let addNegativeSteps: () -> ()       = { Analytics.logEvent("goal_add_negative_steps", parameters: nil) }
         static let addTimeReminder: () -> ()        = { Analytics.logEvent("goal_add_time_reminder", parameters: nil) }
         static let moveGoal: () -> ()               = { Analytics.logEvent("goal_moveGoal", parameters: nil) }
+        
+        static func milestonesCount(_ count: Int) {
+            Analytics.logEvent("goal_milestones_count", parameters: ["value": count])
+        }
+        static func timeRemindersCount(_ count: Int) {
+            Analytics.logEvent("goal_time_reminders_count", parameters: ["value": count])
+        }
     }
     
     

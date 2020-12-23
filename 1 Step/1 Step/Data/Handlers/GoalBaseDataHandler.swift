@@ -18,6 +18,8 @@ enum GoalBaseDataHandler {
         step.addArrayDual   = addArrays.dual
         
         goal.milestones     = generateMilestones(with: goal)
+        
+        FirebaseAnalyticsEvent.Goal.milestonesCount(goal.milestones.count)
     }
     
     

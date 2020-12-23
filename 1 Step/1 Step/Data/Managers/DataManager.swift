@@ -90,13 +90,13 @@ final class DataManager {
         
         GoalBaseDataHandler.setupCalculationBaseData(with: goal, goal.step)
         
-        
         //Update Currents
         
         goal.currentStepUnits      *= oldUnit.translateMultiplier(to: goal.step.unit)
         guard addSteps(goal, with: 0) else { return false }
         
         GoalNotificationsHandler.updateAfterGoalEdit(with: goal)
+        
         return persistenceManager.saveContext()
     }
     

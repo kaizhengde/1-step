@@ -263,9 +263,21 @@ final class GoalModel: TransitionObservableObject {
         if !legalDrag(value) { return }
         
         //Forward drag
-        if onToGoals(value) { toGoals() }
-        else if onToMenu(value) { toMenu() }
-        else if onToGoalsFromMenu(value) { toGoals() }
+        if onToGoals(value) {
+            FirebaseAnalyticsEvent.GoalScreen.dragToGoalsDirectly()
+            FirebaseAnalyticsEvent.GoalScreen.toGoals()
+            toGoals()
+        }
+        else if onToMenu(value) {
+            FirebaseAnalyticsEvent.GoalScreen.dragToMenu()
+            FirebaseAnalyticsEvent.GoalScreen.toMenu()
+            toMenu()
+        }
+        else if onToGoalsFromMenu(value) {
+            FirebaseAnalyticsEvent.GoalScreen.dragToGoalsFromMenu()
+            FirebaseAnalyticsEvent.GoalScreen.toGoals()
+            toGoals()
+        }
         
         //Backward drag
         if onBackFromMenu(value) { backFromMenu() }
@@ -302,17 +314,11 @@ final class GoalModel: TransitionObservableObject {
     //onEnded
     
     private func onToMenu(_ value: DragGesture.Value) -> Bool {
-        setScrollPosition.send(.top)
-        showJourneyView = false
-        FirebaseAnalyticsEvent.GoalScreen.dragToMenu()
-        FirebaseAnalyticsEvent.GoalScreen.toMenu()
         return value.translation.width >= 50 && dragState == .none
     }
     
     
     private func onToGoalsFromMenu(_ value: DragGesture.Value) -> Bool {
-        FirebaseAnalyticsEvent.GoalScreen.dragToGoalsFromMenu()
-        FirebaseAnalyticsEvent.GoalScreen.toGoals()
         return value.translation.width > 50 && dragState == .menu
     }
     
@@ -323,13 +329,14 @@ final class GoalModel: TransitionObservableObject {
     
     
     private func onToGoals(_ value: DragGesture.Value) -> Bool {
-        FirebaseAnalyticsEvent.GoalScreen.dragToGoalsDirectly()
-        FirebaseAnalyticsEvent.GoalScreen.toGoals()
         return value.translation.width >= 240*Layout.multiplierWidth
     }
     
     
     private func toMenu() {
+        setScrollPosition.send(.top)
+        showJourneyView = false
+        
         dragState = .menu
     }
     
