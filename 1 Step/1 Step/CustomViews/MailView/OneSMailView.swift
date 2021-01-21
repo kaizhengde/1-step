@@ -11,13 +11,6 @@ import MessageUI
 
 enum OneSMailHandler {
     
-    enum Mail {
-        
-        static let hello = "hello@kaizheng.de"
-        static let support = "support@kaizheng.de"
-    }
-    
-
     static func handleShowMailView(success: @escaping () -> ()) {
         if MFMailComposeViewController.canSendMail() {
             success()

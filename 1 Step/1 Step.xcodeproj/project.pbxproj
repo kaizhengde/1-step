@@ -154,6 +154,7 @@
 		3DAE7AE425309D0F00B162B1 /* FloaterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE7AE325309D0F00B162B1 /* FloaterManager.swift */; };
 		3DAE7AE725309DBB00B162B1 /* OneSFloater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE7AE625309DBB00B162B1 /* OneSFloater.swift */; };
 		3DAE7AEB2530A3E600B162B1 /* OneSTextFloater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE7AEA2530A3E600B162B1 /* OneSTextFloater.swift */; };
+		3DAF128425B9D88A00EFDFEE /* PremiumGivingBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAF128325B9D88A00EFDFEE /* PremiumGivingBackView.swift */; };
 		3DB0C83D259082C500553F7F /* BiometricsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB0C83C259082C500553F7F /* BiometricsManager.swift */; };
 		3DB0C8442590976A00553F7F /* OneSLockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB0C8432590976A00553F7F /* OneSLockView.swift */; };
 		3DB0C8482590A3D900553F7F /* LockViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB0C8472590A3D900553F7F /* LockViewManager.swift */; };
@@ -416,6 +417,7 @@
 		3DAE7AE325309D0F00B162B1 /* FloaterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloaterManager.swift; sourceTree = "<group>"; };
 		3DAE7AE625309DBB00B162B1 /* OneSFloater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSFloater.swift; sourceTree = "<group>"; };
 		3DAE7AEA2530A3E600B162B1 /* OneSTextFloater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSTextFloater.swift; sourceTree = "<group>"; };
+		3DAF128325B9D88A00EFDFEE /* PremiumGivingBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumGivingBackView.swift; sourceTree = "<group>"; };
 		3DB0C83C259082C500553F7F /* BiometricsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricsManager.swift; sourceTree = "<group>"; };
 		3DB0C8432590976A00553F7F /* OneSLockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSLockView.swift; sourceTree = "<group>"; };
 		3DB0C8472590A3D900553F7F /* LockViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockViewManager.swift; sourceTree = "<group>"; };
@@ -1458,6 +1460,7 @@
 				3DB0C857259102F100553F7F /* PremiumProduct.swift */,
 				3DFD9BCB256BA2A200CF9580 /* PremiumModel.swift */,
 				3DFD9BCF256BA2AB00CF9580 /* PremiumView.swift */,
+				3DAF128325B9D88A00EFDFEE /* PremiumGivingBackView.swift */,
 			);
 			path = Premium;
 			sourceTree = "<group>";
@@ -1789,6 +1792,7 @@
 				3D85CC5A25924D5000A9F23B /* FirebaseAnalyticsEvents.swift in Sources */,
 				3D854B14253EAC2500A4F80E /* OneSTextFieldConfirmationPopup.swift in Sources */,
 				3D2E7972253033B400788AA2 /* OneSTextPopupView.swift in Sources */,
+				3DAF128425B9D88A00EFDFEE /* PremiumGivingBackView.swift in Sources */,
 				3D599FF72574EBBC00A00EE4 /* GoalAccomplishmentsHandler.swift in Sources */,
 				3DF9E75925618D4F0020A403 /* AddStepAnimationHandler.swift in Sources */,
 				3D7396BD2533730700BD4169 /* GoalsGridView.swift in Sources */,

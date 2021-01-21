@@ -113,6 +113,7 @@ youAreAwesome   = "You are awesome";
 feedback        = "Feedback";
 featuresRequest = "Update ideas";
 contactRequest  = "Contact";
+givingBack      = "Giving back";
 
 
 // Special ------------------------------------------------------------------
@@ -352,8 +353,13 @@ mail.error_unableToSendMails    = "Unable to send mails.\n\nPlease make sure tha
 mail.error_failedToSend         = "Something went wrong. Your mail could not be sent.";
 
 
-
 //Share ----------------------------------------------
 
 share.message                   = "Hi, I just wanted to tell you about 1 Step.";
+
+
+//Giving back ----------------------------------------------
+
+givingBack.textPassage1 = "Contributing to the greater good is the most important thing to me.";
+givingBack.textPassage2 = "For every single purchase you make, we will together donate one tree!";
 

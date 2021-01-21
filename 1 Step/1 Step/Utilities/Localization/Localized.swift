@@ -113,6 +113,7 @@ enum Localized {
     static let feedback         = "feedback".localized()
     static let featuresRequest  = "featuresRequest".localized()
     static let contactRequest   = "contactRequest".localized()
+    static let givingBack       = "givingBack".localized()
     
     
     enum Step {
@@ -333,6 +334,13 @@ enum Localized {
     enum Share {
         
         static let message = "share.message".localized()
+    }
+    
+    
+    enum GivingBack {
+        
+        static let textPassage1 = "givingBack.textPassage1".localized()
+        static let textPassage2 = "givingBack.textPassage2".localized()
     }
 }
 

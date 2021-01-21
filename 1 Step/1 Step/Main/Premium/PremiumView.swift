@@ -86,7 +86,7 @@ struct PremiumView: View {
                     accessoryColor:     viewModel.premiumFeatureRowAccessoryColor(with: viewModel.changeRow.third)
                 ) {
                     FirebaseAnalyticsEvent.Premium.openRealTreeInfo()
-                    SheetManager.shared.showSheet { EmptyView() }
+                    SheetManager.shared.showSheet { PremiumGivingBackView() }
                 }
                 .oneSAnimation(delay: 0.3)
             }

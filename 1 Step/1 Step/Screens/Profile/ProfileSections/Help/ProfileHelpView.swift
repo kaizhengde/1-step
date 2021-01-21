@@ -102,7 +102,7 @@ struct ProfileHelpView: View {
                 OneSRowButton(.shortBig, title: Localized.contactMe, textColor: .backgroundToGray, backgroundColor: profileModel.section1Color) {
                     OneSMailHandler.handleShowMailView(success: {
                         SheetManager.shared.showSheet {
-                            OneSMailView(email: OneSMailHandler.Mail.hello, subject: Localized.contactRequest, tintColor: UserColor.user0.standard)
+                            OneSMailView(email: MailString.hello, subject: Localized.contactRequest, tintColor: UserColor.user0.standard)
                         }
                     })
                 }

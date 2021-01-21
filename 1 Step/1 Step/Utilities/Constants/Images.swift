@@ -160,3 +160,9 @@ extension MilestoneImage {
     static let snow     = Image(systemName: "snow")
     static let flag     = Image(systemName: "flag")
 }
+
+
+enum Photo {
+    
+    static let givingBack = Image("GivingBackPhoto")
+}

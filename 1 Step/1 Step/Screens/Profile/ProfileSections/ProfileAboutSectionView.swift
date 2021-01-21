@@ -21,7 +21,7 @@ struct ProfileAboutSectionView: View {
                     OneSRowButton(.long, title: Localized.sendFeedback, accessorySFSymbol: ProfileSymbol.feedback, accessoryColor: UserColor.user0.standard) {
                         OneSMailHandler.handleShowMailView(success: {
                             sheetManager.showSheet {
-                                OneSMailView(email: OneSMailHandler.Mail.hello, subject: Localized.feedback, tintColor: UserColor.user0.standard)
+                                OneSMailView(email: MailString.hello, subject: Localized.feedback, tintColor: UserColor.user0.standard)
                             }
                         })
                     }
@@ -29,7 +29,7 @@ struct ProfileAboutSectionView: View {
                     OneSRowButton(.long, title: Localized.requestFeatures, accessorySFSymbol: ProfileSymbol.request, accessoryColor: UserColor.user0.standard) {
                         OneSMailHandler.handleShowMailView(success: {
                             sheetManager.showSheet {
-                                OneSMailView(email: OneSMailHandler.Mail.support, subject: Localized.featuresRequest, tintColor: UserColor.user0.standard)
+                                OneSMailView(email: MailString.hello, subject: Localized.featuresRequest, tintColor: UserColor.user0.standard)
                             }
                         })
                     }
