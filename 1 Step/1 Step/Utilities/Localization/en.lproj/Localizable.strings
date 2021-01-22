@@ -20,13 +20,12 @@ settings        = "Settings";
 dataAndPrivacy  = "Data & Privacy";
 help            = "Help";
 share           = "Share";
-requestFeatures = "Ideas for new updates";
-rateOnAppStore  = "Rate on the App Store";
+requestFeatures = "Ideas for new Updates";
+rateOnAppStore  = "Rate us on the App Store";
 sendFeedback    = "Send your Feedback";
 website         = "Website";
 instagram       = "Instagram";
 vfdCollective   = "The VFD Collective";
-pastelTree      = "Pastel Tree";
 plantTree       = "Plant a Tree";
 premium         = "Premium";
 language        = "Language";
@@ -182,8 +181,8 @@ premium.futureUpdates       = "Support new updates";
 premium.realTree            = "Plant a real tree";
 premium.youChoose           = "You choose the price";
 premium.restore             = "Restore purchase";
-premium.noteTextPassage     = "This purchase will give you access to all current and future functionality. No subscription, you only pay once and it’s forever yours.";
-premium.thankYouText        = "you have successfully unlocked 1 Step Premium.\n\nWe wish a wonderful experience!";
+premium.noteTextPassage     = "This purchase will grant you access to all current and upcoming features. No subscription, you only pay once and it's forever yours.";
+premium.thankYouText        = "you have successfully unlocked 1 Step Premium.\n\nWe wish you a wonderful experience!";
 
 
 //Error ----------------------------------------------
@@ -241,27 +240,27 @@ help.bottomText         = "You didn’t find the answer to your question?\nFeel 
 
 //How it works ----------------------------------------------
 
-howItWorks.textPassageOne1      = "1 Step is about reaching your goals with simplicity and intelligence.";
-howItWorks.textPassageOne2      = "The main idea is to break your goals into tiny steps, with each step requiring minimal willpower for you to act on.";
-howItWorks.textPassageOne3      = "It's about minimizing the amount of disciplin and motivation that is needed to take actions towards your goal.";
-howItWorks.textPassageOne4      = "For instance, losing weight could become running 100 miles in total.";
+howItWorks.textPassageOne1      = "1 Step is about reaching your goals smartly and with ease.";
+howItWorks.textPassageOne2      = "The idea is to break your goals into tiny steps. A tiny step makes it more tangible and easier to act on.";
+howItWorks.textPassageOne3      = "It's about minimizing the amount of discipline and motivation needed to take action towards your goal.";
+howItWorks.textPassageOne4      = "Let's say you want to lose weight. That could become 100 miles of running in total instead."
 howItWorks.textPassageOne5      = "Each step would be equivalent to running just a few miles.";
     
 howItWorks.exampleOne1          = "Lose weight";
 howItWorks.exampleOne2          = "Run 100 miles in total";
     
-howItWorks.textPassageTwo1      = "Sure, you can be as creative as you want. Choose whatever motivates you the most!";
+howItWorks.textPassageTwo1      = "Of course, be as creative as you want. Choose whatever motivates you the most!";
     
 howItWorks.exampleTwo1          = "Lose weight";
 howItWorks.exampleTwo2          = "Run 100 miles";
 howItWorks.exampleTwo3          = "Swim 30 times";
-howItWorks.exampleTwo4          = "Walk to 50 parks";
-howItWorks.exampleTwo5          = "Hike 12 mountains in the swiss alps";
+howItWorks.exampleTwo4          = "Visit 50 parks";
+howItWorks.exampleTwo5          = "Hike 12 mountains in the Swiss alps";
 
 howItWorks.textPassageThree1    = "As you have achieved these indirect goals, you will certainly have lost some weight.";
-howItWorks.textPassageThree2    = "No need for your goals to be always in the foreground of your daily life.";
+howItWorks.textPassageThree2    = "No need for your goals to always be in the foreground of your daily life.";
 howItWorks.textPassageThree3    = "You take tiny steps whenever you want and track them using 1 Step.";
-howItWorks.textPassageThree4    = "These steps will have an compound effect over time. You will be surprised by the effectiveness of this method.";
+howItWorks.textPassageThree4    = "These steps will have a compound effect over time. You will be surprised by how effective this method is.";
 
 
 //Examples ----------------------------------------------
@@ -277,7 +276,7 @@ examples.oneText7    = "Hike 12 mountains";
 
 examples.twoTitle    = "Become more self-aware";
 examples.twoText1    = "Become more self-aware";
-examples.twoText2    = "Practise mindfulness";
+examples.twoText2    = "Practice mindfulness";
 examples.twoText3    = "Start meditating regularly";
 examples.twoText4    = "Meditate 50 hours";
 examples.twoText5    = "Meditate 100 times";
@@ -287,7 +286,7 @@ examples.twoText7    = "Acknowledge the now 500 times";
 examples.threeTitle  = "Help the environment";
 examples.threeText1  = "Help the environment";
 examples.threeText2  = "Plant 100 trees";
-examples.threeText3  = "Save rainforest 10 square miles";
+examples.threeText3  = "Protect rainforest 10 square miles";
 examples.threeText4  = "Collect trash 800 times";
 examples.threeText5  = "Eat a vegan meal 100 times";
 
@@ -295,30 +294,30 @@ examples.fourTitle   = "Get better at guitar";
 examples.fourText1   = "Get better at guitar";
 examples.fourText2   = "Play 100 new songs";
 examples.fourText3   = "Play 100 hours";
-examples.fourText4   = "Watch 10 Youtube videos";
+examples.fourText4   = "Watch 10 tutorials";
 
 examples.fiveTitle   = "Be more happy";
 examples.fiveText1   = "Be more happy";
 examples.fiveText2   = "Give back and help others";
 examples.fiveText3   = "Collect trash 800 times";
 examples.fiveText4   = "Rescue an insect 300 times";
-examples.fiveText5   = "Help a friend 100 times";
+examples.fiveText5   = "Be helpful to a friend 100 times";
 
 examples.sixTitle    = "Stop procrastination";
 examples.sixText1    = "Stop procrastination";
 examples.sixText2    = "Start doing the right thing instantly";
 examples.sixText3    = "Train my instant decision making muscle";
-examples.sixText4    = "Make 1000 instant descisions";
+examples.sixText4    = "Make 1000 instant decisions";
 examples.sixText5    = "Journal on progress 100 times";
 
-examples.sevenTitle  = "Learn a new language";
-examples.sevenText1  = "Learn a new language";
-examples.sevenText2  = "Interact more frequently with [language]";
-examples.sevenText3  = "Watch 100 movies in [language]";
-examples.sevenText4  = "Listen to [language] podcasts 500 times";
+examples.sevenTitle  = "Learn French";
+examples.sevenText1  = "Learn French";
+examples.sevenText2  = "Interact more frequently with French";
+examples.sevenText3  = "Watch 100 movies in French";
+examples.sevenText4  = "Listen to French podcasts 500 times";
 
-examples.eightTitle  = "Increase my knowledge";
-examples.eightText1  = "Increase my knowledge";
+examples.eightTitle  = "Expand my knowledge";
+examples.eightText1  = "Expand my knowledge";
 examples.eightText2  = "Read more books";
 examples.eightText3  = "Read 500 pages";
 examples.eightText4  = "Read 200 times";
@@ -328,7 +327,7 @@ examples.eightText4  = "Read 200 times";
 
 firstStart.whatsYourName    = "Hi 🙂\nWhat’s your name?";
 firstStart.howShould        = "How should we call you?";
-firstStart.excited          = "we wich you a wonderful experience with 1 Step.";
+firstStart.excited          = "we wish you a wonderful experience with 1 Step.";
 
 
 //AddStepsAccomplishment ----------------------------------------------
@@ -361,5 +360,5 @@ share.message                   = "Hi, I just wanted to tell you about 1 Step.";
 //Giving back ----------------------------------------------
 
 givingBack.textPassage1 = "Contributing to the greater good is the most important thing to me.";
-givingBack.textPassage2 = "For every single purchase you make, we will together donate one tree!";
+givingBack.textPassage2 = "For every single purchase you make, we will together plant one tree!";
 

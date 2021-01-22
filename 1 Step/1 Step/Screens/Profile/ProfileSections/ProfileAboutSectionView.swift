@@ -69,13 +69,6 @@ struct ProfileAboutSectionView: View {
                         }
                     }
                     
-                    OneSRowButton(.long, title: Localized.pastelTree, accessorySFSymbol: ProfileSymbol.pastelTree, accessoryColor: UserColor.user2.standard) {
-                        FirebaseAnalyticsEvent.Profile.openPastelTree()
-                        sheetManager.showSheet {
-                            OneSSafariView(urlString: WebsiteURLString.pastelTree, tintColor: UserColor.user2.standard)
-                        }
-                    }
-                    
                     OneSRowButton(.long, title: Localized.plantTree, accessorySFSymbol: ProfileSymbol.plant, accessoryColor: UserColor.user2.standard) {
                         FirebaseAnalyticsEvent.Profile.openPlantTree()
                         sheetManager.showSheet {

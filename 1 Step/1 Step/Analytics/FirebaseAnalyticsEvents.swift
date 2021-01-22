@@ -53,7 +53,6 @@ enum FirebaseAnalyticsEvent {
         static let openWebsite: () -> ()        = { Analytics.logEvent("profile_open_website", parameters: nil) }
         static let openInstagram: () -> ()      = { Analytics.logEvent("profile_open_instagram", parameters: nil) }
         static let openVfdCollective: () -> ()  = { Analytics.logEvent("profile_open_vfdCollective", parameters: nil) }
-        static let openPastelTree: () -> ()     = { Analytics.logEvent("profile_open_pastelTree", parameters: nil) }
         static let openPlantTree: () -> ()      = { Analytics.logEvent("profile_open_plantTree", parameters: nil) }
         static let openPrivacyPolicy: () -> ()  = { Analytics.logEvent("profile_open_privacyPolicy", parameters: nil) }
         static let openTermsOfUse: () -> ()     = { Analytics.logEvent("profile_open_termsOfUse", parameters: nil) }

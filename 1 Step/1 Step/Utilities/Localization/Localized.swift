@@ -27,7 +27,6 @@ enum Localized {
     static let website          = "website".localized()
     static let instagram        = "instagram".localized()
     static let vfdCollective    = "vfdCollective".localized()
-    static let pastelTree       = "pastelTree".localized()
     static let plantTree        = "plantTree".localized()
     static let premium          = "premium".localized()
     static let language         = "language".localized()
