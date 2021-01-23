@@ -138,8 +138,8 @@ final class DataModel: ObservableObject {
                 DispatchQueue.global().async {
                     GoalAccomplishmentsHandler.AddSteps.updateStepsAccomplishment(oldCurrentSteps, newCurrentSteps)
                     GoalAccomplishmentsHandler.AddSteps.updateMilestonesAccomplishment(oldAmountMilestonesDone, newAmountMilestonesDone)
-                    GoalAccomplishmentsHandler.AddSteps.updateGoalsAccomplishment(goal.currentState)
                 }
+                GoalAccomplishmentsHandler.AddSteps.updateGoalsAccomplishment(goal.currentState)
                 
                 FirebaseAnalyticsEvent.Goal.addSteps()
                 if newStepUnits < 0 {

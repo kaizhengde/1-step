@@ -43,7 +43,7 @@ notifications   = "Mitteilungen";
 iCloudSync      = "iCloud sync";
 exportData      = "Daten exportieren";
 resetAllData    = "Alle Daten zurücksetzen";
-privacyPolicy   = "Datenschutz";
+privacyPolicy   = "Datenschutzerklärung";
 summit          = "Gipfel";
 milestone       = "Meilenstein";
 goal            = "Ziel";
@@ -242,7 +242,7 @@ help.bottomText         = "Du hast keine Antwort zu deiner Frage gefunden?\nKont
 
 howItWorks.textPassageOne1      = "1 Step ermöglicht es dir, deine Ziele klever und mit Leichtigkeit zu erreichen.";
 howItWorks.textPassageOne2      = "Im Prinzip geht es darum, ein Ziel in winzig kleine Schritte herunterzubrechen, wobei jeder einzelne Schritt für dich nur minimale Überwindung benötigt.";
-howItWorks.textPassageOne3      = "Es geht darum, die benötigte Disziplin und Motivation zum Handlen, auf ein Mindestmaß zu reduzieren.";
+howItWorks.textPassageOne3      = "Es geht darum, die benötigte Disziplin und Motivation zum Handeln, auf ein Mindestmaß zu reduzieren.";
 howItWorks.textPassageOne4      = "Zum Beispiel wäre ein Alternativ-Ziel fürs Abnehmen, insgesamt 100 Kilometer zu laufen.";
 howItWorks.textPassageOne5      = "Jeder Schritt würde so bloß wenige Kilometer entsprechen.";
     
