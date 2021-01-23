@@ -62,7 +62,7 @@ struct OneSTextFieldConfirmationPopupView: View {
                 }
                 
                 OneSMultilineText(text: bodyText, color: textColor)
-                OneSTextField(input: $input, placeholder: placeholder, inputColor: textColor, placeholderColor: placeholderColor, inputLimit: inputLimit, keyboard: keyboard, lowercased: lowercased) { manager.confirmBtnDismiss(with: input) }
+                OneSTextField(input: $input, placeholder: placeholder, inputColor: textColor, placeholderColor: placeholderColor, inputLimit: inputLimit, keyboard: keyboard, lowercased: lowercased) {}
                 
                 Spacer()
             }

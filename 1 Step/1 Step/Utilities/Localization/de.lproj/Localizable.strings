@@ -111,7 +111,7 @@ youAreAwesome   = "Du bist toll";
 feedback        = "Feedback";
 featuresRequest = "Update Ideen";
 contactRequest  = "Kontakt";
-givingBack      = "Zurückgeben";
+givingBack      = "Bäume";
 
 
 // Special ------------------------------------------------------------------
@@ -359,5 +359,5 @@ share.message                   = "Hi, hast du schon von 1 Step gehört?";
 
 //Giving back ----------------------------------------------
 
-givingBack.textPassage1  = "Zum größeren Gut beizutragen ist das Wichtigste für mich.";
-givingBack.textPassage2  = "Für jeden Kauf werde ich sicher stellen, dass wir zusammen einen Baum pflanzen!";
+givingBack.textPassage1  = "Zum größeren Wohl beizutragen ist das Wichtigste für mich.";
+givingBack.textPassage2  = "Für jeden Kauf werden wir zusammen einen Baum pflanzen!";

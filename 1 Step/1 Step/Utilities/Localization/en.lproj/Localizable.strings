@@ -243,7 +243,7 @@ help.bottomText         = "You didn’t find the answer to your question?\nFeel 
 howItWorks.textPassageOne1      = "1 Step is about reaching your goals smartly and with ease.";
 howItWorks.textPassageOne2      = "The idea is to break your goals into tiny steps. A tiny step makes it more tangible and easier to act on.";
 howItWorks.textPassageOne3      = "It's about minimizing the amount of discipline and motivation needed to take action towards your goal.";
-howItWorks.textPassageOne4      = "Let's say you want to lose weight. That could become 100 miles of running in total instead."
+howItWorks.textPassageOne4      = "Let's say you want to lose weight. That could become 100 miles of running in total instead.";
 howItWorks.textPassageOne5      = "Each step would be equivalent to running just a few miles.";
     
 howItWorks.exampleOne1          = "Lose weight";
