@@ -15,7 +15,6 @@ enum OneSColorTheme: String, Codable, CaseIterable {
     case earth
     case air
     
-    
     var color0: OneSColorThemeType {
         switch self {
         case .water: return Water.color0
@@ -37,14 +36,6 @@ enum OneSColorTheme: String, Codable, CaseIterable {
         case .water: return Water.color2
         case .earth: return Earth.color2
         case .air:   return Air.color2
-        }
-    }
-    
-    var appIcon: (light: String?, dark: String) {
-        switch self {
-        case .water: return (nil,               "1StepIconDark")
-        case .earth: return ("1StepIconEarth",  "1StepIconEarthDark")
-        case .air:   return ("1StepIconAir",    "1StepIconAirDark")
         }
     }
     

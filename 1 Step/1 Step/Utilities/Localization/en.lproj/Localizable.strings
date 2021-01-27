@@ -113,6 +113,7 @@ feedback        = "Feedback";
 featuresRequest = "Update ideas";
 contactRequest  = "Contact";
 givingBack      = "Giving back";
+appIcon         = "App Icon";
 
 
 // Special ------------------------------------------------------------------

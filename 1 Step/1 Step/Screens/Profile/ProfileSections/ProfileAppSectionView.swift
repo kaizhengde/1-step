@@ -43,6 +43,7 @@ struct ProfileAppSectionView: View {
         var selectedLanguage: String { LocalizationHelper.languageDescription(of: Locale.preferredLanguages[0]) }
         var selectedAppearance: OneSAppearance { userDefaultsManager.settingAppearance }
         var selectedColorTheme: OneSColorTheme { userDefaultsManager.settingColorTheme }
+        var selectedAppIcon: OneSAppIcon { userDefaultsManager.settingAppIcon }
         var notifications: Bool { userDefaultsManager.authorizationNotifications == .authorized }
         
         
@@ -102,11 +103,40 @@ struct ProfileAppSectionView: View {
                                     selectedColor: profileModel.section1Color,
                                     action: {
                                         userDefaultsManager.settingColorTheme = colorTheme
-                                        AppModel.updateAppIconAppearance(with: appAppearance, themeChange: true)
                                     }
                                 )
                             }
                         }
+                    }
+                )
+                
+                OneSDropDown(
+                    .shortSmall,
+                    title: Localized.appIcon,
+                    accessoryText: selectedAppIcon.description,
+                    accessoryColor: profileModel.section1Color,
+                    content: {
+                        LazyVGrid(columns: [GridItem(), GridItem(), GridItem()], spacing: 20) {
+                            ForEach(appAppearance == .dark ? OneSAppIcon.darkIcons : OneSAppIcon.lightIcons, id: \.self) { appIcon in
+                                appIcon.image
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .cornerRadius(10)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .stroke(
+                                                appIcon == userDefaultsManager.settingAppIcon ? profileModel.section1Color : Color.lightNeutralToLightGray,
+                                                lineWidth: 1
+                                            )
+                                    )
+                                    .oneSItemTransition()
+                                    .oneSItemScaleTapGesture() {
+                                        userDefaultsManager.settingAppIcon = appIcon
+                                        AppModel.setAppIcon(with: appIcon.iconString)
+                                    }
+                            }
+                        }
+                        .frame(width: 280*Layout.multiplierWidth)
                     }
                 )
                 

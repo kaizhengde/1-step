@@ -8,6 +8,7 @@
 import Foundation
 
 enum OneSAppearance: String, Codable, CaseIterable {
+    
     case mirrorDevice
     case light
     case dark

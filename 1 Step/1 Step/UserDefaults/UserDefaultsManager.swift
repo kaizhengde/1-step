@@ -56,6 +56,9 @@ class UserDefaultsManager: ObservableObject {
     @UserDefault(UserDefaultKey.Setting.colorTheme,     default: .water)        var settingColorTheme: OneSColorTheme {
         didSet { FirebaseAnalyticsEvent.Profile.toggleTheme(to: settingColorTheme) }
     }
+    @UserDefault(UserDefaultKey.Setting.appIcon,        default: .waterLight)        var settingAppIcon: OneSAppIcon {
+        didSet { FirebaseAnalyticsEvent.Profile.toggleAppIcon(to: settingAppIcon) }
+    }
     @UserDefault(UserDefaultKey.Setting.iCloudSynch,    default: false)         var settingICloudSynch: Bool
     @UserDefault(UserDefaultKey.Setting.faceTouchID,    default: false)         var settingFaceTouchID: Bool {
         didSet { FirebaseAnalyticsEvent.Profile.toggleBiometrics(to: settingFaceTouchID )}

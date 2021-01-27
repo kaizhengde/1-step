@@ -112,6 +112,7 @@ feedback        = "Feedback";
 featuresRequest = "Update Ideen";
 contactRequest  = "Kontakt";
 givingBack      = "Bäume";
+appIcon         = "App Icon";
 
 
 // Special ------------------------------------------------------------------

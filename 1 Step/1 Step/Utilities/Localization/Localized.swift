@@ -113,6 +113,7 @@ enum Localized {
     static let featuresRequest  = "featuresRequest".localized()
     static let contactRequest   = "contactRequest".localized()
     static let givingBack       = "givingBack".localized()
+    static let appIcon          = "appIcon".localized()
     
     
     enum Step {

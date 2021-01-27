@@ -9,7 +9,6 @@ import SwiftUI
 
 struct MainView: View {
     
-    @Environment(\.colorScheme) var appAppearance: ColorScheme
     @StateObject private var mainModel = MainModel.shared
     @StateObject private var sheetManager = SheetManager.shared
     
@@ -36,10 +35,6 @@ struct MainView: View {
         .oneSFloater()
         .oneSLoadingView()
         .oneSLockView()
-        .onAppear {
-            mainModel.considerUserDefaults()
-            AppModel.updateAppIconAppearance(with: appAppearance)
-        }
-        .onChange(of: appAppearance) { AppModel.updateAppIconAppearance(with: $0) }
+        .onAppear { mainModel.considerUserDefaults() }
     }
 }

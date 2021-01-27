@@ -36,6 +36,10 @@ enum FirebaseAnalyticsEvent {
             Analytics.logEvent("profile_toggle_theme", parameters: ["value": value.rawValue])
         }
         
+        static func toggleAppIcon(to value: OneSAppIcon) {
+            Analytics.logEvent("profile_toggle_appIcon", parameters: ["value": value.rawValue])
+        }
+        
         static func toggleICloud(to value: Bool) {
             Analytics.logEvent("profile_toggle_iCloud", parameters: ["value": String(value)])
         }

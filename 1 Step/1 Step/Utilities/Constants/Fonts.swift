@@ -10,7 +10,7 @@ import SwiftUI
 enum OneSFont {
     
     case header, header2, title, title2, subtitle, body, body2, footnote, footnote2, custom(Raleway, CGFloat)
-    
+
     var font: Font {
         switch self {
         case .header:       return Font.custom(Raleway.extraBold.weight,    size: 40)
@@ -56,7 +56,6 @@ enum Raleway: String {
     case light        = "Raleway-Light"
     case extraLight   = "Raleway-ExtraLight"
     case thin         = "Raleway-Thin"
-    
     
     var weight: String { return self.rawValue }
 }

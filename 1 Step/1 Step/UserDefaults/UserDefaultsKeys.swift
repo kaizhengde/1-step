@@ -60,6 +60,7 @@ extension UserDefaultKey {
         static let premium: Key                  = "setting.premium"
         static let appearance: Key               = "setting.appearance"
         static let colorTheme: Key               = "setting.colorTheme"
+        static let appIcon: Key                  = "setting.appIcon"
         static let iCloudSynch: Key              = "setting.iCloudSynch"
         static let faceTouchID: Key              = "setting.faceTouchID"
     }

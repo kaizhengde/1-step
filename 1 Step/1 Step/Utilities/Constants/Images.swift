@@ -131,7 +131,6 @@ extension MountainImage {
             switch UserDefaultsManager.shared.settingColorTheme {
             case .water:    return waterLight
             case .earth:    return earthLight
-            //case .fire:     return fireLight
             case .air:      return airLight
             }
         }
@@ -140,7 +139,6 @@ extension MountainImage {
             switch UserDefaultsManager.shared.settingColorTheme {
             case .water:    return waterDark
             case .earth:    return earthDark
-            //case .fire:     return fireDark
             case .air:      return airDark
             }
         }
@@ -165,4 +163,15 @@ extension MilestoneImage {
 enum Photo {
     
     static let givingBack = Image("GivingBackPhoto")
+}
+
+
+enum AppIconImage {
+    
+    static let waterLight   = Image("1StepIconWater")
+    static let earthLight   = Image("1StepIconEarth")
+    static let airLight     = Image("1StepIconAir")
+    static let waterDark    = Image("1StepIconWaterDark")
+    static let earthDark    = Image("1StepIconEarthDark")
+    static let airDark      = Image("1StepIconAirDark")
 }
